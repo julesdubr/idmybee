@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.dylib
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.python-version
+.env
+.venv/
+venv/
+ENV/
+env/
+
+# PyTorch
+*.pt
+*.pth
+*.ckpt
+*.pth.tar
+checkpoints/
+logs/
+*.log
+
+# Images
+data/images/
+*.png
+*.jpg
+*.jpeg
+*.bmp
+*.gif
+*.tif
+*.tiff
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# Mac
+.DS_Store
+
+# PyCharm
+.idea/
+*.iml
