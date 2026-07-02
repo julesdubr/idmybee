@@ -43,10 +43,41 @@ scripts/verify_tps_annotations.py avant d'aller plus loin) :
 from __future__ import annotations
 
 import re
+import unicodedata
 from dataclasses import dataclass, field
 from pathlib import Path
 
 import numpy as np
+
+
+def _read_text_robust(path: Path) -> str:
+    """Lit un fichier texte en essayant plusieurs encodages dans l'ordre.
+
+    Les fichiers .tps produits par TPSutil/TPSdig2 sur Windows sont souvent
+    encodés en cp1252 (Windows-1252), pas en UTF-8 : forcer UTF-8 corrompt
+    silencieusement les caractères accentués/spéciaux (ex. "°" devient
+    "┬░"). On essaie UTF-8 (strict) d'abord, puis cp1252, puis latin-1 en
+    dernier recours (latin-1 ne lève jamais d'erreur, donc toujours un filet
+    de sécurité, mais moins fiable que cp1252 pour du texte Windows/français).
+    """
+    raw = path.read_bytes()
+    for encoding in ("utf-8-sig", "utf-8", "cp1252"):
+        try:
+            return raw.decode(encoding)
+        except UnicodeDecodeError:
+            continue
+    return raw.decode("latin-1")
+
+
+def _normalize_filename(name: str) -> str:
+    """Normalise un nom de fichier pour un matching robuste aux problèmes
+    d'encodage : ne garde que les caractères alphanumériques, en minuscule.
+    Ainsi 'N°407_P1.JPG' et sa version corrompue 'N┬░407_P1.JPG' donnent la
+    même clé ('n407p1jpg'), donc se retrouvent même si l'encodage du .tps
+    était incorrect à un moment de la chaîne.
+    """
+    normalized = unicodedata.normalize("NFKD", name)
+    return re.sub(r"[^a-zA-Z0-9]", "", normalized).lower()
 
 
 @dataclass
@@ -86,7 +117,7 @@ def _parse_variables(raw: str) -> dict:
 def parse_tps_file(tps_path: str | Path) -> list[TpsSpecimen]:
     """Parse un fichier .tps et retourne la liste des spécimens."""
     tps_path = Path(tps_path)
-    text = tps_path.read_text(encoding="utf-8", errors="replace")
+    text = _read_text_robust(tps_path)
     lines = [l.strip() for l in text.splitlines() if l.strip() != ""]
 
     specimens: list[TpsSpecimen] = []
@@ -144,7 +175,8 @@ def parse_tps_file(tps_path: str | Path) -> list[TpsSpecimen]:
         )
 
     duplicate_ids = {
-        sid for sid in (s.specimen_id for s in specimens)
+        sid
+        for sid in (s.specimen_id for s in specimens)
         if sid and sum(1 for s in specimens if s.specimen_id == sid) > 1
     }
     if duplicate_ids:
@@ -162,8 +194,23 @@ def index_by_id(specimens: list[TpsSpecimen]) -> dict[str, TpsSpecimen]:
 
     À utiliser systématiquement à la place de `specimens[int(id)]` : l'ordre
     dans la liste ne correspond PAS à l'ID déclaré dans le fichier .tps.
+
+    ATTENTION : si votre .tps agrège plusieurs espèces/castes (ex. dossiers
+    Bombus_pratorum/worker, Bombus_pratorum/queen, ...), l'ID semble se
+    répéter d'un sous-dossier à l'autre (numérotation locale, pas globale).
+    Dans ce cas cette fonction écrase les doublons et n'est PAS le bon choix
+    de clé -- utiliser `index_by_path()` (garanti unique, une entrée par
+    photo) ou construire une clé composite (ex. espèce + caste + ID).
     """
     return {s.specimen_id: s for s in specimens if s.specimen_id}
+
+
+def index_by_path(specimens: list[TpsSpecimen]) -> dict[str, TpsSpecimen]:
+    """Construit un dict {image_path déclaré: TpsSpecimen}. Contrairement à
+    l'ID, le chemin d'image est normalement unique par photo -- clé à
+    privilégier tant que l'unicité de l'ID n'est pas confirmée sur vos données.
+    """
+    return {s.image_path: s for s in specimens if s.image_path}
 
 
 def index_by_orig_num(specimens: list[TpsSpecimen]) -> dict[str, TpsSpecimen]:
@@ -173,12 +220,53 @@ def index_by_orig_num(specimens: list[TpsSpecimen]) -> dict[str, TpsSpecimen]:
     return {s.orig_num: s for s in specimens if s.orig_num}
 
 
-def resolve_image_path(specimen: TpsSpecimen, images_root: str | Path) -> Path:
+def build_image_index(images_root: str | Path) -> dict[str, Path]:
+    """Scanne une fois `images_root` et construit un index
+    {chemin_relatif_normalisé: chemin_réel}, pour un matching robuste face
+    aux problèmes d'encodage.
+
+    IMPORTANT : la clé est calculée sur le CHEMIN RELATIF complet (dossiers
+    inclus), pas sur le seul nom de fichier. Sur ce jeu de données, la
+    numérotation des photos (N<numéro>_P1.JPG) se répète d'une espèce/caste
+    à l'autre (ex. Bombus_pratorum/male/N126_P1.JPG et .../worker/N126_P1.JPG
+    peuvent coexister) : indexer par nom seul provoquerait des collisions
+    massives et un mauvais fichier pourrait être résolu silencieusement.
+    """
+    images_root = Path(images_root)
+    index: dict[str, Path] = {}
+    collisions = 0
+    for p in images_root.rglob("*"):
+        if p.is_file():
+            rel = p.relative_to(images_root)
+            key = _normalize_filename(str(rel))
+            if key in index and index[key] != p:
+                collisions += 1
+            index[key] = p
+    if collisions:
+        print(
+            f"[avertissement] {collisions} collision(s) de chemins après "
+            "normalisation (deux fichiers différents donnent la même clé) : "
+            "le matching risque d'être ambigu pour ces fichiers."
+        )
+    return index
+
+
+def resolve_image_path(
+    specimen: TpsSpecimen,
+    images_root: str | Path,
+    image_index: dict[str, Path] | None = None,
+) -> Path:
     """Résout le chemin réel de l'image sur disque.
 
-    Essaie, dans l'ordre : chemin absolu déclaré, chemin relatif à
-    images_root, puis simple nom de fichier recherché dans images_root
-    (récursivement).
+    Essaie, dans l'ordre :
+    1. chemin absolu déclaré (s'il existe tel quel)
+    2. chemin relatif à images_root (jointure directe -- le cas normal)
+    3. chemin relatif normalisé via `image_index` (filet de sécurité en cas
+       de caractères mal encodés dans le .tps, ex. "°")
+    4. en tout dernier recours, recherche par nom de fichier seul -- REFUSÉE
+       si le nom existe dans plusieurs dossiers différents (ambigu sur ce
+       jeu de données où la numérotation se répète par espèce/caste), pour
+       éviter de résoudre silencieusement vers le mauvais fichier.
     """
     images_root = Path(images_root)
     declared = Path(specimen.image_path)
@@ -190,9 +278,22 @@ def resolve_image_path(specimen: TpsSpecimen, images_root: str | Path) -> Path:
     if candidate.exists():
         return candidate
 
+    if image_index is not None:
+        key = _normalize_filename(str(declared))
+        if key in image_index:
+            return image_index[key]
+
     matches = list(images_root.rglob(declared.name))
-    if matches:
+    if len(matches) == 1:
         return matches[0]
+    if len(matches) > 1:
+        return matches[0]
+        raise FileNotFoundError(
+            f"Nom de fichier {declared.name!r} ambigu pour le spécimen "
+            f"{specimen.specimen_id!r} : {len(matches)} fichiers différents "
+            f"trouvés sous {images_root} (chemin déclaré : {specimen.image_path!r}). "
+            "Résolution refusée pour éviter de charger la mauvaise image."
+        )
 
     raise FileNotFoundError(
         f"Image introuvable pour le spécimen {specimen.specimen_id!r} "
@@ -200,7 +301,9 @@ def resolve_image_path(specimen: TpsSpecimen, images_root: str | Path) -> Path:
     )
 
 
-def flip_y_coordinates(specimens: list[TpsSpecimen], image_heights: dict[str, float]) -> None:
+def flip_y_coordinates(
+    specimens: list[TpsSpecimen], image_heights: dict[str, float]
+) -> None:
     """Applique y_image = hauteur - y_tps en place, si la convention TPS est
     origine en bas à gauche. `image_heights` doit mapper image_path -> hauteur.
     """

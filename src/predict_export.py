@@ -27,7 +27,9 @@ from dataset import IMAGENET_MEAN, IMAGENET_STD
 
 
 def preprocess(image: np.ndarray, image_size: int):
-    resized, _dummy_landmarks, transform = letterbox_resize(image, np.zeros((1, 2)), image_size)
+    resized, _dummy_landmarks, transform = letterbox_resize(
+        image, np.zeros((1, 2)), image_size
+    )
     tensor = resized.astype(np.float32) / 255.0
     tensor = (tensor - IMAGENET_MEAN) / IMAGENET_STD
     tensor = torch.from_numpy(tensor.transpose(2, 0, 1)).float().unsqueeze(0)
@@ -60,9 +62,11 @@ def main():
     model.eval()
 
     records = []
-    image_paths = sorted(Path(args.images_dir).glob("*.jpg")) + sorted(Path(args.images_dir).glob("*.JPG"))
+    image_paths = sorted(Path(args.images_dir).glob("*_P1.jpg")) + sorted(
+        Path(args.images_dir).glob("*_P1.JPG")
+    )
 
-    for img_path in image_paths:
+    for i, img_path in enumerate(image_paths):
         image = cv2.imread(str(img_path))
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
@@ -77,7 +81,7 @@ def main():
             {
                 "landmarks": coords_original,
                 "image_path": str(img_path),
-                "specimen_id": img_path.stem,
+                "specimen_id": i,  # img_path.stem,
             }
         )
         print(f"{img_path.name}: OK")

@@ -42,22 +42,37 @@ def letterbox_resize(image: np.ndarray, landmarks: np.ndarray, target_size: int)
     return padded, new_landmarks, transform
 
 
-def crop_around_landmarks(image: np.ndarray, landmarks: np.ndarray, margin_ratio: float = 0.25):
+def crop_around_landmarks(
+    image: np.ndarray, landmarks: np.ndarray, margin_ratio: float = 0.25
+):
     """Recadre l'image autour de la bounding box des landmarks, avec une marge.
     Utile en Phase 1 (avant d'avoir un détecteur d'aile automatique).
     Retourne l'image recadrée, les landmarks translatés, et l'offset (x0, y0)
     pour repasser aux coordonnées de l'image d'origine.
+
+    Lève ValueError si les landmarks ne recoupent pas du tout l'image (signe
+    que les coordonnées ne correspondent pas à ce fichier image -- décalage
+    entre l'annotation TPS et l'image sur disque, ex. recadrage effectué
+    après l'annotation). Cette vérification est une sécurité supplémentaire :
+    `load_samples` dans train.py est censé filtrer ces cas en amont.
     """
     h, w = image.shape[:2]
     x_min, y_min = landmarks.min(axis=0)
     x_max, y_max = landmarks.max(axis=0)
-    box_w, box_h = x_max - x_min, y_max - y_min
 
+    if x_max < 0 or x_min > w or y_max < 0 or y_min > h:
+        raise ValueError(
+            f"Landmarks hors de l'image : bbox=({x_min:.0f},{y_min:.0f},{x_max:.0f},{y_max:.0f}) "
+            f"vs image {w}x{h} -- coordonnées probablement désalignées avec ce fichier."
+        )
+
+    box_w, box_h = x_max - x_min, y_max - y_min
     mx, my = box_w * margin_ratio, box_h * margin_ratio
-    x0 = max(int(x_min - mx), 0)
-    y0 = max(int(y_min - my), 0)
-    x1 = min(int(x_max + mx), w)
-    y1 = min(int(y_max + my), h)
+
+    x0 = int(np.clip(x_min - mx, 0, w - 1))
+    y0 = int(np.clip(y_min - my, 0, h - 1))
+    x1 = int(np.clip(x_max + mx, x0 + 1, w))
+    y1 = int(np.clip(y_max + my, y0 + 1, h))
 
     cropped = image[y0:y1, x0:x1]
     new_landmarks = landmarks.copy().astype(float)
@@ -78,7 +93,9 @@ def unletterbox_coords(coords: np.ndarray, transform: dict) -> np.ndarray:
     return out
 
 
-def generate_heatmaps(landmarks: np.ndarray, image_size: int, heatmap_size: int, sigma: float = 1.5) -> np.ndarray:
+def generate_heatmaps(
+    landmarks: np.ndarray, image_size: int, heatmap_size: int, sigma: float = 1.5
+) -> np.ndarray:
     """Génère un tenseur (n_points, heatmap_size, heatmap_size) de gaussiennes
     centrées sur chaque landmark (coordonnées exprimées dans l'espace image_size).
     """
@@ -93,7 +110,9 @@ def generate_heatmaps(landmarks: np.ndarray, image_size: int, heatmap_size: int,
         cy = landmarks[k, 1] / stride
         if cx < 0 or cy < 0 or cx >= heatmap_size or cy >= heatmap_size:
             continue  # point hors cadre après crop/resize : heatmap vide
-        heatmaps[k] = np.exp(-((grid_x - cx) ** 2 + (grid_y - cy) ** 2) / (2 * sigma**2))
+        heatmaps[k] = np.exp(
+            -((grid_x - cx) ** 2 + (grid_y - cy) ** 2) / (2 * sigma**2)
+        )
 
     return heatmaps
 
@@ -125,7 +144,9 @@ def heatmaps_to_coords(heatmaps: np.ndarray, image_size: int) -> np.ndarray:
     return coords
 
 
-def normalized_mean_error(pred: np.ndarray, gt: np.ndarray, ref_idx_a: int, ref_idx_b: int) -> float:
+def normalized_mean_error(
+    pred: np.ndarray, gt: np.ndarray, ref_idx_a: int, ref_idx_b: int
+) -> float:
     """Erreur euclidienne moyenne sur tous les points, normalisée par la
     distance entre deux landmarks de référence (ex. base et bout de l'aile),
     pour rendre l'erreur comparable entre images d'échelle différente."""

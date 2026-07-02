@@ -35,7 +35,9 @@ class UpBlock(nn.Module):
     def forward(self, x, skip):
         x = self.up(x)
         if x.shape[-2:] != skip.shape[-2:]:
-            x = nn.functional.interpolate(x, size=skip.shape[-2:], mode="bilinear", align_corners=False)
+            x = nn.functional.interpolate(
+                x, size=skip.shape[-2:], mode="bilinear", align_corners=False
+            )
         x = torch.cat([x, skip], dim=1)
         return self.conv(x)
 
@@ -49,7 +51,9 @@ class ResNetUNet(nn.Module):
 
     def __init__(self, n_keypoints: int = 19, pretrained: bool = True):
         super().__init__()
-        resnet = models.resnet18(weights=models.ResNet18_Weights.DEFAULT if pretrained else None)
+        resnet = models.resnet18(
+            weights=models.ResNet18_Weights.DEFAULT if pretrained else None
+        )
 
         self.stem = nn.Sequential(resnet.conv1, resnet.bn1, resnet.relu)  # /2,  64 ch
         self.pool = resnet.maxpool  # /2
@@ -60,23 +64,23 @@ class ResNetUNet(nn.Module):
 
         self.up3 = UpBlock(512, 256, 256)  # /32 -> /16
         self.up2 = UpBlock(256, 128, 128)  # /16 -> /8
-        self.up1 = UpBlock(128, 64, 64)    # /8  -> /4  (= heatmap_size cible)
+        self.up1 = UpBlock(128, 64, 64)  # /8  -> /4  (= heatmap_size cible)
 
         self.head = nn.Conv2d(64, n_keypoints, kernel_size=1)
 
     def forward(self, x):
-        s0 = self.stem(x)          # /2
-        p0 = self.pool(s0)         # /4
-        s1 = self.layer1(p0)       # /4,  64
-        s2 = self.layer2(s1)       # /8,  128
-        s3 = self.layer3(s2)       # /16, 256
-        s4 = self.layer4(s3)       # /32, 512
+        s0 = self.stem(x)  # /2
+        p0 = self.pool(s0)  # /4
+        s1 = self.layer1(p0)  # /4,  64
+        s2 = self.layer2(s1)  # /8,  128
+        s3 = self.layer3(s2)  # /16, 256
+        s4 = self.layer4(s3)  # /32, 512
 
-        d3 = self.up3(s4, s3)      # /16
-        d2 = self.up2(d3, s2)      # /8
-        d1 = self.up1(d2, s1)      # /4
+        d3 = self.up3(s4, s3)  # /16
+        d2 = self.up2(d3, s2)  # /8
+        d1 = self.up1(d2, s1)  # /4
 
-        heatmaps = self.head(d1)   # (B, n_keypoints, H/4, W/4)
+        heatmaps = self.head(d1)  # (B, n_keypoints, H/4, W/4)
         return heatmaps
 
 

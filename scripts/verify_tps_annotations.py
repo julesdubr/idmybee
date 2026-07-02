@@ -26,11 +26,15 @@ def main():
     parser.add_argument("--tps", required=True)
     parser.add_argument("--images-root", required=True)
     parser.add_argument(
-        "--specimen-idx", type=int, default=None,
+        "--specimen-idx",
+        type=int,
+        default=None,
         help="Position dans la liste parsée (ATTENTION : ne correspond pas à l'ID déclaré dans le .tps)",
     )
     parser.add_argument(
-        "--specimen-id", type=str, default=None,
+        "--specimen-id",
+        type=str,
+        default=None,
         help="ID déclaré dans le .tps (ex. --specimen-id 17) -- utiliser de préférence à --specimen-idx",
     )
     parser.add_argument("--flip-y", action="store_true")
@@ -47,7 +51,7 @@ def main():
     else:
         spec = specimens[0]
     img_path = resolve_image_path(spec, args.images_root)
-    
+
     print(f"Image du specimen numero {args.specimen_idx} : {img_path}")
 
     image = cv2.cvtColor(cv2.imread(str(img_path)), cv2.COLOR_BGR2RGB)
@@ -59,16 +63,25 @@ def main():
 
     plt.figure(figsize=(10, 8))
     plt.imshow(image)
-    plt.scatter(landmarks[:, 0], landmarks[:, 1], c="red", s=25)
-    for i, (x, y) in enumerate(landmarks):
-        plt.annotate(str(i + 1), (x, y), color="blue", fontsize=9, xytext=(3, 3), textcoords="offset points")
+    plt.scatter(landmarks[:, 0], landmarks[:, 1], c="red", s=2)
+    # for i, (x, y) in enumerate(landmarks):
+    #     plt.annotate(
+    #         str(i + 1),
+    #         (x, y),
+    #         color="blue",
+    #         fontsize=9,
+    #         xytext=(3, 3),
+    #         textcoords="offset points",
+    #     )
     plt.title(
         f"ID={spec.specimen_id} (OrigNum={spec.orig_num}) — image {img_path.name} ({w}x{h})"
     )
     plt.axis("off")
     plt.savefig(args.out, dpi=150, bbox_inches="tight")
     print(f"Vérification sauvegardée dans {args.out}")
-    print("-> Vérifier visuellement que chaque point rouge tombe bien sur une intersection de nervure.")
+    print(
+        "-> Vérifier visuellement que chaque point rouge tombe bien sur une intersection de nervure."
+    )
 
 
 if __name__ == "__main__":

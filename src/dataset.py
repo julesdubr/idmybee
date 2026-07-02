@@ -21,16 +21,17 @@ IMAGENET_MEAN = np.array([0.485, 0.456, 0.406], dtype=np.float32)
 IMAGENET_STD = np.array([0.229, 0.224, 0.225], dtype=np.float32)
 
 
-def build_augmentations(train: bool) -> A.Compose:
-    if train:
-        transforms = [
-            A.Rotate(limit=15, border_mode=cv2.BORDER_CONSTANT, fill=(255, 255, 255), p=0.7),
-            A.RandomBrightnessContrast(brightness_limit=0.15, contrast_limit=0.15, p=0.5),
-            A.GaussNoise(std_range=(0.02, 0.08), p=0.3),
-            A.Affine(scale=(0.9, 1.1), translate_percent=(0.0, 0.05), p=0.5),
-        ]
-    else:
-        transforms = []
+def build_augmentations(train: bool) -> A.Compose | None:
+    if not train:
+        return None  # pas d'augmentation en validation/inférence
+    transforms = [
+        A.Rotate(
+            limit=15, border_mode=cv2.BORDER_CONSTANT, fill=(255, 255, 255), p=0.7
+        ),
+        A.RandomBrightnessContrast(brightness_limit=0.15, contrast_limit=0.15, p=0.5),
+        A.GaussNoise(std_range=(0.02, 0.08), p=0.3),
+        A.Affine(scale=(0.9, 1.1), translate_percent=(0.0, 0.05), p=0.5),
+    ]
     return A.Compose(
         transforms,
         keypoint_params=A.KeypointParams(format="xy", remove_invisible=False),
@@ -67,16 +68,25 @@ class WingKeypointDataset(Dataset):
         landmarks = sample["landmarks"].astype(float)
 
         # Phase 1 : crop grossier basé sur les landmarks connus
-        cropped, landmarks, _offset = crop_around_landmarks(image, landmarks, self.margin_ratio)
+        cropped, landmarks, _offset = crop_around_landmarks(
+            image, landmarks, self.margin_ratio
+        )
 
         # Augmentation (avant letterbox, sur l'image recadrée)
-        augmented = self.aug(image=cropped, keypoints=landmarks.tolist())
-        cropped, landmarks = augmented["image"], np.array(augmented["keypoints"], dtype=float)
+        if self.aug is not None:
+            augmented = self.aug(image=cropped, keypoints=landmarks.tolist())
+            cropped, landmarks = augmented["image"], np.array(
+                augmented["keypoints"], dtype=float
+            )
 
         # Mise à taille fixe avec conservation du ratio
-        resized, landmarks, transform = letterbox_resize(cropped, landmarks, self.image_size)
+        resized, landmarks, transform = letterbox_resize(
+            cropped, landmarks, self.image_size
+        )
 
-        heatmaps = generate_heatmaps(landmarks, self.image_size, self.heatmap_size, self.sigma)
+        heatmaps = generate_heatmaps(
+            landmarks, self.image_size, self.heatmap_size, self.sigma
+        )
 
         img_tensor = resized.astype(np.float32) / 255.0
         img_tensor = (img_tensor - IMAGENET_MEAN) / IMAGENET_STD
@@ -85,6 +95,8 @@ class WingKeypointDataset(Dataset):
         return {
             "image": img_tensor,
             "heatmaps": torch.from_numpy(heatmaps).float(),
-            "landmarks": torch.from_numpy(landmarks).float(),  # espace image_size, pour calcul de métrique
+            "landmarks": torch.from_numpy(
+                landmarks
+            ).float(),  # espace image_size, pour calcul de métrique
             "specimen_id": sample.get("specimen_id", str(idx)),
         }
