@@ -251,53 +251,17 @@ def build_image_index(images_root: str | Path) -> dict[str, Path]:
     return index
 
 
-def resolve_image_path(
-    specimen: TpsSpecimen,
-    images_root: str | Path,
-    image_index: dict[str, Path] | None = None,
-) -> Path:
-    """Résout le chemin réel de l'image sur disque.
+def resolve_image_path(specimen: TpsSpecimen) -> Path:
+    """Résout le chemin réel de l'image sur disque."""
 
-    Essaie, dans l'ordre :
-    1. chemin absolu déclaré (s'il existe tel quel)
-    2. chemin relatif à images_root (jointure directe -- le cas normal)
-    3. chemin relatif normalisé via `image_index` (filet de sécurité en cas
-       de caractères mal encodés dans le .tps, ex. "°")
-    4. en tout dernier recours, recherche par nom de fichier seul -- REFUSÉE
-       si le nom existe dans plusieurs dossiers différents (ambigu sur ce
-       jeu de données où la numérotation se répète par espèce/caste), pour
-       éviter de résoudre silencieusement vers le mauvais fichier.
-    """
-    images_root = Path(images_root)
-    declared = Path(specimen.image_path)
+    declared = Path(specimen.image_path).resolve()
 
-    if declared.is_absolute() and declared.exists():
+    if declared.exists():
         return declared
-
-    candidate = images_root / declared
-    if candidate.exists():
-        return candidate
-
-    if image_index is not None:
-        key = _normalize_filename(str(declared))
-        if key in image_index:
-            return image_index[key]
-
-    matches = list(images_root.rglob(declared.name))
-    if len(matches) == 1:
-        return matches[0]
-    if len(matches) > 1:
-        return matches[0]
-        raise FileNotFoundError(
-            f"Nom de fichier {declared.name!r} ambigu pour le spécimen "
-            f"{specimen.specimen_id!r} : {len(matches)} fichiers différents "
-            f"trouvés sous {images_root} (chemin déclaré : {specimen.image_path!r}). "
-            "Résolution refusée pour éviter de charger la mauvaise image."
-        )
 
     raise FileNotFoundError(
         f"Image introuvable pour le spécimen {specimen.specimen_id!r} "
-        f"(déclarée : {specimen.image_path!r}), recherché sous {images_root}"
+        f"(déclarée : {declared})"
     )
 
 
