@@ -1,0 +1,585 @@
+[
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_pratorum\\male\\2007.0008_P2.JPG",
+    "boxes": [
+      [
+        2335,
+        1762,
+        2587,
+        1886
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_rupestris\\queen\\2007.0712_S1.jpg",
+    "boxes": [
+      [
+        583,
+        1781,
+        2488,
+        2890
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_pratorum\\worker\\2019.00316_S3.jpg",
+    "boxes": [
+      [
+        699,
+        2103,
+        1477,
+        2487
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_pratorum\\male\\2019.02059_P2.JPG",
+    "boxes": [
+      [
+        2309,
+        1766,
+        2599,
+        1904
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_pratorum\\male\\2020.03926_P2.JPG",
+    "boxes": [
+      [
+        2299,
+        1773,
+        2599,
+        1915
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_pratorum\\queen\\ABAURA5103_P1.JPG",
+    "boxes": [
+      [
+        1525,
+        1117,
+        1809,
+        1296
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_pratorum\\worker\\ABAURA7153_P2.JPG",
+    "boxes": [
+      [
+        2294,
+        1816,
+        2560,
+        1941
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_pratorum\\worker\\ABAURA7548_S1.jpg",
+    "boxes": [
+      [
+        666,
+        1867,
+        1574,
+        2287
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_ruderarius\\queen\\ABAURA8150c_P1.JPG",
+    "boxes": [
+      [
+        2324,
+        1606,
+        2749,
+        1822
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_ruderarius\\queen\\ABAURA8150c_P2.JPG",
+    "boxes": [
+      [
+        2241,
+        1679,
+        2666,
+        1896
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_wurflenii\\worker\\ABAURA8150d_S3.jpg",
+    "boxes": [
+      [
+        703,
+        1887,
+        1733,
+        2329
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_pratorum\\male\\ABAURA8233_P1.JPG",
+    "boxes": [
+      [
+        2298,
+        1824,
+        2583,
+        1958
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_sichelii\\worker\\ABAURA8238e_P1.JPG",
+    "boxes": [
+      [
+        2313,
+        1727,
+        2648,
+        1870
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_pyrenaeus\\worker\\ABAURA8240d_P2.JPG",
+    "boxes": [
+      [
+        2285,
+        1763,
+        2561,
+        1879
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_ruderarius\\male\\ABAURA8602_P1.JPG",
+    "boxes": [
+      [
+        2218,
+        1750,
+        2564,
+        1919
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_soroeensis\\worker\\ABAURA8672b_P1.JPG",
+    "boxes": [
+      [
+        2278,
+        1784,
+        2559,
+        1910
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_pratorum\\male\\ABAURA8747_P2.JPG",
+    "boxes": [
+      [
+        2302,
+        1771,
+        2616,
+        1917
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_pratorum\\male\\ABAURA8764_P1.JPG",
+    "boxes": [
+      [
+        2289,
+        1758,
+        2599,
+        1914
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_ruderarius\\queen\\ABAURA8885e_P2.JPG",
+    "boxes": [
+      [
+        2224,
+        1682,
+        2678,
+        1902
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_pomorum\\male\\ABAURA8885_P2.JPG",
+    "boxes": [
+      [
+        2298,
+        1740,
+        2653,
+        1918
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_soroeensis\\worker\\CD387577_S1.jpg",
+    "boxes": [
+      [
+        786,
+        1514,
+        1614,
+        2011
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_monticola\\male\\CD387770b_P1.JPG",
+    "boxes": [
+      [
+        2295,
+        1755,
+        2607,
+        1899
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_soroeensis\\worker\\CD387770c_P1.JPG",
+    "boxes": [
+      [
+        2307,
+        1734,
+        2584,
+        1849
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_soroeensis\\male\\CD387804c_P1.JPG",
+    "boxes": [
+      [
+        2282,
+        1853,
+        2587,
+        1996
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_monticola\\male\\CD387804_P1.JPG",
+    "boxes": [
+      [
+        2316,
+        1757,
+        2580,
+        1884
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_monticola\\male\\CD387804_P2.JPG",
+    "boxes": [
+      [
+        2300,
+        1741,
+        2562,
+        1870
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_soroeensis\\male\\CD388145b_P1.JPG",
+    "boxes": [
+      [
+        2271,
+        1762,
+        2590,
+        1891
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_soroeensis\\male\\CD388145_P2.JPG",
+    "boxes": [
+      [
+        2267,
+        1765,
+        2582,
+        1899
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_monticola\\male\\CD388230b_S1.jpg",
+    "boxes": [
+      [
+        911,
+        1821,
+        1837,
+        2204
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_pyrenaeus\\worker\\CD388623e_P1.JPG",
+    "boxes": [
+      [
+        2304,
+        1762,
+        2574,
+        1879
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_pyrenaeus\\male\\CD388821b_P1.JPG",
+    "boxes": [
+      [
+        2308,
+        1759,
+        2600,
+        1904
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_pyrenaeus\\male\\CD388821d_P2.JPG",
+    "boxes": [
+      [
+        2308,
+        1749,
+        2602,
+        1895
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_monticola\\male\\CD388821_P2.JPG",
+    "boxes": [
+      [
+        2261,
+        1872,
+        2525,
+        1993
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_monticola\\male\\CD388821_S1.jpg",
+    "boxes": [
+      [
+        625,
+        1887,
+        1461,
+        2265
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_soroeensis\\male\\CD388860b_P1.JPG",
+    "boxes": [
+      [
+        2306,
+        1822,
+        2593,
+        1967
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_sichelii\\worker\\CD388865c_P1.JPG",
+    "boxes": [
+      [
+        2310,
+        1718,
+        2621,
+        1864
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_soroeensis\\worker\\CD388872_S1.jpg",
+    "boxes": [
+      [
+        543,
+        1714,
+        1435,
+        2113
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_rupestris\\queen\\D26-5618_P2.JPG",
+    "boxes": [
+      [
+        1112,
+        825,
+        1382,
+        977
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_rupestris\\queen\\FR15ABOM100721031_S3.jpg",
+    "boxes": [
+      [
+        658,
+        1538,
+        2085,
+        2243
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_rupestris\\queen\\FR15ABOM100721032_S2.jpg",
+    "boxes": [
+      [
+        733,
+        1688,
+        2075,
+        2387
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_confusus\\male\\FR15ABOM150820018_S1.jpg",
+    "boxes": [
+      [
+        974,
+        1516,
+        1955,
+        1947
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_pomorum\\male\\FR15ABOM210821100_S3.jpg",
+    "boxes": [
+      [
+        1099,
+        1406,
+        2066,
+        1886
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_confusus\\male\\FR15_ABOM07082020038_P1.JPG",
+    "boxes": [
+      [
+        1960,
+        1501,
+        3063,
+        1988
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_pratorum\\worker\\N407_P1.JPG",
+    "boxes": [
+      [
+        1110,
+        871,
+        1277,
+        952
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_pratorum\\male\\N815_P1.JPG",
+    "boxes": [
+      [
+        1121,
+        846,
+        1316,
+        932
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_lapidarius\\worker\\OPIE_Lapi_130720d_S2.jpg",
+    "boxes": [
+      [
+        611,
+        1629,
+        1586,
+        2061
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_sylvarum\\queen\\POLLINIS4982b_P2.JPG",
+    "boxes": [
+      [
+        2304,
+        1783,
+        2635,
+        1941
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_rupestris\\queen\\POLLINIS5133_P5.JPG",
+    "boxes": [
+      [
+        1090,
+        850,
+        1411,
+        1039
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_soroeensis\\male\\POLLINIS5985_S1.jpg",
+    "boxes": [
+      [
+        555,
+        1305,
+        1463,
+        1788
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_monticola\\worker\\Polset_1_P2.JPG",
+    "boxes": [
+      [
+        2303,
+        1777,
+        2566,
+        1911
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_rupestris\\male\\VAN-2019.00785_P2.JPG",
+    "boxes": [
+      [
+        1125,
+        838,
+        1330,
+        946
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_rupestris\\male\\VAN-2019.00814_P2.JPG",
+    "boxes": [
+      [
+        1109,
+        830,
+        1327,
+        964
+      ]
+    ]
+  },
+  {
+    "image": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\images\\organized\\Bombus_rupestris\\male\\VAN-2019.00824_S1.jpg",
+    "boxes": [
+      [
+        250,
+        412,
+        1337,
+        1043
+      ]
+    ]
+  }
+]
