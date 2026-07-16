@@ -297,7 +297,7 @@ def validate_landmarks(tps_file, csv_file, output_dir="./validation_results",
 
     # 4. Creer Groupe
     print(f"[4/7] Creation variable Groupe")
-    df['groupe'] = df['espece'].astype(str) + "_" + df['role'].astype(str)
+    df['groupe'] = df['espece'].astype(str) + "_" + df['caste'].astype(str)
     print(f"  ✓ {df['groupe'].nunique()} groupes")
 
     # 5. Procrustes

@@ -1,4 +1,4 @@
-specimen_id,tps_index,id,name,espece,role,device,groupe,procrustes_distance,is_outlier,Prediction,Correct
+specimen_id,tps_index,id,name,espece,caste,device,groupe,procrustes_distance,is_outlier,Prediction,Correct
 0,1,0,FR15_ABOM07082020038_P1,confusus,male,P1,confusus_male,0.9768686670807208,False,pyrenaeus_male,0
 1,2,1,FR15_ABOM07082020038_P2,confusus,male,P2,confusus_male,0.9205138536609822,False,sichelii_worker,0
 2,3,2,FR15_ABOM07082020038_S1,confusus,male,S1,confusus_male,0.9264220352352693,False,pomorum_male,0
