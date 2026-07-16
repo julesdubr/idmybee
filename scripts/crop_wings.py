@@ -131,15 +131,13 @@ def oriented_crop(image: np.ndarray, points: np.ndarray, bg_color=(255, 255, 255
 
     Si `mask_background` est True, tout ce qui n'est pas l'aile (carton,
     doigts, résidus dans la boîte de recadrage) est remplacé par `bg_color`.
-    À utiliser avec prudence : un masque de segmentation imparfait peut
-    effacer des parties internes de l'aile.
 
     Ne résout PAS l'ambiguïté d'orientation à 180° (indéterminable depuis ce
     seul point de vue géométrique) -> voir `resolve_orientation`.
 
     Retourne (crop, aspect_ratio, obb_corners) où obb_corners sont les 4
-    coins de la boîte orientée dans l'image d'origine (utile pour entraîner
-    un régresseur OBB dédié). Retourne (None, None, None) si dégénéré.
+    coins de la boîte orientée dans l'image d'origine.
+    Retourne (None, None, None) si dégénéré.
     """
     if points is None or len(points) < 3:
         return None, None, None
@@ -167,9 +165,6 @@ def oriented_crop(image: np.ndarray, points: np.ndarray, bg_color=(255, 255, 255
     rotated = cv2.warpAffine(image, M, (new_w, new_h), borderValue=bg_color)
 
     if mask_background:
-        # Masque plein-résolution tourné EN MÊME TEMPS que l'image (donc
-        # parfaitement aligné pixel à pixel) : tout pixel hors du masque
-        # devient bg_color -> supprime le bruit alentour dans la crop box.
         mask_full = np.zeros((h, w), dtype=np.uint8)
         cv2.fillPoly(mask_full, [points.astype(np.int32)], 255)
         rotated_mask = cv2.warpAffine(mask_full, M, (new_w, new_h), borderValue=0)
