@@ -143,7 +143,7 @@ def oriented_crop(image: np.ndarray, points: np.ndarray, bg_color=(255, 255, 255
         return None, None, None
 
     rect = cv2.minAreaRect(points.astype(np.float32))
-    (_, _), (w_rect, h_rect), _ = rect
+    (x_rect, y_rect), (w_rect, h_rect), theta = rect
     if w_rect < 1 or h_rect < 1:
         return None, None, None
 
@@ -151,8 +151,10 @@ def oriented_crop(image: np.ndarray, points: np.ndarray, bg_color=(255, 255, 255
 
     edge1 = obb_corners[1] - obb_corners[0]
     edge2 = obb_corners[2] - obb_corners[1]
-    long_edge = edge1 if np.linalg.norm(edge1) >= np.linalg.norm(edge2) else edge2
-    angle_deg = np.degrees(np.arctan2(long_edge[1], long_edge[0]))
+    # long_edge = edge1 if np.linalg.norm(edge1) >= np.linalg.norm(edge2) else edge2
+    # angle_deg = np.degrees(np.arctan2(long_edge[1], long_edge[0]))
+
+    angle_deg = theta if np.linalg.norm(edge2) >= np.linalg.norm(edge1) else 90 + theta
 
     h, w = image.shape[:2]
     center = (w / 2, h / 2)
@@ -182,7 +184,7 @@ def oriented_crop(image: np.ndarray, points: np.ndarray, bg_color=(255, 255, 255
 
     long_side, short_side = max(w_rect, h_rect), max(min(w_rect, h_rect), 1e-6)
     aspect = long_side / short_side
-    return crop, aspect, obb_corners
+    return crop, aspect, (x_rect, y_rect, w_rect, h_rect, theta)
 
 
 def letterbox(crop: np.ndarray, out_w=512, out_h=256, bg_color=(255, 255, 255)):
@@ -245,12 +247,9 @@ def resolve_orientation(crop_512x256, ref_embs, model, preprocess, device):
     meilleure. Retourne (crop_corrigé, similarité_max) -- la similarité sert
     aussi de signal qualité (un corps/doigt ne ressemblera à aucune
     référence, dans aucune des deux orientations)."""
-    cand_180 = cv2.rotate(crop_512x256, cv2.ROTATE_180)
     emb0 = embed(crop_512x256, model, preprocess, device)
-    emb180 = embed(cand_180, model, preprocess, device)
     sim0 = max((emb0 @ r.T).item() for r in ref_embs)
-    sim180 = max((emb180 @ r.T).item() for r in ref_embs)
-    return (cand_180, sim180) if sim180 > sim0 else (crop_512x256, sim0)
+    return (crop_512x256, sim0)
 
 
 def cuda_available():
