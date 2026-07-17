@@ -208,11 +208,6 @@ def plot_lda(lda_scores: np.ndarray, groupe: pd.Series, title: str = "Projection
             s=50,
         )
 
-    # dx = (x.max() - x.min()) * 0.01 if np.ptp(x) > 0 else 0.01
-    # dy = (y.max() - y.min()) * 0.01 if np.ptp(y) > 0 else 0.01
-    # for xi, yi, label in zip(x, y, groupe):
-    #     plt.text(xi + dx, yi + dy, label, fontsize=8)
-
     plt.xlabel("LDA 1")
     plt.ylabel("LDA 2" if lda_scores.shape[1] > 1 else "Constante")
     plt.title(title)
