@@ -12,7 +12,7 @@ L'outil réalise 4 étapes :
 
 ## 1. Autocrop de l'aile
 
-Construction d'un ground-truth avec YOLOE, qui permet d'auto-segmenter les ailes, à partir d'un embedding de prompts.
+Construction d'une ground-truth avec YOLOE, qui permet d'auto-segmenter les ailes, à partir d'un embedding de prompts.
 À partir de cette ground truth, apprentissage d'un CNN spécifique à la reconnaissance d'ailes antérieures de pollinisateurs,
 à partir de l'OBB prédites sur les segmentations de YOLOE.
 

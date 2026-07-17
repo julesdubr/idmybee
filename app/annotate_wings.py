@@ -28,7 +28,7 @@ st.title("🐝 Annotation des Ailes de Bourdons")
 # FONCTIONS UTILITAIRES
 # ============================================================================
 
-def find_image_in_organized(image_name, root_dir="data/images/organized"):
+def find_image_in_organized(image_name, root_dir="data/images/"):
     """Retrouve le chemin complet d'une image dans l'arborescence organized."""
     root_path = Path(root_dir)
     
@@ -111,7 +111,7 @@ with st.sidebar:
     st.subheader("1. Chemin du répertoire")
     root_dir = st.text_input(
         "Répertoire organized/",
-        value="data/images/organized",
+        value="data/images/terrain",
         help="Chemin racine contenant species/role/images.jpg"
     )
     
@@ -338,7 +338,7 @@ with export_col1:
                         bbox = st.session_state.annotations[image_name]
                         export_data.append({
                             "image": image_path,
-                            "box": bbox
+                            "boxes": [bbox]
                         })
             
             # Afficher aperçu
@@ -382,7 +382,7 @@ with st.expander("ℹ️ Aide"):
     [
         {
             "image": "data/images/organized/Bombus_sylvarum/worker/photo1.jpg",
-            "box": [100, 150, 250, 300]
+            "boxes": [[100, 150, 250, 300]]
         }
     ]
     ```

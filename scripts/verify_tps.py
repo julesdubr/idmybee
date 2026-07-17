@@ -13,7 +13,7 @@ import cv2
 import matplotlib.pyplot as plt
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-from tps_parser import parse_tps_file, resolve_image_path
+from utils.tps_parser import parse_tps, resolve_image_path
 
 
 def main():
@@ -24,11 +24,11 @@ def main():
     parser.add_argument("--out", default=None)
     args = parser.parse_args()
 
-    specimens = parse_tps_file(args.tps)
+    specimens = parse_tps(args.tps)
     print(f"{len(specimens)} spécimens trouvés dans le fichier .tps")
 
     spec = specimens[args.sid]
-    img_path = resolve_image_path(spec)
+    img_path = Path.cwd().parent / spec.image_path
 
     print(f"Image du specimen numero {args.sid} : {img_path}")
 
@@ -43,7 +43,7 @@ def main():
     plt.imshow(image)
     plt.scatter(landmarks[:, 0], landmarks[:, 1], c="red", s=20)
     plt.title(
-        f"ID={spec.specimen_id} (OrigNum={spec.orig_num}) — image {img_path.name} ({w}x{h})"
+        f"ID={spec.sid} — image {img_path.name} ({w}x{h})"
     )
     plt.axis("off")
     plt.show()

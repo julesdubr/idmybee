@@ -18,7 +18,7 @@ LM=19
 2422.00000 1877.00000
 2517.00000 1882.00000
 2380.00000 1926.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_030803b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_030803b_P1.JPG
 ID=0
 LM=19
 2011.00000 1836.00000
@@ -40,7 +40,7 @@ LM=19
 2397.00000 1878.00000
 2493.00000 1873.00000
 2359.00000 1920.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_030803_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_030803_P1.JPG
 ID=1
 LM=19
 1948.00000 1883.00000
@@ -62,7 +62,7 @@ LM=19
 2346.00000 1910.00000
 2439.00000 1908.00000
 2297.00000 1961.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_060803_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_060803_P1.JPG
 ID=2
 LM=19
 2003.00000 1823.00000
@@ -84,7 +84,7 @@ LM=19
 2400.00000 1859.00000
 2500.00000 1857.00000
 2364.00000 1906.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_070820_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_070820_P1.JPG
 ID=3
 LM=19
 2006.00000 1853.00000
@@ -106,7 +106,7 @@ LM=19
 2413.00000 1879.00000
 2498.00000 1881.00000
 2364.00000 1938.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_100803_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_100803_P1.JPG
 ID=4
 LM=19
 1912.00000 1800.00000
@@ -128,7 +128,7 @@ LM=19
 2334.00000 1812.00000
 2424.00000 1807.00000
 2283.00000 1868.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_100820_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_100820_P1.JPG
 ID=5
 LM=19
 1919.00000 1887.00000
@@ -150,7 +150,7 @@ LM=19
 2338.00000 1895.00000
 2443.00000 1890.00000
 2296.00000 1948.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_160720_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_160720_P1.JPG
 ID=6
 LM=19
 2006.00000 1813.00000
@@ -172,7 +172,7 @@ LM=19
 2398.00000 1842.00000
 2490.00000 1837.00000
 2361.00000 1888.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_180702_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_180702_P1.JPG
 ID=7
 LM=19
 2002.00000 1821.00000
@@ -194,7 +194,7 @@ LM=19
 2406.00000 1842.00000
 2495.00000 1838.00000
 2366.00000 1896.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_180703_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_180703_P1.JPG
 ID=8
 LM=19
 2050.00000 1835.00000
@@ -216,7 +216,7 @@ LM=19
 2438.00000 1864.00000
 2531.00000 1864.00000
 2399.00000 1904.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_200703b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_200703b_P1.JPG
 ID=9
 LM=19
 1946.00000 1844.00000
@@ -238,7 +238,7 @@ LM=19
 2362.00000 1862.00000
 2470.00000 1857.00000
 2318.00000 1914.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_200703_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_200703_P1.JPG
 ID=10
 LM=19
 2089.00000 1931.00000
@@ -260,7 +260,7 @@ LM=19
 2433.00000 1939.00000
 2509.00000 1938.00000
 2391.00000 1988.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_78V_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_78V_P1.JPG
 ID=11
 LM=19
 2045.00000 1848.00000
@@ -282,7 +282,7 @@ LM=19
 2443.00000 1881.00000
 2542.00000 1878.00000
 2404.00000 1928.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_7B_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_7B_P1.JPG
 ID=12
 LM=19
 2003.00000 1827.00000
@@ -304,7 +304,7 @@ LM=19
 2405.00000 1852.00000
 2506.00000 1848.00000
 2360.00000 1902.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_95C_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_95C_P1.JPG
 ID=13
 LM=19
 1965.00000 1898.00000
@@ -326,7 +326,7 @@ LM=19
 2375.00000 1882.00000
 2469.00000 1873.00000
 2325.00000 1946.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_A1b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_A1b_P1.JPG
 ID=14
 LM=19
 1993.00000 1865.00000
@@ -348,7 +348,7 @@ LM=19
 2386.00000 1898.00000
 2482.00000 1899.00000
 2335.00000 1949.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_A1_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_A1_P1.JPG
 ID=15
 LM=19
 1952.00000 1885.00000
@@ -370,7 +370,7 @@ LM=19
 2366.00000 1908.00000
 2476.00000 1897.00000
 2340.00000 1946.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_B2b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_B2b_P1.JPG
 ID=16
 LM=19
 2086.00000 1833.00000
@@ -392,7 +392,7 @@ LM=19
 2481.00000 1868.00000
 2575.00000 1869.00000
 2445.00000 1911.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_B2_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_B2_P1.JPG
 ID=17
 LM=19
 1960.00000 1896.00000
@@ -414,7 +414,7 @@ LM=19
 2362.00000 1911.00000
 2474.00000 1903.00000
 2326.00000 1964.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_D1_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_D1_P1.JPG
 ID=18
 LM=19
 1998.00000 1898.00000
@@ -436,7 +436,7 @@ LM=19
 2414.00000 1906.00000
 2515.00000 1900.00000
 2380.00000 1957.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_E7_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_E7_P1.JPG
 ID=19
 LM=19
 1943.00000 1854.00000
@@ -458,7 +458,7 @@ LM=19
 2361.00000 1879.00000
 2458.00000 1872.00000
 2319.00000 1929.00000
-IMAGE=data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_H1_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/male/OPIE_Lapi_H1_P1.JPG
 ID=20
 LM=19
 191.00000 1020.00000
@@ -480,7 +480,7 @@ LM=19
 823.00000 1129.00000
 999.00000 1130.00000
 747.00000 1190.00000
-IMAGE=data/images/organized/Bombus_rupestris/queen/FR15ABOM130621006_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/queen/FR15ABOM130621006_P1.JPG
 ID=21
 LM=19
 1970.00000 1850.00000
@@ -502,7 +502,7 @@ LM=19
 2358.00000 1896.00000
 2458.00000 1899.00000
 2306.00000 1942.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/FR73ABOM130722067_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/FR73ABOM130722067_P1.JPG
 ID=22
 LM=19
 2296.00000 1796.00000
@@ -524,7 +524,7 @@ LM=19
 2396.00000 1792.00000
 2423.00000 1790.00000
 2386.00000 1806.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/CD387287_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/CD387287_P1.JPG
 ID=23
 LM=19
 1979.00000 1961.00000
@@ -546,7 +546,7 @@ LM=19
 2388.00000 1996.00000
 2498.00000 1998.00000
 2339.00000 2042.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/FR73ABOM120722002_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/FR73ABOM120722002_P1.JPG
 ID=24
 LM=19
 261.00000 538.00000
@@ -568,7 +568,7 @@ LM=19
 344.00000 541.00000
 364.00000 541.00000
 332.00000 553.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/CD388623e_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/CD388623e_P1.JPG
 ID=25
 LM=19
 517.00000 685.00000
@@ -590,7 +590,7 @@ LM=19
 616.00000 678.00000
 647.00000 674.00000
 607.00000 692.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/ABAURA8764_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/ABAURA8764_P1.JPG
 ID=26
 LM=19
 43.00000 424.00000
@@ -612,7 +612,7 @@ LM=19
 150.00000 417.00000
 176.00000 414.00000
 137.00000 433.00000
-IMAGE=data/images/organized/Bombus_sichelii/worker/CD388865d_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/worker/CD388865d_P1.JPG
 ID=27
 LM=19
 2075.00000 1790.00000
@@ -634,7 +634,7 @@ LM=19
 2433.00000 1815.00000
 2516.00000 1815.00000
 2390.00000 1862.00000
-IMAGE=data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_260620b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/worker/OPIE_Lapi_260620b_P1.JPG
 ID=28
 LM=19
 2101.00000 2003.00000
@@ -656,7 +656,7 @@ LM=19
 2448.00000 2026.00000
 2534.00000 2019.00000
 2406.00000 2075.00000
-IMAGE=data/images/organized/Bombus_monticola/male/FR73ABOM140722011_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/male/FR73ABOM140722011_P1.JPG
 ID=29
 LM=19
 1988.00000 1911.00000
@@ -678,7 +678,7 @@ LM=19
 2325.00000 1913.00000
 2419.00000 1904.00000
 2286.00000 1959.00000
-IMAGE=data/images/organized/Bombus_monticola/worker/CollecYvan14_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/worker/CollecYvan14_P1.JPG
 ID=30
 LM=19
 148.00000 1296.00000
@@ -700,7 +700,7 @@ LM=19
 514.00000 1323.00000
 612.00000 1328.00000
 466.00000 1372.00000
-IMAGE=data/images/organized/Bombus_pomorum/worker/FR15_ABOM30072020040_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/worker/FR15_ABOM30072020040_P1.JPG
 ID=31
 LM=19
 225.00000 1318.00000
@@ -722,7 +722,7 @@ LM=19
 592.00000 1365.00000
 690.00000 1373.00000
 538.00000 1411.00000
-IMAGE=data/images/organized/Bombus_pomorum/worker/FR15_ABOM30072020045_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/worker/FR15_ABOM30072020045_P1.JPG
 ID=32
 LM=19
 113.00000 1391.00000
@@ -744,7 +744,7 @@ LM=19
 350.00000 1393.00000
 416.00000 1390.00000
 323.00000 1423.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/BAR-2018.00332_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/BAR-2018.00332_P1.JPG
 ID=33
 LM=19
 23.00000 220.00000
@@ -766,7 +766,7 @@ LM=19
 94.00000 209.00000
 114.00000 206.00000
 87.00000 221.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/2020.00470_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/2020.00470_P1.JPG
 ID=34
 LM=19
 234.00000 277.00000
@@ -788,7 +788,7 @@ LM=19
 289.00000 269.00000
 306.00000 266.00000
 286.00000 277.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/N126_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/N126_P1.JPG
 ID=35
 LM=19
 209.00000 1182.00000
@@ -810,7 +810,7 @@ LM=19
 668.00000 1232.00000
 792.00000 1235.00000
 616.00000 1283.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/CollecYvan24_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/CollecYvan24_P1.JPG
 ID=36
 LM=19
 2077.00000 1887.00000
@@ -832,7 +832,7 @@ LM=19
 2410.00000 1893.00000
 2481.00000 1891.00000
 2369.00000 1945.00000
-IMAGE=data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_220620c_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/worker/OPIE_Lapi_220620c_P1.JPG
 ID=37
 LM=19
 169.00000 1297.00000
@@ -854,7 +854,7 @@ LM=19
 563.00000 1298.00000
 662.00000 1288.00000
 515.00000 1348.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/CD388820b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/CD388820b_P1.JPG
 ID=38
 LM=19
 2335.00000 1831.00000
@@ -876,7 +876,7 @@ LM=19
 2432.00000 1834.00000
 2457.00000 1835.00000
 2420.00000 1848.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/CD388862_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/CD388862_P1.JPG
 ID=39
 LM=19
 139.00000 1230.00000
@@ -898,7 +898,7 @@ LM=19
 537.00000 1294.00000
 651.00000 1304.00000
 484.00000 1339.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/FR15ABOM200821209_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/FR15ABOM200821209_P1.JPG
 ID=40
 LM=19
 2009.00000 1938.00000
@@ -920,7 +920,7 @@ LM=19
 2382.00000 1962.00000
 2477.00000 1953.00000
 2349.00000 2003.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/FR73ABOM200722029_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/FR73ABOM200722029_P1.JPG
 ID=41
 LM=19
 1943.00000 1879.00000
@@ -942,7 +942,7 @@ LM=19
 2331.00000 1917.00000
 2449.00000 1920.00000
 2283.00000 1967.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/FR73ABOM130722009_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/FR73ABOM130722009_P1.JPG
 ID=42
 LM=19
 1929.00000 1947.00000
@@ -964,7 +964,7 @@ LM=19
 2341.00000 1975.00000
 2461.00000 1969.00000
 2296.00000 2019.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/FR73ABOM130722062_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/FR73ABOM130722062_P1.JPG
 ID=43
 LM=19
 2343.00000 1856.00000
@@ -986,7 +986,7 @@ LM=19
 2465.00000 1855.00000
 2500.00000 1853.00000
 2449.00000 1873.00000
-IMAGE=data/images/organized/Bombus_soroeensis/queen/CD388391_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/queen/CD388391_P1.JPG
 ID=44
 LM=19
 221.00000 1233.00000
@@ -1008,7 +1008,7 @@ LM=19
 650.00000 1237.00000
 748.00000 1227.00000
 598.00000 1292.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/ABAURA8526b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/ABAURA8526b_P1.JPG
 ID=45
 LM=19
 185.00000 1155.00000
@@ -1030,7 +1030,7 @@ LM=19
 598.00000 1208.00000
 707.00000 1216.00000
 544.00000 1255.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/FR15ABOM210822014_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/FR15ABOM210822014_P1.JPG
 ID=46
 LM=19
 2090.00000 1860.00000
@@ -1052,7 +1052,7 @@ LM=19
 2442.00000 1913.00000
 2529.00000 1922.00000
 2388.00000 1960.00000
-IMAGE=data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_130720d_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/worker/OPIE_Lapi_130720d_P1.JPG
 ID=47
 LM=19
 39.00000 396.00000
@@ -1074,7 +1074,7 @@ LM=19
 118.00000 396.00000
 140.00000 396.00000
 109.00000 407.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/CD388135_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/CD388135_P1.JPG
 ID=48
 LM=19
 350.00000 670.00000
@@ -1096,7 +1096,7 @@ LM=19
 450.00000 667.00000
 476.00000 666.00000
 441.00000 681.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/POLLINIS4351_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/POLLINIS4351_P1.JPG
 ID=49
 LM=19
 2005.00000 1840.00000
@@ -1118,7 +1118,7 @@ LM=19
 2418.00000 1864.00000
 2518.00000 1868.00000
 2355.00000 1925.00000
-IMAGE=data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_200720_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/worker/OPIE_Lapi_200720_P1.JPG
 ID=50
 LM=19
 170.00000 1265.00000
@@ -1140,7 +1140,7 @@ LM=19
 523.00000 1308.00000
 618.00000 1317.00000
 469.00000 1354.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/FR15_ABOM09082020078_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/FR15_ABOM09082020078_P1.JPG
 ID=51
 LM=19
 159.00000 1216.00000
@@ -1162,7 +1162,7 @@ LM=19
 487.00000 1222.00000
 581.00000 1215.00000
 453.00000 1266.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/NoName11_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/NoName11_P1.JPG
 ID=52
 LM=19
 60.00000 404.00000
@@ -1184,7 +1184,7 @@ LM=19
 152.00000 405.00000
 174.00000 404.00000
 141.00000 417.00000
-IMAGE=data/images/organized/Bombus_sichelii/worker/CD388865e_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/worker/CD388865e_P1.JPG
 ID=53
 LM=19
 1987.00000 1822.00000
@@ -1206,7 +1206,7 @@ LM=19
 2386.00000 1823.00000
 2480.00000 1819.00000
 2338.00000 1881.00000
-IMAGE=data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_260620_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/worker/OPIE_Lapi_260620_P1.JPG
 ID=54
 LM=19
 59.00000 389.00000
@@ -1228,7 +1228,7 @@ LM=19
 165.00000 382.00000
 197.00000 377.00000
 157.00000 395.00000
-IMAGE=data/images/organized/Bombus_ruderarius/male/ABAURA8885d_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/male/ABAURA8885d_P1.JPG
 ID=55
 LM=19
 348.00000 636.00000
@@ -1250,7 +1250,7 @@ LM=19
 445.00000 633.00000
 473.00000 633.00000
 433.00000 647.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/2020.00301_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/2020.00301_P1.JPG
 ID=56
 LM=19
 2132.00000 1957.00000
@@ -1272,7 +1272,7 @@ LM=19
 2416.00000 1967.00000
 2487.00000 1964.00000
 2380.00000 2009.00000
-IMAGE=data/images/organized/Bombus_monticola/worker/FR74ABOM160722015_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/worker/FR74ABOM160722015_P1.JPG
 ID=57
 LM=19
 298.00000 548.00000
@@ -1294,7 +1294,7 @@ LM=19
 393.00000 551.00000
 420.00000 552.00000
 381.00000 564.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/CD387770_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/CD387770_P1.JPG
 ID=58
 LM=19
 2047.00000 1921.00000
@@ -1316,7 +1316,7 @@ LM=19
 2403.00000 1967.00000
 2496.00000 1968.00000
 2362.00000 2009.00000
-IMAGE=data/images/organized/Bombus_monticola/male/FR73ABOM140722032_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/male/FR73ABOM140722032_P1.JPG
 ID=59
 LM=19
 2055.00000 1901.00000
@@ -1338,7 +1338,7 @@ LM=19
 2413.00000 1912.00000
 2498.00000 1911.00000
 2370.00000 1962.00000
-IMAGE=data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_290602_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/worker/OPIE_Lapi_290602_P1.JPG
 ID=60
 LM=19
 2029.00000 1910.00000
@@ -1360,7 +1360,7 @@ LM=19
 2398.00000 1934.00000
 2481.00000 1932.00000
 2355.00000 1975.00000
-IMAGE=data/images/organized/Bombus_monticola/male/FR73ABOM120722027_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/male/FR73ABOM120722027_P1.JPG
 ID=61
 LM=19
 168.00000 1197.00000
@@ -1382,7 +1382,7 @@ LM=19
 581.00000 1226.00000
 701.00000 1233.00000
 529.00000 1280.00000
-IMAGE=data/images/organized/Bombus_pomorum/worker/FR15ABOM220821055_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/worker/FR15ABOM220821055_P1.JPG
 ID=62
 LM=19
 1500.00000 1256.00000
@@ -1404,7 +1404,7 @@ LM=19
 1603.00000 1249.00000
 1631.00000 1246.00000
 1591.00000 1266.00000
-IMAGE=data/images/organized/Bombus_pratorum/queen/ABAURA57210_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/queen/ABAURA57210_P1.JPG
 ID=63
 LM=19
 45.00000 202.00000
@@ -1426,7 +1426,7 @@ LM=19
 148.00000 198.00000
 167.00000 197.00000
 136.00000 214.00000
-IMAGE=data/images/organized/Bombus_rupestris/queen/UBC-2014.0001_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/queen/UBC-2014.0001_P1.JPG
 ID=64
 LM=19
 2301.00000 1793.00000
@@ -1448,7 +1448,7 @@ LM=19
 2402.00000 1792.00000
 2429.00000 1790.00000
 2392.00000 1804.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/CD387577b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/CD387577b_P1.JPG
 ID=65
 LM=19
 69.00000 386.00000
@@ -1470,7 +1470,7 @@ LM=19
 168.00000 387.00000
 192.00000 387.00000
 156.00000 401.00000
-IMAGE=data/images/organized/Bombus_sichelii/worker/ABAURA8238a_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/worker/ABAURA8238a_P1.JPG
 ID=66
 LM=19
 53.00000 422.00000
@@ -1492,7 +1492,7 @@ LM=19
 166.00000 416.00000
 197.00000 415.00000
 151.00000 435.00000
-IMAGE=data/images/organized/Bombus_ruderarius/male/ATBI GR5_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/male/ATBI GR5_P1.JPG
 ID=67
 LM=19
 199.00000 1354.00000
@@ -1514,7 +1514,7 @@ LM=19
 588.00000 1331.00000
 686.00000 1316.00000
 547.00000 1381.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/CD388016b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/CD388016b_P1.JPG
 ID=68
 LM=19
 161.00000 1198.00000
@@ -1536,7 +1536,7 @@ LM=19
 579.00000 1233.00000
 694.00000 1240.00000
 519.00000 1286.00000
-IMAGE=data/images/organized/Bombus_pomorum/worker/FR15ABOM200821014_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/worker/FR15ABOM200821014_P1.JPG
 ID=69
 LM=19
 384.00000 686.00000
@@ -1558,7 +1558,7 @@ LM=19
 481.00000 684.00000
 508.00000 682.00000
 470.00000 697.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/ABAURA8240b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/ABAURA8240b_P1.JPG
 ID=70
 LM=19
 356.00000 563.00000
@@ -1580,7 +1580,7 @@ LM=19
 453.00000 568.00000
 482.00000 569.00000
 440.00000 583.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/ABAURA8239_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/ABAURA8239_P1.JPG
 ID=71
 LM=19
 233.00000 558.00000
@@ -1602,7 +1602,7 @@ LM=19
 311.00000 564.00000
 333.00000 565.00000
 301.00000 574.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/ABAURA8240d_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/ABAURA8240d_P1.JPG
 ID=72
 LM=19
 298.00000 589.00000
@@ -1624,7 +1624,7 @@ LM=19
 381.00000 585.00000
 403.00000 584.00000
 373.00000 596.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/ABAURA8212_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/ABAURA8212_P1.JPG
 ID=73
 LM=19
 2335.00000 1863.00000
@@ -1646,7 +1646,7 @@ LM=19
 2431.00000 1866.00000
 2456.00000 1867.00000
 2419.00000 1880.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/CD388872b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/CD388872b_P1.JPG
 ID=74
 LM=19
 186.00000 1095.00000
@@ -1668,7 +1668,7 @@ LM=19
 631.00000 1151.00000
 749.00000 1151.00000
 578.00000 1198.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/CollecYvan22_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/CollecYvan22_P1.JPG
 ID=75
 LM=19
 184.00000 1189.00000
@@ -1690,7 +1690,7 @@ LM=19
 538.00000 1213.00000
 631.00000 1216.00000
 492.00000 1259.00000
-IMAGE=data/images/organized/Bombus_ruderarius/male/FR04ABOM220722055_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/male/FR04ABOM220722055_P1.JPG
 ID=76
 LM=19
 276.00000 585.00000
@@ -1712,7 +1712,7 @@ LM=19
 378.00000 575.00000
 407.00000 569.00000
 368.00000 590.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/OPPO.2021.03276_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/OPPO.2021.03276_P1.JPG
 ID=77
 LM=19
 183.00000 323.00000
@@ -1734,7 +1734,7 @@ LM=19
 244.00000 319.00000
 262.00000 317.00000
 240.00000 327.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/N385_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/N385_P1.JPG
 ID=78
 LM=19
 43.00000 413.00000
@@ -1756,7 +1756,7 @@ LM=19
 144.00000 401.00000
 168.00000 397.00000
 134.00000 417.00000
-IMAGE=data/images/organized/Bombus_sichelii/worker/CD388865_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/worker/CD388865_P1.JPG
 ID=79
 LM=19
 2085.00000 1845.00000
@@ -1778,7 +1778,7 @@ LM=19
 2418.00000 1895.00000
 2502.00000 1902.00000
 2375.00000 1934.00000
-IMAGE=data/images/organized/Bombus_monticola/male/FR73ABOM140722033_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/male/FR73ABOM140722033_P1.JPG
 ID=80
 LM=19
 217.00000 1273.00000
@@ -1800,7 +1800,7 @@ LM=19
 689.00000 1320.00000
 811.00000 1316.00000
 629.00000 1375.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/FR15_ABOM180720048_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/FR15_ABOM180720048_P1.JPG
 ID=81
 LM=19
 183.00000 1388.00000
@@ -1822,7 +1822,7 @@ LM=19
 450.00000 1406.00000
 529.00000 1408.00000
 419.00000 1438.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/OPPO 5923_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/OPPO 5923_P1.JPG
 ID=82
 LM=19
 2304.00000 1800.00000
@@ -1844,7 +1844,7 @@ LM=19
 2406.00000 1803.00000
 2436.00000 1804.00000
 2393.00000 1818.00000
-IMAGE=data/images/organized/Bombus_sylvarum/queen/POLLINIS4984_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/queen/POLLINIS4984_P1.JPG
 ID=83
 LM=19
 1964.00000 1954.00000
@@ -1866,7 +1866,7 @@ LM=19
 2366.00000 1977.00000
 2477.00000 1976.00000
 2308.00000 2029.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/FR73ABOM120722103_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/FR73ABOM120722103_P1.JPG
 ID=84
 LM=19
 159.00000 1245.00000
@@ -1888,7 +1888,7 @@ LM=19
 503.00000 1285.00000
 600.00000 1291.00000
 459.00000 1326.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/FR15_ABOM17082020015_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/FR15_ABOM17082020015_P1.JPG
 ID=85
 LM=19
 321.00000 598.00000
@@ -1910,7 +1910,7 @@ LM=19
 408.00000 607.00000
 430.00000 607.00000
 396.00000 618.00000
-IMAGE=data/images/organized/Bombus_monticola/worker/CD388623b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/worker/CD388623b_P1.JPG
 ID=86
 LM=19
 2108.00000 1963.00000
@@ -1932,7 +1932,7 @@ LM=19
 2461.00000 2013.00000
 2551.00000 2022.00000
 2416.00000 2056.00000
-IMAGE=data/images/organized/Bombus_monticola/worker/FR04ABOM220722087_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/worker/FR04ABOM220722087_P1.JPG
 ID=87
 LM=19
 2033.00000 1901.00000
@@ -1954,7 +1954,7 @@ LM=19
 2402.00000 1920.00000
 2490.00000 1922.00000
 2350.00000 1968.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/2020.03936_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/2020.03936_P1.JPG
 ID=88
 LM=19
 160.00000 1281.00000
@@ -1976,7 +1976,7 @@ LM=19
 579.00000 1338.00000
 688.00000 1345.00000
 533.00000 1380.00000
-IMAGE=data/images/organized/Bombus_sichelii/male/FR73ABOM130722003_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/male/FR73ABOM130722003_P1.JPG
 ID=89
 LM=19
 151.00000 1202.00000
@@ -1998,7 +1998,7 @@ LM=19
 548.00000 1223.00000
 655.00000 1222.00000
 499.00000 1273.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/FR15ABOM210821048_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/FR15ABOM210821048_P1.JPG
 ID=90
 LM=19
 148.00000 1202.00000
@@ -2020,7 +2020,7 @@ LM=19
 507.00000 1241.00000
 601.00000 1250.00000
 457.00000 1285.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/FR15_ABOM30072020036_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/FR15_ABOM30072020036_P1.JPG
 ID=91
 LM=19
 2022.00000 1894.00000
@@ -2042,7 +2042,7 @@ LM=19
 2418.00000 1937.00000
 2515.00000 1939.00000
 2365.00000 1985.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/FR73ABOM200722028_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/FR73ABOM200722028_P1.JPG
 ID=92
 LM=19
 40.00000 434.00000
@@ -2064,7 +2064,7 @@ LM=19
 136.00000 428.00000
 162.00000 425.00000
 128.00000 441.00000
-IMAGE=data/images/organized/Bombus_ruderarius/worker/2020.00377_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/worker/2020.00377_P1.JPG
 ID=93
 LM=19
 254.00000 589.00000
@@ -2086,7 +2086,7 @@ LM=19
 363.00000 591.00000
 391.00000 591.00000
 350.00000 606.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/ABAURA8607_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/ABAURA8607_P1.JPG
 ID=94
 LM=19
 212.00000 1267.00000
@@ -2108,7 +2108,7 @@ LM=19
 578.00000 1307.00000
 673.00000 1303.00000
 533.00000 1347.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/ABAURA8207e_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/ABAURA8207e_P1.JPG
 ID=95
 LM=19
 275.00000 511.00000
@@ -2130,7 +2130,7 @@ LM=19
 353.00000 513.00000
 375.00000 513.00000
 343.00000 523.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/ABAURA8228b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/ABAURA8228b_P1.JPG
 ID=96
 LM=19
 55.00000 402.00000
@@ -2152,7 +2152,7 @@ LM=19
 143.00000 400.00000
 169.00000 396.00000
 136.00000 411.00000
-IMAGE=data/images/organized/Bombus_ruderarius/worker/ABAURA8205c_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/worker/ABAURA8205c_P1.JPG
 ID=97
 LM=19
 154.00000 1195.00000
@@ -2174,7 +2174,7 @@ LM=19
 619.00000 1258.00000
 732.00000 1263.00000
 544.00000 1310.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/FR15ABOM200722062_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/FR15ABOM200722062_P1.JPG
 ID=98
 LM=19
 2316.00000 1857.00000
@@ -2196,7 +2196,7 @@ LM=19
 2412.00000 1856.00000
 2438.00000 1855.00000
 2401.00000 1869.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/POLLINIS4343_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/POLLINIS4343_P1.JPG
 ID=99
 LM=19
 49.00000 362.00000
@@ -2218,7 +2218,7 @@ LM=19
 156.00000 351.00000
 186.00000 348.00000
 147.00000 368.00000
-IMAGE=data/images/organized/Bombus_ruderarius/male/ABAURA8852_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/male/ABAURA8852_P1.JPG
 ID=100
 LM=19
 2095.00000 1997.00000
@@ -2240,7 +2240,7 @@ LM=19
 2446.00000 2009.00000
 2537.00000 2009.00000
 2399.00000 2057.00000
-IMAGE=data/images/organized/Bombus_monticola/worker/FR73ABOM140722009_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/worker/FR73ABOM140722009_P1.JPG
 ID=101
 LM=19
 58.00000 393.00000
@@ -2262,7 +2262,7 @@ LM=19
 150.00000 403.00000
 176.00000 403.00000
 139.00000 415.00000
-IMAGE=data/images/organized/Bombus_ruderarius/worker/ABAURA4923_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/worker/ABAURA4923_P1.JPG
 ID=102
 LM=19
 2071.00000 1946.00000
@@ -2284,7 +2284,7 @@ LM=19
 2420.00000 2010.00000
 2504.00000 2023.00000
 2363.00000 2053.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/FR04ABOM220722031_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/FR04ABOM220722031_P1.JPG
 ID=103
 LM=19
 193.00000 1258.00000
@@ -2306,7 +2306,7 @@ LM=19
 659.00000 1278.00000
 766.00000 1267.00000
 608.00000 1332.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/CollecYvan21_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/CollecYvan21_P1.JPG
 ID=104
 LM=19
 48.00000 352.00000
@@ -2328,7 +2328,7 @@ LM=19
 148.00000 357.00000
 174.00000 356.00000
 135.00000 371.00000
-IMAGE=data/images/organized/Bombus_sichelii/worker/CD388821f_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/worker/CD388821f_P1.JPG
 ID=105
 LM=19
 162.00000 1065.00000
@@ -2350,7 +2350,7 @@ LM=19
 791.00000 1135.00000
 985.00000 1128.00000
 717.00000 1198.00000
-IMAGE=data/images/organized/Bombus_rupestris/queen/FR15ABOM110721013_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/queen/FR15ABOM110721013_P1.JPG
 ID=106
 LM=19
 187.00000 1300.00000
@@ -2372,7 +2372,7 @@ LM=19
 614.00000 1275.00000
 705.00000 1257.00000
 565.00000 1333.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/Znieff_galibier_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/Znieff_galibier_P1.JPG
 ID=107
 LM=19
 2321.00000 1826.00000
@@ -2394,7 +2394,7 @@ LM=19
 2409.00000 1822.00000
 2431.00000 1821.00000
 2399.00000 1834.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/ABAURA8672b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/ABAURA8672b_P1.JPG
 ID=108
 LM=19
 2285.00000 1999.00000
@@ -2416,7 +2416,7 @@ LM=19
 2426.00000 2004.00000
 2467.00000 2002.00000
 2407.00000 2023.00000
-IMAGE=data/images/organized/Bombus_ruderarius/queen/ABAURA8885e_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/queen/ABAURA8885e_P1.JPG
 ID=109
 LM=19
 2060.00000 1861.00000
@@ -2438,7 +2438,7 @@ LM=19
 2448.00000 1885.00000
 2552.00000 1888.00000
 2395.00000 1937.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/FR73ABOM130722004_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/FR73ABOM130722004_P1.JPG
 ID=110
 LM=19
 2111.00000 1942.00000
@@ -2460,7 +2460,7 @@ LM=19
 2429.00000 1959.00000
 2516.00000 1952.00000
 2399.00000 1996.00000
-IMAGE=data/images/organized/Bombus_monticola/male/FR73ABOM120722118_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/male/FR73ABOM120722118_P1.JPG
 ID=111
 LM=19
 170.00000 1255.00000
@@ -2482,7 +2482,7 @@ LM=19
 460.00000 1281.00000
 539.00000 1282.00000
 421.00000 1315.00000
-IMAGE=data/images/organized/Bombus_ruderarius/worker/ABAURA4936_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/worker/ABAURA4936_P1.JPG
 ID=112
 LM=19
 1537.00000 1238.00000
@@ -2504,7 +2504,7 @@ LM=19
 1646.00000 1239.00000
 1677.00000 1238.00000
 1630.00000 1255.00000
-IMAGE=data/images/organized/Bombus_pratorum/queen/D264520_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/queen/D264520_P1.JPG
 ID=113
 LM=19
 2289.00000 1852.00000
@@ -2526,7 +2526,7 @@ LM=19
 2412.00000 1857.00000
 2444.00000 1857.00000
 2394.00000 1875.00000
-IMAGE=data/images/organized/Bombus_soroeensis/queen/POLLINIS4981_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/queen/POLLINIS4981_P1.JPG
 ID=114
 LM=19
 2111.00000 2022.00000
@@ -2548,7 +2548,7 @@ LM=19
 2425.00000 2051.00000
 2506.00000 2051.00000
 2386.00000 2092.00000
-IMAGE=data/images/organized/Bombus_monticola/worker/FR73ABOM130722002_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/worker/FR73ABOM130722002_P1.JPG
 ID=115
 LM=19
 2101.00000 1953.00000
@@ -2570,7 +2570,7 @@ LM=19
 2412.00000 1973.00000
 2497.00000 1965.00000
 2384.00000 2010.00000
-IMAGE=data/images/organized/Bombus_monticola/male/FR73ABOM130722039_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/male/FR73ABOM130722039_P1.JPG
 ID=116
 LM=19
 182.00000 1418.00000
@@ -2592,7 +2592,7 @@ LM=19
 628.00000 1412.00000
 736.00000 1401.00000
 576.00000 1467.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/ABAURA7781b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/ABAURA7781b_P1.JPG
 ID=117
 LM=19
 186.00000 1143.00000
@@ -2614,7 +2614,7 @@ LM=19
 584.00000 1181.00000
 682.00000 1184.00000
 534.00000 1231.00000
-IMAGE=data/images/organized/Bombus_sichelii/male/FR73ABOM120722028_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/male/FR73ABOM120722028_P1.JPG
 ID=118
 LM=19
 78.00000 1159.00000
@@ -2636,7 +2636,7 @@ LM=19
 372.00000 1147.00000
 456.00000 1138.00000
 346.00000 1180.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/FR15_STPONCY300921002_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/FR15_STPONCY300921002_P1.JPG
 ID=119
 LM=19
 136.00000 1182.00000
@@ -2658,7 +2658,7 @@ LM=19
 526.00000 1224.00000
 625.00000 1232.00000
 472.00000 1273.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/FR15ABOM210822013_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/FR15ABOM210822013_P1.JPG
 ID=120
 LM=19
 73.00000 374.00000
@@ -2680,7 +2680,7 @@ LM=19
 167.00000 384.00000
 193.00000 385.00000
 158.00000 395.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/2017.06254_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/2017.06254_P1.JPG
 ID=121
 LM=19
 141.00000 1148.00000
@@ -2702,7 +2702,7 @@ LM=19
 512.00000 1189.00000
 620.00000 1194.00000
 469.00000 1229.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/FR15ABOM210821014_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/FR15ABOM210821014_P1.JPG
 ID=122
 LM=19
 160.00000 1164.00000
@@ -2724,7 +2724,7 @@ LM=19
 475.00000 1211.00000
 561.00000 1216.00000
 434.00000 1249.00000
-IMAGE=data/images/organized/Bombus_ruderarius/male/FR04ABOM220722051_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/male/FR04ABOM220722051_P1.JPG
 ID=123
 LM=19
 1499.00000 1239.00000
@@ -2746,7 +2746,7 @@ LM=19
 1599.00000 1227.00000
 1627.00000 1223.00000
 1587.00000 1244.00000
-IMAGE=data/images/organized/Bombus_pratorum/queen/NoName1_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/queen/NoName1_P1.JPG
 ID=124
 LM=19
 23.00000 330.00000
@@ -2768,7 +2768,7 @@ LM=19
 96.00000 326.00000
 117.00000 326.00000
 89.00000 336.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/2020.04013_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/2020.04013_P1.JPG
 ID=125
 LM=19
 1990.00000 2008.00000
@@ -2790,7 +2790,7 @@ LM=19
 2353.00000 2000.00000
 2451.00000 1991.00000
 2315.00000 2051.00000
-IMAGE=data/images/organized/Bombus_monticola/male/FR73ABOM140722001_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/male/FR73ABOM140722001_P1.JPG
 ID=126
 LM=19
 2305.00000 1823.00000
@@ -2812,7 +2812,7 @@ LM=19
 2405.00000 1818.00000
 2428.00000 1817.00000
 2393.00000 1832.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/CD388612_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/CD388612_P1.JPG
 ID=127
 LM=19
 2314.00000 1866.00000
@@ -2834,7 +2834,7 @@ LM=19
 2393.00000 1861.00000
 2415.00000 1859.00000
 2387.00000 1872.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/2020.00449_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/2020.00449_P1.JPG
 ID=128
 LM=19
 125.00000 1255.00000
@@ -2856,7 +2856,7 @@ LM=19
 451.00000 1229.00000
 539.00000 1219.00000
 415.00000 1277.00000
-IMAGE=data/images/organized/Bombus_ruderarius/worker/ABB-2020.00038_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/worker/ABB-2020.00038_P1.JPG
 ID=129
 LM=19
 44.00000 384.00000
@@ -2878,7 +2878,7 @@ LM=19
 153.00000 397.00000
 184.00000 400.00000
 137.00000 412.00000
-IMAGE=data/images/organized/Bombus_ruderarius/male/CD388018b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/male/CD388018b_P1.JPG
 ID=130
 LM=19
 2009.00000 1887.00000
@@ -2900,7 +2900,7 @@ LM=19
 2352.00000 1907.00000
 2439.00000 1903.00000
 2305.00000 1951.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/FR73ABOM200722037_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/FR73ABOM200722037_P1.JPG
 ID=131
 LM=19
 131.00000 1188.00000
@@ -2922,7 +2922,7 @@ LM=19
 537.00000 1208.00000
 647.00000 1210.00000
 483.00000 1264.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/FR15ABOM200821010_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/FR15ABOM200821010_P1.JPG
 ID=132
 LM=19
 300.00000 537.00000
@@ -2944,7 +2944,7 @@ LM=19
 398.00000 528.00000
 426.00000 524.00000
 390.00000 541.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/CD388821b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/CD388821b_P1.JPG
 ID=133
 LM=19
 39.00000 400.00000
@@ -2966,7 +2966,7 @@ LM=19
 125.00000 398.00000
 146.00000 397.00000
 115.00000 410.00000
-IMAGE=data/images/organized/Bombus_sichelii/worker/CD388821e_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/worker/CD388821e_P1.JPG
 ID=134
 LM=19
 38.00000 222.00000
@@ -2988,7 +2988,7 @@ LM=19
 108.00000 214.00000
 127.00000 209.00000
 104.00000 221.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/VAN-2019.00814_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/VAN-2019.00814_P1.JPG
 ID=135
 LM=19
 155.00000 1123.00000
@@ -3010,7 +3010,7 @@ LM=19
 495.00000 1154.00000
 590.00000 1155.00000
 452.00000 1194.00000
-IMAGE=data/images/organized/Bombus_sichelii/male/FR73ABOM200722031_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/male/FR73ABOM200722031_P1.JPG
 ID=136
 LM=19
 290.00000 642.00000
@@ -3032,7 +3032,7 @@ LM=19
 390.00000 622.00000
 416.00000 616.00000
 380.00000 638.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/2013.0265_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/2013.0265_P1.JPG
 ID=137
 LM=19
 192.00000 1088.00000
@@ -3054,7 +3054,7 @@ LM=19
 605.00000 1107.00000
 710.00000 1103.00000
 562.00000 1154.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/FR15ABOM210822016_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/FR15ABOM210822016_P1.JPG
 ID=138
 LM=19
 2279.00000 1803.00000
@@ -3076,7 +3076,7 @@ LM=19
 2371.00000 1803.00000
 2398.00000 1803.00000
 2362.00000 1816.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/ABAURA5633_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/ABAURA5633_P1.JPG
 ID=139
 LM=19
 62.00000 394.00000
@@ -3098,7 +3098,7 @@ LM=19
 158.00000 397.00000
 179.00000 397.00000
 146.00000 411.00000
-IMAGE=data/images/organized/Bombus_sichelii/worker/ABAURA8207_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/worker/ABAURA8207_P1.JPG
 ID=140
 LM=19
 183.00000 1254.00000
@@ -3120,7 +3120,7 @@ LM=19
 565.00000 1308.00000
 657.00000 1317.00000
 513.00000 1352.00000
-IMAGE=data/images/organized/Bombus_pomorum/worker/FR15_ABOM30072020048_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/worker/FR15_ABOM30072020048_P1.JPG
 ID=141
 LM=19
 2003.00000 1952.00000
@@ -3142,7 +3142,7 @@ LM=19
 2416.00000 1974.00000
 2511.00000 1974.00000
 2362.00000 2032.00000
-IMAGE=data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_130720_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/worker/OPIE_Lapi_130720_P1.JPG
 ID=142
 LM=19
 111.00000 1277.00000
@@ -3164,7 +3164,7 @@ LM=19
 467.00000 1296.00000
 565.00000 1299.00000
 422.00000 1341.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/FR15_ABOM30072020042_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/FR15_ABOM30072020042_P1.JPG
 ID=143
 LM=19
 30.00000 223.00000
@@ -3186,7 +3186,7 @@ LM=19
 96.00000 225.00000
 115.00000 224.00000
 89.00000 234.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/VAN-2019.00783_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/VAN-2019.00783_P1.JPG
 ID=144
 LM=19
 145.00000 1237.00000
@@ -3208,7 +3208,7 @@ LM=19
 398.00000 1210.00000
 472.00000 1196.00000
 378.00000 1241.00000
-IMAGE=data/images/organized/Bombus_ruderarius/worker/ABAURA4928_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/worker/ABAURA4928_P1.JPG
 ID=145
 LM=19
 216.00000 1286.00000
@@ -3230,7 +3230,7 @@ LM=19
 593.00000 1312.00000
 683.00000 1312.00000
 551.00000 1353.00000
-IMAGE=data/images/organized/Bombus_sichelii/male/FR05ABOM220722027_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/male/FR05ABOM220722027_P1.JPG
 ID=146
 LM=19
 159.00000 1176.00000
@@ -3252,7 +3252,7 @@ LM=19
 553.00000 1231.00000
 657.00000 1242.00000
 489.00000 1283.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/FR15ABOM170821030b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/FR15ABOM170821030b_P1.JPG
 ID=147
 LM=19
 2302.00000 1854.00000
@@ -3274,7 +3274,7 @@ LM=19
 2420.00000 1851.00000
 2454.00000 1849.00000
 2405.00000 1869.00000
-IMAGE=data/images/organized/Bombus_soroeensis/queen/CD388872c_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/queen/CD388872c_P1.JPG
 ID=148
 LM=19
 1503.00000 1193.00000
@@ -3296,7 +3296,7 @@ LM=19
 1607.00000 1200.00000
 1636.00000 1200.00000
 1591.00000 1215.00000
-IMAGE=data/images/organized/Bombus_pratorum/queen/2019.01788_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/queen/2019.01788_P1.JPG
 ID=149
 LM=19
 198.00000 613.00000
@@ -3318,7 +3318,7 @@ LM=19
 280.00000 614.00000
 302.00000 613.00000
 272.00000 625.00000
-IMAGE=data/images/organized/Bombus_monticola/worker/CD388408_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/worker/CD388408_P1.JPG
 ID=150
 LM=19
 167.00000 1240.00000
@@ -3340,7 +3340,7 @@ LM=19
 586.00000 1293.00000
 690.00000 1288.00000
 548.00000 1333.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/15L2021-1757_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/15L2021-1757_P1.JPG
 ID=151
 LM=19
 2279.00000 1829.00000
@@ -3362,7 +3362,7 @@ LM=19
 2403.00000 1826.00000
 2438.00000 1823.00000
 2389.00000 1845.00000
-IMAGE=data/images/organized/Bombus_soroeensis/queen/ABAURA8625_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/queen/ABAURA8625_P1.JPG
 ID=152
 LM=19
 194.00000 1155.00000
@@ -3384,7 +3384,7 @@ LM=19
 642.00000 1210.00000
 743.00000 1214.00000
 578.00000 1258.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/CollecYvan23_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/CollecYvan23_P1.JPG
 ID=153
 LM=19
 2034.00000 1980.00000
@@ -3406,7 +3406,7 @@ LM=19
 2395.00000 2001.00000
 2477.00000 1997.00000
 2349.00000 2045.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/FR73ABOM200722019_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/FR73ABOM200722019_P1.JPG
 ID=154
 LM=19
 2361.00000 1905.00000
@@ -3428,7 +3428,7 @@ LM=19
 2496.00000 1916.00000
 2534.00000 1916.00000
 2479.00000 1933.00000
-IMAGE=data/images/organized/Bombus_ruderarius/queen/ABAURA7150_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/queen/ABAURA7150_P1.JPG
 ID=155
 LM=19
 183.00000 1049.00000
@@ -3450,7 +3450,7 @@ LM=19
 756.00000 1155.00000
 918.00000 1159.00000
 689.00000 1218.00000
-IMAGE=data/images/organized/Bombus_rupestris/queen/FR15ABOM100721030_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/queen/FR15ABOM100721030_P1.JPG
 ID=156
 LM=19
 1995.00000 1905.00000
@@ -3472,7 +3472,7 @@ LM=19
 2354.00000 1925.00000
 2443.00000 1916.00000
 2311.00000 1974.00000
-IMAGE=data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_220620_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/worker/OPIE_Lapi_220620_P1.JPG
 ID=157
 LM=19
 56.00000 412.00000
@@ -3494,7 +3494,7 @@ LM=19
 158.00000 406.00000
 184.00000 404.00000
 146.00000 422.00000
-IMAGE=data/images/organized/Bombus_sichelii/worker/ATBI GR5b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/worker/ATBI GR5b_P1.JPG
 ID=158
 LM=19
 261.00000 1321.00000
@@ -3516,7 +3516,7 @@ LM=19
 621.00000 1337.00000
 713.00000 1329.00000
 583.00000 1378.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/CD388018e_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/CD388018e_P1.JPG
 ID=159
 LM=19
 139.00000 1210.00000
@@ -3538,7 +3538,7 @@ LM=19
 514.00000 1185.00000
 617.00000 1161.00000
 490.00000 1231.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/15L2021-1420_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/15L2021-1420_P1.JPG
 ID=160
 LM=19
 161.00000 1298.00000
@@ -3560,7 +3560,7 @@ LM=19
 614.00000 1336.00000
 735.00000 1344.00000
 544.00000 1395.00000
-IMAGE=data/images/organized/Bombus_pomorum/worker/FR15ABOM200821004_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/worker/FR15ABOM200821004_P1.JPG
 ID=161
 LM=19
 358.00000 592.00000
@@ -3582,7 +3582,7 @@ LM=19
 454.00000 591.00000
 480.00000 590.00000
 445.00000 604.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/ABB.2017.20260_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/ABB.2017.20260_P1.JPG
 ID=162
 LM=19
 174.00000 1179.00000
@@ -3604,7 +3604,7 @@ LM=19
 578.00000 1203.00000
 691.00000 1204.00000
 528.00000 1259.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/15L2021-1748_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/15L2021-1748_P1.JPG
 ID=163
 LM=19
 1979.00000 1921.00000
@@ -3626,7 +3626,7 @@ LM=19
 2331.00000 1944.00000
 2417.00000 1941.00000
 2282.00000 1987.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/FR73ABOM120722042_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/FR73ABOM120722042_P1.JPG
 ID=164
 LM=19
 24.00000 383.00000
@@ -3648,7 +3648,7 @@ LM=19
 113.00000 379.00000
 139.00000 376.00000
 103.00000 392.00000
-IMAGE=data/images/organized/Bombus_ruderarius/worker/POLLINIS4402_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/worker/POLLINIS4402_P1.JPG
 ID=165
 LM=19
 1992.00000 1970.00000
@@ -3670,7 +3670,7 @@ LM=19
 2351.00000 2014.00000
 2457.00000 2015.00000
 2304.00000 2054.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/FR73ABOM200722039_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/FR73ABOM200722039_P1.JPG
 ID=166
 LM=19
 179.00000 1481.00000
@@ -3692,7 +3692,7 @@ LM=19
 470.00000 1470.00000
 554.00000 1462.00000
 439.00000 1509.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/ABB-2020.00106_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/ABB-2020.00106_P1.JPG
 ID=167
 LM=19
 2020.00000 1903.00000
@@ -3714,7 +3714,7 @@ LM=19
 2390.00000 1943.00000
 2488.00000 1950.00000
 2337.00000 1989.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/FR73ABOM200722040_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/FR73ABOM200722040_P1.JPG
 ID=168
 LM=19
 158.00000 1296.00000
@@ -3736,7 +3736,7 @@ LM=19
 552.00000 1322.00000
 657.00000 1318.00000
 515.00000 1369.00000
-IMAGE=data/images/organized/Bombus_sichelii/male/FR05ABOM220722026_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/male/FR05ABOM220722026_P1.JPG
 ID=169
 LM=19
 228.00000 1390.00000
@@ -3758,7 +3758,7 @@ LM=19
 622.00000 1392.00000
 721.00000 1381.00000
 578.00000 1439.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/CD388013_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/CD388013_P1.JPG
 ID=170
 LM=19
 140.00000 1291.00000
@@ -3780,7 +3780,7 @@ LM=19
 583.00000 1329.00000
 682.00000 1326.00000
 531.00000 1380.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/ABAURA7781_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/ABAURA7781_P1.JPG
 ID=171
 LM=19
 191.00000 340.00000
@@ -3802,7 +3802,7 @@ LM=19
 250.00000 334.00000
 268.00000 332.00000
 244.00000 343.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/N384_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/N384_P1.JPG
 ID=172
 LM=19
 2062.00000 1883.00000
@@ -3824,7 +3824,7 @@ LM=19
 2434.00000 1928.00000
 2535.00000 1929.00000
 2380.00000 1972.00000
-IMAGE=data/images/organized/Bombus_monticola/worker/FR73ABOM200722032_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/worker/FR73ABOM200722032_P1.JPG
 ID=173
 LM=19
 2284.00000 1794.00000
@@ -3846,7 +3846,7 @@ LM=19
 2399.00000 1793.00000
 2429.00000 1792.00000
 2384.00000 1809.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/2020.06207_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/2020.06207_P1.JPG
 ID=174
 LM=19
 260.00000 1219.00000
@@ -3868,7 +3868,7 @@ LM=19
 657.00000 1264.00000
 755.00000 1268.00000
 605.00000 1311.00000
-IMAGE=data/images/organized/Bombus_sichelii/male/CollecYvan6_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/male/CollecYvan6_P1.JPG
 ID=175
 LM=19
 104.00000 1207.00000
@@ -3890,7 +3890,7 @@ LM=19
 427.00000 1234.00000
 508.00000 1238.00000
 390.00000 1270.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/FR15_ABOM25082020008_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/FR15_ABOM25082020008_P1.JPG
 ID=176
 LM=19
 228.00000 1294.00000
@@ -3912,7 +3912,7 @@ LM=19
 550.00000 1285.00000
 642.00000 1278.00000
 509.00000 1332.00000
-IMAGE=data/images/organized/Bombus_ruderarius/worker/ABAURA4923b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/worker/ABAURA4923b_P1.JPG
 ID=177
 LM=19
 252.00000 546.00000
@@ -3934,7 +3934,7 @@ LM=19
 344.00000 545.00000
 366.00000 544.00000
 335.00000 559.00000
-IMAGE=data/images/organized/Bombus_monticola/male/CD387804_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/male/CD387804_P1.JPG
 ID=178
 LM=19
 35.00000 323.00000
@@ -3956,7 +3956,7 @@ LM=19
 113.00000 320.00000
 137.00000 319.00000
 105.00000 331.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/CD387766_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/CD387766_P1.JPG
 ID=179
 LM=19
 2044.00000 1854.00000
@@ -3978,7 +3978,7 @@ LM=19
 2410.00000 1877.00000
 2496.00000 1881.00000
 2363.00000 1925.00000
-IMAGE=data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_240620b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/worker/OPIE_Lapi_240620b_P1.JPG
 ID=180
 LM=19
 121.00000 1270.00000
@@ -4000,7 +4000,7 @@ LM=19
 460.00000 1304.00000
 557.00000 1306.00000
 424.00000 1346.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/FR15ABOM210821174_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/FR15ABOM210821174_P1.JPG
 ID=181
 LM=19
 191.00000 1223.00000
@@ -4022,7 +4022,7 @@ LM=19
 596.00000 1248.00000
 695.00000 1243.00000
 546.00000 1292.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/CD388018d_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/CD388018d_P1.JPG
 ID=182
 LM=19
 32.00000 217.00000
@@ -4044,7 +4044,7 @@ LM=19
 95.00000 218.00000
 112.00000 217.00000
 88.00000 226.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/VAN-2019.00788_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/VAN-2019.00788_P1.JPG
 ID=183
 LM=19
 288.00000 631.00000
@@ -4066,7 +4066,7 @@ LM=19
 392.00000 628.00000
 420.00000 626.00000
 381.00000 643.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/2019.02175_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/2019.02175_P1.JPG
 ID=184
 LM=19
 117.00000 1363.00000
@@ -4088,7 +4088,7 @@ LM=19
 537.00000 1344.00000
 647.00000 1325.00000
 485.00000 1399.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/CD388391b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/CD388391b_P1.JPG
 ID=185
 LM=19
 156.00000 1218.00000
@@ -4110,7 +4110,7 @@ LM=19
 629.00000 1295.00000
 753.00000 1295.00000
 571.00000 1343.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/FR15_ABOM180720047_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/FR15_ABOM180720047_P1.JPG
 ID=186
 LM=19
 234.00000 976.00000
@@ -4132,7 +4132,7 @@ LM=19
 771.00000 1079.00000
 927.00000 1083.00000
 694.00000 1130.00000
-IMAGE=data/images/organized/Bombus_rupestris/queen/FR15ABOM120621015_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/queen/FR15ABOM120621015_P1.JPG
 ID=187
 LM=19
 1969.00000 1915.00000
@@ -4154,7 +4154,7 @@ LM=19
 2342.00000 1935.00000
 2430.00000 1937.00000
 2292.00000 1986.00000
-IMAGE=data/images/organized/Bombus_monticola/male/FR73ABOM140722015_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/male/FR73ABOM140722015_P1.JPG
 ID=188
 LM=19
 161.00000 341.00000
@@ -4176,7 +4176,7 @@ LM=19
 218.00000 331.00000
 233.00000 329.00000
 212.00000 340.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/N205_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/N205_P1.JPG
 ID=189
 LM=19
 2092.00000 1858.00000
@@ -4198,7 +4198,7 @@ LM=19
 2441.00000 1910.00000
 2537.00000 1909.00000
 2402.00000 1950.00000
-IMAGE=data/images/organized/Bombus_monticola/male/FR73ABOM120722070_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/male/FR73ABOM120722070_P1.JPG
 ID=190
 LM=19
 322.00000 581.00000
@@ -4220,7 +4220,7 @@ LM=19
 414.00000 587.00000
 440.00000 588.00000
 401.00000 600.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/ABAURA8206_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/ABAURA8206_P1.JPG
 ID=191
 LM=19
 2301.00000 1806.00000
@@ -4242,7 +4242,7 @@ LM=19
 2402.00000 1806.00000
 2429.00000 1805.00000
 2391.00000 1820.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/ABAURA8239c_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/ABAURA8239c_P1.JPG
 ID=192
 LM=19
 215.00000 1277.00000
@@ -4264,7 +4264,7 @@ LM=19
 622.00000 1320.00000
 723.00000 1324.00000
 563.00000 1368.00000
-IMAGE=data/images/organized/Bombus_sichelii/male/CollecYvan3_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/male/CollecYvan3_P1.JPG
 ID=193
 LM=19
 172.00000 1143.00000
@@ -4286,7 +4286,7 @@ LM=19
 525.00000 1171.00000
 616.00000 1177.00000
 481.00000 1219.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/FR15ABOM170821009_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/FR15ABOM170821009_P1.JPG
 ID=194
 LM=19
 99.00000 314.00000
@@ -4308,7 +4308,7 @@ LM=19
 156.00000 314.00000
 171.00000 314.00000
 149.00000 323.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/N407_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/N407_P1.JPG
 ID=195
 LM=19
 350.00000 499.00000
@@ -4330,7 +4330,7 @@ LM=19
 425.00000 498.00000
 446.00000 498.00000
 418.00000 508.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/CEN187839_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/CEN187839_P1.JPG
 ID=196
 LM=19
 196.00000 1251.00000
@@ -4352,7 +4352,7 @@ LM=19
 611.00000 1263.00000
 724.00000 1262.00000
 563.00000 1319.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/NoName14_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/NoName14_P1.JPG
 ID=197
 LM=19
 2297.00000 1792.00000
@@ -4374,7 +4374,7 @@ LM=19
 2398.00000 1794.00000
 2426.00000 1794.00000
 2387.00000 1807.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/CD387577_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/CD387577_P1.JPG
 ID=198
 LM=19
 2026.00000 1893.00000
@@ -4396,7 +4396,7 @@ LM=19
 2401.00000 1926.00000
 2505.00000 1929.00000
 2354.00000 1974.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/FR73ABOM130722064_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/FR73ABOM130722064_P1.JPG
 ID=199
 LM=19
 1995.00000 2042.00000
@@ -4418,7 +4418,7 @@ LM=19
 2386.00000 2036.00000
 2486.00000 2026.00000
 2339.00000 2091.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/2020.00254_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/2020.00254_P1.JPG
 ID=200
 LM=19
 2106.00000 1926.00000
@@ -4440,7 +4440,7 @@ LM=19
 2417.00000 1977.00000
 2492.00000 1984.00000
 2372.00000 2017.00000
-IMAGE=data/images/organized/Bombus_monticola/worker/FR73ABOM120722090_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/worker/FR73ABOM120722090_P1.JPG
 ID=201
 LM=19
 241.00000 1172.00000
@@ -4462,7 +4462,7 @@ LM=19
 650.00000 1249.00000
 740.00000 1261.00000
 587.00000 1292.00000
-IMAGE=data/images/organized/Bombus_sichelii/male/CollecYvan1_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/male/CollecYvan1_P1.JPG
 ID=202
 LM=19
 36.00000 421.00000
@@ -4484,7 +4484,7 @@ LM=19
 124.00000 420.00000
 149.00000 419.00000
 115.00000 432.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/CD388862b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/CD388862b_P1.JPG
 ID=203
 LM=19
 2346.00000 1863.00000
@@ -4506,7 +4506,7 @@ LM=19
 2467.00000 1860.00000
 2503.00000 1857.00000
 2451.00000 1878.00000
-IMAGE=data/images/organized/Bombus_soroeensis/queen/D264520b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/queen/D264520b_P1.JPG
 ID=204
 LM=19
 153.00000 1270.00000
@@ -4528,7 +4528,7 @@ LM=19
 499.00000 1288.00000
 585.00000 1291.00000
 447.00000 1337.00000
-IMAGE=data/images/organized/Bombus_ruderarius/male/FR05ABOM220722025_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/male/FR05ABOM220722025_P1.JPG
 ID=205
 LM=19
 50.00000 419.00000
@@ -4550,7 +4550,7 @@ LM=19
 142.00000 420.00000
 168.00000 418.00000
 133.00000 433.00000
-IMAGE=data/images/organized/Bombus_ruderarius/worker/ABAURA8606_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/worker/ABAURA8606_P1.JPG
 ID=206
 LM=19
 200.00000 1205.00000
@@ -4572,7 +4572,7 @@ LM=19
 680.00000 1285.00000
 786.00000 1295.00000
 617.00000 1333.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/FR15_ABOM180720046_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/FR15_ABOM180720046_P1.JPG
 ID=207
 LM=19
 182.00000 1323.00000
@@ -4594,7 +4594,7 @@ LM=19
 488.00000 1337.00000
 576.00000 1337.00000
 456.00000 1374.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/ABAURA5593_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/ABAURA5593_P1.JPG
 ID=208
 LM=19
 174.00000 1141.00000
@@ -4616,7 +4616,7 @@ LM=19
 589.00000 1201.00000
 710.00000 1210.00000
 530.00000 1251.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/FR15ABOM210821115_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/FR15ABOM210821115_P1.JPG
 ID=209
 LM=19
 227.00000 625.00000
@@ -4638,7 +4638,7 @@ LM=19
 320.00000 612.00000
 347.00000 607.00000
 313.00000 625.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/2019.02167_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/2019.02167_P1.JPG
 ID=210
 LM=19
 2325.00000 1842.00000
@@ -4660,7 +4660,7 @@ LM=19
 2423.00000 1842.00000
 2449.00000 1841.00000
 2413.00000 1854.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/CD388145b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/CD388145b_P1.JPG
 ID=211
 LM=19
 243.00000 1012.00000
@@ -4682,7 +4682,7 @@ LM=19
 856.00000 1118.00000
 1024.00000 1114.00000
 768.00000 1177.00000
-IMAGE=data/images/organized/Bombus_rupestris/queen/FR15ABOM100721032_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/queen/FR15ABOM100721032_P1.JPG
 ID=212
 LM=19
 163.00000 1232.00000
@@ -4704,7 +4704,7 @@ LM=19
 505.00000 1264.00000
 607.00000 1270.00000
 464.00000 1305.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/NoName5_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/NoName5_P1.JPG
 ID=213
 LM=19
 1870.00000 1874.00000
@@ -4726,7 +4726,7 @@ LM=19
 2426.00000 1931.00000
 2563.00000 1936.00000
 2335.00000 2001.00000
-IMAGE=data/images/organized/Bombus_sichelii/queen/FR04ABOM220722001_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/queen/FR04ABOM220722001_P1.JPG
 ID=214
 LM=19
 168.00000 1418.00000
@@ -4748,7 +4748,7 @@ LM=19
 517.00000 1454.00000
 618.00000 1454.00000
 481.00000 1492.00000
-IMAGE=data/images/organized/Bombus_sichelii/male/FR73ABOM130722041_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/male/FR73ABOM130722041_P1.JPG
 ID=215
 LM=19
 227.00000 1217.00000
@@ -4770,7 +4770,7 @@ LM=19
 581.00000 1295.00000
 684.00000 1314.00000
 534.00000 1332.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/NoName4_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/NoName4_P1.JPG
 ID=216
 LM=19
 34.00000 382.00000
@@ -4792,7 +4792,7 @@ LM=19
 125.00000 382.00000
 150.00000 381.00000
 114.00000 395.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/CD388146_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/CD388146_P1.JPG
 ID=217
 LM=19
 194.00000 1298.00000
@@ -4814,7 +4814,7 @@ LM=19
 582.00000 1318.00000
 691.00000 1319.00000
 533.00000 1368.00000
-IMAGE=data/images/organized/Bombus_pomorum/worker/FR15ABOM200821233_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/worker/FR15ABOM200821233_P1.JPG
 ID=218
 LM=19
 214.00000 1234.00000
@@ -4836,7 +4836,7 @@ LM=19
 659.00000 1293.00000
 765.00000 1293.00000
 602.00000 1344.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/FR15ABOM200722063_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/FR15ABOM200722063_P1.JPG
 ID=219
 LM=19
 110.00000 1172.00000
@@ -4858,7 +4858,7 @@ LM=19
 558.00000 1195.00000
 678.00000 1199.00000
 491.00000 1260.00000
-IMAGE=data/images/organized/Bombus_pomorum/worker/FR15_ABOM30072020071_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/worker/FR15_ABOM30072020071_P1.JPG
 ID=220
 LM=19
 58.00000 413.00000
@@ -4880,7 +4880,7 @@ LM=19
 165.00000 403.00000
 192.00000 399.00000
 153.00000 420.00000
-IMAGE=data/images/organized/Bombus_sichelii/worker/ABAURA8238e_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/worker/ABAURA8238e_P1.JPG
 ID=221
 LM=19
 2052.00000 1997.00000
@@ -4902,7 +4902,7 @@ LM=19
 2401.00000 2038.00000
 2499.00000 2041.00000
 2351.00000 2082.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/FR73ABOM200722041_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/FR73ABOM200722041_P1.JPG
 ID=222
 LM=19
 292.00000 1067.00000
@@ -4924,7 +4924,7 @@ LM=19
 842.00000 1180.00000
 1009.00000 1189.00000
 774.00000 1236.00000
-IMAGE=data/images/organized/Bombus_rupestris/queen/RuppSupp1_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/queen/RuppSupp1_P1.JPG
 ID=223
 LM=19
 70.00000 397.00000
@@ -4946,7 +4946,7 @@ LM=19
 175.00000 400.00000
 208.00000 399.00000
 165.00000 414.00000
-IMAGE=data/images/organized/Bombus_ruderarius/male/CD388018_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/male/CD388018_P1.JPG
 ID=224
 LM=19
 207.00000 1153.00000
@@ -4968,7 +4968,7 @@ LM=19
 601.00000 1191.00000
 719.00000 1193.00000
 556.00000 1235.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/FR15ABOM150720008_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/FR15ABOM150720008_P1.JPG
 ID=225
 LM=19
 2311.00000 1793.00000
@@ -4990,7 +4990,7 @@ LM=19
 2415.00000 1788.00000
 2442.00000 1789.00000
 2403.00000 1806.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/2020.00339_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/2020.00339_P1.JPG
 ID=226
 LM=19
 236.00000 1165.00000
@@ -5012,7 +5012,7 @@ LM=19
 698.00000 1222.00000
 810.00000 1216.00000
 651.00000 1267.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/CollecYvan20_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/CollecYvan20_P1.JPG
 ID=227
 LM=19
 267.00000 658.00000
@@ -5034,7 +5034,7 @@ LM=19
 369.00000 660.00000
 396.00000 661.00000
 355.00000 676.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/ABAURA8747_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/ABAURA8747_P1.JPG
 ID=228
 LM=19
 95.00000 1268.00000
@@ -5056,7 +5056,7 @@ LM=19
 463.00000 1260.00000
 560.00000 1253.00000
 420.00000 1314.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/15G2021-1200_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/15G2021-1200_P1.JPG
 ID=229
 LM=19
 151.00000 1256.00000
@@ -5078,7 +5078,7 @@ LM=19
 550.00000 1277.00000
 656.00000 1278.00000
 501.00000 1327.00000
-IMAGE=data/images/organized/Bombus_pomorum/worker/FR15ABOM210821043_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/worker/FR15ABOM210821043_P1.JPG
 ID=230
 LM=19
 364.00000 724.00000
@@ -5100,7 +5100,7 @@ LM=19
 455.00000 717.00000
 482.00000 715.00000
 446.00000 730.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/ABAURA8233_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/ABAURA8233_P1.JPG
 ID=231
 LM=19
 2084.00000 1947.00000
@@ -5122,7 +5122,7 @@ LM=19
 2457.00000 1976.00000
 2559.00000 1974.00000
 2406.00000 2028.00000
-IMAGE=data/images/organized/Bombus_monticola/worker/CollecYvan15_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/worker/CollecYvan15_P1.JPG
 ID=232
 LM=19
 2069.00000 1932.00000
@@ -5144,7 +5144,7 @@ LM=19
 2417.00000 1962.00000
 2508.00000 1961.00000
 2377.00000 2006.00000
-IMAGE=data/images/organized/Bombus_monticola/male/FR73ABOM140722031_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/male/FR73ABOM140722031_P1.JPG
 ID=233
 LM=19
 2324.00000 1850.00000
@@ -5166,7 +5166,7 @@ LM=19
 2418.00000 1846.00000
 2443.00000 1844.00000
 2409.00000 1859.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/CD387759_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/CD387759_P1.JPG
 ID=234
 LM=19
 272.00000 533.00000
@@ -5188,7 +5188,7 @@ LM=19
 354.00000 535.00000
 378.00000 536.00000
 345.00000 547.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/ABAURA8239b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/ABAURA8239b_P1.JPG
 ID=235
 LM=19
 61.00000 412.00000
@@ -5210,7 +5210,7 @@ LM=19
 172.00000 411.00000
 204.00000 410.00000
 160.00000 426.00000
-IMAGE=data/images/organized/Bombus_ruderarius/male/ABAURA8595_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/male/ABAURA8595_P1.JPG
 ID=236
 LM=19
 1969.00000 1944.00000
@@ -5232,7 +5232,7 @@ LM=19
 2318.00000 1981.00000
 2415.00000 1982.00000
 2273.00000 2024.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/FR73ABOM130722046_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/FR73ABOM130722046_P1.JPG
 ID=237
 LM=19
 252.00000 1279.00000
@@ -5254,7 +5254,7 @@ LM=19
 622.00000 1303.00000
 707.00000 1302.00000
 574.00000 1350.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/ABAURA8150d_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/ABAURA8150d_P1.JPG
 ID=238
 LM=19
 119.00000 1295.00000
@@ -5276,7 +5276,7 @@ LM=19
 422.00000 1310.00000
 508.00000 1309.00000
 395.00000 1341.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/15G2021-1826_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/15G2021-1826_P1.JPG
 ID=239
 LM=19
 162.00000 1301.00000
@@ -5298,7 +5298,7 @@ LM=19
 622.00000 1335.00000
 750.00000 1327.00000
 576.00000 1381.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/FR15ABOM200722026_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/FR15ABOM200722026_P1.JPG
 ID=240
 LM=19
 126.00000 541.00000
@@ -5320,7 +5320,7 @@ LM=19
 216.00000 535.00000
 240.00000 533.00000
 206.00000 549.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/ABAURA8228_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/ABAURA8228_P1.JPG
 ID=241
 LM=19
 54.00000 401.00000
@@ -5342,7 +5342,7 @@ LM=19
 163.00000 404.00000
 191.00000 402.00000
 152.00000 417.00000
-IMAGE=data/images/organized/Bombus_sichelii/male/CD388016_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/male/CD388016_P1.JPG
 ID=242
 LM=19
 53.00000 410.00000
@@ -5364,7 +5364,7 @@ LM=19
 175.00000 394.00000
 204.00000 389.00000
 161.00000 416.00000
-IMAGE=data/images/organized/Bombus_ruderarius/male/ABAURA8885b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/male/ABAURA8885b_P1.JPG
 ID=243
 LM=19
 232.00000 1285.00000
@@ -5386,7 +5386,7 @@ LM=19
 677.00000 1317.00000
 792.00000 1308.00000
 622.00000 1368.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/FR15ABOM200722064_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/FR15ABOM200722064_P1.JPG
 ID=244
 LM=19
 1977.00000 1952.00000
@@ -5408,7 +5408,7 @@ LM=19
 2398.00000 1965.00000
 2502.00000 1960.00000
 2360.00000 2010.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/FR73ABOM130722018_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/FR73ABOM130722018_P1.JPG
 ID=245
 LM=19
 2013.00000 2005.00000
@@ -5430,7 +5430,7 @@ LM=19
 2387.00000 1976.00000
 2479.00000 1963.00000
 2353.00000 2029.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/15L2021-1732_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/15L2021-1732_P1.JPG
 ID=246
 LM=19
 140.00000 1312.00000
@@ -5452,7 +5452,7 @@ LM=19
 469.00000 1335.00000
 558.00000 1339.00000
 428.00000 1374.00000
-IMAGE=data/images/organized/Bombus_pomorum/worker/FR15ABOM200821035_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/worker/FR15ABOM200821035_P1.JPG
 ID=247
 LM=19
 1938.00000 1850.00000
@@ -5474,7 +5474,7 @@ LM=19
 2332.00000 1935.00000
 2440.00000 1947.00000
 2284.00000 1975.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/FR73ABOM130722021_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/FR73ABOM130722021_P1.JPG
 ID=248
 LM=19
 150.00000 1282.00000
@@ -5496,7 +5496,7 @@ LM=19
 527.00000 1290.00000
 627.00000 1280.00000
 489.00000 1336.00000
-IMAGE=data/images/organized/Bombus_sichelii/male/FR73ABOM130722029_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/male/FR73ABOM130722029_P1.JPG
 ID=249
 LM=19
 2031.00000 1971.00000
@@ -5518,7 +5518,7 @@ LM=19
 2374.00000 1967.00000
 2463.00000 1957.00000
 2334.00000 2014.00000
-IMAGE=data/images/organized/Bombus_monticola/worker/CollecYvan18_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/worker/CollecYvan18_P1.JPG
 ID=250
 LM=19
 135.00000 1227.00000
@@ -5540,7 +5540,7 @@ LM=19
 470.00000 1250.00000
 555.00000 1256.00000
 421.00000 1297.00000
-IMAGE=data/images/organized/Bombus_pomorum/worker/FR15ABOM170821074_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/worker/FR15ABOM170821074_P1.JPG
 ID=251
 LM=19
 106.00000 1217.00000
@@ -5562,7 +5562,7 @@ LM=19
 481.00000 1248.00000
 574.00000 1245.00000
 442.00000 1288.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/CollecYvan19_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/CollecYvan19_P1.JPG
 ID=252
 LM=19
 222.00000 557.00000
@@ -5584,7 +5584,7 @@ LM=19
 301.00000 560.00000
 324.00000 558.00000
 292.00000 571.00000
-IMAGE=data/images/organized/Bombus_monticola/worker/CD388623d_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/worker/CD388623d_P1.JPG
 ID=253
 LM=19
 1961.00000 1932.00000
@@ -5606,7 +5606,7 @@ LM=19
 2353.00000 1950.00000
 2459.00000 1946.00000
 2312.00000 1998.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/FR73ABOM130722030_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/FR73ABOM130722030_P1.JPG
 ID=254
 LM=19
 507.00000 748.00000
@@ -5628,7 +5628,7 @@ LM=19
 607.00000 749.00000
 638.00000 748.00000
 597.00000 762.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/ABAURA8240_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/ABAURA8240_P1.JPG
 ID=255
 LM=19
 172.00000 1216.00000
@@ -5650,7 +5650,7 @@ LM=19
 671.00000 1261.00000
 797.00000 1261.00000
 600.00000 1318.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/FR15ABOM200722066_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/FR15ABOM200722066_P1.JPG
 ID=256
 LM=19
 2348.00000 1807.00000
@@ -5672,7 +5672,7 @@ LM=19
 2434.00000 1807.00000
 2457.00000 1804.00000
 2427.00000 1816.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/CD388235b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/CD388235b_P1.JPG
 ID=257
 LM=19
 144.00000 1292.00000
@@ -5694,7 +5694,7 @@ LM=19
 536.00000 1352.00000
 635.00000 1353.00000
 485.00000 1392.00000
-IMAGE=data/images/organized/Bombus_sichelii/male/CollecYvan2_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/male/CollecYvan2_P1.JPG
 ID=258
 LM=19
 2258.00000 1842.00000
@@ -5716,7 +5716,7 @@ LM=19
 2394.00000 1846.00000
 2435.00000 1845.00000
 2377.00000 1863.00000
-IMAGE=data/images/organized/Bombus_sylvarum/queen/NoName2_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/queen/NoName2_P1.JPG
 ID=259
 LM=19
 196.00000 1370.00000
@@ -5738,7 +5738,7 @@ LM=19
 562.00000 1350.00000
 652.00000 1336.00000
 517.00000 1402.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/ABAURA8239d_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/ABAURA8239d_P1.JPG
 ID=260
 LM=19
 2004.00000 1954.00000
@@ -5760,7 +5760,7 @@ LM=19
 2395.00000 1970.00000
 2490.00000 1969.00000
 2342.00000 2022.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/FR73ABOM130722063_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/FR73ABOM130722063_P1.JPG
 ID=261
 LM=19
 162.00000 1099.00000
@@ -5782,7 +5782,7 @@ LM=19
 564.00000 1149.00000
 674.00000 1159.00000
 507.00000 1200.00000
-IMAGE=data/images/organized/Bombus_pomorum/worker/FR15ABOM200821202_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/worker/FR15ABOM200821202_P1.JPG
 ID=262
 LM=19
 26.00000 229.00000
@@ -5804,7 +5804,7 @@ LM=19
 93.00000 235.00000
 110.00000 234.00000
 86.00000 243.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/2020.00471_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/2020.00471_P1.JPG
 ID=263
 LM=19
 1985.00000 1875.00000
@@ -5826,7 +5826,7 @@ LM=19
 2369.00000 1938.00000
 2473.00000 1945.00000
 2319.00000 1980.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/FR73ABOM130722065_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/FR73ABOM130722065_P1.JPG
 ID=264
 LM=19
 336.00000 675.00000
@@ -5848,7 +5848,7 @@ LM=19
 433.00000 663.00000
 457.00000 658.00000
 423.00000 679.00000
-IMAGE=data/images/organized/Bombus_monticola/male/CD388623_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/male/CD388623_P1.JPG
 ID=265
 LM=19
 169.00000 1264.00000
@@ -5870,7 +5870,7 @@ LM=19
 599.00000 1306.00000
 712.00000 1316.00000
 528.00000 1364.00000
-IMAGE=data/images/organized/Bombus_pomorum/worker/FR15ABOM170821123_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/worker/FR15ABOM170821123_P1.JPG
 ID=266
 LM=19
 57.00000 434.00000
@@ -5892,7 +5892,7 @@ LM=19
 170.00000 419.00000
 203.00000 412.00000
 161.00000 435.00000
-IMAGE=data/images/organized/Bombus_ruderarius/male/ABAURA8885c_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/male/ABAURA8885c_P1.JPG
 ID=267
 LM=19
 313.00000 662.00000
@@ -5914,7 +5914,7 @@ LM=19
 411.00000 652.00000
 440.00000 648.00000
 400.00000 669.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/ABAURA7548_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/ABAURA7548_P1.JPG
 ID=268
 LM=19
 2284.00000 1911.00000
@@ -5936,7 +5936,7 @@ LM=19
 2414.00000 1912.00000
 2452.00000 1909.00000
 2396.00000 1933.00000
-IMAGE=data/images/organized/Bombus_ruderarius/queen/ABAURA8885f_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/queen/ABAURA8885f_P1.JPG
 ID=269
 LM=19
 2321.00000 1802.00000
@@ -5958,7 +5958,7 @@ LM=19
 2416.00000 1796.00000
 2439.00000 1795.00000
 2406.00000 1810.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/CD388872_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/CD388872_P1.JPG
 ID=270
 LM=19
 2063.00000 1853.00000
@@ -5980,7 +5980,7 @@ LM=19
 2422.00000 1876.00000
 2509.00000 1874.00000
 2378.00000 1925.00000
-IMAGE=data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_230620_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/worker/OPIE_Lapi_230620_P1.JPG
 ID=271
 LM=19
 125.00000 1100.00000
@@ -6002,7 +6002,7 @@ LM=19
 507.00000 1167.00000
 616.00000 1179.00000
 451.00000 1213.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/FR15ABOM200821005_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/FR15ABOM200821005_P1.JPG
 ID=272
 LM=19
 2334.00000 1839.00000
@@ -6024,7 +6024,7 @@ LM=19
 2436.00000 1835.00000
 2466.00000 1834.00000
 2425.00000 1851.00000
-IMAGE=data/images/organized/Bombus_sylvarum/queen/POLLINIS4982b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/queen/POLLINIS4982b_P1.JPG
 ID=273
 LM=19
 251.00000 624.00000
@@ -6046,7 +6046,7 @@ LM=19
 330.00000 617.00000
 355.00000 614.00000
 323.00000 628.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/2007.0008_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/2007.0008_P1.JPG
 ID=274
 LM=19
 149.00000 1273.00000
@@ -6068,7 +6068,7 @@ LM=19
 500.00000 1252.00000
 600.00000 1243.00000
 462.00000 1304.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/FR15_STPONCY300921024_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/FR15_STPONCY300921024_P1.JPG
 ID=275
 LM=19
 2320.00000 1842.00000
@@ -6090,7 +6090,7 @@ LM=19
 2412.00000 1843.00000
 2440.00000 1841.00000
 2405.00000 1854.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/POLLINIS5983_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/POLLINIS5983_P1.JPG
 ID=276
 LM=19
 2107.00000 1891.00000
@@ -6112,7 +6112,7 @@ LM=19
 2447.00000 1905.00000
 2526.00000 1907.00000
 2404.00000 1950.00000
-IMAGE=data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_220620d_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/worker/OPIE_Lapi_220620d_P1.JPG
 ID=277
 LM=19
 388.00000 721.00000
@@ -6134,7 +6134,7 @@ LM=19
 469.00000 716.00000
 492.00000 714.00000
 461.00000 728.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/ABAURA4898_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/ABAURA4898_P1.JPG
 ID=278
 LM=19
 154.00000 1151.00000
@@ -6156,7 +6156,7 @@ LM=19
 590.00000 1198.00000
 700.00000 1210.00000
 525.00000 1257.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/FR15ABOM170821030_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/FR15ABOM170821030_P1.JPG
 ID=279
 LM=19
 142.00000 1286.00000
@@ -6178,7 +6178,7 @@ LM=19
 503.00000 1325.00000
 591.00000 1332.00000
 448.00000 1373.00000
-IMAGE=data/images/organized/Bombus_pomorum/worker/FR15_ABOM180720054_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/worker/FR15_ABOM180720054_P1.JPG
 ID=280
 LM=19
 143.00000 1152.00000
@@ -6200,7 +6200,7 @@ LM=19
 499.00000 1206.00000
 609.00000 1217.00000
 457.00000 1250.00000
-IMAGE=data/images/organized/Bombus_ruderarius/male/FR04ABOM220722057_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/male/FR04ABOM220722057_P1.JPG
 ID=281
 LM=19
 33.00000 370.00000
@@ -6222,7 +6222,7 @@ LM=19
 153.00000 367.00000
 186.00000 363.00000
 141.00000 383.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/ABAURA8885_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/ABAURA8885_P1.JPG
 ID=282
 LM=19
 2032.00000 1897.00000
@@ -6244,7 +6244,7 @@ LM=19
 2398.00000 1922.00000
 2505.00000 1920.00000
 2355.00000 1972.00000
-IMAGE=data/images/organized/Bombus_monticola/male/FR73ABOM130722017_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/male/FR73ABOM130722017_P1.JPG
 ID=283
 LM=19
 1985.00000 1772.00000
@@ -6266,7 +6266,7 @@ LM=19
 2387.00000 1802.00000
 2482.00000 1805.00000
 2328.00000 1854.00000
-IMAGE=data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_070820b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/worker/OPIE_Lapi_070820b_P1.JPG
 ID=284
 LM=19
 136.00000 1293.00000
@@ -6288,7 +6288,7 @@ LM=19
 482.00000 1289.00000
 580.00000 1282.00000
 444.00000 1338.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/NoName15_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/NoName15_P1.JPG
 ID=285
 LM=19
 200.00000 1307.00000
@@ -6310,7 +6310,7 @@ LM=19
 592.00000 1280.00000
 695.00000 1259.00000
 549.00000 1333.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/ABAURA8599_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/ABAURA8599_P1.JPG
 ID=286
 LM=19
 91.00000 1366.00000
@@ -6332,7 +6332,7 @@ LM=19
 393.00000 1358.00000
 459.00000 1357.00000
 348.00000 1404.00000
-IMAGE=data/images/organized/Bombus_pomorum/worker/FR15ABOM210821119_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/worker/FR15ABOM210821119_P1.JPG
 ID=287
 LM=19
 2310.00000 1804.00000
@@ -6354,7 +6354,7 @@ LM=19
 2410.00000 1797.00000
 2433.00000 1795.00000
 2400.00000 1811.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/CD388860_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/CD388860_P1.JPG
 ID=288
 LM=19
 155.00000 1350.00000
@@ -6376,7 +6376,7 @@ LM=19
 513.00000 1306.00000
 616.00000 1284.00000
 475.00000 1359.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/ABAURA8207f_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/ABAURA8207f_P1.JPG
 ID=289
 LM=19
 288.00000 556.00000
@@ -6398,7 +6398,7 @@ LM=19
 377.00000 553.00000
 402.00000 549.00000
 371.00000 563.00000
-IMAGE=data/images/organized/Bombus_monticola/male/CD388230c_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/male/CD388230c_P1.JPG
 ID=290
 LM=19
 39.00000 381.00000
@@ -6420,7 +6420,7 @@ LM=19
 122.00000 387.00000
 142.00000 386.00000
 110.00000 398.00000
-IMAGE=data/images/organized/Bombus_sichelii/worker/ABAURA8208_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/worker/ABAURA8208_P1.JPG
 ID=291
 LM=19
 37.00000 380.00000
@@ -6442,7 +6442,7 @@ LM=19
 135.00000 380.00000
 165.00000 379.00000
 123.00000 395.00000
-IMAGE=data/images/organized/Bombus_ruderarius/worker/CD387313_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/worker/CD387313_P1.JPG
 ID=292
 LM=19
 86.00000 1022.00000
@@ -6464,7 +6464,7 @@ LM=19
 507.00000 1148.00000
 613.00000 1165.00000
 446.00000 1188.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/FR15ABOM130722047_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/FR15ABOM130722047_P1.JPG
 ID=293
 LM=19
 2383.00000 1983.00000
@@ -6486,7 +6486,7 @@ LM=19
 2519.00000 1969.00000
 2559.00000 1964.00000
 2503.00000 1990.00000
-IMAGE=data/images/organized/Bombus_ruderarius/queen/ABAURA8150c_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/queen/ABAURA8150c_P1.JPG
 ID=294
 LM=19
 215.00000 1311.00000
@@ -6508,7 +6508,7 @@ LM=19
 693.00000 1307.00000
 803.00000 1290.00000
 634.00000 1369.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/CD388820_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/CD388820_P1.JPG
 ID=295
 LM=19
 1528.00000 1218.00000
@@ -6530,7 +6530,7 @@ LM=19
 1636.00000 1218.00000
 1666.00000 1216.00000
 1622.00000 1233.00000
-IMAGE=data/images/organized/Bombus_pratorum/queen/ABAURA8201_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/queen/ABAURA8201_P1.JPG
 ID=296
 LM=19
 2034.00000 1855.00000
@@ -6552,7 +6552,7 @@ LM=19
 2403.00000 1868.00000
 2496.00000 1867.00000
 2363.00000 1918.00000
-IMAGE=data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_270702_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/worker/OPIE_Lapi_270702_P1.JPG
 ID=297
 LM=19
 2347.00000 1798.00000
@@ -6574,7 +6574,7 @@ LM=19
 2443.00000 1797.00000
 2467.00000 1796.00000
 2432.00000 1810.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/CD388235_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/CD388235_P1.JPG
 ID=298
 LM=19
 135.00000 1264.00000
@@ -6596,7 +6596,7 @@ LM=19
 488.00000 1252.00000
 591.00000 1244.00000
 452.00000 1302.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/NoName13_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/NoName13_P1.JPG
 ID=299
 LM=19
 190.00000 1208.00000
@@ -6618,7 +6618,7 @@ LM=19
 519.00000 1249.00000
 613.00000 1256.00000
 479.00000 1287.00000
-IMAGE=data/images/organized/Bombus_ruderarius/male/FR04ABOM220722054_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/male/FR04ABOM220722054_P1.JPG
 ID=300
 LM=19
 48.00000 436.00000
@@ -6640,7 +6640,7 @@ LM=19
 143.00000 433.00000
 166.00000 431.00000
 133.00000 446.00000
-IMAGE=data/images/organized/Bombus_sichelii/worker/ABAURA8238c_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/worker/ABAURA8238c_P1.JPG
 ID=301
 LM=19
 1977.00000 1898.00000
@@ -6662,7 +6662,7 @@ LM=19
 2388.00000 1921.00000
 2479.00000 1925.00000
 2328.00000 1979.00000
-IMAGE=data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_130720c_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/worker/OPIE_Lapi_130720c_P1.JPG
 ID=302
 LM=19
 1497.00000 1179.00000
@@ -6684,7 +6684,7 @@ LM=19
 1599.00000 1171.00000
 1627.00000 1168.00000
 1586.00000 1187.00000
-IMAGE=data/images/organized/Bombus_pratorum/queen/ABAURA7155_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/queen/ABAURA7155_P1.JPG
 ID=303
 LM=19
 229.00000 587.00000
@@ -6706,7 +6706,7 @@ LM=19
 310.00000 583.00000
 332.00000 580.00000
 301.00000 595.00000
-IMAGE=data/images/organized/Bombus_monticola/worker/Polset_1_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/worker/Polset_1_P1.JPG
 ID=304
 LM=19
 16.00000 239.00000
@@ -6728,7 +6728,7 @@ LM=19
 87.00000 226.00000
 107.00000 221.00000
 82.00000 237.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/VAN-2019.00849_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/VAN-2019.00849_P1.JPG
 ID=305
 LM=19
 2333.00000 1816.00000
@@ -6750,7 +6750,7 @@ LM=19
 2419.00000 1814.00000
 2440.00000 1814.00000
 2409.00000 1826.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/CD388229b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/CD388229b_P1.JPG
 ID=306
 LM=19
 193.00000 1248.00000
@@ -6772,7 +6772,7 @@ LM=19
 596.00000 1244.00000
 706.00000 1227.00000
 561.00000 1294.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/15L2021-1498_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/15L2021-1498_P1.JPG
 ID=307
 LM=19
 59.00000 400.00000
@@ -6794,7 +6794,7 @@ LM=19
 152.00000 396.00000
 173.00000 395.00000
 140.00000 410.00000
-IMAGE=data/images/organized/Bombus_sichelii/worker/ABAURA8203_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/worker/ABAURA8203_P1.JPG
 ID=308
 LM=19
 2146.00000 1862.00000
@@ -6816,7 +6816,7 @@ LM=19
 2476.00000 1923.00000
 2567.00000 1932.00000
 2434.00000 1959.00000
-IMAGE=data/images/organized/Bombus_monticola/worker/CollecYvan16_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/worker/CollecYvan16_P1.JPG
 ID=309
 LM=19
 389.00000 624.00000
@@ -6838,7 +6838,7 @@ LM=19
 465.00000 624.00000
 484.00000 623.00000
 456.00000 634.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/CD388861b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/CD388861b_P1.JPG
 ID=310
 LM=19
 297.00000 500.00000
@@ -6860,7 +6860,7 @@ LM=19
 379.00000 497.00000
 402.00000 496.00000
 371.00000 510.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/ABAURA4926_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/ABAURA4926_P1.JPG
 ID=311
 LM=19
 20.00000 219.00000
@@ -6882,7 +6882,7 @@ LM=19
 83.00000 214.00000
 101.00000 210.00000
 79.00000 221.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/2020.06244_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/2020.06244_P1.JPG
 ID=312
 LM=19
 40.00000 416.00000
@@ -6904,7 +6904,7 @@ LM=19
 135.00000 418.00000
 163.00000 417.00000
 125.00000 431.00000
-IMAGE=data/images/organized/Bombus_pomorum/worker/POLLINIS4415_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/worker/POLLINIS4415_P1.JPG
 ID=313
 LM=19
 91.00000 1310.00000
@@ -6926,7 +6926,7 @@ LM=19
 441.00000 1333.00000
 541.00000 1337.00000
 399.00000 1379.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/FR15ABOM210821177_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/FR15ABOM210821177_P1.JPG
 ID=314
 LM=19
 2006.00000 1932.00000
@@ -6948,7 +6948,7 @@ LM=19
 2346.00000 1945.00000
 2436.00000 1943.00000
 2302.00000 1992.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/FR73ABOM130722006_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/FR73ABOM130722006_P1.JPG
 ID=315
 LM=19
 2326.00000 1865.00000
@@ -6970,7 +6970,7 @@ LM=19
 2419.00000 1855.00000
 2440.00000 1853.00000
 2408.00000 1869.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/ABAURA8150_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/ABAURA8150_P1.JPG
 ID=316
 LM=19
 16.00000 218.00000
@@ -6992,7 +6992,7 @@ LM=19
 84.00000 203.00000
 102.00000 198.00000
 79.00000 213.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/VAN-2019.00787_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/VAN-2019.00787_P1.JPG
 ID=317
 LM=19
 185.00000 1234.00000
@@ -7014,7 +7014,7 @@ LM=19
 626.00000 1270.00000
 732.00000 1268.00000
 567.00000 1322.00000
-IMAGE=data/images/organized/Bombus_sichelii/male/FR73ABOM120722026_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/male/FR73ABOM120722026_P1.JPG
 ID=318
 LM=19
 39.00000 423.00000
@@ -7036,7 +7036,7 @@ LM=19
 129.00000 418.00000
 152.00000 416.00000
 120.00000 431.00000
-IMAGE=data/images/organized/Bombus_sichelii/worker/ABAURA8208b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/worker/ABAURA8208b_P1.JPG
 ID=319
 LM=19
 164.00000 1333.00000
@@ -7058,7 +7058,7 @@ LM=19
 513.00000 1340.00000
 617.00000 1335.00000
 477.00000 1380.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/FR15_ABOM25082020007_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/FR15_ABOM25082020007_P1.JPG
 ID=320
 LM=19
 271.00000 612.00000
@@ -7080,7 +7080,7 @@ LM=19
 372.00000 595.00000
 399.00000 589.00000
 364.00000 609.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/ABAURA8238_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/ABAURA8238_P1.JPG
 ID=321
 LM=19
 44.00000 373.00000
@@ -7102,7 +7102,7 @@ LM=19
 146.00000 363.00000
 174.00000 359.00000
 136.00000 377.00000
-IMAGE=data/images/organized/Bombus_ruderarius/worker/ABAURA4904_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/worker/ABAURA4904_P1.JPG
 ID=322
 LM=19
 98.00000 1181.00000
@@ -7124,7 +7124,7 @@ LM=19
 514.00000 1195.00000
 643.00000 1191.00000
 473.00000 1247.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/FR15ABOM210821107_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/FR15ABOM210821107_P1.JPG
 ID=323
 LM=19
 2018.00000 1912.00000
@@ -7146,7 +7146,7 @@ LM=19
 2386.00000 1945.00000
 2481.00000 1946.00000
 2344.00000 1990.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/FR73ABOM130722040_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/FR73ABOM130722040_P1.JPG
 ID=324
 LM=19
 2273.00000 1820.00000
@@ -7168,7 +7168,7 @@ LM=19
 2372.00000 1815.00000
 2398.00000 1812.00000
 2363.00000 1828.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/POLLINIS5943_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/POLLINIS5943_P1.JPG
 ID=325
 LM=19
 2049.00000 1983.00000
@@ -7190,7 +7190,7 @@ LM=19
 2401.00000 2000.00000
 2496.00000 1998.00000
 2353.00000 2049.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/FR73ABOM120722021_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/FR73ABOM120722021_P1.JPG
 ID=326
 LM=19
 76.00000 384.00000
@@ -7212,7 +7212,7 @@ LM=19
 173.00000 393.00000
 201.00000 394.00000
 162.00000 405.00000
-IMAGE=data/images/organized/Bombus_ruderarius/worker/VAN-2019.00795_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/worker/VAN-2019.00795_P1.JPG
 ID=327
 LM=19
 2004.00000 1906.00000
@@ -7234,7 +7234,7 @@ LM=19
 2385.00000 1965.00000
 2474.00000 1973.00000
 2319.00000 2012.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/FR73ABOM130722005_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/FR73ABOM130722005_P1.JPG
 ID=328
 LM=19
 78.00000 395.00000
@@ -7256,7 +7256,7 @@ LM=19
 190.00000 398.00000
 217.00000 398.00000
 175.00000 413.00000
-IMAGE=data/images/organized/Bombus_sichelii/worker/ABAURA8238d_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/worker/ABAURA8238d_P1.JPG
 ID=329
 LM=19
 197.00000 1255.00000
@@ -7278,7 +7278,7 @@ LM=19
 610.00000 1261.00000
 708.00000 1253.00000
 553.00000 1319.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/CD388003_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/CD388003_P1.JPG
 ID=330
 LM=19
 2104.00000 1968.00000
@@ -7300,7 +7300,7 @@ LM=19
 2445.00000 1992.00000
 2530.00000 1988.00000
 2405.00000 2033.00000
-IMAGE=data/images/organized/Bombus_monticola/worker/FR74ABOM170722014_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/worker/FR74ABOM170722014_P1.JPG
 ID=331
 LM=19
 2344.00000 1881.00000
@@ -7322,7 +7322,7 @@ LM=19
 2420.00000 1870.00000
 2439.00000 1868.00000
 2413.00000 1882.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/2020.00294_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/2020.00294_P1.JPG
 ID=332
 LM=19
 2031.00000 1856.00000
@@ -7344,7 +7344,7 @@ LM=19
 2362.00000 1888.00000
 2447.00000 1888.00000
 2317.00000 1932.00000
-IMAGE=data/images/organized/Bombus_monticola/male/FR04ABOM220722060_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/male/FR04ABOM220722060_P1.JPG
 ID=333
 LM=19
 163.00000 1152.00000
@@ -7366,7 +7366,7 @@ LM=19
 507.00000 1135.00000
 598.00000 1119.00000
 473.00000 1176.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/ABAURA8207c_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/ABAURA8207c_P1.JPG
 ID=334
 LM=19
 176.00000 1136.00000
@@ -7388,7 +7388,7 @@ LM=19
 643.00000 1242.00000
 763.00000 1249.00000
 585.00000 1284.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/FR15_ABOM180720053_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/FR15_ABOM180720053_P1.JPG
 ID=335
 LM=19
 199.00000 628.00000
@@ -7410,7 +7410,7 @@ LM=19
 283.00000 633.00000
 307.00000 632.00000
 277.00000 644.00000
-IMAGE=data/images/organized/Bombus_monticola/male/CD388821_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/male/CD388821_P1.JPG
 ID=336
 LM=19
 277.00000 638.00000
@@ -7432,7 +7432,7 @@ LM=19
 382.00000 623.00000
 412.00000 617.00000
 371.00000 639.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/2019.02188_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/2019.02188_P1.JPG
 ID=337
 LM=19
 133.00000 1228.00000
@@ -7454,7 +7454,7 @@ LM=19
 545.00000 1265.00000
 662.00000 1270.00000
 496.00000 1312.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/FR15ABOM210822015_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/FR15ABOM210822015_P1.JPG
 ID=338
 LM=19
 1493.00000 1198.00000
@@ -7476,7 +7476,7 @@ LM=19
 1603.00000 1196.00000
 1633.00000 1194.00000
 1588.00000 1213.00000
-IMAGE=data/images/organized/Bombus_pratorum/queen/2019.02184_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/queen/2019.02184_P1.JPG
 ID=339
 LM=19
 330.00000 547.00000
@@ -7498,7 +7498,7 @@ LM=19
 432.00000 538.00000
 457.00000 536.00000
 420.00000 553.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/2020.03926_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/2020.03926_P1.JPG
 ID=340
 LM=19
 2315.00000 1849.00000
@@ -7520,7 +7520,7 @@ LM=19
 2414.00000 1845.00000
 2440.00000 1843.00000
 2405.00000 1858.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/CD388145_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/CD388145_P1.JPG
 ID=341
 LM=19
 112.00000 1102.00000
@@ -7542,7 +7542,7 @@ LM=19
 432.00000 1156.00000
 526.00000 1168.00000
 391.00000 1193.00000
-IMAGE=data/images/organized/Bombus_ruderarius/male/FR05ABOM220722023_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/male/FR05ABOM220722023_P1.JPG
 ID=342
 LM=19
 44.00000 389.00000
@@ -7564,7 +7564,7 @@ LM=19
 148.00000 384.00000
 177.00000 381.00000
 139.00000 397.00000
-IMAGE=data/images/organized/Bombus_ruderarius/male/ABAURA8204_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/male/ABAURA8204_P1.JPG
 ID=343
 LM=19
 81.00000 389.00000
@@ -7586,7 +7586,7 @@ LM=19
 174.00000 385.00000
 201.00000 383.00000
 165.00000 399.00000
-IMAGE=data/images/organized/Bombus_ruderarius/worker/ABAURA8150b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/worker/ABAURA8150b_P1.JPG
 ID=344
 LM=19
 205.00000 529.00000
@@ -7608,7 +7608,7 @@ LM=19
 293.00000 522.00000
 316.00000 517.00000
 284.00000 536.00000
-IMAGE=data/images/organized/Bombus_monticola/worker/CD388623c_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/worker/CD388623c_P1.JPG
 ID=345
 LM=19
 2324.00000 1891.00000
@@ -7630,7 +7630,7 @@ LM=19
 2419.00000 1885.00000
 2443.00000 1883.00000
 2410.00000 1898.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/CD388229c_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/CD388229c_P1.JPG
 ID=346
 LM=19
 2295.00000 1749.00000
@@ -7652,7 +7652,7 @@ LM=19
 2403.00000 1749.00000
 2434.00000 1748.00000
 2392.00000 1762.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/CD387804c_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/CD387804c_P1.JPG
 ID=347
 LM=19
 2012.00000 1877.00000
@@ -7674,7 +7674,7 @@ LM=19
 2389.00000 1919.00000
 2481.00000 1922.00000
 2337.00000 1963.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/FR04ABOM220722061_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/FR04ABOM220722061_P1.JPG
 ID=348
 LM=19
 250.00000 1218.00000
@@ -7696,7 +7696,7 @@ LM=19
 683.00000 1241.00000
 788.00000 1238.00000
 624.00000 1296.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/ABAURA8604_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/ABAURA8604_P1.JPG
 ID=349
 LM=19
 240.00000 924.00000
@@ -7718,7 +7718,7 @@ LM=19
 867.00000 981.00000
 1047.00000 966.00000
 798.00000 1055.00000
-IMAGE=data/images/organized/Bombus_rupestris/queen/FR15ABOM100721031_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/queen/FR15ABOM100721031_P1.JPG
 ID=350
 LM=19
 47.00000 400.00000
@@ -7740,7 +7740,7 @@ LM=19
 126.00000 388.00000
 150.00000 383.00000
 118.00000 401.00000
-IMAGE=data/images/organized/Bombus_ruderarius/worker/ABAURA4902_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/worker/ABAURA4902_P1.JPG
 ID=351
 LM=19
 142.00000 1032.00000
@@ -7762,7 +7762,7 @@ LM=19
 476.00000 1034.00000
 566.00000 1023.00000
 442.00000 1075.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/ABAURA8207b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/ABAURA8207b_P1.JPG
 ID=352
 LM=19
 133.00000 1246.00000
@@ -7784,7 +7784,7 @@ LM=19
 485.00000 1269.00000
 573.00000 1277.00000
 436.00000 1315.00000
-IMAGE=data/images/organized/Bombus_pomorum/worker/FR15ABOM150821068_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/worker/FR15ABOM150821068_P1.JPG
 ID=353
 LM=19
 2011.00000 1797.00000
@@ -7806,7 +7806,7 @@ LM=19
 2355.00000 1820.00000
 2441.00000 1819.00000
 2311.00000 1865.00000
-IMAGE=data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_230620b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/worker/OPIE_Lapi_230620b_P1.JPG
 ID=354
 LM=19
 1956.00000 1865.00000
@@ -7828,7 +7828,7 @@ LM=19
 2345.00000 1914.00000
 2450.00000 1917.00000
 2303.00000 1957.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/FR73ABOM130722020_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/FR73ABOM130722020_P1.JPG
 ID=355
 LM=19
 197.00000 1268.00000
@@ -7850,7 +7850,7 @@ LM=19
 651.00000 1310.00000
 775.00000 1308.00000
 597.00000 1359.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/FR15ABOM200722065_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/FR15ABOM200722065_P1.JPG
 ID=356
 LM=19
 2347.00000 1892.00000
@@ -7872,7 +7872,7 @@ LM=19
 2436.00000 1882.00000
 2460.00000 1878.00000
 2428.00000 1895.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/CD388809_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/CD388809_P1.JPG
 ID=357
 LM=19
 151.00000 1190.00000
@@ -7894,7 +7894,7 @@ LM=19
 536.00000 1182.00000
 629.00000 1177.00000
 490.00000 1240.00000
-IMAGE=data/images/organized/Bombus_sichelii/male/FR04ABOM220722047_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/male/FR04ABOM220722047_P1.JPG
 ID=358
 LM=19
 254.00000 558.00000
@@ -7916,7 +7916,7 @@ LM=19
 346.00000 538.00000
 375.00000 530.00000
 340.00000 553.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/ABAURA8240c_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/ABAURA8240c_P1.JPG
 ID=359
 LM=19
 1724.00000 1930.00000
@@ -7938,7 +7938,7 @@ LM=19
 2243.00000 1970.00000
 2388.00000 1969.00000
 2158.00000 2043.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/queen/FR04ABOM220722089_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/queen/FR04ABOM220722089_P1.JPG
 ID=360
 LM=19
 1969.00000 1993.00000
@@ -7960,7 +7960,7 @@ LM=19
 2387.00000 1980.00000
 2484.00000 1972.00000
 2344.00000 2028.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/15L2021-1739_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/15L2021-1739_P1.JPG
 ID=361
 LM=19
 2347.00000 1852.00000
@@ -7982,7 +7982,7 @@ LM=19
 2427.00000 1842.00000
 2450.00000 1839.00000
 2420.00000 1854.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/ABAURA8867_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/ABAURA8867_P1.JPG
 ID=362
 LM=19
 2053.00000 1900.00000
@@ -8004,7 +8004,7 @@ LM=19
 2415.00000 1951.00000
 2502.00000 1957.00000
 2361.00000 1997.00000
-IMAGE=data/images/organized/Bombus_monticola/worker/FR73ABOM130722001_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/worker/FR73ABOM130722001_P1.JPG
 ID=363
 LM=19
 21.00000 223.00000
@@ -8026,7 +8026,7 @@ LM=19
 87.00000 213.00000
 106.00000 209.00000
 83.00000 223.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/VAN-2019.00850_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/VAN-2019.00850_P1.JPG
 ID=364
 LM=19
 47.00000 408.00000
@@ -8048,7 +8048,7 @@ LM=19
 140.00000 404.00000
 170.00000 400.00000
 133.00000 416.00000
-IMAGE=data/images/organized/Bombus_ruderarius/worker/ABAURA8205b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/worker/ABAURA8205b_P1.JPG
 ID=365
 LM=19
 172.00000 1159.00000
@@ -8070,7 +8070,7 @@ LM=19
 504.00000 1171.00000
 591.00000 1171.00000
 465.00000 1210.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/NoName9_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/NoName9_P1.JPG
 ID=366
 LM=19
 1986.00000 2007.00000
@@ -8092,7 +8092,7 @@ LM=19
 2376.00000 2004.00000
 2483.00000 1999.00000
 2329.00000 2057.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/15L2021-1483_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/15L2021-1483_P1.JPG
 ID=367
 LM=19
 280.00000 1149.00000
@@ -8114,7 +8114,7 @@ LM=19
 972.00000 1254.00000
 1161.00000 1252.00000
 887.00000 1327.00000
-IMAGE=data/images/organized/Bombus_rupestris/queen/FR15ABOM200821156_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/queen/FR15ABOM200821156_P1.JPG
 ID=368
 LM=19
 2018.00000 1960.00000
@@ -8136,7 +8136,7 @@ LM=19
 2402.00000 1965.00000
 2493.00000 1957.00000
 2357.00000 2015.00000
-IMAGE=data/images/organized/Bombus_monticola/male/FR73ABOM150722001_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/male/FR73ABOM150722001_P1.JPG
 ID=369
 LM=19
 38.00000 394.00000
@@ -8158,7 +8158,7 @@ LM=19
 129.00000 388.00000
 151.00000 385.00000
 119.00000 401.00000
-IMAGE=data/images/organized/Bombus_sichelii/worker/CD388018c_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/worker/CD388018c_P1.JPG
 ID=370
 LM=19
 2010.00000 1957.00000
@@ -8180,7 +8180,7 @@ LM=19
 2403.00000 1978.00000
 2491.00000 1977.00000
 2349.00000 2029.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/FR73ABOM200722034_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/FR73ABOM200722034_P1.JPG
 ID=371
 LM=19
 2347.00000 1884.00000
@@ -8202,7 +8202,7 @@ LM=19
 2438.00000 1883.00000
 2460.00000 1882.00000
 2429.00000 1896.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/ABAURA5591_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/ABAURA5591_P1.JPG
 ID=372
 LM=19
 43.00000 385.00000
@@ -8224,7 +8224,7 @@ LM=19
 143.00000 371.00000
 170.00000 364.00000
 134.00000 385.00000
-IMAGE=data/images/organized/Bombus_sichelii/worker/CD387770d_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/worker/CD387770d_P1.JPG
 ID=373
 LM=19
 25.00000 338.00000
@@ -8246,7 +8246,7 @@ LM=19
 102.00000 335.00000
 124.00000 334.00000
 93.00000 346.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/BAR.2018.00342_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/BAR.2018.00342_P1.JPG
 ID=374
 LM=19
 161.00000 1176.00000
@@ -8268,7 +8268,7 @@ LM=19
 490.00000 1200.00000
 589.00000 1207.00000
 443.00000 1246.00000
-IMAGE=data/images/organized/Bombus_ruderarius/male/FR05ABOM220722024_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/male/FR05ABOM220722024_P1.JPG
 ID=375
 LM=19
 2011.00000 2005.00000
@@ -8290,7 +8290,7 @@ LM=19
 2402.00000 2022.00000
 2492.00000 2018.00000
 2356.00000 2071.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/FR73ABOM120722072_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/FR73ABOM120722072_P1.JPG
 ID=376
 LM=19
 31.00000 399.00000
@@ -8312,7 +8312,7 @@ LM=19
 113.00000 401.00000
 139.00000 399.00000
 105.00000 411.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/CD387303_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/CD387303_P1.JPG
 ID=377
 LM=19
 2047.00000 2033.00000
@@ -8334,7 +8334,7 @@ LM=19
 2430.00000 2027.00000
 2522.00000 2024.00000
 2392.00000 2075.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/15L2021-1741_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/15L2021-1741_P1.JPG
 ID=378
 LM=19
 163.00000 1174.00000
@@ -8356,7 +8356,7 @@ LM=19
 552.00000 1227.00000
 655.00000 1234.00000
 502.00000 1273.00000
-IMAGE=data/images/organized/Bombus_sichelii/male/FR73ABOM200722017_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/male/FR73ABOM200722017_P1.JPG
 ID=379
 LM=19
 1972.00000 2019.00000
@@ -8378,7 +8378,7 @@ LM=19
 2382.00000 2012.00000
 2498.00000 2009.00000
 2344.00000 2064.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/15L2021-1742_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/15L2021-1742_P1.JPG
 ID=380
 LM=19
 156.00000 1167.00000
@@ -8400,7 +8400,7 @@ LM=19
 561.00000 1218.00000
 664.00000 1228.00000
 500.00000 1272.00000
-IMAGE=data/images/organized/Bombus_pomorum/worker/FR15ABOM200821215_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/worker/FR15ABOM200821215_P1.JPG
 ID=381
 LM=19
 254.00000 559.00000
@@ -8422,7 +8422,7 @@ LM=19
 354.00000 545.00000
 379.00000 540.00000
 346.00000 557.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/CD388821c_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/CD388821c_P1.JPG
 ID=382
 LM=19
 2299.00000 1887.00000
@@ -8444,7 +8444,7 @@ LM=19
 2429.00000 1882.00000
 2469.00000 1878.00000
 2414.00000 1901.00000
-IMAGE=data/images/organized/Bombus_ruderarius/queen/ABAURA7163_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/queen/ABAURA7163_P1.JPG
 ID=383
 LM=19
 297.00000 594.00000
@@ -8466,7 +8466,7 @@ LM=19
 399.00000 589.00000
 426.00000 586.00000
 389.00000 603.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/CD388861_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/CD388861_P1.JPG
 ID=384
 LM=19
 2090.00000 1981.00000
@@ -8488,7 +8488,7 @@ LM=19
 2455.00000 1984.00000
 2551.00000 1976.00000
 2412.00000 2030.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/FR04ABOM220722092_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/FR04ABOM220722092_P1.JPG
 ID=385
 LM=19
 203.00000 1246.00000
@@ -8510,7 +8510,7 @@ LM=19
 651.00000 1254.00000
 773.00000 1240.00000
 613.00000 1298.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/15L2021-1758_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/15L2021-1758_P1.JPG
 ID=386
 LM=19
 2043.00000 1911.00000
@@ -8532,7 +8532,7 @@ LM=19
 2388.00000 1925.00000
 2469.00000 1924.00000
 2355.00000 1974.00000
-IMAGE=data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_130720b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/worker/OPIE_Lapi_130720b_P1.JPG
 ID=387
 LM=19
 155.00000 1167.00000
@@ -8554,7 +8554,7 @@ LM=19
 567.00000 1212.00000
 682.00000 1212.00000
 513.00000 1255.00000
-IMAGE=data/images/organized/Bombus_pomorum/worker/FR15ABOM200821126_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/worker/FR15ABOM200821126_P1.JPG
 ID=388
 LM=19
 304.00000 1075.00000
@@ -8576,7 +8576,7 @@ LM=19
 896.00000 1149.00000
 1065.00000 1145.00000
 822.00000 1219.00000
-IMAGE=data/images/organized/Bombus_rupestris/queen/FR15ABOO0712002_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/queen/FR15ABOO0712002_P1.JPG
 ID=389
 LM=19
 2016.00000 1882.00000
@@ -8598,7 +8598,7 @@ LM=19
 2394.00000 1894.00000
 2497.00000 1888.00000
 2343.00000 1944.00000
-IMAGE=data/images/organized/Bombus_monticola/worker/ABAURA5667_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/worker/ABAURA5667_P1.JPG
 ID=390
 LM=19
 380.00000 517.00000
@@ -8620,7 +8620,7 @@ LM=19
 475.00000 507.00000
 501.00000 503.00000
 467.00000 520.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/CD388229_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/CD388229_P1.JPG
 ID=391
 LM=19
 1783.00000 1908.00000
@@ -8642,7 +8642,7 @@ LM=19
 2275.00000 1956.00000
 2401.00000 1956.00000
 2203.00000 2019.00000
-IMAGE=data/images/organized/Bombus_monticola/queen/FR73ABOM140722026_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/queen/FR73ABOM140722026_P1.JPG
 ID=392
 LM=19
 2329.00000 1800.00000
@@ -8664,7 +8664,7 @@ LM=19
 2424.00000 1798.00000
 2454.00000 1796.00000
 2415.00000 1811.00000
-IMAGE=data/images/organized/Bombus_sylvarum/queen/ABAURA7151_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/queen/ABAURA7151_P1.JPG
 ID=393
 LM=19
 174.00000 1357.00000
@@ -8686,7 +8686,7 @@ LM=19
 464.00000 1357.00000
 551.00000 1348.00000
 437.00000 1392.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/2020.04010_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/2020.04010_P1.JPG
 ID=394
 LM=19
 2091.00000 1917.00000
@@ -8708,7 +8708,7 @@ LM=19
 2420.00000 1961.00000
 2510.00000 1959.00000
 2377.00000 2001.00000
-IMAGE=data/images/organized/Bombus_monticola/worker/FR74ABOM160722001_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/worker/FR74ABOM160722001_P1.JPG
 ID=395
 LM=19
 1994.00000 1928.00000
@@ -8730,7 +8730,7 @@ LM=19
 2368.00000 1968.00000
 2461.00000 1975.00000
 2310.00000 2017.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/FR73ABOM200722038_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/FR73ABOM200722038_P1.JPG
 ID=396
 LM=19
 250.00000 954.00000
@@ -8752,7 +8752,7 @@ LM=19
 858.00000 1070.00000
 1028.00000 1079.00000
 777.00000 1135.00000
-IMAGE=data/images/organized/Bombus_rupestris/queen/FR15ABOM210821077_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/queen/FR15ABOM210821077_P1.JPG
 ID=397
 LM=19
 162.00000 1360.00000
@@ -8774,7 +8774,7 @@ LM=19
 438.00000 1372.00000
 516.00000 1370.00000
 406.00000 1405.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/ABB-2020.00032_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/ABB-2020.00032_P1.JPG
 ID=398
 LM=19
 148.00000 1147.00000
@@ -8796,7 +8796,7 @@ LM=19
 470.00000 1163.00000
 554.00000 1161.00000
 428.00000 1204.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/ABAURA8207d_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/ABAURA8207d_P1.JPG
 ID=399
 LM=19
 1983.00000 2035.00000
@@ -8818,7 +8818,7 @@ LM=19
 2396.00000 2030.00000
 2499.00000 2024.00000
 2354.00000 2085.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/15L2021-1740_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/15L2021-1740_P1.JPG
 ID=400
 LM=19
 2070.00000 1935.00000
@@ -8840,7 +8840,7 @@ LM=19
 2392.00000 1984.00000
 2468.00000 1988.00000
 2355.00000 2018.00000
-IMAGE=data/images/organized/Bombus_monticola/male/FR73ABOM150722006_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/male/FR73ABOM150722006_P1.JPG
 ID=401
 LM=19
 2344.00000 1856.00000
@@ -8862,7 +8862,7 @@ LM=19
 2426.00000 1850.00000
 2445.00000 1849.00000
 2419.00000 1862.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/ABAURA8526_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/ABAURA8526_P1.JPG
 ID=402
 LM=19
 329.00000 593.00000
@@ -8884,7 +8884,7 @@ LM=19
 429.00000 581.00000
 456.00000 577.00000
 417.00000 597.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/CD388821d_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/CD388821d_P1.JPG
 ID=403
 LM=19
 197.00000 1270.00000
@@ -8906,7 +8906,7 @@ LM=19
 608.00000 1303.00000
 703.00000 1303.00000
 550.00000 1351.00000
-IMAGE=data/images/organized/Bombus_sichelii/male/FR73ABOM200722030_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/male/FR73ABOM200722030_P1.JPG
 ID=404
 LM=19
 2292.00000 1839.00000
@@ -8928,7 +8928,7 @@ LM=19
 2391.00000 1824.00000
 2414.00000 1821.00000
 2381.00000 1839.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/POLLINIS5985_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/POLLINIS5985_P1.JPG
 ID=405
 LM=19
 230.00000 1363.00000
@@ -8950,7 +8950,7 @@ LM=19
 555.00000 1371.00000
 649.00000 1370.00000
 517.00000 1412.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/2020.03886_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/2020.03886_P1.JPG
 ID=406
 LM=19
 170.00000 1277.00000
@@ -8972,7 +8972,7 @@ LM=19
 571.00000 1292.00000
 677.00000 1287.00000
 521.00000 1341.00000
-IMAGE=data/images/organized/Bombus_sichelii/male/FR73ABOM200722018_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/male/FR73ABOM200722018_P1.JPG
 ID=407
 LM=19
 48.00000 448.00000
@@ -8994,7 +8994,7 @@ LM=19
 158.00000 438.00000
 194.00000 434.00000
 148.00000 452.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/2020.06348_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/2020.06348_P1.JPG
 ID=408
 LM=19
 2335.00000 1784.00000
@@ -9016,7 +9016,7 @@ LM=19
 2437.00000 1777.00000
 2463.00000 1774.00000
 2429.00000 1789.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/CD388860b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/CD388860b_P1.JPG
 ID=409
 LM=19
 309.00000 695.00000
@@ -9038,7 +9038,7 @@ LM=19
 401.00000 692.00000
 426.00000 690.00000
 390.00000 706.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/2019.02080_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/2019.02080_P1.JPG
 ID=410
 LM=19
 392.00000 693.00000
@@ -9060,7 +9060,7 @@ LM=19
 481.00000 689.00000
 505.00000 685.00000
 473.00000 700.00000
-IMAGE=data/images/organized/Bombus_monticola/male/CD387770b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/male/CD387770b_P1.JPG
 ID=411
 LM=19
 27.00000 387.00000
@@ -9082,7 +9082,7 @@ LM=19
 128.00000 386.00000
 152.00000 383.00000
 115.00000 399.00000
-IMAGE=data/images/organized/Bombus_sichelii/worker/CD388865c_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/worker/CD388865c_P1.JPG
 ID=412
 LM=19
 265.00000 802.00000
@@ -9104,7 +9104,7 @@ LM=19
 375.00000 805.00000
 406.00000 804.00000
 360.00000 821.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/2019.00316_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/2019.00316_P1.JPG
 ID=413
 LM=19
 35.00000 399.00000
@@ -9126,7 +9126,7 @@ LM=19
 164.00000 404.00000
 199.00000 403.00000
 149.00000 419.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/NoName3_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/NoName3_P1.JPG
 ID=414
 LM=19
 2047.00000 1837.00000
@@ -9148,7 +9148,7 @@ LM=19
 2386.00000 1846.00000
 2469.00000 1844.00000
 2344.00000 1892.00000
-IMAGE=data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_110702_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/worker/OPIE_Lapi_110702_P1.JPG
 ID=415
 LM=19
 50.00000 355.00000
@@ -9170,7 +9170,7 @@ LM=19
 134.00000 359.00000
 159.00000 358.00000
 127.00000 370.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/CD387324_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/CD387324_P1.JPG
 ID=416
 LM=19
 21.00000 224.00000
@@ -9192,7 +9192,7 @@ LM=19
 85.00000 214.00000
 103.00000 210.00000
 80.00000 224.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/VAN-2019.00822_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/VAN-2019.00822_P1.JPG
 ID=417
 LM=19
 112.00000 939.00000
@@ -9214,7 +9214,7 @@ LM=19
 514.00000 966.00000
 622.00000 966.00000
 460.00000 1017.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/FR15ABOM210822012_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/FR15ABOM210822012_P1.JPG
 ID=418
 LM=19
 388.00000 592.00000
@@ -9236,7 +9236,7 @@ LM=19
 475.00000 596.00000
 500.00000 596.00000
 467.00000 608.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/CD388230b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/CD388230b_P1.JPG
 ID=419
 LM=19
 2294.00000 1793.00000
@@ -9258,7 +9258,7 @@ LM=19
 2393.00000 1793.00000
 2418.00000 1792.00000
 2382.00000 1805.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/2020.00410_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/2020.00410_P1.JPG
 ID=420
 LM=19
 221.00000 1295.00000
@@ -9280,7 +9280,7 @@ LM=19
 589.00000 1339.00000
 693.00000 1347.00000
 533.00000 1384.00000
-IMAGE=data/images/organized/Bombus_pomorum/worker/FR15_ABOM30072020044_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/worker/FR15_ABOM30072020044_P1.JPG
 ID=421
 LM=19
 2002.00000 1864.00000
@@ -9302,7 +9302,7 @@ LM=19
 2381.00000 1875.00000
 2462.00000 1876.00000
 2330.00000 1932.00000
-IMAGE=data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_240620_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/worker/OPIE_Lapi_240620_P1.JPG
 ID=422
 LM=19
 41.00000 210.00000
@@ -9324,7 +9324,7 @@ LM=19
 113.00000 198.00000
 131.00000 193.00000
 108.00000 207.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/2020.06243_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/2020.06243_P1.JPG
 ID=423
 LM=19
 300.00000 456.00000
@@ -9346,7 +9346,7 @@ LM=19
 410.00000 448.00000
 442.00000 444.00000
 402.00000 462.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/CD388230_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/CD388230_P1.JPG
 ID=424
 LM=19
 174.00000 1298.00000
@@ -9368,7 +9368,7 @@ LM=19
 451.00000 1296.00000
 537.00000 1289.00000
 428.00000 1327.00000
-IMAGE=data/images/organized/Bombus_ruderarius/worker/POLLINIS4455_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/worker/POLLINIS4455_P1.JPG
 ID=425
 LM=19
 1803.00000 1913.00000
@@ -9390,7 +9390,7 @@ LM=19
 2371.00000 1961.00000
 2515.00000 1955.00000
 2293.00000 2033.00000
-IMAGE=data/images/organized/Bombus_wurflenii/queen/FR15AB100518002_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/queen/FR15AB100518002_P1.JPG
 ID=426
 LM=19
 261.00000 1341.00000
@@ -9412,7 +9412,7 @@ LM=19
 541.00000 1332.00000
 616.00000 1324.00000
 516.00000 1364.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/2012.0034_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/2012.0034_P1.JPG
 ID=427
 LM=19
 184.00000 1278.00000
@@ -9434,7 +9434,7 @@ LM=19
 584.00000 1259.00000
 686.00000 1244.00000
 546.00000 1313.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/15L2021-1514_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/15L2021-1514_P1.JPG
 ID=428
 LM=19
 14.00000 189.00000
@@ -9456,7 +9456,7 @@ LM=19
 79.00000 176.00000
 95.00000 172.00000
 73.00000 186.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/VAN-2019.00824_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/VAN-2019.00824_P1.JPG
 ID=429
 LM=19
 173.00000 1280.00000
@@ -9478,7 +9478,7 @@ LM=19
 517.00000 1295.00000
 610.00000 1296.00000
 485.00000 1336.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/NoName12_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/NoName12_P1.JPG
 ID=430
 LM=19
 2050.00000 1918.00000
@@ -9500,7 +9500,7 @@ LM=19
 2412.00000 1977.00000
 2508.00000 1978.00000
 2373.00000 2016.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/FR73ABOM130722066_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/FR73ABOM130722066_P1.JPG
 ID=431
 LM=19
 2100.00000 2060.00000
@@ -9522,7 +9522,7 @@ LM=19
 2470.00000 2041.00000
 2569.00000 2033.00000
 2431.00000 2099.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/15L2021-1743_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/15L2021-1743_P1.JPG
 ID=432
 LM=19
 195.00000 1091.00000
@@ -9544,7 +9544,7 @@ LM=19
 619.00000 1163.00000
 724.00000 1167.00000
 561.00000 1209.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/FR15ABOM120722071_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/FR15ABOM120722071_P1.JPG
 ID=433
 LM=19
 2137.00000 1953.00000
@@ -9566,7 +9566,7 @@ LM=19
 2425.00000 1985.00000
 2511.00000 1982.00000
 2401.00000 2015.00000
-IMAGE=data/images/organized/Bombus_monticola/worker/CollecYvan17_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/worker/CollecYvan17_P1.JPG
 ID=434
 LM=19
 41.00000 408.00000
@@ -9588,7 +9588,7 @@ LM=19
 153.00000 408.00000
 179.00000 407.00000
 139.00000 423.00000
-IMAGE=data/images/organized/Bombus_sichelii/worker/CD388865b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/worker/CD388865b_P1.JPG
 ID=435
 LM=19
 1756.00000 1932.00000
@@ -9610,7 +9610,7 @@ LM=19
 2289.00000 1957.00000
 2433.00000 1954.00000
 2222.00000 2024.00000
-IMAGE=data/images/organized/Bombus_pomorum/queen/FR15ABOM100721047_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/queen/FR15ABOM100721047_P1.JPG
 ID=436
 LM=19
 2331.00000 1825.00000
@@ -9632,7 +9632,7 @@ LM=19
 2436.00000 1813.00000
 2464.00000 1808.00000
 2428.00000 1827.00000
-IMAGE=data/images/organized/Bombus_soroeensis/male/POLLINIS4384_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/male/POLLINIS4384_P1.JPG
 ID=437
 LM=19
 140.00000 1299.00000
@@ -9654,7 +9654,7 @@ LM=19
 447.00000 1340.00000
 541.00000 1344.00000
 415.00000 1374.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/FR15ABOM210821128_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/FR15ABOM210821128_P1.JPG
 ID=438
 LM=19
 68.00000 381.00000
@@ -9676,7 +9676,7 @@ LM=19
 177.00000 380.00000
 202.00000 378.00000
 165.00000 394.00000
-IMAGE=data/images/organized/Bombus_sichelii/worker/ABAURA8238b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/worker/ABAURA8238b_P1.JPG
 ID=439
 LM=19
 2022.00000 1912.00000
@@ -9698,7 +9698,7 @@ LM=19
 2374.00000 1934.00000
 2468.00000 1927.00000
 2335.00000 1980.00000
-IMAGE=data/images/organized/Bombus_monticola/male/FR73ABOM130722037_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_monticola/male/FR73ABOM130722037_P1.JPG
 ID=440
 LM=19
 233.00000 1022.00000
@@ -9720,7 +9720,7 @@ LM=19
 818.00000 1148.00000
 991.00000 1163.00000
 736.00000 1207.00000
-IMAGE=data/images/organized/Bombus_rupestris/queen/FR15ABOM310520005_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/queen/FR15ABOM310520005_P1.JPG
 ID=441
 LM=19
 155.00000 1292.00000
@@ -9742,7 +9742,7 @@ LM=19
 543.00000 1302.00000
 646.00000 1290.00000
 515.00000 1341.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/15L2021-1731_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/15L2021-1731_P1.JPG
 ID=442
 LM=19
 2049.00000 1882.00000
@@ -9764,7 +9764,7 @@ LM=19
 2416.00000 1884.00000
 2504.00000 1881.00000
 2370.00000 1934.00000
-IMAGE=data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_160720b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/worker/OPIE_Lapi_160720b_P1.JPG
 ID=443
 LM=19
 161.00000 1338.00000
@@ -9786,7 +9786,7 @@ LM=19
 570.00000 1368.00000
 661.00000 1367.00000
 513.00000 1420.00000
-IMAGE=data/images/organized/Bombus_sichelii/male/CollecYvan4_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/male/CollecYvan4_P1.JPG
 ID=444
 LM=19
 160.00000 1257.00000
@@ -9808,7 +9808,7 @@ LM=19
 510.00000 1290.00000
 602.00000 1294.00000
 469.00000 1331.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/FR15ABOM210821143_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/FR15ABOM210821143_P1.JPG
 ID=445
 LM=19
 172.00000 1149.00000
@@ -9830,7 +9830,7 @@ LM=19
 561.00000 1241.00000
 679.00000 1258.00000
 515.00000 1278.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/FR15ABOM210821110_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/FR15ABOM210821110_P1.JPG
 ID=446
 LM=19
 2088.00000 1886.00000
@@ -9852,7 +9852,7 @@ LM=19
 2444.00000 1934.00000
 2548.00000 1937.00000
 2400.00000 1972.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/FR73ABOM130722027_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/FR73ABOM130722027_P1.JPG
 ID=447
 LM=19
 379.00000 479.00000
@@ -9874,7 +9874,7 @@ LM=19
 463.00000 471.00000
 487.00000 469.00000
 454.00000 484.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/POLLINIS4393_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/POLLINIS4393_P1.JPG
 ID=448
 LM=19
 210.00000 1221.00000
@@ -9896,7 +9896,7 @@ LM=19
 602.00000 1240.00000
 714.00000 1231.00000
 565.00000 1287.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/15L2021-1546_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/15L2021-1546_P1.JPG
 ID=449
 LM=19
 202.00000 1411.00000
@@ -9918,7 +9918,7 @@ LM=19
 598.00000 1399.00000
 692.00000 1387.00000
 548.00000 1453.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/CD388003b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/CD388003b_P1.JPG
 ID=450
 LM=19
 125.00000 1250.00000
@@ -9940,7 +9940,7 @@ LM=19
 443.00000 1287.00000
 531.00000 1295.00000
 403.00000 1326.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/NoName10_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/NoName10_P1.JPG
 ID=451
 LM=19
 142.00000 1309.00000
@@ -9962,7 +9962,7 @@ LM=19
 457.00000 1350.00000
 546.00000 1356.00000
 420.00000 1382.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/BAR-2018.00871_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/BAR-2018.00871_P1.JPG
 ID=452
 LM=19
 54.00000 409.00000
@@ -9984,7 +9984,7 @@ LM=19
 148.00000 410.00000
 176.00000 410.00000
 137.00000 424.00000
-IMAGE=data/images/organized/Bombus_ruderarius/worker/ABAURA8205_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/worker/ABAURA8205_P1.JPG
 ID=453
 LM=19
 1511.00000 1182.00000
@@ -10006,7 +10006,7 @@ LM=19
 1615.00000 1179.00000
 1641.00000 1178.00000
 1601.00000 1194.00000
-IMAGE=data/images/organized/Bombus_pratorum/queen/2019.02118_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/queen/2019.02118_P1.JPG
 ID=454
 LM=19
 159.00000 1320.00000
@@ -10028,7 +10028,7 @@ LM=19
 566.00000 1307.00000
 673.00000 1295.00000
 530.00000 1352.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/15L2021-1499_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/15L2021-1499_P1.JPG
 ID=455
 LM=19
 224.00000 1184.00000
@@ -10050,7 +10050,7 @@ LM=19
 507.00000 1189.00000
 588.00000 1187.00000
 471.00000 1229.00000
-IMAGE=data/images/organized/Bombus_ruderarius/worker/D264515_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/worker/D264515_P1.JPG
 ID=456
 LM=19
 52.00000 398.00000
@@ -10072,7 +10072,7 @@ LM=19
 145.00000 401.00000
 172.00000 400.00000
 135.00000 412.00000
-IMAGE=data/images/organized/Bombus_ruderarius/worker/ABAURA4915_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/worker/ABAURA4915_P1.JPG
 ID=457
 LM=19
 2201.00000 1811.00000
@@ -10094,7 +10094,7 @@ LM=19
 2326.00000 1810.00000
 2362.00000 1810.00000
 2311.00000 1828.00000
-IMAGE=data/images/organized/Bombus_sylvarum/queen/20A.07897_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/queen/20A.07897_P1.JPG
 ID=458
 LM=19
 53.00000 399.00000
@@ -10116,7 +10116,7 @@ LM=19
 167.00000 393.00000
 202.00000 390.00000
 155.00000 409.00000
-IMAGE=data/images/organized/Bombus_ruderarius/male/ABAURA8602_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/male/ABAURA8602_P1.JPG
 ID=459
 LM=19
 320.00000 578.00000
@@ -10138,7 +10138,7 @@ LM=19
 415.00000 565.00000
 440.00000 561.00000
 407.00000 578.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/AGR.2016.1415_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/AGR.2016.1415_P1.JPG
 ID=460
 LM=19
 163.00000 1129.00000
@@ -10160,7 +10160,7 @@ LM=19
 494.00000 1212.00000
 583.00000 1231.00000
 449.00000 1247.00000
-IMAGE=data/images/organized/Bombus_ruderarius/male/FR05ABOM220722028_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/male/FR05ABOM220722028_P1.JPG
 ID=461
 LM=19
 195.00000 1265.00000
@@ -10182,7 +10182,7 @@ LM=19
 495.00000 1265.00000
 580.00000 1260.00000
 470.00000 1300.00000
-IMAGE=data/images/organized/Bombus_ruderarius/male/FR73ABOM120722025_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/male/FR73ABOM120722025_P1.JPG
 ID=462
 LM=19
 2351.00000 1872.00000
@@ -10204,7 +10204,7 @@ LM=19
 2439.00000 1869.00000
 2462.00000 1869.00000
 2430.00000 1881.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/ABAURA8151_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/ABAURA8151_P1.JPG
 ID=463
 LM=19
 200.00000 1143.00000
@@ -10226,7 +10226,7 @@ LM=19
 527.00000 1233.00000
 610.00000 1259.00000
 461.00000 1271.00000
-IMAGE=data/images/organized/Bombus_ruderarius/male/FR04ABOM220722050_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/male/FR04ABOM220722050_P1.JPG
 ID=464
 LM=19
 2006.00000 1910.00000
@@ -10248,7 +10248,7 @@ LM=19
 2375.00000 1923.00000
 2470.00000 1918.00000
 2339.00000 1967.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/male/FR73ABOM130722007_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/male/FR73ABOM130722007_P1.JPG
 ID=465
 LM=19
 152.00000 1324.00000
@@ -10270,7 +10270,7 @@ LM=19
 502.00000 1326.00000
 593.00000 1312.00000
 474.00000 1367.00000
-IMAGE=data/images/organized/Bombus_sichelii/male/FR04ABOM220722046_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/male/FR04ABOM220722046_P1.JPG
 ID=466
 LM=19
 173.00000 420.00000
@@ -10292,7 +10292,7 @@ LM=19
 239.00000 418.00000
 255.00000 417.00000
 234.00000 425.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/N815_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/N815_P1.JPG
 ID=467
 LM=19
 196.00000 1286.00000
@@ -10314,7 +10314,7 @@ LM=19
 556.00000 1308.00000
 656.00000 1306.00000
 519.00000 1350.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/FR15_ABOM25082020010_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/FR15_ABOM25082020010_P1.JPG
 ID=468
 LM=19
 134.00000 1228.00000
@@ -10336,7 +10336,7 @@ LM=19
 602.00000 1282.00000
 715.00000 1284.00000
 549.00000 1333.00000
-IMAGE=data/images/organized/Bombus_wurflenii/male/FR15_AB210818002_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/male/FR15_AB210818002_P1.JPG
 ID=469
 LM=19
 145.00000 1156.00000
@@ -10358,7 +10358,7 @@ LM=19
 554.00000 1211.00000
 669.00000 1221.00000
 499.00000 1263.00000
-IMAGE=data/images/organized/Bombus_pomorum/male/FR15ABOM210821100_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pomorum/male/FR15ABOM210821100_P1.JPG
 ID=470
 LM=19
 2365.00000 1877.00000
@@ -10380,7 +10380,7 @@ LM=19
 2446.00000 1877.00000
 2467.00000 1876.00000
 2438.00000 1887.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/CD387770c_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/CD387770c_P1.JPG
 ID=471
 LM=19
 223.00000 566.00000
@@ -10402,7 +10402,7 @@ LM=19
 318.00000 559.00000
 342.00000 556.00000
 308.00000 574.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/2019.02059_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/2019.02059_P1.JPG
 ID=472
 LM=19
 45.00000 406.00000
@@ -10424,7 +10424,7 @@ LM=19
 153.00000 412.00000
 181.00000 412.00000
 141.00000 425.00000
-IMAGE=data/images/organized/Bombus_ruderarius/worker/CD387766b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_ruderarius/worker/CD387766b_P1.JPG
 ID=473
 LM=19
 24.00000 215.00000
@@ -10446,7 +10446,7 @@ LM=19
 87.00000 202.00000
 102.00000 197.00000
 84.00000 210.00000
-IMAGE=data/images/organized/Bombus_rupestris/male/VAN-2019.00785_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_rupestris/male/VAN-2019.00785_P1.JPG
 ID=474
 LM=19
 398.00000 511.00000
@@ -10468,7 +10468,7 @@ LM=19
 481.00000 515.00000
 504.00000 515.00000
 472.00000 526.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/ABAURA7153_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/ABAURA7153_P1.JPG
 ID=475
 LM=19
 2072.00000 1893.00000
@@ -10490,7 +10490,7 @@ LM=19
 2441.00000 1920.00000
 2527.00000 1919.00000
 2389.00000 1971.00000
-IMAGE=data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_220620b_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_lapidarius/worker/OPIE_Lapi_220620b_P1.JPG
 ID=476
 LM=19
 35.00000 362.00000
@@ -10512,7 +10512,7 @@ LM=19
 116.00000 361.00000
 141.00000 359.00000
 108.00000 372.00000
-IMAGE=data/images/organized/Bombus_sylvarum/worker/2020.04044_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/worker/2020.04044_P1.JPG
 ID=477
 LM=19
 147.00000 346.00000
@@ -10534,7 +10534,7 @@ LM=19
 199.00000 331.00000
 213.00000 328.00000
 195.00000 341.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/N628_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/N628_P1.JPG
 ID=478
 LM=19
 182.00000 1181.00000
@@ -10556,7 +10556,7 @@ LM=19
 575.00000 1225.00000
 669.00000 1227.00000
 528.00000 1275.00000
-IMAGE=data/images/organized/Bombus_sichelii/male/CollecYvan5_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sichelii/male/CollecYvan5_P1.JPG
 ID=479
 LM=19
 272.00000 554.00000
@@ -10578,7 +10578,7 @@ LM=19
 361.00000 556.00000
 385.00000 557.00000
 349.00000 570.00000
-IMAGE=data/images/organized/Bombus_pratorum/male/2019.02073_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/male/2019.02073_P1.JPG
 ID=480
 LM=19
 2023.00000 1893.00000
@@ -10600,7 +10600,7 @@ LM=19
 2392.00000 1952.00000
 2488.00000 1963.00000
 2328.00000 1999.00000
-IMAGE=data/images/organized/Bombus_pyrenaeus/worker/FR73ABOM140722039_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pyrenaeus/worker/FR73ABOM140722039_P1.JPG
 ID=481
 LM=19
 23.00000 394.00000
@@ -10622,7 +10622,7 @@ LM=19
 123.00000 396.00000
 152.00000 396.00000
 113.00000 409.00000
-IMAGE=data/images/organized/Bombus_sylvarum/male/2020.03930_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_sylvarum/male/2020.03930_P1.JPG
 ID=482
 LM=19
 127.00000 1147.00000
@@ -10644,7 +10644,7 @@ LM=19
 525.00000 1151.00000
 626.00000 1139.00000
 479.00000 1203.00000
-IMAGE=data/images/organized/Bombus_wurflenii/worker/ABAURA8205d_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_wurflenii/worker/ABAURA8205d_P1.JPG
 ID=483
 LM=19
 478.00000 606.00000
@@ -10666,7 +10666,7 @@ LM=19
 567.00000 604.00000
 595.00000 602.00000
 559.00000 617.00000
-IMAGE=data/images/organized/Bombus_pratorum/worker/CD388769_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_pratorum/worker/CD388769_P1.JPG
 ID=484
 LM=19
 2337.00000 1823.00000
@@ -10688,7 +10688,7 @@ LM=19
 2418.00000 1821.00000
 2440.00000 1820.00000
 2410.00000 1833.00000
-IMAGE=data/images/organized/Bombus_soroeensis/worker/ABAURA8627_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_soroeensis/worker/ABAURA8627_P1.JPG
 ID=485
 LM=19
 219.00000 1090.00000
@@ -10710,7 +10710,7 @@ LM=19
 606.00000 1139.00000
 710.00000 1138.00000
 560.00000 1182.00000
-IMAGE=data/images/organized/Bombus_confusus/male/FR15ABOM150820018_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/male/FR15ABOM150820018_P1.JPG
 ID=486
 LM=19
 178.00000 1309.00000
@@ -10732,7 +10732,7 @@ LM=19
 592.00000 1376.00000
 704.00000 1381.00000
 549.00000 1422.00000
-IMAGE=data/images/organized/Bombus_confusus/male/FR15ABOM170821029_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/male/FR15ABOM170821029_P1.JPG
 ID=487
 LM=19
 221.00000 1172.00000
@@ -10754,7 +10754,7 @@ LM=19
 662.00000 1215.00000
 777.00000 1216.00000
 605.00000 1271.00000
-IMAGE=data/images/organized/Bombus_confusus/male/FR15ABOM210821137_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/male/FR15ABOM210821137_P1.JPG
 ID=488
 LM=19
 274.00000 1349.00000
@@ -10776,7 +10776,7 @@ LM=19
 668.00000 1437.00000
 780.00000 1453.00000
 619.00000 1481.00000
-IMAGE=data/images/organized/Bombus_confusus/male/FR15ABOM210821139_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/male/FR15ABOM210821139_P1.JPG
 ID=489
 LM=19
 239.00000 1247.00000
@@ -10798,7 +10798,7 @@ LM=19
 659.00000 1365.00000
 767.00000 1387.00000
 599.00000 1409.00000
-IMAGE=data/images/organized/Bombus_confusus/male/FR15ABOM210821165_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/male/FR15ABOM210821165_P1.JPG
 ID=490
 LM=19
 168.00000 1288.00000
@@ -10820,7 +10820,7 @@ LM=19
 610.00000 1306.00000
 726.00000 1298.00000
 564.00000 1360.00000
-IMAGE=data/images/organized/Bombus_confusus/male/FR15ABOM210821171_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/male/FR15ABOM210821171_P1.JPG
 ID=491
 LM=19
 205.00000 1362.00000
@@ -10842,7 +10842,7 @@ LM=19
 640.00000 1424.00000
 757.00000 1434.00000
 573.00000 1476.00000
-IMAGE=data/images/organized/Bombus_confusus/male/FR15ABOM210821210_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/male/FR15ABOM210821210_P1.JPG
 ID=492
 LM=19
 339.00000 1259.00000
@@ -10864,7 +10864,7 @@ LM=19
 764.00000 1318.00000
 871.00000 1322.00000
 706.00000 1367.00000
-IMAGE=data/images/organized/Bombus_confusus/male/FR15ABOM210821212_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/male/FR15ABOM210821212_P1.JPG
 ID=493
 LM=19
 257.00000 1262.00000
@@ -10886,7 +10886,7 @@ LM=19
 686.00000 1320.00000
 803.00000 1326.00000
 632.00000 1368.00000
-IMAGE=data/images/organized/Bombus_confusus/male/FR15ABOM220821043_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/male/FR15ABOM220821043_P1.JPG
 ID=494
 LM=19
 276.00000 1294.00000
@@ -10908,7 +10908,7 @@ LM=19
 702.00000 1344.00000
 818.00000 1346.00000
 654.00000 1397.00000
-IMAGE=data/images/organized/Bombus_confusus/male/FR15ABOM220821068_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/male/FR15ABOM220821068_P1.JPG
 ID=495
 LM=19
 137.00000 1286.00000
@@ -10930,7 +10930,7 @@ LM=19
 573.00000 1313.00000
 697.00000 1309.00000
 524.00000 1368.00000
-IMAGE=data/images/organized/Bombus_confusus/male/FR15ABOM220821070_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/male/FR15ABOM220821070_P1.JPG
 ID=496
 LM=19
 190.00000 1066.00000
@@ -10952,7 +10952,7 @@ LM=19
 531.00000 1112.00000
 622.00000 1120.00000
 487.00000 1158.00000
-IMAGE=data/images/organized/Bombus_confusus/male/FR15_ABOM07082020038_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/male/FR15_ABOM07082020038_P1.JPG
 ID=497
 LM=19
 213.00000 1217.00000
@@ -10974,7 +10974,7 @@ LM=19
 637.00000 1301.00000
 742.00000 1316.00000
 576.00000 1349.00000
-IMAGE=data/images/organized/Bombus_confusus/male/FR15_ABOM07082020082_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/male/FR15_ABOM07082020082_P1.JPG
 ID=498
 LM=19
 267.00000 1243.00000
@@ -10996,7 +10996,7 @@ LM=19
 691.00000 1297.00000
 797.00000 1301.00000
 639.00000 1346.00000
-IMAGE=data/images/organized/Bombus_confusus/male/FR15_ABOM080820007_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/male/FR15_ABOM080820007_P1.JPG
 ID=499
 LM=19
 167.00000 1311.00000
@@ -11018,7 +11018,7 @@ LM=19
 587.00000 1373.00000
 695.00000 1388.00000
 529.00000 1426.00000
-IMAGE=data/images/organized/Bombus_confusus/male/FR15_ABOM080820039_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/male/FR15_ABOM080820039_P1.JPG
 ID=500
 LM=19
 221.00000 1207.00000
@@ -11040,7 +11040,7 @@ LM=19
 620.00000 1282.00000
 723.00000 1289.00000
 570.00000 1324.00000
-IMAGE=data/images/organized/Bombus_confusus/male/FR15_ABOM090820071_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/male/FR15_ABOM090820071_P1.JPG
 ID=501
 LM=19
 224.00000 1381.00000
@@ -11062,7 +11062,7 @@ LM=19
 664.00000 1420.00000
 780.00000 1421.00000
 617.00000 1474.00000
-IMAGE=data/images/organized/Bombus_confusus/male/FR15_ABOM14080820006_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/male/FR15_ABOM14080820006_P1.JPG
 ID=502
 LM=19
 270.00000 1258.00000
@@ -11084,7 +11084,7 @@ LM=19
 688.00000 1327.00000
 798.00000 1334.00000
 637.00000 1371.00000
-IMAGE=data/images/organized/Bombus_confusus/male/FR15_ABOM170820009_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/male/FR15_ABOM170820009_P1.JPG
 ID=503
 LM=19
 399.00000 1386.00000
@@ -11106,7 +11106,7 @@ LM=19
 825.00000 1429.00000
 932.00000 1431.00000
 769.00000 1481.00000
-IMAGE=data/images/organized/Bombus_confusus/male/FR15_ABOM170820030_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/male/FR15_ABOM170820030_P1.JPG
 ID=504
 LM=19
 174.00000 1026.00000
@@ -11128,7 +11128,7 @@ LM=19
 507.00000 1045.00000
 594.00000 1037.00000
 471.00000 1086.00000
-IMAGE=data/images/organized/Bombus_confusus/male/NoName8_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/male/NoName8_P1.JPG
 ID=505
 LM=19
 234.00000 1225.00000
@@ -11150,7 +11150,7 @@ LM=19
 628.00000 1296.00000
 739.00000 1307.00000
 575.00000 1338.00000
-IMAGE=data/images/organized/Bombus_confusus/worker/CollecYvan10_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/worker/CollecYvan10_P1.JPG
 ID=506
 LM=19
 230.00000 1136.00000
@@ -11172,7 +11172,7 @@ LM=19
 618.00000 1182.00000
 717.00000 1186.00000
 572.00000 1224.00000
-IMAGE=data/images/organized/Bombus_confusus/worker/CollecYvan11_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/worker/CollecYvan11_P1.JPG
 ID=507
 LM=19
 241.00000 1260.00000
@@ -11194,7 +11194,7 @@ LM=19
 620.00000 1339.00000
 720.00000 1352.00000
 569.00000 1380.00000
-IMAGE=data/images/organized/Bombus_confusus/worker/CollecYvan12_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/worker/CollecYvan12_P1.JPG
 ID=508
 LM=19
 217.00000 1277.00000
@@ -11216,7 +11216,7 @@ LM=19
 604.00000 1336.00000
 702.00000 1343.00000
 550.00000 1381.00000
-IMAGE=data/images/organized/Bombus_confusus/worker/CollecYvan8_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/worker/CollecYvan8_P1.JPG
 ID=509
 LM=19
 277.00000 1336.00000
@@ -11238,7 +11238,7 @@ LM=19
 681.00000 1368.00000
 785.00000 1369.00000
 633.00000 1415.00000
-IMAGE=data/images/organized/Bombus_confusus/worker/CollecYvan9_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/worker/CollecYvan9_P1.JPG
 ID=510
 LM=19
 174.00000 1235.00000
@@ -11260,7 +11260,7 @@ LM=19
 539.00000 1270.00000
 630.00000 1271.00000
 488.00000 1315.00000
-IMAGE=data/images/organized/Bombus_confusus/worker/FR15ABOM170821018_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/worker/FR15ABOM170821018_P1.JPG
 ID=511
 LM=19
 188.00000 1203.00000
@@ -11282,7 +11282,7 @@ LM=19
 580.00000 1259.00000
 680.00000 1264.00000
 525.00000 1303.00000
-IMAGE=data/images/organized/Bombus_confusus/worker/FR15ABOM170821115_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/worker/FR15ABOM170821115_P1.JPG
 ID=512
 LM=19
 171.00000 1213.00000
@@ -11304,7 +11304,7 @@ LM=19
 521.00000 1276.00000
 610.00000 1284.00000
 474.00000 1313.00000
-IMAGE=data/images/organized/Bombus_confusus/worker/FR15ABOM170821120_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/worker/FR15ABOM170821120_P1.JPG
 ID=513
 LM=19
 173.00000 1194.00000
@@ -11326,7 +11326,7 @@ LM=19
 555.00000 1214.00000
 648.00000 1212.00000
 508.00000 1263.00000
-IMAGE=data/images/organized/Bombus_confusus/worker/FR15ABOM210821112_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/worker/FR15ABOM210821112_P1.JPG
 ID=514
 LM=19
 121.00000 1380.00000
@@ -11348,7 +11348,7 @@ LM=19
 495.00000 1341.00000
 583.00000 1326.00000
 455.00000 1397.00000
-IMAGE=data/images/organized/Bombus_confusus/worker/FR15ABOM210821125_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/worker/FR15ABOM210821125_P1.JPG
 ID=515
 LM=19
 177.00000 1276.00000
@@ -11370,7 +11370,7 @@ LM=19
 524.00000 1304.00000
 610.00000 1304.00000
 483.00000 1339.00000
-IMAGE=data/images/organized/Bombus_confusus/worker/FR15ABOM210821147_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/worker/FR15ABOM210821147_P1.JPG
 ID=516
 LM=19
 150.00000 1220.00000
@@ -11392,7 +11392,7 @@ LM=19
 515.00000 1296.00000
 610.00000 1306.00000
 461.00000 1335.00000
-IMAGE=data/images/organized/Bombus_confusus/worker/FR15ABOM210821211_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/worker/FR15ABOM210821211_P1.JPG
 ID=517
 LM=19
 255.00000 1169.00000
@@ -11414,7 +11414,7 @@ LM=19
 642.00000 1220.00000
 737.00000 1229.00000
 582.00000 1270.00000
-IMAGE=data/images/organized/Bombus_confusus/worker/FR15ABOM220821084_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/worker/FR15ABOM220821084_P1.JPG
 ID=518
 LM=19
 142.00000 1284.00000
@@ -11436,7 +11436,7 @@ LM=19
 496.00000 1308.00000
 589.00000 1305.00000
 459.00000 1347.00000
-IMAGE=data/images/organized/Bombus_confusus/worker/FR15ABOM220821085_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/worker/FR15ABOM220821085_P1.JPG
 ID=519
 LM=19
 205.00000 1186.00000
@@ -11458,7 +11458,7 @@ LM=19
 588.00000 1269.00000
 682.00000 1285.00000
 530.00000 1310.00000
-IMAGE=data/images/organized/Bombus_confusus/worker/FR15_ABOM023082020028_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/worker/FR15_ABOM023082020028_P1.JPG
 ID=520
 LM=19
 294.00000 1312.00000
@@ -11480,7 +11480,7 @@ LM=19
 606.00000 1349.00000
 679.00000 1352.00000
 568.00000 1385.00000
-IMAGE=data/images/organized/Bombus_confusus/worker/FR15_ABOM07082020049_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/worker/FR15_ABOM07082020049_P1.JPG
 ID=521
 LM=19
 376.00000 1229.00000
@@ -11502,7 +11502,7 @@ LM=19
 737.00000 1288.00000
 831.00000 1299.00000
 688.00000 1330.00000
-IMAGE=data/images/organized/Bombus_confusus/worker/FR15_ABOM07082020062_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/worker/FR15_ABOM07082020062_P1.JPG
 ID=522
 LM=19
 162.00000 1203.00000
@@ -11524,7 +11524,7 @@ LM=19
 540.00000 1255.00000
 636.00000 1258.00000
 497.00000 1297.00000
-IMAGE=data/images/organized/Bombus_confusus/worker/FR15_ABOM09082020094_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/worker/FR15_ABOM09082020094_P1.JPG
 ID=523
 LM=19
 170.00000 1047.00000
@@ -11546,7 +11546,7 @@ LM=19
 497.00000 1063.00000
 574.00000 1064.00000
 454.00000 1101.00000
-IMAGE=data/images/organized/Bombus_confusus/worker/NoName6_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/worker/NoName6_P1.JPG
 ID=524
 LM=19
 208.00000 1005.00000
@@ -11568,7 +11568,7 @@ LM=19
 562.00000 1064.00000
 648.00000 1071.00000
 514.00000 1103.00000
-IMAGE=data/images/organized/Bombus_confusus/worker/NoName7_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/worker/NoName7_P1.JPG
 ID=525
 LM=19
 146.00000 1329.00000
@@ -11590,5 +11590,5 @@ LM=19
 650.00000 1381.00000
 774.00000 1384.00000
 583.00000 1442.00000
-IMAGE=data/images/organized/Bombus_confusus/queen/FR15ABOM060621003_P1.JPG
+IMAGE=data/images/orga_cropping/Bombus_confusus/queen/FR15ABOM060621003_P1.JPG
 ID=526

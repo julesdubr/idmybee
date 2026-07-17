@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-from tps_parser import parse_tps_file
+from utils.tps_parser import parse_tps
 
 
 def main():
@@ -19,7 +19,7 @@ def main():
     parser.add_argument("--out", default="cleaned.tps")
     args = parser.parse_args()
 
-    specimens = parse_tps_file(args.tps)
+    specimens = parse_tps(args.tps)
     print(f"{len(specimens)} spécimens trouvés dans le fichier .tps")
 
     with open(args.out, "wb") as f:

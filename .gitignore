@@ -48,3 +48,6 @@ data/images/
 # PyCharm
 .idea/
 *.iml
+
+# Gabriel notebooks
+bwm_gabriel/

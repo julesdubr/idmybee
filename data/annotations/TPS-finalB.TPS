@@ -802,7 +802,7 @@ LM=19
 289.00000 269.00000
 306.00000 266.00000
 286.00000 277.00000
-IMAGE=C:\Users\image cropping P1\pratorum\male\N°126_P1.JPG
+IMAGE=C:\Users\image cropping P1\pratorum\male\Nï¿½126_P1.JPG
 ID=60 
 VARIABLES=OrigNum=61 
 LM=19
@@ -1791,7 +1791,7 @@ LM=19
 244.00000 319.00000
 262.00000 317.00000
 240.00000 327.00000
-IMAGE=C:\Users\image cropping P1\pratorum\male\N°385_P1.JPG
+IMAGE=C:\Users\image cropping P1\pratorum\male\Nï¿½385_P1.JPG
 ID=62 
 VARIABLES=OrigNum=63 
 LM=19
@@ -3953,7 +3953,7 @@ LM=19
 250.00000 334.00000
 268.00000 332.00000
 244.00000 343.00000
-IMAGE=C:\Users\image cropping P1\pratorum\male\N°384_P1.JPG
+IMAGE=C:\Users\image cropping P1\pratorum\male\Nï¿½384_P1.JPG
 ID=61 
 VARIABLES=OrigNum=62 
 LM=19
@@ -4344,7 +4344,7 @@ LM=19
 218.00000 331.00000
 233.00000 329.00000
 212.00000 340.00000
-IMAGE=C:\Users\image cropping P1\pratorum\worker\N°205_P1.JPG
+IMAGE=C:\Users\image cropping P1\pratorum\worker\Nï¿½205_P1.JPG
 ID=208 
 VARIABLES=OrigNum=209 
 LM=19
@@ -4482,7 +4482,7 @@ LM=19
 156.00000 314.00000
 171.00000 314.00000
 149.00000 323.00000
-IMAGE=C:\Users\image cropping P1\pratorum\worker\N°407_P1.JPG
+IMAGE=C:\Users\image cropping P1\pratorum\worker\Nï¿½407_P1.JPG
 ID=209 
 VARIABLES=OrigNum=210 
 LM=19
@@ -10738,7 +10738,7 @@ LM=19
 239.00000 418.00000
 255.00000 417.00000
 234.00000 425.00000
-IMAGE=C:\Users\image cropping P1\pratorum\male\N°815_P1.JPG
+IMAGE=C:\Users\image cropping P1\pratorum\male\Nï¿½815_P1.JPG
 ID=64 
 VARIABLES=OrigNum=65
 LM=19
@@ -10991,7 +10991,7 @@ LM=19
 199.00000 331.00000
 213.00000 328.00000
 195.00000 341.00000
-IMAGE=C:\Users\image cropping P1\pratorum\male\N°628_P1.JPG
+IMAGE=C:\Users\image cropping P1\pratorum\male\Nï¿½628_P1.JPG
 ID=63 
 VARIABLES=OrigNum=64
 LM=19

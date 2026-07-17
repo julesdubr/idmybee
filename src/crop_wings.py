@@ -8,20 +8,25 @@ Pipeline par image :
      `ref.json` accepte une ou plusieurs références ; leurs VPE sont moyennés
      avant injection.
   2. Redressement du grand axe à l'horizontale (cv2.minAreaRect) -> donne
-     aussi la boîte orientée (OBB) de l'aile dans l'image d'origine, loguée
-     dans le CSV pour servir de données d'entraînement à un futur régresseur
-     OBB dédié.
+     aussi la boîte orientée (OBB, x/y/w/h/theta) de l'aile dans l'image
+     d'origine, loguée dans le CSV comme donnée d'entraînement pour un futur
+     régresseur OBB dédié. L'angle est résolu directement à partir de la
+     géométrie (pas de 180° indéterminé), sous l'hypothèse que l'aile est
+     toujours photographiée "à l'endroit" (entre -89° et 90° par rapport à
+     l'horizontale) -- voir le commentaire dans `oriented_crop`.
   3. En option (--mask_background) : tout ce qui n'est pas l'aile (carton,
      doigts, résidus) est remplacé par une couleur de fond unie. Désactivé
      par défaut car un masque de segmentation imparfait peut effacer des
      parties internes de l'aile (zones membraneuses très fines/claires
      confondues avec le fond).
   4. Letterbox vers 512x256 (padding, jamais d'étirement).
-  5. Désambiguïsation de l'orientation à 180° par similarité CLIP à des crops
-     de référence déjà bien orientés (les heuristiques géométriques testées
-     avant -- forme de l'aile, position dans le cadre -- se sont révélées peu
-     fiables sur données réelles). Sert aussi de second signal qualité, en
-     plus de l'aspect ratio.
+  5. QA / désambiguïsation des faux positifs par similarité CLIP à des crops
+     de référence déjà bien orientés. Avec --topk_candidates > 1, les N
+     détections YOLOE les plus confiantes sont chacune recadrées et comparées
+     par CLIP ; celle la plus proche des références est retenue (utile
+     quand la détection la plus confiante n'est pas la bonne aile). Avec
+     --topk_candidates 1 (défaut), seule la détection la plus confiante est
+     utilisée, et CLIP ne sert qu'à calculer la similarité loguée en QA.
 
 Chaque image cible est traitée individuellement (pas de liste) pour éviter un
 bug de hang connu d'ultralytics avec visual_prompts sur du traitement par lot
@@ -40,7 +45,6 @@ ref.json accepte 1 ou plusieurs références :
 
 import argparse
 import csv
-import json
 import time
 from pathlib import Path
 
@@ -48,12 +52,16 @@ import cv2
 import numpy as np
 import torch
 from PIL import Image
-from ultralytics import YOLOE
-from ultralytics.cfg import get_cfg
-from ultralytics.models.yolo.yoloe import YOLOEVPSegPredictor
 
 IMG_EXTS = {".jpg", ".jpeg", ".png"}
 BG_COLORS = {"white": (255, 255, 255), "black": (0, 0, 0)}
+
+CSV_FIELDS = [
+    "idx", "image", "status",
+    "x", "y", "w", "h", "theta",
+    "confidence", "similarity", "aspect_ratio", "n_detections",
+    "input_path", "output_path",
+]
 
 
 # ---------------------------------------------------------------------------
@@ -62,15 +70,15 @@ BG_COLORS = {"white": (255, 255, 255), "black": (0, 0, 0)}
 
 def load_references(ref_json_path: str):
     """Retourne une liste de (image_path, boxes) -- 1 ou plusieurs entrées."""
+    import json
     with open(ref_json_path) as f:
         data = json.load(f)
     if isinstance(data, dict):
         data = [data]
-    return [(entry["image"], np.array(entry["boxes"], dtype=np.float32)) for entry in data]
+    return [(Path(str(entry["image"])).absolute(), np.array(entry["boxes"], dtype=np.float32)) for entry in data]
 
 
-def compute_vpe(model: YOLOE, image_path: str, boxes: np.ndarray,
-                 predictor_cls=YOLOEVPSegPredictor, imgsz: int = 1024, device=None):
+def compute_vpe(model, image_path: str, boxes: np.ndarray, predictor_cls, imgsz: int = 1024, device=None):
     """VPE (visual prompt embedding) d'UNE image de référence.
 
     `refer_image=` du predict() haut niveau ne prend qu'une image par appel
@@ -79,6 +87,8 @@ def compute_vpe(model: YOLOE, image_path: str, boxes: np.ndarray,
     Le predicteur doit être construit avec les mêmes overrides (task/batch/
     device/imgsz) que le code source, sinon le VPE résultant est dégradé.
     """
+    from ultralytics.cfg import get_cfg
+
     visual_prompts = dict(bboxes=boxes, cls=np.zeros(len(boxes), dtype=int))
     if type(model.predictor) is not predictor_cls:
         args = get_cfg(overrides={**model.overrides, "imgsz": imgsz, "device": device})
@@ -96,8 +106,7 @@ def compute_vpe(model: YOLOE, image_path: str, boxes: np.ndarray,
     return model.predictor.get_vpe(image_path)
 
 
-def bake_references(model: YOLOE, references, predictor_cls=YOLOEVPSegPredictor,
-                     imgsz: int = 1024, device=None):
+def bake_references(model, references, predictor_cls, imgsz: int = 1024, device=None):
     """Calcule le VPE de chaque référence, moyenne, injecte dans le modèle.
     Après appel, model.predict(image, ...) fonctionne directement (VPE déjà
     "baked in", plus besoin de refer_image/visual_prompts).
@@ -115,7 +124,8 @@ def bake_references(model: YOLOE, references, predictor_cls=YOLOEVPSegPredictor,
 
 
 # ---------------------------------------------------------------------------
-# Découpe orientée : redressement, masquage optionnel, letterbox
+# Découpe orientée : redressement (sans ambiguïté 180°), masquage optionnel,
+# letterbox
 # ---------------------------------------------------------------------------
 
 def find_images(root: Path):
@@ -129,36 +139,43 @@ def oriented_crop(image: np.ndarray, points: np.ndarray, bg_color=(255, 255, 255
     `points` : contour du masque en coordonnées pixel de l'image originale
     (ex. r.masks.xy[i]).
 
+    Résolution de l'angle -- SANS CLIP, SANS ambiguïté 180° :
+    cv2.minAreaRect ne donne l'angle du grand axe qu'à 180° près (une droite
+    n'a pas de sens). On calcule le vecteur du plus grand côté de la boîte
+    (cv2.boxPoints), on en tire son angle brut dans (-180°, 180°], puis on le
+    ramène par modulo dans (-90°, 90°]. C'est suffisant pour retrouver le bon
+    sens de rotation SI l'aile est toujours photographiée "à l'endroit"
+    (jamais tête en bas), hypothèse validée empiriquement sur données
+    synthétiques (forme asymétrique, balayage complet de -89° à 90°, aucun
+    flip détecté -- voir idmybee_probe_orientation.py).
+    Avant cette étape, la désambiguïsation nécessitait une comparaison CLIP à
+    des références bien orientées ; ce n'est plus nécessaire ici.
+
     Si `mask_background` est True, tout ce qui n'est pas l'aile (carton,
     doigts, résidus dans la boîte de recadrage) est remplacé par `bg_color`.
 
-    Ne résout PAS l'ambiguïté d'orientation à 180° (indéterminable depuis ce
-    seul point de vue géométrique) -> voir `resolve_orientation`.
-
-    Retourne (crop, aspect_ratio, obb_corners) où obb_corners sont les 4
-    coins de la boîte orientée dans l'image d'origine.
+    Retourne (crop, aspect_ratio, (x, y, w, h, theta_deg)) où x/y/w/h/theta
+    décrivent la boîte orientée dans l'image d'origine (theta = angle de
+    redressement appliqué, en degrés).
     Retourne (None, None, None) si dégénéré.
     """
     if points is None or len(points) < 3:
         return None, None, None
 
     rect = cv2.minAreaRect(points.astype(np.float32))
-    (x_rect, y_rect), (w_rect, h_rect), theta = rect
+    (x_rect, y_rect), (w_rect, h_rect), _ = rect
     if w_rect < 1 or h_rect < 1:
         return None, None, None
 
-    obb_corners = cv2.boxPoints(rect)  # coins dans l'image d'ORIGINE, avant rotation
-
-    edge1 = obb_corners[1] - obb_corners[0]
-    edge2 = obb_corners[2] - obb_corners[1]
-    # long_edge = edge1 if np.linalg.norm(edge1) >= np.linalg.norm(edge2) else edge2
-    # angle_deg = np.degrees(np.arctan2(long_edge[1], long_edge[0]))
-
-    angle_deg = theta if np.linalg.norm(edge2) >= np.linalg.norm(edge1) else 90 + theta
+    box = cv2.boxPoints(rect)
+    edge1, edge2 = box[1] - box[0], box[2] - box[1]
+    long_edge = edge1 if np.linalg.norm(edge1) >= np.linalg.norm(edge2) else edge2
+    raw_angle = np.degrees(np.arctan2(long_edge[1], long_edge[0]))  # (-180, 180]
+    theta_deg = ((raw_angle + 90) % 180) - 90  # ramené dans (-90, 90]
 
     h, w = image.shape[:2]
     center = (w / 2, h / 2)
-    M = cv2.getRotationMatrix2D(center, angle_deg, 1.0)
+    M = cv2.getRotationMatrix2D(center, theta_deg, 1.0)
     cos, sin = abs(M[0, 0]), abs(M[0, 1])
     new_w, new_h = int(h * sin + w * cos), int(h * cos + w * sin)
     M[0, 2] += new_w / 2 - center[0]
@@ -172,7 +189,7 @@ def oriented_crop(image: np.ndarray, points: np.ndarray, bg_color=(255, 255, 255
         rotated_mask = cv2.warpAffine(mask_full, M, (new_w, new_h), borderValue=0)
         rotated[rotated_mask == 0] = bg_color
 
-    corners_h = np.hstack([obb_corners, np.ones((4, 1))])
+    corners_h = np.hstack([box, np.ones((4, 1))])
     rotated_corners = (M @ corners_h.T).T
     x_min, y_min = rotated_corners.min(axis=0)
     x_max, y_max = rotated_corners.max(axis=0)
@@ -184,7 +201,7 @@ def oriented_crop(image: np.ndarray, points: np.ndarray, bg_color=(255, 255, 255
 
     long_side, short_side = max(w_rect, h_rect), max(min(w_rect, h_rect), 1e-6)
     aspect = long_side / short_side
-    return crop, aspect, (x_rect, y_rect, w_rect, h_rect, theta)
+    return crop, aspect, (float(x_rect), float(y_rect), float(w_rect), float(h_rect), float(theta_deg))
 
 
 def letterbox(crop: np.ndarray, out_w=512, out_h=256, bg_color=(255, 255, 255)):
@@ -201,13 +218,8 @@ def letterbox(crop: np.ndarray, out_w=512, out_h=256, bg_color=(255, 255, 255)):
     return canvas
 
 
-def obb_to_json(obb_corners) -> str:
-    """4 coins -> JSON compact [[x,y],[x,y],[x,y],[x,y]], coords image d'origine."""
-    return json.dumps([[round(float(x), 1), round(float(y), 1)] for x, y in obb_corners])
-
-
 # ---------------------------------------------------------------------------
-# Orientation / QA : similarité CLIP à des crops de référence déjà bien orientés
+# QA / sélection de candidat : similarité CLIP à des crops de référence
 # ---------------------------------------------------------------------------
 
 def load_clip(device):
@@ -242,14 +254,12 @@ def load_ref_embeddings(ref_crop_paths, model, preprocess, device):
     return embs
 
 
-def resolve_orientation(crop_512x256, ref_embs, model, preprocess, device):
-    """Compare le crop et sa version à 180° aux références connues, garde la
-    meilleure. Retourne (crop_corrigé, similarité_max) -- la similarité sert
-    aussi de signal qualité (un corps/doigt ne ressemblera à aucune
-    référence, dans aucune des deux orientations)."""
-    emb0 = embed(crop_512x256, model, preprocess, device)
-    sim0 = max((emb0 @ r.T).item() for r in ref_embs)
-    return (crop_512x256, sim0)
+def clip_similarity(crop_512x256, ref_embs, model, preprocess, device):
+    """Similarité max du crop aux références connues. Sert de signal qualité
+    (un corps/doigt mal détecté ne ressemblera à aucune référence) et, si
+    plusieurs candidats sont comparés, de critère de sélection."""
+    emb = embed(crop_512x256, model, preprocess, device)
+    return max((emb @ r.T).item() for r in ref_embs)
 
 
 def cuda_available():
@@ -263,10 +273,10 @@ def cuda_available():
 def parse_args():
     parser = argparse.ArgumentParser(description="Extraction batch des ailes antérieures via YOLOE")
     parser.add_argument("--ref", required=True, help="JSON de référence pour la détection YOLOE : {'image':..., 'boxes':[[x1,y1,x2,y2]]}.")
-    parser.add_argument("--ref_crops", required=True, help="Chemins vers un dossier contenant 1+ crops déjà correctement orientés.")
+    parser.add_argument("--ref_crops", required=True, help="Dossier contenant 1+ crops déjà correctement orientés (référence CLIP).")
     parser.add_argument("--input_root", required=True, help="Racine du dataset (ex: images/orga_widecrop)")
     parser.add_argument("--output_root", required=True, help="Racine de sortie (arborescence miroir)")
-    parser.add_argument("--log", default="wing_extraction_log.csv")
+    parser.add_argument("--log", default="logs/wing_extraction_log.csv")
     parser.add_argument("--model", default="yoloe-11s-seg.pt")
     parser.add_argument("--conf", type=float, default=0.05)
     parser.add_argument("--imgsz", type=int, default=1024)
@@ -275,6 +285,9 @@ def parse_args():
     parser.add_argument("--out_h", type=int, default=256)
     parser.add_argument("--mask_background", action="store_true", help="Remplace tout ce qui n'est pas l'aile par --bg_color. Désactivé par défaut.")
     parser.add_argument("--bg_color", choices=["white", "black"], default="white")
+    parser.add_argument("--topk_candidates", type=int, default=1,
+                         help="Nombre de détections YOLOE (par confiance décroissante) comparées via CLIP pour "
+                              "départager les faux positifs. 1 (défaut) = désactivé, garde la meilleure confiance.")
     parser.add_argument("--min_aspect_ok", type=float, default=1.3, help="Aspect (long/court côté) en dessous duquel on flague SUSPECT. A calibrer sur votre dataset.")
     parser.add_argument("--min_similarity", type=float, default=0.0, help="Similarité CLIP min. à la meilleure référence pour ne pas flaguer SUSPECT.")
     parser.add_argument("--overwrite", action="store_true", help="Retraiter même si le crop de sortie existe déjà.")
@@ -283,35 +296,46 @@ def parse_args():
 
 
 def process_image(img_path, model, ref_embs, clip_model, clip_preprocess, clip_device, args, bg_color):
-    """Traite une image : détection -> découpe orientée -> orientation -> retourne une ligne CSV."""
+    """Traite une image : détection -> découpe orientée -> QA CLIP -> résultat (dict, un futur row CSV)."""
     results = model.predict(str(img_path), conf=args.conf, imgsz=args.imgsz, device=args.device, verbose=False)
     r = results[0]
     n_det = len(r.boxes) if r.boxes is not None else 0
 
+    empty = dict(status="FAILED", x=None, y=None, w=None, h=None, theta=None,
+                 confidence=None, similarity=None, aspect_ratio=None, n_detections=n_det, output_path=None)
     if n_det == 0 or r.masks is None:
-        return ["FAILED", n_det, "", "", "", "", ""]
+        return empty
 
     confs = r.boxes.conf.cpu().numpy()
-    best = int(confs.argmax())  # meilleure confiance = aile antérieure ciblée
-    points = r.masks.xy[best]
+    order = np.argsort(-confs)  # indices triés par confiance décroissante
+    topk = order[:max(1, args.topk_candidates)]
 
-    crop, aspect, obb_corners = oriented_crop(r.orig_img, points, bg_color=bg_color,
-                                               mask_background=args.mask_background)
-    if crop is None:
-        return ["FAILED", n_det, f"{confs[best]:.3f}", "", "", "", ""]
+    candidates = []
+    for i in topk:
+        crop, aspect, obb = oriented_crop(r.orig_img, r.masks.xy[i], bg_color=bg_color,
+                                           mask_background=args.mask_background)
+        if crop is None:
+            continue
+        final = letterbox(crop, args.out_w, args.out_h, bg_color=bg_color)
+        if final is None:
+            continue
+        similarity = clip_similarity(final, ref_embs, clip_model, clip_preprocess, clip_device)
+        candidates.append(dict(conf=float(confs[i]), aspect=aspect, obb=obb, crop=final, similarity=similarity))
 
-    final = letterbox(crop, args.out_w, args.out_h, bg_color=bg_color)
-    if final is None:
-        return ["FAILED", n_det, f"{confs[best]:.3f}", obb_to_json(obb_corners), "", "", ""]
+    if not candidates:
+        return empty
 
-    final, similarity = resolve_orientation(final, ref_embs, clip_model, clip_preprocess, clip_device)
+    best = max(candidates, key=lambda c: c["conf"] + c["similarity"])  # sans effet si un seul candidat
 
-    status = "SUSPECT" if (similarity < args.min_similarity or aspect < args.min_aspect_ok) else "OK"
+    status = "SUSPECT" if (best["similarity"] < args.min_similarity or best["aspect"] < args.min_aspect_ok) else "OK"
     out_path = Path(args.output_root) / img_path.relative_to(args.input_root)
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    cv2.imwrite(str(out_path), final)
+    cv2.imwrite(str(out_path), best["crop"])
 
-    return [status, n_det, f"{confs[best]:.3f}", obb_to_json(obb_corners), f"{aspect:.2f}", f"{similarity:.3f}", str(out_path)]
+    x, y, w, h, theta = best["obb"]
+    return dict(status=status, x=round(x), y=round(y), w=round(w), h=round(h), theta=round(theta, 3),
+                confidence=round(best["conf"], 3), similarity=round(best["similarity"], 3),
+                aspect_ratio=round(best["aspect"], 2), n_detections=n_det, output_path=str(out_path))
 
 
 def main():
@@ -325,30 +349,36 @@ def main():
     images = find_images(input_root)
     print(f"{len(images)} images trouvées sous {input_root}")
 
+    from ultralytics import YOLOE
+    from ultralytics.models.yolo.yoloe import YOLOEVPSegPredictor
+
     references = load_references(args.ref)
     print(f"{len(references)} référence(s) YOLOE pour la détection (ref.json)")
     model = YOLOE(args.model)
     print("Calcul du VPE (moyenné si plusieurs références)...")
-    bake_references(model, references, imgsz=args.imgsz, device=args.device)
+    bake_references(model, references, YOLOEVPSegPredictor, imgsz=args.imgsz, device=args.device)
 
-    print("Chargement de CLIP pour estimer la meilleure orientation...")
+    print("Chargement de CLIP (QA + sélection de candidats)...")
     clip_device = args.device or ("cuda" if cuda_available() else "cpu")
     clip_model, clip_preprocess = load_clip(clip_device)
     ref_crop_paths = list(Path(args.ref_crops).iterdir())
     ref_embs = load_ref_embeddings(ref_crop_paths, clip_model, clip_preprocess, clip_device)
     print(f"{len(ref_embs)} référence(s) CLIP chargée(s)")
+    if args.topk_candidates > 1:
+        print(f"Sélection parmi les {args.topk_candidates} détections les plus confiantes (via CLIP) activée.")
 
     log_path = Path(args.log)
     write_header = not log_path.exists()
     log_file = open(log_path, "a", newline="")
-    writer = csv.writer(log_file)
+    writer = csv.DictWriter(log_file, fieldnames=CSV_FIELDS)
     if write_header:
-        writer.writerow(["name", "image", "status", "n_detections", "confidence", "obb", "aspect", "similarity", "output"])
+        writer.writeheader()
 
     counts = {"OK": 0, "SUSPECT": 0, "FAILED": 0, "SKIPPED": 0}
     t0 = time.time()
+    idx = 0
 
-    for i, img_path in enumerate(images):
+    for img_path in images:
         rel = img_path.relative_to(input_root)
         out_path = output_root / rel
         if out_path.exists() and not args.overwrite:
@@ -358,16 +388,18 @@ def main():
         try:
             row = process_image(img_path, model, ref_embs, clip_model, clip_preprocess, clip_device, args, bg_color)
         except Exception as e:
-            row = ["FAILED", "", "", "", "", "", f"error: {e}"]
+            row = dict(status="FAILED", x=None, y=None, w=None, h=None, theta=None, confidence=None,
+                       similarity=None, aspect_ratio=None, n_detections=None, output_path=f"error: {e}")
 
-        counts[row[0]] += 1
-        writer.writerow([str(Path(rel).stem), str(rel), *row])
+        counts[row["status"]] += 1
+        writer.writerow({"idx": idx, "image": Path(rel).name, "input_path": str(img_path), **row})
+        idx += 1
 
-        if (i + 1) % args.log_every == 0:
+        if idx % args.log_every == 0:
             log_file.flush()
             elapsed = time.time() - t0
             print(
-                f"[{i + 1}/{len(images)}] OK={counts['OK']} SUSPECT={counts['SUSPECT']} "
+                f"[{idx}/{len(images)}] OK={counts['OK']} SUSPECT={counts['SUSPECT']} "
                 f"FAILED={counts['FAILED']} SKIPPED={counts['SKIPPED']}  ({elapsed:.0f}s écoulées)"
             )
 
