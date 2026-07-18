@@ -133,7 +133,7 @@ def find_images(root: Path):
 
 
 def oriented_crop(image: np.ndarray, points: np.ndarray, bg_color=(255, 255, 255),
-                   mask_background: bool = False):
+                   mask_background: bool = False, pad: float = 0.1):
     """Redresse le grand axe de l'aile à l'horizontale et recadre.
 
     `points` : contour du masque en coordonnées pixel de l'image originale
@@ -197,7 +197,9 @@ def oriented_crop(image: np.ndarray, points: np.ndarray, bg_color=(255, 255, 255
     x_max, y_max = min(new_w, int(round(x_max))), min(new_h, int(round(y_max)))
     if x_max <= x_min or y_max <= y_min:
         return None, None, None
-    crop = rotated[y_min:y_max, x_min:x_max]
+    
+    px, py = int((x_max-x_min)*pad/2), int((y_max-y_min)*pad)
+    crop = rotated[y_min-py:y_max+py, x_min-px:x_max+px]
 
     long_side, short_side = max(w_rect, h_rect), max(min(w_rect, h_rect), 1e-6)
     aspect = long_side / short_side
@@ -284,6 +286,7 @@ def parse_args():
     parser.add_argument("--out_w", type=int, default=512)
     parser.add_argument("--out_h", type=int, default=256)
     parser.add_argument("--mask_background", action="store_true", help="Remplace tout ce qui n'est pas l'aile par --bg_color. Désactivé par défaut.")
+    parser.add_argument("--padding", type=float, default=0.)
     parser.add_argument("--bg_color", choices=["white", "black"], default="white")
     parser.add_argument("--topk_candidates", type=int, default=1,
                          help="Nombre de détections YOLOE (par confiance décroissante) comparées via CLIP pour "
@@ -313,7 +316,7 @@ def process_image(img_path, model, ref_embs, clip_model, clip_preprocess, clip_d
     candidates = []
     for i in topk:
         crop, aspect, obb = oriented_crop(r.orig_img, r.masks.xy[i], bg_color=bg_color,
-                                           mask_background=args.mask_background)
+                                           mask_background=args.mask_background, pad=args.padding)
         if crop is None:
             continue
         final = letterbox(crop, args.out_w, args.out_h, bg_color=bg_color)

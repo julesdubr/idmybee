@@ -32,7 +32,7 @@ from sklearn.decomposition import PCA
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import LeaveOneOut, cross_val_predict
 
-from gpa import gpagen, two_d_array
+from gpa_old import gpagen, two_d_array
 from utils.tps_parser import Specimen, parse_tps
 
 import matplotlib.pyplot as plt
@@ -55,7 +55,7 @@ def load_labeled_dataset(
         logger.warning("%d erreur(s) de parsing TPS (voir ci-dessus)", len(errors))
 
     meta = pd.read_csv(csv_path)
-    required_cols = {"id", "name", "espece", "caste", "device"}
+    required_cols = {"id", "image", "espece", "caste", "device"}
     missing = required_cols - set(meta.columns)
     if missing:
         raise ValueError(f"Colonnes manquantes dans le CSV : {missing}")
@@ -151,9 +151,9 @@ def plot_gpa_alignment(gpa_result, groupe: pd.Series, title: str = "Résultat de
         raise ValueError("gpa_result.aligned doit être un tableau de forme (n_specimens, n_points, 2).")
 
     unique_groups = sorted(groupe.unique())
-    cmap = plt.get_cmap("tab10")
+    cmap = plt.get_cmap("tab20")
 
-    plt.figure(figsize=(10, 5))
+    plt.figure(figsize=(10, 8))
     for i, group in enumerate(unique_groups):
         mask = groupe == group
         specimens_coords = aligned[mask]
@@ -205,7 +205,8 @@ def plot_lda(lda_scores: np.ndarray, groupe: pd.Series, title: str = "Projection
             y[mask],
             label=group,
             color=colors[i],
-            s=50,
+            alpha=0.25,
+            s=20,
         )
 
     plt.xlabel("LDA 1")
@@ -221,7 +222,7 @@ def main() -> None:
 
     parser = argparse.ArgumentParser(description="GPA -> PCA -> LDA (LOOCV) sur landmarks de bourdons")
     parser.add_argument("tps_path", type=Path, help="Fichier .tps de référence (ex: Nest2_mappedDig2.tps)")
-    parser.add_argument("csv_path", type=Path, help="CSV associé (id, name, espece, caste, device)")
+    parser.add_argument("csv_path", type=Path, help="CSV associé (id, image, espece, caste, device)")
     parser.add_argument("--precision", type=str, default="espece")
     parser.add_argument("--non-strict", action="store_true", help="Tolérer les blocs TPS malformés")
     args = parser.parse_args()

@@ -1,6 +1,6 @@
 [
   {
-    "image": "data/images/organized/Bombus_confusus/male/FR15_ABOM07082020038_P1.JPG",
+    "image": "data/images/wide/organized/Bombus_confusus/male/FR15_ABOM07082020038_P1.JPG",
     "boxes": [
       [
         1976,
@@ -11,7 +11,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_confusus/male/FR15ABOM150820018_S1.jpg",
+    "image": "data/images/wide/organized/Bombus_confusus/male/FR15ABOM150820018_S1.jpg",
     "boxes": [
       [
         971,
@@ -22,7 +22,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_confusus/worker/FR15ABOM170821115_S1.jpg",
+    "image": "data/images/wide/organized/Bombus_confusus/worker/FR15ABOM170821115_S1.jpg",
     "boxes": [
       [
         979,
@@ -33,7 +33,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_260620b_S3.jpg",
+    "image": "data/images/wide/organized/Bombus_lapidarius/worker/OPIE_Lapi_260620b_S3.jpg",
     "boxes": [
       [
         1013,
@@ -44,7 +44,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_monticola/male/CD387770b_P1.JPG",
+    "image": "data/images/wide/organized/Bombus_monticola/male/CD387770b_P1.JPG",
     "boxes": [
       [
         2288,
@@ -55,7 +55,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_monticola/male/CD388821_S2.jpg",
+    "image": "data/images/wide/organized/Bombus_monticola/male/CD388821_S2.jpg",
     "boxes": [
       [
         676,
@@ -66,7 +66,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_pomorum/male/ABAURA8885_P2.JPG",
+    "image": "data/images/wide/organized/Bombus_pomorum/male/ABAURA8885_P2.JPG",
     "boxes": [
       [
         2298,
@@ -77,7 +77,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_pomorum/male/NoName3_P1.JPG",
+    "image": "data/images/wide/organized/Bombus_pomorum/male/NoName3_P1.JPG",
     "boxes": [
       [
         2237,
@@ -88,7 +88,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_pratorum/male/2013.0265_P2.JPG",
+    "image": "data/images/wide/organized/Bombus_pratorum/male/2013.0265_P2.JPG",
     "boxes": [
       [
         2322,
@@ -99,7 +99,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_pratorum/male/2019.02059_P1.JPG",
+    "image": "data/images/wide/organized/Bombus_pratorum/male/2019.02059_P1.JPG",
     "boxes": [
       [
         2300,
@@ -110,7 +110,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_pratorum/male/2020.00301_P1.JPG",
+    "image": "data/images/wide/organized/Bombus_pratorum/male/2020.00301_P1.JPG",
     "boxes": [
       [
         2298,
@@ -121,7 +121,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_pratorum/male/ABAURA8764_P1.JPG",
+    "image": "data/images/wide/organized/Bombus_pratorum/male/ABAURA8764_P1.JPG",
     "boxes": [
       [
         2286,
@@ -132,7 +132,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_pratorum/male/N385_P3.JPG",
+    "image": "data/images/wide/organized/Bombus_pratorum/male/N385_P3.JPG",
     "boxes": [
       [
         1124,
@@ -143,7 +143,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_pratorum/worker/ABAURA7153_P1.JPG",
+    "image": "data/images/wide/organized/Bombus_pratorum/worker/ABAURA7153_P1.JPG",
     "boxes": [
       [
         2322,
@@ -154,7 +154,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_ruderarius/male/ABAURA8595_P1.JPG",
+    "image": "data/images/wide/organized/Bombus_ruderarius/male/ABAURA8595_P1.JPG",
     "boxes": [
       [
         2249,
@@ -165,7 +165,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_ruderarius/male/ABAURA8885c_P1.JPG",
+    "image": "data/images/wide/organized/Bombus_ruderarius/male/ABAURA8885c_P1.JPG",
     "boxes": [
       [
         2257,
@@ -176,7 +176,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_rupestris/male/2020.00470_S3.jpg",
+    "image": "data/images/wide/organized/Bombus_rupestris/male/2020.00470_S3.jpg",
     "boxes": [
       [
         869,
@@ -187,7 +187,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_rupestris/male/2020.06244_P2.JPG",
+    "image": "data/images/wide/organized/Bombus_rupestris/male/2020.06244_P2.JPG",
     "boxes": [
       [
         1161,
@@ -198,7 +198,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_rupestris/male/VAN-2019.00814_P1.JPG",
+    "image": "data/images/wide/organized/Bombus_rupestris/male/VAN-2019.00814_P1.JPG",
     "boxes": [
       [
         1097,
@@ -209,7 +209,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_monticola/male/CD388821_P1.JPG",
+    "image": "data/images/wide/organized/Bombus_monticola/male/CD388821_P1.JPG",
     "boxes": [
       [
         2280,
@@ -220,7 +220,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_030803b_S3.jpg",
+    "image": "data/images/wide/organized/Bombus_lapidarius/male/OPIE_Lapi_030803b_S3.jpg",
     "boxes": [
       [
         914,
@@ -231,7 +231,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_100803_S3.jpg",
+    "image": "data/images/wide/organized/Bombus_lapidarius/male/OPIE_Lapi_100803_S3.jpg",
     "boxes": [
       [
         676,
@@ -242,7 +242,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_lapidarius/male/OPIE_Lapi_200703_S2.jpg",
+    "image": "data/images/wide/organized/Bombus_lapidarius/male/OPIE_Lapi_200703_S2.jpg",
     "boxes": [
       [
         895,
@@ -253,7 +253,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_220620_S1.jpg",
+    "image": "data/images/wide/organized/Bombus_lapidarius/worker/OPIE_Lapi_220620_S1.jpg",
     "boxes": [
       [
         684,
@@ -264,7 +264,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_wurflenii/worker/ABAURA8150d_S2.jpg",
+    "image": "data/images/wide/organized/Bombus_wurflenii/worker/ABAURA8150d_S2.jpg",
     "boxes": [
       [
         570,
@@ -275,7 +275,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_soroeensis/male/POLLINIS5943_S2.jpg",
+    "image": "data/images/wide/organized/Bombus_soroeensis/male/POLLINIS5943_S2.jpg",
     "boxes": [
       [
         691,
@@ -286,7 +286,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_soroeensis/male/POLLINIS5985_S2.jpg",
+    "image": "data/images/wide/organized/Bombus_soroeensis/male/POLLINIS5985_S2.jpg",
     "boxes": [
       [
         589,
@@ -297,7 +297,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_soroeensis/male/15L2021-1740_S3.jpg",
+    "image": "data/images/wide/organized/Bombus_soroeensis/male/15L2021-1740_S3.jpg",
     "boxes": [
       [
         623,
@@ -308,7 +308,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_lapidarius/worker/OPIE_Lapi_200720_S2.jpg",
+    "image": "data/images/wide/organized/Bombus_lapidarius/worker/OPIE_Lapi_200720_S2.jpg",
     "boxes": [
       [
         876,
@@ -319,7 +319,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_monticola/male/CD388821_S1.jpg",
+    "image": "data/images/wide/organized/Bombus_monticola/male/CD388821_S1.jpg",
     "boxes": [
       [
         623,
@@ -330,7 +330,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_pratorum/male/ABAURA8238_S1.jpg",
+    "image": "data/images/wide/organized/Bombus_pratorum/male/ABAURA8238_S1.jpg",
     "boxes": [
       [
         684,
@@ -341,7 +341,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_pratorum/worker/ABAURA8240b_S2.jpg",
+    "image": "data/images/wide/organized/Bombus_pratorum/worker/ABAURA8240b_S2.jpg",
     "boxes": [
       [
         642,
@@ -352,7 +352,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_ruderarius/male/ABAURA8602_P1.JPG",
+    "image": "data/images/wide/organized/Bombus_ruderarius/male/ABAURA8602_P1.JPG",
     "boxes": [
       [
         2212,
@@ -363,7 +363,7 @@
     ]
   },
   {
-    "image": "data/images/organized/Bombus_soroeensis/worker/CD387577_S1.jpg",
+    "image": "data/images/wide/organized/Bombus_soroeensis/worker/CD387577_S1.jpg",
     "boxes": [
       [
         778,
@@ -374,7 +374,7 @@
     ]
   },
   {
-    "image": "data/images/terrain/adrien/WB1_23_136.jpg",
+    "image": "data/images/wide/terrain/adrien/WB1_23_136.jpg",
     "boxes": [
       [
         1336,
@@ -385,7 +385,7 @@
     ]
   },
   {
-    "image": "data/images/terrain/adrien/WB1_23_137.jpg",
+    "image": "data/images/wide/terrain/adrien/WB1_23_137.jpg",
     "boxes": [
       [
         1079,
@@ -396,7 +396,7 @@
     ]
   },
   {
-    "image": "data/images/terrain/adrien/WB1_23_138.jpg",
+    "image": "data/images/wide/terrain/adrien/WB1_23_138.jpg",
     "boxes": [
       [
         1267,
@@ -407,7 +407,7 @@
     ]
   },
   {
-    "image": "data/images/terrain/basile/WB1_23_0091_1.jpg",
+    "image": "data/images/wide/terrain/basile/WB1_23_0091_1.jpg",
     "boxes": [
       [
         797,
@@ -418,7 +418,7 @@
     ]
   },
   {
-    "image": "data/images/terrain/basile/WB1_23_0094_1.jpg",
+    "image": "data/images/wide/terrain/basile/WB1_23_0094_1.jpg",
     "boxes": [
       [
         971,
@@ -429,7 +429,7 @@
     ]
   },
   {
-    "image": "data/images/terrain/basile/WB1_23_0098_2.jpg",
+    "image": "data/images/wide/terrain/basile/WB1_23_0098_2.jpg",
     "boxes": [
       [
         960,
@@ -440,7 +440,7 @@
     ]
   },
   {
-    "image": "data/images/terrain/charlotte/WB1_23_0001_1.jpg",
+    "image": "data/images/wide/terrain/charlotte/WB1_23_0001_1.jpg",
     "boxes": [
       [
         1330,
@@ -451,7 +451,7 @@
     ]
   },
   {
-    "image": "data/images/terrain/charlotte/WB1_23_0004_1.jpg",
+    "image": "data/images/wide/terrain/charlotte/WB1_23_0004_1.jpg",
     "boxes": [
             [
         1382,
@@ -462,7 +462,7 @@
     ]
   },
   {
-    "image": "data/images/terrain/adrien/WB1_23_140.jpg",
+    "image": "data/images/wide/terrain/adrien/WB1_23_140.jpg",
     "boxes": [
       [
         1194,
@@ -474,7 +474,7 @@
   },
 
   {
-    "image": "data/images/terrain/basile/WB1_23_0091_1.jpg",
+    "image": "data/images/wide/terrain/basile/WB1_23_0091_1.jpg",
     "boxes": [
       [
         808,
@@ -485,7 +485,7 @@
     ]
   },
   {
-    "image": "data/images/terrain/guilhem/WB1_23_0036_1.jpg",
+    "image": "data/images/wide/terrain/guilhem/WB1_23_0036_1.jpg",
     "boxes": [
       [
         1364,
@@ -496,7 +496,7 @@
     ]
   },
   {
-    "image": "data/images/terrain/ligia/WB1_23_0065_2.jpg",
+    "image": "data/images/wide/terrain/ligia/WB1_23_0065_2.jpg",
     "boxes": [
       [
         1316,
@@ -507,7 +507,7 @@
     ]
   },
   {
-    "image": "data/images/terrain/ligia/WB1_23_0065_3.jpg",
+    "image": "data/images/wide/terrain/ligia/WB1_23_0065_3.jpg",
     "boxes": [
       [
         1312,
