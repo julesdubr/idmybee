@@ -1,15 +1,13 @@
-"""Correspondence-free rigid+scale registration of an unlabeled point set
-onto a set of reference 'zones' (labeled template landmarks), via
-alternating Hungarian assignment + Umeyama similarity fit (no reflection).
+"""Alignement rigide+échelle d'un nuage de points non-ordonné sur des
+'zones' de référence étiquetées, via Hungarian assignment + Umeyama
+(similarité, sans réflexion), alternés jusqu'à convergence.
 """
 import numpy as np
 from scipy.optimize import linear_sum_assignment
 
 
 def umeyama(src, dst):
-    """Least-squares similarity transform (R, scale, t) with det(R)=+1
-    mapping src (k,2) onto dst (k,2): dst_hat = scale * (src @ R.T) + t
-    """
+    """Transform (R, scale, t), det(R)=+1, tel que dst_hat = scale*(src@R.T)+t."""
     mu_src, mu_dst = src.mean(axis=0), dst.mean(axis=0)
     src_c, dst_c = src - mu_src, dst - mu_dst
     var_src = (src_c ** 2).sum() / len(src)
@@ -31,11 +29,10 @@ def apply_transform(pts, R, scale, t):
 def register_unlabeled(points, zones, n_iter=15, angle_inits=(0, 90, 180, 270),
                         mirror_options=(False, True)):
     """
-    points: (k,2) unlabeled point cloud (e.g. Gabriel's raw landmark predictions, pixel coords)
-    zones:  (k,2) labeled reference template (subset of the Tancrede consensus shape)
-    Multi-start over coarse rotation/mirror inits to escape bad local optima.
-    Returns: best_assignment (indices into `zones` for each row of `points`),
-             best_cost (mean squared residual), best_transform (R, scale, t)
+    points: (k,2) nuage non-ordonné (ex: prédictions brutes du UNet)
+    zones:  (k,2) template de référence étiqueté
+    Multi-départs (rotation grossière x miroir) pour éviter les optima locaux.
+    Retourne (assignment, cost, (R, scale, t)).
     """
     pts0 = points - points.mean(axis=0)
     best = None
@@ -44,10 +41,7 @@ def register_unlabeled(points, zones, n_iter=15, angle_inits=(0, 90, 180, 270),
         rot0 = np.array([[np.cos(th), -np.sin(th)], [np.sin(th), np.cos(th)]])
         for mirror in mirror_options:
             mir = np.array([[-1, 0], [0, 1]]) if mirror else np.eye(2)
-            init = pts0 @ (rot0 @ mir).T
-            # crude initial scale match (centroid-size ratio)
-            s0 = np.sqrt((zones - zones.mean(0)) ** 2).sum() ** 0.5
-            cur = init.copy()
+            cur = pts0 @ (rot0 @ mir).T
             assign_prev = None
             for _ in range(n_iter):
                 cost = ((cur[:, None, :] - zones[None, :, :]) ** 2).sum(axis=2)

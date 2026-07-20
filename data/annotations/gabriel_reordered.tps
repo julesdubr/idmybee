@@ -37211,90 +37211,6 @@ LM=18
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_rupestris\queen\UBC-2014.0001_S5.jpg
 ID=1816
 LM=18
-88.0000 99.0000
-94.0000 85.0000
-159.0000 148.0000
-178.0000 150.0000
-258.0000 128.0000
-264.0000 84.0000
-302.0000 100.0000
-314.0000 98.0000
-301.0000 55.0000
-279.0000 57.0000
-229.0000 31.0000
-210.0000 63.0000
-226.0000 17.0000
-96.0000 70.0000
-184.0000 99.0000
-225.0000 79.0000
-244.0000 51.0000
-190.0000 127.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_rupestris\queen\unknown\inconnu_S1_1.jpg
-ID=1817
-LM=18
-93.0000 102.0000
-98.0000 86.0000
-183.0000 152.0000
-265.0000 129.0000
-265.0000 86.0000
-304.0000 100.0000
-316.0000 98.0000
-376.0000 47.0000
-303.0000 57.0000
-280.0000 57.0000
-233.0000 34.0000
-214.0000 62.0000
-194.0000 50.0000
-98.0000 80.0000
-188.0000 101.0000
-228.0000 80.0000
-248.0000 53.0000
-192.0000 128.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_rupestris\queen\unknown\inconnu_S1_2.jpg
-ID=1818
-LM=18
-109.0000 109.0000
-112.0000 95.0000
-197.0000 154.0000
-269.0000 130.0000
-274.0000 87.0000
-309.0000 101.0000
-319.0000 99.0000
-377.0000 45.0000
-307.0000 60.0000
-285.0000 62.0000
-241.0000 43.0000
-221.0000 69.0000
-199.0000 59.0000
-106.0000 87.0000
-198.0000 106.0000
-235.0000 84.0000
-254.0000 59.0000
-204.0000 131.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_rupestris\queen\unknown\inconnu_S1_4.jpg
-ID=1819
-LM=18
-373.0000 43.0000
-299.0000 57.0000
-277.0000 60.0000
-223.0000 19.0000
-228.0000 35.0000
-209.0000 66.0000
-172.0000 62.0000
-94.0000 79.0000
-91.0000 99.0000
-192.0000 133.0000
-184.0000 157.0000
-303.0000 101.0000
-264.0000 131.0000
-312.0000 98.0000
-265.0000 87.0000
-224.0000 82.0000
-187.0000 106.0000
-244.0000 56.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_rupestris\queen\unknown\inconnu_S1_5.jpg
-ID=1820
-LM=18
 105.0000 114.0000
 107.0000 96.0000
 199.0000 149.0000
@@ -37314,7 +37230,7 @@ LM=18
 259.0000 61.0000
 205.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CD388016_P1.JPG
-ID=1821
+ID=1817
 LM=18
 111.0000 116.0000
 114.0000 99.0000
@@ -37335,7 +37251,7 @@ LM=18
 263.0000 64.0000
 209.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CD388016_P2.JPG
-ID=1822
+ID=1818
 LM=18
 106.0000 112.0000
 109.0000 95.0000
@@ -37356,7 +37272,7 @@ LM=18
 258.0000 64.0000
 205.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CD388016_S1.jpg
-ID=1823
+ID=1819
 LM=18
 89.0000 115.0000
 93.0000 98.0000
@@ -37377,7 +37293,7 @@ LM=18
 247.0000 64.0000
 192.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CD388016_S2.jpg
-ID=1824
+ID=1820
 LM=18
 86.0000 113.0000
 90.0000 96.0000
@@ -37398,7 +37314,7 @@ LM=18
 246.0000 61.0000
 191.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CD388016_S3.jpg
-ID=1825
+ID=1821
 LM=18
 101.0000 150.0000
 105.0000 131.0000
@@ -37419,7 +37335,7 @@ LM=18
 258.0000 76.0000
 211.0000 156.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan1_P1.JPG
-ID=1826
+ID=1822
 LM=18
 105.0000 149.0000
 109.0000 130.0000
@@ -37440,7 +37356,7 @@ LM=18
 261.0000 73.0000
 216.0000 153.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan1_P2.JPG
-ID=1827
+ID=1823
 LM=18
 123.0000 165.0000
 124.0000 143.0000
@@ -37461,7 +37377,7 @@ LM=18
 307.0000 69.0000
 254.0000 167.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan1_S1.jpg
-ID=1828
+ID=1824
 LM=18
 115.0000 155.0000
 117.0000 136.0000
@@ -37482,7 +37398,7 @@ LM=18
 266.0000 76.0000
 223.0000 156.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan1_S2.jpg
-ID=1829
+ID=1825
 LM=18
 110.0000 159.0000
 110.0000 140.0000
@@ -37503,7 +37419,7 @@ LM=18
 261.0000 77.0000
 218.0000 160.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan1_S3.jpg
-ID=1830
+ID=1826
 LM=18
 78.0000 136.0000
 80.0000 118.0000
@@ -37524,7 +37440,7 @@ LM=18
 238.0000 62.0000
 186.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan2_P1.JPG
-ID=1831
+ID=1827
 LM=18
 81.0000 133.0000
 83.0000 116.0000
@@ -37545,7 +37461,7 @@ LM=18
 239.0000 62.0000
 187.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan2_P2.JPG
-ID=1832
+ID=1828
 LM=18
 92.0000 143.0000
 92.0000 126.0000
@@ -37566,7 +37482,7 @@ LM=18
 245.0000 67.0000
 195.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan2_S1.jpg
-ID=1833
+ID=1829
 LM=18
 83.0000 141.0000
 83.0000 123.0000
@@ -37587,7 +37503,7 @@ LM=18
 237.0000 66.0000
 187.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan2_S2.jpg
-ID=1834
+ID=1830
 LM=18
 83.0000 140.0000
 84.0000 122.0000
@@ -37608,7 +37524,7 @@ LM=18
 241.0000 64.0000
 189.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan2_S3.jpg
-ID=1835
+ID=1831
 LM=18
 93.0000 123.0000
 96.0000 106.0000
@@ -37629,7 +37545,7 @@ LM=18
 247.0000 62.0000
 194.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan3_P1.JPG
-ID=1836
+ID=1832
 LM=18
 91.0000 125.0000
 94.0000 109.0000
@@ -37650,7 +37566,7 @@ LM=18
 247.0000 63.0000
 192.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan3_P2.JPG
-ID=1837
+ID=1833
 LM=18
 91.0000 135.0000
 93.0000 118.0000
@@ -37671,7 +37587,7 @@ LM=18
 244.0000 65.0000
 194.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan3_S1.jpg
-ID=1838
+ID=1834
 LM=18
 92.0000 138.0000
 93.0000 121.0000
@@ -37692,7 +37608,7 @@ LM=18
 245.0000 68.0000
 193.0000 147.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan3_S2.jpg
-ID=1839
+ID=1835
 LM=18
 90.0000 136.0000
 93.0000 119.0000
@@ -37713,7 +37629,7 @@ LM=18
 245.0000 67.0000
 193.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan3_S3.jpg
-ID=1840
+ID=1836
 LM=18
 75.0000 127.0000
 78.0000 111.0000
@@ -37734,7 +37650,7 @@ LM=18
 235.0000 62.0000
 184.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan4_P1.JPG
-ID=1841
+ID=1837
 LM=18
 74.0000 125.0000
 75.0000 107.0000
@@ -37755,7 +37671,7 @@ LM=18
 236.0000 61.0000
 183.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan4_P2.JPG
-ID=1842
+ID=1838
 LM=18
 75.0000 137.0000
 77.0000 119.0000
@@ -37776,7 +37692,7 @@ LM=18
 234.0000 65.0000
 185.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan4_S1.jpg
-ID=1843
+ID=1839
 LM=18
 74.0000 136.0000
 76.0000 118.0000
@@ -37797,7 +37713,7 @@ LM=18
 235.0000 63.0000
 186.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan4_S2.jpg
-ID=1844
+ID=1840
 LM=18
 78.0000 132.0000
 80.0000 114.0000
@@ -37818,7 +37734,7 @@ LM=18
 236.0000 62.0000
 187.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan4_S3.jpg
-ID=1845
+ID=1841
 LM=18
 88.0000 136.0000
 92.0000 120.0000
@@ -37839,7 +37755,7 @@ LM=18
 246.0000 71.0000
 195.0000 148.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan5_P1.JPG
-ID=1846
+ID=1842
 LM=18
 89.0000 141.0000
 92.0000 126.0000
@@ -37860,7 +37776,7 @@ LM=18
 245.0000 73.0000
 196.0000 151.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan5_P2.JPG
-ID=1847
+ID=1843
 LM=18
 96.0000 149.0000
 98.0000 132.0000
@@ -37881,7 +37797,7 @@ LM=18
 251.0000 76.0000
 203.0000 155.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan5_S1.jpg
-ID=1848
+ID=1844
 LM=18
 92.0000 146.0000
 94.0000 131.0000
@@ -37902,7 +37818,7 @@ LM=18
 248.0000 75.0000
 200.0000 154.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan5_S2.jpg
-ID=1849
+ID=1845
 LM=18
 90.0000 142.0000
 92.0000 127.0000
@@ -37923,7 +37839,7 @@ LM=18
 246.0000 72.0000
 197.0000 151.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan5_S3.jpg
-ID=1850
+ID=1846
 LM=18
 109.0000 135.0000
 114.0000 118.0000
@@ -37944,7 +37860,7 @@ LM=18
 274.0000 71.0000
 221.0000 147.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan6_P1.JPG
-ID=1851
+ID=1847
 LM=18
 113.0000 131.0000
 119.0000 114.0000
@@ -37965,7 +37881,7 @@ LM=18
 278.0000 71.0000
 224.0000 146.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan6_P2.JPG
-ID=1852
+ID=1848
 LM=18
 118.0000 143.0000
 122.0000 127.0000
@@ -37986,7 +37902,7 @@ LM=18
 280.0000 75.0000
 230.0000 152.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan6_S1.jpg
-ID=1853
+ID=1849
 LM=18
 116.0000 140.0000
 120.0000 123.0000
@@ -38007,7 +37923,7 @@ LM=18
 281.0000 74.0000
 229.0000 151.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan6_S2.jpg
-ID=1854
+ID=1850
 LM=18
 112.0000 138.0000
 115.0000 121.0000
@@ -38028,7 +37944,7 @@ LM=18
 276.0000 69.0000
 224.0000 147.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\CollecYvan6_S3.jpg
-ID=1855
+ID=1851
 LM=18
 89.0000 105.0000
 96.0000 87.0000
@@ -38049,7 +37965,7 @@ LM=18
 261.0000 53.0000
 194.0000 121.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR04ABOM220722046_P1.JPG
-ID=1856
+ID=1852
 LM=18
 89.0000 106.0000
 97.0000 89.0000
@@ -38070,7 +37986,7 @@ LM=18
 260.0000 53.0000
 193.0000 122.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR04ABOM220722046_P2.JPG
-ID=1857
+ID=1853
 LM=18
 93.0000 101.0000
 100.0000 84.0000
@@ -38091,7 +38007,7 @@ LM=18
 256.0000 49.0000
 193.0000 116.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR04ABOM220722046_S1.jpg
-ID=1858
+ID=1854
 LM=18
 102.0000 105.0000
 108.0000 89.0000
@@ -38112,7 +38028,7 @@ LM=18
 261.0000 53.0000
 200.0000 119.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR04ABOM220722046_S2.jpg
-ID=1859
+ID=1855
 LM=18
 96.0000 101.0000
 104.0000 85.0000
@@ -38133,7 +38049,7 @@ LM=18
 261.0000 49.0000
 199.0000 117.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR04ABOM220722046_S3.jpg
-ID=1860
+ID=1856
 LM=18
 78.0000 107.0000
 84.0000 89.0000
@@ -38154,7 +38070,7 @@ LM=18
 247.0000 57.0000
 184.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR04ABOM220722047_P1.JPG
-ID=1861
+ID=1857
 LM=18
 80.0000 111.0000
 85.0000 93.0000
@@ -38175,7 +38091,7 @@ LM=18
 245.0000 61.0000
 185.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR04ABOM220722047_P2.JPG
-ID=1862
+ID=1858
 LM=18
 90.0000 114.0000
 94.0000 96.0000
@@ -38196,7 +38112,7 @@ LM=18
 251.0000 58.0000
 194.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR04ABOM220722047_S1.jpg
-ID=1863
+ID=1859
 LM=18
 78.0000 114.0000
 82.0000 97.0000
@@ -38217,7 +38133,7 @@ LM=18
 246.0000 57.0000
 186.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR04ABOM220722047_S2.jpg
-ID=1864
+ID=1860
 LM=18
 80.0000 109.0000
 84.0000 91.0000
@@ -38238,7 +38154,7 @@ LM=18
 249.0000 56.0000
 186.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR04ABOM220722047_S3.jpg
-ID=1865
+ID=1861
 LM=18
 82.0000 125.0000
 87.0000 107.0000
@@ -38259,7 +38175,7 @@ LM=18
 251.0000 63.0000
 191.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR05ABOM220722026_P1.JPG
-ID=1866
+ID=1862
 LM=18
 184.0000 159.0000
 86.0000 122.0000
@@ -38280,7 +38196,7 @@ LM=18
 253.0000 63.0000
 234.0000 92.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR05ABOM220722026_P2.JPG
-ID=1867
+ID=1863
 LM=18
 80.0000 126.0000
 84.0000 108.0000
@@ -38301,7 +38217,7 @@ LM=18
 247.0000 60.0000
 190.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR05ABOM220722026_S1.jpg
-ID=1868
+ID=1864
 LM=18
 81.0000 127.0000
 84.0000 110.0000
@@ -38322,7 +38238,7 @@ LM=18
 249.0000 61.0000
 191.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR05ABOM220722026_S2.jpg
-ID=1869
+ID=1865
 LM=18
 83.0000 127.0000
 87.0000 110.0000
@@ -38343,7 +38259,7 @@ LM=18
 253.0000 61.0000
 194.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR05ABOM220722026_S3.jpg
-ID=1870
+ID=1866
 LM=18
 97.0000 119.0000
 104.0000 102.0000
@@ -38364,7 +38280,7 @@ LM=18
 256.0000 63.0000
 203.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR05ABOM220722027_P1.JPG
-ID=1871
+ID=1867
 LM=18
 95.0000 118.0000
 102.0000 101.0000
@@ -38385,7 +38301,7 @@ LM=18
 255.0000 64.0000
 201.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR05ABOM220722027_P2.JPG
-ID=1872
+ID=1868
 LM=18
 105.0000 128.0000
 110.0000 110.0000
@@ -38406,7 +38322,7 @@ LM=18
 261.0000 66.0000
 209.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR05ABOM220722027_S1.jpg
-ID=1873
+ID=1869
 LM=18
 113.0000 127.0000
 118.0000 110.0000
@@ -38427,7 +38343,7 @@ LM=18
 266.0000 68.0000
 215.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR05ABOM220722027_S2.jpg
-ID=1874
+ID=1870
 LM=18
 94.0000 127.0000
 100.0000 110.0000
@@ -38448,7 +38364,7 @@ LM=18
 254.0000 66.0000
 202.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR05ABOM220722027_S3.jpg
-ID=1875
+ID=1871
 LM=18
 88.0000 119.0000
 92.0000 102.0000
@@ -38469,7 +38385,7 @@ LM=18
 248.0000 64.0000
 194.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM120722026_P1.JPG
-ID=1876
+ID=1872
 LM=18
 81.0000 118.0000
 85.0000 101.0000
@@ -38490,7 +38406,7 @@ LM=18
 245.0000 59.0000
 191.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM120722026_P2.JPG
-ID=1877
+ID=1873
 LM=18
 83.0000 128.0000
 86.0000 111.0000
@@ -38511,7 +38427,7 @@ LM=18
 244.0000 65.0000
 193.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM120722026_S1.jpg
-ID=1878
+ID=1874
 LM=18
 83.0000 127.0000
 86.0000 110.0000
@@ -38532,7 +38448,7 @@ LM=18
 245.0000 64.0000
 193.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM120722026_S2.jpg
-ID=1879
+ID=1875
 LM=18
 83.0000 129.0000
 86.0000 112.0000
@@ -38553,7 +38469,7 @@ LM=18
 243.0000 66.0000
 191.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM120722026_S3.jpg
-ID=1880
+ID=1876
 LM=18
 87.0000 129.0000
 89.0000 111.0000
@@ -38574,7 +38490,7 @@ LM=18
 246.0000 65.0000
 194.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM120722028_P1.JPG
-ID=1881
+ID=1877
 LM=18
 87.0000 124.0000
 90.0000 106.0000
@@ -38595,7 +38511,7 @@ LM=18
 247.0000 63.0000
 194.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM120722028_P2.JPG
-ID=1882
+ID=1878
 LM=18
 90.0000 131.0000
 92.0000 114.0000
@@ -38616,7 +38532,7 @@ LM=18
 248.0000 66.0000
 196.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM120722028_S1.jpg
-ID=1883
+ID=1879
 LM=18
 90.0000 137.0000
 92.0000 120.0000
@@ -38637,7 +38553,7 @@ LM=18
 247.0000 68.0000
 197.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM120722028_S2.jpg
-ID=1884
+ID=1880
 LM=18
 86.0000 129.0000
 88.0000 111.0000
@@ -38658,7 +38574,7 @@ LM=18
 245.0000 63.0000
 193.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM120722028_S3.jpg
-ID=1885
+ID=1881
 LM=18
 91.0000 141.0000
 93.0000 123.0000
@@ -38679,7 +38595,7 @@ LM=18
 250.0000 68.0000
 202.0000 146.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM130722003_P1.JPG
-ID=1886
+ID=1882
 LM=18
 84.0000 138.0000
 87.0000 121.0000
@@ -38700,7 +38616,7 @@ LM=18
 245.0000 67.0000
 197.0000 146.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM130722003_P2.JPG
-ID=1887
+ID=1883
 LM=18
 85.0000 138.0000
 87.0000 121.0000
@@ -38721,7 +38637,7 @@ LM=18
 244.0000 66.0000
 196.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM130722003_S1.jpg
-ID=1888
+ID=1884
 LM=18
 94.0000 141.0000
 96.0000 124.0000
@@ -38742,7 +38658,7 @@ LM=18
 253.0000 71.0000
 204.0000 147.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM130722003_S2.jpg
-ID=1889
+ID=1885
 LM=18
 88.0000 144.0000
 89.0000 127.0000
@@ -38763,7 +38679,7 @@ LM=18
 247.0000 69.0000
 199.0000 147.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM130722003_S3.jpg
-ID=1890
+ID=1886
 LM=18
 106.0000 114.0000
 112.0000 99.0000
@@ -38784,7 +38700,7 @@ LM=18
 260.0000 66.0000
 206.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM130722029_P1.JPG
-ID=1891
+ID=1887
 LM=18
 80.0000 107.0000
 87.0000 88.0000
@@ -38805,7 +38721,7 @@ LM=18
 247.0000 56.0000
 190.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM130722029_P2.JPG
-ID=1892
+ID=1888
 LM=18
 67.0000 116.0000
 73.0000 98.0000
@@ -38826,7 +38742,7 @@ LM=18
 236.0000 59.0000
 178.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM130722029_S1.jpg
-ID=1893
+ID=1889
 LM=18
 95.0000 117.0000
 99.0000 100.0000
@@ -38847,7 +38763,7 @@ LM=18
 253.0000 61.0000
 200.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM130722029_S2.jpg
-ID=1894
+ID=1890
 LM=18
 76.0000 114.0000
 80.0000 96.0000
@@ -38868,7 +38784,7 @@ LM=18
 240.0000 58.0000
 184.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM130722029_S3.jpg
-ID=1895
+ID=1891
 LM=18
 83.0000 125.0000
 88.0000 107.0000
@@ -38889,7 +38805,7 @@ LM=18
 240.0000 64.0000
 189.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM130722041_P1.JPG
-ID=1896
+ID=1892
 LM=18
 83.0000 124.0000
 89.0000 107.0000
@@ -38910,7 +38826,7 @@ LM=18
 241.0000 64.0000
 191.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM130722041_P2.JPG
-ID=1897
+ID=1893
 LM=18
 90.0000 130.0000
 95.0000 113.0000
@@ -38931,7 +38847,7 @@ LM=18
 244.0000 67.0000
 195.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM130722041_S1.jpg
-ID=1898
+ID=1894
 LM=18
 82.0000 129.0000
 88.0000 110.0000
@@ -38952,7 +38868,7 @@ LM=18
 243.0000 65.0000
 192.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM130722041_S2.jpg
-ID=1899
+ID=1895
 LM=18
 90.0000 135.0000
 95.0000 118.0000
@@ -38973,7 +38889,7 @@ LM=18
 246.0000 71.0000
 197.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM130722041_S3.jpg
-ID=1900
+ID=1896
 LM=18
 78.0000 135.0000
 82.0000 117.0000
@@ -38994,7 +38910,7 @@ LM=18
 240.0000 63.0000
 194.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM200722017_P1.JPG
-ID=1901
+ID=1897
 LM=18
 85.0000 138.0000
 89.0000 120.0000
@@ -39015,7 +38931,7 @@ LM=18
 242.0000 68.0000
 197.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM200722017_P2.JPG
-ID=1902
+ID=1898
 LM=18
 116.0000 138.0000
 119.0000 123.0000
@@ -39036,7 +38952,7 @@ LM=18
 262.0000 70.0000
 221.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM200722017_S1.jpg
-ID=1903
+ID=1899
 LM=18
 89.0000 144.0000
 91.0000 127.0000
@@ -39057,7 +38973,7 @@ LM=18
 246.0000 69.0000
 202.0000 149.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM200722017_S2.jpg
-ID=1904
+ID=1900
 LM=18
 85.0000 140.0000
 87.0000 122.0000
@@ -39078,7 +38994,7 @@ LM=18
 243.0000 66.0000
 198.0000 146.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM200722017_S3.jpg
-ID=1905
+ID=1901
 LM=18
 87.0000 120.0000
 92.0000 102.0000
@@ -39099,7 +39015,7 @@ LM=18
 246.0000 61.0000
 196.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM200722018_P1.JPG
-ID=1906
+ID=1902
 LM=18
 87.0000 122.0000
 92.0000 103.0000
@@ -39120,7 +39036,7 @@ LM=18
 247.0000 64.0000
 196.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM200722018_P2.JPG
-ID=1907
+ID=1903
 LM=18
 84.0000 125.0000
 88.0000 107.0000
@@ -39141,7 +39057,7 @@ LM=18
 244.0000 62.0000
 195.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM200722018_S1.jpg
-ID=1908
+ID=1904
 LM=18
 84.0000 123.0000
 88.0000 106.0000
@@ -39162,7 +39078,7 @@ LM=18
 245.0000 61.0000
 196.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM200722018_S2.jpg
-ID=1909
+ID=1905
 LM=18
 85.0000 124.0000
 89.0000 106.0000
@@ -39183,7 +39099,7 @@ LM=18
 245.0000 61.0000
 196.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM200722018_S3.jpg
-ID=1910
+ID=1906
 LM=18
 90.0000 130.0000
 92.0000 112.0000
@@ -39204,7 +39120,7 @@ LM=18
 247.0000 66.0000
 198.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM200722030_P1.JPG
-ID=1911
+ID=1907
 LM=18
 91.0000 131.0000
 92.0000 114.0000
@@ -39225,7 +39141,7 @@ LM=18
 244.0000 69.0000
 196.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM200722030_P2.JPG
-ID=1912
+ID=1908
 LM=18
 94.0000 133.0000
 96.0000 117.0000
@@ -39246,7 +39162,7 @@ LM=18
 248.0000 70.0000
 200.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM200722030_S1.jpg
-ID=1913
+ID=1909
 LM=18
 90.0000 132.0000
 92.0000 115.0000
@@ -39267,7 +39183,7 @@ LM=18
 244.0000 70.0000
 197.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM200722030_S2.jpg
-ID=1914
+ID=1910
 LM=18
 88.0000 133.0000
 90.0000 115.0000
@@ -39288,7 +39204,7 @@ LM=18
 242.0000 71.0000
 195.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM200722030_S3.jpg
-ID=1915
+ID=1911
 LM=18
 84.0000 126.0000
 88.0000 109.0000
@@ -39309,7 +39225,7 @@ LM=18
 241.0000 64.0000
 187.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM200722031_P1.JPG
-ID=1916
+ID=1912
 LM=18
 89.0000 132.0000
 94.0000 115.0000
@@ -39330,7 +39246,7 @@ LM=18
 244.0000 69.0000
 191.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM200722031_P2.JPG
-ID=1917
+ID=1913
 LM=18
 92.0000 130.0000
 96.0000 114.0000
@@ -39351,7 +39267,7 @@ LM=18
 244.0000 67.0000
 193.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM200722031_S1.jpg
-ID=1918
+ID=1914
 LM=18
 93.0000 131.0000
 97.0000 114.0000
@@ -39372,7 +39288,7 @@ LM=18
 247.0000 66.0000
 194.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM200722031_S2.jpg
-ID=1919
+ID=1915
 LM=18
 95.0000 135.0000
 99.0000 118.0000
@@ -39393,7 +39309,7 @@ LM=18
 245.0000 69.0000
 196.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\male\FR73ABOM200722031_S3.jpg
-ID=1920
+ID=1916
 LM=18
 85.0000 144.0000
 89.0000 123.0000
@@ -39414,7 +39330,7 @@ LM=18
 248.0000 66.0000
 196.0000 154.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\queen\FR04ABOM220722001_P1.JPG
-ID=1921
+ID=1917
 LM=18
 83.0000 113.0000
 92.0000 94.0000
@@ -39435,7 +39351,7 @@ LM=18
 254.0000 66.0000
 189.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\queen\FR04ABOM220722001_P2.JPG
-ID=1922
+ID=1918
 LM=18
 83.0000 152.0000
 87.0000 131.0000
@@ -39456,7 +39372,7 @@ LM=18
 247.0000 66.0000
 198.0000 160.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\queen\FR04ABOM220722001_S1.jpg
-ID=1923
+ID=1919
 LM=18
 84.0000 154.0000
 88.0000 132.0000
@@ -39477,7 +39393,7 @@ LM=18
 247.0000 68.0000
 199.0000 160.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\queen\FR04ABOM220722001_S2.jpg
-ID=1924
+ID=1920
 LM=18
 88.0000 154.0000
 91.0000 132.0000
@@ -39498,7 +39414,7 @@ LM=18
 247.0000 68.0000
 200.0000 159.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\queen\FR04ABOM220722001_S3.jpg
-ID=1925
+ID=1921
 LM=18
 107.0000 98.0000
 113.0000 81.0000
@@ -39519,7 +39435,7 @@ LM=18
 265.0000 49.0000
 208.0000 117.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8203_P1.JPG
-ID=1926
+ID=1922
 LM=18
 109.0000 103.0000
 115.0000 85.0000
@@ -39540,7 +39456,7 @@ LM=18
 266.0000 58.0000
 209.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8203_P2.JPG
-ID=1927
+ID=1923
 LM=18
 97.0000 107.0000
 102.0000 89.0000
@@ -39561,7 +39477,7 @@ LM=18
 258.0000 61.0000
 199.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8203_S1.jpg
-ID=1928
+ID=1924
 LM=18
 107.0000 102.0000
 113.0000 85.0000
@@ -39582,7 +39498,7 @@ LM=18
 265.0000 57.0000
 207.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8203_S2.jpg
-ID=1929
+ID=1925
 LM=18
 103.0000 107.0000
 109.0000 89.0000
@@ -39603,7 +39519,7 @@ LM=18
 263.0000 60.0000
 206.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8203_S3.jpg
-ID=1930
+ID=1926
 LM=18
 100.0000 127.0000
 103.0000 109.0000
@@ -39624,7 +39540,7 @@ LM=18
 257.0000 69.0000
 204.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8207_P1.JPG
-ID=1931
+ID=1927
 LM=18
 103.0000 109.0000
 106.0000 92.0000
@@ -39645,7 +39561,7 @@ LM=18
 251.0000 55.0000
 201.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8207_P2.JPG
-ID=1932
+ID=1928
 LM=18
 113.0000 116.0000
 116.0000 99.0000
@@ -39666,7 +39582,7 @@ LM=18
 261.0000 62.0000
 210.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8207_S1.jpg
-ID=1933
+ID=1929
 LM=18
 114.0000 113.0000
 117.0000 96.0000
@@ -39687,7 +39603,7 @@ LM=18
 262.0000 61.0000
 212.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8207_S2.jpg
-ID=1934
+ID=1930
 LM=18
 112.0000 116.0000
 115.0000 99.0000
@@ -39708,7 +39624,7 @@ LM=18
 261.0000 62.0000
 210.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8207_S3.jpg
-ID=1935
+ID=1931
 LM=18
 83.0000 114.0000
 92.0000 96.0000
@@ -39729,7 +39645,7 @@ LM=18
 243.0000 46.0000
 190.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8208_P1.JPG
-ID=1936
+ID=1932
 LM=18
 78.0000 123.0000
 85.0000 104.0000
@@ -39750,7 +39666,7 @@ LM=18
 238.0000 60.0000
 183.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8208_P2.JPG
-ID=1937
+ID=1933
 LM=18
 82.0000 125.0000
 87.0000 105.0000
@@ -39771,7 +39687,7 @@ LM=18
 245.0000 56.0000
 189.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8208_S1.jpg
-ID=1938
+ID=1934
 LM=18
 89.0000 129.0000
 96.0000 110.0000
@@ -39792,7 +39708,7 @@ LM=18
 251.0000 61.0000
 196.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8208_S2.jpg
-ID=1939
+ID=1935
 LM=18
 91.0000 127.0000
 98.0000 107.0000
@@ -39813,7 +39729,7 @@ LM=18
 252.0000 58.0000
 198.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8208_S3.jpg
-ID=1940
+ID=1936
 LM=18
 89.0000 104.0000
 93.0000 89.0000
@@ -39834,7 +39750,7 @@ LM=18
 256.0000 61.0000
 192.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8208b_P2.JPG
-ID=1942
+ID=1938
 LM=18
 72.0000 96.0000
 76.0000 81.0000
@@ -39855,7 +39771,7 @@ LM=18
 240.0000 54.0000
 175.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8208b_S1.jpg
-ID=1943
+ID=1939
 LM=18
 78.0000 96.0000
 83.0000 81.0000
@@ -39876,7 +39792,7 @@ LM=18
 242.0000 53.0000
 179.0000 124.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8208b_S2.jpg
-ID=1944
+ID=1940
 LM=18
 72.0000 98.0000
 75.0000 83.0000
@@ -39897,7 +39813,7 @@ LM=18
 238.0000 52.0000
 175.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8208b_S3.jpg
-ID=1945
+ID=1941
 LM=18
 120.0000 125.0000
 127.0000 105.0000
@@ -39918,7 +39834,7 @@ LM=18
 283.0000 68.0000
 225.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238a_P1.JPG
-ID=1946
+ID=1942
 LM=18
 115.0000 124.0000
 123.0000 105.0000
@@ -39939,7 +39855,7 @@ LM=18
 278.0000 67.0000
 220.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238a_P2.JPG
-ID=1947
+ID=1943
 LM=18
 120.0000 125.0000
 124.0000 108.0000
@@ -39960,7 +39876,7 @@ LM=18
 274.0000 72.0000
 218.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238a_S1.jpg
-ID=1948
+ID=1944
 LM=18
 115.0000 125.0000
 121.0000 108.0000
@@ -39981,7 +39897,7 @@ LM=18
 274.0000 71.0000
 217.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238a_S2.jpg
-ID=1949
+ID=1945
 LM=18
 116.0000 121.0000
 122.0000 103.0000
@@ -40002,7 +39918,7 @@ LM=18
 272.0000 65.0000
 217.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238a_S3.jpg
-ID=1950
+ID=1946
 LM=18
 100.0000 114.0000
 105.0000 96.0000
@@ -40023,7 +39939,7 @@ LM=18
 266.0000 57.0000
 210.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238b_P1.JPG
-ID=1951
+ID=1947
 LM=18
 90.0000 125.0000
 95.0000 108.0000
@@ -40044,7 +39960,7 @@ LM=18
 257.0000 73.0000
 199.0000 146.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238b_P2.JPG
-ID=1952
+ID=1948
 LM=18
 113.0000 125.0000
 115.0000 108.0000
@@ -40065,7 +39981,7 @@ LM=18
 274.0000 71.0000
 218.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238b_S1.jpg
-ID=1953
+ID=1949
 LM=18
 102.0000 121.0000
 106.0000 104.0000
@@ -40086,7 +40002,7 @@ LM=18
 270.0000 69.0000
 211.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238b_S2.jpg
-ID=1954
+ID=1950
 LM=18
 109.0000 119.0000
 112.0000 102.0000
@@ -40107,7 +40023,7 @@ LM=18
 274.0000 69.0000
 216.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238b_S3.jpg
-ID=1955
+ID=1951
 LM=18
 91.0000 111.0000
 95.0000 95.0000
@@ -40128,7 +40044,7 @@ LM=18
 252.0000 64.0000
 191.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238c_P1.JPG
-ID=1956
+ID=1952
 LM=18
 98.0000 119.0000
 102.0000 101.0000
@@ -40149,7 +40065,7 @@ LM=18
 260.0000 71.0000
 199.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238c_P2.JPG
-ID=1957
+ID=1953
 LM=18
 96.0000 104.0000
 100.0000 87.0000
@@ -40170,7 +40086,7 @@ LM=18
 264.0000 58.0000
 199.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238c_S1.jpg
-ID=1958
+ID=1954
 LM=18
 94.0000 99.0000
 98.0000 81.0000
@@ -40191,7 +40107,7 @@ LM=18
 257.0000 52.0000
 195.0000 122.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238c_S2.jpg
-ID=1959
+ID=1955
 LM=18
 89.0000 106.0000
 94.0000 88.0000
@@ -40212,7 +40128,7 @@ LM=18
 258.0000 59.0000
 194.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238c_S3.jpg
-ID=1960
+ID=1956
 LM=18
 104.0000 132.0000
 108.0000 115.0000
@@ -40233,7 +40149,7 @@ LM=18
 252.0000 79.0000
 205.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238d_P1.JPG
-ID=1961
+ID=1957
 LM=18
 102.0000 112.0000
 107.0000 94.0000
@@ -40254,7 +40170,7 @@ LM=18
 252.0000 59.0000
 203.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238d_P2.JPG
-ID=1962
+ID=1958
 LM=18
 111.0000 123.0000
 115.0000 107.0000
@@ -40275,7 +40191,7 @@ LM=18
 263.0000 71.0000
 214.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238d_S1.jpg
-ID=1963
+ID=1959
 LM=18
 114.0000 125.0000
 119.0000 108.0000
@@ -40296,7 +40212,7 @@ LM=18
 267.0000 71.0000
 218.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238d_S2.jpg
-ID=1964
+ID=1960
 LM=18
 113.0000 125.0000
 119.0000 109.0000
@@ -40317,7 +40233,7 @@ LM=18
 266.0000 71.0000
 217.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238d_S3.jpg
-ID=1965
+ID=1961
 LM=18
 103.0000 104.0000
 108.0000 86.0000
@@ -40338,7 +40254,7 @@ LM=18
 289.0000 59.0000
 216.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238e_P1.JPG
-ID=1966
+ID=1962
 LM=18
 106.0000 103.0000
 110.0000 87.0000
@@ -40359,7 +40275,7 @@ LM=18
 273.0000 63.0000
 207.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238e_P2.JPG
-ID=1967
+ID=1963
 LM=18
 109.0000 108.0000
 113.0000 93.0000
@@ -40380,7 +40296,7 @@ LM=18
 270.0000 71.0000
 207.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238e_S1.jpg
-ID=1968
+ID=1964
 LM=18
 107.0000 110.0000
 111.0000 94.0000
@@ -40401,7 +40317,7 @@ LM=18
 268.0000 71.0000
 205.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238e_S2.jpg
-ID=1969
+ID=1965
 LM=18
 101.0000 109.0000
 106.0000 93.0000
@@ -40422,7 +40338,7 @@ LM=18
 265.0000 68.0000
 200.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ABAURA8238e_S3.jpg
-ID=1970
+ID=1966
 LM=18
 101.0000 102.0000
 106.0000 85.0000
@@ -40443,7 +40359,7 @@ LM=18
 255.0000 61.0000
 195.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ATBI_GR5b_P1.JPG
-ID=1971
+ID=1967
 LM=18
 98.0000 91.0000
 103.0000 71.0000
@@ -40464,7 +40380,7 @@ LM=18
 267.0000 45.0000
 202.0000 117.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ATBI_GR5b_P2.JPG
-ID=1972
+ID=1968
 LM=18
 103.0000 101.0000
 109.0000 84.0000
@@ -40485,7 +40401,7 @@ LM=18
 269.0000 60.0000
 206.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ATBI_GR5b_S1.jpg
-ID=1973
+ID=1969
 LM=18
 102.0000 101.0000
 110.0000 85.0000
@@ -40506,7 +40422,7 @@ LM=18
 268.0000 59.0000
 206.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ATBI_GR5b_S2.jpg
-ID=1974
+ID=1970
 LM=18
 100.0000 107.0000
 107.0000 89.0000
@@ -40527,7 +40443,7 @@ LM=18
 266.0000 61.0000
 203.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\ATBI_GR5b_S3.jpg
-ID=1975
+ID=1971
 LM=18
 72.0000 80.0000
 79.0000 66.0000
@@ -40548,7 +40464,7 @@ LM=18
 244.0000 51.0000
 178.0000 117.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD387770d_P1.JPG
-ID=1976
+ID=1972
 LM=18
 93.0000 97.0000
 99.0000 81.0000
@@ -40569,7 +40485,7 @@ LM=18
 258.0000 68.0000
 194.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD387770d_P2.JPG
-ID=1977
+ID=1973
 LM=18
 97.0000 101.0000
 101.0000 86.0000
@@ -40590,7 +40506,7 @@ LM=18
 261.0000 56.0000
 203.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD387770d_S1.jpg
-ID=1978
+ID=1974
 LM=18
 93.0000 129.0000
 95.0000 114.0000
@@ -40611,7 +40527,7 @@ LM=18
 249.0000 63.0000
 200.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD387770d_S2.jpg
-ID=1979
+ID=1975
 LM=18
 93.0000 115.0000
 95.0000 99.0000
@@ -40632,7 +40548,7 @@ LM=18
 255.0000 58.0000
 201.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD387770d_S3.jpg
-ID=1980
+ID=1976
 LM=18
 77.0000 94.0000
 85.0000 77.0000
@@ -40653,7 +40569,7 @@ LM=18
 255.0000 50.0000
 191.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388018c_P1.JPG
-ID=1981
+ID=1977
 LM=18
 77.0000 102.0000
 86.0000 84.0000
@@ -40674,7 +40590,7 @@ LM=18
 254.0000 55.0000
 191.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388018c_P2.JPG
-ID=1982
+ID=1978
 LM=18
 81.0000 107.0000
 87.0000 89.0000
@@ -40695,7 +40611,7 @@ LM=18
 256.0000 60.0000
 193.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388018c_S1.jpg
-ID=1983
+ID=1979
 LM=18
 83.0000 113.0000
 91.0000 95.0000
@@ -40716,7 +40632,7 @@ LM=18
 258.0000 67.0000
 195.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388018c_S2.jpg
-ID=1984
+ID=1980
 LM=18
 88.0000 106.0000
 96.0000 87.0000
@@ -40737,7 +40653,7 @@ LM=18
 265.0000 60.0000
 201.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388018c_S3.jpg
-ID=1985
+ID=1981
 LM=18
 86.0000 115.0000
 91.0000 97.0000
@@ -40758,7 +40674,7 @@ LM=18
 247.0000 61.0000
 187.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388821e_P1.JPG
-ID=1986
+ID=1982
 LM=18
 87.0000 126.0000
 91.0000 107.0000
@@ -40779,7 +40695,7 @@ LM=18
 248.0000 71.0000
 189.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388821e_P2.JPG
-ID=1987
+ID=1983
 LM=18
 83.0000 115.0000
 88.0000 96.0000
@@ -40800,7 +40716,7 @@ LM=18
 246.0000 60.0000
 186.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388821e_S1.jpg
-ID=1988
+ID=1984
 LM=18
 87.0000 118.0000
 93.0000 100.0000
@@ -40821,7 +40737,7 @@ LM=18
 250.0000 65.0000
 191.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388821e_S2.jpg
-ID=1989
+ID=1985
 LM=18
 72.0000 120.0000
 76.0000 101.0000
@@ -40842,7 +40758,7 @@ LM=18
 240.0000 66.0000
 178.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388821e_S3.jpg
-ID=1990
+ID=1986
 LM=18
 121.0000 129.0000
 123.0000 108.0000
@@ -40863,7 +40779,7 @@ LM=18
 291.0000 57.0000
 234.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388821f_P1.JPG
-ID=1991
+ID=1987
 LM=18
 106.0000 141.0000
 108.0000 120.0000
@@ -40884,7 +40800,7 @@ LM=18
 270.0000 71.0000
 216.0000 154.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388821f_P2.JPG
-ID=1992
+ID=1988
 LM=18
 96.0000 135.0000
 99.0000 114.0000
@@ -40905,7 +40821,7 @@ LM=18
 277.0000 61.0000
 216.0000 151.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388821f_S1.jpg
-ID=1993
+ID=1989
 LM=18
 102.0000 141.0000
 107.0000 121.0000
@@ -40926,7 +40842,7 @@ LM=18
 272.0000 72.0000
 216.0000 156.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388821f_S2.jpg
-ID=1994
+ID=1990
 LM=18
 100.0000 136.0000
 104.0000 117.0000
@@ -40947,7 +40863,7 @@ LM=18
 270.0000 69.0000
 213.0000 152.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388821f_S3.jpg
-ID=1995
+ID=1991
 LM=18
 68.0000 90.0000
 74.0000 72.0000
@@ -40968,7 +40884,7 @@ LM=18
 240.0000 50.0000
 175.0000 119.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865_P1.JPG
-ID=1996
+ID=1992
 LM=18
 94.0000 87.0000
 100.0000 71.0000
@@ -40989,7 +40905,7 @@ LM=18
 247.0000 55.0000
 189.0000 114.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865_P2.JPG
-ID=1997
+ID=1993
 LM=18
 87.0000 99.0000
 93.0000 83.0000
@@ -41010,7 +40926,7 @@ LM=18
 250.0000 69.0000
 187.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865_S1.jpg
-ID=1998
+ID=1994
 LM=18
 78.0000 93.0000
 85.0000 77.0000
@@ -41031,7 +40947,7 @@ LM=18
 249.0000 60.0000
 182.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865_S2.jpg
-ID=1999
+ID=1995
 LM=18
 84.0000 93.0000
 92.0000 76.0000
@@ -41052,7 +40968,7 @@ LM=18
 253.0000 63.0000
 189.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865_S3.jpg
-ID=2000
+ID=1996
 LM=18
 116.0000 119.0000
 121.0000 100.0000
@@ -41073,7 +40989,7 @@ LM=18
 270.0000 67.0000
 218.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865b_P1.JPG
-ID=2001
+ID=1997
 LM=18
 103.0000 119.0000
 109.0000 101.0000
@@ -41094,7 +41010,7 @@ LM=18
 264.0000 66.0000
 209.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865b_P2.JPG
-ID=2002
+ID=1998
 LM=18
 76.0000 113.0000
 81.0000 93.0000
@@ -41115,7 +41031,7 @@ LM=18
 243.0000 57.0000
 185.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865b_S1.jpg
-ID=2003
+ID=1999
 LM=18
 80.0000 109.0000
 85.0000 91.0000
@@ -41136,7 +41052,7 @@ LM=18
 249.0000 57.0000
 191.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865b_S2.jpg
-ID=2004
+ID=2000
 LM=18
 79.0000 111.0000
 85.0000 93.0000
@@ -41157,7 +41073,7 @@ LM=18
 248.0000 57.0000
 190.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865b_S3.jpg
-ID=2005
+ID=2001
 LM=18
 75.0000 113.0000
 80.0000 96.0000
@@ -41178,7 +41094,7 @@ LM=18
 236.0000 60.0000
 181.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865c_P1.JPG
-ID=2006
+ID=2002
 LM=18
 90.0000 106.0000
 97.0000 90.0000
@@ -41199,7 +41115,7 @@ LM=18
 255.0000 56.0000
 198.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865c_P2.JPG
-ID=2007
+ID=2003
 LM=18
 66.0000 108.0000
 73.0000 92.0000
@@ -41220,7 +41136,7 @@ LM=18
 237.0000 60.0000
 177.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865c_S1.jpg
-ID=2008
+ID=2004
 LM=18
 72.0000 100.0000
 77.0000 84.0000
@@ -41241,7 +41157,7 @@ LM=18
 242.0000 53.0000
 182.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865c_S2.jpg
-ID=2009
+ID=2005
 LM=18
 58.0000 106.0000
 65.0000 89.0000
@@ -41262,7 +41178,7 @@ LM=18
 233.0000 58.0000
 171.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865c_S3.jpg
-ID=2010
+ID=2006
 LM=18
 74.0000 93.0000
 80.0000 76.0000
@@ -41283,7 +41199,7 @@ LM=18
 234.0000 52.0000
 176.0000 118.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865d_P1.JPG
-ID=2011
+ID=2007
 LM=18
 75.0000 99.0000
 83.0000 82.0000
@@ -41304,7 +41220,7 @@ LM=18
 237.0000 58.0000
 178.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865d_P2.JPG
-ID=2012
+ID=2008
 LM=18
 80.0000 101.0000
 87.0000 83.0000
@@ -41325,7 +41241,7 @@ LM=18
 248.0000 60.0000
 187.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865d_S1.jpg
-ID=2013
+ID=2009
 LM=18
 74.0000 93.0000
 83.0000 77.0000
@@ -41346,7 +41262,7 @@ LM=18
 241.0000 52.0000
 182.0000 123.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865d_S2.jpg
-ID=2014
+ID=2010
 LM=18
 81.0000 97.0000
 89.0000 79.0000
@@ -41367,7 +41283,7 @@ LM=18
 248.0000 56.0000
 188.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865d_S3.jpg
-ID=2015
+ID=2011
 LM=18
 100.0000 132.0000
 103.0000 114.0000
@@ -41388,7 +41304,7 @@ LM=18
 250.0000 70.0000
 198.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865e_P1.JPG
-ID=2016
+ID=2012
 LM=18
 108.0000 119.0000
 111.0000 100.0000
@@ -41409,7 +41325,7 @@ LM=18
 256.0000 61.0000
 204.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865e_P2.JPG
-ID=2017
+ID=2013
 LM=18
 113.0000 115.0000
 117.0000 96.0000
@@ -41430,7 +41346,7 @@ LM=18
 266.0000 58.0000
 212.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865e_S1.jpg
-ID=2018
+ID=2014
 LM=18
 115.0000 115.0000
 119.0000 97.0000
@@ -41451,7 +41367,7 @@ LM=18
 266.0000 60.0000
 211.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865e_S2.jpg
-ID=2019
+ID=2015
 LM=18
 113.0000 118.0000
 116.0000 99.0000
@@ -41472,7 +41388,7 @@ LM=18
 264.0000 62.0000
 210.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sichelii\worker\CD388865e_S3.jpg
-ID=2020
+ID=2016
 LM=18
 103.0000 114.0000
 107.0000 97.0000
@@ -41493,7 +41409,7 @@ LM=18
 267.0000 65.0000
 203.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1483_P1.JPG
-ID=2021
+ID=2017
 LM=18
 109.0000 109.0000
 113.0000 93.0000
@@ -41514,7 +41430,7 @@ LM=18
 270.0000 65.0000
 207.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1483_P2.JPG
-ID=2022
+ID=2018
 LM=18
 107.0000 109.0000
 111.0000 93.0000
@@ -41535,7 +41451,7 @@ LM=18
 271.0000 67.0000
 206.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1483_S1.jpg
-ID=2023
+ID=2019
 LM=18
 113.0000 108.0000
 116.0000 92.0000
@@ -41556,7 +41472,7 @@ LM=18
 274.0000 67.0000
 209.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1483_S2.jpg
-ID=2024
+ID=2020
 LM=18
 109.0000 108.0000
 112.0000 92.0000
@@ -41577,7 +41493,7 @@ LM=18
 269.0000 67.0000
 206.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1483_S3.jpg
-ID=2025
+ID=2021
 LM=18
 86.0000 104.0000
 91.0000 86.0000
@@ -41598,7 +41514,7 @@ LM=18
 259.0000 65.0000
 192.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1732_P1.JPG
-ID=2026
+ID=2022
 LM=18
 84.0000 101.0000
 90.0000 83.0000
@@ -41619,7 +41535,7 @@ LM=18
 261.0000 60.0000
 193.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1732_P2.JPG
-ID=2027
+ID=2023
 LM=18
 102.0000 101.0000
 106.0000 84.0000
@@ -41640,7 +41556,7 @@ LM=18
 270.0000 61.0000
 204.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1732_S1.jpg
-ID=2028
+ID=2024
 LM=18
 106.0000 105.0000
 110.0000 88.0000
@@ -41661,7 +41577,7 @@ LM=18
 271.0000 65.0000
 208.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1732_S2.jpg
-ID=2029
+ID=2025
 LM=18
 80.0000 105.0000
 84.0000 87.0000
@@ -41682,7 +41598,7 @@ LM=18
 254.0000 62.0000
 188.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1732_S3.jpg
-ID=2030
+ID=2026
 LM=18
 91.0000 109.0000
 95.0000 92.0000
@@ -41703,7 +41619,7 @@ LM=18
 260.0000 62.0000
 200.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1739_P1.JPG
-ID=2031
+ID=2027
 LM=18
 90.0000 109.0000
 94.0000 93.0000
@@ -41724,7 +41640,7 @@ LM=18
 258.0000 63.0000
 199.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1739_P2.JPG
-ID=2032
+ID=2028
 LM=18
 94.0000 113.0000
 98.0000 97.0000
@@ -41745,7 +41661,7 @@ LM=18
 260.0000 64.0000
 201.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1739_S1.jpg
-ID=2033
+ID=2029
 LM=18
 92.0000 116.0000
 95.0000 99.0000
@@ -41766,7 +41682,7 @@ LM=18
 261.0000 66.0000
 201.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1739_S2.jpg
-ID=2034
+ID=2030
 LM=18
 95.0000 114.0000
 99.0000 98.0000
@@ -41787,7 +41703,7 @@ LM=18
 263.0000 64.0000
 203.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1739_S3.jpg
-ID=2035
+ID=2031
 LM=18
 100.0000 115.0000
 105.0000 96.0000
@@ -41808,7 +41724,7 @@ LM=18
 272.0000 62.0000
 208.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1740_P1.JPG
-ID=2036
+ID=2032
 LM=18
 106.0000 105.0000
 110.0000 86.0000
@@ -41829,7 +41745,7 @@ LM=18
 280.0000 57.0000
 212.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1740_P2.JPG
-ID=2037
+ID=2033
 LM=18
 108.0000 113.0000
 113.0000 96.0000
@@ -41850,7 +41766,7 @@ LM=18
 280.0000 59.0000
 216.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1740_S1.jpg
-ID=2038
+ID=2034
 LM=18
 106.0000 116.0000
 110.0000 97.0000
@@ -41871,7 +41787,7 @@ LM=18
 277.0000 62.0000
 213.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1740_S2.jpg
-ID=2039
+ID=2035
 LM=18
 108.0000 118.0000
 113.0000 100.0000
@@ -41892,7 +41808,7 @@ LM=18
 278.0000 63.0000
 216.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1740_S3.jpg
-ID=2040
+ID=2036
 LM=18
 66.0000 117.0000
 71.0000 97.0000
@@ -41913,7 +41829,7 @@ LM=18
 245.0000 61.0000
 178.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1741_P1.JPG
-ID=2041
+ID=2037
 LM=18
 71.0000 111.0000
 78.0000 92.0000
@@ -41934,7 +41850,7 @@ LM=18
 252.0000 58.0000
 184.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1741_P2.JPG
-ID=2042
+ID=2038
 LM=18
 68.0000 116.0000
 73.0000 96.0000
@@ -41955,7 +41871,7 @@ LM=18
 249.0000 58.0000
 181.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1741_S1.jpg
-ID=2043
+ID=2039
 LM=18
 69.0000 110.0000
 74.0000 91.0000
@@ -41976,7 +41892,7 @@ LM=18
 250.0000 58.0000
 181.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1741_S2.jpg
-ID=2044
+ID=2040
 LM=18
 76.0000 110.0000
 83.0000 92.0000
@@ -41997,7 +41913,7 @@ LM=18
 253.0000 61.0000
 186.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1741_S3.jpg
-ID=2045
+ID=2041
 LM=18
 91.0000 118.0000
 93.0000 99.0000
@@ -42018,7 +41934,7 @@ LM=18
 258.0000 65.0000
 199.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1742_P1.JPG
-ID=2046
+ID=2042
 LM=18
 94.0000 114.0000
 97.0000 96.0000
@@ -42039,7 +41955,7 @@ LM=18
 261.0000 62.0000
 201.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1742_P2.JPG
-ID=2047
+ID=2043
 LM=18
 96.0000 117.0000
 100.0000 99.0000
@@ -42060,7 +41976,7 @@ LM=18
 262.0000 62.0000
 205.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1742_S1.jpg
-ID=2048
+ID=2044
 LM=18
 95.0000 119.0000
 98.0000 101.0000
@@ -42081,7 +41997,7 @@ LM=18
 261.0000 66.0000
 204.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1742_S2.jpg
-ID=2049
+ID=2045
 LM=18
 94.0000 120.0000
 96.0000 101.0000
@@ -42102,7 +42018,7 @@ LM=18
 260.0000 64.0000
 202.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1742_S3.jpg
-ID=2050
+ID=2046
 LM=18
 84.0000 109.0000
 89.0000 89.0000
@@ -42123,7 +42039,7 @@ LM=18
 259.0000 61.0000
 192.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1743_P1.JPG
-ID=2051
+ID=2047
 LM=18
 97.0000 112.0000
 103.0000 93.0000
@@ -42144,7 +42060,7 @@ LM=18
 267.0000 62.0000
 203.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1743_P2.JPG
-ID=2052
+ID=2048
 LM=18
 94.0000 111.0000
 98.0000 92.0000
@@ -42165,7 +42081,7 @@ LM=18
 266.0000 60.0000
 201.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1743_S1.jpg
-ID=2053
+ID=2049
 LM=18
 105.0000 116.0000
 108.0000 97.0000
@@ -42186,7 +42102,7 @@ LM=18
 271.0000 64.0000
 209.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1743_S2.jpg
-ID=2054
+ID=2050
 LM=18
 92.0000 115.0000
 94.0000 95.0000
@@ -42207,7 +42123,7 @@ LM=18
 263.0000 62.0000
 197.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\15L2021-1743_S3.jpg
-ID=2055
+ID=2051
 LM=18
 93.0000 107.0000
 98.0000 89.0000
@@ -42228,7 +42144,7 @@ LM=18
 259.0000 54.0000
 199.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\2020.06207_P1.JPG
-ID=2056
+ID=2052
 LM=18
 87.0000 103.0000
 92.0000 85.0000
@@ -42249,7 +42165,7 @@ LM=18
 254.0000 49.0000
 194.0000 123.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\2020.06207_P2.JPG
-ID=2057
+ID=2053
 LM=18
 91.0000 132.0000
 94.0000 115.0000
@@ -42270,7 +42186,7 @@ LM=18
 251.0000 69.0000
 198.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\2020.06207_S1.jpg
-ID=2058
+ID=2054
 LM=18
 94.0000 111.0000
 99.0000 93.0000
@@ -42291,7 +42207,7 @@ LM=18
 263.0000 57.0000
 203.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\2020.06207_S2.jpg
-ID=2059
+ID=2055
 LM=18
 89.0000 115.0000
 93.0000 97.0000
@@ -42312,7 +42228,7 @@ LM=18
 258.0000 59.0000
 198.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\2020.06207_S3.jpg
-ID=2060
+ID=2056
 LM=18
 95.0000 116.0000
 102.0000 99.0000
@@ -42333,7 +42249,7 @@ LM=18
 249.0000 63.0000
 199.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\ABAURA5633_P1.JPG
-ID=2061
+ID=2057
 LM=18
 99.0000 115.0000
 105.0000 100.0000
@@ -42354,7 +42270,7 @@ LM=18
 251.0000 63.0000
 201.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\ABAURA5633_P2.JPG
-ID=2062
+ID=2058
 LM=18
 72.0000 115.0000
 79.0000 98.0000
@@ -42375,7 +42291,7 @@ LM=18
 239.0000 56.0000
 185.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\ABAURA5633_S1.jpg
-ID=2063
+ID=2059
 LM=18
 68.0000 115.0000
 73.0000 96.0000
@@ -42396,7 +42312,7 @@ LM=18
 241.0000 54.0000
 184.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\ABAURA5633_S2.jpg
-ID=2064
+ID=2060
 LM=18
 74.0000 115.0000
 81.0000 98.0000
@@ -42417,7 +42333,7 @@ LM=18
 242.0000 56.0000
 189.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\ABAURA5633_S3.jpg
-ID=2065
+ID=2061
 LM=18
 57.0000 79.0000
 60.0000 60.0000
@@ -42438,7 +42354,7 @@ LM=18
 237.0000 37.0000
 164.0000 104.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\ABAURA8526_P1.JPG
-ID=2066
+ID=2062
 LM=18
 59.0000 100.0000
 62.0000 83.0000
@@ -42459,7 +42375,7 @@ LM=18
 237.0000 57.0000
 165.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\ABAURA8526_P2.JPG
-ID=2067
+ID=2063
 LM=18
 85.0000 104.0000
 88.0000 86.0000
@@ -42480,7 +42396,7 @@ LM=18
 258.0000 64.0000
 189.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\ABAURA8526_S1.jpg
-ID=2068
+ID=2064
 LM=18
 82.0000 107.0000
 86.0000 89.0000
@@ -42501,7 +42417,7 @@ LM=18
 260.0000 67.0000
 189.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\ABAURA8526_S2.jpg
-ID=2069
+ID=2065
 LM=18
 89.0000 108.0000
 93.0000 91.0000
@@ -42522,7 +42438,7 @@ LM=18
 262.0000 65.0000
 195.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\ABAURA8526_S3.jpg
-ID=2070
+ID=2066
 LM=18
 105.0000 116.0000
 109.0000 100.0000
@@ -42543,7 +42459,7 @@ LM=18
 260.0000 73.0000
 200.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD387759_P1.JPG
-ID=2071
+ID=2067
 LM=18
 97.0000 94.0000
 102.0000 76.0000
@@ -42564,7 +42480,7 @@ LM=18
 268.0000 48.0000
 201.0000 116.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD387759_P2.JPG
-ID=2072
+ID=2068
 LM=18
 105.0000 113.0000
 109.0000 96.0000
@@ -42585,7 +42501,7 @@ LM=18
 267.0000 68.0000
 204.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD387759_S1.jpg
-ID=2073
+ID=2069
 LM=18
 110.0000 109.0000
 115.0000 93.0000
@@ -42606,7 +42522,7 @@ LM=18
 266.0000 66.0000
 207.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD387759_S2.jpg
-ID=2074
+ID=2070
 LM=18
 104.0000 105.0000
 109.0000 88.0000
@@ -42627,7 +42543,7 @@ LM=18
 266.0000 60.0000
 205.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD387759_S3.jpg
-ID=2075
+ID=2071
 LM=18
 60.0000 113.0000
 65.0000 95.0000
@@ -42648,7 +42564,7 @@ LM=18
 236.0000 59.0000
 172.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD387804c_P1.JPG
-ID=2076
+ID=2072
 LM=18
 93.0000 112.0000
 98.0000 95.0000
@@ -42669,7 +42585,7 @@ LM=18
 261.0000 60.0000
 199.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD387804c_P2.JPG
-ID=2077
+ID=2073
 LM=18
 59.0000 109.0000
 64.0000 90.0000
@@ -42690,7 +42606,7 @@ LM=18
 237.0000 57.0000
 171.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD387804c_S1.jpg
-ID=2078
+ID=2074
 LM=18
 55.0000 111.0000
 59.0000 92.0000
@@ -42711,7 +42627,7 @@ LM=18
 238.0000 57.0000
 169.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD387804c_S2.jpg
-ID=2079
+ID=2075
 LM=18
 63.0000 118.0000
 67.0000 98.0000
@@ -42732,7 +42648,7 @@ LM=18
 241.0000 61.0000
 176.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD387804c_S3.jpg
-ID=2080
+ID=2076
 LM=18
 114.0000 117.0000
 118.0000 100.0000
@@ -42753,7 +42669,7 @@ LM=18
 282.0000 72.0000
 217.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388145_P1.JPG
-ID=2081
+ID=2077
 LM=18
 110.0000 118.0000
 115.0000 101.0000
@@ -42774,7 +42690,7 @@ LM=18
 280.0000 72.0000
 214.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388145_P2.JPG
-ID=2082
+ID=2078
 LM=18
 98.0000 105.0000
 102.0000 87.0000
@@ -42795,7 +42711,7 @@ LM=18
 269.0000 65.0000
 201.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388145_S1.jpg
-ID=2083
+ID=2079
 LM=18
 105.0000 108.0000
 109.0000 91.0000
@@ -42816,7 +42732,7 @@ LM=18
 273.0000 65.0000
 208.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388145_S2.jpg
-ID=2084
+ID=2080
 LM=18
 110.0000 107.0000
 113.0000 90.0000
@@ -42837,7 +42753,7 @@ LM=18
 275.0000 64.0000
 211.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388145_S3.jpg
-ID=2085
+ID=2081
 LM=18
 111.0000 124.0000
 115.0000 103.0000
@@ -42858,7 +42774,7 @@ LM=18
 287.0000 67.0000
 222.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388145b_P1.JPG
-ID=2086
+ID=2082
 LM=18
 122.0000 112.0000
 126.0000 93.0000
@@ -42879,7 +42795,7 @@ LM=18
 298.0000 56.0000
 232.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388145b_P2.JPG
-ID=2087
+ID=2083
 LM=18
 124.0000 122.0000
 127.0000 104.0000
@@ -42900,7 +42816,7 @@ LM=18
 284.0000 70.0000
 225.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388145b_S1.jpg
-ID=2088
+ID=2084
 LM=18
 114.0000 121.0000
 118.0000 102.0000
@@ -42921,7 +42837,7 @@ LM=18
 282.0000 66.0000
 219.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388145b_S2.jpg
-ID=2089
+ID=2085
 LM=18
 122.0000 121.0000
 127.0000 102.0000
@@ -42942,7 +42858,7 @@ LM=18
 288.0000 66.0000
 226.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388145b_S3.jpg
-ID=2090
+ID=2086
 LM=18
 82.0000 116.0000
 88.0000 95.0000
@@ -42963,7 +42879,7 @@ LM=18
 264.0000 68.0000
 195.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388229c_P1.JPG
-ID=2091
+ID=2087
 LM=18
 97.0000 105.0000
 103.0000 87.0000
@@ -42984,7 +42900,7 @@ LM=18
 263.0000 66.0000
 199.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388229c_P2.JPG
-ID=2092
+ID=2088
 LM=18
 93.0000 102.0000
 99.0000 84.0000
@@ -43005,7 +42921,7 @@ LM=18
 266.0000 61.0000
 198.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388229c_S1.jpg
-ID=2093
+ID=2089
 LM=18
 83.0000 102.0000
 89.0000 84.0000
@@ -43026,7 +42942,7 @@ LM=18
 260.0000 62.0000
 192.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388229c_S2.jpg
-ID=2094
+ID=2090
 LM=18
 88.0000 104.0000
 95.0000 86.0000
@@ -43047,7 +42963,7 @@ LM=18
 264.0000 65.0000
 196.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388229c_S3.jpg
-ID=2095
+ID=2091
 LM=18
 89.0000 104.0000
 92.0000 85.0000
@@ -43068,7 +42984,7 @@ LM=18
 266.0000 59.0000
 197.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388860_P1.JPG
-ID=2096
+ID=2092
 LM=18
 89.0000 108.0000
 91.0000 91.0000
@@ -43089,7 +43005,7 @@ LM=18
 252.0000 69.0000
 189.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388860_P2.JPG
-ID=2097
+ID=2093
 LM=18
 84.0000 109.0000
 86.0000 90.0000
@@ -43110,7 +43026,7 @@ LM=18
 257.0000 59.0000
 192.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388860_S1.jpg
-ID=2098
+ID=2094
 LM=18
 88.0000 107.0000
 89.0000 89.0000
@@ -43131,7 +43047,7 @@ LM=18
 259.0000 59.0000
 195.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388860_S2.jpg
-ID=2099
+ID=2095
 LM=18
 92.0000 107.0000
 93.0000 89.0000
@@ -43152,7 +43068,7 @@ LM=18
 261.0000 56.0000
 199.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388860_S3.jpg
-ID=2100
+ID=2096
 LM=18
 95.0000 101.0000
 100.0000 82.0000
@@ -43173,7 +43089,7 @@ LM=18
 276.0000 59.0000
 202.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388860b_P1.JPG
-ID=2101
+ID=2097
 LM=18
 87.0000 94.0000
 92.0000 73.0000
@@ -43194,7 +43110,7 @@ LM=18
 282.0000 46.0000
 201.0000 122.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388860b_P2.JPG
-ID=2102
+ID=2098
 LM=18
 97.0000 163.0000
 97.0000 142.0000
@@ -43215,7 +43131,7 @@ LM=18
 269.0000 75.0000
 212.0000 163.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388860b_S1.jpg
-ID=2103
+ID=2099
 LM=18
 81.0000 105.0000
 85.0000 85.0000
@@ -43236,7 +43152,7 @@ LM=18
 269.0000 63.0000
 191.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388860b_S2.jpg
-ID=2104
+ID=2100
 LM=18
 80.0000 102.0000
 85.0000 81.0000
@@ -43257,7 +43173,7 @@ LM=18
 270.0000 60.0000
 192.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\CD388860b_S3.jpg
-ID=2105
+ID=2101
 LM=18
 86.0000 84.0000
 93.0000 68.0000
@@ -43278,7 +43194,7 @@ LM=18
 269.0000 52.0000
 197.0000 116.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\POLLINIS4384_P1.JPG
-ID=2106
+ID=2102
 LM=18
 87.0000 87.0000
 93.0000 69.0000
@@ -43299,7 +43215,7 @@ LM=18
 267.0000 56.0000
 195.0000 120.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\POLLINIS4384_P2.JPG
-ID=2107
+ID=2103
 LM=18
 77.0000 98.0000
 84.0000 80.0000
@@ -43320,7 +43236,7 @@ LM=18
 259.0000 63.0000
 191.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\POLLINIS4384_S1.jpg
-ID=2108
+ID=2104
 LM=18
 87.0000 132.0000
 92.0000 115.0000
@@ -43341,7 +43257,7 @@ LM=18
 254.0000 66.0000
 201.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\POLLINIS4384_S2.jpg
-ID=2109
+ID=2105
 LM=18
 85.0000 122.0000
 90.0000 105.0000
@@ -43362,7 +43278,7 @@ LM=18
 254.0000 63.0000
 197.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\POLLINIS4384_S3.jpg
-ID=2110
+ID=2106
 LM=18
 59.0000 103.0000
 62.0000 86.0000
@@ -43383,7 +43299,7 @@ LM=18
 246.0000 57.0000
 175.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\POLLINIS5943_P1.JPG
-ID=2111
+ID=2107
 LM=18
 56.0000 91.0000
 58.0000 73.0000
@@ -43404,7 +43320,7 @@ LM=18
 246.0000 46.0000
 173.0000 121.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\POLLINIS5943_P2.JPG
-ID=2112
+ID=2108
 LM=18
 57.0000 98.0000
 62.0000 80.0000
@@ -43425,7 +43341,7 @@ LM=18
 245.0000 54.0000
 173.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\POLLINIS5943_S1.jpg
-ID=2113
+ID=2109
 LM=18
 60.0000 98.0000
 64.0000 81.0000
@@ -43446,7 +43362,7 @@ LM=18
 242.0000 54.0000
 174.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\POLLINIS5943_S2.jpg
-ID=2114
+ID=2110
 LM=18
 49.0000 102.0000
 53.0000 83.0000
@@ -43467,7 +43383,7 @@ LM=18
 240.0000 53.0000
 168.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\POLLINIS5943_S3.jpg
-ID=2115
+ID=2111
 LM=18
 128.0000 119.0000
 131.0000 101.0000
@@ -43488,7 +43404,7 @@ LM=18
 285.0000 67.0000
 224.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\POLLINIS5983_P1.JPG
-ID=2116
+ID=2112
 LM=18
 129.0000 107.0000
 131.0000 90.0000
@@ -43509,7 +43425,7 @@ LM=18
 283.0000 55.0000
 222.0000 122.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\POLLINIS5983_P2.JPG
-ID=2117
+ID=2113
 LM=18
 120.0000 118.0000
 123.0000 102.0000
@@ -43530,7 +43446,7 @@ LM=18
 273.0000 65.0000
 214.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\POLLINIS5983_S1.jpg
-ID=2118
+ID=2114
 LM=18
 100.0000 119.0000
 103.0000 102.0000
@@ -43551,7 +43467,7 @@ LM=18
 264.0000 63.0000
 201.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\POLLINIS5983_S2.jpg
-ID=2119
+ID=2115
 LM=18
 108.0000 117.0000
 111.0000 100.0000
@@ -43572,7 +43488,7 @@ LM=18
 269.0000 63.0000
 206.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\POLLINIS5983_S3.jpg
-ID=2120
+ID=2116
 LM=18
 100.0000 91.0000
 105.0000 76.0000
@@ -43593,7 +43509,7 @@ LM=18
 265.0000 63.0000
 196.0000 122.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\POLLINIS5985_P1.JPG
-ID=2121
+ID=2117
 LM=18
 96.0000 90.0000
 100.0000 74.0000
@@ -43614,7 +43530,7 @@ LM=18
 262.0000 63.0000
 192.0000 121.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\POLLINIS5985_P2.JPG
-ID=2122
+ID=2118
 LM=18
 96.0000 108.0000
 98.0000 90.0000
@@ -43635,7 +43551,7 @@ LM=18
 259.0000 60.0000
 197.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\POLLINIS5985_S1.jpg
-ID=2123
+ID=2119
 LM=18
 105.0000 118.0000
 108.0000 101.0000
@@ -43656,7 +43572,7 @@ LM=18
 263.0000 66.0000
 205.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\POLLINIS5985_S2.jpg
-ID=2124
+ID=2120
 LM=18
 96.0000 115.0000
 99.0000 98.0000
@@ -43677,7 +43593,7 @@ LM=18
 259.0000 61.0000
 200.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\male\POLLINIS5985_S3.jpg
-ID=2125
+ID=2121
 LM=18
 96.0000 109.0000
 103.0000 93.0000
@@ -43698,7 +43614,7 @@ LM=18
 256.0000 60.0000
 193.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\ABAURA8625_P1.JPG
-ID=2126
+ID=2122
 LM=18
 87.0000 109.0000
 92.0000 90.0000
@@ -43719,7 +43635,7 @@ LM=18
 256.0000 53.0000
 190.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\ABAURA8625_P2.JPG
-ID=2127
+ID=2123
 LM=18
 86.0000 106.0000
 93.0000 88.0000
@@ -43740,7 +43656,7 @@ LM=18
 253.0000 55.0000
 188.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\ABAURA8625_S1.jpg
-ID=2128
+ID=2124
 LM=18
 80.0000 112.0000
 86.0000 94.0000
@@ -43761,7 +43677,7 @@ LM=18
 246.0000 54.0000
 183.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\ABAURA8625_S2.jpg
-ID=2129
+ID=2125
 LM=18
 81.0000 109.0000
 87.0000 91.0000
@@ -43782,7 +43698,7 @@ LM=18
 248.0000 54.0000
 183.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\ABAURA8625_S3.jpg
-ID=2130
+ID=2126
 LM=18
 113.0000 109.0000
 118.0000 90.0000
@@ -43803,7 +43719,7 @@ LM=18
 271.0000 56.0000
 212.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\CD388391_P1.JPG
-ID=2131
+ID=2127
 LM=18
 120.0000 100.0000
 126.0000 81.0000
@@ -43824,7 +43740,7 @@ LM=18
 279.0000 47.0000
 220.0000 119.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\CD388391_P2.JPG
-ID=2132
+ID=2128
 LM=18
 107.0000 108.0000
 112.0000 87.0000
@@ -43845,7 +43761,7 @@ LM=18
 271.0000 52.0000
 210.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\CD388391_S1.jpg
-ID=2133
+ID=2129
 LM=18
 119.0000 109.0000
 124.0000 90.0000
@@ -43866,7 +43782,7 @@ LM=18
 281.0000 57.0000
 220.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\CD388391_S2.jpg
-ID=2134
+ID=2130
 LM=18
 108.0000 109.0000
 115.0000 88.0000
@@ -43887,7 +43803,7 @@ LM=18
 272.0000 54.0000
 211.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\CD388391_S3.jpg
-ID=2135
+ID=2131
 LM=18
 60.0000 111.0000
 67.0000 90.0000
@@ -43908,7 +43824,7 @@ LM=18
 231.0000 58.0000
 164.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\CD388872c_P1.JPG
-ID=2136
+ID=2132
 LM=18
 74.0000 116.0000
 80.0000 96.0000
@@ -43929,7 +43845,7 @@ LM=18
 243.0000 59.0000
 178.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\CD388872c_P2.JPG
-ID=2137
+ID=2133
 LM=18
 65.0000 115.0000
 72.0000 94.0000
@@ -43950,7 +43866,7 @@ LM=18
 239.0000 56.0000
 171.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\CD388872c_S1.jpg
-ID=2138
+ID=2134
 LM=18
 68.0000 111.0000
 74.0000 89.0000
@@ -43971,7 +43887,7 @@ LM=18
 242.0000 52.0000
 175.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\CD388872c_S2.jpg
-ID=2139
+ID=2135
 LM=18
 63.0000 116.0000
 71.0000 95.0000
@@ -43992,7 +43908,7 @@ LM=18
 238.0000 56.0000
 172.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\CD388872c_S3.jpg
-ID=2140
+ID=2136
 LM=18
 138.0000 82.0000
 144.0000 68.0000
@@ -44013,7 +43929,7 @@ LM=18
 260.0000 43.0000
 214.0000 99.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\D264520b_P1.JPG
-ID=2141
+ID=2137
 LM=18
 144.0000 85.0000
 149.0000 71.0000
@@ -44034,7 +43950,7 @@ LM=18
 268.0000 45.0000
 221.0000 101.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\D264520b_P2.JPG
-ID=2142
+ID=2138
 LM=18
 145.0000 84.0000
 150.0000 69.0000
@@ -44055,7 +43971,7 @@ LM=18
 270.0000 43.0000
 223.0000 101.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\D264520b_S2.jpg
-ID=2143
+ID=2139
 LM=18
 142.0000 84.0000
 148.0000 70.0000
@@ -44076,7 +43992,7 @@ LM=18
 268.0000 44.0000
 221.0000 101.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\D264520b_S3.jpg
-ID=2144
+ID=2140
 LM=18
 109.0000 123.0000
 114.0000 105.0000
@@ -44097,7 +44013,7 @@ LM=18
 262.0000 64.0000
 207.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\POLLINIS4981_P1.JPG
-ID=2145
+ID=2141
 LM=18
 94.0000 112.0000
 99.0000 94.0000
@@ -44118,7 +44034,7 @@ LM=18
 255.0000 52.0000
 196.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\POLLINIS4981_P2.JPG
-ID=2146
+ID=2142
 LM=18
 95.0000 113.0000
 99.0000 95.0000
@@ -44139,7 +44055,7 @@ LM=18
 254.0000 58.0000
 195.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\POLLINIS4981_S1.jpg
-ID=2147
+ID=2143
 LM=18
 93.0000 112.0000
 98.0000 94.0000
@@ -44160,7 +44076,7 @@ LM=18
 252.0000 58.0000
 193.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\POLLINIS4981_S2.jpg
-ID=2148
+ID=2144
 LM=18
 94.0000 114.0000
 100.0000 96.0000
@@ -44181,7 +44097,7 @@ LM=18
 252.0000 59.0000
 194.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\queen\POLLINIS4981_S3.jpg
-ID=2149
+ID=2145
 LM=18
 55.0000 111.0000
 62.0000 92.0000
@@ -44202,7 +44118,7 @@ LM=18
 239.0000 75.0000
 164.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\2020.00294_P1.JPG
-ID=2150
+ID=2146
 LM=18
 108.0000 92.0000
 114.0000 77.0000
@@ -44223,7 +44139,7 @@ LM=18
 255.0000 64.0000
 194.0000 119.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\2020.00294_P2.JPG
-ID=2151
+ID=2147
 LM=18
 71.0000 101.0000
 76.0000 82.0000
@@ -44244,7 +44160,7 @@ LM=18
 245.0000 58.0000
 177.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\2020.00294_S1.jpg
-ID=2152
+ID=2148
 LM=18
 71.0000 105.0000
 76.0000 85.0000
@@ -44265,7 +44181,7 @@ LM=18
 251.0000 59.0000
 181.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\2020.00294_S2.jpg
-ID=2153
+ID=2149
 LM=18
 69.0000 103.0000
 75.0000 84.0000
@@ -44286,7 +44202,7 @@ LM=18
 246.0000 58.0000
 177.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\2020.00294_S3.jpg
-ID=2154
+ID=2150
 LM=18
 98.0000 107.0000
 105.0000 91.0000
@@ -44307,7 +44223,7 @@ LM=18
 255.0000 61.0000
 197.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\2020.00339_P1.JPG
-ID=2155
+ID=2151
 LM=18
 101.0000 105.0000
 107.0000 88.0000
@@ -44328,7 +44244,7 @@ LM=18
 258.0000 58.0000
 199.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\2020.00339_P2.JPG
-ID=2156
+ID=2152
 LM=18
 102.0000 108.0000
 108.0000 91.0000
@@ -44349,7 +44265,7 @@ LM=18
 265.0000 59.0000
 205.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\2020.00339_S1.jpg
-ID=2157
+ID=2153
 LM=18
 99.0000 108.0000
 106.0000 91.0000
@@ -44370,7 +44286,7 @@ LM=18
 264.0000 58.0000
 203.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\2020.00339_S2.jpg
-ID=2158
+ID=2154
 LM=18
 103.0000 113.0000
 109.0000 96.0000
@@ -44391,7 +44307,7 @@ LM=18
 265.0000 64.0000
 204.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\2020.00339_S3.jpg
-ID=2159
+ID=2155
 LM=18
 84.0000 121.0000
 91.0000 104.0000
@@ -44412,7 +44328,7 @@ LM=18
 249.0000 70.0000
 190.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\2020.00410_P1.JPG
-ID=2160
+ID=2156
 LM=18
 83.0000 109.0000
 90.0000 93.0000
@@ -44433,7 +44349,7 @@ LM=18
 246.0000 59.0000
 188.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\2020.00410_P2.JPG
-ID=2161
+ID=2157
 LM=18
 95.0000 121.0000
 101.0000 105.0000
@@ -44454,7 +44370,7 @@ LM=18
 259.0000 68.0000
 202.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\2020.00410_S1.jpg
-ID=2162
+ID=2158
 LM=18
 91.0000 116.0000
 97.0000 100.0000
@@ -44475,7 +44391,7 @@ LM=18
 257.0000 63.0000
 200.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\2020.00410_S2.jpg
-ID=2163
+ID=2159
 LM=18
 84.0000 115.0000
 90.0000 100.0000
@@ -44496,7 +44412,7 @@ LM=18
 249.0000 62.0000
 191.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\2020.00410_S3.jpg
-ID=2164
+ID=2160
 LM=18
 117.0000 109.0000
 123.0000 94.0000
@@ -44517,7 +44433,7 @@ LM=18
 265.0000 73.0000
 208.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\2020.00449_P1.JPG
-ID=2165
+ID=2161
 LM=18
 101.0000 116.0000
 109.0000 100.0000
@@ -44538,7 +44454,7 @@ LM=18
 258.0000 74.0000
 198.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\2020.00449_P2.JPG
-ID=2166
+ID=2162
 LM=18
 109.0000 107.0000
 116.0000 88.0000
@@ -44559,7 +44475,7 @@ LM=18
 266.0000 60.0000
 207.0000 124.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\2020.00449_S1.jpg
-ID=2167
+ID=2163
 LM=18
 107.0000 109.0000
 113.0000 91.0000
@@ -44580,7 +44496,7 @@ LM=18
 264.0000 61.0000
 204.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\2020.00449_S2.jpg
-ID=2168
+ID=2164
 LM=18
 105.0000 113.0000
 112.0000 96.0000
@@ -44601,7 +44517,7 @@ LM=18
 263.0000 66.0000
 204.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\2020.00449_S3.jpg
-ID=2169
+ID=2165
 LM=18
 117.0000 121.0000
 121.0000 104.0000
@@ -44622,7 +44538,7 @@ LM=18
 282.0000 74.0000
 220.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA5591_P1.JPG
-ID=2170
+ID=2166
 LM=18
 119.0000 125.0000
 123.0000 107.0000
@@ -44643,7 +44559,7 @@ LM=18
 284.0000 76.0000
 222.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA5591_P2.JPG
-ID=2171
+ID=2167
 LM=18
 112.0000 109.0000
 115.0000 92.0000
@@ -44664,7 +44580,7 @@ LM=18
 277.0000 62.0000
 214.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA5591_S1.jpg
-ID=2172
+ID=2168
 LM=18
 107.0000 114.0000
 112.0000 98.0000
@@ -44685,7 +44601,7 @@ LM=18
 271.0000 66.0000
 210.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA5591_S2.jpg
-ID=2173
+ID=2169
 LM=18
 115.0000 99.0000
 120.0000 83.0000
@@ -44706,7 +44622,7 @@ LM=18
 276.0000 53.0000
 216.0000 116.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA5591_S3.jpg
-ID=2174
+ID=2170
 LM=18
 120.0000 106.0000
 124.0000 92.0000
@@ -44727,7 +44643,7 @@ LM=18
 272.0000 74.0000
 211.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8150_P1.JPG
-ID=2175
+ID=2171
 LM=18
 92.0000 88.0000
 97.0000 73.0000
@@ -44748,7 +44664,7 @@ LM=18
 256.0000 55.0000
 191.0000 118.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8150_P2.JPG
-ID=2176
+ID=2172
 LM=18
 119.0000 133.0000
 121.0000 118.0000
@@ -44769,7 +44685,7 @@ LM=18
 265.0000 71.0000
 216.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8150_S1.jpg
-ID=2177
+ID=2173
 LM=18
 105.0000 102.0000
 110.0000 88.0000
@@ -44790,7 +44706,7 @@ LM=18
 266.0000 66.0000
 204.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8150_S2.jpg
-ID=2178
+ID=2174
 LM=18
 106.0000 93.0000
 111.0000 79.0000
@@ -44811,7 +44727,7 @@ LM=18
 265.0000 60.0000
 203.0000 123.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8150_S3.jpg
-ID=2179
+ID=2175
 LM=18
 121.0000 119.0000
 126.0000 102.0000
@@ -44832,7 +44748,7 @@ LM=18
 280.0000 69.0000
 222.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8151_P1.JPG
-ID=2180
+ID=2176
 LM=18
 125.0000 105.0000
 130.0000 88.0000
@@ -44853,7 +44769,7 @@ LM=18
 271.0000 56.0000
 218.0000 121.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8151_P2.JPG
-ID=2181
+ID=2177
 LM=18
 131.0000 114.0000
 136.0000 97.0000
@@ -44874,7 +44790,7 @@ LM=18
 278.0000 66.0000
 225.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8151_S1.jpg
-ID=2182
+ID=2178
 LM=18
 140.0000 111.0000
 144.0000 94.0000
@@ -44895,7 +44811,7 @@ LM=18
 286.0000 63.0000
 234.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8151_S2.jpg
-ID=2183
+ID=2179
 LM=18
 131.0000 113.0000
 137.0000 97.0000
@@ -44916,7 +44832,7 @@ LM=18
 276.0000 64.0000
 225.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8151_S3.jpg
-ID=2184
+ID=2180
 LM=18
 88.0000 114.0000
 97.0000 96.0000
@@ -44937,7 +44853,7 @@ LM=18
 251.0000 61.0000
 192.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8239c_P1.JPG
-ID=2185
+ID=2181
 LM=18
 81.0000 111.0000
 90.0000 93.0000
@@ -44958,7 +44874,7 @@ LM=18
 251.0000 54.0000
 190.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8239c_P2.JPG
-ID=2186
+ID=2182
 LM=18
 86.0000 117.0000
 90.0000 98.0000
@@ -44979,7 +44895,7 @@ LM=18
 252.0000 57.0000
 191.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8239c_S1.jpg
-ID=2187
+ID=2183
 LM=18
 78.0000 115.0000
 85.0000 96.0000
@@ -45000,7 +44916,7 @@ LM=18
 247.0000 58.0000
 185.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8239c_S2.jpg
-ID=2188
+ID=2184
 LM=18
 73.0000 120.0000
 79.0000 101.0000
@@ -45021,7 +44937,7 @@ LM=18
 245.0000 60.0000
 183.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8239c_S3.jpg
-ID=2189
+ID=2185
 LM=18
 121.0000 84.0000
 125.0000 68.0000
@@ -45042,7 +44958,7 @@ LM=18
 256.0000 41.0000
 206.0000 98.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8627_P1.JPG
-ID=2190
+ID=2186
 LM=18
 117.0000 86.0000
 122.0000 70.0000
@@ -45063,7 +44979,7 @@ LM=18
 274.0000 38.0000
 216.0000 104.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8627_P2.JPG
-ID=2191
+ID=2187
 LM=18
 119.0000 94.0000
 124.0000 78.0000
@@ -45084,7 +45000,7 @@ LM=18
 261.0000 49.0000
 210.0000 109.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8627_S1.jpg
-ID=2192
+ID=2188
 LM=18
 123.0000 96.0000
 129.0000 80.0000
@@ -45105,7 +45021,7 @@ LM=18
 268.0000 51.0000
 216.0000 113.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8627_S2.jpg
-ID=2193
+ID=2189
 LM=18
 118.0000 94.0000
 124.0000 78.0000
@@ -45126,7 +45042,7 @@ LM=18
 260.0000 48.0000
 210.0000 109.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8627_S3.jpg
-ID=2194
+ID=2190
 LM=18
 103.0000 110.0000
 107.0000 93.0000
@@ -45147,7 +45063,7 @@ LM=18
 256.0000 67.0000
 197.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8672b_P1.JPG
-ID=2195
+ID=2191
 LM=18
 101.0000 104.0000
 106.0000 86.0000
@@ -45168,7 +45084,7 @@ LM=18
 267.0000 58.0000
 203.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8672b_P2.JPG
-ID=2196
+ID=2192
 LM=18
 113.0000 114.0000
 116.0000 97.0000
@@ -45189,7 +45105,7 @@ LM=18
 270.0000 65.0000
 211.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8672b_S1.jpg
-ID=2197
+ID=2193
 LM=18
 108.0000 112.0000
 112.0000 95.0000
@@ -45210,7 +45126,7 @@ LM=18
 267.0000 66.0000
 207.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8672b_S2.jpg
-ID=2198
+ID=2194
 LM=18
 109.0000 116.0000
 113.0000 98.0000
@@ -45231,7 +45147,7 @@ LM=18
 268.0000 67.0000
 209.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8672b_S3.jpg
-ID=2199
+ID=2195
 LM=18
 109.0000 76.0000
 115.0000 61.0000
@@ -45252,7 +45168,7 @@ LM=18
 268.0000 45.0000
 206.0000 106.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8867_P1.JPG
-ID=2200
+ID=2196
 LM=18
 107.0000 97.0000
 113.0000 82.0000
@@ -45273,7 +45189,7 @@ LM=18
 268.0000 65.0000
 205.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8867_S1.jpg
-ID=2201
+ID=2197
 LM=18
 96.0000 99.0000
 103.0000 83.0000
@@ -45294,7 +45210,7 @@ LM=18
 263.0000 63.0000
 199.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8867_S2.jpg
-ID=2202
+ID=2198
 LM=18
 109.0000 102.0000
 115.0000 87.0000
@@ -45315,7 +45231,7 @@ LM=18
 264.0000 72.0000
 204.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\ABAURA8867_S3.jpg
-ID=2203
+ID=2199
 LM=18
 112.0000 102.0000
 118.0000 85.0000
@@ -45336,7 +45252,7 @@ LM=18
 268.0000 57.0000
 208.0000 123.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD387287_P1.JPG
-ID=2204
+ID=2200
 LM=18
 114.0000 83.0000
 120.0000 68.0000
@@ -45357,7 +45273,7 @@ LM=18
 260.0000 41.0000
 203.0000 102.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD387287_P2.JPG
-ID=2205
+ID=2201
 LM=18
 108.0000 112.0000
 112.0000 94.0000
@@ -45378,7 +45294,7 @@ LM=18
 261.0000 60.0000
 204.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD387287_S1.jpg
-ID=2206
+ID=2202
 LM=18
 131.0000 84.0000
 135.0000 70.0000
@@ -45399,7 +45315,7 @@ LM=18
 258.0000 43.0000
 210.0000 98.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD387287_S2.jpg
-ID=2207
+ID=2203
 LM=18
 134.0000 79.0000
 138.0000 65.0000
@@ -45420,7 +45336,7 @@ LM=18
 260.0000 41.0000
 212.0000 95.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD387287_S3.jpg
-ID=2208
+ID=2204
 LM=18
 114.0000 91.0000
 118.0000 75.0000
@@ -45441,7 +45357,7 @@ LM=18
 245.0000 43.0000
 200.0000 104.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD387577_P1.JPG
-ID=2209
+ID=2205
 LM=18
 125.0000 97.0000
 130.0000 82.0000
@@ -45462,7 +45378,7 @@ LM=18
 246.0000 52.0000
 204.0000 108.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD387577_P2.JPG
-ID=2210
+ID=2206
 LM=18
 125.0000 101.0000
 130.0000 85.0000
@@ -45483,7 +45399,7 @@ LM=18
 252.0000 51.0000
 209.0000 111.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD387577_S2.jpg
-ID=2211
+ID=2207
 LM=18
 123.0000 98.0000
 126.0000 83.0000
@@ -45504,7 +45420,7 @@ LM=18
 251.0000 50.0000
 206.0000 110.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD387577_S3.jpg
-ID=2212
+ID=2208
 LM=18
 70.0000 105.0000
 75.0000 87.0000
@@ -45525,7 +45441,7 @@ LM=18
 240.0000 55.0000
 180.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD387577b_P1.JPG
-ID=2213
+ID=2209
 LM=18
 84.0000 102.0000
 88.0000 83.0000
@@ -45546,7 +45462,7 @@ LM=18
 253.0000 46.0000
 195.0000 121.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD387577b_P2.JPG
-ID=2214
+ID=2210
 LM=18
 82.0000 112.0000
 87.0000 94.0000
@@ -45567,7 +45483,7 @@ LM=18
 251.0000 56.0000
 192.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD387577b_S1.jpg
-ID=2215
+ID=2211
 LM=18
 76.0000 112.0000
 81.0000 93.0000
@@ -45588,7 +45504,7 @@ LM=18
 244.0000 54.0000
 186.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD387577b_S2.jpg
-ID=2216
+ID=2212
 LM=18
 78.0000 114.0000
 82.0000 95.0000
@@ -45609,7 +45525,7 @@ LM=18
 246.0000 56.0000
 187.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD387577b_S3.jpg
-ID=2217
+ID=2213
 LM=18
 118.0000 97.0000
 122.0000 82.0000
@@ -45630,7 +45546,7 @@ LM=18
 271.0000 50.0000
 215.0000 114.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD387770c_P1.JPG
-ID=2218
+ID=2214
 LM=18
 137.0000 121.0000
 140.0000 108.0000
@@ -45651,7 +45567,7 @@ LM=18
 281.0000 78.0000
 227.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD387770c_P2.JPG
-ID=2219
+ID=2215
 LM=18
 134.0000 108.0000
 138.0000 93.0000
@@ -45672,7 +45588,7 @@ LM=18
 288.0000 63.0000
 231.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD387770c_S1.jpg
-ID=2220
+ID=2216
 LM=18
 125.0000 114.0000
 129.0000 99.0000
@@ -45693,7 +45609,7 @@ LM=18
 282.0000 70.0000
 223.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD387770c_S2.jpg
-ID=2221
+ID=2217
 LM=18
 137.0000 109.0000
 140.0000 93.0000
@@ -45714,7 +45630,7 @@ LM=18
 290.0000 63.0000
 233.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD387770c_S3.jpg
-ID=2222
+ID=2218
 LM=18
 129.0000 118.0000
 133.0000 101.0000
@@ -45735,7 +45651,7 @@ LM=18
 294.0000 70.0000
 233.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388229b_P1.JPG
-ID=2223
+ID=2219
 LM=18
 124.0000 120.0000
 127.0000 103.0000
@@ -45756,7 +45672,7 @@ LM=18
 276.0000 74.0000
 220.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388229b_P2.JPG
-ID=2224
+ID=2220
 LM=18
 130.0000 124.0000
 132.0000 107.0000
@@ -45777,7 +45693,7 @@ LM=18
 285.0000 69.0000
 230.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388229b_S1.jpg
-ID=2225
+ID=2221
 LM=18
 128.0000 121.0000
 130.0000 104.0000
@@ -45798,7 +45714,7 @@ LM=18
 280.0000 68.0000
 226.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388229b_S2.jpg
-ID=2226
+ID=2222
 LM=18
 125.0000 104.0000
 128.0000 88.0000
@@ -45819,7 +45735,7 @@ LM=18
 276.0000 54.0000
 222.0000 121.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388229b_S3.jpg
-ID=2227
+ID=2223
 LM=18
 78.0000 113.0000
 83.0000 95.0000
@@ -45840,7 +45756,7 @@ LM=18
 240.0000 63.0000
 178.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388235_P1.JPG
-ID=2228
+ID=2224
 LM=18
 90.0000 113.0000
 96.0000 96.0000
@@ -45861,7 +45777,7 @@ LM=18
 253.0000 63.0000
 191.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388235_P2.JPG
-ID=2229
+ID=2225
 LM=18
 87.0000 108.0000
 91.0000 88.0000
@@ -45882,7 +45798,7 @@ LM=18
 257.0000 56.0000
 191.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388235_S1.jpg
-ID=2230
+ID=2226
 LM=18
 90.0000 117.0000
 95.0000 98.0000
@@ -45903,7 +45819,7 @@ LM=18
 254.0000 63.0000
 193.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388235_S2.jpg
-ID=2231
+ID=2227
 LM=18
 83.0000 108.0000
 87.0000 90.0000
@@ -45924,7 +45840,7 @@ LM=18
 250.0000 56.0000
 186.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388235_S3.jpg
-ID=2232
+ID=2228
 LM=18
 90.0000 110.0000
 95.0000 92.0000
@@ -45945,7 +45861,7 @@ LM=18
 254.0000 62.0000
 192.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388235b_P1.JPG
-ID=2233
+ID=2229
 LM=18
 90.0000 97.0000
 95.0000 79.0000
@@ -45966,7 +45882,7 @@ LM=18
 255.0000 49.0000
 192.0000 113.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388235b_P2.JPG
-ID=2234
+ID=2230
 LM=18
 113.0000 109.0000
 117.0000 92.0000
@@ -45987,7 +45903,7 @@ LM=18
 268.0000 63.0000
 208.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388235b_S1.jpg
-ID=2235
+ID=2231
 LM=18
 105.0000 114.0000
 110.0000 97.0000
@@ -46008,7 +45924,7 @@ LM=18
 262.0000 66.0000
 203.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388235b_S2.jpg
-ID=2236
+ID=2232
 LM=18
 104.0000 113.0000
 109.0000 96.0000
@@ -46029,7 +45945,7 @@ LM=18
 264.0000 60.0000
 205.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388235b_S3.jpg
-ID=2237
+ID=2233
 LM=18
 104.0000 110.0000
 107.0000 90.0000
@@ -46050,7 +45966,7 @@ LM=18
 270.0000 62.0000
 207.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388612_P1.JPG
-ID=2238
+ID=2234
 LM=18
 89.0000 106.0000
 92.0000 87.0000
@@ -46071,7 +45987,7 @@ LM=18
 252.0000 60.0000
 190.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388612_P2.JPG
-ID=2239
+ID=2235
 LM=18
 111.0000 116.0000
 114.0000 97.0000
@@ -46092,7 +46008,7 @@ LM=18
 269.0000 63.0000
 211.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388612_S1.jpg
-ID=2240
+ID=2236
 LM=18
 98.0000 108.0000
 101.0000 90.0000
@@ -46113,7 +46029,7 @@ LM=18
 259.0000 60.0000
 199.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388612_S2.jpg
-ID=2241
+ID=2237
 LM=18
 102.0000 107.0000
 107.0000 88.0000
@@ -46134,7 +46050,7 @@ LM=18
 266.0000 58.0000
 205.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388612_S3.jpg
-ID=2242
+ID=2238
 LM=18
 73.0000 94.0000
 82.0000 79.0000
@@ -46155,7 +46071,7 @@ LM=18
 231.0000 64.0000
 164.0000 123.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388809_P1.JPG
-ID=2243
+ID=2239
 LM=18
 91.0000 85.0000
 99.0000 69.0000
@@ -46176,7 +46092,7 @@ LM=18
 247.0000 55.0000
 180.0000 113.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388809_P2.JPG
-ID=2244
+ID=2240
 LM=18
 77.0000 95.0000
 84.0000 79.0000
@@ -46197,7 +46113,7 @@ LM=18
 250.0000 55.0000
 179.0000 124.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388809_S1.jpg
-ID=2245
+ID=2241
 LM=18
 77.0000 101.0000
 83.0000 83.0000
@@ -46218,7 +46134,7 @@ LM=18
 251.0000 59.0000
 179.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388809_S2.jpg
-ID=2246
+ID=2242
 LM=18
 92.0000 91.0000
 102.0000 76.0000
@@ -46239,7 +46155,7 @@ LM=18
 265.0000 60.0000
 193.0000 123.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388809_S3.jpg
-ID=2247
+ID=2243
 LM=18
 68.0000 116.0000
 73.0000 96.0000
@@ -46260,7 +46176,7 @@ LM=18
 251.0000 50.0000
 185.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388862_P1.JPG
-ID=2248
+ID=2244
 LM=18
 87.0000 132.0000
 91.0000 112.0000
@@ -46281,7 +46197,7 @@ LM=18
 265.0000 67.0000
 200.0000 147.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388862_P2.JPG
-ID=2249
+ID=2245
 LM=18
 74.0000 129.0000
 78.0000 109.0000
@@ -46302,7 +46218,7 @@ LM=18
 250.0000 61.0000
 188.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388862_S1.jpg
-ID=2250
+ID=2246
 LM=18
 82.0000 122.0000
 87.0000 102.0000
@@ -46323,7 +46239,7 @@ LM=18
 256.0000 59.0000
 194.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388862_S2.jpg
-ID=2251
+ID=2247
 LM=18
 72.0000 118.0000
 77.0000 99.0000
@@ -46344,7 +46260,7 @@ LM=18
 250.0000 57.0000
 185.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388862_S3.jpg
-ID=2252
+ID=2248
 LM=18
 126.0000 104.0000
 133.0000 86.0000
@@ -46365,7 +46281,7 @@ LM=18
 290.0000 59.0000
 228.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388872_P1.JPG
-ID=2253
+ID=2249
 LM=18
 135.0000 99.0000
 142.0000 82.0000
@@ -46386,7 +46302,7 @@ LM=18
 293.0000 54.0000
 233.0000 120.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388872_P2.JPG
-ID=2254
+ID=2250
 LM=18
 114.0000 109.0000
 117.0000 89.0000
@@ -46407,7 +46323,7 @@ LM=18
 277.0000 60.0000
 215.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388872_S1.jpg
-ID=2255
+ID=2251
 LM=18
 113.0000 114.0000
 120.0000 96.0000
@@ -46428,7 +46344,7 @@ LM=18
 278.0000 63.0000
 216.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388872_S2.jpg
-ID=2256
+ID=2252
 LM=18
 118.0000 111.0000
 123.0000 94.0000
@@ -46449,7 +46365,7 @@ LM=18
 281.0000 64.0000
 219.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388872_S3.jpg
-ID=2257
+ID=2253
 LM=18
 95.0000 125.0000
 98.0000 106.0000
@@ -46470,7 +46386,7 @@ LM=18
 266.0000 63.0000
 206.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388872b_P1.JPG
-ID=2258
+ID=2254
 LM=18
 79.0000 127.0000
 82.0000 106.0000
@@ -46491,7 +46407,7 @@ LM=18
 249.0000 62.0000
 190.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388872b_S1.jpg
-ID=2259
+ID=2255
 LM=18
 88.0000 133.0000
 92.0000 115.0000
@@ -46512,7 +46428,7 @@ LM=18
 252.0000 68.0000
 197.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388872b_S2.jpg
-ID=2260
+ID=2256
 LM=18
 90.0000 131.0000
 94.0000 113.0000
@@ -46533,7 +46449,7 @@ LM=18
 254.0000 64.0000
 200.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\CD388872b_S3.jpg
-ID=2261
+ID=2257
 LM=18
 108.0000 92.0000
 113.0000 75.0000
@@ -46554,7 +46470,7 @@ LM=18
 266.0000 44.0000
 209.0000 112.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\POLLINIS4343_P1.JPG
-ID=2262
+ID=2258
 LM=18
 107.0000 103.0000
 112.0000 86.0000
@@ -46575,7 +46491,7 @@ LM=18
 275.0000 55.0000
 213.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\POLLINIS4343_P2.JPG
-ID=2263
+ID=2259
 LM=18
 100.0000 113.0000
 104.0000 96.0000
@@ -46596,7 +46512,7 @@ LM=18
 261.0000 62.0000
 203.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\POLLINIS4343_S1.jpg
-ID=2264
+ID=2260
 LM=18
 104.0000 116.0000
 108.0000 100.0000
@@ -46617,7 +46533,7 @@ LM=18
 264.0000 65.0000
 207.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\POLLINIS4343_S2.jpg
-ID=2265
+ID=2261
 LM=18
 99.0000 115.0000
 104.0000 98.0000
@@ -46638,7 +46554,7 @@ LM=18
 260.0000 65.0000
 203.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_soroeensis\worker\POLLINIS4343_S3.jpg
-ID=2266
+ID=2262
 LM=18
 65.0000 104.0000
 72.0000 87.0000
@@ -46659,7 +46575,7 @@ LM=18
 242.0000 52.0000
 182.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\15G2021-1200_P1.JPG
-ID=2267
+ID=2263
 LM=18
 60.0000 105.0000
 67.0000 88.0000
@@ -46680,7 +46596,7 @@ LM=18
 240.0000 53.0000
 178.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\15G2021-1200_P2.JPG
-ID=2268
+ID=2264
 LM=18
 73.0000 108.0000
 79.0000 91.0000
@@ -46701,7 +46617,7 @@ LM=18
 248.0000 58.0000
 187.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\15G2021-1200_S1.jpg
-ID=2269
+ID=2265
 LM=18
 59.0000 113.0000
 66.0000 94.0000
@@ -46722,7 +46638,7 @@ LM=18
 236.0000 55.0000
 176.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\15G2021-1200_S2.jpg
-ID=2270
+ID=2266
 LM=18
 82.0000 106.0000
 87.0000 89.0000
@@ -46743,7 +46659,7 @@ LM=18
 251.0000 56.0000
 192.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\15G2021-1200_S3.jpg
-ID=2271
+ID=2267
 LM=18
 378.0000 47.0000
 322.0000 101.0000
@@ -46764,7 +46680,7 @@ LM=18
 177.0000 90.0000
 281.0000 60.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\15L2021-1585_S1.jpg
-ID=2274
+ID=2270
 LM=18
 106.0000 182.0000
 179.0000 134.0000
@@ -46785,7 +46701,7 @@ LM=18
 288.0000 61.0000
 230.0000 83.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\15L2021-1585_S3.jpg
-ID=2276
+ID=2272
 LM=18
 204.0000 115.0000
 210.0000 101.0000
@@ -46806,7 +46722,7 @@ LM=18
 333.0000 72.0000
 295.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\2020.03930_P1.JPG
-ID=2277
+ID=2273
 LM=18
 59.0000 116.0000
 67.0000 98.0000
@@ -46827,7 +46743,7 @@ LM=18
 244.0000 55.0000
 188.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\2020.03930_P2.JPG
-ID=2278
+ID=2274
 LM=18
 58.0000 121.0000
 65.0000 102.0000
@@ -46848,7 +46764,7 @@ LM=18
 245.0000 56.0000
 190.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\2020.03930_S1.jpg
-ID=2279
+ID=2275
 LM=18
 48.0000 123.0000
 56.0000 102.0000
@@ -46869,7 +46785,7 @@ LM=18
 237.0000 57.0000
 180.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\2020.03930_S2.jpg
-ID=2280
+ID=2276
 LM=18
 65.0000 124.0000
 73.0000 105.0000
@@ -46890,7 +46806,7 @@ LM=18
 251.0000 59.0000
 196.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\2020.03930_S3.jpg
-ID=2281
+ID=2277
 LM=18
 103.0000 103.0000
 109.0000 90.0000
@@ -46911,7 +46827,7 @@ LM=18
 260.0000 64.0000
 205.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\2020.06348_P1.JPG
-ID=2282
+ID=2278
 LM=18
 98.0000 94.0000
 105.0000 80.0000
@@ -46932,7 +46848,7 @@ LM=18
 268.0000 51.0000
 208.0000 124.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\2020.06348_P2.JPG
-ID=2283
+ID=2279
 LM=18
 84.0000 96.0000
 90.0000 81.0000
@@ -46953,7 +46869,7 @@ LM=18
 257.0000 54.0000
 195.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\2020.06348_S1.jpg
-ID=2284
+ID=2280
 LM=18
 89.0000 100.0000
 94.0000 86.0000
@@ -46974,7 +46890,7 @@ LM=18
 258.0000 57.0000
 198.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\2020.06348_S2.jpg
-ID=2285
+ID=2281
 LM=18
 85.0000 94.0000
 91.0000 79.0000
@@ -46995,7 +46911,7 @@ LM=18
 254.0000 55.0000
 194.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\2020.06348_S3.jpg
-ID=2286
+ID=2282
 LM=18
 97.0000 134.0000
 103.0000 115.0000
@@ -47016,7 +46932,7 @@ LM=18
 252.0000 62.0000
 209.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM09082020078_P1.JPG
-ID=2287
+ID=2283
 LM=18
 109.0000 139.0000
 114.0000 121.0000
@@ -47037,7 +46953,7 @@ LM=18
 261.0000 66.0000
 218.0000 147.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM09082020078_P2.JPG
-ID=2288
+ID=2284
 LM=18
 100.0000 146.0000
 105.0000 128.0000
@@ -47058,7 +46974,7 @@ LM=18
 252.0000 69.0000
 210.0000 154.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM09082020078_S1.jpg
-ID=2289
+ID=2285
 LM=18
 99.0000 148.0000
 102.0000 129.0000
@@ -47079,7 +46995,7 @@ LM=18
 253.0000 69.0000
 210.0000 155.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM09082020078_S2.jpg
-ID=2290
+ID=2286
 LM=18
 102.0000 142.0000
 106.0000 123.0000
@@ -47100,7 +47016,7 @@ LM=18
 255.0000 67.0000
 212.0000 150.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM09082020078_S3.jpg
-ID=2291
+ID=2287
 LM=18
 88.0000 129.0000
 93.0000 112.0000
@@ -47121,7 +47037,7 @@ LM=18
 244.0000 62.0000
 203.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM17082020015_P1.JPG
-ID=2292
+ID=2288
 LM=18
 85.0000 136.0000
 90.0000 119.0000
@@ -47142,7 +47058,7 @@ LM=18
 238.0000 64.0000
 200.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM17082020015_P2.JPG
-ID=2293
+ID=2289
 LM=18
 94.0000 137.0000
 98.0000 120.0000
@@ -47163,7 +47079,7 @@ LM=18
 245.0000 66.0000
 207.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM17082020015_S1.jpg
-ID=2294
+ID=2290
 LM=18
 94.0000 133.0000
 98.0000 116.0000
@@ -47184,7 +47100,7 @@ LM=18
 247.0000 62.0000
 208.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM17082020015_S2.jpg
-ID=2295
+ID=2291
 LM=18
 93.0000 131.0000
 96.0000 114.0000
@@ -47205,7 +47121,7 @@ LM=18
 244.0000 60.0000
 206.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM17082020015_S3.jpg
-ID=2296
+ID=2292
 LM=18
 107.0000 103.0000
 111.0000 86.0000
@@ -47226,7 +47142,7 @@ LM=18
 262.0000 46.0000
 212.0000 121.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM25082020007_P1.JPG
-ID=2297
+ID=2293
 LM=18
 103.0000 103.0000
 108.0000 86.0000
@@ -47247,7 +47163,7 @@ LM=18
 258.0000 45.0000
 208.0000 119.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM25082020007_P2.JPG
-ID=2298
+ID=2294
 LM=18
 107.0000 95.0000
 113.0000 79.0000
@@ -47268,7 +47184,7 @@ LM=18
 259.0000 44.0000
 208.0000 115.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM25082020007_S1.jpg
-ID=2299
+ID=2295
 LM=18
 97.0000 107.0000
 102.0000 89.0000
@@ -47289,7 +47205,7 @@ LM=18
 262.0000 52.0000
 206.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM25082020007_S2.jpg
-ID=2300
+ID=2296
 LM=18
 110.0000 101.0000
 114.0000 85.0000
@@ -47310,7 +47226,7 @@ LM=18
 261.0000 48.0000
 211.0000 119.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM25082020007_S3.jpg
-ID=2301
+ID=2297
 LM=18
 84.0000 127.0000
 89.0000 109.0000
@@ -47331,7 +47247,7 @@ LM=18
 250.0000 59.0000
 205.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM25082020008_P1.JPG
-ID=2302
+ID=2298
 LM=18
 82.0000 133.0000
 85.0000 115.0000
@@ -47352,7 +47268,7 @@ LM=18
 248.0000 63.0000
 203.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM25082020008_P2.JPG
-ID=2303
+ID=2299
 LM=18
 86.0000 133.0000
 90.0000 116.0000
@@ -47373,7 +47289,7 @@ LM=18
 251.0000 65.0000
 205.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM25082020008_S1.jpg
-ID=2304
+ID=2300
 LM=18
 74.0000 134.0000
 78.0000 115.0000
@@ -47394,7 +47310,7 @@ LM=18
 243.0000 65.0000
 195.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM25082020008_S2.jpg
-ID=2305
+ID=2301
 LM=18
 84.0000 132.0000
 89.0000 115.0000
@@ -47415,7 +47331,7 @@ LM=18
 249.0000 64.0000
 204.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM25082020008_S3.jpg
-ID=2306
+ID=2302
 LM=18
 105.0000 130.0000
 107.0000 112.0000
@@ -47436,7 +47352,7 @@ LM=18
 261.0000 65.0000
 213.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM25082020010_P1.JPG
-ID=2307
+ID=2303
 LM=18
 104.0000 129.0000
 106.0000 111.0000
@@ -47457,7 +47373,7 @@ LM=18
 261.0000 64.0000
 213.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM25082020010_P2.JPG
-ID=2308
+ID=2304
 LM=18
 115.0000 126.0000
 119.0000 109.0000
@@ -47478,7 +47394,7 @@ LM=18
 270.0000 65.0000
 221.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM25082020010_S1.jpg
-ID=2309
+ID=2305
 LM=18
 109.0000 125.0000
 110.0000 107.0000
@@ -47499,7 +47415,7 @@ LM=18
 266.0000 66.0000
 215.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM25082020010_S2.jpg
-ID=2310
+ID=2306
 LM=18
 106.0000 125.0000
 108.0000 108.0000
@@ -47520,7 +47436,7 @@ LM=18
 261.0000 65.0000
 212.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM25082020010_S3.jpg
-ID=2311
+ID=2307
 LM=18
 91.0000 131.0000
 94.0000 115.0000
@@ -47541,7 +47457,7 @@ LM=18
 245.0000 59.0000
 205.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM30072020036_P1.JPG
-ID=2312
+ID=2308
 LM=18
 83.0000 137.0000
 85.0000 119.0000
@@ -47562,7 +47478,7 @@ LM=18
 238.0000 63.0000
 198.0000 146.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM30072020036_P2.JPG
-ID=2313
+ID=2309
 LM=18
 88.0000 128.0000
 90.0000 110.0000
@@ -47583,7 +47499,7 @@ LM=18
 244.0000 57.0000
 201.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM30072020036_S1.jpg
-ID=2314
+ID=2310
 LM=18
 91.0000 132.0000
 93.0000 115.0000
@@ -47604,7 +47520,7 @@ LM=18
 248.0000 61.0000
 205.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM30072020036_S2.jpg
-ID=2315
+ID=2311
 LM=18
 97.0000 134.0000
 98.0000 117.0000
@@ -47625,7 +47541,7 @@ LM=18
 249.0000 66.0000
 206.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM30072020036_S3.jpg
-ID=2316
+ID=2312
 LM=18
 67.0000 128.0000
 74.0000 109.0000
@@ -47646,7 +47562,7 @@ LM=18
 236.0000 60.0000
 186.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM30072020042_P1.JPG
-ID=2317
+ID=2313
 LM=18
 68.0000 124.0000
 76.0000 104.0000
@@ -47667,7 +47583,7 @@ LM=18
 237.0000 57.0000
 188.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM30072020042_P2.JPG
-ID=2318
+ID=2314
 LM=18
 78.0000 123.0000
 82.0000 103.0000
@@ -47688,7 +47604,7 @@ LM=18
 244.0000 56.0000
 193.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM30072020042_S1.jpg
-ID=2319
+ID=2315
 LM=18
 80.0000 125.0000
 84.0000 106.0000
@@ -47709,7 +47625,7 @@ LM=18
 242.0000 60.0000
 194.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM30072020042_S2.jpg
-ID=2320
+ID=2316
 LM=18
 74.0000 124.0000
 79.0000 104.0000
@@ -47730,7 +47646,7 @@ LM=18
 242.0000 58.0000
 191.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_ABOM30072020042_S3.jpg
-ID=2321
+ID=2317
 LM=18
 71.0000 99.0000
 76.0000 86.0000
@@ -47751,7 +47667,7 @@ LM=18
 244.0000 56.0000
 187.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_STPONCY300921002_P1.JPG
-ID=2322
+ID=2318
 LM=18
 67.0000 102.0000
 71.0000 87.0000
@@ -47772,7 +47688,7 @@ LM=18
 242.0000 57.0000
 185.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_STPONCY300921002_P2.JPG
-ID=2323
+ID=2319
 LM=18
 69.0000 103.0000
 74.0000 89.0000
@@ -47793,7 +47709,7 @@ LM=18
 243.0000 60.0000
 186.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_STPONCY300921002_S1.jpg
-ID=2324
+ID=2320
 LM=18
 71.0000 100.0000
 76.0000 87.0000
@@ -47814,7 +47730,7 @@ LM=18
 247.0000 56.0000
 189.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_STPONCY300921002_S2.jpg
-ID=2325
+ID=2321
 LM=18
 70.0000 98.0000
 74.0000 83.0000
@@ -47835,7 +47751,7 @@ LM=18
 244.0000 54.0000
 186.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_STPONCY300921002_S3.jpg
-ID=2326
+ID=2322
 LM=18
 92.0000 130.0000
 98.0000 112.0000
@@ -47856,7 +47772,7 @@ LM=18
 270.0000 74.0000
 212.0000 154.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_STPONCY300921024_P1.JPG
-ID=2327
+ID=2323
 LM=18
 85.0000 131.0000
 90.0000 113.0000
@@ -47877,7 +47793,7 @@ LM=18
 267.0000 73.0000
 207.0000 155.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_STPONCY300921024_P2.JPG
-ID=2328
+ID=2324
 LM=18
 85.0000 124.0000
 91.0000 107.0000
@@ -47898,7 +47814,7 @@ LM=18
 266.0000 72.0000
 205.0000 151.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_STPONCY300921024_S1.jpg
-ID=2329
+ID=2325
 LM=18
 94.0000 124.0000
 100.0000 107.0000
@@ -47919,7 +47835,7 @@ LM=18
 273.0000 71.0000
 212.0000 150.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_STPONCY300921024_S2.jpg
-ID=2330
+ID=2326
 LM=18
 80.0000 130.0000
 85.0000 112.0000
@@ -47940,7 +47856,7 @@ LM=18
 261.0000 74.0000
 200.0000 156.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15_STPONCY300921024_S3.jpg
-ID=2331
+ID=2327
 LM=18
 101.0000 130.0000
 105.0000 114.0000
@@ -47961,7 +47877,7 @@ LM=18
 252.0000 69.0000
 206.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM170821009_P1.JPG
-ID=2332
+ID=2328
 LM=18
 112.0000 124.0000
 116.0000 108.0000
@@ -47982,7 +47898,7 @@ LM=18
 261.0000 63.0000
 216.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM170821009_P2.JPG
-ID=2333
+ID=2329
 LM=18
 102.0000 130.0000
 105.0000 114.0000
@@ -48003,7 +47919,7 @@ LM=18
 253.0000 62.0000
 209.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM170821009_S1.jpg
-ID=2334
+ID=2330
 LM=18
 98.0000 134.0000
 101.0000 118.0000
@@ -48024,7 +47940,7 @@ LM=18
 248.0000 67.0000
 204.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM170821009_S2.jpg
-ID=2335
+ID=2331
 LM=18
 102.0000 128.0000
 105.0000 112.0000
@@ -48045,7 +47961,7 @@ LM=18
 252.0000 63.0000
 208.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM170821009_S3.jpg
-ID=2336
+ID=2332
 LM=18
 96.0000 136.0000
 100.0000 119.0000
@@ -48066,7 +47982,7 @@ LM=18
 252.0000 64.0000
 207.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM210821128_P1.JPG
-ID=2337
+ID=2333
 LM=18
 92.0000 138.0000
 95.0000 120.0000
@@ -48087,7 +48003,7 @@ LM=18
 250.0000 64.0000
 205.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM210821128_P2.JPG
-ID=2338
+ID=2334
 LM=18
 98.0000 135.0000
 101.0000 119.0000
@@ -48108,7 +48024,7 @@ LM=18
 255.0000 63.0000
 210.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM210821128_S1.jpg
-ID=2339
+ID=2335
 LM=18
 93.0000 135.0000
 96.0000 118.0000
@@ -48129,7 +48045,7 @@ LM=18
 252.0000 63.0000
 207.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM210821128_S2.jpg
-ID=2340
+ID=2336
 LM=18
 97.0000 135.0000
 100.0000 118.0000
@@ -48150,7 +48066,7 @@ LM=18
 254.0000 63.0000
 209.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM210821128_S3.jpg
-ID=2341
+ID=2337
 LM=18
 109.0000 110.0000
 110.0000 96.0000
@@ -48171,7 +48087,7 @@ LM=18
 250.0000 51.0000
 211.0000 122.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM210821143_P1.JPG
-ID=2342
+ID=2338
 LM=18
 109.0000 107.0000
 109.0000 91.0000
@@ -48192,7 +48108,7 @@ LM=18
 250.0000 47.0000
 210.0000 118.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM210821143_P2.JPG
-ID=2343
+ID=2339
 LM=18
 117.0000 114.0000
 118.0000 98.0000
@@ -48213,7 +48129,7 @@ LM=18
 253.0000 52.0000
 218.0000 122.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM210821143_S1.jpg
-ID=2344
+ID=2340
 LM=18
 115.0000 109.0000
 117.0000 93.0000
@@ -48234,7 +48150,7 @@ LM=18
 253.0000 48.0000
 216.0000 118.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM210821143_S2.jpg
-ID=2345
+ID=2341
 LM=18
 116.0000 108.0000
 117.0000 93.0000
@@ -48255,7 +48171,7 @@ LM=18
 252.0000 49.0000
 215.0000 117.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM210821143_S3.jpg
-ID=2346
+ID=2342
 LM=18
 98.0000 124.0000
 102.0000 106.0000
@@ -48276,7 +48192,7 @@ LM=18
 254.0000 60.0000
 209.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM210821174_P1.JPG
-ID=2347
+ID=2343
 LM=18
 95.0000 131.0000
 100.0000 113.0000
@@ -48297,7 +48213,7 @@ LM=18
 254.0000 62.0000
 209.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM210821174_P2.JPG
-ID=2348
+ID=2344
 LM=18
 98.0000 129.0000
 103.0000 111.0000
@@ -48318,7 +48234,7 @@ LM=18
 259.0000 66.0000
 212.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM210821174_S1.jpg
-ID=2349
+ID=2345
 LM=18
 92.0000 127.0000
 95.0000 108.0000
@@ -48339,7 +48255,7 @@ LM=18
 251.0000 61.0000
 205.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM210821174_S2.jpg
-ID=2350
+ID=2346
 LM=18
 100.0000 126.0000
 106.0000 109.0000
@@ -48360,7 +48276,7 @@ LM=18
 262.0000 66.0000
 213.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM210821174_S3.jpg
-ID=2351
+ID=2347
 LM=18
 75.0000 127.0000
 80.0000 108.0000
@@ -48381,7 +48297,7 @@ LM=18
 239.0000 58.0000
 193.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM210821177_P1.JPG
-ID=2352
+ID=2348
 LM=18
 83.0000 130.0000
 87.0000 111.0000
@@ -48402,7 +48318,7 @@ LM=18
 243.0000 62.0000
 199.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM210821177_P2.JPG
-ID=2353
+ID=2349
 LM=18
 69.0000 129.0000
 74.0000 110.0000
@@ -48423,7 +48339,7 @@ LM=18
 235.0000 57.0000
 189.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM210821177_S1.jpg
-ID=2354
+ID=2350
 LM=18
 66.0000 129.0000
 70.0000 110.0000
@@ -48444,7 +48360,7 @@ LM=18
 229.0000 60.0000
 183.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM210821177_S2.jpg
-ID=2355
+ID=2351
 LM=18
 70.0000 130.0000
 73.0000 111.0000
@@ -48465,7 +48381,7 @@ LM=18
 235.0000 58.0000
 188.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\FR15ABOM210821177_S3.jpg
-ID=2356
+ID=2352
 LM=18
 83.0000 133.0000
 89.0000 114.0000
@@ -48486,7 +48402,7 @@ LM=18
 243.0000 62.0000
 199.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName10_P1.JPG
-ID=2357
+ID=2353
 LM=18
 80.0000 134.0000
 85.0000 114.0000
@@ -48507,7 +48423,7 @@ LM=18
 237.0000 61.0000
 195.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName10_P2.JPG
-ID=2358
+ID=2354
 LM=18
 83.0000 137.0000
 87.0000 118.0000
@@ -48528,7 +48444,7 @@ LM=18
 242.0000 62.0000
 199.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName10_S1.jpg
-ID=2359
+ID=2355
 LM=18
 82.0000 134.0000
 86.0000 115.0000
@@ -48549,7 +48465,7 @@ LM=18
 242.0000 62.0000
 198.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName10_S2.jpg
-ID=2360
+ID=2356
 LM=18
 83.0000 134.0000
 88.0000 116.0000
@@ -48570,7 +48486,7 @@ LM=18
 240.0000 61.0000
 198.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName10_S3.jpg
-ID=2361
+ID=2357
 LM=18
 93.0000 117.0000
 100.0000 99.0000
@@ -48591,7 +48507,7 @@ LM=18
 257.0000 59.0000
 203.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName11_P1.JPG
-ID=2362
+ID=2358
 LM=18
 91.0000 117.0000
 100.0000 99.0000
@@ -48612,7 +48528,7 @@ LM=18
 258.0000 58.0000
 204.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName11_P2.JPG
-ID=2363
+ID=2359
 LM=18
 94.0000 119.0000
 100.0000 101.0000
@@ -48633,7 +48549,7 @@ LM=18
 259.0000 59.0000
 206.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName11_S1.jpg
-ID=2364
+ID=2360
 LM=18
 99.0000 115.0000
 105.0000 97.0000
@@ -48654,7 +48570,7 @@ LM=18
 264.0000 59.0000
 209.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName11_S2.jpg
-ID=2365
+ID=2361
 LM=18
 93.0000 117.0000
 100.0000 99.0000
@@ -48675,7 +48591,7 @@ LM=18
 257.0000 59.0000
 203.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName11_S3.jpg
-ID=2366
+ID=2362
 LM=18
 94.0000 121.0000
 99.0000 103.0000
@@ -48696,7 +48612,7 @@ LM=18
 254.0000 61.0000
 206.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName12_P1.JPG
-ID=2367
+ID=2363
 LM=18
 97.0000 115.0000
 102.0000 98.0000
@@ -48717,7 +48633,7 @@ LM=18
 255.0000 58.0000
 205.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName12_P2.JPG
-ID=2368
+ID=2364
 LM=18
 102.0000 116.0000
 108.0000 98.0000
@@ -48738,7 +48654,7 @@ LM=18
 260.0000 59.0000
 211.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName12_S1.jpg
-ID=2369
+ID=2365
 LM=18
 96.0000 117.0000
 101.0000 100.0000
@@ -48759,7 +48675,7 @@ LM=18
 254.0000 63.0000
 204.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName12_S2.jpg
-ID=2370
+ID=2366
 LM=18
 105.0000 116.0000
 110.0000 99.0000
@@ -48780,7 +48696,7 @@ LM=18
 261.0000 61.0000
 213.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName12_S3.jpg
-ID=2371
+ID=2367
 LM=18
 80.0000 101.0000
 86.0000 82.0000
@@ -48801,7 +48717,7 @@ LM=18
 250.0000 49.0000
 195.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName13_P1.JPG
-ID=2372
+ID=2368
 LM=18
 79.0000 101.0000
 85.0000 82.0000
@@ -48822,7 +48738,7 @@ LM=18
 251.0000 51.0000
 194.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName13_P2.JPG
-ID=2373
+ID=2369
 LM=18
 76.0000 101.0000
 81.0000 82.0000
@@ -48843,7 +48759,7 @@ LM=18
 248.0000 49.0000
 191.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName13_S1.jpg
-ID=2374
+ID=2370
 LM=18
 80.0000 102.0000
 86.0000 82.0000
@@ -48864,7 +48780,7 @@ LM=18
 252.0000 49.0000
 196.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName13_S2.jpg
-ID=2375
+ID=2371
 LM=18
 89.0000 108.0000
 95.0000 90.0000
@@ -48885,7 +48801,7 @@ LM=18
 257.0000 58.0000
 203.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName13_S3.jpg
-ID=2376
+ID=2372
 LM=18
 112.0000 123.0000
 116.0000 107.0000
@@ -48906,7 +48822,7 @@ LM=18
 269.0000 65.0000
 222.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName9_P1.JPG
-ID=2377
+ID=2373
 LM=18
 115.0000 116.0000
 121.0000 101.0000
@@ -48927,7 +48843,7 @@ LM=18
 272.0000 65.0000
 224.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName9_P2.JPG
-ID=2378
+ID=2374
 LM=18
 113.0000 121.0000
 117.0000 105.0000
@@ -48948,7 +48864,7 @@ LM=18
 268.0000 64.0000
 222.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName9_S1.jpg
-ID=2379
+ID=2375
 LM=18
 109.0000 121.0000
 113.0000 105.0000
@@ -48969,7 +48885,7 @@ LM=18
 265.0000 62.0000
 219.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName9_S2.jpg
-ID=2380
+ID=2376
 LM=18
 106.0000 122.0000
 110.0000 106.0000
@@ -48990,7 +48906,7 @@ LM=18
 264.0000 66.0000
 216.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\male\NoName9_S3.jpg
-ID=2381
+ID=2377
 LM=18
 102.0000 117.0000
 107.0000 99.0000
@@ -49011,7 +48927,7 @@ LM=18
 261.0000 62.0000
 208.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\20A.07897_P1.JPG
-ID=2382
+ID=2378
 LM=18
 100.0000 115.0000
 106.0000 97.0000
@@ -49032,7 +48948,7 @@ LM=18
 261.0000 59.0000
 208.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\20A.07897_P2.JPG
-ID=2383
+ID=2379
 LM=18
 81.0000 119.0000
 86.0000 98.0000
@@ -49053,7 +48969,7 @@ LM=18
 255.0000 54.0000
 199.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\20A.07897_S1.jpg
-ID=2384
+ID=2380
 LM=18
 82.0000 118.0000
 88.0000 98.0000
@@ -49074,7 +48990,7 @@ LM=18
 256.0000 54.0000
 200.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\20A.07897_S2.jpg
-ID=2385
+ID=2381
 LM=18
 88.0000 113.0000
 96.0000 93.0000
@@ -49095,7 +49011,7 @@ LM=18
 261.0000 50.0000
 207.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\20A.07897_S3.jpg
-ID=2386
+ID=2382
 LM=18
 106.0000 99.0000
 110.0000 82.0000
@@ -49116,7 +49032,7 @@ LM=18
 253.0000 48.0000
 203.0000 120.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\ABAURA7151_P1.JPG
-ID=2387
+ID=2383
 LM=18
 118.0000 108.0000
 122.0000 91.0000
@@ -49137,7 +49053,7 @@ LM=18
 256.0000 62.0000
 207.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\ABAURA7151_P2.JPG
-ID=2388
+ID=2384
 LM=18
 104.0000 104.0000
 109.0000 86.0000
@@ -49158,7 +49074,7 @@ LM=18
 259.0000 54.0000
 205.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\ABAURA7151_S1.jpg
-ID=2389
+ID=2385
 LM=18
 134.0000 180.0000
 131.0000 161.0000
@@ -49179,7 +49095,7 @@ LM=18
 257.0000 82.0000
 221.0000 147.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\ABAURA7151_S2.jpg
-ID=2390
+ID=2386
 LM=18
 104.0000 102.0000
 110.0000 85.0000
@@ -49200,7 +49116,7 @@ LM=18
 262.0000 52.0000
 208.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\ABAURA7151_S3.jpg
-ID=2391
+ID=2387
 LM=18
 77.0000 118.0000
 83.0000 100.0000
@@ -49221,7 +49137,7 @@ LM=18
 234.0000 59.0000
 189.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\NoName2_P1.JPG
-ID=2392
+ID=2388
 LM=18
 72.0000 124.0000
 78.0000 104.0000
@@ -49242,7 +49158,7 @@ LM=18
 235.0000 62.0000
 188.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\NoName2_P2.JPG
-ID=2393
+ID=2389
 LM=18
 91.0000 119.0000
 96.0000 101.0000
@@ -49263,7 +49179,7 @@ LM=18
 250.0000 58.0000
 204.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\NoName2_S1.jpg
-ID=2394
+ID=2390
 LM=18
 78.0000 118.0000
 87.0000 101.0000
@@ -49284,7 +49200,7 @@ LM=18
 241.0000 57.0000
 195.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\NoName2_S2.jpg
-ID=2395
+ID=2391
 LM=18
 80.0000 115.0000
 86.0000 97.0000
@@ -49305,7 +49221,7 @@ LM=18
 242.0000 55.0000
 195.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\NoName2_S3.jpg
-ID=2396
+ID=2392
 LM=18
 107.0000 100.0000
 113.0000 84.0000
@@ -49326,7 +49242,7 @@ LM=18
 257.0000 50.0000
 203.0000 123.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\POLLINIS4982b_P1.JPG
-ID=2397
+ID=2393
 LM=18
 128.0000 116.0000
 134.0000 99.0000
@@ -49347,7 +49263,7 @@ LM=18
 277.0000 66.0000
 223.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\POLLINIS4982b_P2.JPG
-ID=2398
+ID=2394
 LM=18
 111.0000 112.0000
 115.0000 93.0000
@@ -49368,7 +49284,7 @@ LM=18
 263.0000 55.0000
 209.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\POLLINIS4982b_S1.jpg
-ID=2399
+ID=2395
 LM=18
 101.0000 111.0000
 106.0000 93.0000
@@ -49389,7 +49305,7 @@ LM=18
 258.0000 57.0000
 203.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\POLLINIS4982b_S2.jpg
-ID=2400
+ID=2396
 LM=18
 110.0000 107.0000
 116.0000 90.0000
@@ -49410,7 +49326,7 @@ LM=18
 263.0000 53.0000
 211.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\POLLINIS4982b_S3.jpg
-ID=2401
+ID=2397
 LM=18
 119.0000 113.0000
 124.0000 95.0000
@@ -49431,7 +49347,7 @@ LM=18
 265.0000 54.0000
 219.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\POLLINIS4984_P1.JPG
-ID=2402
+ID=2398
 LM=18
 115.0000 115.0000
 122.0000 98.0000
@@ -49452,7 +49368,7 @@ LM=18
 265.0000 57.0000
 217.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\POLLINIS4984_P2.JPG
-ID=2403
+ID=2399
 LM=18
 127.0000 116.0000
 132.0000 99.0000
@@ -49473,7 +49389,7 @@ LM=18
 269.0000 57.0000
 226.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\POLLINIS4984_S1.jpg
-ID=2404
+ID=2400
 LM=18
 102.0000 116.0000
 110.0000 99.0000
@@ -49494,7 +49410,7 @@ LM=18
 253.0000 56.0000
 207.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\POLLINIS4984_S2.jpg
-ID=2405
+ID=2401
 LM=18
 109.0000 119.0000
 115.0000 101.0000
@@ -49515,7 +49431,7 @@ LM=18
 256.0000 57.0000
 212.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\queen\POLLINIS4984_S3.jpg
-ID=2406
+ID=2402
 LM=18
 197.0000 111.0000
 124.0000 86.0000
@@ -49536,7 +49452,7 @@ LM=18
 262.0000 35.0000
 262.0000 66.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\1036L_P2.JPG
-ID=2408
+ID=2404
 LM=18
 111.0000 93.0000
 119.0000 77.0000
@@ -49557,7 +49473,7 @@ LM=18
 256.0000 38.0000
 187.0000 118.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\1036L_S1.jpg
-ID=2409
+ID=2405
 LM=18
 182.0000 118.0000
 104.0000 91.0000
@@ -49578,7 +49494,7 @@ LM=18
 277.0000 44.0000
 251.0000 71.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\1036L_S2.jpg
-ID=2410
+ID=2406
 LM=18
 109.0000 89.0000
 117.0000 74.0000
@@ -49599,7 +49515,7 @@ LM=18
 281.0000 41.0000
 196.0000 101.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\1036L_S3.jpg
-ID=2411
+ID=2407
 LM=18
 86.0000 124.0000
 91.0000 106.0000
@@ -49620,7 +49536,7 @@ LM=18
 247.0000 59.0000
 198.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\15G2021-1826_P1.JPG
-ID=2412
+ID=2408
 LM=18
 77.0000 116.0000
 83.0000 98.0000
@@ -49641,7 +49557,7 @@ LM=18
 245.0000 53.0000
 191.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\15G2021-1826_P2.JPG
-ID=2413
+ID=2409
 LM=18
 77.0000 123.0000
 81.0000 104.0000
@@ -49662,7 +49578,7 @@ LM=18
 243.0000 55.0000
 191.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\15G2021-1826_S1.jpg
-ID=2414
+ID=2410
 LM=18
 83.0000 126.0000
 89.0000 108.0000
@@ -49683,7 +49599,7 @@ LM=18
 246.0000 62.0000
 196.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\15G2021-1826_S2.jpg
-ID=2415
+ID=2411
 LM=18
 92.0000 124.0000
 96.0000 106.0000
@@ -49704,7 +49620,7 @@ LM=18
 253.0000 63.0000
 202.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\15G2021-1826_S3.jpg
-ID=2416
+ID=2412
 LM=18
 147.0000 113.0000
 154.0000 101.0000
@@ -49725,7 +49641,7 @@ LM=18
 290.0000 74.0000
 246.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2012.0034_P1.JPG
-ID=2417
+ID=2413
 LM=18
 143.0000 110.0000
 149.0000 99.0000
@@ -49746,7 +49662,7 @@ LM=18
 284.0000 71.0000
 241.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2012.0034_P2.JPG
-ID=2418
+ID=2414
 LM=18
 143.0000 111.0000
 149.0000 101.0000
@@ -49767,7 +49683,7 @@ LM=18
 289.0000 70.0000
 246.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2012.0034_S1.jpg
-ID=2419
+ID=2415
 LM=18
 146.0000 110.0000
 152.0000 99.0000
@@ -49788,7 +49704,7 @@ LM=18
 289.0000 69.0000
 245.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2012.0034_S2.jpg
-ID=2420
+ID=2416
 LM=18
 133.0000 114.0000
 139.0000 103.0000
@@ -49809,7 +49725,7 @@ LM=18
 280.0000 72.0000
 235.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2012.0034_S3.jpg
-ID=2421
+ID=2417
 LM=18
 164.0000 108.0000
 167.0000 96.0000
@@ -49830,7 +49746,7 @@ LM=18
 280.0000 53.0000
 250.0000 112.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2017.06254_P1.JPG
-ID=2422
+ID=2418
 LM=18
 151.0000 104.0000
 153.0000 90.0000
@@ -49851,7 +49767,7 @@ LM=18
 281.0000 42.0000
 245.0000 109.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2017.06254_P2.JPG
-ID=2423
+ID=2419
 LM=18
 146.0000 105.0000
 148.0000 93.0000
@@ -49872,7 +49788,7 @@ LM=18
 274.0000 52.0000
 238.0000 115.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2017.06254_S1.jpg
-ID=2424
+ID=2420
 LM=18
 147.0000 105.0000
 150.0000 93.0000
@@ -49893,7 +49809,7 @@ LM=18
 274.0000 50.0000
 239.0000 114.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2017.06254_S2.jpg
-ID=2425
+ID=2421
 LM=18
 141.0000 104.0000
 143.0000 91.0000
@@ -49914,7 +49830,7 @@ LM=18
 266.0000 48.0000
 232.0000 111.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2017.06254_S3.jpg
-ID=2426
+ID=2422
 LM=18
 131.0000 125.0000
 136.0000 108.0000
@@ -49935,7 +49851,7 @@ LM=18
 282.0000 71.0000
 237.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2020.03886_P1.JPG
-ID=2427
+ID=2423
 LM=18
 126.0000 127.0000
 131.0000 110.0000
@@ -49956,7 +49872,7 @@ LM=18
 275.0000 71.0000
 231.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2020.03886_P2.JPG
-ID=2428
+ID=2424
 LM=18
 128.0000 131.0000
 132.0000 115.0000
@@ -49977,7 +49893,7 @@ LM=18
 278.0000 72.0000
 234.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2020.03886_S1.jpg
-ID=2429
+ID=2425
 LM=18
 123.0000 130.0000
 127.0000 114.0000
@@ -49998,7 +49914,7 @@ LM=18
 277.0000 73.0000
 231.0000 146.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2020.03886_S2.jpg
-ID=2430
+ID=2426
 LM=18
 118.0000 130.0000
 122.0000 113.0000
@@ -50019,7 +49935,7 @@ LM=18
 275.0000 68.0000
 229.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2020.03886_S3.jpg
-ID=2431
+ID=2427
 LM=18
 110.0000 121.0000
 120.0000 104.0000
@@ -50040,7 +49956,7 @@ LM=18
 279.0000 66.0000
 224.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2020.04010_P1.JPG
-ID=2432
+ID=2428
 LM=18
 113.0000 116.0000
 123.0000 100.0000
@@ -50061,7 +49977,7 @@ LM=18
 283.0000 63.0000
 227.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2020.04010_P2.JPG
-ID=2433
+ID=2429
 LM=18
 108.0000 121.0000
 116.0000 104.0000
@@ -50082,7 +49998,7 @@ LM=18
 281.0000 63.0000
 224.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2020.04010_S1.jpg
-ID=2434
+ID=2430
 LM=18
 109.0000 125.0000
 117.0000 109.0000
@@ -50103,7 +50019,7 @@ LM=18
 279.0000 69.0000
 222.0000 147.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2020.04010_S2.jpg
-ID=2435
+ID=2431
 LM=18
 118.0000 127.0000
 125.0000 111.0000
@@ -50124,7 +50040,7 @@ LM=18
 282.0000 71.0000
 230.0000 148.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2020.04010_S3.jpg
-ID=2436
+ID=2432
 LM=18
 90.0000 101.0000
 95.0000 84.0000
@@ -50145,7 +50061,7 @@ LM=18
 249.0000 53.0000
 198.0000 122.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2020.04013_P1.JPG
-ID=2437
+ID=2433
 LM=18
 91.0000 103.0000
 96.0000 86.0000
@@ -50166,7 +50082,7 @@ LM=18
 246.0000 61.0000
 196.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2020.04013_P2.JPG
-ID=2438
+ID=2434
 LM=18
 77.0000 101.0000
 82.0000 82.0000
@@ -50187,7 +50103,7 @@ LM=18
 245.0000 52.0000
 191.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2020.04013_S1.jpg
-ID=2439
+ID=2435
 LM=18
 71.0000 106.0000
 76.0000 87.0000
@@ -50208,7 +50124,7 @@ LM=18
 241.0000 57.0000
 186.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2020.04013_S2.jpg
-ID=2440
+ID=2436
 LM=18
 87.0000 99.0000
 92.0000 81.0000
@@ -50229,7 +50145,7 @@ LM=18
 254.0000 52.0000
 201.0000 124.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2020.04013_S3.jpg
-ID=2441
+ID=2437
 LM=18
 104.0000 133.0000
 109.0000 113.0000
@@ -50250,7 +50166,7 @@ LM=18
 280.0000 71.0000
 223.0000 153.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2020.04044_P1.JPG
-ID=2442
+ID=2438
 LM=18
 111.0000 123.0000
 116.0000 104.0000
@@ -50271,7 +50187,7 @@ LM=18
 275.0000 67.0000
 222.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2020.04044_P2.JPG
-ID=2443
+ID=2439
 LM=18
 80.0000 100.0000
 87.0000 80.0000
@@ -50292,7 +50208,7 @@ LM=18
 258.0000 53.0000
 196.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2020.04044_S1.jpg
-ID=2444
+ID=2440
 LM=18
 106.0000 104.0000
 114.0000 86.0000
@@ -50313,7 +50229,7 @@ LM=18
 271.0000 62.0000
 214.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2020.04044_S2.jpg
-ID=2445
+ID=2441
 LM=18
 78.0000 101.0000
 87.0000 83.0000
@@ -50334,7 +50250,7 @@ LM=18
 255.0000 54.0000
 196.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\2020.04044_S3.jpg
-ID=2446
+ID=2442
 LM=18
 118.0000 120.0000
 123.0000 102.0000
@@ -50355,7 +50271,7 @@ LM=18
 267.0000 63.0000
 220.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\ABAURA5593_P1.JPG
-ID=2447
+ID=2443
 LM=18
 123.0000 118.0000
 128.0000 101.0000
@@ -50376,7 +50292,7 @@ LM=18
 269.0000 62.0000
 222.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\ABAURA5593_P2.JPG
-ID=2448
+ID=2444
 LM=18
 113.0000 125.0000
 116.0000 108.0000
@@ -50397,7 +50313,7 @@ LM=18
 261.0000 63.0000
 215.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\ABAURA5593_S1.jpg
-ID=2449
+ID=2445
 LM=18
 114.0000 131.0000
 118.0000 113.0000
@@ -50418,7 +50334,7 @@ LM=18
 262.0000 68.0000
 216.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\ABAURA5593_S2.jpg
-ID=2450
+ID=2446
 LM=18
 109.0000 126.0000
 112.0000 107.0000
@@ -50439,7 +50355,7 @@ LM=18
 258.0000 61.0000
 212.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\ABAURA5593_S3.jpg
-ID=2451
+ID=2447
 LM=18
 95.0000 118.0000
 104.0000 102.0000
@@ -50460,7 +50376,7 @@ LM=18
 254.0000 63.0000
 207.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\ABB-2020.00032_P1.JPG
-ID=2452
+ID=2448
 LM=18
 100.0000 118.0000
 108.0000 102.0000
@@ -50481,7 +50397,7 @@ LM=18
 261.0000 64.0000
 212.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\ABB-2020.00032_P2.JPG
-ID=2453
+ID=2449
 LM=18
 98.0000 121.0000
 104.0000 106.0000
@@ -50502,7 +50418,7 @@ LM=18
 256.0000 62.0000
 209.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\ABB-2020.00032_S1.jpg
-ID=2454
+ID=2450
 LM=18
 108.0000 124.0000
 114.0000 108.0000
@@ -50523,7 +50439,7 @@ LM=18
 262.0000 64.0000
 216.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\ABB-2020.00032_S2.jpg
-ID=2455
+ID=2451
 LM=18
 111.0000 126.0000
 116.0000 110.0000
@@ -50544,7 +50460,7 @@ LM=18
 267.0000 66.0000
 220.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\ABB-2020.00032_S3.jpg
-ID=2456
+ID=2452
 LM=18
 95.0000 93.0000
 104.0000 78.0000
@@ -50565,7 +50481,7 @@ LM=18
 256.0000 57.0000
 201.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\ABB-2020.00106_P1.JPG
-ID=2457
+ID=2453
 LM=18
 98.0000 95.0000
 106.0000 79.0000
@@ -50586,7 +50502,7 @@ LM=18
 259.0000 57.0000
 205.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\ABB-2020.00106_P2.JPG
-ID=2458
+ID=2454
 LM=18
 104.0000 103.0000
 112.0000 87.0000
@@ -50607,7 +50523,7 @@ LM=18
 264.0000 54.0000
 215.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\ABB-2020.00106_S1.jpg
-ID=2459
+ID=2455
 LM=18
 104.0000 105.0000
 111.0000 89.0000
@@ -50628,7 +50544,7 @@ LM=18
 264.0000 54.0000
 215.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\ABB-2020.00106_S2.jpg
-ID=2460
+ID=2456
 LM=18
 96.0000 108.0000
 101.0000 91.0000
@@ -50649,7 +50565,7 @@ LM=18
 258.0000 55.0000
 207.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\ABB-2020.00106_S3.jpg
-ID=2461
+ID=2457
 LM=18
 172.0000 113.0000
 177.0000 100.0000
@@ -50670,7 +50586,7 @@ LM=18
 301.0000 74.0000
 260.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\BAR-2018.00332_P1.JPG
-ID=2462
+ID=2458
 LM=18
 102.0000 114.0000
 107.0000 97.0000
@@ -50691,7 +50607,7 @@ LM=18
 260.0000 67.0000
 211.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\BAR-2018.00332_P2.JPG
-ID=2463
+ID=2459
 LM=18
 80.0000 119.0000
 86.0000 103.0000
@@ -50712,7 +50628,7 @@ LM=18
 250.0000 61.0000
 199.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\BAR-2018.00332_S1.jpg
-ID=2464
+ID=2460
 LM=18
 95.0000 120.0000
 99.0000 105.0000
@@ -50733,7 +50649,7 @@ LM=18
 254.0000 65.0000
 206.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\BAR-2018.00332_S2.jpg
-ID=2465
+ID=2461
 LM=18
 87.0000 118.0000
 91.0000 103.0000
@@ -50754,7 +50670,7 @@ LM=18
 249.0000 64.0000
 200.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\BAR-2018.00332_S3.jpg
-ID=2466
+ID=2462
 LM=18
 100.0000 131.0000
 106.0000 115.0000
@@ -50775,7 +50691,7 @@ LM=18
 256.0000 65.0000
 214.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\BAR-2018.00871_P1.JPG
-ID=2467
+ID=2463
 LM=18
 100.0000 133.0000
 106.0000 117.0000
@@ -50796,7 +50712,7 @@ LM=18
 255.0000 66.0000
 213.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\BAR-2018.00871_P2.JPG
-ID=2468
+ID=2464
 LM=18
 94.0000 140.0000
 99.0000 122.0000
@@ -50817,7 +50733,7 @@ LM=18
 256.0000 68.0000
 211.0000 148.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\BAR-2018.00871_S1.jpg
-ID=2469
+ID=2465
 LM=18
 98.0000 138.0000
 102.0000 122.0000
@@ -50838,7 +50754,7 @@ LM=18
 256.0000 66.0000
 212.0000 147.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\BAR-2018.00871_S2.jpg
-ID=2470
+ID=2466
 LM=18
 97.0000 142.0000
 101.0000 126.0000
@@ -50859,7 +50775,7 @@ LM=18
 254.0000 68.0000
 213.0000 150.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\BAR-2018.00871_S3.jpg
-ID=2471
+ID=2467
 LM=18
 138.0000 96.0000
 141.0000 84.0000
@@ -50880,7 +50796,7 @@ LM=18
 290.0000 83.0000
 226.0000 117.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\BAR.2018.00342_P1.JPG
-ID=2472
+ID=2468
 LM=18
 88.0000 107.0000
 90.0000 91.0000
@@ -50901,7 +50817,7 @@ LM=18
 241.0000 63.0000
 188.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\BAR.2018.00342_P2.JPG
-ID=2473
+ID=2469
 LM=18
 83.0000 97.0000
 87.0000 80.0000
@@ -50922,7 +50838,7 @@ LM=18
 249.0000 51.0000
 191.0000 123.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\BAR.2018.00342_S1.jpg
-ID=2474
+ID=2470
 LM=18
 110.0000 102.0000
 114.0000 87.0000
@@ -50943,7 +50859,7 @@ LM=18
 266.0000 59.0000
 213.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\BAR.2018.00342_S2.jpg
-ID=2475
+ID=2471
 LM=18
 94.0000 99.0000
 100.0000 84.0000
@@ -50964,7 +50880,7 @@ LM=18
 258.0000 53.0000
 203.0000 124.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\BAR.2018.00342_S3.jpg
-ID=2476
+ID=2472
 LM=18
 86.0000 103.0000
 90.0000 88.0000
@@ -50985,7 +50901,7 @@ LM=18
 242.0000 51.0000
 190.0000 121.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD387303_P1.JPG
-ID=2477
+ID=2473
 LM=18
 95.0000 107.0000
 98.0000 92.0000
@@ -51006,7 +50922,7 @@ LM=18
 249.0000 54.0000
 198.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD387303_P2.JPG
-ID=2478
+ID=2474
 LM=18
 75.0000 94.0000
 83.0000 81.0000
@@ -51027,7 +50943,7 @@ LM=18
 243.0000 63.0000
 182.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD387303_S1.jpg
-ID=2479
+ID=2475
 LM=18
 56.0000 99.0000
 61.0000 83.0000
@@ -51048,7 +50964,7 @@ LM=18
 225.0000 58.0000
 165.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD387303_S2.jpg
-ID=2480
+ID=2476
 LM=18
 52.0000 98.0000
 59.0000 81.0000
@@ -51069,7 +50985,7 @@ LM=18
 264.0000 62.0000
 168.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD387303_S3.jpg
-ID=2481
+ID=2477
 LM=18
 108.0000 130.0000
 112.0000 114.0000
@@ -51090,7 +51006,7 @@ LM=18
 265.0000 71.0000
 219.0000 148.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD387324_P1.JPG
-ID=2482
+ID=2478
 LM=18
 124.0000 124.0000
 127.0000 105.0000
@@ -51111,7 +51027,7 @@ LM=18
 288.0000 62.0000
 239.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD387324_P2.JPG
-ID=2483
+ID=2479
 LM=18
 101.0000 135.0000
 105.0000 117.0000
@@ -51132,7 +51048,7 @@ LM=18
 267.0000 69.0000
 218.0000 151.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD387324_S1.jpg
-ID=2484
+ID=2480
 LM=18
 101.0000 131.0000
 105.0000 112.0000
@@ -51153,7 +51069,7 @@ LM=18
 266.0000 66.0000
 217.0000 148.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD387324_S2.jpg
-ID=2485
+ID=2481
 LM=18
 110.0000 127.0000
 117.0000 110.0000
@@ -51174,7 +51090,7 @@ LM=18
 277.0000 66.0000
 227.0000 146.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD387324_S3.jpg
-ID=2486
+ID=2482
 LM=18
 110.0000 80.0000
 115.0000 65.0000
@@ -51195,7 +51111,7 @@ LM=18
 259.0000 36.0000
 209.0000 101.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD387766_P1.JPG
-ID=2487
+ID=2483
 LM=18
 98.0000 84.0000
 105.0000 70.0000
@@ -51216,7 +51132,7 @@ LM=18
 249.0000 40.0000
 199.0000 106.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD387766_P2.JPG
-ID=2488
+ID=2484
 LM=18
 109.0000 98.0000
 116.0000 83.0000
@@ -51237,7 +51153,7 @@ LM=18
 253.0000 50.0000
 207.0000 115.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD387766_S1.jpg
-ID=2489
+ID=2485
 LM=18
 106.0000 92.0000
 113.0000 78.0000
@@ -51258,7 +51174,7 @@ LM=18
 253.0000 48.0000
 206.0000 113.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD387766_S3.jpg
-ID=2490
+ID=2486
 LM=18
 105.0000 114.0000
 109.0000 99.0000
@@ -51279,7 +51195,7 @@ LM=18
 257.0000 57.0000
 212.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD388135_P1.JPG
-ID=2491
+ID=2487
 LM=18
 96.0000 115.0000
 101.0000 97.0000
@@ -51300,7 +51216,7 @@ LM=18
 262.0000 56.0000
 213.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD388135_P2.JPG
-ID=2492
+ID=2488
 LM=18
 99.0000 119.0000
 102.0000 103.0000
@@ -51321,7 +51237,7 @@ LM=18
 257.0000 60.0000
 210.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD388135_S1.jpg
-ID=2493
+ID=2489
 LM=18
 95.0000 120.0000
 97.0000 102.0000
@@ -51342,7 +51258,7 @@ LM=18
 256.0000 61.0000
 209.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD388135_S2.jpg
-ID=2494
+ID=2490
 LM=18
 99.0000 115.0000
 103.0000 99.0000
@@ -51363,7 +51279,7 @@ LM=18
 257.0000 57.0000
 212.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD388135_S3.jpg
-ID=2495
+ID=2491
 LM=18
 85.0000 111.0000
 92.0000 93.0000
@@ -51384,7 +51300,7 @@ LM=18
 244.0000 53.0000
 196.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD388146_P1.JPG
-ID=2496
+ID=2492
 LM=18
 87.0000 104.0000
 94.0000 86.0000
@@ -51405,7 +51321,7 @@ LM=18
 249.0000 50.0000
 197.0000 124.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD388146_P2.JPG
-ID=2497
+ID=2493
 LM=18
 83.0000 119.0000
 91.0000 102.0000
@@ -51426,7 +51342,7 @@ LM=18
 249.0000 60.0000
 200.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD388146_S1.jpg
-ID=2498
+ID=2494
 LM=18
 83.0000 113.0000
 90.0000 96.0000
@@ -51447,7 +51363,7 @@ LM=18
 250.0000 57.0000
 199.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD388146_S2.jpg
-ID=2499
+ID=2495
 LM=18
 96.0000 112.0000
 105.0000 96.0000
@@ -51468,7 +51384,7 @@ LM=18
 259.0000 58.0000
 209.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD388146_S3.jpg
-ID=2500
+ID=2496
 LM=18
 118.0000 111.0000
 123.0000 94.0000
@@ -51489,7 +51405,7 @@ LM=18
 279.0000 64.0000
 224.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD388862b_P1.JPG
-ID=2501
+ID=2497
 LM=18
 114.0000 120.0000
 119.0000 103.0000
@@ -51510,7 +51426,7 @@ LM=18
 274.0000 74.0000
 219.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD388862b_P2.JPG
-ID=2502
+ID=2498
 LM=18
 84.0000 110.0000
 89.0000 93.0000
@@ -51531,7 +51447,7 @@ LM=18
 250.0000 58.0000
 194.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD388862b_S1.jpg
-ID=2503
+ID=2499
 LM=18
 84.0000 106.0000
 90.0000 89.0000
@@ -51552,7 +51468,7 @@ LM=18
 255.0000 56.0000
 198.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD388862b_S2.jpg
-ID=2504
+ID=2500
 LM=18
 83.0000 108.0000
 90.0000 91.0000
@@ -51573,7 +51489,7 @@ LM=18
 251.0000 58.0000
 196.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\CD388862b_S3.jpg
-ID=2505
+ID=2501
 LM=18
 133.0000 100.0000
 138.0000 85.0000
@@ -51594,7 +51510,7 @@ LM=18
 283.0000 59.0000
 234.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\NoName4_P1.JPG
-ID=2506
+ID=2502
 LM=18
 127.0000 101.0000
 131.0000 85.0000
@@ -51615,7 +51531,7 @@ LM=18
 280.0000 59.0000
 229.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\NoName4_P2.JPG
-ID=2507
+ID=2503
 LM=18
 124.0000 98.0000
 130.0000 83.0000
@@ -51636,7 +51552,7 @@ LM=18
 280.0000 57.0000
 227.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\NoName4_S1.jpg
-ID=2508
+ID=2504
 LM=18
 132.0000 101.0000
 137.0000 87.0000
@@ -51657,7 +51573,7 @@ LM=18
 283.0000 60.0000
 233.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\NoName4_S2.jpg
-ID=2509
+ID=2505
 LM=18
 151.0000 135.0000
 150.0000 121.0000
@@ -51678,7 +51594,7 @@ LM=18
 265.0000 61.0000
 241.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\NoName4_S3.jpg
-ID=2510
+ID=2506
 LM=18
 90.0000 122.0000
 95.0000 105.0000
@@ -51699,7 +51615,7 @@ LM=18
 247.0000 59.0000
 199.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\NoName5_P1.JPG
-ID=2511
+ID=2507
 LM=18
 84.0000 128.0000
 92.0000 110.0000
@@ -51720,7 +51636,7 @@ LM=18
 242.0000 63.0000
 195.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\NoName5_P2.JPG
-ID=2512
+ID=2508
 LM=18
 87.0000 134.0000
 93.0000 116.0000
@@ -51741,7 +51657,7 @@ LM=18
 242.0000 64.0000
 198.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\NoName5_S1.jpg
-ID=2513
+ID=2509
 LM=18
 93.0000 131.0000
 100.0000 113.0000
@@ -51762,7 +51678,7 @@ LM=18
 250.0000 62.0000
 206.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\NoName5_S2.jpg
-ID=2514
+ID=2510
 LM=18
 93.0000 132.0000
 99.0000 114.0000
@@ -51783,7 +51699,7 @@ LM=18
 249.0000 64.0000
 205.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\NoName5_S3.jpg
-ID=2515
+ID=2511
 LM=18
 115.0000 121.0000
 119.0000 107.0000
@@ -51804,7 +51720,7 @@ LM=18
 266.0000 64.0000
 225.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\OPPO_5923_P1.JPG
-ID=2516
+ID=2512
 LM=18
 122.0000 119.0000
 127.0000 106.0000
@@ -51825,7 +51741,7 @@ LM=18
 271.0000 65.0000
 230.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\OPPO_5923_P2.JPG
-ID=2517
+ID=2513
 LM=18
 110.0000 119.0000
 116.0000 106.0000
@@ -51846,7 +51762,7 @@ LM=18
 263.0000 64.0000
 221.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\OPPO_5923_S1.jpg
-ID=2518
+ID=2514
 LM=18
 116.0000 126.0000
 121.0000 113.0000
@@ -51867,7 +51783,7 @@ LM=18
 267.0000 70.0000
 226.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\OPPO_5923_S2.jpg
-ID=2519
+ID=2515
 LM=18
 120.0000 122.0000
 124.0000 109.0000
@@ -51888,7 +51804,7 @@ LM=18
 269.0000 64.0000
 229.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_sylvarum\worker\OPPO_5923_S3.jpg
-ID=2520
+ID=2516
 LM=18
 70.0000 122.0000
 74.0000 105.0000
@@ -51909,7 +51825,7 @@ LM=18
 243.0000 62.0000
 186.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\ABAURA7781_P1.JPG
-ID=2521
+ID=2517
 LM=18
 75.0000 120.0000
 77.0000 103.0000
@@ -51930,7 +51846,7 @@ LM=18
 244.0000 59.0000
 190.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\ABAURA7781_P2.JPG
-ID=2522
+ID=2518
 LM=18
 77.0000 124.0000
 79.0000 106.0000
@@ -51951,7 +51867,7 @@ LM=18
 246.0000 61.0000
 192.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\ABAURA7781_S1.jpg
-ID=2523
+ID=2519
 LM=18
 72.0000 123.0000
 75.0000 105.0000
@@ -51972,7 +51888,7 @@ LM=18
 245.0000 60.0000
 188.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\ABAURA7781_S2.jpg
-ID=2524
+ID=2520
 LM=18
 66.0000 123.0000
 69.0000 105.0000
@@ -51993,7 +51909,7 @@ LM=18
 241.0000 59.0000
 184.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\ABAURA7781_S3.jpg
-ID=2525
+ID=2521
 LM=18
 80.0000 105.0000
 85.0000 88.0000
@@ -52014,7 +51930,7 @@ LM=18
 243.0000 55.0000
 187.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\ABAURA7781b_P1.JPG
-ID=2526
+ID=2522
 LM=18
 83.0000 100.0000
 89.0000 84.0000
@@ -52035,7 +51951,7 @@ LM=18
 248.0000 57.0000
 190.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\ABAURA7781b_P2.JPG
-ID=2527
+ID=2523
 LM=18
 83.0000 110.0000
 87.0000 92.0000
@@ -52056,7 +51972,7 @@ LM=18
 244.0000 59.0000
 188.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\ABAURA7781b_S1.jpg
-ID=2528
+ID=2524
 LM=18
 80.0000 103.0000
 86.0000 86.0000
@@ -52077,7 +51993,7 @@ LM=18
 244.0000 53.0000
 187.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\ABAURA7781b_S2.jpg
-ID=2529
+ID=2525
 LM=18
 84.0000 110.0000
 89.0000 92.0000
@@ -52098,7 +52014,7 @@ LM=18
 247.0000 59.0000
 189.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\ABAURA7781b_S3.jpg
-ID=2530
+ID=2526
 LM=18
 79.0000 122.0000
 83.0000 103.0000
@@ -52119,7 +52035,7 @@ LM=18
 254.0000 60.0000
 199.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan19_P1.JPG
-ID=2531
+ID=2527
 LM=18
 89.0000 121.0000
 92.0000 103.0000
@@ -52140,7 +52056,7 @@ LM=18
 259.0000 60.0000
 207.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan19_P2.JPG
-ID=2532
+ID=2528
 LM=18
 103.0000 129.0000
 105.0000 111.0000
@@ -52161,7 +52077,7 @@ LM=18
 263.0000 65.0000
 214.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan19_S1.jpg
-ID=2533
+ID=2529
 LM=18
 83.0000 133.0000
 85.0000 115.0000
@@ -52182,7 +52098,7 @@ LM=18
 251.0000 65.0000
 200.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan19_S2.jpg
-ID=2534
+ID=2530
 LM=18
 84.0000 125.0000
 86.0000 105.0000
@@ -52203,7 +52119,7 @@ LM=18
 255.0000 60.0000
 202.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan19_S3.jpg
-ID=2535
+ID=2531
 LM=18
 99.0000 128.0000
 103.0000 110.0000
@@ -52224,7 +52140,7 @@ LM=18
 269.0000 62.0000
 214.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan20_P1.JPG
-ID=2536
+ID=2532
 LM=18
 103.0000 129.0000
 106.0000 110.0000
@@ -52245,7 +52161,7 @@ LM=18
 271.0000 63.0000
 218.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan20_P2.JPG
-ID=2537
+ID=2533
 LM=18
 107.0000 139.0000
 109.0000 121.0000
@@ -52266,7 +52182,7 @@ LM=18
 271.0000 65.0000
 222.0000 146.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan20_S1.jpg
-ID=2538
+ID=2534
 LM=18
 99.0000 135.0000
 102.0000 117.0000
@@ -52287,7 +52203,7 @@ LM=18
 267.0000 63.0000
 215.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan20_S2.jpg
-ID=2539
+ID=2535
 LM=18
 99.0000 135.0000
 102.0000 117.0000
@@ -52308,7 +52224,7 @@ LM=18
 268.0000 64.0000
 215.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan20_S3.jpg
-ID=2540
+ID=2536
 LM=18
 76.0000 111.0000
 81.0000 93.0000
@@ -52329,7 +52245,7 @@ LM=18
 245.0000 58.0000
 186.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan21_P1.JPG
-ID=2541
+ID=2537
 LM=18
 77.0000 109.0000
 80.0000 91.0000
@@ -52350,7 +52266,7 @@ LM=18
 246.0000 55.0000
 188.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan21_P2.JPG
-ID=2542
+ID=2538
 LM=18
 85.0000 120.0000
 89.0000 102.0000
@@ -52371,7 +52287,7 @@ LM=18
 249.0000 57.0000
 196.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan21_S1.jpg
-ID=2543
+ID=2539
 LM=18
 82.0000 123.0000
 85.0000 104.0000
@@ -52392,7 +52308,7 @@ LM=18
 244.0000 60.0000
 192.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan21_S2.jpg
-ID=2544
+ID=2540
 LM=18
 77.0000 122.0000
 80.0000 103.0000
@@ -52413,7 +52329,7 @@ LM=18
 245.0000 59.0000
 190.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan21_S3.jpg
-ID=2545
+ID=2541
 LM=18
 93.0000 131.0000
 97.0000 112.0000
@@ -52434,7 +52350,7 @@ LM=18
 260.0000 61.0000
 211.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan22_P1.JPG
-ID=2546
+ID=2542
 LM=18
 95.0000 130.0000
 98.0000 111.0000
@@ -52455,7 +52371,7 @@ LM=18
 261.0000 60.0000
 211.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan22_P2.JPG
-ID=2547
+ID=2543
 LM=18
 94.0000 135.0000
 96.0000 115.0000
@@ -52476,7 +52392,7 @@ LM=18
 258.0000 59.0000
 211.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan22_S1.jpg
-ID=2548
+ID=2544
 LM=18
 94.0000 137.0000
 96.0000 117.0000
@@ -52497,7 +52413,7 @@ LM=18
 257.0000 63.0000
 209.0000 147.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan22_S2.jpg
-ID=2549
+ID=2545
 LM=18
 93.0000 134.0000
 95.0000 115.0000
@@ -52518,7 +52434,7 @@ LM=18
 255.0000 61.0000
 209.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan22_S3.jpg
-ID=2550
+ID=2546
 LM=18
 90.0000 131.0000
 92.0000 114.0000
@@ -52539,7 +52455,7 @@ LM=18
 250.0000 63.0000
 199.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan23_P1.JPG
-ID=2551
+ID=2547
 LM=18
 90.0000 127.0000
 92.0000 111.0000
@@ -52560,7 +52476,7 @@ LM=18
 248.0000 62.0000
 198.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan23_P2.JPG
-ID=2552
+ID=2548
 LM=18
 88.0000 136.0000
 90.0000 118.0000
@@ -52581,7 +52497,7 @@ LM=18
 247.0000 64.0000
 198.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan23_S1.jpg
-ID=2553
+ID=2549
 LM=18
 91.0000 136.0000
 93.0000 118.0000
@@ -52602,7 +52518,7 @@ LM=18
 249.0000 64.0000
 200.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan23_S2.jpg
-ID=2554
+ID=2550
 LM=18
 89.0000 136.0000
 90.0000 118.0000
@@ -52623,7 +52539,7 @@ LM=18
 245.0000 63.0000
 197.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan23_S3.jpg
-ID=2555
+ID=2551
 LM=18
 90.0000 127.0000
 91.0000 109.0000
@@ -52644,7 +52560,7 @@ LM=18
 244.0000 60.0000
 198.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan24_P1.JPG
-ID=2556
+ID=2552
 LM=18
 94.0000 132.0000
 95.0000 114.0000
@@ -52665,7 +52581,7 @@ LM=18
 246.0000 66.0000
 202.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan24_P2.JPG
-ID=2557
+ID=2553
 LM=18
 92.0000 133.0000
 93.0000 116.0000
@@ -52686,7 +52602,7 @@ LM=18
 246.0000 67.0000
 201.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan24_S1.jpg
-ID=2558
+ID=2554
 LM=18
 88.0000 132.0000
 89.0000 114.0000
@@ -52707,7 +52623,7 @@ LM=18
 245.0000 61.0000
 200.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan24_S2.jpg
-ID=2559
+ID=2555
 LM=18
 92.0000 131.0000
 94.0000 113.0000
@@ -52728,7 +52644,7 @@ LM=18
 247.0000 62.0000
 202.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\CollecYvan24_S3.jpg
-ID=2560
+ID=2556
 LM=18
 72.0000 123.0000
 75.0000 106.0000
@@ -52749,7 +52665,7 @@ LM=18
 234.0000 58.0000
 185.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_AB210818002_P1.JPG
-ID=2561
+ID=2557
 LM=18
 68.0000 126.0000
 72.0000 108.0000
@@ -52770,7 +52686,7 @@ LM=18
 230.0000 58.0000
 182.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_AB210818002_P2.JPG
-ID=2562
+ID=2558
 LM=18
 74.0000 132.0000
 76.0000 115.0000
@@ -52791,7 +52707,7 @@ LM=18
 235.0000 60.0000
 189.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_AB210818002_S1.jpg
-ID=2563
+ID=2559
 LM=18
 72.0000 135.0000
 74.0000 118.0000
@@ -52812,7 +52728,7 @@ LM=18
 231.0000 63.0000
 185.0000 146.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_AB210818002_S2.jpg
-ID=2564
+ID=2560
 LM=18
 65.0000 134.0000
 68.0000 115.0000
@@ -52833,7 +52749,7 @@ LM=18
 229.0000 60.0000
 183.0000 146.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_AB210818002_S3.jpg
-ID=2565
+ID=2561
 LM=18
 86.0000 138.0000
 89.0000 120.0000
@@ -52854,7 +52770,7 @@ LM=18
 248.0000 67.0000
 198.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_ABOM180720046_P1.JPG
-ID=2566
+ID=2562
 LM=18
 90.0000 139.0000
 91.0000 122.0000
@@ -52875,7 +52791,7 @@ LM=18
 248.0000 68.0000
 199.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_ABOM180720046_P2.JPG
-ID=2567
+ID=2563
 LM=18
 83.0000 150.0000
 82.0000 130.0000
@@ -52896,7 +52812,7 @@ LM=18
 244.0000 69.0000
 196.0000 152.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_ABOM180720046_S1.jpg
-ID=2568
+ID=2564
 LM=18
 82.0000 145.0000
 83.0000 127.0000
@@ -52917,7 +52833,7 @@ LM=18
 243.0000 67.0000
 194.0000 147.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_ABOM180720046_S2.jpg
-ID=2569
+ID=2565
 LM=18
 87.0000 146.0000
 89.0000 128.0000
@@ -52938,7 +52854,7 @@ LM=18
 246.0000 70.0000
 198.0000 149.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_ABOM180720046_S3.jpg
-ID=2570
+ID=2566
 LM=18
 77.0000 136.0000
 80.0000 115.0000
@@ -52959,7 +52875,7 @@ LM=18
 240.0000 62.0000
 189.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_ABOM180720047_P1.JPG
-ID=2571
+ID=2567
 LM=18
 78.0000 131.0000
 81.0000 111.0000
@@ -52980,7 +52896,7 @@ LM=18
 243.0000 58.0000
 190.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_ABOM180720047_P2.JPG
-ID=2572
+ID=2568
 LM=18
 82.0000 142.0000
 83.0000 123.0000
@@ -53001,7 +52917,7 @@ LM=18
 242.0000 61.0000
 193.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_ABOM180720047_S1.jpg
-ID=2573
+ID=2569
 LM=18
 78.0000 146.0000
 79.0000 126.0000
@@ -53022,7 +52938,7 @@ LM=18
 238.0000 64.0000
 190.0000 149.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_ABOM180720047_S2.jpg
-ID=2574
+ID=2570
 LM=18
 74.0000 142.0000
 75.0000 122.0000
@@ -53043,7 +52959,7 @@ LM=18
 236.0000 61.0000
 186.0000 146.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_ABOM180720047_S3.jpg
-ID=2575
+ID=2571
 LM=18
 83.0000 127.0000
 87.0000 108.0000
@@ -53064,7 +52980,7 @@ LM=18
 241.0000 57.0000
 194.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_ABOM180720048_P1.JPG
-ID=2576
+ID=2572
 LM=18
 82.0000 123.0000
 86.0000 103.0000
@@ -53085,7 +53001,7 @@ LM=18
 242.0000 55.0000
 192.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_ABOM180720048_P2.JPG
-ID=2577
+ID=2573
 LM=18
 85.0000 127.0000
 88.0000 109.0000
@@ -53106,7 +53022,7 @@ LM=18
 242.0000 57.0000
 195.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_ABOM180720048_S1.jpg
-ID=2578
+ID=2574
 LM=18
 88.0000 124.0000
 91.0000 106.0000
@@ -53127,7 +53043,7 @@ LM=18
 244.0000 56.0000
 197.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_ABOM180720048_S2.jpg
-ID=2579
+ID=2575
 LM=18
 83.0000 124.0000
 86.0000 106.0000
@@ -53148,7 +53064,7 @@ LM=18
 241.0000 57.0000
 192.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_ABOM180720048_S3.jpg
-ID=2580
+ID=2576
 LM=18
 88.0000 140.0000
 91.0000 122.0000
@@ -53169,7 +53085,7 @@ LM=18
 243.0000 61.0000
 196.0000 146.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_ABOM180720053_P1.JPG
-ID=2581
+ID=2577
 LM=18
 85.0000 149.0000
 88.0000 131.0000
@@ -53190,7 +53106,7 @@ LM=18
 240.0000 66.0000
 195.0000 153.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_ABOM180720053_P2.JPG
-ID=2582
+ID=2578
 LM=18
 84.0000 155.0000
 84.0000 137.0000
@@ -53211,7 +53127,7 @@ LM=18
 234.0000 69.0000
 192.0000 155.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_ABOM180720053_S1.jpg
-ID=2583
+ID=2579
 LM=18
 76.0000 149.0000
 78.0000 130.0000
@@ -53232,7 +53148,7 @@ LM=18
 234.0000 64.0000
 188.0000 152.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_ABOM180720053_S2.jpg
-ID=2584
+ID=2580
 LM=18
 83.0000 149.0000
 83.0000 131.0000
@@ -53253,7 +53169,7 @@ LM=18
 236.0000 66.0000
 192.0000 154.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15_ABOM180720053_S3.jpg
-ID=2585
+ID=2581
 LM=18
 92.0000 132.0000
 96.0000 112.0000
@@ -53274,7 +53190,7 @@ LM=18
 249.0000 60.0000
 199.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM120722071_P1.JPG
-ID=2586
+ID=2582
 LM=18
 96.0000 136.0000
 99.0000 116.0000
@@ -53295,7 +53211,7 @@ LM=18
 249.0000 63.0000
 201.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM120722071_P2.JPG
-ID=2587
+ID=2583
 LM=18
 92.0000 140.0000
 93.0000 119.0000
@@ -53316,7 +53232,7 @@ LM=18
 247.0000 62.0000
 199.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM120722071_S1.jpg
-ID=2588
+ID=2584
 LM=18
 90.0000 148.0000
 91.0000 127.0000
@@ -53337,7 +53253,7 @@ LM=18
 244.0000 64.0000
 198.0000 149.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM120722071_S2.jpg
-ID=2589
+ID=2585
 LM=18
 90.0000 145.0000
 92.0000 125.0000
@@ -53358,7 +53274,7 @@ LM=18
 245.0000 63.0000
 198.0000 148.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM120722071_S3.jpg
-ID=2590
+ID=2586
 LM=18
 68.0000 167.0000
 66.0000 149.0000
@@ -53379,7 +53295,7 @@ LM=18
 223.0000 69.0000
 187.0000 159.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM130722047_P1.JPG
-ID=2591
+ID=2587
 LM=18
 68.0000 169.0000
 64.0000 151.0000
@@ -53400,7 +53316,7 @@ LM=18
 221.0000 70.0000
 185.0000 160.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM130722047_P2.JPG
-ID=2592
+ID=2588
 LM=18
 70.0000 179.0000
 68.0000 160.0000
@@ -53421,7 +53337,7 @@ LM=18
 219.0000 75.0000
 187.0000 166.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM130722047_S1.jpg
-ID=2593
+ID=2589
 LM=18
 57.0000 184.0000
 54.0000 165.0000
@@ -53442,7 +53358,7 @@ LM=18
 211.0000 76.0000
 178.0000 170.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM130722047_S2.jpg
-ID=2594
+ID=2590
 LM=18
 72.0000 183.0000
 69.0000 166.0000
@@ -53463,7 +53379,7 @@ LM=18
 218.0000 77.0000
 188.0000 168.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM130722047_S3.jpg
-ID=2595
+ID=2591
 LM=18
 76.0000 126.0000
 80.0000 107.0000
@@ -53484,7 +53400,7 @@ LM=18
 243.0000 63.0000
 189.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722026_P1.JPG
-ID=2596
+ID=2592
 LM=18
 83.0000 123.0000
 87.0000 105.0000
@@ -53505,7 +53421,7 @@ LM=18
 250.0000 64.0000
 194.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722026_P2.JPG
-ID=2597
+ID=2593
 LM=18
 74.0000 129.0000
 76.0000 110.0000
@@ -53526,7 +53442,7 @@ LM=18
 243.0000 63.0000
 186.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722026_S1.jpg
-ID=2598
+ID=2594
 LM=18
 74.0000 123.0000
 76.0000 105.0000
@@ -53547,7 +53463,7 @@ LM=18
 243.0000 60.0000
 186.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722026_S2.jpg
-ID=2599
+ID=2595
 LM=18
 78.0000 129.0000
 79.0000 111.0000
@@ -53568,7 +53484,7 @@ LM=18
 243.0000 63.0000
 189.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722026_S3.jpg
-ID=2600
+ID=2596
 LM=18
 79.0000 130.0000
 82.0000 113.0000
@@ -53589,7 +53505,7 @@ LM=18
 236.0000 60.0000
 190.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722062_P1.JPG
-ID=2601
+ID=2597
 LM=18
 78.0000 137.0000
 81.0000 120.0000
@@ -53610,7 +53526,7 @@ LM=18
 235.0000 65.0000
 188.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722062_P2.JPG
-ID=2602
+ID=2598
 LM=18
 79.0000 135.0000
 81.0000 118.0000
@@ -53631,7 +53547,7 @@ LM=18
 236.0000 62.0000
 189.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722062_S1.jpg
-ID=2603
+ID=2599
 LM=18
 76.0000 138.0000
 78.0000 121.0000
@@ -53652,7 +53568,7 @@ LM=18
 234.0000 65.0000
 186.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722062_S2.jpg
-ID=2604
+ID=2600
 LM=18
 81.0000 137.0000
 83.0000 121.0000
@@ -53673,7 +53589,7 @@ LM=18
 236.0000 64.0000
 191.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722062_S3.jpg
-ID=2605
+ID=2601
 LM=18
 99.0000 135.0000
 102.0000 119.0000
@@ -53694,7 +53610,7 @@ LM=18
 255.0000 67.0000
 208.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722063_P1.JPG
-ID=2606
+ID=2602
 LM=18
 98.0000 135.0000
 102.0000 118.0000
@@ -53715,7 +53631,7 @@ LM=18
 255.0000 68.0000
 207.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722063_P2.JPG
-ID=2607
+ID=2603
 LM=18
 105.0000 135.0000
 108.0000 118.0000
@@ -53736,7 +53652,7 @@ LM=18
 261.0000 64.0000
 213.0000 143.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722063_S1.jpg
-ID=2608
+ID=2604
 LM=18
 98.0000 135.0000
 99.0000 117.0000
@@ -53757,7 +53673,7 @@ LM=18
 254.0000 64.0000
 206.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722063_S2.jpg
-ID=2609
+ID=2605
 LM=18
 101.0000 131.0000
 103.0000 113.0000
@@ -53778,7 +53694,7 @@ LM=18
 257.0000 65.0000
 208.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722063_S3.jpg
-ID=2610
+ID=2606
 LM=18
 94.0000 123.0000
 97.0000 105.0000
@@ -53799,7 +53715,7 @@ LM=18
 252.0000 61.0000
 202.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722064_P1.JPG
-ID=2611
+ID=2607
 LM=18
 99.0000 123.0000
 102.0000 105.0000
@@ -53820,7 +53736,7 @@ LM=18
 253.0000 63.0000
 204.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722064_P2.JPG
-ID=2612
+ID=2608
 LM=18
 107.0000 125.0000
 109.0000 108.0000
@@ -53841,7 +53757,7 @@ LM=18
 258.0000 65.0000
 210.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722064_S1.jpg
-ID=2613
+ID=2609
 LM=18
 90.0000 123.0000
 92.0000 105.0000
@@ -53862,7 +53778,7 @@ LM=18
 247.0000 61.0000
 196.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722064_S2.jpg
-ID=2614
+ID=2610
 LM=18
 96.0000 123.0000
 99.0000 104.0000
@@ -53883,7 +53799,7 @@ LM=18
 253.0000 60.0000
 203.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722064_S3.jpg
-ID=2615
+ID=2611
 LM=18
 85.0000 114.0000
 88.0000 96.0000
@@ -53904,7 +53820,7 @@ LM=18
 246.0000 57.0000
 194.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722065_P1.JPG
-ID=2616
+ID=2612
 LM=18
 85.0000 117.0000
 87.0000 100.0000
@@ -53925,7 +53841,7 @@ LM=18
 245.0000 59.0000
 194.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722065_P2.JPG
-ID=2617
+ID=2613
 LM=18
 86.0000 125.0000
 88.0000 107.0000
@@ -53946,7 +53862,7 @@ LM=18
 244.0000 63.0000
 195.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722065_S1.jpg
-ID=2618
+ID=2614
 LM=18
 93.0000 123.0000
 94.0000 106.0000
@@ -53967,7 +53883,7 @@ LM=18
 248.0000 63.0000
 198.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722065_S2.jpg
-ID=2619
+ID=2615
 LM=18
 84.0000 123.0000
 87.0000 105.0000
@@ -53988,7 +53904,7 @@ LM=18
 244.0000 60.0000
 195.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722065_S3.jpg
-ID=2620
+ID=2616
 LM=18
 76.0000 129.0000
 81.0000 111.0000
@@ -54009,7 +53925,7 @@ LM=18
 237.0000 61.0000
 188.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722066_P1.JPG
-ID=2621
+ID=2617
 LM=18
 74.0000 124.0000
 78.0000 106.0000
@@ -54030,7 +53946,7 @@ LM=18
 237.0000 57.0000
 188.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722066_P2.JPG
-ID=2622
+ID=2618
 LM=18
 77.0000 131.0000
 80.0000 112.0000
@@ -54051,7 +53967,7 @@ LM=18
 237.0000 60.0000
 189.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722066_S1.jpg
-ID=2623
+ID=2619
 LM=18
 80.0000 132.0000
 83.0000 114.0000
@@ -54072,7 +53988,7 @@ LM=18
 239.0000 61.0000
 192.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722066_S2.jpg
-ID=2624
+ID=2620
 LM=18
 75.0000 136.0000
 78.0000 117.0000
@@ -54093,7 +54009,7 @@ LM=18
 235.0000 63.0000
 187.0000 146.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\male\FR15ABOM200722066_S3.jpg
-ID=2625
+ID=2621
 LM=18
 100.0000 123.0000
 106.0000 102.0000
@@ -54114,7 +54030,7 @@ LM=18
 254.0000 55.0000
 204.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\queen\FR15AB100518002_P1.JPG
-ID=2626
+ID=2622
 LM=18
 100.0000 127.0000
 105.0000 107.0000
@@ -54135,7 +54051,7 @@ LM=18
 252.0000 57.0000
 204.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\queen\FR15AB100518002_P2.JPG
-ID=2627
+ID=2623
 LM=18
 101.0000 134.0000
 105.0000 114.0000
@@ -54156,7 +54072,7 @@ LM=18
 252.0000 56.0000
 207.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\queen\FR15AB100518002_S1.jpg
-ID=2628
+ID=2624
 LM=18
 102.0000 136.0000
 105.0000 115.0000
@@ -54177,7 +54093,7 @@ LM=18
 252.0000 59.0000
 207.0000 144.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\queen\FR15AB100518002_S2.jpg
-ID=2629
+ID=2625
 LM=18
 101.0000 132.0000
 105.0000 112.0000
@@ -54198,7 +54114,7 @@ LM=18
 251.0000 58.0000
 205.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\queen\FR15AB100518002_S3.jpg
-ID=2630
+ID=2626
 LM=18
 127.0000 120.0000
 131.0000 105.0000
@@ -54219,7 +54135,7 @@ LM=18
 271.0000 70.0000
 225.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8150d_P1.JPG
-ID=2631
+ID=2627
 LM=18
 162.0000 86.0000
 163.0000 73.0000
@@ -54240,7 +54156,7 @@ LM=18
 262.0000 44.0000
 232.0000 93.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8150d_P2.JPG
-ID=2632
+ID=2628
 LM=18
 123.0000 117.0000
 126.0000 102.0000
@@ -54261,7 +54177,7 @@ LM=18
 270.0000 64.0000
 224.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8150d_S1.jpg
-ID=2633
+ID=2629
 LM=18
 130.0000 125.0000
 132.0000 110.0000
@@ -54282,7 +54198,7 @@ LM=18
 272.0000 67.0000
 229.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8150d_S3.jpg
-ID=2634
+ID=2630
 LM=18
 85.0000 110.0000
 89.0000 93.0000
@@ -54303,7 +54219,7 @@ LM=18
 250.0000 59.0000
 193.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8205d_P1.JPG
-ID=2635
+ID=2631
 LM=18
 84.0000 107.0000
 87.0000 89.0000
@@ -54324,7 +54240,7 @@ LM=18
 248.0000 55.0000
 191.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8205d_P2.JPG
-ID=2636
+ID=2632
 LM=18
 85.0000 109.0000
 87.0000 92.0000
@@ -54345,7 +54261,7 @@ LM=18
 248.0000 54.0000
 191.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8205d_S1.jpg
-ID=2637
+ID=2633
 LM=18
 82.0000 108.0000
 85.0000 91.0000
@@ -54366,7 +54282,7 @@ LM=18
 248.0000 55.0000
 191.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8205d_S2.jpg
-ID=2638
+ID=2634
 LM=18
 74.0000 106.0000
 76.0000 88.0000
@@ -54387,7 +54303,7 @@ LM=18
 244.0000 53.0000
 185.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8205d_S3.jpg
-ID=2639
+ID=2635
 LM=18
 83.0000 117.0000
 85.0000 100.0000
@@ -54408,7 +54324,7 @@ LM=18
 240.0000 59.0000
 191.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207b_P1.JPG
-ID=2640
+ID=2636
 LM=18
 91.0000 121.0000
 93.0000 104.0000
@@ -54429,7 +54345,7 @@ LM=18
 245.0000 61.0000
 197.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207b_P2.JPG
-ID=2641
+ID=2637
 LM=18
 89.0000 106.0000
 91.0000 90.0000
@@ -54450,7 +54366,7 @@ LM=18
 247.0000 56.0000
 195.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207b_S1.jpg
-ID=2642
+ID=2638
 LM=18
 81.0000 103.0000
 83.0000 86.0000
@@ -54471,7 +54387,7 @@ LM=18
 239.0000 51.0000
 187.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207b_S2.jpg
-ID=2643
+ID=2639
 LM=18
 97.0000 110.0000
 97.0000 94.0000
@@ -54492,7 +54408,7 @@ LM=18
 248.0000 56.0000
 200.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207b_S3.jpg
-ID=2644
+ID=2640
 LM=18
 99.0000 100.0000
 101.0000 85.0000
@@ -54513,7 +54429,7 @@ LM=18
 255.0000 55.0000
 203.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207c_P1.JPG
-ID=2645
+ID=2641
 LM=18
 97.0000 96.0000
 100.0000 82.0000
@@ -54534,7 +54450,7 @@ LM=18
 256.0000 56.0000
 202.0000 124.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207c_P2.JPG
-ID=2646
+ID=2642
 LM=18
 89.0000 94.0000
 93.0000 80.0000
@@ -54555,7 +54471,7 @@ LM=18
 250.0000 55.0000
 195.0000 124.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207c_S1.jpg
-ID=2647
+ID=2643
 LM=18
 101.0000 93.0000
 105.0000 77.0000
@@ -54576,7 +54492,7 @@ LM=18
 260.0000 54.0000
 205.0000 123.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207c_S2.jpg
-ID=2648
+ID=2644
 LM=18
 97.0000 95.0000
 99.0000 80.0000
@@ -54597,7 +54513,7 @@ LM=18
 257.0000 54.0000
 202.0000 123.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207c_S3.jpg
-ID=2649
+ID=2645
 LM=18
 82.0000 135.0000
 85.0000 116.0000
@@ -54618,7 +54534,7 @@ LM=18
 236.0000 62.0000
 191.0000 145.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207d_P1.JPG
-ID=2650
+ID=2646
 LM=18
 88.0000 130.0000
 90.0000 111.0000
@@ -54639,7 +54555,7 @@ LM=18
 239.0000 60.0000
 194.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207d_P2.JPG
-ID=2651
+ID=2647
 LM=18
 76.0000 119.0000
 79.0000 102.0000
@@ -54660,7 +54576,7 @@ LM=18
 234.0000 55.0000
 186.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207d_S1.jpg
-ID=2652
+ID=2648
 LM=18
 87.0000 121.0000
 90.0000 104.0000
@@ -54681,7 +54597,7 @@ LM=18
 241.0000 60.0000
 194.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207d_S2.jpg
-ID=2653
+ID=2649
 LM=18
 81.0000 112.0000
 84.0000 95.0000
@@ -54702,7 +54618,7 @@ LM=18
 241.0000 54.0000
 190.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207d_S3.jpg
-ID=2654
+ID=2650
 LM=18
 93.0000 130.0000
 96.0000 111.0000
@@ -54723,7 +54639,7 @@ LM=18
 246.0000 60.0000
 199.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207e_P1.JPG
-ID=2655
+ID=2651
 LM=18
 98.0000 130.0000
 100.0000 111.0000
@@ -54744,7 +54660,7 @@ LM=18
 250.0000 61.0000
 204.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207e_P2.JPG
-ID=2656
+ID=2652
 LM=18
 113.0000 125.0000
 116.0000 107.0000
@@ -54765,7 +54681,7 @@ LM=18
 261.0000 62.0000
 215.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207e_S1.jpg
-ID=2657
+ID=2653
 LM=18
 106.0000 127.0000
 110.0000 109.0000
@@ -54786,7 +54702,7 @@ LM=18
 257.0000 64.0000
 210.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207e_S2.jpg
-ID=2658
+ID=2654
 LM=18
 104.0000 130.0000
 108.0000 112.0000
@@ -54807,7 +54723,7 @@ LM=18
 255.0000 64.0000
 209.0000 140.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207e_S3.jpg
-ID=2659
+ID=2655
 LM=18
 90.0000 88.0000
 95.0000 75.0000
@@ -54828,7 +54744,7 @@ LM=18
 249.0000 57.0000
 192.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207f_P1.JPG
-ID=2660
+ID=2656
 LM=18
 80.0000 82.0000
 86.0000 68.0000
@@ -54849,7 +54765,7 @@ LM=18
 244.0000 50.0000
 184.0000 122.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207f_P2.JPG
-ID=2661
+ID=2657
 LM=18
 82.0000 90.0000
 86.0000 75.0000
@@ -54870,7 +54786,7 @@ LM=18
 244.0000 51.0000
 185.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207f_S1.jpg
-ID=2662
+ID=2658
 LM=18
 86.0000 89.0000
 91.0000 74.0000
@@ -54891,7 +54807,7 @@ LM=18
 249.0000 49.0000
 190.0000 124.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207f_S2.jpg
-ID=2663
+ID=2659
 LM=18
 92.0000 92.0000
 96.0000 77.0000
@@ -54912,7 +54828,7 @@ LM=18
 252.0000 51.0000
 194.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8207f_S3.jpg
-ID=2664
+ID=2660
 LM=18
 101.0000 99.0000
 106.0000 83.0000
@@ -54933,7 +54849,7 @@ LM=18
 262.0000 59.0000
 205.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8239d_P1.JPG
-ID=2665
+ID=2661
 LM=18
 99.0000 95.0000
 105.0000 78.0000
@@ -54954,7 +54870,7 @@ LM=18
 261.0000 55.0000
 204.0000 124.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8239d_P2.JPG
-ID=2666
+ID=2662
 LM=18
 104.0000 100.0000
 109.0000 84.0000
@@ -54975,7 +54891,7 @@ LM=18
 265.0000 56.0000
 209.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8239d_S1.jpg
-ID=2667
+ID=2663
 LM=18
 105.0000 103.0000
 109.0000 87.0000
@@ -54996,7 +54912,7 @@ LM=18
 266.0000 58.0000
 211.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8239d_S2.jpg
-ID=2668
+ID=2664
 LM=18
 104.0000 105.0000
 108.0000 89.0000
@@ -55017,7 +54933,7 @@ LM=18
 265.0000 59.0000
 210.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8239d_S3.jpg
-ID=2669
+ID=2665
 LM=18
 94.0000 114.0000
 99.0000 97.0000
@@ -55038,7 +54954,7 @@ LM=18
 252.0000 61.0000
 201.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8526b_P1.JPG
-ID=2670
+ID=2666
 LM=18
 95.0000 110.0000
 100.0000 92.0000
@@ -55059,7 +54975,7 @@ LM=18
 253.0000 56.0000
 201.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8526b_P2.JPG
-ID=2671
+ID=2667
 LM=18
 88.0000 109.0000
 94.0000 90.0000
@@ -55080,7 +54996,7 @@ LM=18
 253.0000 57.0000
 199.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8526b_S1.jpg
-ID=2672
+ID=2668
 LM=18
 90.0000 108.0000
 95.0000 90.0000
@@ -55101,7 +55017,7 @@ LM=18
 252.0000 57.0000
 198.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8526b_S2.jpg
-ID=2673
+ID=2669
 LM=18
 89.0000 109.0000
 93.0000 90.0000
@@ -55122,7 +55038,7 @@ LM=18
 251.0000 54.0000
 198.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8526b_S3.jpg
-ID=2674
+ID=2670
 LM=18
 101.0000 103.0000
 108.0000 87.0000
@@ -55143,7 +55059,7 @@ LM=18
 261.0000 58.0000
 207.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8599_P1.JPG
-ID=2675
+ID=2671
 LM=18
 105.0000 91.0000
 112.0000 76.0000
@@ -55164,7 +55080,7 @@ LM=18
 265.0000 55.0000
 208.0000 123.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8599_P2.JPG
-ID=2676
+ID=2672
 LM=18
 100.0000 95.0000
 105.0000 79.0000
@@ -55185,7 +55101,7 @@ LM=18
 263.0000 54.0000
 206.0000 124.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8599_S1.jpg
-ID=2677
+ID=2673
 LM=18
 97.0000 95.0000
 103.0000 80.0000
@@ -55206,7 +55122,7 @@ LM=18
 261.0000 56.0000
 203.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8599_S2.jpg
-ID=2678
+ID=2674
 LM=18
 112.0000 92.0000
 116.0000 77.0000
@@ -55227,7 +55143,7 @@ LM=18
 272.0000 56.0000
 215.0000 123.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8599_S3.jpg
-ID=2679
+ID=2675
 LM=18
 101.0000 117.0000
 106.0000 99.0000
@@ -55248,7 +55164,7 @@ LM=18
 256.0000 60.0000
 204.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8604_P1.JPG
-ID=2680
+ID=2676
 LM=18
 106.0000 115.0000
 110.0000 97.0000
@@ -55269,7 +55185,7 @@ LM=18
 258.0000 58.0000
 207.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8604_P2.JPG
-ID=2681
+ID=2677
 LM=18
 102.0000 120.0000
 107.0000 102.0000
@@ -55290,7 +55206,7 @@ LM=18
 256.0000 58.0000
 206.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8604_S1.jpg
-ID=2682
+ID=2678
 LM=18
 102.0000 118.0000
 107.0000 99.0000
@@ -55311,7 +55227,7 @@ LM=18
 258.0000 56.0000
 206.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8604_S2.jpg
-ID=2683
+ID=2679
 LM=18
 102.0000 121.0000
 107.0000 103.0000
@@ -55332,7 +55248,7 @@ LM=18
 256.0000 59.0000
 206.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\ABAURA8604_S3.jpg
-ID=2684
+ID=2680
 LM=18
 94.0000 107.0000
 100.0000 88.0000
@@ -55353,7 +55269,7 @@ LM=18
 265.0000 58.0000
 207.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388003_P1.JPG
-ID=2685
+ID=2681
 LM=18
 93.0000 114.0000
 98.0000 94.0000
@@ -55374,7 +55290,7 @@ LM=18
 264.0000 55.0000
 208.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388003_P2.JPG
-ID=2686
+ID=2682
 LM=18
 94.0000 112.0000
 98.0000 92.0000
@@ -55395,7 +55311,7 @@ LM=18
 268.0000 52.0000
 211.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388003_S1.jpg
-ID=2687
+ID=2683
 LM=18
 93.0000 112.0000
 98.0000 92.0000
@@ -55416,7 +55332,7 @@ LM=18
 267.0000 52.0000
 210.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388003_S2.jpg
-ID=2688
+ID=2684
 LM=18
 94.0000 113.0000
 98.0000 93.0000
@@ -55437,7 +55353,7 @@ LM=18
 267.0000 56.0000
 210.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388003_S3.jpg
-ID=2689
+ID=2685
 LM=18
 104.0000 109.0000
 109.0000 91.0000
@@ -55458,7 +55374,7 @@ LM=18
 265.0000 62.0000
 211.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388003b_P1.JPG
-ID=2690
+ID=2686
 LM=18
 93.0000 111.0000
 99.0000 94.0000
@@ -55479,7 +55395,7 @@ LM=18
 256.0000 64.0000
 201.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388003b_P2.JPG
-ID=2691
+ID=2687
 LM=18
 96.0000 110.0000
 101.0000 93.0000
@@ -55500,7 +55416,7 @@ LM=18
 257.0000 63.0000
 203.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388003b_S1.jpg
-ID=2692
+ID=2688
 LM=18
 90.0000 107.0000
 95.0000 89.0000
@@ -55521,7 +55437,7 @@ LM=18
 254.0000 59.0000
 200.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388003b_S2.jpg
-ID=2693
+ID=2689
 LM=18
 94.0000 109.0000
 98.0000 92.0000
@@ -55542,7 +55458,7 @@ LM=18
 257.0000 60.0000
 202.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388003b_S3.jpg
-ID=2694
+ID=2690
 LM=18
 99.0000 116.0000
 104.0000 97.0000
@@ -55563,7 +55479,7 @@ LM=18
 255.0000 62.0000
 207.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388013_P1.JPG
-ID=2695
+ID=2691
 LM=18
 96.0000 119.0000
 101.0000 100.0000
@@ -55584,7 +55500,7 @@ LM=18
 251.0000 64.0000
 203.0000 139.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388013_P2.JPG
-ID=2696
+ID=2692
 LM=18
 97.0000 118.0000
 102.0000 98.0000
@@ -55605,7 +55521,7 @@ LM=18
 252.0000 63.0000
 203.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388013_S1.jpg
-ID=2697
+ID=2693
 LM=18
 95.0000 116.0000
 100.0000 97.0000
@@ -55626,7 +55542,7 @@ LM=18
 251.0000 61.0000
 202.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388013_S2.jpg
-ID=2698
+ID=2694
 LM=18
 101.0000 111.0000
 105.0000 93.0000
@@ -55647,7 +55563,7 @@ LM=18
 257.0000 59.0000
 207.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388013_S3.jpg
-ID=2699
+ID=2695
 LM=18
 101.0000 103.0000
 107.0000 86.0000
@@ -55668,7 +55584,7 @@ LM=18
 259.0000 58.0000
 205.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388016b_P1.JPG
-ID=2700
+ID=2696
 LM=18
 92.0000 102.0000
 98.0000 85.0000
@@ -55689,7 +55605,7 @@ LM=18
 252.0000 56.0000
 197.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388016b_P2.JPG
-ID=2701
+ID=2697
 LM=18
 95.0000 103.0000
 101.0000 86.0000
@@ -55710,7 +55626,7 @@ LM=18
 259.0000 60.0000
 202.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388016b_S1.jpg
-ID=2702
+ID=2698
 LM=18
 95.0000 103.0000
 101.0000 86.0000
@@ -55731,7 +55647,7 @@ LM=18
 256.0000 59.0000
 201.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388016b_S2.jpg
-ID=2703
+ID=2699
 LM=18
 96.0000 98.0000
 100.0000 80.0000
@@ -55752,7 +55668,7 @@ LM=18
 257.0000 56.0000
 199.0000 124.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388016b_S3.jpg
-ID=2704
+ID=2700
 LM=18
 92.0000 117.0000
 96.0000 101.0000
@@ -55773,7 +55689,7 @@ LM=18
 250.0000 62.0000
 200.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388018d_P1.JPG
-ID=2705
+ID=2701
 LM=18
 90.0000 118.0000
 93.0000 101.0000
@@ -55794,7 +55710,7 @@ LM=18
 246.0000 61.0000
 198.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388018d_P2.JPG
-ID=2706
+ID=2702
 LM=18
 87.0000 115.0000
 90.0000 98.0000
@@ -55815,7 +55731,7 @@ LM=18
 246.0000 57.0000
 196.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388018d_S1.jpg
-ID=2707
+ID=2703
 LM=18
 86.0000 114.0000
 89.0000 97.0000
@@ -55836,7 +55752,7 @@ LM=18
 245.0000 55.0000
 194.0000 131.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388018d_S2.jpg
-ID=2708
+ID=2704
 LM=18
 91.0000 116.0000
 94.0000 99.0000
@@ -55857,7 +55773,7 @@ LM=18
 248.0000 58.0000
 198.0000 133.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388018d_S3.jpg
-ID=2709
+ID=2705
 LM=18
 120.0000 125.0000
 123.0000 107.0000
@@ -55878,7 +55794,7 @@ LM=18
 273.0000 66.0000
 224.0000 142.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388018e_P1.JPG
-ID=2710
+ID=2706
 LM=18
 117.0000 120.0000
 122.0000 102.0000
@@ -55899,7 +55815,7 @@ LM=18
 272.0000 61.0000
 223.0000 137.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388018e_P2.JPG
-ID=2711
+ID=2707
 LM=18
 130.0000 120.0000
 134.0000 102.0000
@@ -55920,7 +55836,7 @@ LM=18
 287.0000 59.0000
 237.0000 136.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388018e_S1.jpg
-ID=2712
+ID=2708
 LM=18
 128.0000 125.0000
 131.0000 108.0000
@@ -55941,7 +55857,7 @@ LM=18
 277.0000 63.0000
 231.0000 138.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388018e_S2.jpg
-ID=2713
+ID=2709
 LM=18
 126.0000 128.0000
 129.0000 110.0000
@@ -55962,7 +55878,7 @@ LM=18
 275.0000 65.0000
 228.0000 141.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388018e_S3.jpg
-ID=2714
+ID=2710
 LM=18
 76.0000 95.0000
 83.0000 77.0000
@@ -55983,7 +55899,7 @@ LM=18
 241.0000 54.0000
 183.0000 124.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388391b_P1.JPG
-ID=2715
+ID=2711
 LM=18
 68.0000 99.0000
 75.0000 80.0000
@@ -56004,7 +55920,7 @@ LM=18
 239.0000 53.0000
 180.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388391b_P2.JPG
-ID=2716
+ID=2712
 LM=18
 62.0000 97.0000
 68.0000 78.0000
@@ -56025,7 +55941,7 @@ LM=18
 234.0000 50.0000
 175.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388391b_S1.jpg
-ID=2717
+ID=2713
 LM=18
 73.0000 98.0000
 77.0000 79.0000
@@ -56046,7 +55962,7 @@ LM=18
 238.0000 53.0000
 180.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388391b_S2.jpg
-ID=2718
+ID=2714
 LM=18
 69.0000 94.0000
 75.0000 75.0000
@@ -56067,7 +55983,7 @@ LM=18
 238.0000 48.0000
 180.0000 124.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388391b_S3.jpg
-ID=2719
+ID=2715
 LM=18
 78.0000 105.0000
 84.0000 87.0000
@@ -56088,7 +56004,7 @@ LM=18
 245.0000 56.0000
 188.0000 134.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388820_P1.JPG
-ID=2720
+ID=2716
 LM=18
 85.0000 98.0000
 92.0000 81.0000
@@ -56109,7 +56025,7 @@ LM=18
 250.0000 52.0000
 195.0000 128.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388820_P2.JPG
-ID=2721
+ID=2717
 LM=18
 78.0000 103.0000
 84.0000 85.0000
@@ -56130,7 +56046,7 @@ LM=18
 246.0000 51.0000
 191.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388820_S1.jpg
-ID=2722
+ID=2718
 LM=18
 78.0000 106.0000
 83.0000 87.0000
@@ -56151,7 +56067,7 @@ LM=18
 245.0000 52.0000
 190.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388820_S2.jpg
-ID=2723
+ID=2719
 LM=18
 82.0000 110.0000
 88.0000 91.0000
@@ -56172,7 +56088,7 @@ LM=18
 247.0000 56.0000
 194.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388820_S3.jpg
-ID=2724
+ID=2720
 LM=18
 75.0000 104.0000
 81.0000 84.0000
@@ -56193,7 +56109,7 @@ LM=18
 243.0000 55.0000
 188.0000 129.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388820b_P1.JPG
-ID=2725
+ID=2721
 LM=18
 70.0000 105.0000
 76.0000 83.0000
@@ -56214,7 +56130,7 @@ LM=18
 238.0000 50.0000
 184.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388820b_P2.JPG
-ID=2726
+ID=2722
 LM=18
 78.0000 115.0000
 82.0000 95.0000
@@ -56235,7 +56151,7 @@ LM=18
 244.0000 59.0000
 192.0000 135.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388820b_S1.jpg
-ID=2727
+ID=2723
 LM=18
 80.0000 110.0000
 86.0000 90.0000
@@ -56256,7 +56172,7 @@ LM=18
 247.0000 56.0000
 194.0000 132.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388820b_S2.jpg
-ID=2728
+ID=2724
 LM=18
 78.0000 109.0000
 84.0000 88.0000
@@ -56277,7 +56193,7 @@ LM=18
 243.0000 54.0000
 191.0000 130.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\CD388820b_S3.jpg
-ID=2729
+ID=2725
 LM=18
 81.0000 101.0000
 88.0000 81.0000
@@ -56298,7 +56214,7 @@ LM=18
 249.0000 53.0000
 191.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\Znieff_galibier_P1.JPG
-ID=2730
+ID=2726
 LM=18
 86.0000 103.0000
 92.0000 83.0000
@@ -56319,7 +56235,7 @@ LM=18
 251.0000 54.0000
 193.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\Znieff_galibier_P2.JPG
-ID=2731
+ID=2727
 LM=18
 78.0000 99.0000
 84.0000 80.0000
@@ -56340,7 +56256,7 @@ LM=18
 248.0000 53.0000
 188.0000 125.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\Znieff_galibier_S1.jpg
-ID=2732
+ID=2728
 LM=18
 82.0000 101.0000
 88.0000 82.0000
@@ -56361,7 +56277,7 @@ LM=18
 250.0000 53.0000
 192.0000 126.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\Znieff_galibier_S2.jpg
-ID=2733
+ID=2729
 LM=18
 81.0000 101.0000
 87.0000 81.0000
@@ -56382,4 +56298,4 @@ LM=18
 249.0000 55.0000
 191.0000 127.0000
 IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\organized\Bombus_wurflenii\worker\Znieff_galibier_S3.jpg
-ID=2734
+ID=2730

@@ -395,7 +395,7 @@ def main():
                        similarity=None, aspect_ratio=None, n_detections=None, output_path=f"error: {e}")
 
         counts[row["status"]] += 1
-        writer.writerow({"idx": idx, "image": Path(rel).name, "input_path": str(img_path), **row})
+        writer.writerow({"idx": idx, "image": Path(rel).stem, "input_path": str(img_path), **row})
         idx += 1
 
         if idx % args.log_every == 0:
