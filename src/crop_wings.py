@@ -278,7 +278,7 @@ def parse_args():
     parser.add_argument("--ref_crops", required=True, help="Dossier contenant 1+ crops déjà correctement orientés (référence CLIP).")
     parser.add_argument("--input_root", required=True, help="Racine du dataset (ex: images/orga_widecrop)")
     parser.add_argument("--output_root", required=True, help="Racine de sortie (arborescence miroir)")
-    parser.add_argument("--log", default="out/wing_extraction/")
+    parser.add_argument("--log", default="src/out/wing_extraction/")
     parser.add_argument("--model", default="yoloe-11s-seg.pt")
     parser.add_argument("--conf", type=float, default=0.05)
     parser.add_argument("--imgsz", type=int, default=1024)
@@ -370,7 +370,7 @@ def main():
     if args.topk_candidates > 1:
         print(f"Sélection parmi les {args.topk_candidates} détections les plus confiantes (via CLIP) activée.")
 
-    log_path = Path(args.log / f"{input_root.stem}_wings_log.csv")
+    log_path = Path(f"{args.log}/{input_root.stem}_wings_log.csv")
     write_header = not log_path.exists()
     log_file = open(log_path, "a", newline="")
     writer = csv.DictWriter(log_file, fieldnames=CSV_FIELDS)
