@@ -13,7 +13,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # src/, quel que soit le cwd
 from utils.gpa import gpagen
-from utils.register import register_unlabeled
+from numbering.hungarian_umeyama import register_unlabeled
 from utils.tps_io import parse_tps
 
 

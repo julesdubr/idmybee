@@ -1,23 +1,4 @@
-"""Transcription Python du pipeline R d'Adrien : GPA -> PCA -> LDA (LOOCV).
-
-Équivalences avec le script R :
-
-    R                                                    Python (ici)
-    ----------------------------------------------------  ------------------------------------
-    readland.tps(...)                                     utils.tps_parser.parse_tps(...)
-    gpagen(N2)                                             gpa.gpagen(...)
-    two.d.array(gpaN2$coords)                              gpa.two_d_array(...)
-    prcomp(...)$x[, 1:34]                                  sklearn PCA, n_components = 2p - 4
-    lda(pcaN2, DataP1$Groupe, CV=TRUE)                      LeaveOneOut + LinearDiscriminantAnalysis
-    table(DataP1$Groupe, ldaN2$class)                       sklearn.metrics.confusion_matrix
-
-Le nombre de composantes PCA conservées (2p - 4, où p = nombre de
-landmarks) correspond exactement aux degrés de liberté restants après
-GPA en 2D : 2 pour la translation, 1 pour l'échelle, 1 pour la rotation
-sont retirés de l'espace des coordonnées brutes (2p dimensions). Pour
-p=19 (comme dans le script d'Adrien), cela donne bien 34 -- la valeur
-utilisée en dur dans le R.
-"""
+"""Transcription Python du pipeline R : GPA -> PCA -> LDA (LOOCV)."""
 
 from __future__ import annotations
 
@@ -280,7 +261,7 @@ def main() -> None:
     # Suffixe unique par run (niveau + appareil), pour que deux runs successifs
     # (espece vs caste, ou --device S1 vs S2) n'écrasent pas leurs résultats.
     tag = args.level + (f"_{args.device}" if args.device else "")
-    out_dir = Path(f"out/{tag}")
+    out_dir = Path(f"../out/{tag}")
 
     out_dir.mkdir(exist_ok=True, parents=True)
     
@@ -306,9 +287,6 @@ def main() -> None:
                                      title=f"Matrice de confusion -- {tag}")
 
     if args.save_model:
-        # lda_final est déjà ajusté sur l'intégralité du jeu (pas la version LOOCV,
-        # qui ne sert qu'à estimer l'accuracy) : c'est le classifieur à réutiliser
-        # tel quel pour prédire sur de nouveaux spécimens.
         model = TrainedModel(
             mean_shape=gpa_result.mean_shape,
             n_points=specimens[0].n_points,

@@ -278,7 +278,7 @@ def parse_args():
     parser.add_argument("--ref_crops", required=True, help="Dossier contenant 1+ crops déjà correctement orientés (référence CLIP).")
     parser.add_argument("--input_root", required=True, help="Racine du dataset (ex: images/orga_widecrop)")
     parser.add_argument("--output_root", required=True, help="Racine de sortie (arborescence miroir)")
-    parser.add_argument("--log", default="src/out/wing_extraction/")
+    parser.add_argument("--log", default="out/extraction/")
     parser.add_argument("--model", default="yoloe-11s-seg.pt")
     parser.add_argument("--conf", type=float, default=0.05)
     parser.add_argument("--imgsz", type=int, default=1024)

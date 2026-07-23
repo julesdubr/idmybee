@@ -17,7 +17,7 @@ LM=18
 315.0000 17.0000
 327.0000 37.0000
 263.0000 105.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\adrien\WB1_23_136.jpg
+IMAGE=\data\images\crop\terrain\adrien\WB1_23_136.jpg
 ID=0
 LM=18
 107.0000 106.0000
@@ -38,7 +38,7 @@ LM=18
 243.0000 89.0000
 267.0000 64.0000
 205.0000 136.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\adrien\WB1_23_137.jpg
+IMAGE=\data\images\crop\terrain\adrien\WB1_23_137.jpg
 ID=1
 LM=18
 120.0000 181.0000
@@ -59,7 +59,7 @@ LM=18
 260.0000 111.0000
 266.0000 76.0000
 238.0000 166.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\adrien\WB1_23_138.jpg
+IMAGE=\data\images\crop\terrain\adrien\WB1_23_138.jpg
 ID=2
 LM=18
 103.0000 75.0000
@@ -80,7 +80,7 @@ LM=18
 235.0000 53.0000
 254.0000 27.0000
 202.0000 95.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\adrien\WB1_23_139.jpg
+IMAGE=\data\images\crop\terrain\adrien\WB1_23_139.jpg
 ID=3
 LM=18
 82.0000 152.0000
@@ -101,7 +101,7 @@ LM=18
 229.0000 103.0000
 243.0000 69.0000
 196.0000 158.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\adrien\WB1_23_141.jpg
+IMAGE=\data\images\crop\terrain\adrien\WB1_23_141.jpg
 ID=5
 LM=18
 112.0000 147.0000
@@ -122,7 +122,7 @@ LM=18
 251.0000 96.0000
 261.0000 63.0000
 222.0000 149.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\adrien\WB1_23_142.jpg
+IMAGE=\data\images\crop\terrain\adrien\WB1_23_142.jpg
 ID=6
 LM=18
 88.0000 109.0000
@@ -143,7 +143,7 @@ LM=18
 251.0000 86.0000
 269.0000 52.0000
 205.0000 135.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\adrien\WB1_23_143.jpg
+IMAGE=\data\images\crop\terrain\adrien\WB1_23_143.jpg
 ID=7
 LM=18
 112.0000 117.0000
@@ -164,7 +164,7 @@ LM=18
 236.0000 70.0000
 245.0000 41.0000
 209.0000 120.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\adrien\WB1_23_144.jpg
+IMAGE=\data\images\crop\terrain\adrien\WB1_23_144.jpg
 ID=8
 LM=18
 130.0000 113.0000
@@ -185,7 +185,7 @@ LM=18
 277.0000 84.0000
 294.0000 54.0000
 235.0000 132.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\adrien\WB1_23_145.jpg
+IMAGE=\data\images\crop\terrain\adrien\WB1_23_145.jpg
 ID=9
 LM=18
 92.0000 201.0000
@@ -206,7 +206,7 @@ LM=18
 230.0000 121.0000
 237.0000 84.0000
 208.0000 184.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\adrien\WB1_23_146.jpg
+IMAGE=\data\images\crop\terrain\adrien\WB1_23_146.jpg
 ID=10
 LM=18
 113.0000 117.0000
@@ -227,7 +227,7 @@ LM=18
 241.0000 67.0000
 250.0000 37.0000
 215.0000 119.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\adrien\WB1_23_147.jpg
+IMAGE=\data\images\crop\terrain\adrien\WB1_23_147.jpg
 ID=11
 LM=18
 101.0000 127.0000
@@ -248,7 +248,7 @@ LM=18
 247.0000 89.0000
 263.0000 59.0000
 208.0000 141.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\adrien\WB1_23_148.jpg
+IMAGE=\data\images\crop\terrain\adrien\WB1_23_148.jpg
 ID=12
 LM=18
 125.0000 154.0000
@@ -269,7 +269,7 @@ LM=18
 258.0000 99.0000
 265.0000 67.0000
 229.0000 156.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\adrien\WB1_23_149.jpg
+IMAGE=\data\images\crop\terrain\adrien\WB1_23_149.jpg
 ID=13
 LM=18
 111.0000 155.0000
@@ -290,7 +290,7 @@ LM=18
 250.0000 108.0000
 268.0000 77.0000
 220.0000 156.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\adrien\WB1_23_151.jpg
+IMAGE=\data\images\crop\terrain\adrien\WB1_23_151.jpg
 ID=15
 LM=18
 87.0000 159.0000
@@ -311,7 +311,7 @@ LM=18
 241.0000 93.0000
 248.0000 56.0000
 204.0000 158.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\adrien\WB1_23_152.jpg
+IMAGE=\data\images\crop\terrain\adrien\WB1_23_152.jpg
 ID=16
 LM=18
 96.0000 123.0000
@@ -332,7 +332,7 @@ LM=18
 243.0000 92.0000
 262.0000 61.0000
 206.0000 139.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\adrien\WB1_23_153.jpg
+IMAGE=\data\images\crop\terrain\adrien\WB1_23_153.jpg
 ID=17
 LM=18
 72.0000 115.0000
@@ -353,7 +353,7 @@ LM=18
 227.0000 83.0000
 244.0000 51.0000
 183.0000 135.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\adrien\WB1_23_154.jpg
+IMAGE=\data\images\crop\terrain\adrien\WB1_23_154.jpg
 ID=18
 LM=18
 112.0000 178.0000
@@ -374,7 +374,7 @@ LM=18
 250.0000 114.0000
 260.0000 80.0000
 227.0000 170.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0091_1.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0091_1.jpg
 ID=19
 LM=18
 110.0000 172.0000
@@ -395,7 +395,7 @@ LM=18
 250.0000 111.0000
 262.0000 77.0000
 229.0000 166.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0091_2.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0091_2.jpg
 ID=20
 LM=18
 105.0000 171.0000
@@ -416,7 +416,7 @@ LM=18
 241.0000 110.0000
 252.0000 76.0000
 221.0000 166.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0091_3.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0091_3.jpg
 ID=21
 LM=18
 76.0000 148.0000
@@ -437,7 +437,7 @@ LM=18
 235.0000 99.0000
 252.0000 64.0000
 196.0000 154.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0092_1.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0092_1.jpg
 ID=22
 LM=18
 70.0000 147.0000
@@ -458,7 +458,7 @@ LM=18
 230.0000 97.0000
 248.0000 62.0000
 191.0000 154.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0092_2.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0092_2.jpg
 ID=23
 LM=18
 70.0000 141.0000
@@ -479,7 +479,7 @@ LM=18
 231.0000 94.0000
 249.0000 59.0000
 190.0000 149.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0092_3.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0092_3.jpg
 ID=24
 LM=18
 60.0000 176.0000
@@ -500,7 +500,7 @@ LM=18
 221.0000 109.0000
 234.0000 72.0000
 186.0000 170.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0093_1.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0093_1.jpg
 ID=25
 LM=18
 69.0000 173.0000
@@ -521,7 +521,7 @@ LM=18
 224.0000 107.0000
 236.0000 71.0000
 192.0000 166.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0093_2.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0093_2.jpg
 ID=26
 LM=18
 57.0000 199.0000
@@ -542,7 +542,7 @@ LM=18
 217.0000 118.0000
 229.0000 79.0000
 187.0000 183.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0093_3.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0093_3.jpg
 ID=27
 LM=18
 121.0000 159.0000
@@ -563,7 +563,7 @@ LM=18
 260.0000 107.0000
 272.0000 72.0000
 228.0000 158.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0094_1.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0094_1.jpg
 ID=28
 LM=18
 118.0000 155.0000
@@ -584,7 +584,7 @@ LM=18
 258.0000 105.0000
 271.0000 71.0000
 225.0000 155.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0094_2.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0094_2.jpg
 ID=29
 LM=18
 121.0000 151.0000
@@ -605,7 +605,7 @@ LM=18
 261.0000 103.0000
 274.0000 69.0000
 228.0000 153.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0094_3.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0094_3.jpg
 ID=30
 LM=18
 91.0000 154.0000
@@ -626,7 +626,7 @@ LM=18
 238.0000 101.0000
 252.0000 65.0000
 204.0000 156.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0095_1.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0095_1.jpg
 ID=31
 LM=18
 97.0000 146.0000
@@ -647,7 +647,7 @@ LM=18
 245.0000 96.0000
 260.0000 61.0000
 211.0000 151.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0095_2.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0095_2.jpg
 ID=32
 LM=18
 86.0000 146.0000
@@ -668,7 +668,7 @@ LM=18
 235.0000 96.0000
 251.0000 62.0000
 201.0000 151.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0095_3.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0095_3.jpg
 ID=33
 LM=18
 82.0000 125.0000
@@ -689,7 +689,7 @@ LM=18
 233.0000 90.0000
 256.0000 57.0000
 198.0000 142.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0096_1.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0096_1.jpg
 ID=34
 LM=18
 74.0000 135.0000
@@ -710,7 +710,7 @@ LM=18
 227.0000 95.0000
 250.0000 62.0000
 192.0000 147.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0096_2.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0096_2.jpg
 ID=35
 LM=18
 58.0000 67.0000
@@ -731,7 +731,7 @@ LM=18
 207.0000 85.0000
 245.0000 59.0000
 162.0000 117.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0096_3.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0096_3.jpg
 ID=36
 LM=18
 80.0000 123.0000
@@ -752,7 +752,7 @@ LM=18
 238.0000 94.0000
 258.0000 61.0000
 196.0000 142.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0097_1.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0097_1.jpg
 ID=37
 LM=18
 67.0000 125.0000
@@ -773,7 +773,7 @@ LM=18
 228.0000 91.0000
 246.0000 56.0000
 186.0000 141.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0097_2.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0097_2.jpg
 ID=38
 LM=18
 75.0000 123.0000
@@ -794,7 +794,7 @@ LM=18
 234.0000 88.0000
 254.0000 53.0000
 193.0000 136.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0097_3.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0097_3.jpg
 ID=39
 LM=18
 85.0000 144.0000
@@ -815,7 +815,7 @@ LM=18
 234.0000 99.0000
 251.0000 63.0000
 201.0000 150.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0098_1.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0098_1.jpg
 ID=40
 LM=18
 98.0000 134.0000
@@ -836,7 +836,7 @@ LM=18
 244.0000 102.0000
 263.0000 68.0000
 208.0000 148.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0098_2.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0098_2.jpg
 ID=41
 LM=18
 98.0000 119.0000
@@ -857,7 +857,7 @@ LM=18
 246.0000 98.0000
 267.0000 66.0000
 206.0000 141.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0098_3.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0098_3.jpg
 ID=42
 LM=18
 97.0000 130.0000
@@ -878,7 +878,7 @@ LM=18
 241.0000 97.0000
 259.0000 62.0000
 208.0000 146.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0099_1.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0099_1.jpg
 ID=43
 LM=18
 95.0000 133.0000
@@ -899,7 +899,7 @@ LM=18
 237.0000 99.0000
 254.0000 65.0000
 206.0000 146.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0099_2.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0099_2.jpg
 ID=44
 LM=18
 91.0000 131.0000
@@ -920,7 +920,7 @@ LM=18
 235.0000 98.0000
 254.0000 63.0000
 203.0000 147.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\basile\WB1_23_0099_3.jpg
+IMAGE=\data\images\crop\terrain\basile\WB1_23_0099_3.jpg
 ID=45
 LM=18
 126.0000 147.0000
@@ -941,7 +941,7 @@ LM=18
 263.0000 98.0000
 281.0000 68.0000
 232.0000 151.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\charlotte\WB1_23_0001_3.jpg
+IMAGE=\data\images\crop\terrain\charlotte\WB1_23_0001_3.jpg
 ID=48
 LM=18
 136.0000 166.0000
@@ -962,7 +962,7 @@ LM=18
 268.0000 104.0000
 276.0000 71.0000
 246.0000 160.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\charlotte\WB1_23_0002_1.jpg
+IMAGE=\data\images\crop\terrain\charlotte\WB1_23_0002_1.jpg
 ID=49
 LM=18
 122.0000 139.0000
@@ -983,7 +983,7 @@ LM=18
 255.0000 100.0000
 268.0000 71.0000
 227.0000 152.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\charlotte\WB1_23_0002_3.jpg
+IMAGE=\data\images\crop\terrain\charlotte\WB1_23_0002_3.jpg
 ID=51
 LM=18
 160.0000 214.0000
@@ -1004,7 +1004,7 @@ LM=18
 245.0000 120.0000
 218.0000 91.0000
 205.0000 127.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\charlotte\WB1_23_0003_3.jpg
+IMAGE=\data\images\crop\terrain\charlotte\WB1_23_0003_3.jpg
 ID=54
 LM=18
 217.0000 181.0000
@@ -1025,7 +1025,7 @@ LM=18
 252.0000 53.0000
 268.0000 70.0000
 253.0000 105.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\charlotte\WB1_23_0004_1.jpg
+IMAGE=\data\images\crop\terrain\charlotte\WB1_23_0004_1.jpg
 ID=55
 LM=18
 130.0000 142.0000
@@ -1046,7 +1046,7 @@ LM=18
 266.0000 98.0000
 282.0000 67.0000
 235.0000 144.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\charlotte\WB1_23_0004_2.jpg
+IMAGE=\data\images\crop\terrain\charlotte\WB1_23_0004_2.jpg
 ID=56
 LM=18
 124.0000 107.0000
@@ -1067,7 +1067,7 @@ LM=18
 267.0000 89.0000
 289.0000 62.0000
 228.0000 130.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\charlotte\WB1_23_0004_3.jpg
+IMAGE=\data\images\crop\terrain\charlotte\WB1_23_0004_3.jpg
 ID=57
 LM=18
 105.0000 133.0000
@@ -1088,7 +1088,7 @@ LM=18
 245.0000 87.0000
 261.0000 57.0000
 218.0000 140.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\charlotte\WB1_23_0005_2.jpg
+IMAGE=\data\images\crop\terrain\charlotte\WB1_23_0005_2.jpg
 ID=58
 LM=18
 91.0000 100.0000
@@ -1109,7 +1109,7 @@ LM=18
 239.0000 79.0000
 261.0000 49.0000
 202.0000 127.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\charlotte\WB1_23_0005_3.jpg
+IMAGE=\data\images\crop\terrain\charlotte\WB1_23_0005_3.jpg
 ID=59
 LM=18
 94.0000 132.0000
@@ -1130,7 +1130,7 @@ LM=18
 239.0000 89.0000
 254.0000 55.0000
 205.0000 144.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\charlotte\WB1_23_0006_1.jpg
+IMAGE=\data\images\crop\terrain\charlotte\WB1_23_0006_1.jpg
 ID=60
 LM=18
 90.0000 96.0000
@@ -1151,7 +1151,7 @@ LM=18
 240.0000 88.0000
 263.0000 57.0000
 194.0000 138.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\charlotte\WB1_23_0006_2.jpg
+IMAGE=\data\images\crop\terrain\charlotte\WB1_23_0006_2.jpg
 ID=61
 LM=18
 73.0000 101.0000
@@ -1172,7 +1172,7 @@ LM=18
 222.0000 90.0000
 244.0000 61.0000
 179.0000 134.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\charlotte\WB1_23_0006_3.jpg
+IMAGE=\data\images\crop\terrain\charlotte\WB1_23_0006_3.jpg
 ID=62
 LM=18
 81.0000 141.0000
@@ -1193,7 +1193,7 @@ LM=18
 236.0000 95.0000
 260.0000 63.0000
 196.0000 149.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\charlotte\WB1_23_0007_2.jpg
+IMAGE=\data\images\crop\terrain\charlotte\WB1_23_0007_2.jpg
 ID=63
 LM=18
 94.0000 163.0000
@@ -1214,7 +1214,7 @@ LM=18
 243.0000 104.0000
 263.0000 67.0000
 211.0000 163.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\charlotte\WB1_23_0007_3.jpg
+IMAGE=\data\images\crop\terrain\charlotte\WB1_23_0007_3.jpg
 ID=64
 LM=18
 66.0000 116.0000
@@ -1235,7 +1235,7 @@ LM=18
 225.0000 82.0000
 247.0000 50.0000
 184.0000 131.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\charlotte\WB1_23_0008_1.jpg
+IMAGE=\data\images\crop\terrain\charlotte\WB1_23_0008_1.jpg
 ID=65
 LM=18
 102.0000 137.0000
@@ -1256,7 +1256,7 @@ LM=18
 251.0000 98.0000
 271.0000 65.0000
 214.0000 150.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\charlotte\WB1_23_0008_2.jpg
+IMAGE=\data\images\crop\terrain\charlotte\WB1_23_0008_2.jpg
 ID=66
 LM=18
 98.0000 101.0000
@@ -1277,7 +1277,7 @@ LM=18
 230.0000 67.0000
 267.0000 60.0000
 196.0000 136.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\charlotte\WB1_23_0009_1.jpg
+IMAGE=\data\images\crop\terrain\charlotte\WB1_23_0009_1.jpg
 ID=68
 LM=18
 99.0000 125.0000
@@ -1298,7 +1298,7 @@ LM=18
 241.0000 87.0000
 262.0000 57.0000
 204.0000 144.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\charlotte\WB1_23_0009_2.jpg
+IMAGE=\data\images\crop\terrain\charlotte\WB1_23_0009_2.jpg
 ID=69
 LM=18
 100.0000 127.0000
@@ -1319,7 +1319,7 @@ LM=18
 238.0000 87.0000
 258.0000 57.0000
 203.0000 148.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\charlotte\WB1_23_0009_3.jpg
+IMAGE=\data\images\crop\terrain\charlotte\WB1_23_0009_3.jpg
 ID=70
 LM=18
 135.0000 132.0000
@@ -1340,7 +1340,7 @@ LM=18
 265.0000 100.0000
 281.0000 70.0000
 233.0000 149.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\charlotte\WB1_23_0010_3.jpg
+IMAGE=\data\images\crop\terrain\charlotte\WB1_23_0010_3.jpg
 ID=73
 LM=18
 89.0000 138.0000
@@ -1361,7 +1361,7 @@ LM=18
 232.0000 94.0000
 249.0000 63.0000
 203.0000 148.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0031_1.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0031_1.jpg
 ID=74
 LM=18
 83.0000 136.0000
@@ -1382,7 +1382,7 @@ LM=18
 228.0000 90.0000
 245.0000 58.0000
 199.0000 146.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0031_2.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0031_2.jpg
 ID=75
 LM=18
 83.0000 162.0000
@@ -1403,7 +1403,7 @@ LM=18
 232.0000 101.0000
 252.0000 64.0000
 200.0000 161.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0031_3.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0031_3.jpg
 ID=76
 LM=18
 77.0000 112.0000
@@ -1424,7 +1424,7 @@ LM=18
 233.0000 82.0000
 253.0000 49.0000
 195.0000 136.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0032_1.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0032_1.jpg
 ID=77
 LM=18
 78.0000 110.0000
@@ -1445,7 +1445,7 @@ LM=18
 229.0000 88.0000
 248.0000 54.0000
 191.0000 143.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0032_2.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0032_2.jpg
 ID=78
 LM=18
 67.0000 118.0000
@@ -1466,7 +1466,7 @@ LM=18
 217.0000 89.0000
 238.0000 58.0000
 181.0000 142.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0032_3.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0032_3.jpg
 ID=79
 LM=18
 107.0000 149.0000
@@ -1487,7 +1487,7 @@ LM=18
 241.0000 104.0000
 256.0000 70.0000
 210.0000 153.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0033_1.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0033_1.jpg
 ID=80
 LM=18
 106.0000 139.0000
@@ -1508,7 +1508,7 @@ LM=18
 247.0000 91.0000
 263.0000 56.0000
 215.0000 144.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0033_2.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0033_2.jpg
 ID=81
 LM=18
 145.0000 103.0000
@@ -1529,7 +1529,7 @@ LM=18
 252.0000 67.0000
 264.0000 38.0000
 226.0000 109.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0033_3.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0033_3.jpg
 ID=82
 LM=18
 219.0000 213.0000
@@ -1550,7 +1550,7 @@ LM=18
 242.0000 88.0000
 299.0000 113.0000
 274.0000 111.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0034_2.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0034_2.jpg
 ID=84
 LM=18
 67.0000 101.0000
@@ -1571,7 +1571,7 @@ LM=18
 223.0000 86.0000
 248.0000 55.0000
 175.0000 135.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0035_1.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0035_1.jpg
 ID=86
 LM=18
 67.0000 127.0000
@@ -1592,7 +1592,7 @@ LM=18
 225.0000 90.0000
 244.0000 55.0000
 179.0000 144.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0035_2.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0035_2.jpg
 ID=87
 LM=18
 62.0000 129.0000
@@ -1613,7 +1613,7 @@ LM=18
 213.0000 88.0000
 234.0000 53.0000
 172.0000 142.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0035_3.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0035_3.jpg
 ID=88
 LM=18
 93.0000 162.0000
@@ -1634,7 +1634,7 @@ LM=18
 236.0000 102.0000
 251.0000 65.0000
 205.0000 161.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0036_3.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0036_3.jpg
 ID=91
 LM=18
 141.0000 123.0000
@@ -1655,7 +1655,7 @@ LM=18
 274.0000 87.0000
 292.0000 59.0000
 240.0000 141.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0037_1.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0037_1.jpg
 ID=92
 LM=18
 131.0000 116.0000
@@ -1676,7 +1676,7 @@ LM=18
 267.0000 85.0000
 283.0000 57.0000
 230.0000 138.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0037_2.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0037_2.jpg
 ID=93
 LM=18
 216.0000 163.0000
@@ -1697,7 +1697,7 @@ LM=18
 270.0000 40.0000
 281.0000 59.0000
 264.0000 84.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0037_3.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0037_3.jpg
 ID=94
 LM=18
 45.0000 100.0000
@@ -1718,7 +1718,7 @@ LM=18
 206.0000 73.0000
 233.0000 43.0000
 171.0000 127.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0038_1.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0038_1.jpg
 ID=95
 LM=18
 50.0000 114.0000
@@ -1739,7 +1739,7 @@ LM=18
 217.0000 89.0000
 243.0000 59.0000
 179.0000 143.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0038_2.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0038_2.jpg
 ID=96
 LM=18
 58.0000 80.0000
@@ -1760,7 +1760,7 @@ LM=18
 215.0000 65.0000
 243.0000 37.0000
 177.0000 114.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0038_3.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0038_3.jpg
 ID=97
 LM=18
 107.0000 141.0000
@@ -1781,7 +1781,7 @@ LM=18
 244.0000 101.0000
 257.0000 69.0000
 215.0000 151.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0039_1.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0039_1.jpg
 ID=98
 LM=18
 96.0000 147.0000
@@ -1802,7 +1802,7 @@ LM=18
 235.0000 101.0000
 247.0000 67.0000
 207.0000 153.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0039_2.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0039_2.jpg
 ID=99
 LM=18
 101.0000 144.0000
@@ -1823,7 +1823,7 @@ LM=18
 244.0000 99.0000
 255.0000 66.0000
 214.0000 152.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0039_3.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0039_3.jpg
 ID=100
 LM=18
 132.0000 162.0000
@@ -1844,7 +1844,7 @@ LM=18
 258.0000 111.0000
 273.0000 79.0000
 232.0000 159.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0040_1.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0040_1.jpg
 ID=101
 LM=18
 126.0000 161.0000
@@ -1865,7 +1865,7 @@ LM=18
 256.0000 107.0000
 270.0000 74.0000
 230.0000 158.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0040_2.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0040_2.jpg
 ID=102
 LM=18
 130.0000 163.0000
@@ -1886,7 +1886,7 @@ LM=18
 243.0000 93.0000
 274.0000 74.0000
 234.0000 157.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\guilhem\WB1_23_0040_3.jpg
+IMAGE=\data\images\crop\terrain\guilhem\WB1_23_0040_3.jpg
 ID=103
 LM=18
 93.0000 117.0000
@@ -1907,7 +1907,7 @@ LM=18
 256.0000 90.0000
 278.0000 58.0000
 211.0000 141.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0061_1.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0061_1.jpg
 ID=104
 LM=18
 27.0000 104.0000
@@ -1928,7 +1928,7 @@ LM=18
 221.0000 79.0000
 268.0000 82.0000
 169.0000 137.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0062_1.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0062_1.jpg
 ID=105
 LM=18
 34.0000 112.0000
@@ -1949,7 +1949,7 @@ LM=18
 224.0000 82.0000
 250.0000 42.0000
 175.0000 139.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0062_2.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0062_2.jpg
 ID=106
 LM=18
 25.0000 112.0000
@@ -1970,7 +1970,7 @@ LM=18
 220.0000 82.0000
 248.0000 41.0000
 169.0000 142.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0062_3.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0062_3.jpg
 ID=107
 LM=18
 50.0000 100.0000
@@ -1991,7 +1991,7 @@ LM=18
 221.0000 91.0000
 246.0000 60.0000
 171.0000 135.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0063_1.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0063_1.jpg
 ID=108
 LM=18
 38.0000 93.0000
@@ -2012,7 +2012,7 @@ LM=18
 213.0000 89.0000
 239.0000 56.0000
 161.0000 134.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0063_2.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0063_2.jpg
 ID=109
 LM=18
 45.0000 94.0000
@@ -2033,7 +2033,7 @@ LM=18
 220.0000 89.0000
 244.0000 58.0000
 168.0000 134.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0063_3.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0063_3.jpg
 ID=110
 LM=18
 88.0000 123.0000
@@ -2054,7 +2054,7 @@ LM=18
 262.0000 98.0000
 288.0000 62.0000
 218.0000 150.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0064_1.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0064_1.jpg
 ID=111
 LM=18
 92.0000 120.0000
@@ -2075,7 +2075,7 @@ LM=18
 263.0000 94.0000
 289.0000 60.0000
 220.0000 147.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0064_2.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0064_2.jpg
 ID=112
 LM=18
 87.0000 121.0000
@@ -2096,7 +2096,7 @@ LM=18
 263.0000 98.0000
 289.0000 61.0000
 217.0000 150.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0064_3.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0064_3.jpg
 ID=113
 LM=18
 74.0000 125.0000
@@ -2117,7 +2117,7 @@ LM=18
 239.0000 83.0000
 260.0000 45.0000
 202.0000 139.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0065_1.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0065_1.jpg
 ID=114
 LM=18
 85.0000 126.0000
@@ -2138,7 +2138,7 @@ LM=18
 242.0000 97.0000
 267.0000 65.0000
 199.0000 148.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0066_1.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0066_1.jpg
 ID=117
 LM=18
 88.0000 122.0000
@@ -2159,7 +2159,7 @@ LM=18
 246.0000 92.0000
 270.0000 60.0000
 204.0000 144.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0066_2.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0066_2.jpg
 ID=118
 LM=18
 83.0000 127.0000
@@ -2180,7 +2180,7 @@ LM=18
 241.0000 96.0000
 266.0000 64.0000
 199.0000 148.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0066_3.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0066_3.jpg
 ID=119
 LM=18
 103.0000 136.0000
@@ -2201,7 +2201,7 @@ LM=18
 256.0000 95.0000
 272.0000 61.0000
 221.0000 149.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0067_1.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0067_1.jpg
 ID=120
 LM=18
 99.0000 133.0000
@@ -2222,7 +2222,7 @@ LM=18
 253.0000 92.0000
 270.0000 57.0000
 218.0000 147.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0067_2.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0067_2.jpg
 ID=121
 LM=18
 101.0000 131.0000
@@ -2243,7 +2243,7 @@ LM=18
 251.0000 91.0000
 267.0000 57.0000
 217.0000 145.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0067_3.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0067_3.jpg
 ID=122
 LM=18
 86.0000 105.0000
@@ -2264,7 +2264,7 @@ LM=18
 241.0000 92.0000
 268.0000 64.0000
 196.0000 136.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0068_1.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0068_1.jpg
 ID=123
 LM=18
 87.0000 116.0000
@@ -2285,7 +2285,7 @@ LM=18
 245.0000 90.0000
 269.0000 60.0000
 203.0000 137.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0068_2.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0068_2.jpg
 ID=124
 LM=18
 90.0000 118.0000
@@ -2306,7 +2306,7 @@ LM=18
 242.0000 92.0000
 267.0000 62.0000
 201.0000 139.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0068_3.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0068_3.jpg
 ID=125
 LM=18
 87.0000 135.0000
@@ -2327,7 +2327,7 @@ LM=18
 240.0000 97.0000
 263.0000 62.0000
 206.0000 145.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0069_1.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0069_1.jpg
 ID=126
 LM=18
 84.0000 135.0000
@@ -2348,7 +2348,7 @@ LM=18
 233.0000 97.0000
 258.0000 62.0000
 201.0000 145.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0069_2.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0069_2.jpg
 ID=127
 LM=18
 77.0000 135.0000
@@ -2369,7 +2369,7 @@ LM=18
 230.0000 97.0000
 255.0000 62.0000
 197.0000 146.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0069_3.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0069_3.jpg
 ID=128
 LM=18
 94.0000 149.0000
@@ -2390,7 +2390,7 @@ LM=18
 254.0000 101.0000
 271.0000 64.0000
 222.0000 154.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0070_1.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0070_1.jpg
 ID=129
 LM=18
 94.0000 146.0000
@@ -2411,7 +2411,7 @@ LM=18
 253.0000 98.0000
 270.0000 62.0000
 221.0000 150.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0070_2.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0070_2.jpg
 ID=130
 LM=18
 93.0000 140.0000
@@ -2432,7 +2432,7 @@ LM=18
 250.0000 96.0000
 268.0000 61.0000
 217.0000 147.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\ligia\WB1_23_0070_3.jpg
+IMAGE=\data\images\crop\terrain\ligia\WB1_23_0070_3.jpg
 ID=131
 LM=18
 119.0000 116.0000
@@ -2453,7 +2453,7 @@ LM=18
 259.0000 88.0000
 280.0000 61.0000
 222.0000 134.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0116_1.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0116_1.jpg
 ID=132
 LM=18
 125.0000 118.0000
@@ -2474,7 +2474,7 @@ LM=18
 264.0000 91.0000
 283.0000 63.0000
 227.0000 136.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0116_2.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0116_2.jpg
 ID=133
 LM=18
 124.0000 119.0000
@@ -2495,7 +2495,7 @@ LM=18
 263.0000 96.0000
 284.0000 69.0000
 225.0000 140.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0116_3.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0116_3.jpg
 ID=134
 LM=18
 91.0000 104.0000
@@ -2516,7 +2516,7 @@ LM=18
 243.0000 84.0000
 266.0000 55.0000
 202.0000 128.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0117_1.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0117_1.jpg
 ID=135
 LM=18
 91.0000 102.0000
@@ -2537,7 +2537,7 @@ LM=18
 244.0000 84.0000
 266.0000 55.0000
 203.0000 127.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0117_2.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0117_2.jpg
 ID=136
 LM=18
 86.0000 101.0000
@@ -2558,7 +2558,7 @@ LM=18
 239.0000 82.0000
 262.0000 54.0000
 197.0000 126.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0117_3.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0117_3.jpg
 ID=137
 LM=18
 109.0000 110.0000
@@ -2579,7 +2579,7 @@ LM=18
 256.0000 92.0000
 277.0000 61.0000
 214.0000 135.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0118_1.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0118_1.jpg
 ID=138
 LM=18
 107.0000 110.0000
@@ -2600,7 +2600,7 @@ LM=18
 255.0000 92.0000
 277.0000 62.0000
 212.0000 135.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0118_2.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0118_2.jpg
 ID=139
 LM=18
 102.0000 110.0000
@@ -2621,7 +2621,7 @@ LM=18
 253.0000 91.0000
 274.0000 61.0000
 210.0000 135.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0118_3.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0118_3.jpg
 ID=140
 LM=18
 97.0000 116.0000
@@ -2642,7 +2642,7 @@ LM=18
 247.0000 85.0000
 268.0000 55.0000
 212.0000 134.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0119_1.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0119_1.jpg
 ID=141
 LM=18
 91.0000 116.0000
@@ -2663,7 +2663,7 @@ LM=18
 244.0000 85.0000
 266.0000 54.0000
 208.0000 135.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0119_2.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0119_2.jpg
 ID=142
 LM=18
 104.0000 115.0000
@@ -2684,7 +2684,7 @@ LM=18
 254.0000 85.0000
 275.0000 55.0000
 217.0000 133.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0119_3.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0119_3.jpg
 ID=143
 LM=18
 114.0000 114.0000
@@ -2705,7 +2705,7 @@ LM=18
 257.0000 72.0000
 272.0000 41.0000
 217.0000 119.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0120_1.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0120_1.jpg
 ID=144
 LM=18
 114.0000 111.0000
@@ -2726,7 +2726,7 @@ LM=18
 259.0000 70.0000
 273.0000 39.0000
 219.0000 117.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0120_2.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0120_2.jpg
 ID=145
 LM=18
 113.0000 108.0000
@@ -2747,7 +2747,7 @@ LM=18
 260.0000 67.0000
 274.0000 35.0000
 220.0000 116.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0120_3.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0120_3.jpg
 ID=146
 LM=18
 114.0000 156.0000
@@ -2768,7 +2768,7 @@ LM=18
 254.0000 103.0000
 272.0000 70.0000
 226.0000 157.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0121_1.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0121_1.jpg
 ID=147
 LM=18
 116.0000 154.0000
@@ -2789,7 +2789,7 @@ LM=18
 257.0000 101.0000
 273.0000 69.0000
 229.0000 155.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0121_2.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0121_2.jpg
 ID=148
 LM=18
 109.0000 149.0000
@@ -2810,7 +2810,7 @@ LM=18
 255.0000 97.0000
 272.0000 65.0000
 226.0000 152.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0121_3.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0121_3.jpg
 ID=149
 LM=18
 73.0000 121.0000
@@ -2831,7 +2831,7 @@ LM=18
 230.0000 85.0000
 253.0000 51.0000
 190.0000 138.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0122_1.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0122_1.jpg
 ID=150
 LM=18
 75.0000 123.0000
@@ -2852,7 +2852,7 @@ LM=18
 230.0000 91.0000
 254.0000 57.0000
 191.0000 140.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0122_2.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0122_2.jpg
 ID=151
 LM=18
 67.0000 117.0000
@@ -2873,7 +2873,7 @@ LM=18
 225.0000 86.0000
 249.0000 52.0000
 184.0000 135.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0122_3.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0122_3.jpg
 ID=152
 LM=18
 96.0000 134.0000
@@ -2894,7 +2894,7 @@ LM=18
 227.0000 82.0000
 246.0000 44.0000
 201.0000 130.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0123_1.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0123_1.jpg
 ID=153
 LM=18
 93.0000 138.0000
@@ -2915,7 +2915,7 @@ LM=18
 224.0000 84.0000
 245.0000 47.0000
 200.0000 134.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0123_2.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0123_2.jpg
 ID=154
 LM=18
 94.0000 136.0000
@@ -2936,7 +2936,7 @@ LM=18
 224.0000 83.0000
 244.0000 46.0000
 200.0000 131.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0123_3.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0123_3.jpg
 ID=155
 LM=18
 98.0000 87.0000
@@ -2957,7 +2957,7 @@ LM=18
 239.0000 70.0000
 262.0000 41.0000
 200.0000 112.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0124_1.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0124_1.jpg
 ID=156
 LM=18
 96.0000 88.0000
@@ -2978,7 +2978,7 @@ LM=18
 237.0000 71.0000
 260.0000 42.0000
 198.0000 113.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0124_2.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0124_2.jpg
 ID=157
 LM=18
 96.0000 86.0000
@@ -2999,7 +2999,7 @@ LM=18
 238.0000 69.0000
 261.0000 40.0000
 198.0000 111.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0124_3.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0124_3.jpg
 ID=158
 LM=18
 91.0000 127.0000
@@ -3020,7 +3020,7 @@ LM=18
 243.0000 85.0000
 261.0000 53.0000
 191.0000 139.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0125_1.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0125_1.jpg
 ID=159
 LM=18
 97.0000 126.0000
@@ -3041,7 +3041,7 @@ LM=18
 248.0000 85.0000
 266.0000 54.0000
 196.0000 138.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0125_2.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0125_2.jpg
 ID=160
 LM=18
 93.0000 127.0000
@@ -3062,7 +3062,7 @@ LM=18
 245.0000 85.0000
 262.0000 53.0000
 193.0000 139.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\mehdi\WB1_23_0125_3.jpg
+IMAGE=\data\images\crop\terrain\mehdi\WB1_23_0125_3.jpg
 ID=161
 LM=18
 59.0000 120.0000
@@ -3083,7 +3083,7 @@ LM=18
 225.0000 83.0000
 245.0000 47.0000
 181.0000 137.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0076_1.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0076_1.jpg
 ID=162
 LM=18
 60.0000 120.0000
@@ -3104,7 +3104,7 @@ LM=18
 222.0000 84.0000
 241.0000 49.0000
 179.0000 136.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0076_2.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0076_2.jpg
 ID=163
 LM=18
 58.0000 127.0000
@@ -3125,7 +3125,7 @@ LM=18
 217.0000 88.0000
 236.0000 53.0000
 176.0000 141.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0076_3.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0076_3.jpg
 ID=164
 LM=18
 127.0000 179.0000
@@ -3146,7 +3146,7 @@ LM=18
 271.0000 118.0000
 285.0000 82.0000
 242.0000 174.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0077_1.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0077_1.jpg
 ID=165
 LM=18
 121.0000 183.0000
@@ -3167,7 +3167,7 @@ LM=18
 263.0000 121.0000
 277.0000 86.0000
 237.0000 177.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0077_2.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0077_2.jpg
 ID=166
 LM=18
 110.0000 184.0000
@@ -3188,7 +3188,7 @@ LM=18
 258.0000 117.0000
 270.0000 79.0000
 230.0000 176.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0077_3.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0077_3.jpg
 ID=167
 LM=18
 114.0000 156.0000
@@ -3209,7 +3209,7 @@ LM=18
 256.0000 104.0000
 270.0000 73.0000
 224.0000 156.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0078_1.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0078_1.jpg
 ID=168
 LM=18
 119.0000 156.0000
@@ -3230,7 +3230,7 @@ LM=18
 261.0000 104.0000
 274.0000 72.0000
 230.0000 156.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0078_2.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0078_2.jpg
 ID=169
 LM=18
 118.0000 151.0000
@@ -3251,7 +3251,7 @@ LM=18
 260.0000 101.0000
 274.0000 70.0000
 227.0000 154.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0078_3.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0078_3.jpg
 ID=170
 LM=18
 90.0000 162.0000
@@ -3272,7 +3272,7 @@ LM=18
 241.0000 102.0000
 252.0000 67.0000
 206.0000 159.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0079_1.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0079_1.jpg
 ID=171
 LM=18
 79.0000 161.0000
@@ -3293,7 +3293,7 @@ LM=18
 230.0000 100.0000
 242.0000 65.0000
 194.0000 158.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0079_2.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0079_2.jpg
 ID=172
 LM=18
 95.0000 160.0000
@@ -3314,7 +3314,7 @@ LM=18
 241.0000 102.0000
 252.0000 69.0000
 207.0000 158.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0079_3.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0079_3.jpg
 ID=173
 LM=18
 68.0000 131.0000
@@ -3335,7 +3335,7 @@ LM=18
 233.0000 88.0000
 253.0000 55.0000
 186.0000 141.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0080_1.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0080_1.jpg
 ID=174
 LM=18
 69.0000 137.0000
@@ -3356,7 +3356,7 @@ LM=18
 234.0000 93.0000
 252.0000 61.0000
 187.0000 146.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0080_2.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0080_2.jpg
 ID=175
 LM=18
 68.0000 139.0000
@@ -3377,7 +3377,7 @@ LM=18
 236.0000 92.0000
 254.0000 58.0000
 189.0000 146.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0080_3.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0080_3.jpg
 ID=176
 LM=18
 109.0000 171.0000
@@ -3398,7 +3398,7 @@ LM=18
 258.0000 112.0000
 270.0000 79.0000
 224.0000 166.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0081_1.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0081_1.jpg
 ID=177
 LM=18
 106.0000 155.0000
@@ -3419,7 +3419,7 @@ LM=18
 256.0000 122.0000
 274.0000 92.0000
 217.0000 169.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0081_2.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0081_2.jpg
 ID=178
 LM=18
 129.0000 179.0000
@@ -3440,7 +3440,7 @@ LM=18
 271.0000 113.0000
 278.0000 80.0000
 243.0000 168.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0082_1.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0082_1.jpg
 ID=180
 LM=18
 133.0000 180.0000
@@ -3461,7 +3461,7 @@ LM=18
 278.0000 116.0000
 286.0000 83.0000
 249.0000 171.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0082_2.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0082_2.jpg
 ID=181
 LM=18
 128.0000 176.0000
@@ -3482,7 +3482,7 @@ LM=18
 271.0000 112.0000
 279.0000 79.0000
 242.0000 167.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0082_3.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0082_3.jpg
 ID=182
 LM=18
 140.0000 121.0000
@@ -3503,7 +3503,7 @@ LM=18
 278.0000 100.0000
 295.0000 74.0000
 237.0000 140.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0083_1.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0083_1.jpg
 ID=183
 LM=18
 135.0000 119.0000
@@ -3524,7 +3524,7 @@ LM=18
 270.0000 99.0000
 289.0000 73.0000
 231.0000 138.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0083_2.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0083_2.jpg
 ID=184
 LM=18
 142.0000 122.0000
@@ -3545,7 +3545,7 @@ LM=18
 275.0000 101.0000
 293.0000 76.0000
 235.0000 140.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0083_3.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0083_3.jpg
 ID=185
 LM=18
 89.0000 145.0000
@@ -3566,7 +3566,7 @@ LM=18
 236.0000 97.0000
 249.0000 63.0000
 201.0000 149.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0084_1.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0084_1.jpg
 ID=186
 LM=18
 92.0000 147.0000
@@ -3587,7 +3587,7 @@ LM=18
 242.0000 97.0000
 254.0000 63.0000
 206.0000 150.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0084_2.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0084_2.jpg
 ID=187
 LM=18
 95.0000 147.0000
@@ -3608,7 +3608,7 @@ LM=18
 244.0000 95.0000
 256.0000 61.0000
 208.0000 149.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0084_3.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0084_3.jpg
 ID=188
 LM=18
 80.0000 199.0000
@@ -3629,7 +3629,7 @@ LM=18
 228.0000 117.0000
 236.0000 75.0000
 204.0000 180.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0085_1.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0085_1.jpg
 ID=189
 LM=18
 353.0000 19.0000
@@ -3650,7 +3650,7 @@ LM=18
 268.0000 104.0000
 227.0000 124.0000
 267.0000 76.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0085_3.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0085_3.jpg
 ID=191
 LM=18
 133.0000 195.0000
@@ -3671,7 +3671,7 @@ LM=18
 263.0000 125.0000
 270.0000 93.0000
 245.0000 179.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0086_1.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0086_1.jpg
 ID=192
 LM=18
 132.0000 182.0000
@@ -3692,7 +3692,7 @@ LM=18
 262.0000 122.0000
 270.0000 89.0000
 246.0000 178.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0086_2.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0086_2.jpg
 ID=193
 LM=18
 121.0000 188.0000
@@ -3713,7 +3713,7 @@ LM=18
 258.0000 123.0000
 267.0000 90.0000
 234.0000 178.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0086_3.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0086_3.jpg
 ID=194
 LM=18
 118.0000 118.0000
@@ -3734,7 +3734,7 @@ LM=18
 260.0000 96.0000
 278.0000 65.0000
 221.0000 140.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0087_1.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0087_1.jpg
 ID=195
 LM=18
 133.0000 205.0000
@@ -3755,7 +3755,7 @@ LM=18
 268.0000 90.0000
 302.0000 84.0000
 263.0000 126.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tarek\WB1_23_0087_3.jpg
+IMAGE=\data\images\crop\terrain\tarek\WB1_23_0087_3.jpg
 ID=197
 LM=18
 91.0000 139.0000
@@ -3776,7 +3776,7 @@ LM=18
 233.0000 95.0000
 255.0000 63.0000
 205.0000 152.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0126_1.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0126_1.jpg
 ID=198
 LM=18
 89.0000 141.0000
@@ -3797,7 +3797,7 @@ LM=18
 232.0000 96.0000
 254.0000 64.0000
 203.0000 153.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0126_2.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0126_2.jpg
 ID=199
 LM=18
 85.0000 138.0000
@@ -3818,7 +3818,7 @@ LM=18
 224.0000 91.0000
 246.0000 60.0000
 197.0000 149.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0126_3.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0126_3.jpg
 ID=200
 LM=18
 392.0000 92.0000
@@ -3839,7 +3839,7 @@ LM=18
 231.0000 98.0000
 229.0000 73.0000
 264.0000 70.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0127_1.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0127_1.jpg
 ID=201
 LM=18
 89.0000 92.0000
@@ -3860,7 +3860,7 @@ LM=18
 242.0000 67.0000
 265.0000 38.0000
 200.0000 116.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0127_3.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0127_3.jpg
 ID=203
 LM=18
 388.0000 95.0000
@@ -3881,7 +3881,7 @@ LM=18
 241.0000 100.0000
 197.0000 108.0000
 263.0000 75.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0128_1.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0128_1.jpg
 ID=204
 LM=18
 144.0000 106.0000
@@ -3902,7 +3902,7 @@ LM=18
 279.0000 98.0000
 296.0000 72.0000
 240.0000 138.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0129_1.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0129_1.jpg
 ID=207
 LM=18
 64.0000 119.0000
@@ -3923,7 +3923,7 @@ LM=18
 223.0000 84.0000
 241.0000 50.0000
 185.0000 138.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0129_2.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0129_2.jpg
 ID=208
 LM=18
 131.0000 104.0000
@@ -3944,7 +3944,7 @@ LM=18
 269.0000 93.0000
 287.0000 66.0000
 230.0000 135.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0129_3.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0129_3.jpg
 ID=209
 LM=18
 52.0000 96.0000
@@ -3965,7 +3965,7 @@ LM=18
 218.0000 81.0000
 239.0000 48.0000
 171.0000 131.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0129_4.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0129_4.jpg
 ID=210
 LM=18
 243.0000 210.0000
@@ -3986,7 +3986,7 @@ LM=18
 294.0000 115.0000
 327.0000 112.0000
 255.0000 130.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0130_1.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0130_1.jpg
 ID=211
 LM=18
 118.0000 137.0000
@@ -4007,7 +4007,7 @@ LM=18
 259.0000 96.0000
 274.0000 65.0000
 234.0000 146.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0130_2.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0130_2.jpg
 ID=212
 LM=18
 149.0000 112.0000
@@ -4028,7 +4028,7 @@ LM=18
 291.0000 96.0000
 306.0000 69.0000
 255.0000 134.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0131_1.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0131_1.jpg
 ID=214
 LM=18
 103.0000 115.0000
@@ -4049,7 +4049,7 @@ LM=18
 260.0000 94.0000
 277.0000 62.0000
 221.0000 137.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0131_2.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0131_2.jpg
 ID=215
 LM=18
 121.0000 116.0000
@@ -4070,7 +4070,7 @@ LM=18
 272.0000 94.0000
 286.0000 64.0000
 234.0000 136.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0131_3.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0131_3.jpg
 ID=216
 LM=18
 85.0000 105.0000
@@ -4091,7 +4091,7 @@ LM=18
 240.0000 85.0000
 261.0000 54.0000
 200.0000 133.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0132_1.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0132_1.jpg
 ID=217
 LM=18
 85.0000 105.0000
@@ -4112,7 +4112,7 @@ LM=18
 242.0000 85.0000
 262.0000 54.0000
 202.0000 133.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0132_2.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0132_2.jpg
 ID=218
 LM=18
 85.0000 102.0000
@@ -4133,7 +4133,7 @@ LM=18
 240.0000 81.0000
 261.0000 50.0000
 201.0000 129.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0132_3.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0132_3.jpg
 ID=219
 LM=18
 118.0000 158.0000
@@ -4154,7 +4154,7 @@ LM=18
 272.0000 98.0000
 285.0000 62.0000
 240.0000 158.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0133_1.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0133_1.jpg
 ID=220
 LM=18
 129.0000 155.0000
@@ -4175,7 +4175,7 @@ LM=18
 284.0000 95.0000
 295.0000 59.0000
 252.0000 154.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0133_2.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0133_2.jpg
 ID=221
 LM=18
 123.0000 155.0000
@@ -4196,7 +4196,7 @@ LM=18
 281.0000 97.0000
 294.0000 60.0000
 248.0000 154.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0133_3.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0133_3.jpg
 ID=222
 LM=18
 86.0000 103.0000
@@ -4217,7 +4217,7 @@ LM=18
 241.0000 84.0000
 262.0000 51.0000
 196.0000 131.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0134_1.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0134_1.jpg
 ID=223
 LM=18
 91.0000 109.0000
@@ -4238,7 +4238,7 @@ LM=18
 245.0000 90.0000
 267.0000 56.0000
 201.0000 136.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0134_2.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0134_2.jpg
 ID=224
 LM=18
 88.0000 110.0000
@@ -4259,7 +4259,7 @@ LM=18
 243.0000 89.0000
 264.0000 57.0000
 199.0000 136.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0134_3.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0134_3.jpg
 ID=225
 LM=18
 66.0000 116.0000
@@ -4280,7 +4280,7 @@ LM=18
 227.0000 87.0000
 246.0000 51.0000
 185.0000 137.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0135_2.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0135_2.jpg
 ID=227
 LM=18
 63.0000 120.0000
@@ -4301,7 +4301,7 @@ LM=18
 224.0000 89.0000
 242.0000 52.0000
 182.0000 141.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0135_3.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0135_3.jpg
 ID=228
 LM=18
 52.0000 120.0000
@@ -4322,7 +4322,7 @@ LM=18
 218.0000 89.0000
 237.0000 52.0000
 174.0000 142.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\tonie\WB1_23_0135_4.jpg
+IMAGE=\data\images\crop\terrain\tonie\WB1_23_0135_4.jpg
 ID=229
 LM=18
 122.0000 156.0000
@@ -4343,7 +4343,7 @@ LM=18
 263.0000 103.0000
 276.0000 67.0000
 231.0000 154.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0106_3.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0106_3.jpg
 ID=232
 LM=18
 40.0000 157.0000
@@ -4364,7 +4364,7 @@ LM=18
 208.0000 102.0000
 225.0000 70.0000
 167.0000 160.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0107_1.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0107_1.jpg
 ID=233
 LM=18
 63.0000 139.0000
@@ -4385,7 +4385,7 @@ LM=18
 223.0000 94.0000
 240.0000 65.0000
 181.0000 147.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0107_2.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0107_2.jpg
 ID=234
 LM=18
 180.0000 175.0000
@@ -4406,7 +4406,7 @@ LM=18
 222.0000 42.0000
 241.0000 62.0000
 225.0000 93.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0107_3.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0107_3.jpg
 ID=235
 LM=18
 80.0000 164.0000
@@ -4427,7 +4427,7 @@ LM=18
 233.0000 103.0000
 247.0000 68.0000
 197.0000 160.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0108_1.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0108_1.jpg
 ID=236
 LM=18
 380.0000 19.0000
@@ -4448,7 +4448,7 @@ LM=18
 271.0000 100.0000
 233.0000 106.0000
 246.0000 73.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0108_3.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0108_3.jpg
 ID=238
 LM=18
 128.0000 153.0000
@@ -4469,7 +4469,7 @@ LM=18
 263.0000 107.0000
 279.0000 73.0000
 234.0000 155.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0109_1.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0109_1.jpg
 ID=239
 LM=18
 126.0000 147.0000
@@ -4490,7 +4490,7 @@ LM=18
 264.0000 104.0000
 279.0000 70.0000
 232.0000 153.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0109_2.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0109_2.jpg
 ID=240
 LM=18
 118.0000 192.0000
@@ -4511,7 +4511,7 @@ LM=18
 249.0000 124.0000
 262.0000 90.0000
 231.0000 181.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0110_1.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0110_1.jpg
 ID=241
 LM=18
 224.0000 198.0000
@@ -4532,7 +4532,7 @@ LM=18
 217.0000 104.0000
 248.0000 83.0000
 238.0000 118.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0110_2.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0110_2.jpg
 ID=242
 LM=18
 127.0000 167.0000
@@ -4553,7 +4553,7 @@ LM=18
 260.0000 109.0000
 269.0000 77.0000
 233.0000 160.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0111_2.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0111_2.jpg
 ID=244
 LM=18
 405.0000 43.0000
@@ -4574,7 +4574,7 @@ LM=18
 292.0000 119.0000
 274.0000 111.0000
 283.0000 79.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0111_3.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0111_3.jpg
 ID=245
 LM=18
 126.0000 113.0000
@@ -4595,7 +4595,7 @@ LM=18
 268.0000 98.0000
 289.0000 69.0000
 225.0000 139.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0112_1.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0112_1.jpg
 ID=246
 LM=18
 124.0000 117.0000
@@ -4616,7 +4616,7 @@ LM=18
 268.0000 93.0000
 288.0000 65.0000
 228.0000 139.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0112_2.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0112_2.jpg
 ID=247
 LM=18
 137.0000 122.0000
@@ -4637,7 +4637,7 @@ LM=18
 276.0000 101.0000
 297.0000 74.0000
 238.0000 144.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0113_1.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0113_1.jpg
 ID=248
 LM=18
 160.0000 196.0000
@@ -4658,7 +4658,7 @@ LM=18
 287.0000 131.0000
 297.0000 98.0000
 262.0000 184.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0113_2.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0113_2.jpg
 ID=249
 LM=18
 136.0000 123.0000
@@ -4679,7 +4679,7 @@ LM=18
 276.0000 102.0000
 297.0000 76.0000
 237.0000 146.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0113_3.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0113_3.jpg
 ID=250
 LM=18
 128.0000 120.0000
@@ -4700,7 +4700,7 @@ LM=18
 268.0000 93.0000
 282.0000 62.0000
 231.0000 136.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0114_1.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0114_1.jpg
 ID=251
 LM=18
 122.0000 117.0000
@@ -4721,7 +4721,7 @@ LM=18
 262.0000 96.0000
 280.0000 62.0000
 225.0000 138.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0114_2.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0114_2.jpg
 ID=252
 LM=18
 120.0000 123.0000
@@ -4742,7 +4742,7 @@ LM=18
 266.0000 95.0000
 281.0000 62.0000
 227.0000 140.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0114_4.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0114_4.jpg
 ID=253
 LM=18
 155.0000 189.0000
@@ -4763,7 +4763,7 @@ LM=18
 280.0000 125.0000
 291.0000 90.0000
 257.0000 178.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0115_2.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0115_2.jpg
 ID=255
 LM=18
 144.0000 180.0000
@@ -4784,7 +4784,7 @@ LM=18
 269.0000 123.0000
 307.0000 91.0000
 243.0000 173.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\victor\WB1_23_0115_3.jpg
+IMAGE=\data\images\crop\terrain\victor\WB1_23_0115_3.jpg
 ID=256
 LM=18
 66.0000 179.0000
@@ -4805,7 +4805,7 @@ LM=18
 229.0000 105.0000
 241.0000 64.0000
 204.0000 175.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0016_2.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0016_2.jpg
 ID=258
 LM=18
 73.0000 105.0000
@@ -4826,7 +4826,7 @@ LM=18
 227.0000 87.0000
 250.0000 54.0000
 182.0000 134.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0017_2.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0017_2.jpg
 ID=261
 LM=18
 376.0000 1.0000
@@ -4847,7 +4847,7 @@ LM=18
 206.0000 95.0000
 161.0000 128.0000
 227.0000 56.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0018_2.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0018_2.jpg
 ID=264
 LM=18
 92.0000 159.0000
@@ -4868,7 +4868,7 @@ LM=18
 237.0000 103.0000
 247.0000 65.0000
 206.0000 159.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0019_1.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0019_1.jpg
 ID=266
 LM=18
 141.0000 142.0000
@@ -4889,7 +4889,7 @@ LM=18
 267.0000 99.0000
 278.0000 67.0000
 237.0000 144.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0019_2.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0019_2.jpg
 ID=267
 LM=18
 55.0000 120.0000
@@ -4910,7 +4910,7 @@ LM=18
 216.0000 88.0000
 234.0000 50.0000
 173.0000 139.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0019_3.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0019_3.jpg
 ID=268
 LM=18
 121.0000 169.0000
@@ -4931,7 +4931,7 @@ LM=18
 252.0000 111.0000
 262.0000 77.0000
 231.0000 166.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0020_1.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0020_1.jpg
 ID=269
 LM=18
 228.0000 187.0000
@@ -4952,7 +4952,7 @@ LM=18
 225.0000 90.0000
 258.0000 70.0000
 249.0000 106.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0020_2.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0020_2.jpg
 ID=270
 LM=18
 125.0000 187.0000
@@ -4973,7 +4973,7 @@ LM=18
 254.0000 119.0000
 264.0000 84.0000
 236.0000 175.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0021_3.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0021_3.jpg
 ID=273
 LM=18
 96.0000 133.0000
@@ -4994,7 +4994,7 @@ LM=18
 243.0000 93.0000
 260.0000 61.0000
 215.0000 145.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0022_1.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0022_1.jpg
 ID=274
 LM=18
 85.0000 149.0000
@@ -5015,7 +5015,7 @@ LM=18
 234.0000 94.0000
 248.0000 58.0000
 206.0000 152.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0022_2.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0022_2.jpg
 ID=275
 LM=18
 106.0000 164.0000
@@ -5036,7 +5036,7 @@ LM=18
 247.0000 103.0000
 259.0000 70.0000
 226.0000 158.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0022_3.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0022_3.jpg
 ID=276
 LM=18
 71.0000 163.0000
@@ -5057,7 +5057,7 @@ LM=18
 223.0000 100.0000
 245.0000 62.0000
 194.0000 159.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0023_1.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0023_1.jpg
 ID=277
 LM=18
 68.0000 152.0000
@@ -5078,7 +5078,7 @@ LM=18
 222.0000 95.0000
 248.0000 58.0000
 190.0000 154.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0023_2.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0023_2.jpg
 ID=278
 LM=18
 72.0000 155.0000
@@ -5099,7 +5099,7 @@ LM=18
 223.0000 96.0000
 246.0000 60.0000
 193.0000 154.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0023_3.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0023_3.jpg
 ID=279
 LM=18
 88.0000 130.0000
@@ -5120,7 +5120,7 @@ LM=18
 244.0000 96.0000
 263.0000 65.0000
 200.0000 144.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0024_1.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0024_1.jpg
 ID=280
 LM=18
 71.0000 144.0000
@@ -5141,7 +5141,7 @@ LM=18
 231.0000 96.0000
 251.0000 62.0000
 189.0000 151.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0024_2.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0024_2.jpg
 ID=281
 LM=18
 76.0000 135.0000
@@ -5162,7 +5162,7 @@ LM=18
 236.0000 96.0000
 256.0000 64.0000
 191.0000 147.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0024_3.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0024_3.jpg
 ID=282
 LM=18
 104.0000 135.0000
@@ -5183,7 +5183,7 @@ LM=18
 257.0000 95.0000
 272.0000 65.0000
 215.0000 144.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0025_1.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0025_1.jpg
 ID=283
 LM=18
 86.0000 132.0000
@@ -5204,7 +5204,7 @@ LM=18
 243.0000 94.0000
 261.0000 61.0000
 200.0000 143.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0025_2.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0025_2.jpg
 ID=284
 LM=18
 93.0000 139.0000
@@ -5225,7 +5225,7 @@ LM=18
 250.0000 95.0000
 268.0000 62.0000
 208.0000 146.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0025_3.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0025_3.jpg
 ID=285
 LM=18
 212.0000 158.0000
@@ -5246,7 +5246,7 @@ LM=18
 244.0000 73.0000
 278.0000 61.0000
 262.0000 91.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0026_1.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0026_1.jpg
 ID=286
 LM=18
 118.0000 122.0000
@@ -5267,7 +5267,7 @@ LM=18
 260.0000 91.0000
 276.0000 61.0000
 223.0000 137.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0026_2.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0026_2.jpg
 ID=287
 LM=18
 107.0000 111.0000
@@ -5288,5 +5288,5 @@ LM=18
 257.0000 83.0000
 273.0000 53.0000
 215.0000 132.0000
-IMAGE=c:\Users\Jules\Documents\IEES\idmybee\data\images\crop\terrain\yvan\WB1_23_0026_3.jpg
+IMAGE=\data\images\crop\terrain\yvan\WB1_23_0026_3.jpg
 ID=288

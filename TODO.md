@@ -42,3 +42,13 @@ CSV des données biologiques (espèces, caste) pour validation (tester hypothès
 4. variation biologique (au sens de l’analyse morpho, cf thèse adrien, shiny mise en application r module) au sein d’un caste (plus petite variation) → variabilité entre caste, entre espèces, entre sous-genre….
 5. voir si l’erreur de mesure di
 
+
+
+## Analyse
+
+- ANOVA tous les points espèces / type appareil photo
+- intra-espece, inter-espece (variations biologiques)
+- inter-appareil (methodologique), les comparer
+- on espèce Vinteresp > Vintraesp > Vinterapp
+
+- pas 100 dû aux variation biologiques proches, pas problème de méthode
