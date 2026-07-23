@@ -1,21 +1,21 @@
 [
   {
-    "path": "/Volumes/EXT DATA/IDMB/images/organized",
+    "path": "D:/IDMB/images/organized",
     "dataset": "organized",
     "collector_subfolder": false
   },
   {
-    "path": "/Volumes/EXT DATA/IDMB/images/terrain",
+    "path": "D:/IDMB/images/terrain",
     "dataset": "terrain",
     "collector_subfolder": true
   },
   {
-    "path": "/Volumes/EXT DATA/IDMB/images/vrac",
+    "path": "D:/IDMB/images/vrac",
     "dataset": "vrac",
     "collector_subfolder": false
   },
   {
-    "path": "/Volumes/EXT DATA/IDMB/images/basile_m1",
+    "path": "D:/IDMB/images/basile_m1",
     "dataset": "basile_m1",
     "collector_subfolder": false,
     "naming": "organized_hyphen"
