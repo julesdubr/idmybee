@@ -1,8 +1,10 @@
-"""Transcription Python du pipeline R : GPA -> PCA -> LDA (LOOCV)."""
+"""lda.py
+Transcription Python du pipeline R : GPA -> PCA -> LDA (LOOCV)."""
 
 from __future__ import annotations
 
 import argparse
+import sys
 import logging
 from pathlib import Path
 
@@ -12,65 +14,17 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.decomposition import PCA
 from sklearn.model_selection import LeaveOneOut, cross_val_predict
 
+_THIS_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(_THIS_DIR.parent))
+from utils.dataset import load_labeled_dataset, apply_filters
 from utils.gpa import gpagen, two_d_array
 from utils.model_io import TrainedModel, save_model
-from utils.tps_io import Specimen, parse_tps
+from utils.tps_io import Specimen
 from utils import reporting
 
 import matplotlib.pyplot as plt
 
 logger = logging.getLogger(__name__)
-
-
-def load_labeled_dataset(
-    tps_path: str | Path, csv_path: str | Path, strict: bool = True
-) -> tuple[list[Specimen], pd.DataFrame]:
-    """Charge le TPS de référence + le CSV de métadonnées et les aligne par id/sid.
-
-    Équivalent de la lecture de MyExcelFile + readland.tps(specID="imageID")
-    dans le script R, mais la jointure ici se fait explicitement sur
-    id (CSV) == sid (TPS ID=), au lieu de compter sur un ordre identique
-    des deux fichiers.
-    """
-    specimens, errors = parse_tps(tps_path, strict=strict)
-    if errors:
-        logger.warning("%d erreur(s) de parsing TPS (voir ci-dessus)", len(errors))
-
-    meta = pd.read_csv(csv_path)
-    required_cols = {"id", "espece", "caste"}
-    missing = required_cols - set(meta.columns)
-    if missing:
-        raise ValueError(f"Colonnes manquantes dans le CSV : {missing}")
-
-    meta = meta.set_index("id", drop=False)
-
-    kept_specimens: list[Specimen] = []
-    kept_rows: list[pd.Series] = []
-    unmatched: list[int] = []
-    for sp in specimens:
-        if sp.sid not in meta.index:
-            unmatched.append(sp.sid)
-            continue
-        kept_specimens.append(sp)
-        kept_rows.append(meta.loc[sp.sid])
-
-    if unmatched:
-        logger.warning(
-            "%d spécimen(s) du TPS sans entrée CSV correspondante (id manquants: %s%s)",
-            len(unmatched),
-            unmatched[:10],
-            ", ..." if len(unmatched) > 10 else "",
-        )
-
-    meta_df = pd.DataFrame(kept_rows).reset_index(drop=True)
-    meta_df["groupe"] = meta_df["espece"].astype(str) + "_" + meta_df["caste"].astype(str)
-
-    logger.info(
-        "%d spécimens appariés TPS<->CSV sur %d landmarks dans le TPS",
-        len(kept_specimens),
-        len(specimens),
-    )
-    return kept_specimens, meta_df
 
 
 def run_gpa_pca(specimens: list[Specimen]):
@@ -133,8 +87,7 @@ def plot_gpa_alignment(gpa_result, groupe: pd.Series, out_path: Path,
     unique_groups = sorted(groupe.unique())
     cmap = plt.get_cmap("tab20")
 
-    # plt.figure(figsize=(10, 5))
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10,10), sharex=True)
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 10), sharex=True)
 
     for i, group in enumerate(unique_groups):
         mask = groupe == group
@@ -145,14 +98,7 @@ def plot_gpa_alignment(gpa_result, groupe: pd.Series, out_path: Path,
 
         group_coords = np.vstack(specimens_coords)
         color = cmap(i % 20)
-        ax1.scatter(
-            group_coords[:, 0],
-            group_coords[:, 1],
-            color=color,
-            alpha=0.05,
-            label=group,
-            s=10
-        )
+        ax1.scatter(group_coords[:, 0], group_coords[:, 1], color=color, alpha=0.05, label=group, s=10)
         ax1.set_xlabel("Coordonnée X")
         ax1.set_ylabel("Coordonnée Y")
         ax1.set_title(f"{title} (all)")
@@ -160,14 +106,7 @@ def plot_gpa_alignment(gpa_result, groupe: pd.Series, out_path: Path,
         ax1.set_aspect("equal", adjustable="box")
 
         centroids = specimens_coords.mean(axis=0)
-        ax2.scatter(
-            centroids[:, 0],
-            centroids[:, 1],
-            color=color,
-            s=20,
-            label=group,
-            marker='x'
-        )
+        ax2.scatter(centroids[:, 0], centroids[:, 1], color=color, s=20, label=group, marker='x')
         ax2.set_xlabel("Coordonnée X")
         ax2.set_ylabel("Coordonnée Y")
         ax2.set_title(f"{title} (centroids)")
@@ -200,14 +139,7 @@ def plot_lda(lda_scores: np.ndarray, groupe: pd.Series, out_path: Path,
 
     for i, group in enumerate(unique_groups):
         mask = groupe == group
-        plt.scatter(
-            x[mask],
-            y[mask],
-            label=group,
-            color=colors[i],
-            alpha=0.25,
-            s=20,
-        )
+        plt.scatter(x[mask], y[mask], label=group, color=colors[i], alpha=0.25, s=20)
 
     plt.xlabel("LDA 1")
     plt.ylabel("LDA 2" if lda_scores.shape[1] > 1 else "Constante")
@@ -241,30 +173,14 @@ def main() -> None:
     args = parser.parse_args()
 
     specimens, meta_df = load_labeled_dataset(args.tps_path, args.csv_path, strict=not args.non_strict)
-
-    if args.exclude_ids:
-        exclude_df = pd.read_csv(args.exclude_ids)
-        if "heavy" in exclude_df.columns:
-            exclude_df = exclude_df[exclude_df["heavy"]]
-        exclude_set = set(exclude_df["id"])
-        keep_mask = [sp.sid not in exclude_set for sp in specimens]
-        specimens = [sp for sp, keep in zip(specimens, keep_mask) if keep]
-        meta_df = meta_df[keep_mask].reset_index(drop=True)
-        print(f"Exclus {sum(not k for k in keep_mask)} spécimen(s) via {args.exclude_ids}")
-
-    if args.device:
-        keep_mask = (meta_df["device"] == args.device).tolist()
-        specimens = [sp for sp, keep in zip(specimens, keep_mask) if keep]
-        meta_df = meta_df[keep_mask].reset_index(drop=True)
-        print(f"Filtré sur device={args.device} : {len(specimens)} spécimen(s) restants")
+    specimens, meta_df = apply_filters(specimens, meta_df, args.exclude_ids, args.device)
 
     # Suffixe unique par run (niveau + appareil), pour que deux runs successifs
     # (espece vs caste, ou --device S1 vs S2) n'écrasent pas leurs résultats.
     tag = args.level + (f"_{args.device}" if args.device else "")
     out_dir = Path(f"../out/{tag}")
-
     out_dir.mkdir(exist_ok=True, parents=True)
-    
+
     scores, gpa_result, pca = run_gpa_pca(specimens)
     n_components = scores.shape[1]
 

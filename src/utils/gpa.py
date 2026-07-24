@@ -1,15 +1,18 @@
-"""Generalized Procrustes Analysis (2D, sans réflexion).
+"""gpa.py
+Generalized Procrustes Analysis (2D, sans réflexion).
 
 Reproduit geomorph::gpagen() : similarité uniquement (translation +
 échelle isotrope + rotation). La réflexion est explicitement interdite
-via det(R)=+1 dans la rotation de Kabsch -- sans ça, la moitié des
-spécimens s'alignent silencieusement en miroir.
+via det(R)=+1 (voir utils.alignment.kabsch_umeyama) -- sans ça, la moitié
+des spécimens s'alignent silencieusement en miroir.
 """
 from __future__ import annotations
 
 from dataclasses import dataclass
 
 import numpy as np
+
+from utils.alignment import kabsch_umeyama
 
 
 def centroid_size(coords: np.ndarray) -> float:
@@ -23,14 +26,6 @@ def _center_and_scale(coords: np.ndarray) -> np.ndarray:
     if cs == 0:
         raise ValueError("Spécimen dégénéré : landmarks confondus (centroid size = 0)")
     return centered / cs
-
-
-def _kabsch_rotation(source: np.ndarray, target: np.ndarray) -> np.ndarray:
-    """Rotation 2x2 optimale (sans réflexion) alignant `source` sur `target` (déjà centrés)."""
-    H = source.T @ target
-    U, _, Vt = np.linalg.svd(H)
-    d = np.sign(np.linalg.det(Vt.T @ U.T)) or 1.0
-    return Vt.T @ np.diag([1.0, d]) @ U.T
 
 
 @dataclass
@@ -60,7 +55,9 @@ def gpagen(landmarks: list[np.ndarray], max_iter: int = 100, tol: float = 1e-8) 
     n_iterations = 0
     for n_iterations in range(1, max_iter + 1):
         for i in range(n_specimens):
-            R = _kabsch_rotation(standardized[i], reference)
+            # scale=1 : les formes sont déjà normalisées à centroid size 1
+            # par _center_and_scale, seule la rotation reste à optimiser.
+            R, _ = kabsch_umeyama(standardized[i], reference, estimate_scale=False)
             aligned[i] = standardized[i] @ R.T
 
         new_mean = aligned.mean(axis=0)
@@ -95,7 +92,7 @@ def align_to_reference(coords: np.ndarray, reference: np.ndarray) -> np.ndarray:
             "nouveau TPS correspond bien à celui utilisé pour entraîner le modèle)."
         )
     standardized = _center_and_scale(coords)
-    R = _kabsch_rotation(standardized, reference)
+    R, _ = kabsch_umeyama(standardized, reference, estimate_scale=False)
     return standardized @ R.T
 
 

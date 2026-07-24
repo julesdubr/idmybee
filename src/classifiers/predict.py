@@ -1,4 +1,5 @@
-"""Classification de nouveaux spécimens (.tps seul, sans CSV de métadonnées
+"""predict.py
+Classification de nouveaux spécimens (.tps seul, sans CSV de métadonnées
 biologiques) à partir d'un modèle GPA -> PCA -> LDA entraîné par lda.py.
 
 Le TPS d'entrée doit avoir le même nombre de landmarks, dans le même ordre /
@@ -17,23 +18,34 @@ de référence du modèle (`procrustes_distance`) : une valeur très supérieure
 pour la même idée appliquée à l'entraînement) signale une forme atypique,
 un problème de landmarks, ou un spécimen hors distribution.
 
+Note : predict_specimens() fait un *transform* (projection d'un spécimen sur
+un modèle déjà figé) -- ce n'est pas le même calcul que run_gpa_pca() dans
+lda.py, qui *fit* un consensus GPA et un PCA sur tout un jeu d'entraînement.
+Les deux restent volontairement séparés ; seul le chargement du TPS est
+partagé (voir utils/dataset.py).
+
 Usage:
-    python lda.py data/annotations/gabriel_reordered.tps data/annotations/gabriel.csv \\
+    python classifiers/lda.py data/annotations/gabriel_reordered.tps data/annotations/gabriel.csv \\
         --level espece --save-model out/model_espece.joblib
-    python predict.py out/model_espece.joblib data/annotations/nouveaux.tps \\
+    python classifiers/predict.py out/model_espece.joblib data/annotations/nouveaux.tps \\
         --out out/predictions.csv
 """
 from __future__ import annotations
 
 import argparse
+import logging
+import sys
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
+_THIS_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(_THIS_DIR.parent))
+from utils.dataset import load_unlabeled_tps
 from utils.gpa import align_to_reference, procrustes_distance, two_d_array
 from utils.model_io import TrainedModel, load_model
-from utils.tps_io import Specimen, parse_tps
+from utils.tps_io import Specimen
 
 
 def predict_specimens(model: TrainedModel, specimens: list[Specimen]) -> pd.DataFrame:
@@ -96,6 +108,8 @@ def predict_specimens(model: TrainedModel, specimens: list[Specimen]) -> pd.Data
 
 
 def main() -> None:
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+
     parser = argparse.ArgumentParser(
         description="Classifie de nouveaux spécimens (.tps seul) avec un modèle entraîné par lda.py --save-model"
     )
@@ -116,9 +130,7 @@ def main() -> None:
         f"{' (device=' + model.device + ')' if model.device else ''} depuis {model.source_tps}"
     )
 
-    specimens, errors = parse_tps(args.tps_path, strict=not args.non_strict)
-    if errors:
-        print(f"{len(errors)} erreur(s) de parsing TPS (voir logs ci-dessus)")
+    specimens = load_unlabeled_tps(args.tps_path, strict=not args.non_strict)
 
     df = predict_specimens(model, specimens)
 

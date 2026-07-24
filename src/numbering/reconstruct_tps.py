@@ -1,75 +1,127 @@
-"""Renumérote les landmarks non-ordonnés de Gabriel (UNet) pour matcher la
-numérotation de Tancrède, via alignement rigide + assignation hongroise
-(utils.register). Le TPS produit est directement utilisable par lda.py.
+"""reconstruct_tps.py
+Renumérote les landmarks non-ordonnés d'un détecteur (ex: UNet de Gabriel, 18
+points) pour matcher la numérotation de référence (ex: Tancrède, 19 points),
+via une méthode de numérotation respectant le contrat numbering.base.
 
-Gabriel ne produit que 18 landmarks (Tancrède en a 19) ; --drop indique
-le landmark Tancrède sans équivalent (confirmé : LM3).
+Écrit systématiquement :
+- le TPS renuméroté (TOUS les spécimens, aucun exclu silencieusement -- même
+  principe que le reste du pipeline : ne jamais perdre une image sans trace).
+- <output>_status.csv : un statut d'alignement par spécimen (OK/SUSPECT/
+  FAILED) + le motif explicite. Le filtrage (ex: --exclude-ids de lda.py)
+  reste une décision de l'étape suivante, pas de celle-ci.
 
 Usage:
-    python reconstruct_tps.py data/annotations/tancrede.tps data/annotations/gabriel.tps \
-        data/annotations/gabriel_reordered.tps --drop 3 --cost-log out/gabriel_costs.csv
+    python -m numbering.reconstruct_tps data/annotations/tancrede.tps data/annotations/gabriel.tps \
+        data/annotations/gabriel_reordered.tps --drop 3
 """
+from __future__ import annotations
+
 import argparse
 import csv
+import sys
 from dataclasses import replace
 from pathlib import Path
 
 import numpy as np
 
+_THIS_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(_THIS_DIR.parent))
+from numbering.base import NumberingResult
+from numbering.hungarian_umeyama import numerate
 from utils.gpa import gpagen
-from numbering.hungarian_umeyama import register_unlabeled
 from utils.tps_io import parse_tps, write_tps
 
+OUTLIER_MAD_FACTOR = 5
 
-def build_reference(tancrede_path, expected_lm=19):
-    specimens, _ = parse_tps(tancrede_path, strict=False)
+
+def build_reference(ref_path: Path, expected_lm: int) -> np.ndarray:
+    specimens, _ = parse_tps(ref_path, strict=False)
     specimens = [s for s in specimens if s.n_points == expected_lm]
+    if not specimens:
+        raise ValueError(f"Aucun spécimen à {expected_lm} landmarks dans {ref_path}")
     return gpagen([s.landmarks for s in specimens]).mean_shape
 
 
-def main():
+def flag_population_outliers(results: list[NumberingResult]) -> None:
+    """Fait passer OK -> SUSPECT (en place) pour les coûts anormalement
+    élevés (médiane + 5*MAD), parmi les spécimens déjà OK uniquement
+    (un FAILED reste FAILED, ce n'est pas une question de seuil)."""
+    ok_costs = np.array([r.score for r in results if r.status == "OK"])
+    if len(ok_costs) < 2:
+        return
+    med = float(np.median(ok_costs))
+    mad = float(np.median(np.abs(ok_costs - med)))
+    thresh = med + OUTLIER_MAD_FACTOR * mad
+    for r in results:
+        if r.status == "OK" and r.score > thresh:
+            r.status = "SUSPECT"
+            r.reason = f"coût registration {r.score:.5f} > seuil population {thresh:.5f}"
+
+
+def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("tancrede_path")
-    ap.add_argument("gabriel_path")
-    ap.add_argument("output_path")
-    ap.add_argument("--drop", type=int, default=3, help="Landmark Tancrède sans équivalent Gabriel")
-    ap.add_argument("--cost-log", type=Path, default=None, help="CSV optionnel: coût de registration par spécimen")
+    ap.add_argument("reference_path", type=Path, help="TPS de référence, numérotation cible (ex: tancrede.tps)")
+    ap.add_argument("input_path", type=Path, help="TPS à renuméroter, landmarks non-ordonnés (ex: gabriel.tps)")
+    ap.add_argument("output_path", type=Path, help="TPS de sortie, dans l'ordre de reference_path")
+    ap.add_argument("--drop", type=int, default=None,
+                     help="Landmark(s) de reference_path sans équivalent dans input_path (ex: 3)")
+    ap.add_argument("--ref-landmarks", type=int, default=None,
+                     help="Nombre de landmarks attendu dans reference_path (défaut: le plus fréquent trouvé)")
+    ap.add_argument("--log", type=Path, default=None,
+                     help="CSV de statut par spécimen (défaut: <output_path stem>_status.csv)")
     args = ap.parse_args()
 
-    consensus = build_reference(args.tancrede_path)
-    zones = np.delete(consensus, args.drop, axis=0)
-    zone_orig_idx = [i for i in range(len(consensus)) if i != args.drop]
+    ref_specimens, _ = parse_tps(args.reference_path, strict=False)
+    if args.ref_landmarks is not None:
+        expected_ref_lm = args.ref_landmarks
+    else:
+        counts = np.bincount([s.n_points for s in ref_specimens])
+        expected_ref_lm = int(np.argmax(counts))
+    consensus = build_reference(args.reference_path, expected_ref_lm)
 
-    gab, errors = parse_tps(args.gabriel_path, strict=False)
-    gab = [s for s in gab if s.n_points == len(zones)]
-    print(f"{len(gab)} spécimens valides ({len(errors)} erreur(s) de parsing ignorée(s))")
+    if args.drop is not None:
+        zones = np.delete(consensus, args.drop, axis=0)
+        zone_orig_idx = [i for i in range(len(consensus)) if i != args.drop]
+    else:
+        zones = consensus
+        zone_orig_idx = list(range(len(consensus)))
 
-    out_specimens, cost_rows = [], []
-    for s in gab:
-        assign, cost, _ = register_unlabeled(s.landmarks, zones)
-        inv = np.empty(len(zones), dtype=int)
-        inv[assign] = np.arange(len(assign))  # slot j (zone j) <- point assigné à j
-        out_specimens.append(replace(s, landmarks=s.landmarks[inv]))
-        cost_rows.append((s.sid, s.image_path, cost))
+    inputs, parse_errors = parse_tps(args.input_path, strict=False)
+    if parse_errors:
+        print(f"{len(parse_errors)} erreur(s) de parsing TPS ignorée(s) dans {args.input_path}")
+
+    out_specimens = []
+    results: list[NumberingResult] = []
+    specimen_refs = []  # (sid, image_path) parallèle à results, pour le log
+    for sp in inputs:
+        if sp.n_points != len(zones):
+            result = NumberingResult(
+                numbered=sp.landmarks, status="FAILED", score=float("inf"),
+                reason=f"{sp.n_points} landmarks, {len(zones)} attendus",
+            )
+        else:
+            result = numerate(sp.landmarks, zones)
+        results.append(result)
+        specimen_refs.append((sp.sid, sp.image_path))
+        out_specimens.append(replace(sp, landmarks=result.numbered))
+
+    flag_population_outliers(results)
 
     write_tps(args.output_path, out_specimens)
-    print(f"Écrit {len(out_specimens)} spécimens -> {args.output_path}")
-    print(f"Ordre landmarks = Tancrède {zone_orig_idx} (LM{args.drop} exclu)")
+    print(f"Écrit {len(out_specimens)} spécimen(s) -> {args.output_path}")
+    print(f"Ordre landmarks = référence {zone_orig_idx}" + (f" (LM{args.drop} exclu)" if args.drop is not None else ""))
 
-    costs = np.array([c for _, _, c in cost_rows])
-    med, mad = np.median(costs), np.median(np.abs(costs - np.median(costs)))
-    thresh = med + 5 * mad
-    n_flagged = int((costs > thresh).sum())
-    print(f"Coût registration: médiane={med:.5f}, {n_flagged} spécimen(s) > {thresh:.5f} (à vérifier)")
+    n_by_status = {s: sum(r.status == s for r in results) for s in ("OK", "SUSPECT", "FAILED")}
+    print(f"Statuts : {n_by_status}")
 
-    if args.cost_log:
-        args.cost_log.parent.mkdir(parents=True, exist_ok=True)
-        with open(args.cost_log, "w", newline="") as f:
-            w = csv.writer(f)
-            w.writerow(["id", "image", "cost", "flagged"])
-            for sid, image, cost in cost_rows:
-                w.writerow([sid, image, cost, cost > thresh])
-        print(f"Log -> {args.cost_log}")
+    log_path = args.log or args.output_path.with_name(args.output_path.stem + "_status.csv")
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(log_path, "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["id", "image", "status", "score", "reason"])
+        for (sid, image), r in zip(specimen_refs, results):
+            w.writerow([sid, image, r.status, r.score, r.reason])
+    print(f"Statuts détaillés -> {log_path}")
 
 
 if __name__ == "__main__":

@@ -1,4 +1,5 @@
-"""Rapport de résultats pour lda.py : tableaux par groupe/appareil, matrice
+"""reporting.py
+Rapport de résultats pour lda.py : tableaux par groupe/appareil, matrice
 de confusion (texte + heatmap), affichage terminal et écriture des CSV.
 
 Toute la présentation vit ici pour que lda.py reste concentré sur le calcul
