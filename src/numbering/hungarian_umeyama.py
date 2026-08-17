@@ -64,6 +64,7 @@ def numerate(
     n_iter: int = 15,
     angle_inits: tuple[float, ...] = (0, 90, 180, 270),
     mirror_options: tuple[bool, ...] = (False, True),
+    ambiguity_ratio: float = 1.3,
 ) -> NumberingResult:
     """Implémente le contrat numbering.base : renumérote `landmarks` (k, 2)
     selon l'ordre de `reference` (n_zones, 2).
@@ -72,6 +73,16 @@ def numerate(
     détectés = nombre attendu) ; le cas k != n_zones (points en trop/en
     moins) reste un FAILED explicite plutôt qu'une assignation rectangulaire
     non testée -- à traiter séparément si le détecteur en a besoin un jour.
+
+    Ambiguïté d'orientation : le meilleur coût sur les 8 départs (4 rotations
+    x 2 miroirs) n'est fiable que s'il se détache clairement des autres --
+    sinon un mauvais départ (typiquement à 90° ou 180° du bon) peut atteindre
+    un coût presque aussi bas que le bon, et être choisi par pur hasard
+    numérique alors que la correspondance landmark-par-landmark est fausse.
+    Si le deuxième meilleur coût est à moins de `ambiguity_ratio` fois le
+    meilleur, le résultat est marqué SUSPECT plutôt qu'accepté tel quel --
+    à ajuster empiriquement (voir la distribution réelle des ratios
+    meilleur/deuxième meilleur avant de resserrer ou desserrer ce seuil).
     """
     if landmarks.shape[0] != reference.shape[0]:
         return NumberingResult(
@@ -85,19 +96,30 @@ def numerate(
         )
 
     pts0 = landmarks - landmarks.mean(axis=0)
-    best = None
+    candidates = []  # (assign, cost) pour CHACUN des 8 départs, pas juste le meilleur
     for angle in angle_inits:
         th = np.deg2rad(angle)
         rot0 = np.array([[np.cos(th), -np.sin(th)], [np.sin(th), np.cos(th)]])
         for mirror in mirror_options:
             mir = np.array([[-1, 0], [0, 1]]) if mirror else np.eye(2)
             cur_init = pts0 @ (rot0 @ mir).T
-            assign, cost, transform = _register_from_start(pts0, cur_init, zones=reference, n_iter=n_iter)
-            if best is None or cost < best[1]:
-                best = (assign, cost, transform)
+            assign, cost, _ = _register_from_start(pts0, cur_init, zones=reference, n_iter=n_iter)
+            candidates.append((assign, cost))
 
-    assign, cost, _ = best
+    candidates.sort(key=lambda c: c[1])
+    best_assign, best_cost = candidates[0]
+    second_best_cost = candidates[1][1] if len(candidates) > 1 else float("inf")
+
     inv = np.empty(len(reference), dtype=int)
-    inv[assign] = np.arange(len(assign))  # slot j (zone j) <- point assigné à j
+    inv[best_assign] = np.arange(len(best_assign))  # slot j (zone j) <- point assigné à j
     numbered = landmarks[inv]
-    return NumberingResult(numbered=numbered, status="OK", score=cost)
+
+    if best_cost > 0 and second_best_cost < ambiguity_ratio * best_cost:
+        return NumberingResult(
+            numbered=numbered, status="SUSPECT", score=best_cost,
+            reason=(
+                f"orientation ambiguë : 2e meilleur départ à {second_best_cost:.5f}, "
+                f"proche du meilleur ({best_cost:.5f}, ratio {second_best_cost / best_cost:.2f})"
+            ),
+        )
+    return NumberingResult(numbered=numbered, status="OK", score=best_cost)

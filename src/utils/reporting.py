@@ -4,7 +4,10 @@ de confusion (texte + heatmap), affichage terminal et écriture des CSV.
 
 Toute la présentation vit ici pour que lda.py reste concentré sur le calcul
 (GPA -> PCA -> LDA) ; ce module ne fait que résumer/afficher/dessiner des
-résultats déjà calculés.
+résultats déjà calculés. group_summary_table/device_summary_table prennent
+`groupe` (la Series réellement utilisée pour classer -- espèce seule ou
+espèce_caste composé) directement en paramètre plutôt que de la redériver
+de meta_df[level], pour rester corrects quel que soit le --level demandé.
 """
 from __future__ import annotations
 
@@ -40,10 +43,10 @@ def confusion_matrix_df(truth: pd.Series, predicted: np.ndarray) -> pd.DataFrame
     return pd.DataFrame(cm, index=labels, columns=labels)
 
 
-def group_summary_table(level: str, meta_df: pd.DataFrame, gpa_result, predicted: np.ndarray) -> pd.DataFrame:
-    """Par valeur du niveau classé (espece ou caste) : n, precision/recall/f1
-    (LOOCV) et variance de forme intra-groupe."""
-    groupe = meta_df[level]
+def group_summary_table(level: str, groupe: pd.Series, gpa_result, predicted: np.ndarray) -> pd.DataFrame:
+    """Par valeur de `groupe` : n, precision/recall/f1 (LOOCV) et variance de
+    forme intra-groupe. `level` ne sert qu'à nommer l'index du tableau
+    (ex: "caste" alors que `groupe` contient déjà les labels espèce_caste)."""
     labels = sorted(groupe.unique())
 
     report = classification_report(groupe, predicted, labels=labels, output_dict=True, zero_division=0)
@@ -64,14 +67,13 @@ def group_summary_table(level: str, meta_df: pd.DataFrame, gpa_result, predicted
     return table
 
 
-def device_summary_table(meta_df: pd.DataFrame, level: str, predicted: np.ndarray, gpa_result) -> pd.DataFrame | None:
-    """Par appareil : n, accuracy LOOCV (au niveau classé) et variance de
-    forme intra-appareil. None si un seul appareil (filtré via --device :
-    la ventilation par appareil serait triviale)."""
+def device_summary_table(meta_df: pd.DataFrame, groupe: pd.Series, predicted: np.ndarray, gpa_result) -> pd.DataFrame | None:
+    """Par appareil : n, accuracy LOOCV (sur `groupe`) et variance de forme
+    intra-appareil. None si 'device' absent du CSV chargé, ou un seul
+    appareil présent (la ventilation serait triviale)."""
     if "device" not in meta_df.columns or meta_df["device"].nunique() <= 1:
         return None
 
-    groupe = meta_df[level]
     device = meta_df["device"]
     wrong = np.asarray(predicted) != groupe.values
     variance = shape_variance_by_group(gpa_result.aligned, device)
@@ -161,9 +163,9 @@ def write_summary_csv(out_dir: Path, level: str, tag: str, group_table: pd.DataF
     """Écrit les CSV de résumé : un fichier par type de tableau (schémas de
     colonnes différents -- éviter de les mélanger dans un seul CSV).
 
-    `tag` (ex: "espece_S1") suffixe les noms de fichiers pour que deux runs
+    `tag` (ex: "caste_S1") suffixe les noms de fichiers pour que deux runs
     successifs (niveau ou appareil différent) n'écrasent pas leurs résultats ;
-    `level` (ex: "espece") sert uniquement à l'affichage.
+    `level` (ex: "caste") sert uniquement à l'affichage.
     """
     out_dir.mkdir(exist_ok=True, parents=True)
 

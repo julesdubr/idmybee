@@ -10,7 +10,8 @@ Sorties :
   - `<manifest_dir>/landmarks.csv` : une ligne par image traitée (statut,
     raison d'échec, nombre de landmarks trouvés, modèle utilisé).
   - `--tps_out` : les coordonnées, via `utils.tps_io` (format standard du
-    domaine, compatible avec le script R d'Adrien et avec register.py).
+    domaine, compatible avec le script R d'Adrien et avec le reste du
+    pipeline Python).
 
 Par rapport au notebook d'origine, deux corrections de fond :
 
@@ -26,14 +27,16 @@ Par rapport au notebook d'origine, deux corrections de fond :
      landmarks que prévu est explicitement marqué SUSPECT avec la raison,
      jamais juste écrit tel quel sans avertissement.
 
-`utils.tps_io.Specimen.sid` doit être un entier, et `write_tps` réécrit le
-fichier entier (pas d'append). `image_id` (le hash de contenu de la Phase 0)
-n'est donc pas directement utilisable comme `sid` -- et `specimen_id` ne
-convient pas non plus : un même specimen a souvent plusieurs photos (donc
-plusieurs lignes de crops.csv), qui doivent rester des entrées TPS
-distinctes. On utilise `sid = int(image_id, 16)` : unique par image,
-déterministe, et réversible (`hex(sid)[2:]` redonne `image_id`) -- la
-correspondance specimen_id/dataset reste de toute façon dans landmarks.csv.
+`utils.tps_io.ImageLandmarks.tps_id` doit être un entier, et `write_tps`
+réécrit le fichier entier (pas d'append). `image_id` (le hash de contenu de
+la Phase 0) n'est donc pas directement utilisable comme `tps_id` -- et
+`specimen_id` ne convient pas non plus : un même specimen a souvent
+plusieurs photos (donc plusieurs lignes de crops.csv), qui doivent rester
+des entrées TPS distinctes. `ImageLandmarks.from_image()` calcule
+`tps_id = image_id_to_sid(image_id)` (unique par image, déterministe) ET
+persiste image_id/specimen_id dans un COMMENT= du TPS : les étapes
+suivantes (lda.py, flag_outlier_specimens.py) n'ont alors plus besoin de
+rejoindre images.csv pour retrouver le specimen_id de chaque entrée.
 
 Comme write_tps réécrit tout, ce script fonctionne par "checkpoint" : au
 démarrage, le TPS existant est reparsé (`parse_tps`, erreurs de blocs
@@ -68,18 +71,12 @@ from skimage.morphology import local_maxima
 _THIS_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(_THIS_DIR.parent))
 from manifest import io as manifest_io
-from utils.tps_io import Specimen, parse_tps, write_tps
+from utils.tps_io import ImageLandmarks, image_id_to_sid, parse_tps, write_tps
 
 LANDMARKS_FIELDS = [
     "image_id", "specimen_id", "dataset", "status", "error_reason",
     "n_landmarks_found", "model_name", "processed_at",
 ]
-
-
-def sid_for(image_id: str) -> int:
-    """tps_io.Specimen.sid doit être un entier -- image_id (hash hex, Phase 0)
-    s'y convertit directement sans collision ni perte d'info."""
-    return int(image_id, 16)
 
 
 # ---------------------------------------------------------------------------
@@ -121,7 +118,7 @@ def extract_top_landmarks(heatmap: np.ndarray, n_landmarks: int):
 
 def predict_landmarks_for_crop(crop_path: Path, model, device, n_landmarks: int):
     """Retourne (status, error_reason, coords_xy_ou_None, n_trouvés).
-    coords_xy est déjà en ordre (x, y), prêt pour tps_io.Specimen."""
+    coords_xy est déjà en ordre (x, y), prêt pour tps_io.ImageLandmarks."""
     img = cv2.imread(str(crop_path))
     if img is None or img.size == 0:
         return "FAILED", "crop_illisible", None, 0
@@ -180,7 +177,7 @@ def resolve_crop_path(row: dict, base_dir: Path) -> Path:
 # ---------------------------------------------------------------------------
 
 def load_working_tps(tps_path: Path) -> dict:
-    """Reparse le TPS existant (s'il y en a un) en dict {sid: Specimen}.
+    """Reparse le TPS existant (s'il y en a un) en dict {tps_id: ImageLandmarks}.
     Les blocs malformés sont explicitement signalés (jamais avalés en
     silence), le reste est repris tel quel."""
     if not tps_path.exists():
@@ -192,12 +189,12 @@ def load_working_tps(tps_path: Path) -> dict:
             print(f"  spécimen #{e.specimen_index}, ligne {e.line_no} : {e.message}")
         if len(errors) > 10:
             print(f"  ... et {len(errors) - 10} de plus.")
-    return {sp.sid: sp for sp in specimens}
+    return {sp.tps_id: sp for sp in specimens}
 
 
 def checkpoint(tps_path: Path, working_tps: dict, landmarks_path: Path, landmarks_status: dict):
     tps_path.parent.mkdir(parents=True, exist_ok=True)
-    write_tps(tps_path, sorted(working_tps.values(), key=lambda s: s.sid))
+    write_tps(tps_path, sorted(working_tps.values(), key=lambda s: s.tps_id))
 
     landmarks_path.parent.mkdir(parents=True, exist_ok=True)
     with open(landmarks_path, "w", newline="", encoding="utf-8") as f:
@@ -258,7 +255,7 @@ def main():
 
     for row in targets:
         image_id = row["image_id"]
-        sid = sid_for(image_id)
+        tps_id = image_id_to_sid(image_id)
 
         if manifest_io.should_skip(landmarks_status.get(image_id), args.overwrite, args.retry_failed):
             counts["SKIPPED"] += 1
@@ -274,12 +271,15 @@ def main():
             status, error_reason, coords_xy, n_found = "FAILED", f"exception: {e}", None, 0
 
         if coords_xy is not None:
-            working_tps[sid] = Specimen(n_points=len(coords_xy), landmarks=coords_xy, image_path=str(crop_path), sid=sid)
-        elif sid in working_tps:
+            working_tps[tps_id] = ImageLandmarks.from_image(
+                n_points=len(coords_xy), landmarks=coords_xy, image_path=str(crop_path),
+                image_id=image_id, specimen_id=row.get("specimen_id"),
+            )
+        elif tps_id in working_tps:
             # succès lors d'un run précédent, échec cette fois (--overwrite) :
             # on retire l'entrée périmée plutôt que de laisser un TPS qui ne
             # correspond plus au statut logué.
-            del working_tps[sid]
+            del working_tps[tps_id]
 
         landmarks_status[image_id] = dict(
             image_id=image_id, specimen_id=row.get("specimen_id"), dataset=row.get("dataset"),

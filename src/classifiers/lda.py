@@ -1,6 +1,16 @@
 """lda.py
-Transcription Python du pipeline R : GPA -> PCA -> LDA (LOOCV)."""
+GPA -> PCA -> LDA (LOOCV), à partir d'un TPS de landmarks et de
+data/manifest/specimens.csv (specimen_id, species, caste).
 
+--level species -> discrimine par espèce.
+--level caste   -> discrimine par (species, caste) : la caste seule
+mélangerait des espèces différentes sous un même label "worker"/"queen"/
+"male", donc le vrai groupe utilisé est "species_caste" (voir utils.dataset
+.target_groupe).
+
+Usage:
+    python classifiers/lda.py data/annotations/tancrede.tps data/manifest/specimens.csv --level species
+"""
 from __future__ import annotations
 
 import argparse
@@ -16,10 +26,10 @@ from sklearn.model_selection import LeaveOneOut, cross_val_predict
 
 _THIS_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(_THIS_DIR.parent))
-from utils.dataset import load_labeled_dataset, apply_filters
+from utils.dataset import load_labeled_dataset, apply_filters, target_groupe
 from utils.gpa import gpagen, two_d_array
 from utils.model_io import TrainedModel, save_model
-from utils.tps_io import Specimen
+from utils.tps_io import ImageLandmarks
 from utils import reporting
 
 import matplotlib.pyplot as plt
@@ -27,16 +37,18 @@ import matplotlib.pyplot as plt
 logger = logging.getLogger(__name__)
 
 
-def run_gpa_pca(specimens: list[Specimen]):
-    """GPA puis PCA, retourne (pca_scores, gpa_result, pca_model)."""
-    n_points = specimens[0].n_points
-    for sp in specimens:
-        if sp.n_points != n_points:
-            raise ValueError(
-                f"Landmark count incohérent : spécimen sid={sp.sid} a {sp.n_points} points, "
-                f"attendu {n_points}. Tous les spécimens doivent partager le même schéma de landmarks."
-            )
+def run_gpa_pca(specimens: list[ImageLandmarks]):
+    """GPA puis PCA, retourne (pca_scores, gpa_result, pca_model).
 
+    Suppose un nombre de landmarks homogène -- déjà garanti par
+    utils.dataset.load_labeled_dataset, qui écarte automatiquement les
+    schémas incohérents avant que les données n'arrivent ici."""
+    if not specimens:
+        raise ValueError(
+            "Aucun spécimen à traiter (liste vide après chargement/filtrage) -- vérifier "
+            "--exclude-ids/--device, ou que le TPS contient des landmarks valides."
+        )
+    n_points = specimens[0].n_points
     gpa_result = gpagen([sp.landmarks for sp in specimens])
     X = two_d_array(gpa_result.aligned)  # (n_specimens, 2*n_points)
 
@@ -102,7 +114,7 @@ def plot_gpa_alignment(gpa_result, groupe: pd.Series, out_path: Path,
         ax1.set_xlabel("Coordonnée X")
         ax1.set_ylabel("Coordonnée Y")
         ax1.set_title(f"{title} (all)")
-        ax1.legend(title="Espèce", loc="best", fontsize="small")
+        ax1.legend(title="Groupe", loc="best", fontsize="small")
         ax1.set_aspect("equal", adjustable="box")
 
         centroids = specimens_coords.mean(axis=0)
@@ -110,7 +122,7 @@ def plot_gpa_alignment(gpa_result, groupe: pd.Series, out_path: Path,
         ax2.set_xlabel("Coordonnée X")
         ax2.set_ylabel("Coordonnée Y")
         ax2.set_title(f"{title} (centroids)")
-        ax2.legend(title="Espèce", loc="best", fontsize="small")
+        ax2.legend(title="Groupe", loc="best", fontsize="small")
         ax2.set_aspect("equal", adjustable="box")
 
     plt.tight_layout()
@@ -144,7 +156,7 @@ def plot_lda(lda_scores: np.ndarray, groupe: pd.Series, out_path: Path,
     plt.xlabel("LDA 1")
     plt.ylabel("LDA 2" if lda_scores.shape[1] > 1 else "Constante")
     plt.title(title)
-    plt.legend(title="Espèce", loc="best", fontsize="small")
+    plt.legend(title="Groupe", loc="best", fontsize="small")
     plt.tight_layout()
     plt.savefig(out_path, dpi=300)
     plt.close()
@@ -156,45 +168,64 @@ def main() -> None:
     Path("out").mkdir(exist_ok=True)
 
     parser = argparse.ArgumentParser(description="GPA -> PCA -> LDA (LOOCV) sur landmarks de bourdons")
-    parser.add_argument("tps_path", type=Path, help="Fichier .tps de référence (ex: Nest2_mappedDig2.tps)")
-    parser.add_argument("csv_path", type=Path, help="CSV associé (id, image, espece, caste, device)")
-    parser.add_argument("--level", type=str, default="espece")
+    parser.add_argument("tps_path", type=Path, help="Fichier .tps de landmarks (ex: tancrede.tps)")
+    parser.add_argument("csv_path", type=Path, help="data/manifest/specimens.csv (specimen_id, species, caste, ...)")
+    parser.add_argument("--images-csv", type=Path, default=None,
+                         help="data/manifest/images.csv (image_id, specimen_id, device_type, ...). "
+                              "Nécessaire seulement si le TPS n'a pas de COMMENT=specimen_id (TPS "
+                              "écrit avant la mise à jour de predict_unet.py) ; sinon inutile.")
+    parser.add_argument("--level", type=str, default="species", choices=["species", "caste"],
+                         help="'species' : discrimination par espèce. 'caste' : discrimination par "
+                              "(espèce, caste) -- voir utils.dataset.target_groupe.")
     parser.add_argument("--non-strict", action="store_true", help="Tolérer les blocs TPS malformés")
-    parser.add_argument("--exclude-ids", type=Path, default=None,
-                         help="CSV avec colonne 'id' (et 'heavy' optionnelle) des spécimens à exclure, "
-                              "ex: out/outlier_specimens.csv produit par tools/flag_outlier_specimens.py")
+    parser.add_argument("--exclude-ids", type=Path, nargs="+", default=None,
+                         help="Un ou plusieurs CSV avec colonnes 'tps_id'+'status' des spécimens à "
+                              "exclure (SUSPECT/FAILED) -- ex: data/manifest/landmarks_numbered.csv, "
+                              "out/outlier_specimens.csv, ou les deux à la fois.")
     parser.add_argument("--device", type=str, default=None,
-                         help="Ne garder que les spécimens de cet appareil (ex: S1). "
-                              "Omis = analyse complète (tous appareils, résumé inclut les scores par appareil).")
+                         help="Ne garder que les spécimens de cet appareil (ex: S1). Nécessite un CSV "
+                              "déjà joint à images.csv (specimens.csv seul n'a pas cette colonne).")
+    parser.add_argument("--exclude-species", type=str, nargs="+", default=None,
+                         help="Exclut entièrement une ou plusieurs espèces (ex: --exclude-species "
+                              "rupestris ruderarius) -- utile le temps d'investiguer un problème de "
+                              "numérotation propre à une espèce, sans construire de CSV --exclude-ids.")
     parser.add_argument("--save-model", type=Path, default=None,
                          help="Chemin où sauvegarder le modèle entraîné (GPA+PCA+LDA), "
-                              "ex: out/model_espece_S1.joblib. Utilisable ensuite par predict.py "
+                              "ex: out/model_species.joblib. Utilisable ensuite par predict.py "
                               "pour classer de nouveaux spécimens sans données biologiques (.tps seul).")
+    parser.add_argument("--out-dir", type=Path, default=Path("out"),
+                         help="Dossier de sortie racine (plots, modèle, résumés) -- défaut: out/, "
+                              "relatif au répertoire d'exécution.")
     args = parser.parse_args()
 
-    specimens, meta_df = load_labeled_dataset(args.tps_path, args.csv_path, strict=not args.non_strict)
-    specimens, meta_df = apply_filters(specimens, meta_df, args.exclude_ids, args.device)
+    specimens, meta_df = load_labeled_dataset(
+        args.tps_path, args.csv_path, images_csv=args.images_csv, strict=not args.non_strict
+    )
+    specimens, meta_df = apply_filters(
+        specimens, meta_df, args.exclude_ids, args.device, exclude_species=args.exclude_species
+    )
+    groupe = target_groupe(meta_df, args.level)
 
     # Suffixe unique par run (niveau + appareil), pour que deux runs successifs
-    # (espece vs caste, ou --device S1 vs S2) n'écrasent pas leurs résultats.
+    # (species vs caste, ou --device S1 vs S2) n'écrasent pas leurs résultats.
     tag = args.level + (f"_{args.device}" if args.device else "")
-    out_dir = Path(f"../out/{tag}")
+    out_dir = args.out_dir / tag
     out_dir.mkdir(exist_ok=True, parents=True)
 
     scores, gpa_result, pca = run_gpa_pca(specimens)
     n_components = scores.shape[1]
 
-    plot_gpa_alignment(gpa_result, meta_df[args.level], out_dir / f"gpa_alignment_{tag}.png",
+    plot_gpa_alignment(gpa_result, groupe, out_dir / f"gpa_alignment_{tag}.png",
                         title=f"Résultat de la GPA -- {tag}")
 
-    lda_final, lda_projection = fit_lda(scores, meta_df[args.level])
-    plot_lda(lda_projection, meta_df[args.level], out_dir / f"lda_projection_{tag}.png",
+    lda_final, lda_projection = fit_lda(scores, groupe)
+    plot_lda(lda_projection, groupe, out_dir / f"lda_projection_{tag}.png",
               title=f"Projection LDA des spécimens -- {tag}")
 
-    predicted, accuracy = loocv_lda(scores, meta_df[args.level])
-    cm_df = reporting.confusion_matrix_df(meta_df[args.level], predicted)
-    group_table = reporting.group_summary_table(args.level, meta_df, gpa_result, predicted)
-    device_table = reporting.device_summary_table(meta_df, args.level, predicted, gpa_result)
+    predicted, accuracy = loocv_lda(scores, groupe)
+    cm_df = reporting.confusion_matrix_df(groupe, predicted)
+    group_table = reporting.group_summary_table(args.level, groupe, gpa_result, predicted)
+    device_table = reporting.device_summary_table(meta_df, groupe, predicted, gpa_result)
 
     reporting.print_summary(out_dir, args.level, meta_df, gpa_result, pca, n_components,
                              accuracy, cm_df, group_table, device_table, args.device)
@@ -209,7 +240,7 @@ def main() -> None:
             pca=pca,
             lda=lda_final,
             level=args.level,
-            classes=sorted(meta_df[args.level].unique()),
+            classes=sorted(groupe.unique()),
             device=args.device,
             source_tps=str(args.tps_path),
             n_train=len(specimens),
