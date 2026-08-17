@@ -13,12 +13,11 @@
 set -euo pipefail
 
 # --- Configuration (à adapter) ------------------------------------------------
-ROOT_DIR=".."
-MANIFEST_DIR="$ROOT_DIR/data/manifest"
-MODEL_PATH="$ROOT_DIR/data/models/best_model/UNet_150_epoch_lr=0.001_seed=58_func=pow_param=30.pth"
-REFERENCE_TPS="$ROOT_DIR/data/annotations/tancrede.tps"        # TPS de référence (Tancrède, 19 landmarks)
-UNET_TPS="$ROOT_DIR/data/annotations/landmarks_unet.tps"       # sortie Phase 2 (non renuméré)
-NUMBERED_TPS="$ROOT_DIR/data/annotations/landmarks_numbered.tps"  # sortie Phase 3 (renuméré, prêt pour la GPA)
+MANIFEST_DIR="data/manifest"
+MODEL_PATH="data/models/best_model/UNet_150_epoch_lr=0.001_seed=58_func=pow_param=30.pth"
+REFERENCE_TPS="data/annotations/tancrede.tps"        # TPS de référence (Tancrède, 19 landmarks)
+UNET_TPS="data/annotations/landmarks_unet.tps"       # sortie Phase 2 (non renuméré)
+NUMBERED_TPS="data/annotations/landmarks_numbered.tps"  # sortie Phase 3 (renuméré, prêt pour la GPA)
 LEVEL="species"                                       # "species" ou "caste"
 DROP_LANDMARK=3                                       # LM3 de Tancrède, sans équivalent UNet
 
