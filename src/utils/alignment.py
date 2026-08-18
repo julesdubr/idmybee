@@ -53,12 +53,26 @@ def kabsch_umeyama(
     scale=1.0 sans le calculer. `estimate_scale=True` (cas registration :
     les landmarks bruts d'un détecteur ne sont pas à l'échelle du template)
     calcule l'échelle optimale au sens des moindres carrés.
+
+    BUG CORRIGÉ (voir session Phase 3 graph_matching) : `_kabsch_svd` calcule
+    `D` à partir de `H = source_c.T @ target_c`, PAS normalisé par n. Pour
+    que la formule d'échelle Umeyama (`scale = trace(D)/var_source`) soit
+    correcte, `D` doit provenir de la covariance croisée normalisée par n --
+    cohérent avec `var_source` ci-dessous, qui LUI est déjà divisé par
+    `len(source_c)`. Sans cette division, l'échelle calculée est surestimée
+    d'un facteur exactement égal à n (vérifié empiriquement : n=18 -> scale
+    ×18 trop grand, sur le cas trivial "vérité terrain de Tancrède contre
+    son propre consensus GPA leave-one-out", où l'assignation identité
+    devrait donner un coût quasi nul). La rotation R n'est PAS affectée
+    (direction de U/Vt, indépendante de l'échelle de H) -- donc la GPA
+    (estimate_scale=False, qui n'utilise jamais D) n'a jamais été impactée.
     """
     R, D, d = _kabsch_svd(source_c, target_c)
     if not estimate_scale:
         return R, 1.0
-    var_source = float((source_c**2).sum() / len(source_c))
+    n = len(source_c)
+    var_source = float((source_c**2).sum() / n)
     if var_source == 0:
         raise ValueError("Spécimen dégénéré : landmarks confondus (variance nulle)")
-    scale = (D[0] + d * D[1]) / var_source
+    scale = (D[0] + d * D[1]) / n / var_source
     return R, scale

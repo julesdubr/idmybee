@@ -6,14 +6,16 @@ Usage:
 """
 
 import argparse
-import sys
+from ast import arg
 from pathlib import Path
+import sys
 
 import cv2
 import matplotlib.pyplot as plt
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-from utils.tps_parser import parse_tps, resolve_image_path
+_THIS_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(_THIS_DIR.parent))
+from utils.tps_io import parse_tps
 
 
 def main():
@@ -24,15 +26,15 @@ def main():
     parser.add_argument("--out", default=None)
     args = parser.parse_args()
 
-    specimens = parse_tps(args.tps)
+    specimens, _ = parse_tps(args.tps)
     print(f"{len(specimens)} spécimens trouvés dans le fichier .tps")
 
     spec = specimens[args.sid]
-    img_path = Path.cwd().parent / spec.image_path
+    img_path = spec.image_path
 
     print(f"Image du specimen numero {args.sid} : {img_path}")
 
-    image = cv2.cvtColor(cv2.imread(str(img_path)), cv2.COLOR_BGR2RGB)
+    image = cv2.cvtColor(cv2.imread(img_path), cv2.COLOR_BGR2RGB)
     h, w = image.shape[:2]
 
     landmarks = spec.landmarks.copy()
@@ -43,7 +45,7 @@ def main():
     plt.imshow(image)
     plt.scatter(landmarks[:, 0], landmarks[:, 1], c="red", s=20)
     plt.title(
-        f"ID={spec.sid} — image {img_path.name} ({w}x{h})"
+        f"ID={spec.tps_id} — image {spec.specimen_id} ({w}x{h})"
     )
     plt.axis("off")
     plt.show()
