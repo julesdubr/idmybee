@@ -15,8 +15,8 @@ Usage typique :
     python build_manifest.py \
         --roots roots.json \
         --external-roots external_roots.json \
-        --species-csv data/xlsx/identification.csv \
-        --id-col num_inv --species-col espece --caste-col caste \
+        --species-csv data/csv/identification.csv \
+        --id-col num_inv --species-col species --caste-col caste \
         --out-dir data/manifest
 
 roots.json (organized/terrain/vrac locaux) et external_roots.json (disque
@@ -25,8 +25,8 @@ p.ex. si le disque n'est pas monte) suivent le meme format :
 
     [
       {"path": "data/images/wide/organized", "dataset": "organized", "collector_subfolder": false},
-      {"path": "data/images/wide/terrain",    "dataset": "terrain",    "collector_subfolder": true},
-      {"path": "data/images/wide/vrac",       "dataset": "vrac",       "collector_subfolder": false}
+      {"path": "data/images/wide/terrain",   "dataset": "terrain",   "collector_subfolder": true},
+      {"path": "data/images/wide/vrac",      "dataset": "vrac",      "collector_subfolder": false}
     ]
 
 collector_subfolder=true veut dire : le sous-dossier immediat sous `path`
@@ -322,6 +322,7 @@ def build_specimens_table(
         ident = identif.get(sid, {})
         species = ident.get(species_col) if species_col else None
         caste = ident.get(caste_col) if caste_col else None
+
         out.append(
             {
                 "specimen_id": sid,
@@ -359,14 +360,14 @@ def main():
     ap.add_argument("--external-roots", default=None, help="JSON des racines externes (disque externe), optionnel")
     ap.add_argument("--species-csv", default=None, help="CSV d'identification espece/caste par num_inv")
     ap.add_argument("--id-col", default="num_inv")
-    ap.add_argument("--species-col", default="espece")
+    ap.add_argument("--species-col", default="species")
     ap.add_argument("--caste-col", default="caste")
     ap.add_argument("--out-dir", default="data/manifest")
     ap.add_argument("--base-dir", default=".", help="racine pour resoudre les chemins relatifs de roots.json")
     args = ap.parse_args()
 
     base_dir = Path(args.base_dir)
-    roots = load_roots_config(args.roots) + load_roots_config(args.external_roots)
+    roots = load_roots_config(args.roots)
     if not roots:
         print("Aucune racine valide a scanner.", file=sys.stderr)
         sys.exit(1)

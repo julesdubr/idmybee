@@ -1,4 +1,4 @@
-id,name,espece,caste,device
+id,num_inv,species,caste,device
 0,OPIE_Lapi_030803b_P1,lapidarius,male,P1
 1,OPIE_Lapi_030803_P1,lapidarius,male,P1
 2,OPIE_Lapi_060803_P1,lapidarius,male,P1

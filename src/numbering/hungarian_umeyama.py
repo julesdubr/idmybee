@@ -8,7 +8,7 @@ Anciennement register.py. Renommé pour cohabiter avec d'autres méthodes
 que le rôle générique ; implémente le contrat numbering.base.
 
 La rotation+réflexion est déléguée à utils.alignment.kabsch_umeyama (le même
-cœur SVD que la GPA), pour ne plus réimplémenter cette algèbre séparément.
+coeur SVD que la GPA), pour ne plus réimplémenter cette algèbre séparément.
 """
 from __future__ import annotations
 

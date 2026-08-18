@@ -205,7 +205,9 @@ def process_image(raw_path: Path, out_path: Path, model, ref_embs, clip_model, c
 
     status = "SUSPECT" if (best["similarity"] < args.min_similarity or best["aspect"] < args.min_aspect_ok) else "OK"
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    cv2.imwrite(str(out_path), best["crop"])
+
+    best_gray = cv2.cvtColor(best["crop"], cv2.COLOR_BGR2GRAY)
+    cv2.imwrite(str(out_path), best_gray)
 
     x, y, w, h, theta = best["obb"]
     return dict(status=status, error_reason=None, x=round(x), y=round(y), w=round(w), h=round(h), theta=round(theta, 3),

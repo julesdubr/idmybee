@@ -44,11 +44,11 @@ CSV des données biologiques (espèces, caste) pour validation (tester hypothès
 
 
 
-## Analyse
+# 5. Analyse
 
 - ANOVA tous les points espèces / type appareil photo
 - intra-espece, inter-espece (variations biologiques)
-- inter-appareil (methodologique), les comparer
-- on espèce Vinteresp > Vintraesp > Vinterapp
+- inter-appareil (variance méthodologique), les comparer
+- on espère V_interesp > V_intraesp > V_interapp
 
-- pas 100 dû aux variation biologiques proches, pas problème de méthode
+- pas 100% dû aux variation biologiques proches, pas problème de méthode
