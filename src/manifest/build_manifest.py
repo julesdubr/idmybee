@@ -174,9 +174,7 @@ def parse_filename(stem: str, naming: str):
 
 
 def scan_root(root_cfg: dict, base_dir: Path) -> list[ImageRecord]:
-    root_path = Path(root_cfg["path"])
-    if not root_path.is_absolute():
-        root_path = base_dir / root_path
+    root_path = base_dir / Path(root_cfg["path"])
     dataset = root_cfg["dataset"]
     collector_subfolder = bool(root_cfg.get("collector_subfolder", False))
     naming = resolve_naming(root_cfg)
@@ -357,23 +355,22 @@ def write_csv(rows: list[dict], out_path: Path, fieldnames: Optional[list[str]] 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--roots", required=True, help="JSON des racines locales (organized/terrain/vrac)")
-    ap.add_argument("--external-roots", default=None, help="JSON des racines externes (disque externe), optionnel")
     ap.add_argument("--species-csv", default=None, help="CSV d'identification espece/caste par num_inv")
     ap.add_argument("--id-col", default="num_inv")
     ap.add_argument("--species-col", default="species")
     ap.add_argument("--caste-col", default="caste")
     ap.add_argument("--out-dir", default="data/manifest")
-    ap.add_argument("--base-dir", default=".", help="racine pour resoudre les chemins relatifs de roots.json")
     args = ap.parse_args()
 
-    base_dir = Path(args.base_dir)
     roots = load_roots_config(args.roots)
     if not roots:
         print("Aucune racine valide a scanner.", file=sys.stderr)
         sys.exit(1)
 
+    base_dir = Path(roots["base_roots"][sys.platform])
+
     all_records: list[ImageRecord] = []
-    for root_cfg in roots:
+    for root_cfg in roots["datasets"]:
         recs = scan_root(root_cfg, base_dir)
         print(f"  {root_cfg['path']:60s} [{root_cfg['dataset']:10s}] -> {len(recs)} images")
         all_records.extend(recs)
@@ -401,10 +398,11 @@ def main():
 
     n_unlabeled = sum(1 for r in specimens_rows if not r["is_labeled"])
     print("\n--- Resume ---")
-    print(f"images.csv       : {len(images_rows)} lignes")
-    print(f"unparsed.csv      : {len(unparsed_rows)} lignes (noms non reconnus -> a revoir a la main)")
-    print(f"duplicates.csv    : {len(duplicate_rows)} groupes de contenu identique")
-    print(f"specimens.csv     : {len(specimens_rows)} specimens ({n_unlabeled} sans espece -> pool de prediction)")
+    print(f"images.csv     : {len(images_rows)} lignes")
+    print(f"unparsed.csv   : {len(unparsed_rows)} lignes (noms non reconnus -> a revoir a la main)")
+    print(f"duplicates.csv : {len(duplicate_rows)} groupes de contenu identique")
+    print(f"specimens.csv  : {len(specimens_rows)} specimens ({n_unlabeled} sans espece -> pool de prediction)")
+    
     print(f"\nEcrit dans : {out_dir.resolve()}")
 
 

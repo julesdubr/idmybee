@@ -572,7 +572,7 @@ N1152,lapidarius,drone,True,10,vrac,True,True
 N1250,,,False,6,vrac,False,True
 N1259,pascuorum,worker,True,0,,True,False
 N126,pratorum,drone,True,10,organized,True,True
-N127,pascuorum,worker,True,6,vrac,True,True
+N127,pascuorum,worker,True,3,vrac,True,True
 N128,pascuorum,worker,True,6,vrac,True,True
 N1283,pascuorum,worker,True,0,,True,False
 N129,pascuorum,worker,True,6,vrac,True,True
@@ -636,8 +636,8 @@ N629,terrestris,drone,True,10,vrac,True,True
 N630,pascuorum,worker,True,6,vrac,True,True
 N657,pascuorum,worker,True,6,vrac,True,True
 N706,lapidarius,drone,True,10,vrac,True,True
-N72,terrestris,worker,True,6,vrac,True,True
-N76,lucorum,worker,True,6,vrac,True,True
+N72,terrestris,worker,True,9,vrac,True,True
+N76,lucorum,worker,True,0,,True,False
 N813,lucorum,drone,True,10,vrac,True,True
 N814,lapidarius,drone,True,10,vrac,True,True
 N815,pratorum,drone,True,10,organized,True,True
