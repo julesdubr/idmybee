@@ -367,7 +367,7 @@ def main():
         print("Aucune racine valide a scanner.", file=sys.stderr)
         sys.exit(1)
 
-    base_dir = Path(roots["base_roots"][sys.platform])
+    base_dir = Path(roots["base_root"][sys.platform])
 
     all_records: list[ImageRecord] = []
     for root_cfg in roots["datasets"]:
@@ -402,7 +402,7 @@ def main():
     print(f"unparsed.csv   : {len(unparsed_rows)} lignes (noms non reconnus -> a revoir a la main)")
     print(f"duplicates.csv : {len(duplicate_rows)} groupes de contenu identique")
     print(f"specimens.csv  : {len(specimens_rows)} specimens ({n_unlabeled} sans espece -> pool de prediction)")
-    
+
     print(f"\nEcrit dans : {out_dir.resolve()}")
 
 

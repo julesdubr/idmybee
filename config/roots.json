@@ -1,5 +1,5 @@
 {
-  "base_roots": {
+  "base_root": {
     "win32": "D:/",
     "darwin": "/Volumes/EXT DATA/"
   },

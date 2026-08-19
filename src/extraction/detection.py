@@ -9,6 +9,7 @@ from pathlib import Path
 
 import numpy as np
 import torch
+import sys
 
 
 def load_references(ref_json_path: str):
@@ -16,9 +17,9 @@ def load_references(ref_json_path: str):
     import json
     with open(ref_json_path) as f:
         data = json.load(f)
-    if isinstance(data, dict):
-        data = [data]
-    return [(Path(str(entry["image"])).absolute(), np.array(entry["boxes"], dtype=np.float32)) for entry in data]
+
+    base_root = Path(data["base_root"][sys.platform])
+    return [(base_root / Path(entry["image"]), np.array(entry["boxes"], dtype=np.float32)) for entry in data["references"]]
 
 
 def compute_vpe(model, image_path: str, boxes: np.ndarray, predictor_cls, imgsz: int = 1024, device=None):
