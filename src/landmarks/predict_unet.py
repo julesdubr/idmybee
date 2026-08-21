@@ -148,7 +148,7 @@ def load_target_crops(manifest_dir: Path, dataset_filter, include_suspect: bool)
     peut avoir ajouté une ligne plus récente, y compris avec un statut
     différent, pour le même image_id). Le filtre de statut/dataset
     s'applique ENSUITE, sur ce dernier état connu."""
-    crops_path = manifest_dir / "crops.csv"
+    crops_path = manifest_dir / "crops_obb.csv"
     crops = manifest_io.read_table(crops_path)
     if not crops:
         raise SystemExit(

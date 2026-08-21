@@ -26,6 +26,7 @@ class TrainedModel:
     level: str                           # "espece" ou "caste" (colonne classée)
     classes: list[str] = field(default_factory=list)
     device: str | None = None            # filtre --device utilisé à l'entraînement, si any
+    dataset: str | None = None           # filtre --dataset utilisé à l'entraînement, si any
     source_tps: str = ""
     n_train: int = 0
 

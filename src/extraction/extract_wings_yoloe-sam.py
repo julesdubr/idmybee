@@ -89,7 +89,7 @@ BG_COLORS = {"white": (255, 255, 255), "black": (0, 0, 0)}
 
 CROPS_FIELDS = [
     "image_id", "specimen_id", "dataset", "status", "error_reason",
-    "x", "y", "w", "h", "theta",
+    "x1", "y1", "x2", "y2", "x3", "y3", "x4", "y4",
     "confidence", "similarity", "aspect_ratio", "n_detections",
     "output_path", "processed_at",
 ]
@@ -164,7 +164,7 @@ def process_image(raw_path: Path, out_path: Path, model, ref_embs, clip_model, c
     les connaît déjà via la ligne images.csv)."""
 
     def failed(reason, n_det=0):
-        return dict(status="FAILED", error_reason=reason, x=None, y=None, w=None, h=None, theta=None,
+        return dict(status="FAILED", error_reason=reason, x1=None, y1=None, x2=None, y2=None, x3=None, y3=None, x4=None, y4=None,
                     confidence=None, similarity=None, aspect_ratio=None, n_detections=n_det, output_path=None)
 
     img = geometry.read_image(raw_path)
@@ -209,8 +209,9 @@ def process_image(raw_path: Path, out_path: Path, model, ref_embs, clip_model, c
     best_gray = cv2.cvtColor(best["crop"], cv2.COLOR_BGR2GRAY)
     cv2.imwrite(str(out_path), best_gray)
 
-    x, y, w, h, theta = best["obb"]
-    return dict(status=status, error_reason=None, x=round(x), y=round(y), w=round(w), h=round(h), theta=round(theta, 3),
+    x3,y3,x4,y4,x1,y1,x2,y2 = (f"{v:.8f}" for v in best["obb"])
+
+    return dict(status=status, error_reason=None, x1=x1, y1=y1, x2=x2, y2=y2, x3=x3, y3=y3, x4=x4, y4=y4,
                 confidence=round(best["conf"], 3), similarity=round(best["similarity"], 3),
                 aspect_ratio=round(best["aspect"], 2), n_detections=n_det, output_path=str(out_path))
 
@@ -308,8 +309,9 @@ def main():
             result = process_image(raw_path, out_path, model, ref_embs, clip_model, clip_preprocess,
                                     clip_device, args, bg_color)
         except Exception as e:
-            result = dict(status="FAILED", error_reason=f"exception: {e}", x=None, y=None, w=None, h=None,
-                          theta=None, confidence=None, similarity=None, aspect_ratio=None,
+            result = dict(status="FAILED", error_reason=f"exception: {e}", x1=None, y1=None,
+                          x2=None, y2=None, x3=None, y3=None, x4=None, y4=None,
+                          confidence=None, similarity=None, aspect_ratio=None,
                           n_detections=None, output_path=None)
 
         counts[result["status"]] += 1

@@ -1,0 +1,6 @@
+path: C:/Users/Jules/Documents/IEES/idmybee/data/bombus_obb_dataset
+train: images/train
+val: images/val
+test: images/test
+names:
+  0: forewing

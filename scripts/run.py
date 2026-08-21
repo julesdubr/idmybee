@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-run.py -- Enchaîne les phases 0->4 du pipeline idmybee en un seul appel.
+run.py -- Enchaîne les phases 0->4.6 du pipeline idmybee en un seul appel.
 Equivalent cross-OS (Windows/macOS/Linux) de l'ancien scripts/run.sh.
 
 A lancer DEPUIS LA RACINE DU REPO (idmybee/), environnement conda/venv
@@ -35,13 +35,16 @@ import config
 # Une fois qu'un module expose main(argv), passe son entrée à False pour
 # l'appeler in-process (plus rapide, erreurs Python natives) plutôt qu'en
 # subprocess. Tant que c'est True, on lance `python module.py <args>`.
+# reconstruct_tps/lda/predict/report_variance exposent déjà main(argv) --
+# build_manifest/crop_wings/predict_unet (Phases 0-2) pas encore.
 USE_SUBPROCESS = {
     "build_manifest": True,
     "crop_wings": True,
     "predict_unet": True,
-    "reconstruct_tps": True,
-    "flag_outlier_specimens": True,
-    "lda": True,
+    "reconstruct_tps": False,
+    "lda": False,
+    "predict": False,
+    "report_variance": False,
 }
 
 
@@ -52,9 +55,14 @@ def _run_subprocess(script_path: Path, args: list[str]) -> None:
 
 
 def _run_inprocess(module_path: str, args: list[str]) -> None:
-    """Importe le module et appelle sa fonction main(argv) directement."""
+    """Importe le module et appelle sa fonction main(argv) directement.
+    src/ doit être sur sys.path -- fait une fois ici plutôt qu'en important
+    config à un endroit inattendu, pour rester local à ce mode d'exécution."""
     import importlib
 
+    src_dir = str(config.REPO_ROOT / "src")
+    if src_dir not in sys.path:
+        sys.path.insert(0, src_dir)
     mod = importlib.import_module(module_path)
     mod.main(args)
 
@@ -68,13 +76,13 @@ def run_step(name: str, script_path: Path, module_path: str, args: list[str]) ->
 
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        description="Enchaîne les phases 0->4 du pipeline idmybee.",
+        description="Enchaîne les phases 0->4.6 du pipeline idmybee.",
     )
     p.add_argument(
         "--level",
         default=config.LEVEL,
         choices=["species", "caste"],
-        help="Niveau de classification pour la Phase 4 (défaut: %(default)s).",
+        help="Niveau de classification pour les Phases 4/4.6 (défaut: %(default)s).",
     )
     p.add_argument(
         "--drop-landmark",
@@ -89,10 +97,25 @@ def build_parser() -> argparse.ArgumentParser:
         help="Fichier de référence YOLOE pour la Phase 1 (défaut: %(default)s).",
     )
     p.add_argument(
+        "--dataset",
+        default=None,
+        help="Restreint l'entraînement (Phase 4) et l'analyse de variance (Phase 4.5) à un jeu de "
+             "données d'origine (ex: organized -- voir specimens.csv 'datasets_present'). Non "
+             "appliqué par défaut (tous les jeux de données confondus).",
+    )
+    p.add_argument(
+        "--n-perm",
+        type=int,
+        default=199,
+        help="Nombre de permutations pour les tests de significativité de la Phase 4.5 (défaut: "
+             "%(default)s -- augmenter pour un rapport final, voir analysis.report_variance --n-perm "
+             "directement pour un run indépendant).",
+    )
+    p.add_argument(
         "--skip",
         nargs="+",
         default=[],
-        choices=["0", "1", "2", "3", "3.5", "4"],
+        choices=["0", "1", "2", "3", "4", "5", "6"],
         help="Phases à sauter (utile pour reprendre après une phase déjà faite).",
     )
     return p
@@ -126,9 +149,9 @@ def main(argv: list[str] | None = None) -> None:
     if not skip("1"):
         print("\n=== Phase 1 : extraction des crops ===")
         run_step(
-            "crop_wings",
-            src / "extraction" / "crop_wings.py",
-            "extraction.crop_wings",
+            "extract_wings_yoloe-sam",
+            src / "extraction" / "extract_wings_yoloe-sam.py",
+            "extraction.extract_wings_yoloe-sam",
             [
                 "--ref", str(args.ref_json),
                 "--ref_crops", str(config.REF_CROPS_DIR),
@@ -149,13 +172,14 @@ def main(argv: list[str] | None = None) -> None:
                 "--manifest_dir", str(config.MANIFEST_DIR),
                 "--model_path", str(config.UNET_MODEL),
                 "--tps_out", str(config.UNET_TPS),
+                # "--dataset", "organized"
             ],
         )
 
-    # --- Phase 3 : renumérotation (Hungarian + Umeyama) --------------------
+    # --- Phase 3 : renumérotation + split labellisé/non-labellisé + -------
+    # --- flag SUSPECT post-GPA par espèce (remplace l'ancienne Phase 3.5) --
     if not skip("3"):
-        print("\n=== Phase 3 : renumérotation (Hungarian + Umeyama) ===")
-        # --ambiguity-ratio : NON calibré
+        print("\n=== Phase 3 : renumérotation, split labellisé/non-labellisé, outliers post-GPA ===")
         run_step(
             "reconstruct_tps",
             src / "numbering" / "reconstruct_tps.py",
@@ -163,22 +187,9 @@ def main(argv: list[str] | None = None) -> None:
             [
                 str(config.REFERENCE_TPS),
                 str(config.UNET_TPS),
+                str(config.SPECIMENS_CSV),
                 str(config.NUMBERED_TPS),
                 "--drop", str(args.drop_landmark),
-                "--manifest-dir", str(config.MANIFEST_DIR),
-            ],
-        )
-
-    # --- Phase 3.5 : détection d'outliers post-GPA (par espèce) -----------
-    if not skip("3.5"):
-        print("\n=== Phase 3.5 : détection d'outliers post-GPA (par espèce) ===")
-        run_step(
-            "flag_outlier_specimens",
-            src / "tools" / "flag_outlier_specimens.py",
-            "tools.flag_outlier_specimens",
-            [
-                str(config.NUMBERED_TPS),
-                str(config.SPECIMENS_CSV),
                 "--manifest-dir", str(config.MANIFEST_DIR),
             ],
         )
@@ -188,24 +199,53 @@ def main(argv: list[str] | None = None) -> None:
         print("\n=== Phase 4 : classification GPA -> PCA -> LDA (LOOCV) ===")
         model_out = config.model_out_path(args.level)
         model_out.parent.mkdir(parents=True, exist_ok=True)
-        # --exclude-ids ne prend QUE outlier_specimens.csv pour l'instant (voir
-        # remarque Phase 3 : landmarks_numbered.csv sur-marque en SUSPECT tant
-        # que le seuil d'ambiguïté n'est pas recalibré).
-        run_step(
-            "lda",
-            src / "classifiers" / "lda.py",
-            "classifiers.lda",
-            [
-                str(config.NUMBERED_TPS),
-                str(config.SPECIMENS_CSV),
-                "--level", args.level,
-                "--exclude-ids", str(config.OUTLIER_CSV),
-                "--save-model", str(model_out),
-            ],
-        )
-        print(f"\n=== Terminé. Modèle -> {model_out} ===")
-    else:
-        print("\n=== Terminé (Phase 4 sautée). ===")
+        lda_args = [
+            str(config.NUMBERED_TPS_LABELED),
+            str(config.SPECIMENS_CSV),
+            "--images-csv", str(config.IMAGES_CSV),
+            "--level", args.level,
+            "--exclude-ids", str(config.NUMBERED_LOG),
+            "--save-model", str(model_out),
+        ]
+        if args.dataset:
+            lda_args += ["--dataset", args.dataset]
+        run_step("lda", src / "classifiers" / "lda.py", "classifiers.lda", lda_args)
+
+    # --- Phase 5 : analyse de variance (ANOVA espèce / appareil) --------
+    if not skip("5"):
+        print("\n=== Phase 5 : analyse de variance (ANOVA espèce / appareil) ===")
+        variance_args = [
+            str(config.NUMBERED_TPS_LABELED),
+            str(config.SPECIMENS_CSV),
+            str(config.IMAGES_CSV),
+            "--exclude-ids", str(config.NUMBERED_LOG),
+            "--n-perm", str(args.n_perm),
+        ]
+        if args.dataset:
+            variance_args += ["--dataset", args.dataset]
+        run_step("report_variance", src / "analysis" / "report_variance.py",
+                  "analysis.report_variance", variance_args)
+
+    # --- Phase 6 : classification du pool non labellisé ------------------
+    if not skip("6"):
+        model_out = config.model_out_path(args.level)
+        if not model_out.exists():
+            print(f"\n=== Phase 6 : SAUTÉE ({model_out} introuvable -- lancer la Phase 4 d'abord) ===")
+        else:
+            print("\n=== Phase 6 : classification du pool non labellisé ===")
+            predictions_out = config.predictions_out_path(args.level)
+            run_step(
+                "predict",
+                src / "classifiers" / "predict.py",
+                "classifiers.predict",
+                [
+                    str(model_out),
+                    str(config.NUMBERED_TPS_UNLABELED),
+                    "--out", str(predictions_out),
+                ],
+            )
+
+    print("\n=== Terminé. ===")
 
 
 if __name__ == "__main__":

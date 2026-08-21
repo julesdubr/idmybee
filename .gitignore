@@ -36,6 +36,9 @@ data/images/
 *.tif
 *.tiff
 
+# labels
+*.txt
+
 # Jupyter Notebook
 .ipynb_checkpoints/
 

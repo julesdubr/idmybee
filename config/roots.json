@@ -5,22 +5,22 @@
   },
   "datasets": [
     {
-      "path": "IDMB/images/organized",
+      "path": "IDMB/images/Bombus/organized",
       "dataset": "organized",
       "collector_subfolder": false
     },
     {
-      "path": "IDMB/images/terrain",
+      "path": "IDMB/images/Bombus/terrain",
       "dataset": "terrain",
       "collector_subfolder": true
     },
     {
-      "path": "IDMB/images/vrac",
+      "path": "IDMB/images/Bombus/vrac",
       "dataset": "vrac",
       "collector_subfolder": false
     },
     {
-      "path": "IDMB/images/basile_m1",
+      "path": "IDMB/images/Bombus/basile_m1",
       "dataset": "basile_m1",
       "collector_subfolder": false,
       "naming": "organized_hyphen"

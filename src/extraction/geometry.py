@@ -110,9 +110,13 @@ def oriented_crop(image: np.ndarray, points: np.ndarray, bg_color=(255, 255, 255
     py = int((y_max - y_min) * pad / 2)
     crop = rotated[y_min - py:y_max + py, x_min - px:x_max + px]
 
+    box = np.array(box)
+    box[:, 0] /= w
+    box[:, 1] /= h
+
     long_side, short_side = max(w_rect, h_rect), max(min(w_rect, h_rect), 1e-6)
     aspect = long_side / short_side
-    return crop, aspect, (float(x_rect), float(y_rect), float(w_rect), float(h_rect), float(theta_deg))
+    return crop, aspect, box.reshape(-1).tolist()
 
 
 def letterbox(crop: np.ndarray, out_w=512, out_h=256, bg_color=(255, 255, 255)):

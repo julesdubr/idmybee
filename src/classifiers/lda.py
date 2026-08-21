@@ -8,8 +8,15 @@ mélangerait des espèces différentes sous un même label "worker"/"queen"/
 "male", donc le vrai groupe utilisé est "species_caste" (voir utils.dataset
 .target_groupe).
 
+--dataset restreint l'entraînement à un jeu de données d'origine (ex:
+organized, le plus fiable car identifié par Adrien -- voir specimens.csv
+'datasets_present') : pratique pour comparer un modèle entraîné sur les
+données les plus propres à un modèle entraîné sur tout, ou pour exporter un
+modèle dédié à un sous-ensemble précis via --save-model.
+
 Usage:
-    python classifiers/lda.py data/annotations/tancrede.tps data/manifest/specimens.csv --level species
+    python -m classifiers.lda data/annotations/landmarks_numbered_labeled.tps data/manifest/specimens.csv \\
+        --level species --exclude-ids data/manifest/landmarks_numbered.csv --save-model out/model_species.joblib
 """
 from __future__ import annotations
 
@@ -163,28 +170,27 @@ def plot_lda(lda_scores: np.ndarray, groupe: pd.Series, out_path: Path,
     print(f"Projection LDA -> {out_path}")
 
 
-def main() -> None:
-    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
-    Path("out").mkdir(exist_ok=True)
-
+def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="GPA -> PCA -> LDA (LOOCV) sur landmarks de bourdons")
-    parser.add_argument("tps_path", type=Path, help="Fichier .tps de landmarks (ex: tancrede.tps)")
+    parser.add_argument("tps_path", type=Path, help="Fichier .tps de landmarks labellisés (ex: landmarks_numbered_labeled.tps)")
     parser.add_argument("csv_path", type=Path, help="data/manifest/specimens.csv (specimen_id, species, caste, ...)")
     parser.add_argument("--images-csv", type=Path, default=None,
                          help="data/manifest/images.csv (image_id, specimen_id, device_type, ...). "
-                              "Nécessaire seulement si le TPS n'a pas de COMMENT=specimen_id (TPS "
-                              "écrit avant la mise à jour de predict_unet.py) ; sinon inutile.")
+                              "Nécessaire pour --device (device_type est une info par photo, pas par "
+                              "spécimen, jamais dans specimens.csv seul).")
     parser.add_argument("--level", type=str, default="species", choices=["species", "caste"],
                          help="'species' : discrimination par espèce. 'caste' : discrimination par "
                               "(espèce, caste) -- voir utils.dataset.target_groupe.")
     parser.add_argument("--non-strict", action="store_true", help="Tolérer les blocs TPS malformés")
     parser.add_argument("--exclude-ids", type=Path, nargs="+", default=None,
                          help="Un ou plusieurs CSV avec colonnes 'tps_id'+'status' des spécimens à "
-                              "exclure (SUSPECT/FAILED) -- ex: data/manifest/landmarks_numbered.csv, "
-                              "out/outlier_specimens.csv, ou les deux à la fois.")
+                              "exclure (SUSPECT/FAILED) -- typiquement data/manifest/landmarks_numbered.csv.")
     parser.add_argument("--device", type=str, default=None,
-                         help="Ne garder que les spécimens de cet appareil (ex: S1). Nécessite un CSV "
-                              "déjà joint à images.csv (specimens.csv seul n'a pas cette colonne).")
+                         help="Ne garder que les spécimens de cet appareil (ex: S). Nécessite --images-csv.")
+    parser.add_argument("--dataset", type=str, default=None,
+                         help="Ne garder que les spécimens d'un jeu de données d'origine "
+                              "(ex: organized, terrain, vrac, basile_m1 -- voir specimens.csv "
+                              "'datasets_present').")
     parser.add_argument("--exclude-species", type=str, nargs="+", default=None,
                          help="Exclut entièrement une ou plusieurs espèces (ex: --exclude-species "
                               "rupestris ruderarius) -- utile le temps d'investiguer un problème de "
@@ -196,19 +202,28 @@ def main() -> None:
     parser.add_argument("--out-dir", type=Path, default=Path("out"),
                          help="Dossier de sortie racine (plots, modèle, résumés) -- défaut: out/, "
                               "relatif au répertoire d'exécution.")
-    args = parser.parse_args()
+    return parser
+
+
+def main(argv: list[str] | None = None) -> None:
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+    Path("out").mkdir(exist_ok=True)
+
+    args = build_arg_parser().parse_args(argv)
 
     specimens, meta_df = load_labeled_dataset(
         args.tps_path, args.csv_path, images_csv=args.images_csv, strict=not args.non_strict
     )
     specimens, meta_df = apply_filters(
-        specimens, meta_df, args.exclude_ids, args.device, exclude_species=args.exclude_species
+        specimens, meta_df, args.exclude_ids, device=args.device, dataset=args.dataset,
+        exclude_species=args.exclude_species,
     )
     groupe = target_groupe(meta_df, args.level)
 
-    # Suffixe unique par run (niveau + appareil), pour que deux runs successifs
-    # (species vs caste, ou --device S1 vs S2) n'écrasent pas leurs résultats.
-    tag = args.level + (f"_{args.device}" if args.device else "")
+    # Suffixe unique par run (niveau + appareil + dataset), pour que deux runs
+    # successifs (species vs caste, --device S vs P, --dataset organized vs
+    # tout) n'écrasent pas leurs résultats.
+    tag = args.level + (f"_{args.device}" if args.device else "") + (f"_{args.dataset}" if args.dataset else "")
     out_dir = args.out_dir / tag
     out_dir.mkdir(exist_ok=True, parents=True)
 
@@ -242,6 +257,7 @@ def main() -> None:
             level=args.level,
             classes=sorted(groupe.unique()),
             device=args.device,
+            dataset=args.dataset,
             source_tps=str(args.tps_path),
             n_train=len(specimens),
         )

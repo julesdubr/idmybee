@@ -8,6 +8,9 @@ résultats déjà calculés. group_summary_table/device_summary_table prennent
 `groupe` (la Series réellement utilisée pour classer -- espèce seule ou
 espèce_caste composé) directement en paramètre plutôt que de la redériver
 de meta_df[level], pour rester corrects quel que soit le --level demandé.
+La variance de forme intra-groupe elle-même vient de utils.variance
+(partagée avec analysis.variance, qui en fait une décomposition ANOVA
+complète espèce x appareil).
 """
 from __future__ import annotations
 
@@ -19,22 +22,12 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 import matplotlib.pyplot as plt
 
+from utils.variance import within_group_variance
+
 pd.set_option("display.width", 200)
 pd.set_option("display.max_columns", None)
 pd.set_option("display.max_rows", None)
 pd.set_option("display.float_format", lambda v: f"{v:.4f}")
-
-
-def shape_variance_by_group(aligned: np.ndarray, groupe: pd.Series) -> pd.Series:
-    """Variance de Procrustes par groupe : distance quadratique moyenne
-    de chaque spécimen au centroïde de forme de son groupe."""
-    X = aligned.reshape(len(aligned), -1)
-    out = {}
-    for g in groupe.unique():
-        mask = (groupe == g).values
-        centroid = X[mask].mean(axis=0)
-        out[g] = float(((X[mask] - centroid) ** 2).sum(axis=1).mean())
-    return pd.Series(out, name="shape_variance")
 
 
 def confusion_matrix_df(truth: pd.Series, predicted: np.ndarray) -> pd.DataFrame:
@@ -53,7 +46,7 @@ def group_summary_table(level: str, groupe: pd.Series, gpa_result, predicted: np
     scores = pd.DataFrame(report).T.loc[labels, ["precision", "recall", "f1-score"]]
     scores.columns = ["precision", "recall", "f1"]
 
-    variance = shape_variance_by_group(gpa_result.aligned, groupe)
+    variance = within_group_variance(gpa_result.aligned, groupe)
     n = groupe.value_counts()
 
     table = pd.DataFrame({
@@ -70,13 +63,16 @@ def group_summary_table(level: str, groupe: pd.Series, gpa_result, predicted: np
 def device_summary_table(meta_df: pd.DataFrame, groupe: pd.Series, predicted: np.ndarray, gpa_result) -> pd.DataFrame | None:
     """Par appareil : n, accuracy LOOCV (sur `groupe`) et variance de forme
     intra-appareil. None si 'device' absent du CSV chargé, ou un seul
-    appareil présent (la ventilation serait triviale)."""
+    appareil connu présent (la ventilation serait triviale). Les spécimens
+    sans device connu (NaN -- ex: image absente d'images.csv) sont ignorés
+    ici, pas comptés comme un "appareil" à part entière."""
     if "device" not in meta_df.columns or meta_df["device"].nunique() <= 1:
         return None
 
-    device = meta_df["device"]
-    wrong = np.asarray(predicted) != groupe.values
-    variance = shape_variance_by_group(gpa_result.aligned, device)
+    known = meta_df["device"].notna()
+    device = meta_df.loc[known, "device"]
+    wrong = np.asarray(predicted)[known.values] != groupe.values[known.values]
+    variance = within_group_variance(gpa_result.aligned[known.values], device)
     n = device.value_counts()
 
     rows = []

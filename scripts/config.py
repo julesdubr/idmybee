@@ -38,12 +38,23 @@ UNET_MODEL = (
 ROOTS_JSON = CONFIG_DIR / "roots.json"
 SPECIES_CSV = CSV_DIR / "identification.csv"
 
-REFERENCE_TPS = ANNOTATIONS_DIR / "tancrede.tps"          # référence Tancrède (19 lm)
+REFERENCE_TPS = ANNOTATIONS_DIR / "landmarks_refs.tps"    # référence Tancrède (19 lm)
 UNET_TPS = ANNOTATIONS_DIR / "landmarks_unet.tps"         # sortie Phase 2 (non renuméré)
-NUMBERED_TPS = ANNOTATIONS_DIR / "landmarks_numbered.tps" # sortie Phase 3 (renuméré)
 
-OUTLIER_CSV = MANIFEST_DIR / "outlier_specimens.csv"
+# Sortie Phase 3 (renuméré) -- reconstruct_tps.py dérive automatiquement les
+# variantes _labeled/_unlabeled de NUMBERED_TPS (même dossier, même suffixe),
+# donc un seul chemin de base à tenir à jour ici.
+NUMBERED_TPS = ANNOTATIONS_DIR / "landmarks_numbered.tps"
+NUMBERED_TPS_LABELED = ANNOTATIONS_DIR / "landmarks_numbered_labeled.tps"
+NUMBERED_TPS_UNLABELED = ANNOTATIONS_DIR / "landmarks_numbered_unlabeled.tps"
+
+# Statut OK/SUSPECT/FAILED par spécimen (numérotation + outliers post-GPA
+# par espèce) -- une seule source désormais, utilisable tel quel en
+# --exclude-ids de lda.py/analysis.report_variance.
+NUMBERED_LOG = MANIFEST_DIR / "landmarks_numbered.csv"
+
 SPECIMENS_CSV = MANIFEST_DIR / "specimens.csv"
+IMAGES_CSV = MANIFEST_DIR / "images.csv"
 
 # --- Paramètres ---------------------------------------------------------
 LEVEL = "species"   # "species" ou "caste"
@@ -53,6 +64,12 @@ DROP_LANDMARK = 3   # LM3 de Tancrède, sans équivalent UNet
 # pas en constante, pour rester cohérent si LEVEL est surchargé en CLI.
 def model_out_path(level: str = LEVEL) -> Path:
     return OUT_DIR / f"model_{level}.joblib"
+
+
+# Prédictions du pool non labellisé (Phase 4.6, predict.py) -- dépend de
+# LEVEL comme le modèle, même raison.
+def predictions_out_path(level: str = LEVEL) -> Path:
+    return OUT_DIR / f"predictions_unlabeled_{level}.csv"
 
 
 # Références utilisées par Phase 1 (extraction des crops).

@@ -1,6 +1,6 @@
 """dataset.py
 Chargement partagé landmarks + métadonnées pour classifiers/* (lda.py,
-predict.py, landmarks_knn.py à venir) et tools/flag_outlier_specimens.py.
+predict.py) et analysis/report_variance.py.
 
 load_labeled_dataset() résout specimen_id pour chaque entrée du TPS par un
 chemin rapide ou un repli, jamais les deux mélangés à l'aveugle :
@@ -9,6 +9,10 @@ chemin rapide ou un repli, jamais les deux mélangés à l'aveugle :
   2. sinon, repli via images_csv (image_id_to_sid(image_id) == tps_id, puis
      image_id -> specimen_id) -- nécessaire pour les TPS écrits avant ce
      champ, ou produits par un outil tiers.
+`device` (device_type) est résolu séparément, systématiquement via
+images_csv si fourni (colonne PAR PHOTO, indépendante de la façon dont
+specimen_id a été résolu -- un même spécimen a souvent des photos prises
+avec des appareils différents, voir images.csv).
 Elle écarte aussi automatiquement, toujours, les spécimens dont le nombre
 de landmarks diffère du schéma majoritaire (échec de detection/numérotation
 en amont) : la GPA exige un nombre de points identique partout, ce n'est
@@ -18,12 +22,12 @@ target_groupe() choisit ensuite la colonne de regroupement pour la
 classification : "species" seule, ou le composé "species_caste" pour
 --level=caste.
 
-apply_filters() accepte un ou plusieurs CSV de qualité en --exclude-ids
-(landmarks_numbered.csv de numbering/reconstruct_tps.py,
-outlier_specimens.csv de tools/flag_outlier_specimens.py, ou les deux à la
-fois) : les deux partagent la même convention ('tps_id' + 'status', tout ce
-qui n'est pas "OK" est exclu), donc pas de traitement spécial selon lequel
-est fourni.
+apply_filters() accepte un CSV de qualité en --exclude-ids
+(landmarks_numbered.csv de numbering/reconstruct_tps.py -- statut
+OK/SUSPECT/FAILED par spécimen, SUSPECT/FAILED exclus), une restriction à
+un appareil (--device) ou un jeu de données (--dataset, ex: organized/
+terrain/vrac/basile_m1 -- colonne 'datasets_present' de specimens.csv), et
+une exclusion d'espèce(s) entière(s) (--exclude-species).
 """
 from __future__ import annotations
 
@@ -37,6 +41,16 @@ import pandas as pd
 from utils.tps_io import ImageLandmarks, image_id_to_sid, parse_tps
 
 logger = logging.getLogger(__name__)
+
+
+def add_groupe_column(df: pd.DataFrame) -> pd.DataFrame:
+    """Ajoute la colonne composée 'groupe' (species_caste) utilisée par
+    target_groupe(level="caste") -- factorisé pour rester identique partout
+    où une vérité terrain est construite (load_labeled_dataset ici,
+    classifiers/predict.py pour l'évaluation --specimens-csv)."""
+    df = df.copy()
+    df["groupe"] = df["species"].astype(str) + "_" + df["caste"].astype(str)
+    return df
 
 
 def load_unlabeled_tps(tps_path: str | Path, strict: bool = True) -> list[ImageLandmarks]:
@@ -121,15 +135,22 @@ def load_labeled_dataset(
 
     for sp in specimens:
         specimen_id = sp.specimen_id  # chemin rapide : déjà connu via COMMENT=
+
+        # device_type est une propriété PAR PHOTO (image_id), indépendante de
+        # la façon dont specimen_id a été résolu -- toujours tentée séparément
+        # via tps_id, sinon un TPS avec COMMENT= (le cas courant depuis la
+        # mise à jour de predict_unet.py) ne remonterait jamais de device,
+        # même avec images_csv fourni (bug corrigé : auparavant device restait
+        # toujours None dès que le chemin rapide specimen_id était pris).
         device = None
+        if images_df is not None and sp.tps_id in images_df.index:
+            device = images_df.loc[sp.tps_id].get("device_type")
 
         if specimen_id is None:
             if images_df is None or sp.tps_id not in images_df.index:
                 unmatched_image.append(sp.tps_id)
                 continue
-            img_row = images_df.loc[sp.tps_id]
-            specimen_id = img_row["specimen_id"]
-            device = img_row.get("device_type")
+            specimen_id = images_df.loc[sp.tps_id]["specimen_id"]
 
         if specimen_id not in specimens_df.index:
             unmatched_specimen.append(sp.tps_id)
@@ -164,7 +185,7 @@ def load_labeled_dataset(
         )
 
     meta_df = pd.DataFrame(kept_rows).reset_index(drop=True)
-    meta_df["groupe"] = meta_df["species"].astype(str) + "_" + meta_df["caste"].astype(str)
+    meta_df = add_groupe_column(meta_df)
 
     kept_specimens, meta_df = _drop_invalid_landmark_counts(kept_specimens, meta_df)
 
@@ -195,16 +216,19 @@ def apply_filters(
     meta_df: pd.DataFrame,
     exclude_ids_paths: Sequence[str | Path] | str | Path | None = None,
     device: str | None = None,
+    dataset: str | None = None,
     exclude_species: Sequence[str] | None = None,
 ) -> tuple[list[ImageLandmarks], pd.DataFrame]:
     """Filtres communs : exclusion de spécimens signalés par un ou plusieurs
-    CSV de qualité (--exclude-ids, colonnes 'tps_id' + 'status' -- convention
-    partagée par landmarks_numbered.csv et outlier_specimens.csv, donc les
-    deux peuvent être passés ensemble sans traitement particulier), exclusion
-    d'espèce(s) entière(s) (--exclude-species -- utile le temps d'investiguer
-    un problème de numérotation propre à une espèce), et restriction à un
-    appareil (--device, nécessite une colonne 'device' dans meta_df -- voir
-    load_labeled_dataset).
+    CSV de qualité (--exclude-ids, colonnes 'tps_id' + 'status', typiquement
+    landmarks_numbered.csv -- tout ce qui n'est pas "OK" est exclu),
+    restriction à un appareil (--device, nécessite une colonne 'device' dans
+    meta_df -- voir load_labeled_dataset), restriction à un jeu de données
+    d'origine (--dataset, ex: organized/terrain/vrac/basile_m1 -- colonne
+    'datasets_present' de specimens.csv, utile pour entraîner/évaluer un
+    modèle sur un sous-ensemble homogène), et exclusion d'espèce(s)
+    entière(s) (--exclude-species -- utile le temps d'investiguer un
+    problème de numérotation propre à une espèce).
     """
     if exclude_ids_paths:
         if isinstance(exclude_ids_paths, (str, Path)):
@@ -216,7 +240,7 @@ def apply_filters(
                 raise ValueError(
                     f"{path} n'a pas les colonnes attendues ('tps_id', 'status') pour --exclude-ids "
                     "-- fichier au mauvais format, ou généré par une version obsolète de "
-                    "numbering/reconstruct_tps.py ou tools/flag_outlier_specimens.py (les régénérer)."
+                    "numbering/reconstruct_tps.py (le régénérer)."
                 )
             exclude_df = exclude_df[exclude_df["status"] != "OK"]
             exclude_set |= set(exclude_df["tps_id"])
@@ -228,14 +252,22 @@ def apply_filters(
     if device:
         if "device" not in meta_df.columns:
             raise ValueError(
-                "--device demandé mais 'device' n'est pas disponible : soit specimen_id a été "
-                "résolu via COMMENT= (pas de passage par images.csv, donc pas de device_type), "
-                "soit images_csv n'a pas été fourni. Fournir --images-csv pour activer ce filtre."
+                "--device demandé mais 'device' n'est pas disponible : images_csv n'a pas été "
+                "fourni à load_labeled_dataset. Fournir --images-csv pour activer ce filtre."
             )
         keep_mask = (meta_df["device"] == device).tolist()
         specimens = [sp for sp, keep in zip(specimens, keep_mask) if keep]
         meta_df = meta_df[keep_mask].reset_index(drop=True)
         print(f"Filtré sur device={device} : {len(specimens)} spécimen(s) restants")
+
+    if dataset:
+        if "datasets_present" not in meta_df.columns:
+            raise ValueError("--dataset demandé mais 'datasets_present' n'est pas dans specimens.csv.")
+        present = meta_df["datasets_present"].astype(str).str.split(",")
+        keep_mask = present.apply(lambda names: dataset in {n.strip() for n in names}).tolist()
+        specimens = [sp for sp, keep in zip(specimens, keep_mask) if keep]
+        meta_df = meta_df[keep_mask].reset_index(drop=True)
+        print(f"Filtré sur dataset={dataset} : {len(specimens)} spécimen(s) restants")
 
     if exclude_species:
         keep_mask = (~meta_df["species"].isin(exclude_species)).tolist()
