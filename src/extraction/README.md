@@ -1,62 +1,124 @@
-# Extraction des ailes avec le détecteur OBB spécialisé
+# Extraction des ailes
 
-Deux fichiers ont une responsabilité distincte.
+Le pipeline d'extraction est séparé en deux méthodes de détection et une étape commune de normalisation.
+Les deux méthodes partagent désormais une seule boucle principale (`extract_wings.py`) : detection -> normalisation candidate, avec écriture incrémentale du CSV par lots de 50 images.
 
-- `obb_geometry.py` reproduit la géométrie du pipeline lourd et ne fait que la lecture image, le redressement OBB et le letterbox.
-- `extract_wings_obb.py` sélectionne les images, lance le modèle YOLO-OBB, écrit les crops 512x256 et le CSV.
-
-## 1. Comparaison strictement équivalente au pipeline lourd
-
-Cette méthode reprend uniquement les `image_id` dont la dernière entrée dans `crops.csv` est `OK`.
-
-```powershell
-python .\src\bombus_obb_detector\extract_wings_obb.py `
-    --model .\runs\obb\weights\best.pt `
-    --images_csv .\data\manifest\images.csv `
-    --reference_csv .\data\manifest\crops.csv `
-    --output_root .\data\crops_obb `
-    --csv .\data\crops_obb\crops_obb.csv `
-    --imgsz 1024 `
-    --conf 0.10 `
-    --padding 0.10
+```text
+images.csv
+   |
+   +--------------------+
+   |                    |
+   v                    v
+heavy                light
+YOLOE + SAM           YOLO-OBB
+   |                    |
+   +---------+----------+
+             |
+             v
+      extract_wings.py
+             |
+             v
+        detections.csv
+             |
+             v
+       normalize_crop.py
+             |
+             v
+          512 x 256
 ```
 
-Le résultat est donc directement comparable aux crops produits par la méthode lourde.
+## Arborescence
 
-Les images finales sont des JPEG grayscale de taille exacte `512x256`.
+```text
+src/extraction/
+├── detection_io.py
+├── extract_wings.py
+├── normalize_crop.py
+├── heavy/
+│   ├── __init__.py
+│   ├── detection.py
+│   ├── qa_clip.py
+│   └── vpe.py
+└── light/
+    ├── __init__.py
+    └── detection.py
+```
 
-## 2. Traitement d'un dossier
+`extract_wings.py` est l'unique point d'entrée CLI pour la détection. Il porte la boucle
+commune (lecture de `images.csv`, timing, écriture par lots) et délègue à un backend :
+
+- `heavy/detection.py` : `load_model(args)` charge YOLOE (avec ses références baked-in) et
+  CLIP ; `process_one(ctx, image, row, args)` fait la détection YOLOE -> top-k candidats ->
+  score CLIP -> OBB du meilleur candidat.
+- `light/detection.py` : `load_model(args)` charge le modèle YOLO-OBB ; `process_one(ctx,
+  image, row, args)` fait la détection directe.
+
+Chaque backend déclare ses propres arguments CLI via `add_arguments(parser)`, ajoutés
+dynamiquement selon `--mode`.
+
+## Méthode heavy
 
 ```powershell
-python .\src\bombus_obb_detector\extract_wings_obb.py `
+python .\src\extraction\extract_wings.py --mode heavy `
+    --images-csv .\data\manifest\images.csv `
+    --output-csv .\data\extraction\heavy\detections.csv `
+    --ref .\data\references\ref-obb.json `
+    --ref-crops .\data\references\ref-crops `
+    --model yoloe-11s-seg.pt `
+    --imgsz 1024 `
+    --conf 0.05
+```
+
+Les références YOLOE et les crops de référence CLIP restent des paramètres spécifiques à la
+méthode heavy (`--ref`, `--ref-crops`), requis uniquement en mode heavy.
+
+## Méthode light
+
+```powershell
+python .\src\extraction\extract_wings.py --mode light `
+    --images-csv .\data\manifest\images.csv `
+    --output-csv .\data\extraction\light\detections.csv `
     --model .\runs\obb\weights\best.pt `
-    --input .\data\bombus_obb_dataset\images `
-    --output_root .\data\crops_obb `
     --imgsz 1024 `
     --conf 0.10
 ```
 
-`--input` peut être répété et les sous-dossiers sont parcourus récursivement.
+Le mode light ne connaît ni `ref.json`, ni `ref-crops`, ni CLIP.
 
-## 3. Principe de normalisation
+## Écriture incrémentale
 
-La géométrie est la même que dans `crop_wings.py` :
+`extract_wings.py` accumule les lignes en mémoire par lots de 50 images, puis les ajoute
+(append) au CSV de sortie — l'entête n'est écrite qu'une seule fois, au premier lot. À chaque
+flush, la console affiche le temps total écoulé et le temps moyen par image :
 
-1. le grand axe de l'OBB est déterminé ;
-2. l'image est tournée ;
-3. la zone correspondant à l'OBB est recadrée ;
-4. un padding de `10 %` est appliqué, comme dans le pipeline lourd ;
-5. le crop est letterboxé en `512x256`, sans déformation ;
-6. l'image finale est convertie en niveaux de gris.
+```text
+[50/2700] temps écoulé : 1m12.3s — moyenne : 1.446 s/image
+[100/2700] temps écoulé : 2m25.1s — moyenne : 1.451 s/image
+```
 
-La seule différence expérimentale est la source de l'OBB :
-- méthode lourde : YOLOE + masque ;
-- nouvelle méthode : modèle YOLO-OBB spécialisé.
+Cela limite l'empreinte mémoire sur les gros lots et permet de reprendre un suivi visuel de
+la progression sans attendre la fin du traitement complet.
 
-## 4. CSV produit
+## Normalisation commune
 
-Colonnes :
+```powershell
+python .\src\extraction\normalize_crop.py `
+    --images-csv .\data\manifest\images.csv `
+    --detections-csv .\data\extraction\light\detections.csv `
+    --output-root .\data\crops\light `
+    --csv .\data\extraction\light\normalized.csv
+```
 
-`image_id,specimen_id,dataset,status,error_reason,confidence,aspect_ratio,x1,y1,x2,y2,x3,y3,x4,y4,output_path,processing_time_s,processed_at`
+Pour heavy, remplacer simplement `light` par `heavy`.
 
-Les coordonnées `x1...y4` sont normalisées dans l'image source et correspondent aux quatre sommets de l'OBB détectée.
+La normalisation :
+
+1. convertit les quatre points OBB en pixels ;
+2. redresse le grand axe ;
+3. ajoute le padding autour de l'aile ;
+4. agrandit le rectangle dans sa petite dimension en récupérant les pixels réels de l'image ;
+5. vise un ratio 2:1 ;
+6. redimensionne directement en 512x256 ;
+7. écrit le crop en niveaux de gris.
+
+Il n'y a plus de letterbox avec bandes blanches. Une bordure réfléchie peut uniquement être utilisée en dernier recours lorsqu'un rectangle 2:1 dépasse réellement les limites de l'image.
