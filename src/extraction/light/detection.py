@@ -66,6 +66,7 @@ def process_one(ctx: dict, image: np.ndarray, row: dict, args) -> tuple[dict, np
         h, w = image.shape[:2]
         points[:, 0] /= w
         points[:, 1] /= h
+        points = points.clip(0., 1.)
 
         row["status"] = "OK"
         row["confidence"] = f"{float(confs[best]):.4f}"

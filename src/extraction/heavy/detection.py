@@ -17,9 +17,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-from normalize_crop import normalize_crop
-
-from . import qa_clip, vpe
+import vpe
 
 
 def add_arguments(parser) -> None:
@@ -46,17 +44,14 @@ def mask_to_obb(mask_points: np.ndarray, image_width: int, image_height: int):
     # Même convention que crops.csv : quatre coins x,y, normalisés.
     box[:, 0] /= image_width
     box[:, 1] /= image_height
+    box = box.clip(0., 1.)
 
     aspect = max(width, height) / max(min(width, height), 1e-6)
     return box, aspect
 
 
 def load_model(args):
-    """Charge YOLOE (avec ses références baked-in) et CLIP pour la QA.
-
-    Retourne un contexte (dict) réutilisé par `process_one` pour chaque image,
-    afin d'éviter de recharger les modèles à chaque appel.
-    """
+    """Charge YOLOE (avec ses références baked-in)."""
     from ultralytics import YOLOE
     from ultralytics.models.yolo.yoloe import YOLOEVPSegPredictor
 
@@ -69,24 +64,7 @@ def load_model(args):
         imgsz=args.imgsz,
         device=args.device,
     )
-
-    clip_device = args.device or ("cuda" if qa_clip.cuda_available() else "cpu")
-    clip_model, clip_preprocess = qa_clip.load_clip(clip_device)
-    ref_crop_paths = list(Path(args.ref_crops).iterdir())
-    ref_embs = qa_clip.load_ref_embeddings(
-        ref_crop_paths,
-        clip_model,
-        clip_preprocess,
-        clip_device,
-    )
-
-    return {
-        "model": model,
-        "ref_embs": ref_embs,
-        "clip_model": clip_model,
-        "clip_preprocess": clip_preprocess,
-        "clip_device": clip_device,
-    }
+    return {"model": model}
 
 
 def process_one(ctx: dict, image: np.ndarray, row: dict, args) -> dict:
@@ -134,29 +112,9 @@ def process_one(ctx: dict, image: np.ndarray, row: dict, args) -> dict:
 
             box, aspect = candidate
 
-            points_pixels = cv2.boxPoints(cv2.minAreaRect(result.masks.xy[i].astype(np.float32)))
-            preview, _ = normalize_crop(
-                image,
-                points_pixels,
-                pad=0.10,
-                out_width=512,
-                out_height=256,
-            )
-            if preview is None:
-                continue
-
-            similarity = qa_clip.clip_similarity(
-                preview,
-                ctx["ref_embs"],
-                ctx["clip_model"],
-                ctx["clip_preprocess"],
-                ctx["clip_device"],
-            )
-
             candidates.append(
                 {
                     "confidence": float(confidences[i]),
-                    "similarity": float(similarity),
                     "aspect": float(aspect),
                     "box": box,
                 }
@@ -166,10 +124,10 @@ def process_one(ctx: dict, image: np.ndarray, row: dict, args) -> dict:
             row["error_reason"] = "obb_degenere"
             return row
 
-        best = max(candidates, key=lambda item: item["similarity"])
+        best = max(candidates, key=lambda item: item["confidence"])
 
-        if best["similarity"] < args.min_similarity:
-            row["error_reason"] = "similarite_insuffisante"
+        if best["confidence"] < args.min_conf:
+            row["error_reason"] = "confidence_insuffisante"
         elif best["aspect"] < args.min_aspect_ok:
             row["error_reason"] = "aspect_ratio_insuffisant"
         else:
