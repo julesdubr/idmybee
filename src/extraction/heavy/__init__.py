@@ -1,1 +1,1 @@
-"""Heavy extraction backend: YOLOE + SAM/segmentation + CLIP QA."""
+"""Heavy extraction backend: YOLOE segmentation."""

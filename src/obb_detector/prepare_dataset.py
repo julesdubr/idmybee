@@ -10,7 +10,7 @@ Expected crops.csv columns:
 The eight OBB coordinates are already normalized to [0, 1] in crops.csv.
 They are used DIRECTLY. No x/y/w/h/theta reconstruction is performed.
 
-Expected images.csv columns used by this script:
+Expected manifest.csv columns used by this script:
     image_id,specimen_id,raw_path
 
 The output label format is YOLO-OBB:
@@ -44,7 +44,7 @@ POINT_COLUMNS = [
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser()
-    p.add_argument("--images-csv", type=Path, required=True)
+    p.add_argument("--manifest-csv", type=Path, required=True)
     p.add_argument("--crops-csv", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
     p.add_argument("--seed", type=int, default=42)
@@ -158,7 +158,7 @@ def main() -> None:
     out.mkdir(parents=True, exist_ok=True)
 
     crops = pd.read_csv(args.crops_csv)
-    images = pd.read_csv(args.images_csv)
+    images = pd.read_csv(args.manifest_csv)
 
     required_crop = {"image_id", "specimen_id", "status", *POINT_COLUMNS}
     required_images = {"image_id", "specimen_id", "raw_path"}
@@ -199,16 +199,16 @@ def main() -> None:
         missing = int(df["raw_path"].isna().sum())
         examples = df.loc[df["raw_path"].isna(), "image_id"].head(20).tolist()
         raise RuntimeError(
-            f"{missing} OK crops have no matching raw image in images.csv. Examples: {examples}"
+            f"{missing} OK crops have no matching raw image in manifest.csv. Examples: {examples}"
         )
 
-    # Crop CSV specimen_id is authoritative, but require exact agreement with images.csv.
+    # Crop CSV specimen_id is authoritative, but require exact agreement with manifest.csv.
     if "specimen_id_img" in df.columns:
         bad = ~df["specimen_id"].eq(df["specimen_id_img"])
         if bad.any():
             examples = df.loc[bad, ["image_id", "specimen_id", "specimen_id_img"]].head(20)
             raise RuntimeError(
-                "specimen_id mismatch between crops.csv and images.csv:\n"
+                "specimen_id mismatch between crops.csv and manifest.csv:\n"
                 + examples.to_string(index=False)
             )
         df = df.drop(columns=["specimen_id_img"])

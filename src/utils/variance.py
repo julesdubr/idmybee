@@ -23,27 +23,33 @@ def _flatten(aligned: np.ndarray) -> np.ndarray:
 
 def within_group_variance(aligned: np.ndarray, groupe: pd.Series) -> pd.Series:
     """Variance de Procrustes par groupe : distance quadratique moyenne de
-    chaque spécimen au centroïde de forme de son propre groupe. C'est la
-    variance INTRA-groupe (ex: intra-espèce si `groupe` = espèce)."""
+    chaque spécimen au centroïde de forme de son propre groupe."""
     X = _flatten(aligned)
     out = {}
     for g in groupe.unique():
         mask = (groupe == g).values
+        # n = int(mask.sum())
         centroid = X[mask].mean(axis=0)
-        out[g] = float(((X[mask] - centroid) ** 2).sum(axis=1).mean())
+        out[g] = float(((X[mask] - centroid) ** 2).sum(axis=1).mean()) # (n - 1)
+        # différence pour tous les centroids de tous les groupes => nb_dist
+        # puis / par nb_dist - nb_g
     return pd.Series(out, name="shape_variance")
 
 
 def between_group_variance(aligned: np.ndarray, groupe: pd.Series) -> float:
     """Variance de Procrustes ENTRE les groupes : distance quadratique
     moyenne (pondérée par la taille de chaque groupe) du centroïde de
-    chaque groupe au centroïde global. C'est la variance INTER-groupe."""
+    chaque groupe au centroïde global."""
     X = _flatten(aligned)
     grand_mean = X.mean(axis=0)
     total = 0.0
+
+    n_groups = len(groupe.unique())
+
     for g in groupe.unique():
         mask = (groupe == g).values
-        n_g = int(mask.sum())
+        n = int(mask.sum())
         centroid = X[mask].mean(axis=0)
-        total += n_g * float(((centroid - grand_mean) ** 2).sum())
-    return total / len(X)
+        total += n * float(((centroid - grand_mean) ** 2).sum())
+
+    return total / (n_groups - 1)

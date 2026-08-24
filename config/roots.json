@@ -5,8 +5,8 @@
   },
   "datasets": [
     {
-      "path": "IDMB/images/Bombus/organized",
-      "dataset": "organized",
+      "path": "IDMB/images/Bombus/collection",
+      "dataset": "collection",
       "collector_subfolder": false
     },
     {

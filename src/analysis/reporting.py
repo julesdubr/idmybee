@@ -1,16 +1,6 @@
 """reporting.py
 Rapport de résultats pour lda.py : tableaux par groupe/appareil, matrice
 de confusion (texte + heatmap), affichage terminal et écriture des CSV.
-
-Toute la présentation vit ici pour que lda.py reste concentré sur le calcul
-(GPA -> PCA -> LDA) ; ce module ne fait que résumer/afficher/dessiner des
-résultats déjà calculés. group_summary_table/device_summary_table prennent
-`groupe` (la Series réellement utilisée pour classer -- espèce seule ou
-espèce_caste composé) directement en paramètre plutôt que de la redériver
-de meta_df[level], pour rester corrects quel que soit le --level demandé.
-La variance de forme intra-groupe elle-même vient de utils.variance
-(partagée avec analysis.variance, qui en fait une décomposition ANOVA
-complète espèce x appareil).
 """
 from __future__ import annotations
 
@@ -37,9 +27,6 @@ def confusion_matrix_df(truth: pd.Series, predicted: np.ndarray) -> pd.DataFrame
 
 
 def group_summary_table(level: str, groupe: pd.Series, gpa_result, predicted: np.ndarray) -> pd.DataFrame:
-    """Par valeur de `groupe` : n, precision/recall/f1 (LOOCV) et variance de
-    forme intra-groupe. `level` ne sert qu'à nommer l'index du tableau
-    (ex: "caste" alors que `groupe` contient déjà les labels espèce_caste)."""
     labels = sorted(groupe.unique())
 
     report = classification_report(groupe, predicted, labels=labels, output_dict=True, zero_division=0)
@@ -61,18 +48,28 @@ def group_summary_table(level: str, groupe: pd.Series, gpa_result, predicted: np
 
 
 def device_summary_table(meta_df: pd.DataFrame, groupe: pd.Series, predicted: np.ndarray, gpa_result) -> pd.DataFrame | None:
-    """Par appareil : n, accuracy LOOCV (sur `groupe`) et variance de forme
-    intra-appareil. None si 'device' absent du CSV chargé, ou un seul
-    appareil connu présent (la ventilation serait triviale). Les spécimens
-    sans device connu (NaN -- ex: image absente d'images.csv) sont ignorés
-    ici, pas comptés comme un "appareil" à part entière."""
     if "device" not in meta_df.columns or meta_df["device"].nunique() <= 1:
         return None
 
     known = meta_df["device"].notna()
     device = meta_df.loc[known, "device"]
     wrong = np.asarray(predicted)[known.values] != groupe.values[known.values]
+
     variance = within_group_variance(gpa_result.aligned[known.values], device)
+    # refaire par specimen
+    # centrer par specimen -> variance residuel -> variance inter
+    # ==> supprimer les specimens ou on a pas 5 mesures
+
+    # enlever l'effet espece
+    # enlever l'effet caste
+    # ==> calculer la variance entre individus au seins d'une meme caste / espece
+    # variance minimale d'un pdv biologique
+
+    # variance espece / caste / individu
+    # 1. P vs S
+    # 2. effet espece vs effet caste vs effet individu
+
+    # données terrain ==> ajouter effet opérateur (mais que si au sein meme espece et caste)
     n = device.value_counts()
 
     rows = []

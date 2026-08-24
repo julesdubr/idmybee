@@ -1,6 +1,0 @@
-image_id,specimen_id,dataset,collector,device_type,shot_index,raw_path,source_root,naming,ext,file_size_bytes,content_hash,status_ingest
-49c553ddd0c236ee,,organized,,,,D:\IDMB\images\organized\Bombus_rupestris\queen\unknown\inconnu_S1_1.jpg,D:\IDMB\images\organized,organized_underscore,.jpg,2197539,49c553ddd0c236ee,unparsed_name
-c158215c9d5ad4f8,,organized,,,,D:\IDMB\images\organized\Bombus_rupestris\queen\unknown\inconnu_S1_2.jpg,D:\IDMB\images\organized,organized_underscore,.jpg,2091339,c158215c9d5ad4f8,unparsed_name
-a2216417e9bab9ca,,organized,,,,D:\IDMB\images\organized\Bombus_rupestris\queen\unknown\inconnu_S1_3.jpg,D:\IDMB\images\organized,organized_underscore,.jpg,2204031,a2216417e9bab9ca,unparsed_name
-bba687aecd6dcac6,,organized,,,,D:\IDMB\images\organized\Bombus_rupestris\queen\unknown\inconnu_S1_4.jpg,D:\IDMB\images\organized,organized_underscore,.jpg,1978468,bba687aecd6dcac6,unparsed_name
-91273cdc5d718514,,organized,,,,D:\IDMB\images\organized\Bombus_rupestris\queen\unknown\inconnu_S1_5.jpg,D:\IDMB\images\organized,organized_underscore,.jpg,2171948,91273cdc5d718514,unparsed_name

@@ -37,7 +37,7 @@ from utils.dataset import load_labeled_dataset, apply_filters, target_groupe
 from utils.gpa import gpagen, two_d_array
 from utils.model_io import TrainedModel, save_model
 from utils.tps_io import ImageLandmarks
-from utils import reporting
+from analysis import reporting
 
 import matplotlib.pyplot as plt
 

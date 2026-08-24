@@ -52,3 +52,8 @@ CSV des données biologiques (espèces, caste) pour validation (tester hypothès
 ==> on espère V_interesp > V_intraesp > V_interapp
 
 - si pas 100% dû aux variation biologiques proches => pas problème de méthode
+
+
+# traiter indépendamment collection et terrain
+- juste p1 et s1 sur organized
+- utiliser ces résultats pour id sur données de terrain

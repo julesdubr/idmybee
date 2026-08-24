@@ -1,9 +1,7 @@
-"""Détection des ailes avec la méthode light (YOLO-OBB spécialisée).
+"""Backend de détection light (YOLO-OBB spécialisé).
 
-Ce module expose les deux mêmes points d'entrée que `heavy/detection.py` :
-
-- `load_model(args)` : charge le modèle YOLO-OBB.
-- `process_one(ctx, image, row, args)` : détecte l'aile sur une image.
+Entrée : une image BGR (np.ndarray).
+Sortie : `detect_one()` -> dict avec status/box/scores (voir detect_wing.py).
 """
 
 from __future__ import annotations
@@ -18,27 +16,26 @@ def add_arguments(parser) -> None:
 
 
 def load_model(args):
-    """Charge le modèle YOLO-OBB léger.
-
-    Retourne un contexte (dict) réutilisé par `process_one` pour chaque image.
-    """
+    """Charge le modèle YOLO-OBB. Retourne un contexte (dict)."""
     from ultralytics import YOLO
 
-    model = YOLO(args.model)
-    return {"model": model}
+    return {"model": YOLO(args.model)}
 
 
-def process_one(ctx: dict, image: np.ndarray, row: dict, args) -> tuple[dict, np.ndarray | None]:
-    """Détecte l'aile sur `image` et complète `row` (status/box/confidence).
+def detect_one(ctx: dict, image: np.ndarray, args) -> dict:
+    """Détecte l'aile sur une image unique.
 
-    `image` a déjà été chargée par l'appelant. `row` contient déjà les champs
-    communs (image_id, specimen_id, dataset, ...) initialisés à leurs valeurs
-    par défaut ; cette fonction ne fait que les mettre à jour.
-
-    Contrairement au backend heavy, la détection light ne normalise jamais de
-    crop elle-même : elle retourne systématiquement `None`, laissant
-    `extract_wings.py` faire la normalisation à partir de la box choisie.
+    Retourne un dict : `status` (OK/FAILED), `error_reason`, `confidence`,
+    `n_detections`, `box` (4x2 np.ndarray normalisé [0,1] ou None).
     """
+    result = {
+        "status": "FAILED",
+        "error_reason": "",
+        "confidence": None,
+        "n_detections": 0,
+        "box": None,
+    }
+
     model = ctx["model"]
 
     try:
@@ -50,32 +47,28 @@ def process_one(ctx: dict, image: np.ndarray, row: dict, args) -> tuple[dict, np
             max_det=args.max_det,
             verbose=False,
         )
+        prediction = results[0]
+        count = len(prediction.obb) if prediction.obb is not None else 0
+        result["n_detections"] = count
 
-        result = results[0]
-        count = len(result.obb) if result.obb is not None else 0
-        row["n_detections"] = str(count)
+        if prediction.obb is None or count == 0:
+            result["error_reason"] = "aucune_detection"
+            return result
 
-        if result.obb is None or count == 0:
-            row["error_reason"] = "aucune_detection"
-            return row, None
+        confidences = prediction.obb.conf.detach().cpu().numpy()
+        best = int(np.argmax(confidences))
 
-        confs = result.obb.conf.detach().cpu().numpy()
-        best = int(np.argmax(confs))
-
-        points = result.obb.xyxyxyxy[best].detach().cpu().numpy().reshape(4, 2)
+        points = prediction.obb.xyxyxyxy[best].detach().cpu().numpy().reshape(4, 2)
         h, w = image.shape[:2]
         points[:, 0] /= w
         points[:, 1] /= h
-        points = points.clip(0., 1.)
+        points = np.clip(points, 0.0, 1.0)
 
-        row["status"] = "OK"
-        row["confidence"] = f"{float(confs[best]):.4f}"
-        for i, (x, y) in enumerate(points, start=1):
-            row[f"x{i}"] = f"{x:.8f}"
-            row[f"y{i}"] = f"{y:.8f}"
+        result["status"] = "OK"
+        result["confidence"] = float(confidences[best])
+        result["box"] = points
 
     except Exception as exc:
-        row["error_reason"] = f"exception: {exc}"
-        return row, None
+        result["error_reason"] = f"exception: {exc}"
 
-    return row, None
+    return result
