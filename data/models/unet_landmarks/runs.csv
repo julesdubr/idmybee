@@ -1,0 +1,2 @@
+run_id,timestamp,n_train,n_val,n_test,epochs_run,best_val_loss,init_weights
+legacy_baseline,,,,,,,

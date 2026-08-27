@@ -1,50 +1,3 @@
-"""
-build_manifest.py — Phase 0 : indexation en lecture seule des images brutes.
-
-Ne deplace, ne renomme, ne modifie AUCUN fichier. Se contente de lire
-l'arborescence + le CSV d'identification et d'ecrire des tables CSV
-consolidees dans --out-dir (par defaut data/manifest/) :
-
-  images.csv       une ligne par photo brute trouvee
-  specimens.csv     une ligne par numero d'inventaire (jointe au CSV d'identif)
-  unparsed.csv       fichiers dont le nom ne correspond a aucun schema connu
-  duplicates.csv    groupes de fichiers ayant un contenu identique (meme hash)
-
-Usage typique :
-
-    python build_manifest.py \
-        --roots roots.json \
-        --roots config/roots.json \
-        --identification data/identification/identification.csv \
-        --id-col num_inv --species-col species --caste-col caste \
-        --out-dir data/
-
-roots.json (organized/terrain/vrac locaux) et external_roots.json (disque
-externe, optionnel — le script ignore proprement les racines absentes,
-p.ex. si le disque n'est pas monte) suivent le meme format :
-
-    [
-      {"path": "data/images/wide/organized", "dataset": "organized", "collector_subfolder": false},
-      {"path": "data/images/wide/terrain",   "dataset": "terrain",   "collector_subfolder": true},
-      {"path": "data/images/wide/vrac",      "dataset": "vrac",      "collector_subfolder": false}
-    ]
-
-collector_subfolder=true veut dire : le sous-dossier immediat sous `path`
-est le nom du collecteur (terrain/adrien/..., terrain/basile/...), et le
-nom de fichier suit le schema terrain (num_inv_<n>, pas de lettre S/P).
-collector_subfolder=false veut dire schema organized/vrac (num_inv_[S|P]<n>).
-
-Convention de nommage (confirmee le 22/07/2026) :
-  organized / vrac : num_inv_[S|P]<n>   -> meme appareil (S=smartphone,
-                      P=appareil photo), <n> = n-ieme photo prise avec CET
-                      appareil pour ce specimen (PAS un identifiant d'appareil).
-  terrain           : num_inv_<n>       -> pas de lettre. Le smartphone est
-                      constant pour un num_inv donne mais peut varier d'un
-                      num_inv a l'autre (un collecteur = potentiellement un
-                      smartphone different). Le collecteur est deduit du
-                      sous-dossier, pas du nom de fichier.
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -130,7 +83,7 @@ def resolve_naming(root_cfg: dict) -> str:
 class ImageRecord:
     image_id: str  # = content_hash tronque : stable meme si le fichier est deplace/copie
     specimen_id: Optional[str]
-    dataset: str
+    split: str
     collector: Optional[str]
     device_type: Optional[str]   # "S" / "P" / None (terrain -> None, voir collector)
     shot_index: Optional[int]
@@ -175,7 +128,7 @@ def parse_filename(stem: str, naming: str):
 
 def scan_root(root_cfg: dict, base_dir: Path) -> list[ImageRecord]:
     root_path = base_dir / Path(root_cfg["path"])
-    dataset = root_cfg["dataset"]
+    split = root_cfg["split"]
     collector_subfolder = bool(root_cfg.get("collector_subfolder", False))
     naming = resolve_naming(root_cfg)
 
@@ -216,7 +169,7 @@ def scan_root(root_cfg: dict, base_dir: Path) -> list[ImageRecord]:
             ImageRecord(
                 image_id=image_id,
                 specimen_id=specimen_id,
-                dataset=dataset,
+                split=split,
                 collector=collector,
                 device_type=device_type,
                 shot_index=shot_index,
@@ -287,13 +240,13 @@ def build_specimens_table(
     caste_col: Optional[str],
 ) -> list[dict]:
     # specimens vus dans les images (source de verite pour "quels num_inv existent")
-    by_specimen: dict[str, dict] = defaultdict(lambda: {"n_images": 0, "datasets": set()})
+    by_specimen: dict[str, dict] = defaultdict(lambda: {"n_images": 0, "splits": set()})
     for row in images_rows:
         sid = row.get("specimen_id")
         if not sid:
             continue
         by_specimen[sid]["n_images"] += 1
-        by_specimen[sid]["datasets"].add(row["dataset"])
+        by_specimen[sid]["splits"].add(row["split"])
 
     identif: dict[str, dict] = {}
     if identification:
@@ -315,8 +268,9 @@ def build_specimens_table(
 
     all_ids = set(by_specimen.keys()) | set(identif.keys())
     out = []
+
     for sid in sorted(all_ids):
-        info = by_specimen.get(sid, {"n_images": 0, "datasets": set()})
+        info = by_specimen.get(sid, {"n_images": 0, "splits": set()})
         ident = identif.get(sid, {})
         species = ident.get(species_col) if species_col else None
         caste = ident.get(caste_col) if caste_col else None
@@ -328,7 +282,7 @@ def build_specimens_table(
                 "caste": caste or "",
                 "is_labeled": bool(species),
                 "n_images": info["n_images"],
-                "datasets_present": ",".join(sorted(info["datasets"])),
+                "splits_present": ",".join(sorted(info["splits"])),
                 "in_identification_csv": sid in identif,
                 "in_images": sid in by_specimen,
             }
@@ -371,9 +325,9 @@ def main():
     base_dir = Path(roots["base_root"][sys.platform])
 
     all_records: list[ImageRecord] = []
-    for root_cfg in roots["datasets"]:
+    for root_cfg in roots["splits"]:
         recs = scan_root(root_cfg, base_dir)
-        print(f"  {root_cfg['path']:60s} [{root_cfg['dataset']:10s}] -> {len(recs)} images")
+        print(f"  {root_cfg['path']:60s} [{root_cfg['split']:10s}] -> {len(recs)} images")
         all_records.extend(recs)
 
     images_rows, unparsed_rows, duplicate_rows = build_images_table(all_records)
@@ -383,7 +337,7 @@ def main():
 
     out_dir = Path(args.out_dir + "/" + args.name)
     image_fields = [
-        "image_id", "specimen_id", "dataset", "collector", "device_type", "shot_index",
+        "image_id", "specimen_id", "split", "collector", "device_type", "shot_index",
         "raw_path", "source_root", "naming", "ext", "file_size_bytes", "content_hash",
         "status_ingest", "is_duplicate_content",
     ]
@@ -394,7 +348,7 @@ def main():
         specimens_rows,
         out_dir / "specimens.csv",
         ["specimen_id", "species", "caste", "is_labeled", "n_images",
-         "datasets_present", "in_identification_csv", "in_images"],
+         "splits_present", "in_identification_csv", "in_images"],
     )
 
     n_unlabeled = sum(1 for r in specimens_rows if not r["is_labeled"])

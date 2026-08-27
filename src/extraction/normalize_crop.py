@@ -7,8 +7,8 @@ Deux usages :
   traite tout un dataset à partir de `extraction/{mode}/detection.csv`, écrit
   les crops sur disque et `extraction/{mode}/crops.csv`.
 
-Entrée (CLI) : images.csv (manifest), extraction/{mode}/detection.csv.
-Sortie (CLI) : extraction/{mode}/crops.csv, extraction/{mode}/images/, extraction_stats.csv.
+Entrée (CLI) : manifest.csv (manifest), extraction/{mode}/detection.csv.
+Sortie (CLI) : extraction/{mode}/crops.csv, extraction/{mode}/images/, <dataset>/pipeline_stats.csv.
 
 La normalisation redresse l'aile, ajoute un contexte autour de l'OBB, étend le
 crop dans la dimension courte avec les pixels réels de l'image pour obtenir un
@@ -18,6 +18,7 @@ rapport 2:1 (pas de bande blanche de letterbox), puis équilibre les couleurs.
 from __future__ import annotations
 
 import argparse
+import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -26,13 +27,17 @@ import cv2
 import numpy as np
 from PIL import Image
 
-from detection_io import (
-    CROP_FIELDS,
+_THIS_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(_THIS_DIR.parent))
+
+from extraction_io import CROP_FIELDS
+from utils.pipeline_io import (
     RunCounter,
     append_rows,
     format_duration,
     read_csv_rows,
-    update_stats,
+    resolve_path,
+    update_pipeline_stats,
 )
 
 IMAGE_EXTENSIONS = {
@@ -252,13 +257,13 @@ def normalize_one(
 
 
 def build_output_path(output_root: Path, source: dict, image_id: str) -> Path:
-    """Construit le chemin `{output_root}/{dataset}/{dataset}_{specimen}_{device}{shot}_{image_id}.jpg`."""
-    dataset = source.get("dataset") or "dataset"
+    """Construit le chemin `{output_root}/{split}/{specimen}_{device}{shot}.jpg`."""
+    split = source.get("split") or "split"
     specimen = source.get("specimen_id") or "unknown"
     device = source.get("device_type") or source.get("collector") or "x"
     shot = source.get("shot_index") or "0"
 
-    return output_root / dataset / f"{dataset}_{specimen}_{device}{shot}_{image_id}.jpg"
+    return output_root / split / f"{specimen}-{device}{shot}.jpg"
 
 
 def write_normalized_crop(final: np.ndarray, out_path: Path, overwrite: bool = False) -> tuple[str, str]:
@@ -281,10 +286,11 @@ def write_normalized_crop(final: np.ndarray, out_path: Path, overwrite: bool = F
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Normalisation des crops en 512x256 (mode dataset).")
+    parser.add_argument("--dataset", type=Path, required=True)
     parser.add_argument("--mode", required=True, choices=["heavy", "light"])
-    parser.add_argument("--images-csv", required=True)
-    parser.add_argument("--extraction-root", required=True, help="Racine extraction/, contient {mode}/detection.csv et {mode}/crops.csv")
+
     parser.add_argument("--base-dir", default=None)
+
     parser.add_argument("--padding", type=float, default=0.10)
     parser.add_argument("--out-width", type=int, default=512)
     parser.add_argument("--out-height", type=int, default=256)
@@ -296,7 +302,7 @@ def new_row(image_id: str, source: dict | None, detection: dict) -> dict:
     return {
         "image_id": image_id,
         "specimen_id": (source or {}).get("specimen_id", detection.get("specimen_id", "")),
-        "dataset": (source or {}).get("dataset", detection.get("dataset", "")),
+        "split": (source or {}).get("split", detection.get("split", "")),
         "status": "FAILED",
         "error_reason": "",
         "aspect_ratio": "",
@@ -326,20 +332,26 @@ def normalize_row(row: dict, image: np.ndarray, detection: dict, source: dict, o
     row["status"] = status
     row["error_reason"] = error_reason
     if status != "FAILED":
-        row["output_path"] = str(out_path)
+        # .as_posix() plutôt que str() : un chemin avec des "/" reste lisible
+        # tel quel sous Windows ET Linux/macOS, contrairement à un chemin
+        # avec des "\" (produit par str(Path) sous Windows), qui casse la
+        # résolution de chemin des étapes suivantes lancées sur un autre OS.
+        row["output_path"] = out_path.as_posix()
     row["aspect_ratio"] = f"{aspect_ratio:.4f}"
 
 
 def main():
     args = parse_args()
 
-    extraction_root = Path(args.extraction_root)
+    extraction_root = Path(args.dataset / "extraction")
     detection_csv = extraction_root / args.mode / "detection.csv"
     output_root = extraction_root / args.mode / "images"
     output_csv = extraction_root / args.mode / "crops.csv"
-    stats_path = extraction_root / "extraction_stats.csv"
+    stats_path = Path(args.dataset) / "pipeline_stats.csv"
 
-    images = {row["image_id"]: row for row in read_csv_rows(Path(args.images_csv))}
+    images = {
+        row["image_id"]: row for row in read_csv_rows(Path(args.dataset / "manifest.csv"))
+    }
     detections = read_csv_rows(detection_csv)
 
     print(f"Mode : {args.mode}")
@@ -366,8 +378,7 @@ def main():
         elif detection.get("status") != "OK":
             row["error_reason"] = "detection_non_OK"
         else:
-            from detection_io import resolve_raw_path
-            raw_path = resolve_raw_path(source["raw_path"], base_dir)
+            raw_path = resolve_path(source["raw_path"], base_dir)
             image = read_image(raw_path)
             if image is None:
                 row["error_reason"] = "image_illisible_ou_format_non_supporte"
@@ -393,9 +404,11 @@ def main():
                 f"{counter}"
             )
 
-    update_stats(stats_path, args.mode, "normalization", counter.as_dict())
+    total_time_s = time.perf_counter() - pipeline_start
+    update_pipeline_stats(stats_path, "normalization", args.mode, counter.as_dict(), total_time_s)
     print(f"CSV : {output_csv}")
     print(f"Images : {output_root}")
+    print(f"Stats : {stats_path}")
 
 
 if __name__ == "__main__":

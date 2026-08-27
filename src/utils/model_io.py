@@ -3,7 +3,7 @@
 Un `TrainedModel` regroupe tout ce qu'il faut pour classer de nouveaux
 spécimens sans réentraîner : la forme de référence GPA (`mean_shape`), le
 PCA et le LDA ajustés sur le jeu d'entraînement complet (pas la version
-LOOCV, qui ne sert qu'à estimer l'accuracy). Voir lda.py (produit le
+LOOCV, qui ne sert qu'à estimer l'accuracy). Voir train.py (produit le
 modèle via --save-model) et predict.py (le consomme).
 """
 from __future__ import annotations
@@ -23,10 +23,10 @@ class TrainedModel:
     n_points: int
     pca: PCA
     lda: LinearDiscriminantAnalysis
-    level: str                           # "espece" ou "caste" (colonne classée)
+    level: str                           # "species" ou "caste" (colonne classée)
     classes: list[str] = field(default_factory=list)
-    device: str | None = None            # filtre --device utilisé à l'entraînement, si any
-    dataset: str | None = None           # filtre --dataset utilisé à l'entraînement, si any
+    split: str | None = None             # --split utilisé à l'entraînement (ex: "train"), si any
+    devices: list[str] | None = None     # --devices utilisé à l'entraînement (ex: ["P1","S1"]), si any
     source_tps: str = ""
     n_train: int = 0
 

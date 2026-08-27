@@ -1,5 +1,5 @@
 """reporting.py
-Rapport de résultats pour lda.py : tableaux par groupe/appareil, matrice
+Rapport de résultats pour train.py : tableaux par groupe/appareil, matrice
 de confusion (texte + heatmap), affichage terminal et écriture des CSV.
 """
 from __future__ import annotations
@@ -12,7 +12,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 import matplotlib.pyplot as plt
 
-from utils.variance import within_group_variance
+from analysis.variance import within_group_variance
 
 pd.set_option("display.width", 200)
 pd.set_option("display.max_columns", None)
@@ -55,21 +55,10 @@ def device_summary_table(meta_df: pd.DataFrame, groupe: pd.Series, predicted: np
     device = meta_df.loc[known, "device"]
     wrong = np.asarray(predicted)[known.values] != groupe.values[known.values]
 
+    # Table simple : accuracy + variance descriptive par appareil (device_summary_table
+    # reste au niveau "précision du modèle par appareil" -- pour la décomposition
+    # espèce/caste/individu/appareil en soi, voir analysis/variance_report.py).
     variance = within_group_variance(gpa_result.aligned[known.values], device)
-    # refaire par specimen
-    # centrer par specimen -> variance residuel -> variance inter
-    # ==> supprimer les specimens ou on a pas 5 mesures
-
-    # enlever l'effet espece
-    # enlever l'effet caste
-    # ==> calculer la variance entre individus au seins d'une meme caste / espece
-    # variance minimale d'un pdv biologique
-
-    # variance espece / caste / individu
-    # 1. P vs S
-    # 2. effet espece vs effet caste vs effet individu
-
-    # données terrain ==> ajouter effet opérateur (mais que si au sein meme espece et caste)
     n = device.value_counts()
 
     rows = []
@@ -120,8 +109,9 @@ def print_summary(out_dir: Path, level: str, meta_df: pd.DataFrame, gpa_result, 
                    device_table: pd.DataFrame | None, device_filter: str | None) -> None:
     """Affiche l'essentiel du résumé dans le terminal."""
     n_points = gpa_result.aligned.shape[1]
+    devices_str = ",".join(device_filter) if device_filter else "tous"
     header = (
-        f"niveau={level} | device={device_filter or 'tous'} | "
+        f"niveau={level} | devices={devices_str} | "
         f"n={len(meta_df)} spécimens | {n_points} landmarks"
     )
 

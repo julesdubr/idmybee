@@ -3,11 +3,11 @@
 Deux usages :
 - `detect_one_image(mode, image, args)` : une image déjà chargée -> box + status.
   Utile pour un pipeline "une photo à la fois" (ex. capture depuis un appareil).
-- CLI (`python detect_wing.py --mode ... --images-csv ...`) : traite tout un
+- CLI (`python detect_wing.py --dataset ... --mode ...`) : traite tout un
   dataset à partir de son manifest, écrit `extraction/{mode}/detection.csv`.
 
-Entrée (CLI) : images.csv (manifest).
-Sortie (CLI) : extraction/{mode}/detection.csv, extraction_stats.csv.
+Entrée (CLI) : manifest.csv (manifest).
+Sortie (CLI) : extraction/{mode}/detection.csv, <dataset>/pipeline_stats.csv.
 
 Pour normaliser les crops à partir de detection.csv, voir `normalize_crop.py`.
 Pour enchaîner détection + normalisation sur un dataset, voir `extract_wings.py`.
@@ -16,23 +16,19 @@ Pour enchaîner détection + normalisation sur un dataset, voir `extract_wings.p
 from __future__ import annotations
 
 import argparse
+import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
 
 import numpy as np
 
-from detection_io import (
-    DETECTION_FIELDS,
-    RunCounter,
-    append_rows,
-    format_duration,
-    read_images_csv,
-    resolve_raw_path,
-    select_images,
-    update_stats,
-)
+_THIS_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(_THIS_DIR.parent))
+
+from extraction_io import DETECTION_FIELDS, read_images_csv, select_images
 from normalize_crop import read_image
+from utils.pipeline_io import RunCounter, append_rows, format_duration, resolve_path, update_pipeline_stats
 
 BATCH_SIZE = 50
 
@@ -72,16 +68,15 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description="Détection des ailes sur un dataset, mode heavy (YOLOE) ou light (YOLO-OBB)."
     )
-    parser.add_argument("--mode", required=True, choices=["heavy", "light"])
-    parser.add_argument("--images-csv", required=True)
-    parser.add_argument("--extraction-root", required=True, help="Racine extraction/, contient {mode}/detection.csv")
-    parser.add_argument("--dataset", default=None)
-    parser.add_argument("--image-id", action="append", default=None)
-    parser.add_argument("--base-dir", default=None)
+    parser.add_argument("--dataset", type=Path, required=True)
+    parser.add_argument("--mode", default="light", choices=["heavy", "light"])
+    parser.add_argument("--split", default=None)
+
     parser.add_argument("--imgsz", type=int, default=1024)
     parser.add_argument("--conf", type=float, default=0.10)
     parser.add_argument("--device", default=None)
-    parser.add_argument("--keep-duplicates", action="store_true")
+
+    parser.add_argument("--base-dir", default=None)
 
     known_args, _ = parser.parse_known_args()
     backend = get_backend(known_args.mode)
@@ -96,7 +91,7 @@ def new_row(source: dict) -> dict:
     return {
         "image_id": source.get("image_id", ""),
         "specimen_id": source.get("specimen_id", ""),
-        "dataset": source.get("dataset", ""),
+        "split": source.get("split", ""),
         "status": "FAILED",
         "error_reason": "",
         "confidence": "",
@@ -107,13 +102,8 @@ def new_row(source: dict) -> dict:
 
 def main():
     args = parse_args()
-    images = read_images_csv(Path(args.images_csv))
-    targets = select_images(
-        images,
-        dataset=args.dataset,
-        image_ids=set(args.image_id) if args.image_id else None,
-        skip_duplicates=not args.keep_duplicates,
-    )
+    images = read_images_csv(Path(args.dataset / "manifest.csv"))
+    targets = select_images(images, split=args.split)
 
     print(f"Mode : {args.mode}")
     print(f"Images à traiter : {len(targets)}")
@@ -124,9 +114,9 @@ def main():
 
     ctx = args.backend.load_model(args)
 
-    extraction_root = Path(args.extraction_root)
+    extraction_root = Path(args.dataset / "extraction")
     output_path = extraction_root / args.mode / "detection.csv"
-    stats_path = extraction_root / "extraction_stats.csv"
+    stats_path = Path(args.dataset) / "pipeline_stats.csv"
     write_header = True
 
     base_dir = Path(args.base_dir) if args.base_dir else None
@@ -138,7 +128,7 @@ def main():
         item_start = time.perf_counter()
         row = new_row(source)
 
-        raw_path = resolve_raw_path(source["raw_path"], base_dir)
+        raw_path = resolve_path(source["raw_path"], base_dir)
         image = read_image(raw_path)
 
         if image is None:
@@ -148,8 +138,10 @@ def main():
             row["status"] = detection["status"]
             row["error_reason"] = detection["error_reason"]
             row["n_detections"] = str(detection["n_detections"])
+
             if detection["confidence"] is not None:
                 row["confidence"] = f"{detection['confidence']:.4f}"
+
             row.update(box_to_row_fields(detection["box"]))
 
         row["processing_time_s"] = f"{time.perf_counter() - item_start:.4f}"
@@ -171,8 +163,10 @@ def main():
                 f"{counter}"
             )
 
-    update_stats(stats_path, args.mode, "detection", counter.as_dict())
+    total_time_s = time.perf_counter() - pipeline_start
+    update_pipeline_stats(stats_path, "detection", args.mode, counter.as_dict(), total_time_s)
     print(f"CSV : {output_path}")
+    print(f"Stats : {stats_path}")
 
 
 if __name__ == "__main__":
