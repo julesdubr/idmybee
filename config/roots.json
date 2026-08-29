@@ -3,15 +3,15 @@
     "win32": "D:/",
     "darwin": "/Volumes/EXT DATA/"
   },
-  "subsets": [
+  "splits": [
     {
       "path": "IDMB/images/Bombus/collection",
-      "subset": "train",
+      "split": "train",
       "collector_subfolder": false
     },
     {
       "path": "IDMB/images/Bombus/terrain",
-      "subset": "test",
+      "split": "test",
       "collector_subfolder": true
     }
   ]

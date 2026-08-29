@@ -136,7 +136,7 @@ def load_dataset(
               non déterminé (prédiction pure sans évaluation possible).
     """
     root = Path(root)
-    specimens = load_unlabeled_tps(root / "landmarks" / "landmarks_light_numbered.tps", strict=strict)
+    specimens = load_unlabeled_tps(root / "landmarks" / "landmarks_numbered.tps", strict=strict)
 
     specimens_df = pd.read_csv(root / "specimens.csv")
     required = {"specimen_id", "species", "caste"}
@@ -154,7 +154,7 @@ def load_dataset(
 
     exclude_set: set[int] = set()
     if exclude_outliers:
-        status_path = root / "landmarks" / "landmarks_light_numbered.csv"
+        status_path = root / "landmarks" / "landmarks_numbered.csv"
         status_df = pd.read_csv(status_path)
         if "tps_id" not in status_df.columns or "status" not in status_df.columns:
             raise ValueError(f"{status_path} : colonnes 'tps_id'+'status' attendues pour --exclude-outliers.")

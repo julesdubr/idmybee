@@ -15,10 +15,13 @@ these -- these are just the defaults that match Gabriel's original model.
 IMG_HEIGHT = 256
 IMG_WIDTH = 512
 
-# Number of landmarks the UNet is trained to localize. This is Gabriel's
-# 18-point scheme (Tancrede's 19-point blueprint minus LM3, which has no
-# counterpart -- see reconstruct_tps.py --drop 3).
-N_LANDMARKS = 18
+# Number of landmarks the UNet is trained to localize. Currently 19 --
+# Tancrede's full blueprint (LM3 included). Earlier fine-tuning used
+# Gabriel's 18-point scheme (LM3 dropped, no UNet counterpart at the time --
+# see reconstruct_tps.py --drop 3); this run trains the model to predict
+# LM3 too, so downstream steps can use Tancrede's reference directly without
+# the drop/reconcile step.
+N_LANDMARKS = 19
 
 # Ground-truth heatmap shape: for each landmark point, intensity falls off
 # linearly with distance within `radius` pixels, raised to `power` (a sharp

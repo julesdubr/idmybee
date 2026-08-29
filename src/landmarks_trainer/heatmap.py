@@ -1,16 +1,16 @@
 """
-Heatmap encode/decode for landmark localization.
+Ground-truth heatmap generation for landmark localization training.
 
 Convention note (important, read this before touching coordinates):
-    Every function in this file takes/returns points as (row, col) i.e.
-    (y, x), matching numpy array indexing (arr[row, col]) and opencv image
-    arrays (img.shape == (height, width, channels)).
+    encode_heatmap takes points as (row, col) i.e. (y, x), matching numpy
+    array indexing (arr[row, col]) and opencv image arrays
+    (img.shape == (height, width, channels)).
     This is DIFFERENT from the (x, y) convention used in TPS files and the
-    rest of the pipeline (geomorph, manifests). The conversion happens once,
-    at the dataset/export boundary (see dataset.py) -- keep it that way,
-    don't let (x, y) leak in here, it's exactly the kind of mixup that broke
-    Gabriel's original code (see `raw_annotation[:,::-1]` sprinkled around
-    UNet_class_and_functions.py).
+    rest of the pipeline (geomorph, manifests, landmarks/predict.py's
+    public functions). The conversion happens once, at the dataset
+    boundary (see dataset.py) -- keep it that way, don't let (x, y) leak in
+    here, it's exactly the kind of mixup that broke Gabriel's original code
+    (see `raw_annotation[:,::-1]` sprinkled around UNet_class_and_functions.py).
 
 encode_heatmap: ground-truth heatmap used as the training target.
     For each point, intensity falls off linearly with distance within
@@ -22,13 +22,15 @@ encode_heatmap: ground-truth heatmap used as the training target.
     numerically identical), but vectorized instead of a double for-loop
     over every pixel.
 
-decode_heatmap: extract predicted point locations from a model output.
-    Uses skimage's peak_local_max instead of Gabriel's local_maxima + manual
-    top-k sort, which could return several adjacent pixels for one blob.
+Peak DECODING (predicted heatmap -> points) deliberately does NOT live
+here: landmarks/predict.py already owns a well-tested implementation
+(extract_top_landmarks, connected-component grouping over local_maxima
+plateaus, two documented bugfixes over the original notebook). evaluate.py
+imports that function directly rather than duplicating decode logic with
+a second, possibly-diverging implementation.
 """
 
 import numpy as np
-from skimage.feature import peak_local_max
 
 from constants import DEFAULT_HEATMAP_RADIUS, DEFAULT_HEATMAP_POWER, IMG_HEIGHT, IMG_WIDTH
 
@@ -38,7 +40,7 @@ def encode_heatmap(points: np.ndarray, shape: tuple = (IMG_HEIGHT, IMG_WIDTH),
                     power: float = DEFAULT_HEATMAP_POWER) -> np.ndarray:
     """Build a single-channel ground-truth heatmap from landmark points.
 
-    points: (N, 2) array of (row, col), any N (18 for training, but not
+    points: (N, 2) array of (row, col), any N (19 for training, but not
             hardcoded -- callers decide what they pass in)
     shape:  (height, width) of the output heatmap
     Returns: (height, width) float32 array, values in [0, 1]
@@ -56,28 +58,3 @@ def encode_heatmap(points: np.ndarray, shape: tuple = (IMG_HEIGHT, IMG_WIDTH),
         heat = np.maximum(heat, falloff)
 
     return heat.astype(np.float32)
-
-
-def decode_heatmap(heatmap: np.ndarray, n_points: int = 18,
-                    min_distance: int = 8, threshold_abs: float = 0.05) -> np.ndarray:
-    """Extract up to n_points landmark candidates from a predicted heatmap.
-
-    heatmap: (height, width) array (squeeze the channel dim before calling)
-    Returns: (K, 2) array of (row, col), sorted by descending peak intensity,
-             K <= n_points. K can be less than n_points if fewer peaks clear
-             threshold_abs, or if peaks closer than min_distance got merged
-             into one -- this is expected near real anatomical ambiguity
-             zones (see zones 0/1/13 in the numbering module), not a bug.
-             Callers must handle K != n_points explicitly rather than
-             assuming a fixed count.
-    """
-    peaks = peak_local_max(
-        heatmap, min_distance=min_distance, threshold_abs=threshold_abs,
-        num_peaks=n_points,
-    )
-    if len(peaks) == 0:
-        return peaks
-
-    scores = heatmap[peaks[:, 0], peaks[:, 1]]
-    order = np.argsort(-scores)
-    return peaks[order]

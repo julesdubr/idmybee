@@ -86,12 +86,15 @@ def main():
     parser.add_argument("--num-workers", type=int, default=4)
     parser.add_argument("--heatmap-radius", type=float, default=DEFAULT_HEATMAP_RADIUS)
     parser.add_argument("--heatmap-power", type=float, default=DEFAULT_HEATMAP_POWER)
+    parser.add_argument("--img-height", type=int, default=IMG_HEIGHT)
+    parser.add_argument("--img-width", type=int, default=IMG_WIDTH)
+    parser.add_argument("--n-landmarks", type=int, default=N_LANDMARKS)
     args = parser.parse_args()
 
     device = resolve_device(args.device)
     torch.manual_seed(args.seed)
 
-    full_manifest = load_manifest(args.manifest)
+    full_manifest = load_manifest(args.manifest, n_landmarks=args.n_landmarks)
     train_df, val_df, test_df = split_manifest(
         full_manifest, val_fraction=args.val_fraction, test_fraction=args.test_fraction,
         seed=args.seed, group_col=args.group_col,
@@ -101,7 +104,7 @@ def main():
                           f"manifest too small for the requested val/test fractions.")
 
     heatmap_kwargs = {"radius": args.heatmap_radius, "power": args.heatmap_power}
-    img_shape = (IMG_HEIGHT, IMG_WIDTH)
+    img_shape = (args.img_height, args.img_width)
     train_ds = LandmarkHeatmapDataset(train_df, img_shape=img_shape, train_augment=True,
                                        heatmap_kwargs=heatmap_kwargs)
     val_ds = LandmarkHeatmapDataset(val_df, img_shape=img_shape, train_augment=False,
@@ -151,6 +154,9 @@ def main():
         "n_train": len(train_df),
         "n_val": len(val_df),
         "n_test": len(test_df),
+        "n_landmarks": args.n_landmarks,
+        "img_height": args.img_height,
+        "img_width": args.img_width,
         "epochs_requested": args.epochs,
         "epochs_run": len(metrics_rows),
         "lr": args.lr,

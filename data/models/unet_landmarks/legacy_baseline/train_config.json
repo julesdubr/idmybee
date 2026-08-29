@@ -1,4 +1,9 @@
 {
   "source": "migrated from legacy full-pickle .pth",
-  "original_path": "C:\\Users\\Jules\\Documents\\IEES\\idmybee\\data\\models\\unet_best.pth"
+  "original_path": "/Users/superbg/Documents/IEES/idmybee/data/models/landmarks/UNet_150_epoch_lr=0.001_seed=58_func=pow_param=30.pth",
+  "epochs": 150,
+  "lr": 0.001,
+  "seed": 58,
+  "heatmap_function": "pow",
+  "heatmap_power": 30
 }

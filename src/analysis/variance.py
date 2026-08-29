@@ -37,11 +37,11 @@ def _total_ss(X: np.ndarray) -> float:
 
 
 def between_within_ss(X: np.ndarray, codes: np.ndarray, n_groups: int) -> tuple[float, float]:
-    """(SS_between, SS_within) pour un facteur seul -- SS_total = SS_between +
-    SS_within (identité d'ANOVA standard, valable quels que soient les
-    effectifs par groupe). `codes` doit être dense (0..n_groups-1) -- les
-    groupes jamais observés comptent pour 0 (comptage réel via `counts`,
-    pas une moyenne inventée)."""
+    """(SS_between, SS_within) pour un facteur seul : SS_total = SS_between + SS_within
+    (identité d'ANOVA standard, valable quels que soient les effectifs par groupe).
+    
+    `codes` doit être dense (0..n_groups-1) -- les groupes jamais observés comptent
+    pour 0 (comptage réel via `counts`, pas une moyenne inventée)."""
     grand_mean = X.mean(axis=0)
     total_ss = _total_ss(X)
 

@@ -1,2 +1,3 @@
 run_id,timestamp,n_train,n_val,n_test,epochs_run,best_val_loss,init_weights
-legacy_baseline,,,,,,,
+legacy_baseline,,,,,150,,
+2026-08-29_131929,2026-08-29T13:19:29.154840+00:00,158,20,31,38,0.0010780015727505088,data/models/unet_landmarks/legacy_baseline/weights.pt

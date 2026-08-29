@@ -124,6 +124,14 @@ class LandmarkHeatmapDataset(Dataset):
         if image is None:
             raise FileNotFoundError(f"Could not read crop image: {row['crop_path']}")
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        if image.shape[:2] != tuple(self.img_shape):
+            raise ValueError(
+                f"{row['crop_path']} has shape {image.shape[:2]}, expected {self.img_shape}. "
+                f"Crops must already be at the model's input size (no resize happens here, "
+                f"matching landmarks/predict.py's inference path) -- either fix the crop, or "
+                f"pass the right --img-height/--img-width if the extraction pipeline's output "
+                f"size has changed."
+            )
 
         points_xy = self._load_points_xy(row)
         points_rc = points_xy[:, ::-1]  # (x, y) -> (row, col), see heatmap.py docstring

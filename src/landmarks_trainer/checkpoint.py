@@ -9,7 +9,7 @@ as build_reference.py's data/references/ artifacts.
 Each run directory gets:
     weights.pth       -- model.state_dict(), NOT the full pickled object
     train_config.json -- hyperparameters, dataset/source, seed, timestamp
-    metrics.csv        -- one row per epoch: epoch,train_loss,val_loss
+    metrics.csv       -- one row per epoch: epoch,train_loss,val_loss
                           (single row for a migrated legacy model, marked as such)
 
 A family-level runs.csv (data/models/<family>/runs.csv) gets one summary
@@ -37,7 +37,7 @@ def save_run(run_dir: Path, model, config: dict, metrics_rows: list):
     config: dumped as-is to train_config.json (must be JSON-serializable)
     metrics_rows: list of dicts, e.g. [{"epoch": 1, "train_loss": .., "val_loss": ..}, ...]
     """
-    torch.save(model.state_dict(), run_dir / "weights.pth")
+    torch.save(model.state_dict(), run_dir / "weights.pt")
 
     with open(run_dir / "train_config.json", "w") as f:
         json.dump(config, f, indent=2)

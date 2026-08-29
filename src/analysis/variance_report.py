@@ -9,13 +9,12 @@ Exemples :
     # 1) plancher biologique : espèce ⊃ caste ⊃ individu, sur une seule
     #    photo par individu (P1) pour ne pas mélanger l'effet appareil
     #    dans le résidu individuel :
-    python -m analysis.variance_report data/Bombus --split train --devices P1 \\
+    python -m src.analysis.variance_report data/Bombus --split train --devices P1 \\
         --levels species caste specimen_id
 
     # 2) effet méthodologique : individu ⊃ appareil, sur les mêmes
     #    individus, une photo par appareil (P1 et S1) :
-    python -m analysis.variance_report data/Bombus --split train --devices P1 S1 \\
-        --levels specimen_id device
+    python -m src.analysis.variance_report data/Bombus --split train --levels specimen_id device
 
 Comparer les deux : le MS "specimen_id" du run (1) est le plancher
 biologique (V_individu), le MS "device" du run (2) est l'effet

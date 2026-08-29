@@ -1,0 +1,22 @@
+{
+  "manifest": "data/models/unet_landmarks/train_manifest.csv",
+  "init_weights": "data/models/unet_landmarks/legacy_baseline/weights.pt",
+  "n_train": 158,
+  "n_val": 20,
+  "n_test": 31,
+  "n_landmarks": 19,
+  "img_height": 256,
+  "img_width": 512,
+  "epochs_requested": 150,
+  "epochs_run": 38,
+  "lr": 0.001,
+  "batch_size": 8,
+  "patience": 20,
+  "seed": 58,
+  "heatmap_radius": 84.8528137423857,
+  "heatmap_power": 30,
+  "best_val_loss": 0.0010780015727505088,
+  "elapsed_seconds": 6616.446413040161,
+  "device": "cpu",
+  "timestamp": "2026-08-29T13:19:29.154840+00:00"
+}

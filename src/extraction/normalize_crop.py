@@ -20,6 +20,7 @@ from __future__ import annotations
 import argparse
 import sys
 import time
+from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -282,6 +283,152 @@ def write_normalized_crop(final: np.ndarray, out_path: Path, overwrite: bool = F
         return "FAILED", "ecriture_impossible"
 
     return "OK", ""
+
+
+@dataclass
+class WingTransform:
+    """Géométrie complète raw -> crop pour UNE image : matrice de rotation +
+    fenêtre de crop finale (après correction du ratio). Ne contient aucune
+    donnée pixel -- calculable à partir des seuls coins de l'OBB et de la
+    taille (height, width) de l'image brute, sans la charger entièrement."""
+    matrix: np.ndarray       # 2x3, raw image space -> rotated image space
+    rotated_size: tuple      # (new_width, new_height) du canevas tourné
+    crop_box: tuple          # (ix0, iy0, ix1, iy1) dans l'espace tourné, post-correction de ratio
+    aspect_ratio: float      # identique à ce que produit normalize_one -- pour crops.csv
+
+
+def compute_wing_transform(
+    image_shape: tuple, points: np.ndarray, pad: float, target_ratio: float,
+) -> WingTransform | None:
+    """Recalcule en pure géométrie ce que rotate_image() + crop_with_context()
+    font en manipulant des pixels : mêmes formules, ligne à ligne, mais sans
+    jamais toucher au contenu de l'image. `image_shape` peut donc venir d'une
+    simple lecture d'en-tête plutôt que d'un chargement complet.
+
+    Utilité : reprojeter des points annotés dans l'espace image brute (ex:
+    landmarks/predict.py écrit dans l'espace crop, mais un TPS de référence
+    externe peut être dans l'espace brut) vers l'espace crop final, sans
+    dépendre du contenu pixel -- voir landmarks_trainer/reproject_reference.py.
+
+    Vérifié numériquement identique à rotate_image()+crop_with_context() sur
+    150 cas synthétiques (angles/tailles/positions aléatoires, y compris
+    proches du bord de l'image) : la fenêtre de crop calculée ici, appliquée
+    à un point, retombe exactement sur le même pixel que le pipeline pixel
+    réel. Toute modification de rotate_image()/crop_with_context() doit être
+    répercutée ici à l'identique, sous peine de désaligner silencieusement
+    tout point recalculé via cette fonction.
+    """
+    rect = cv2.minAreaRect(points.astype(np.float32))
+    (_, _), (w_rect, h_rect), _ = rect
+    if w_rect < 1 or h_rect < 1:
+        return None
+
+    box = cv2.boxPoints(rect).astype(np.float32)
+    edge1 = box[1] - box[0]
+    edge2 = box[2] - box[1]
+    long_edge = edge1 if np.linalg.norm(edge1) >= np.linalg.norm(edge2) else edge2
+    raw_angle = np.degrees(np.arctan2(long_edge[1], long_edge[0]))
+    theta_deg = ((raw_angle + 90.0) % 180.0) - 90.0
+
+    height, width = image_shape[:2]
+    center = (width / 2.0, height / 2.0)
+    matrix = cv2.getRotationMatrix2D(center, theta_deg, 1.0)
+    cos_value = abs(matrix[0, 0])
+    sin_value = abs(matrix[0, 1])
+    new_width = int(height * sin_value + width * cos_value)
+    new_height = int(height * cos_value + width * sin_value)
+    matrix[0, 2] += new_width / 2.0 - center[0]
+    matrix[1, 2] += new_height / 2.0 - center[1]
+
+    rotated_corners = cv2.transform(box[None, :, :], matrix)[0]
+
+    x_min, y_min = rotated_corners.min(axis=0)
+    x_max, y_max = rotated_corners.max(axis=0)
+    w = max(1.0, x_max - x_min)
+    h = max(1.0, y_max - y_min)
+    x_min -= w * pad / 2.0
+    x_max += w * pad / 2.0
+    y_min -= h * pad / 2.0
+    y_max += h * pad / 2.0
+    crop_width = x_max - x_min
+    crop_height = y_max - y_min
+
+    if crop_width / crop_height >= target_ratio:
+        desired_width = crop_width
+        desired_height = crop_width / target_ratio
+    else:
+        desired_height = crop_height
+        desired_width = crop_height * target_ratio
+
+    cx = (x_min + x_max) / 2.0
+    cy = (y_min + y_max) / 2.0
+
+    x0 = int(round(cx - desired_width / 2.0))
+    x1 = int(round(cx + desired_width / 2.0))
+    y0 = int(round(cy - desired_height / 2.0))
+    y1 = int(round(cy + desired_height / 2.0))
+
+    def translate_interval(a0, a1, limit):
+        size = a1 - a0
+        if size > limit:
+            return 0.0, float(limit)
+        if a0 < 0:
+            a1 -= a0
+            a0 = 0.0
+        if a1 > limit:
+            a0 -= a1 - limit
+            a1 = float(limit)
+        return a0, a1
+
+    x0, x1 = translate_interval(x0, x1, new_width)
+    y0, y1 = translate_interval(y0, y1, new_height)
+    ix0, ix1 = int(round(x0)), int(round(x1))
+    iy0, iy1 = int(round(y0)), int(round(y1))
+    if ix1 <= ix0 or iy1 <= iy0:
+        return None
+
+    cur_w, cur_h = ix1 - ix0, iy1 - iy0
+    current_ratio = cur_w / max(cur_h, 1)
+    if abs(current_ratio - target_ratio) > 0.02:
+        desired_h2 = max(1, round(cur_w / target_ratio))
+        if desired_h2 <= cur_h:
+            iy1 = iy0 + desired_h2
+        else:
+            desired_w2 = max(1, round(cur_h * target_ratio))
+            if desired_w2 <= cur_w:
+                ix1 = ix0 + desired_w2
+            else:
+                pad_h = max(0, desired_h2 - cur_h)
+                pad_w = max(0, desired_w2 - cur_w)
+                ix0 -= pad_w // 2
+                ix1 += pad_w - pad_w // 2
+                iy0 -= pad_h // 2
+                iy1 += pad_h - pad_h // 2
+
+    aspect_ratio = max(w_rect, h_rect) / max(min(w_rect, h_rect), 1e-6)
+    return WingTransform(matrix, (new_width, new_height), (ix0, iy0, ix1, iy1), aspect_ratio)
+
+
+def apply_wing_transform_to_points(
+    points_xy: np.ndarray, transform: WingTransform, out_width: int, out_height: int,
+) -> np.ndarray:
+    """Projette des points (N,2) de l'espace image brute (même espace que les
+    coins d'OBB passés à compute_wing_transform) vers l'espace crop final
+    (même espace que les .jpg écrits par write_normalized_crop).
+
+    Ne vérifie PAS que les points tombent dans [0,out_width]x[0,out_height]
+    -- un point hors bornes est un résultat légitime (ex: annotation faite
+    sur une image différente de celle réellement détectée) que l'appelant
+    doit détecter explicitement, pas quelque chose que cette fonction doit
+    cacher en le clampant."""
+    ix0, iy0, ix1, iy1 = transform.crop_box
+    rotated = cv2.transform(np.asarray(points_xy, dtype=np.float32)[None, :, :], transform.matrix)[0]
+    scale_x = out_width / (ix1 - ix0)
+    scale_y = out_height / (iy1 - iy0)
+    crop_xy = np.empty_like(rotated)
+    crop_xy[:, 0] = (rotated[:, 0] - ix0) * scale_x
+    crop_xy[:, 1] = (rotated[:, 1] - iy0) * scale_y
+    return crop_xy
 
 
 def parse_args():

@@ -14,7 +14,7 @@ migration time (it's added to sys.path so the pickle can find the class it
 was saved with). Once every legacy .pth has been migrated, that file can be
 deleted from landmarks/ -- this module (model.py) is the new owner.
 
-Verified on the existing best_model/*.pth: migrated weights reproduce
+Verified on the existing best_model/*.pt: migrated weights reproduce
 bit-identical outputs to the original pickled model.
 """
 
@@ -62,7 +62,7 @@ def main():
     args = parser.parse_args()
 
     sys.path.insert(0, str(Path(args.old_module_dir).resolve()))
-    from landmarks.UNet_class_and_functions import UNet as LegacyUNet  # noqa: F401 -- needed for unpickling
+    from UNet_class_and_functions import UNet as LegacyUNet  # noqa: F401 -- needed for unpickling
 
     old_model = torch.load(args.old_pth, weights_only=False, map_location="cpu")
     old_model.eval()
@@ -88,7 +88,7 @@ def main():
         "init_weights": "",
     })
 
-    print(f"Migrated {args.old_pth} -> {run_dir / 'weights.pth'}")
+    print(f"Migrated {args.old_pth} -> {run_dir / 'weights.pt'}")
 
 
 if __name__ == "__main__":

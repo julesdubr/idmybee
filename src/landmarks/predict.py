@@ -62,7 +62,7 @@ mémoire ; le TPS et landmarks.csv sont réécrits en entier tous les
 
 Usage :
     python -m landmarks.predict --dataset data/Bombus --mode light \\
-        --model data/models/UNet_150_epoch_lr=0.001_seed=58_func=pow_param=30.pth
+        --model data/models/unet_landmarks/<run_id>/weights.pth
 
     # ne retenter que les échecs d'un run précédent :
     python -m landmarks.predict --dataset data/Bombus --mode light --model ... --retry-failed
@@ -86,6 +86,7 @@ _THIS_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(_THIS_DIR.parent))
 from utils.pipeline_io import RunCounter, format_duration, read_csv_rows, resolve_path, update_pipeline_stats
 from utils.tps_io import ImageLandmarks, image_id_to_sid, parse_tps, write_tps
+from landmarks_trainer.model import load_weights
 
 LANDMARKS_FIELDS = [
     "image_id", "specimen_id", "split", "status", "error_reason",
@@ -259,7 +260,9 @@ def parse_args():
     parser.add_argument("--model", required=True, help="Chemin du .pth du modèle UNet.")
     parser.add_argument("--base-dir", default=None, help="Racine pour résoudre les output_path relatifs de crops.csv.")
     parser.add_argument("--tps", default="landmarks.tps", help="Nom du TPS de sortie (dans <dataset>/landmarks/).")
-    parser.add_argument("--n-landmarks", type=int, default=18)
+    parser.add_argument("--n-landmarks", type=int, default=19,
+                         help="19 = Tancrede's full blueprint (LM3 included, current default). "
+                              "Pass 18 to run an older/legacy model that doesn't predict LM3.")
     parser.add_argument("--split", default=None, help="Ne traiter qu'un split (train/test/...). Vide = tous.")
     parser.add_argument("--device", default=None, help="'cpu', 'cuda', etc. Vide = auto-détection.")
     parser.add_argument("--overwrite", action="store_true", help="Retraiter même si déjà logué.")
@@ -293,8 +296,7 @@ def main():
 
     device = torch.device(args.device) if args.device else torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print("device :", device)
-    model = torch.load(args.model, weights_only=False, map_location=device)
-    model.to(device)
+    model = load_weights(args.model, device=device)  # state_dict, not the old full-pickle format -- see landmarks_trainer/migrate_legacy_weights.py for existing .pth files
     model.eval()
     model_name = Path(args.model).stem
 

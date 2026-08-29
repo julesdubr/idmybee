@@ -3,76 +3,57 @@ Build the UNet fine-tuning manifest: pairs each crop image with its
 ground-truth landmark points, ready for dataset.py / train.py.
 
     python export_dataset.py \
-        --tps path/to/tancrede_reference.tps \
-        --crops-csv path/to/extraction/<backend>/crops.csv \
+        --dataset data/Bombus --mode light \
+        --tps data/Bombus/landmarks/tancrede_reference.tps \
         --output data/models/unet_landmarks/train_manifest.csv
 
-ASSUMPTIONS -- please check these before trusting the output (see the chat
-message this shipped with for the exact questions):
+Goal of this fine-tuning round: train the UNet to predict Tancrede's full
+19-point blueprint (LM3 included), instead of Gabriel's original 18-point
+scheme (LM3 dropped -- see reconstruct_tps.py --drop 3). By default nothing
+is dropped; pass --drop <n> (1-indexed) to reproduce the old 18-point
+export if ever needed for comparison.
 
-1. `utils.tps_io.parse_tps(path)` exists and returns a list of records each
-   exposing `.image_id` (str) and `.points` (N,2 array, (x, y) pixel coords,
-   19 points for Tancrede's blueprint). If the real signature differs, this
-   import will need a one-line fix -- it's deliberately NOT reimplemented
-   here to avoid a second, possibly-inconsistent TPS parser living in the
-   codebase.
-2. Tancrede's TPS points are already in the SAME pixel space as the crop
-   images in crops.csv (i.e. he digitized directly on the crops, not on the
-   raw uncropped photos). If that's wrong, every exported point is silently
-   misaligned -- which is exactly why this script always renders debug
-   overlays (crop + plotted points) for a sample of exported specimens.
-   Look at those before launching a training run.
-3. crops.csv has an image_id column and a column with the crop file path
-   (name configurable via --crop-path-col, since exact naming wasn't
-   confirmed). If crops.csv accumulates multiple rows per image_id, the
-   LAST row wins (same convention as elsewhere in the pipeline) -- a
-   warning is printed if duplicates are found.
+Reuses the pipeline's own building blocks rather than re-parsing crops.csv
+or TPS files independently:
+  - landmarks.predict.load_target_crops -- same crops.csv dedup/status/split
+    filtering predict.py itself uses (OK+SKIPPED, latest row per image_id).
+  - utils.pipeline_io.resolve_path -- same relative-path resolution as
+    predict.py's crop_path handling.
+  - utils.tps_io.parse_tps -- same TPS parser predict.py uses to reload its
+    own output.
 
-Landmark drop: Tancrede's blueprint has 19 landmarks; LM3 (1-indexed, index
-2 zero-indexed) has no counterpart in the UNet's 18-point scheme and is
-dropped by default, matching reconstruct_tps.py --drop 3.
+ASSUMPTION -- please check before trusting the output: `ImageLandmarks`
+records returned by parse_tps() expose `.landmarks` as an (N, 2) array of
+(x, y) pixel coordinates in the SAME pixel space as the crop images (i.e.
+Tancrede digitized directly on the crops, not on raw uncropped photos). If
+that's wrong, every exported point is silently misaligned -- which is
+exactly why this script always renders debug overlays (crop + plotted
+points) for a sample of exported specimens. Look at those before launching
+a training run.
+
+KNOWN GAP: joining a TPS specimen to its crop requires `.image_id`, which
+is only set if the TPS has a `COMMENT=image_id=...` line (this pipeline's
+own convention). If your reference TPS doesn't have that (e.g. Tancrede's
+raw-space reference, digitized with a third-party tool), see
+reproject_reference.py first -- it resolves image_id via manifest.csv
+matching and writes a new TPS with COMMENT= already set, ready for this
+script.
 """
 
 import argparse
 import csv
 import random
 import sys
-import warnings
 from pathlib import Path
 
 import cv2
 import numpy as np
-import pandas as pd
 
-try:
-    from utils.tps_io import parse_tps
-except ImportError as e:
-    raise ImportError(
-        "export_dataset.py expects utils.tps_io.parse_tps(path) -> records "
-        "with .image_id and .points (N,2 array of x,y). Adjust the import "
-        "at the top of this file if the real function name/signature "
-        "differs, then re-run."
-    ) from e
-
-
-def load_crop_lookup(crops_csv: str, image_id_col: str, crop_path_col: str) -> dict:
-    df = pd.read_csv(crops_csv)
-    for col in (image_id_col, crop_path_col):
-        if col not in df.columns:
-            raise ValueError(f"{crops_csv} has no column '{col}' (columns: {list(df.columns)})")
-
-    dupes = df[image_id_col].duplicated().sum()
-    if dupes:
-        warnings.warn(f"{crops_csv}: {dupes} duplicate image_id rows, keeping the last one")
-    df = df.drop_duplicates(subset=image_id_col, keep="last")
-
-    manifest_dir = Path(crops_csv).resolve().parent
-    lookup = {}
-    for _, row in df.iterrows():
-        p = row[crop_path_col]
-        p = p if Path(p).is_absolute() else str((manifest_dir / p).resolve())
-        lookup[row[image_id_col]] = p
-    return lookup
+_THIS_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(_THIS_DIR.parent))  # same idiom as landmarks/predict.py
+from landmarks.predict import load_target_crops
+from utils.pipeline_io import resolve_path
+from utils.tps_io import parse_tps
 
 
 def save_debug_overlay(crop_path: str, points_xy: np.ndarray, out_path: Path):
@@ -87,11 +68,14 @@ def save_debug_overlay(crop_path: str, points_xy: np.ndarray, out_path: Path):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--dataset", type=Path, required=True, help="Dataset root, e.g. data/Bombus")
+    parser.add_argument("--mode", default="light", choices=["heavy", "light"],
+                         help="Backend whose crops.csv to join against (extraction/{mode}/crops.csv).")
     parser.add_argument("--tps", required=True, help="Path to Tancrede's reference TPS file")
-    parser.add_argument("--crops-csv", required=True, help="crops.csv from extraction")
-    parser.add_argument("--image-id-col", default="image_id")
-    parser.add_argument("--crop-path-col", default="crop_path")
-    parser.add_argument("--drop", type=int, default=3, help="1-indexed landmark to drop (default: LM3)")
+    parser.add_argument("--base-dir", default=None, help="Root for resolving crops.csv's relative output_path, "
+                                                           "same meaning as predict.py --base-dir")
+    parser.add_argument("--drop", type=int, default=0,
+                         help="1-indexed landmark to drop (0 = keep all 19, the default for this round)")
     parser.add_argument("--output", required=True, help="Output manifest CSV path")
     parser.add_argument("--skipped-output", default=None,
                          help="Where to log specimens skipped for lack of a matching crop "
@@ -103,40 +87,83 @@ def main():
     parser.add_argument("--seed", type=int, default=58)
     args = parser.parse_args()
 
-    drop_idx = args.drop - 1
+    crops_path = args.dataset / "extraction" / args.mode / "crops.csv"
+    base_dir = Path(args.base_dir) if args.base_dir else None
+    drop_idx = args.drop - 1 if args.drop else None
 
-    records = parse_tps(args.tps)
-    crop_lookup = load_crop_lookup(args.crops_csv, args.image_id_col, args.crop_path_col)
+    crop_rows = load_target_crops(crops_path, split_filter=None)
+    crop_lookup = {row["image_id"]: row for row in crop_rows}
+    print(f"{len(crop_lookup)} crop(s) available in {crops_path}")
+
+    specimens, errors = parse_tps(Path(args.tps), strict=False)
+    if errors:
+        print(f"ATTENTION: {len(errors)} bloc(s) illisible(s) dans {args.tps} (ignorés):")
+        for e in errors[:10]:
+            print(f"  spécimen #{e.specimen_index}, ligne {e.line_no} : {e.message}")
+    print(f"{len(specimens)} specimen(s) in {args.tps}")
+
+    n_with_image_id = sum(1 for sp in specimens if sp.image_id is not None)
+    print(f"{n_with_image_id}/{len(specimens)} specimen(s) have image_id set (COMMENT= present)")
+    if n_with_image_id == 0:
+        print(
+            "Aucun spécimen n'a de COMMENT= image_id= dans ce TPS -- probablement le cas de la "
+            "référence de Tancrède, digitisée avec un outil tiers (tpsDig ou équivalent), pas avec "
+            "ce pipeline. tps_io.py dit explicitement que l'appelant doit alors rejoindre via "
+            "utils.dataset -- ce script ne le fait PAS encore (signature inconnue). Rien ne sera "
+            "exporté tant que ça n'est pas branché plutôt que de deviner un appariement par nom de "
+            "fichier, qui pourrait associer silencieusement de mauvais points à la mauvaise image.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
 
     exported_rows = []
     skipped_rows = []
+    reported_shape = None
 
-    for rec in records:
-        crop_path = crop_lookup.get(rec.image_id)
-        if crop_path is None:
-            skipped_rows.append({"image_id": rec.image_id, "reason": "no matching crop_path"})
+    for sp in specimens:
+        if sp.image_id is None:
+            skipped_rows.append({"image_id": f"(tps_id={sp.tps_id})", "reason": "no image_id (no COMMENT= in this TPS block)"})
             continue
 
-        points = np.asarray(rec.points, dtype=np.float64)
-        points = np.delete(points, drop_idx, axis=0)
-        if len(points) != 18:
-            skipped_rows.append({
-                "image_id": rec.image_id,
-                "reason": f"expected 18 points after drop, got {len(points)}",
-            })
+        crop_row = crop_lookup.get(sp.image_id)
+        if crop_row is None:
+            skipped_rows.append({"image_id": sp.image_id, "reason": "no matching crop in crops.csv"})
             continue
 
-        row = {"image_id": rec.image_id, "crop_path": crop_path}
-        specimen_id = getattr(rec, "specimen_id", None)
-        if specimen_id is not None:
-            row["specimen_id"] = specimen_id
+        crop_path = resolve_path(crop_row["output_path"], base_dir).resolve()  # absolute:
+        # crops.csv's output_path is relative to the dataset root (or --base-dir), not to
+        # wherever the manifest CSV ends up living. dataset.py's load_manifest() re-resolves
+        # any relative crop_path against the *manifest's own* directory (see its docstring) --
+        # leaving crop_path relative here silently double-joins it with the run dir
+        # (data/models/unet_landmarks/...) instead of the dataset root. Absolute sidesteps
+        # the mismatch entirely.
+        if not crop_path.exists():
+            skipped_rows.append({"image_id": sp.image_id, "reason": f"crop file missing: {crop_path}"})
+            continue
+
+        points = np.asarray(sp.landmarks, dtype=np.float64)
+        if drop_idx is not None:
+            points = np.delete(points, drop_idx, axis=0)
+
+        if reported_shape is None:
+            img = cv2.imread(str(crop_path))
+            if img is not None:
+                reported_shape = img.shape[:2]
+                print(f"First crop image shape (height, width): {reported_shape} "
+                      f"-- confirm this matches constants.IMG_HEIGHT/IMG_WIDTH")
+
+        row = {
+            "image_id": sp.image_id,
+            "specimen_id": getattr(sp, "specimen_id", crop_row.get("specimen_id", "")),
+            "crop_path": str(crop_path),
+        }
         for i, (x, y) in enumerate(points):
             row[f"x{i}"] = x
             row[f"y{i}"] = y
         exported_rows.append(row)
 
     if not exported_rows:
-        print("Nothing exported -- check the ASSUMPTIONS in this file's docstring.", file=sys.stderr)
+        print("Nothing exported -- check the ASSUMPTION in this file's docstring.", file=sys.stderr)
         sys.exit(1)
 
     out_path = Path(args.output)
@@ -153,7 +180,8 @@ def main():
         writer.writeheader()
         writer.writerows(skipped_rows)
 
-    print(f"Exported {len(exported_rows)} specimens -> {out_path}")
+    n_landmarks = len(points)
+    print(f"Exported {len(exported_rows)} specimens ({n_landmarks} landmarks each) -> {out_path}")
     print(f"Skipped {len(skipped_rows)} specimens -> {skipped_path}")
 
     if args.debug_overlays_dir:
@@ -161,11 +189,11 @@ def main():
         sample = rng.sample(exported_rows, min(args.n_debug_overlays, len(exported_rows)))
         overlays_dir = Path(args.debug_overlays_dir)
         for row in sample:
-            points_xy = np.array([[row[f"x{i}"], row[f"y{i}"]] for i in range(18)])
+            points_xy = np.array([[row[f"x{i}"], row[f"y{i}"]] for i in range(n_landmarks)])
             save_debug_overlay(row["crop_path"], points_xy,
                                 overlays_dir / f"{row['image_id']}.png")
         print(f"Wrote {len(sample)} debug overlays -> {overlays_dir}  "
-              f"(LOOK AT THESE before training -- see assumption #2 in the docstring)")
+              f"(LOOK AT THESE before training -- see the ASSUMPTION in the docstring)")
 
 
 if __name__ == "__main__":
