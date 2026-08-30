@@ -21,12 +21,16 @@ Produit :
                                (matché ou non), avec une colonne `keep` que
                                tu remplis à la main après avoir regardé les
                                overlays.
-  - <overlays-dir>/*.png    : le crop final + les 19 points numérotés dessus,
-                               pour repérer les specimens mal alignés
-                               (Tancrede a travaillé sur des photos parfois
-                               déjà un peu croppées à la main -- l'OBB
-                               automatique peut donc correspondre à un cadrage
-                               différent de celui qu'il a annoté).
+  - <overlays-dir>/{OK,SUSPECT}/*.png : le crop final + les 19 points
+                               numérotés dessus, triés par statut (voir
+                               utils/tps_overlay.py, généralisé pour marcher
+                               aussi sur les .tps produits par
+                               landmarks/predict.py). Pour repérer les
+                               specimens mal alignés (Tancrede a travaillé
+                               sur des photos parfois déjà un peu croppées à
+                               la main -- l'OBB automatique peut donc
+                               correspondre à un cadrage différent de celui
+                               qu'il a annoté).
 
 Jointure specimen -> image_id : le TPS de Tancrede n'a pas de COMMENT=
 (digitisé hors pipeline), donc pas d'image_id direct. On matche IMAGE= à
@@ -67,7 +71,6 @@ import csv
 import sys
 from pathlib import Path
 
-import cv2
 import numpy as np
 
 _THIS_DIR = Path(__file__).resolve().parent
@@ -80,9 +83,9 @@ from extraction.normalize_crop import (
 )
 from utils.pipeline_io import RunCounter, read_csv_rows, resolve_path
 from utils.tps_io import ImageLandmarks, parse_tps, write_tps
+from utils.tps_overlay import render_tps_overlays
 
-# FALSY = {"false", "0", "non", "no", "n"}
-FALSY = {"SKIPPED", "SUSPECT"}
+FALSY = {"false", "0", "non", "no", "n"}
 
 
 def norm_path(p: str) -> str:
@@ -132,25 +135,13 @@ def load_previous_keep_decisions(path: str) -> dict:
     return decisions
 
 
-def draw_overlay(crop_path: Path, points_xy: np.ndarray, out_path: Path):
-    image = cv2.imread(str(crop_path))
-    if image is None:
-        return False
-    for i, (x, y) in enumerate(points_xy):
-        xi, yi = int(round(x)), int(round(y))
-        cv2.circle(image, (xi, yi), 4, (0, 0, 255), -1)
-        cv2.putText(image, str(i), (xi + 5, yi - 5), cv2.FONT_HERSHEY_SIMPLEX,
-                    0.35, (0, 255, 0), 1, cv2.LINE_AA)
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    return cv2.imwrite(str(out_path), image)
-
-
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--dataset", type=Path, required=True)
     parser.add_argument("--mode", default="light", choices=["heavy", "light"])
     parser.add_argument("--tancrede-tps", required=True)
-    parser.add_argument("--base-dir", default=None, help="Racine pour résoudre raw_path, même sens que normalize_crop.py --base-dir")
+    parser.add_argument("--base-dir", default=None, help="Racine pour résoudre raw_path (manifest.csv), même sens que normalize_crop.py --base-dir")
+    parser.add_argument("--crops-base-dir", default=None, help="Racine pour résoudre output_path (crops.csv), même sens que predict.py --base-dir -- PAS forcément le même que --base-dir")
     parser.add_argument("--padding", type=float, default=0.10, help="DOIT correspondre à ce qui a produit crops.csv")
     parser.add_argument("--out-width", type=int, default=512, help="idem")
     parser.add_argument("--out-height", type=int, default=256, help="idem")
@@ -169,6 +160,7 @@ def main():
 
     target_ratio = args.out_width / args.out_height
     base_dir = Path(args.base_dir) if args.base_dir else None
+    crops_base_dir = Path(args.crops_base_dir) if args.crops_base_dir else None
 
     output_tps = Path(args.output_tps)
     review_path = Path(args.review_output) if args.review_output else Path(f"{args.output_tps}.review.csv")
@@ -198,7 +190,7 @@ def main():
         review_row = {
             "image_id": "", "specimen_id": "", "tancrede_image_path": sp.image_path,
             "matched_via": "", "status": "SKIPPED", "reason": "", "n_out_of_bounds": "",
-            "aspect_ratio_obb": "", "aspect_ratio_crops_csv": "", "overlay_path": "", "keep": "",
+            "aspect_ratio_obb": "", "aspect_ratio_crops_csv": "", "keep": "",
         }
 
         manifest_row, method_or_reason = match_manifest_row(sp.image_path, by_tail, by_basename)
@@ -278,12 +270,6 @@ def main():
         review_row["status"] = status
         if n_oob > 0:
             review_row["reason"] = f"{n_oob} landmark(s) hors du crop {args.out_width}x{args.out_height}"
-            continue
-
-        crop_path = resolve_path(crop_row["output_path"], base_dir)
-        overlay_path = overlays_dir / f"{image_id}.png"
-        if draw_overlay(crop_path, crop_xy, overlay_path):
-            review_row["overlay_path"] = str(overlay_path)
 
         keep = previous_keep.get(image_id, "")
         review_row["keep"] = keep
@@ -307,10 +293,18 @@ def main():
         writer.writeheader()
         writer.writerows(review_rows)
 
+    # Overlays -- délégué à utils.tps_overlay (partagé avec landmarks/predict.py) :
+    # relit output_tps qu'on vient d'écrire, trie OK/SUSPECT dans overlays_dir/
+    # en joignant sur image_id via review_path (mêmes colonnes image_id/status
+    # que n'importe quel autre CSV du pipeline).
+    overlay_summary = render_tps_overlays(
+        output_tps, overlays_dir, base_dir=crops_base_dir, csv_path=review_path,
+    ) if output_specimens else {"written": 0, "unmatched": 0, "skipped": 0}
+
     print(f"{counter}")
     print(f"{len(output_specimens)} spécimen(s) écrit(s) -> {output_tps}")
     print(f"Revue -> {review_path}")
-    print(f"Overlays -> {overlays_dir}")
+    print(f"Overlays ({overlay_summary['written']} écrit(s)) -> {overlays_dir}")
     if not args.exclude_csv:
         print(
             "\nPremier run : regarde les overlays, mets `keep=FALSE` sur les mauvais dans "

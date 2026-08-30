@@ -1,0 +1,18 @@
+{
+  "dataset": "data/Bombus",
+  "split": null,
+  "devices": null,
+  "species": null,
+  "castes": null,
+  "exclude_outliers": true,
+  "non_strict": false,
+  "landmarks_tps": null,
+  "landmarks_status_csv": null,
+  "run_label": null,
+  "level": "species",
+  "lda_components": 2,
+  "no_save_model": false,
+  "run_id": "species_train",
+  "family": "lda",
+  "resolved_split": "train"
+}

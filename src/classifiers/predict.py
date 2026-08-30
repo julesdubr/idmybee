@@ -1,48 +1,32 @@
 """predict.py
-Classification de spécimens à partir d'un modèle GPA -> PCA -> LDA entraîné
-par train.py --save-model. Deux sous-commandes :
+Classe des spécimens avec un modèle GPA -> PCA -> LDA entraîné par train.py.
 
-  batch  : valider le modèle sur un dossier de données (ex: data/Bombus
-           --split test) -- accuracy top-1/top-3 contre la vérité connue,
-           CSV de toutes les prédictions. Réutilise utils.dataset.load_dataset
-           (mêmes filtres --devices/--species/--castes/--exclude-outliers
-           que train.py).
-  single : classer UNE photo terrain (un seul bloc TPS, pas encore dans
-           data/Bombus -- juste ses landmarks). Pas d'évaluation possible
-           (pas de vérité connue) : imprime la prédiction directement,
-           pensé pour un usage rapide sur le terrain une fois le modèle
-           validé.
+  batch  : évalue le modèle sur un dataset avec vérité connue (accuracy
+           top-1/top-3, CSV de prédictions). Mêmes filtres que train.py
+           (--split/--devices/--species/--castes/--exclude-outliers/--tps).
+  single : classe une seule photo (pas de vérité connue, usage terrain).
 
-Le TPS d'entrée doit avoir le même nombre de landmarks, dans le même ordre /
-schéma, que celui utilisé à l'entraînement du modèle. En pratique :
-  - landmarks issus du UNet de Gabriel -> passer d'abord par
-    reconstruct_tps.py (renumérotation dans le schéma canonique) ;
-  - landmarks digitalisés à la main dans le même ordre que Tancrède -> le
-    TPS peut être utilisé directement.
-Un mauvais schéma de landmarks (mauvais ordre ou nombre de points différent)
-donne des prédictions silencieusement fausses sans le détour par
-reconstruct_tps.py : seul le nombre de points est vérifié ici, pas l'ordre.
+Le TPS d'entrée doit avoir le même schéma de landmarks (nombre et ordre) que
+celui utilisé à l'entraînement -- passer par reconstruct_tps.py pour des
+landmarks issus du UNet de Gabriel. Seul le nombre de points est vérifié
+ici, pas l'ordre : un mauvais schéma donne des prédictions fausses sans
+erreur.
 
-Chaque spécimen aligné reçoit aussi une distance de Procrustes à la forme
-de référence du modèle (`procrustes_distance`) : une valeur très supérieure
-à celles observées sur le jeu d'entraînement signale une forme atypique, un
-problème de landmarks, ou un spécimen hors distribution.
+Chaque prédiction inclut une distance de Procrustes à la référence du
+modèle (procrustes_distance) : une valeur nettement supérieure à celles du
+jeu d'entraînement signale une forme atypique ou un problème de landmarks.
 
-Note : predict_specimens() fait un *transform* (projection d'un spécimen sur
-un modèle déjà figé) -- ce n'est pas le même calcul que run_gpa_pca() dans
-train.py, qui *fit* un consensus GPA et un PCA sur tout un jeu
-d'entraînement. Les deux restent volontairement séparés ; seul le
-chargement des données est partagé (voir utils/dataset.py).
+Pour comparer plusieurs sources de landmarks entre elles, utiliser train.py
+avec --tps (voir classifiers/train.py) : predict.py sert à appliquer un
+modèle déjà entraîné à de nouvelles données.
 
-Usage:
-    python -m classifiers.train data/Bombus --split train --level species --save-model out/model_species.joblib
-    python -m classifiers.predict batch out/model_species.joblib data/Bombus --split test --out out/predictions.csv
-    python -m classifiers.predict single out/model_species.joblib data/Bombus/landmarks/nouvelle_photo.tps
+Usage :
+    python -m classifiers.predict batch data/models/lda/species_train/train/model.joblib data/Bombus --split test
+    python -m classifiers.predict single data/models/lda/species_train/train/model.joblib data/Bombus/landmarks/nouvelle_photo.tps
 """
 from __future__ import annotations
 
 import argparse
-import logging
 import sys
 from pathlib import Path
 
@@ -51,24 +35,23 @@ import pandas as pd
 
 _THIS_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(_THIS_DIR.parent))
+from utils.cli import add_dataset_args, dataset_kwargs
 from utils.dataset import load_dataset, load_unlabeled_tps
 from utils.gpa import align_to_reference, procrustes_distance, two_d_array
 from utils.model_io import TrainedModel, load_model
+from utils.predictions import accuracy_summary, build_predictions_df, print_predictions_report
+from utils.run_io import (
+    FAMILY_LDA, build_run_id, setup_console_logging, step_dir, write_metrics, write_params, write_run_log,
+)
 from utils.tps_io import ImageLandmarks
 
-CHOICE_RANKS = ("second", "third")  # au-delà du top-1 (predicted/confidence)
 
-
-def predict_specimens(model: TrainedModel, specimens: list[ImageLandmarks]) -> pd.DataFrame:
+def predict_specimens(
+    model: TrainedModel, specimens: list[ImageLandmarks], truth_by_tps_id: dict[int, str] | None = None,
+) -> pd.DataFrame:
     """Aligne chaque spécimen sur la référence du modèle, le projette dans
-    l'espace PCA/LDA entraîné, et retourne un DataFrame de prédictions
-    (une ligne par spécimen dont le nombre de landmarks correspond au modèle).
-
-    Rapporte les 3 meilleurs choix (predicted = top-1, second_choice,
-    third_choice) plutôt que le seul top-1 : nécessaire pour l'évaluation
-    top-3 de evaluate_predictions(), et utile tel quel en relecture
-    manuelle (une confusion fréquente entre deux espèces proches saute aux
-    yeux directement dans le CSV)."""
+    l'espace PCA/LDA, et retourne un DataFrame de prédictions (voir
+    utils.predictions.build_predictions_df pour le schéma)."""
     valid: list[ImageLandmarks] = []
     aligned_list: list[np.ndarray] = []
     dist_list: list[float] = []
@@ -99,62 +82,14 @@ def predict_specimens(model: TrainedModel, specimens: list[ImageLandmarks]) -> p
 
     X = two_d_array(np.stack(aligned_list))
     scores = model.pca.transform(X)
-
-    predicted = model.lda.predict(scores)
     proba = model.lda.predict_proba(scores)
     classes = model.lda.classes_
-    confidence = proba.max(axis=1)
+    predicted = classes[np.argmax(proba, axis=1)]
 
-    order = np.argsort(-proba, axis=1)
-    columns = {
-        "tps_id": [s.tps_id for s in valid],
-        "image_id": [s.image_id for s in valid],
-        "specimen_id": [s.specimen_id for s in valid],
-        "image_path": [s.image_path for s in valid],
-        f"predicted_{model.level}": predicted,
-        "confidence": confidence,
-    }
-    for rank, name in enumerate(CHOICE_RANKS, start=1):  # rank 1 = 2e choix, rank 2 = 3e choix
-        if len(classes) > rank:
-            idx = order[:, rank]
-            columns[f"{name}_choice"] = classes[idx]
-            columns[f"{name}_confidence"] = proba[np.arange(len(valid)), idx]
-        else:
-            columns[f"{name}_choice"] = [None] * len(valid)
-            columns[f"{name}_confidence"] = [None] * len(valid)
-    columns["procrustes_distance"] = dist_list
-
-    return pd.DataFrame(columns)
-
-
-def evaluate_predictions(df: pd.DataFrame, truth_by_tps_id: dict[int, str], level: str) -> pd.DataFrame:
-    """Compare les prédictions à la vérité connue (`truth_by_tps_id`, construit
-    par predict_batch depuis meta_df -- voir load_dataset). Ajoute
-    `true_<level>`, `correct_top1`, `correct_top3` à `df`, imprime les deux
-    accuracies.
-
-    Top-3 = la vraie espèce est parmi (predicted, second_choice,
-    third_choice) -- se dégrade proprement si le modèle a moins de 3
-    classes (colonnes second/third_choice à None, jamais égales à la
-    vérité, donc jamais comptées comme un hit)."""
-    true_col = f"true_{level}"
-    df = df.copy()
-    df[true_col] = df["tps_id"].map(truth_by_tps_id)
-
-    choice_cols = [f"predicted_{level}"] + [f"{name}_choice" for name in CHOICE_RANKS]
-    top1 = df[f"predicted_{level}"] == df[true_col]
-    top3 = df.apply(
-        lambda row: row[true_col] in {row[c] for c in choice_cols if pd.notna(row[c])}, axis=1
+    return build_predictions_df(
+        valid, model.level, predicted, proba, classes,
+        truth_by_tps_id=truth_by_tps_id, procrustes_distances=dist_list,
     )
-    df["correct_top1"] = top1
-    df["correct_top3"] = top3
-
-    print(
-        f"\nÉvaluation sur {len(df)} spécimen(s) :"
-        f"\n  Top-1 accuracy : {top1.mean():.4f}"
-        f"\n  Top-3 accuracy : {top3.mean():.4f}"
-    )
-    return df
 
 
 def _print_model_info(model: TrainedModel) -> None:
@@ -166,45 +101,53 @@ def _print_model_info(model: TrainedModel) -> None:
     )
 
 
-def _report_predictions(df: pd.DataFrame, level: str, low_confidence_threshold: float) -> None:
-    print(f"\nRépartition des prédictions ({level}) :")
-    print(df[f"predicted_{level}"].value_counts())
-    print(
-        f"\nConfiance moyenne : {df['confidence'].mean():.3f} "
-        f"(min={df['confidence'].min():.3f}, max={df['confidence'].max():.3f})"
-    )
-    low_conf = df[df["confidence"] < low_confidence_threshold]
-    if len(low_conf):
-        cols = ["tps_id", "specimen_id", "image_path", f"predicted_{level}", "confidence", "second_choice"]
-        print(
-            f"\n{len(low_conf)} prédiction(s) sous le seuil de confiance "
-            f"({low_confidence_threshold}) -- à vérifier manuellement :"
-        )
-        print(low_conf[cols].to_string(index=False))
-
-
 def run_batch(args: argparse.Namespace) -> None:
+    setup_console_logging()
     model = load_model(args.model_path)
     _print_model_info(model)
 
-    specimens, meta_df = load_dataset(
-        args.dataset, split=args.split, devices=args.devices, species=args.species,
-        castes=args.castes, exclude_outliers=args.exclude_outliers, strict=not args.non_strict,
-    )
+    ds_kwargs = dataset_kwargs(args, default_split="test")
+    specimens, meta_df = load_dataset(args.dataset, labeled_only=True, **ds_kwargs)
     truth_col = "groupe" if model.level == "caste" else "species"
     truth_by_tps_id = dict(zip((sp.tps_id for sp in specimens), meta_df[truth_col]))
 
-    df = predict_specimens(model, specimens)
-    df = evaluate_predictions(df, truth_by_tps_id, model.level)
+    df = predict_specimens(model, specimens, truth_by_tps_id=truth_by_tps_id)
+    acc = accuracy_summary(df, model.level)
+    print(f"\nÉvaluation sur {acc['n']} spécimen(s) : top-1 = {acc['accuracy_top1']:.4f} | top-3 = {acc['accuracy_top3']:.4f}")
 
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    df.to_csv(args.out, index=False)
-    print(f"\n{len(df)} prédiction(s) -> {args.out}")
+    run_id = build_run_id(model.level, ds_kwargs["split"], args.devices, args.landmarks_tps, args.run_label)
+    out_dir = step_dir(run_id, "predict", family=FAMILY_LDA)
 
-    _report_predictions(df, model.level, args.low_confidence_threshold)
+    predictions_path = out_dir / "predictions.csv"
+    df.to_csv(predictions_path, index=False)
+
+    metrics = {
+        "run_id": run_id,
+        "model_path": str(args.model_path),
+        "level": model.level,
+        "landmarks_source": str(args.landmarks_tps) if args.landmarks_tps else "landmarks_numbered.tps (défaut)",
+        **acc,
+    }
+    write_metrics(out_dir, metrics)
+    write_params(out_dir, args, extra={
+        "run_id": run_id, "family": FAMILY_LDA, "model_path": str(args.model_path), "resolved_split": ds_kwargs["split"],
+    })
+
+    header = f"run_id={run_id} | modèle={args.model_path}"
+    log_text = (
+        f"{header}\n" + "=" * len(header) + "\n"
+        f"Source landmarks : {metrics['landmarks_source']}\n"
+        f"Évaluation : top-1 = {acc['accuracy_top1']:.4f} | top-3 = {acc['accuracy_top3']:.4f} (n={acc['n']})\n"
+        f"Prédictions -> {predictions_path}\n"
+    )
+    write_run_log(out_dir, log_text)
+
+    print_predictions_report(df, model.level, args.low_confidence_threshold)
+    print(f"\nRun -> {out_dir}")
 
 
 def run_single(args: argparse.Namespace) -> None:
+    setup_console_logging()
     model = load_model(args.model_path)
     _print_model_info(model)
 
@@ -233,27 +176,20 @@ def run_single(args: argparse.Namespace) -> None:
 
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Classifie des spécimens avec un modèle entraîné par train.py --save-model"
+        description="Classifie des spécimens avec un modèle entraîné par train.py"
     )
     subparsers = parser.add_subparsers(dest="mode", required=True)
 
     batch = subparsers.add_parser("batch", help="Valider le modèle sur un dossier de données (avec vérité connue)")
-    batch.add_argument("model_path", type=Path, help="Modèle sauvegardé (ex: out/model_species.joblib)")
+    batch.add_argument("model_path", type=Path, help="Modèle sauvegardé (ex: data/models/lda/<run_id>/train/model.joblib)")
     batch.add_argument("dataset", type=Path, help="Dossier racine (ex: data/Bombus) -- voir utils.dataset.load_dataset")
-    batch.add_argument("--split", type=str, default="test",
-                        help="Valeur de la colonne 'dataset' de manifest.csv à garder (défaut: test).")
-    batch.add_argument("--devices", type=str, nargs="+", default=None, help="Ne garder que ces photos (ex: P1 S1).")
-    batch.add_argument("--species", type=str, nargs="+", default=None, help="Ne garder que ces espèces.")
-    batch.add_argument("--castes", type=str, nargs="+", default=None, help="Ne garder que ces castes.")
-    batch.add_argument("--exclude-outliers", action="store_true", help="Exclut les photos SUSPECT/FAILED.")
-    batch.add_argument("--out", type=Path, default=Path("out/predictions.csv"))
-    batch.add_argument("--non-strict", action="store_true", help="Tolérer les blocs TPS malformés")
+    add_dataset_args(batch, default_split="test")
     batch.add_argument("--low-confidence-threshold", type=float, default=0.6,
                         help="Seuil de confiance sous lequel une prédiction est listée pour relecture manuelle (défaut: 0.6)")
     batch.set_defaults(func=run_batch)
 
     single = subparsers.add_parser("single", help="Classer une seule photo (usage terrain)")
-    single.add_argument("model_path", type=Path, help="Modèle sauvegardé (ex: out/model_species.joblib)")
+    single.add_argument("model_path", type=Path, help="Modèle sauvegardé")
     single.add_argument("tps_path", type=Path, help="Fichier .tps d'une seule photo")
     single.add_argument("--out", type=Path, default=None, help="Optionnel : sauvegarder aussi le résultat en CSV")
     single.add_argument("--non-strict", action="store_true", help="Tolérer les blocs TPS malformés")
@@ -263,7 +199,6 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> None:
-    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
     args = build_arg_parser().parse_args(argv)
     args.func(args)
 

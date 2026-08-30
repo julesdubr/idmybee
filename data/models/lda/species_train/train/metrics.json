@@ -1,0 +1,13 @@
+{
+  "run_id": "species_train",
+  "level": "species",
+  "landmarks_source": "landmarks_numbered.tps (défaut)",
+  "n_specimens": 2571,
+  "n_points": 19,
+  "n_pca_components": 34,
+  "pca_explained_variance_cum": 0.9994422528260255,
+  "gpa_n_iterations": 3,
+  "n": 2571,
+  "accuracy_top1": 0.9459354336833917,
+  "accuracy_top3": 0.9891092959937767
+}
