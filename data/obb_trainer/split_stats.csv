@@ -1,4 +1,0 @@
-split,annotations,images_written,missing_source,unreadable_source,specimens
-train,3253,3253,0,0,715
-val,709,709,0,0,153
-test,697,697,0,0,154

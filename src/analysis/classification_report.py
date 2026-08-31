@@ -9,8 +9,8 @@ La dispersion de forme (shape_variance) reste exclusivement dans
 analysis/variance_report.py.
 
 Usage :
-    python -m analysis.classification_report species_train --step train
-    python -m analysis.classification_report species_test --step predict
+    python -m analysis.classification_report species_train_P1-S1 --step train
+    python -m analysis.classification_report species_train_P1-S1 --step predict --eval-tag test
 """
 from __future__ import annotations
 
@@ -30,7 +30,7 @@ sys.path.insert(0, str(_THIS_DIR.parent))
 from utils.dataset import load_dataset, target_groupe
 from utils.gpa import align_to_reference, two_d_array
 from utils.model_io import load_model
-from utils.run_io import FAMILY_LDA, MODELS_ROOT, read_params, setup_console_logging, step_dir, write_params
+from utils.run_io import FAMILY_LDA, read_params, result_path, run_path, setup_console_logging, write_params
 
 pd.set_option("display.width", 200)
 pd.set_option("display.max_columns", None)
@@ -169,6 +169,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("run_id", type=str, help="Identifiant de run (voir utils.run_io.build_run_id)")
     parser.add_argument("--step", type=str, choices=["train", "predict"], default="train",
                          help="Quelles prédictions analyser : celles du LOOCV (train) ou d'un batch predict.py (predict).")
+    parser.add_argument("--eval-tag", type=str, default=None,
+                         help="Requis si --step predict -- voir data/models/<family>/<run_id>/predict/ pour la liste.")
     parser.add_argument("--family", type=str, default=FAMILY_LDA)
     return parser
 
@@ -177,11 +179,17 @@ def main(argv: list[str] | None = None) -> None:
     setup_console_logging()
     args = build_arg_parser().parse_args(argv)
 
-    step_path = MODELS_ROOT / args.family / args.run_id / args.step
+    if args.step == "predict" and not args.eval_tag:
+        available = result_path(args.family, args.run_id, "predict")
+        options = sorted(p.name for p in available.iterdir()) if available.exists() else []
+        raise SystemExit(f"--eval-tag requis avec --step predict. Disponibles pour {args.run_id!r} : {options}")
+
+    step_path = result_path(args.family, args.run_id, "predict", args.eval_tag) if args.step == "predict" \
+        else result_path(args.family, args.run_id, "train")
     if not step_path.exists():
         raise SystemExit(
-            f"{step_path} introuvable -- lancer classifiers.train (--step train) ou "
-            f"classifiers.predict batch (--step predict) d'abord pour run_id={args.run_id!r}."
+            f"{step_path} introuvable -- lancer classifiers.train ou classifiers.predict batch d'abord "
+            f"pour run_id={args.run_id!r}."
         )
     params = read_params(step_path)
 
@@ -195,7 +203,7 @@ def main(argv: list[str] | None = None) -> None:
         )
     level = true_cols[0].removeprefix("true_")
 
-    model_path = (step_path / "model.joblib") if args.step == "train" else Path(params["model_path"])
+    model_path = result_path(args.family, args.run_id, "train") / "model.joblib"
     if not model_path.exists():
         raise SystemExit(f"Modèle introuvable : {model_path} (train.py a-t-il été lancé avec --no-save-model ?)")
     model = load_model(model_path)
@@ -216,11 +224,12 @@ def main(argv: list[str] | None = None) -> None:
     meta_df = meta_df.copy()
     meta_df["tps_id"] = [sp.tps_id for sp in specimens]
 
-    out_dir = step_dir(args.run_id, "classification_report", family=args.family)
+    run_label = f"{args.run_id}/predict/{args.eval_tag}" if args.step == "predict" else f"{args.run_id}/train"
+    out_dir = run_path(args.family, args.run_id, args.step, *([args.eval_tag] if args.step == "predict" else []), "report")
 
     cm_df = confusion_matrix_df(df, level)
     cm_df.to_csv(out_dir / "confusion_matrix.csv")
-    plot_confusion_matrix(cm_df, out_dir / "confusion_matrix.png", title=f"Matrice de confusion -- {args.run_id}")
+    plot_confusion_matrix(cm_df, out_dir / "confusion_matrix.png", title=f"Matrice de confusion -- {run_label}")
     print("\nMatrice de confusion :\n" + str(cm_df))
 
     species_df = species_report_df(df, level)
@@ -240,13 +249,13 @@ def main(argv: list[str] | None = None) -> None:
     if plot_specimens:
         groupe = target_groupe(plot_meta, level)
         aligned = np.stack([align_to_reference(sp.landmarks, model.mean_shape) for sp in plot_specimens])
-        plot_gpa_alignment(aligned, groupe, out_dir / "gpa_alignment.png", title=f"Alignement GPA -- {args.run_id}")
+        plot_gpa_alignment(aligned, groupe, out_dir / "gpa_alignment.png", title=f"Alignement GPA -- {run_label}")
 
         scores = model.pca.transform(two_d_array(aligned))
         lda_scores = model.lda.transform(scores)
-        plot_lda(lda_scores, groupe, out_dir / "lda_projection.png", title=f"Projection LDA -- {args.run_id}")
+        plot_lda(lda_scores, groupe, out_dir / "lda_projection.png", title=f"Projection LDA -- {run_label}")
 
-    write_params(out_dir, args, extra={"run_id": args.run_id, "family": args.family, "step": args.step})
+    write_params(out_dir, args, extra={"run_id": args.run_id, "eval_tag": args.eval_tag, "family": args.family, "step": args.step})
     print(f"\nRun -> {out_dir}")
 
 

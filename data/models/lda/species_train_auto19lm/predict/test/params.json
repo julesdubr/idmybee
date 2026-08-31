@@ -1,0 +1,19 @@
+{
+  "mode": "batch",
+  "model_path": "data/models/lda/species_train_auto19lm/train/model.joblib",
+  "dataset": "data/Bombus",
+  "split": "test",
+  "devices": null,
+  "species": null,
+  "castes": null,
+  "exclude_outliers": true,
+  "non_strict": false,
+  "landmarks_tps": null,
+  "landmarks_status_csv": null,
+  "run_label": null,
+  "low_confidence_threshold": 0.6,
+  "run_id": "species_train_auto19lm",
+  "eval_tag": "test",
+  "family": "lda",
+  "resolved_split": "test"
+}

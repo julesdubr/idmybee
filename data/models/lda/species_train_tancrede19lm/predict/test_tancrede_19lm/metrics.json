@@ -1,0 +1,10 @@
+{
+  "run_id": "species_train_tancrede19lm",
+  "eval_tag": "test_tancrede_19lm",
+  "model_path": "data/models/lda/species_train_tancrede19lm/train/model.joblib",
+  "level": "species",
+  "landmarks_source": "data/references/tancrede_19lm.tps",
+  "n": 70,
+  "accuracy_top1": 0.8714285714285714,
+  "accuracy_top3": 1.0
+}

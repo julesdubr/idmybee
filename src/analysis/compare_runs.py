@@ -1,7 +1,12 @@
 """compare_runs.py
-Compare l'accuracy de plusieurs runs train.py (ou predict.py batch) côte à
+Compare l'accuracy de plusieurs runs (train.py ou predict.py batch) côte à
 côte, à partir de leurs metrics.json (ex: quelle source de landmarks classe
 le mieux).
+
+Chaque entrée est un chemin relatif sous data/models/<family>/ jusqu'au
+dossier contenant metrics.json : "<run_id>/train" pour un LOOCV, ou
+"<run_id>/predict/<eval_tag>" pour une évaluation -- les deux peuvent être
+mélangés dans une même comparaison.
 
 Usage :
     python -m classifiers.train data/Bombus --level species --tps .../tancrede_19lm.tps --run-label tancrede19lm
@@ -10,7 +15,8 @@ Usage :
     python -m classifiers.train data/Bombus --level species --tps .../auto_18lm.tps --run-label auto18lm
 
     python -m analysis.compare_runs \\
-        species_all_tancrede19lm species_all_tancrede18lm species_all_auto19lm species_all_auto18lm \\
+        species_all_tancrede19lm/train species_all_tancrede18lm/train \\
+        species_all_auto19lm/train species_all_auto18lm/train \\
         --label landmarks_source_comparison
 """
 from __future__ import annotations
@@ -24,20 +30,20 @@ import matplotlib.pyplot as plt
 
 _THIS_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(_THIS_DIR.parent))
-from utils.run_io import FAMILY_LDA, MODELS_ROOT, read_metrics, slugify
+from utils.run_io import FAMILY_LDA, MODELS_ROOT, ANALYSIS_ROOT, read_metrics, slugify
 
 
-def load_comparison_table(run_ids: list[str], step: str, family: str) -> pd.DataFrame:
+def load_comparison_table(steps: list[str], family: str) -> pd.DataFrame:
     rows = []
-    for run_id in run_ids:
-        step_path = MODELS_ROOT / family / run_id / step
+    for step in steps:
+        step_path = MODELS_ROOT / family / step
         metrics_path = step_path / "metrics.json"
         if not metrics_path.exists():
-            raise SystemExit(f"{metrics_path} introuvable -- ce run a-t-il bien tourné avec --step {step} ?")
+            raise SystemExit(f"{metrics_path} introuvable.")
         metrics = read_metrics(step_path)
-        metrics["run_id"] = run_id
+        metrics["run"] = step
         rows.append(metrics)
-    df = pd.DataFrame(rows).set_index("run_id")
+    df = pd.DataFrame(rows).set_index("run")
     preferred = ["landmarks_source", "n", "n_points", "accuracy_top1", "accuracy_top3"]
     ordered = [c for c in preferred if c in df.columns] + [c for c in df.columns if c not in preferred]
     return df[ordered]
@@ -65,30 +71,30 @@ def plot_accuracy_comparison(df: pd.DataFrame, out_path: Path, title: str) -> No
 
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Compare l'accuracy de plusieurs runs train.py/predict.py côte à côte")
-    parser.add_argument("run_ids", type=str, nargs="+", help="run_id des runs à comparer")
-    parser.add_argument("--step", type=str, choices=["train", "predict"], default="train")
-    parser.add_argument("--family", type=str, default=FAMILY_LDA)
-    parser.add_argument("--label", type=str, default=None, help="Nom du dossier de sortie (défaut: dérivé des run_ids)")
+    parser.add_argument("steps", type=str, nargs="+",
+                         help="Chemins relatifs sous data/models/<family>/, ex: species_train_P1-S1/train "
+                              "ou species_train_P1-S1/predict/test")
+    parser.add_argument("--label", type=str, default=None, help="Nom du dossier de sortie (défaut: dérivé des chemins)")
     return parser
 
 
 def main(argv: list[str] | None = None) -> None:
     args = build_arg_parser().parse_args(argv)
 
-    table = load_comparison_table(args.run_ids, args.step, args.family)
+    table = load_comparison_table(args.steps, "lda")
     pd.set_option("display.width", 200)
     pd.set_option("display.max_columns", None)
     print(table)
 
-    label = args.label or slugify("-vs-".join(args.run_ids))[:120]
-    out_dir = MODELS_ROOT / args.family / "_compare" / label
+    label = args.label or slugify("-vs-".join(args.steps))[:120]
+    out_dir = ANALYSIS_ROOT / "compare" / label
     out_dir.mkdir(parents=True, exist_ok=True)
 
     csv_path = out_dir / "comparison.csv"
     table.to_csv(csv_path)
     print(f"\nTable -> {csv_path}")
 
-    plot_accuracy_comparison(table, out_dir / "comparison.png", title=f"Comparaison ({args.step}) -- {label}")
+    plot_accuracy_comparison(table, out_dir / "comparison.png", title=f"Comparaison -- {label}")
     print(f"Run -> {out_dir}")
 
 

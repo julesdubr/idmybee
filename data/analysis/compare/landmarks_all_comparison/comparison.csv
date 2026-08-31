@@ -1,0 +1,5 @@
+run,landmarks_source,n,n_points,accuracy_top1,accuracy_top3,run_id,level,n_specimens,n_pca_components,pca_explained_variance_cum,gpa_n_iterations
+species_all_tancrede19lm/train,data/references/tancrede_19lm.tps,583,19,0.9296740994854202,0.9879931389365352,species_all_tancrede19lm,species,583,34,0.9999388346913537,3
+species_all_tancrede18lm/train,data/references/tancrede_18lm.tps,583,18,0.9262435677530018,0.9879931389365352,species_all_tancrede18lm,species,583,32,0.9999368739201503,3
+species_all_auto19lm/train,data/Bombus/landmarks/auto_19lm.tps,2814,19,0.9420753375977257,0.988272921108742,species_all_auto19lm,species,2814,34,0.9994369870118883,3
+species_all_auto18lm/train,data/Bombus/landmarks/auto_18lm.tps,2814,18,0.9363894811656006,0.9886282871357498,species_all_auto18lm,species,2814,32,0.9993981468748014,3

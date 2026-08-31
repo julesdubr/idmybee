@@ -1,0 +1,18 @@
+{
+  "dataset": "data/Bombus",
+  "split": "train",
+  "devices": null,
+  "species": null,
+  "castes": null,
+  "exclude_outliers": true,
+  "non_strict": false,
+  "landmarks_tps": "data/Bombus/landmarks/landmarks_numbered_18.tps",
+  "landmarks_status_csv": "data/Bombus/landmarks/landmarks_numbered.csv",
+  "run_label": "auto18lm",
+  "level": "species",
+  "lda_components": 2,
+  "no_save_model": false,
+  "run_id": "species_train_auto18lm",
+  "family": "lda",
+  "resolved_split": "train"
+}

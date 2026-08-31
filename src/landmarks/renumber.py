@@ -43,13 +43,6 @@ Statuts :
     --specimens ; sans lui, ou pour un spécimen non labellisé, reste OK.
   - OK      : numéroté, aucun signal d'anomalie.
 
-  NB -- bug corrigé par rapport à l'ancien numbering/reconstruct_tps.py :
-  ce diagnostic SUSPECT importait déjà utils.outliers.flag_by_species mais
-  ne l'appelait jamais nulle part dans main() (ni --specimens, ni la
-  fonction de chargement des labels, n'étaient réellement câblés) -- toute
-  registration réussie ressortait donc OK, quelle que soit sa position par
-  rapport à son espèce.
-
 Usage :
     python -m landmarks.build_reference --ref data/references/ref-landmarks.tps \\
         --drop 3 --out data/references/reference_shape.npz          # une fois

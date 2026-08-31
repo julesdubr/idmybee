@@ -1,0 +1,18 @@
+{
+  "dataset": "data/Bombus",
+  "split": "train",
+  "devices": null,
+  "species": null,
+  "castes": null,
+  "exclude_outliers": true,
+  "non_strict": false,
+  "landmarks_tps": "data/references/tancrede_18lm.tps",
+  "landmarks_status_csv": null,
+  "run_label": "tancrede18lm",
+  "level": "species",
+  "lda_components": 2,
+  "no_save_model": false,
+  "run_id": "species_train_tancrede18lm",
+  "family": "lda",
+  "resolved_split": "train"
+}

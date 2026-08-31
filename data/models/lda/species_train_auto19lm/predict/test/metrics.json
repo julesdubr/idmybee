@@ -1,0 +1,10 @@
+{
+  "run_id": "species_train_auto19lm",
+  "eval_tag": "test",
+  "model_path": "data/models/lda/species_train_auto19lm/train/model.joblib",
+  "level": "species",
+  "landmarks_source": "landmarks_numbered.tps (défaut)",
+  "n": 243,
+  "accuracy_top1": 0.831275720164609,
+  "accuracy_top3": 0.9835390946502057
+}

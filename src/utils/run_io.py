@@ -2,17 +2,25 @@
 Convention de sortie partagée par train.py, predict.py,
 analysis/classification_report.py et analysis/variance_report.py :
 
-    data/models/<family>/<run_id>/<step>/...
+    data/models/<family>/<run_id>/train/                        ajustement du modèle (train.py)
+    data/models/<family>/<run_id>/predict/<eval_tag>/            évaluation de ce modèle sur d'autres données (predict.py batch)
+    data/models/<family>/<run_id>/classification_report/train/           figures/tableaux du train
+    data/models/<family>/<run_id>/classification_report/predict/<eval_tag>/   figures/tableaux d'une évaluation
+    data/analysis/variance/<variance_id>/                        analyse de variance de forme (indépendante de tout modèle)
 
-`family` distingue ce pipeline (classification GPA->PCA->LDA, "lda") des
-autres familles du projet (détection OBB, landmarks UNet, ...). `run_id`
-identifie une combinaison de données (niveau, split, filtres, source de
-landmarks). `step` identifie l'étape (train, predict, classification_report,
-variance).
+`run_id` identifie un modèle entraîné (niveau, split, devices, source de
+landmarks -- voir build_run_id), un seul par appel à train.py. `eval_tag`
+identifie une évaluation de ce modèle par predict.py (voir build_eval_tag) ;
+un même run_id peut avoir plusieurs eval_tag (test, terrain, autre source de
+landmarks...). predict.py retrouve le run_id à partir du model.joblib fourni
+(voir run_id_from_model_path) plutôt que d'en recalculer un.
 
-Chaque step écrit params.json (arguments CLI, pour reproductibilité et
-rechargement en aval) et run.log (résumé), plus selon le cas metrics.json /
-model.joblib / *.csv / *.png.
+`variance_id` (build_variance_id) est indépendant de tout run_id :
+analysis/variance_report.py ne charge ni n'ajuste de modèle -- son résultat
+vit sous data/analysis/, pas data/models/, précisément pour ça.
+
+Chaque dossier de sortie a params.json (arguments CLI) et run.log (résumé),
+plus selon le cas metrics.json / model.joblib / *.csv / *.png.
 """
 from __future__ import annotations
 
@@ -25,6 +33,7 @@ from typing import Any
 
 FAMILY_LDA = "lda"
 MODELS_ROOT = Path("data/models")
+ANALYSIS_ROOT = Path("data/analysis")
 
 
 def slugify(text: str) -> str:
@@ -34,32 +43,70 @@ def slugify(text: str) -> str:
 
 
 def tag_from_tps(tps_path: str | Path | None) -> str | None:
-    """Étiquette courte dérivée du nom de fichier d'un --tps custom, ex:
-    'tancrede_reference_19lm.tps' -> 'tancrede_reference_19lm'. None si pas de --tps."""
+    """Étiquette courte dérivée du nom de fichier d'un --tps custom. None si pas de --tps."""
     if tps_path is None:
         return None
     return slugify(Path(tps_path).stem)
+
+
+def _tag_parts(
+    split: str, devices: list[str] | None, landmarks_tps: str | Path | None, run_label: str | None,
+) -> list[str]:
+    parts = [slugify(split)]
+    if devices:
+        parts.append(slugify("-".join(devices)))
+    source = run_label or tag_from_tps(landmarks_tps)
+    if source:
+        parts.append(slugify(source))
+    return parts
 
 
 def build_run_id(
     level: str, split: str, devices: list[str] | None = None,
     landmarks_tps: str | Path | None = None, run_label: str | None = None,
 ) -> str:
-    """Identifiant de run déterministe : level_split[_devices][_source].
-    `run_label` prime sur le nom de fichier tps s'il est fourni."""
-    parts = [slugify(level), slugify(split)]
-    if devices:
-        parts.append(slugify("-".join(devices)))
-    source = run_label or tag_from_tps(landmarks_tps)
-    if source:
-        parts.append(slugify(source))
-    return "_".join(parts)
+    """Identifiant d'un modèle entraîné : level_split[_devices][_source]."""
+    return "_".join([slugify(level)] + _tag_parts(split, devices, landmarks_tps, run_label))
 
 
-def step_dir(run_id: str, step: str, family: str = FAMILY_LDA, root: Path = MODELS_ROOT) -> Path:
-    d = root / family / run_id / step
+def build_eval_tag(
+    split: str, devices: list[str] | None = None,
+    landmarks_tps: str | Path | None = None, run_label: str | None = None,
+) -> str:
+    """Identifiant d'une évaluation predict.py batch : split[_devices][_source],
+    nichée sous le run_id du modèle évalué (voir run_id_from_model_path)."""
+    return "_".join(_tag_parts(split, devices, landmarks_tps, run_label))
+
+
+def build_variance_id(
+    levels: list[str], split: str, devices: list[str] | None = None,
+    landmarks_tps: str | Path | None = None, run_label: str | None = None,
+) -> str:
+    """Identifiant d'une analyse de variance : levels_split[_devices][_source]."""
+    return "_".join([slugify("-".join(levels))] + _tag_parts(split, devices, landmarks_tps, run_label))
+
+
+def run_id_from_model_path(model_path: str | Path) -> tuple[str, str]:
+    """Retrouve (family, run_id) à partir de data/models/<family>/<run_id>/train/model.joblib."""
+    model_path = Path(model_path).resolve()
+    if model_path.name != "model.joblib" or model_path.parent.name != "train":
+        raise ValueError(
+            f"{model_path} ne suit pas la convention data/models/<family>/<run_id>/train/model.joblib "
+            "-- impossible d'en déduire le run_id."
+        )
+    return model_path.parent.parent.parent.name, model_path.parent.parent.name
+
+
+def run_path(family: str, *parts: str, root: Path = MODELS_ROOT) -> Path:
+    """Construit et crée un dossier de sortie, ex: run_path("lda", run_id, "train")."""
+    d = root.joinpath(family, *parts)
     d.mkdir(parents=True, exist_ok=True)
     return d
+
+
+def result_path(family: str, *parts: str, root: Path = MODELS_ROOT) -> Path:
+    """Comme run_path, mais en lecture seule (ne crée rien) -- pour localiser une sortie déjà écrite."""
+    return root.joinpath(family, *parts)
 
 
 def _json_default(obj: Any) -> Any:

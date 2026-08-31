@@ -37,7 +37,7 @@ from utils.gpa import gpagen, two_d_array
 from utils.model_io import TrainedModel, save_model
 from utils.predictions import build_predictions_df, accuracy_summary
 from utils.run_io import (
-    FAMILY_LDA, build_run_id, setup_console_logging, step_dir, write_metrics, write_params, write_run_log,
+    FAMILY_LDA, build_run_id, run_path, setup_console_logging, write_metrics, write_params, write_run_log,
 )
 from utils.tps_io import ImageLandmarks
 
@@ -120,7 +120,7 @@ def main(argv: list[str] | None = None) -> None:
     groupe = target_groupe(meta_df, args.level)
 
     run_id = build_run_id(args.level, ds_kwargs["split"], args.devices, args.landmarks_tps, args.run_label)
-    out_dir = step_dir(run_id, "train", family=FAMILY_LDA)
+    out_dir = run_path(FAMILY_LDA, run_id, "train")
 
     scores, gpa_result, pca = run_gpa_pca(specimens)
     n_components = scores.shape[1]

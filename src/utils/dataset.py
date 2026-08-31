@@ -94,6 +94,27 @@ def _apply_mask(
     return specimens, meta_df
 
 
+def restrict_to_complete_devices(
+    specimens: list[ImageLandmarks], meta_df: pd.DataFrame, devices: Sequence[str]
+) -> tuple[list[ImageLandmarks], pd.DataFrame]:
+    """Ne garde que les spécimens possédant TOUS les device_tag de `devices` (retire
+    l'individu entier -- toutes ses photos -- s'il n'en a qu'une partie, pas juste
+    les photos manquantes).
+
+    Sert à équilibrer une ANOVA emboîtée espèce ⊃ caste ⊃ individu ⊃ appareil (voir
+    analysis/variance_report.py) : sans ce filtre, un individu avec plus de photos
+    (ou une couverture device différente) pèse plus lourd dans la moyenne de son
+    groupe biologique, et sa "moyenne individu" est un mélange P/S différent d'un
+    individu à l'autre -- ce qui biaise à la fois les niveaux biologiques et
+    l'estimation de l'effet appareil.
+    """
+    required = set(devices)
+    tag_sets = meta_df.groupby("specimen_id")["device_tag"].agg(set)
+    complete_ids = set(tag_sets[tag_sets.apply(required.issubset)].index)
+    mask = meta_df["specimen_id"].isin(complete_ids).tolist()
+    return _apply_mask(specimens, meta_df, mask, f"couverture complète devices={sorted(required)}")
+
+
 def load_dataset(
     root: str | Path,
     split: str = "all",

@@ -25,8 +25,10 @@ def add_dataset_args(parser: argparse.ArgumentParser, default_split: str = "trai
                          help="Ne garder que ces photos (ex: --devices P1 S1). Voir utils.dataset._device_tag.")
     parser.add_argument("--species", type=str, nargs="+", default=None, help="Ne garder que ces espèces.")
     parser.add_argument("--castes", type=str, nargs="+", default=None, help="Ne garder que ces castes.")
-    parser.add_argument("--exclude-outliers", action="store_true",
-                         help="Exclut les photos SUSPECT/FAILED (voir --landmarks-status-csv).")
+    parser.add_argument(
+        "--include-outliers", dest="exclude_outliers", action="store_false", default=True,
+        help="Inclut les photos SUSPECT/FAILED (exclues par défaut, voir --landmarks-status-csv).",
+    )
     parser.add_argument("--non-strict", action="store_true", help="Tolérer les blocs TPS malformés")
     parser.add_argument(
         "--tps", type=Path, default=None, dest="landmarks_tps",

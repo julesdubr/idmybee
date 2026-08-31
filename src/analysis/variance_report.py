@@ -4,18 +4,65 @@ CLI pour analysis.variance.nested_anova : décompose la variance de forme
 Seul endroit du pipeline qui calcule une dispersion de forme -- absent de
 analysis/classification_report.py.
 
---levels attend des colonnes de meta_df (species, caste, specimen_id,
-device), du plus large au plus fin.
+Indépendant de train.py/predict.py : ne charge ni n'ajuste de modèle,
+seulement une GPA sur les specimens filtrés. Écrit dans
+data/analysis/variance/<variance_id>/ (namespace séparé des run_id de
+modèle) -- plusieurs analyses (devices différents, ordre de niveaux
+différent) y cohabitent, comparables en ouvrant leurs anova.csv côte à côte.
 
-Usage :
-    # plancher biologique : espèce > caste > individu (une photo par
-    # individu, pour ne pas mélanger l'effet appareil dans le résidu) :
+--levels attend des colonnes de meta_df (species, caste, specimen_id,
+device, device_tag), du plus large au plus fin. Comme train.py/predict.py,
+les photos SUSPECT/FAILED sont exclues par défaut (--include-outliers pour
+les inclure) -- particulièrement important ici puisque ce script mesure une
+dispersion : des erreurs de registration gonfleraient artificiellement la
+variance justement mesurée.
+
+Comparer effet biologique et effet méthodologique : species, caste,
+specimen_id et device forment une seule chaîne d'emboîtement valide (chaque
+photo appartient à un individu, chaque individu à une caste, chaque caste à
+une espèce). Un run brut à 4 niveaux SANS restriction est biaisé : chaque
+photo pèse pareil à chaque niveau, donc un individu avec plus de photos (ou
+une couverture device différente) pèse plus lourd dans la moyenne de son
+groupe biologique, et la "moyenne individu" mélange P et S dans des
+proportions différentes d'un individu à l'autre -- ce qui contamine à la
+fois les niveaux biologiques et l'estimation de l'effet appareil. Utiliser
+--balanced-devices : ne garde que les spécimens ayant TOUS les device_tag
+demandés (ex: P1, P2, S1, S2), donc chacun contribue le même nombre de
+photos, réparties de façon identique entre appareils :
+
+    python -m analysis.variance_report data/Bombus --split train \\
+        --devices P1 P2 S1 S2 --balanced-devices \\
+        --levels species caste specimen_id device --n-perm 999
+
+    MS(specimen_id) = plancher biologique (variance entre individus,
+                       espèce et caste déjà retirées)
+    MS(device)       = effet méthodologique (variance entre appareils,
+                       POUR UN MÊME individu -- l'identité de l'individu
+                       est déjà retirée)
+    MS(device) > MS(specimen_id) -> le bruit de mesure dépasse la variation
+    biologique réelle entre individus, ce qui questionne la capacité du
+    pipeline à discriminer en dessous de ce seuil.
+
+`device` regroupe par device_type (P/S) ; `device_tag` (P1/P2/S1/...)
+descend au niveau de la prise individuelle -- utiliser `device_tag` en
+dernier niveau pousse aussi le bruit de reprise au sein d'un même appareil
+dans MS(device_tag) plutôt que dans le résiduel (adapter alors la liste
+--balanced-devices/--devices en conséquence, ex: P1 P2 P3 S1 S2 S3 si trois
+prises par appareil).
+
+Chaque niveau du tableau produit teste sa MS contre celle du résiduel
+(colonne F), mais la significativité fiable est la colonne "p (permutation)"
+(mélange stratifié à l'intérieur de chaque niveau parent, voir
+analysis/variance.py) -- n_perm=0 (défaut) saute ce calcul, mettre
+--n-perm (ex: 999) pour l'obtenir.
+
+Usage additionnel : isoler la dispersion biologique seule (sans la
+dimension appareil), par ex. pour calibrer une attente de difficulté de
+classification indépendamment du protocole photo -- restreindre alors à un
+seul device_type (--devices P1) :
+
     python -m analysis.variance_report data/Bombus --split train --devices P1 \\
         --levels species caste specimen_id
-
-    # effet méthodologique : individu > appareil (mêmes individus, une
-    # photo par appareil) :
-    python -m analysis.variance_report data/Bombus --split train --levels specimen_id device
 
 Accepte --tps comme train.py/predict.py, pour analyser une autre source de landmarks.
 """
@@ -31,14 +78,12 @@ import matplotlib.pyplot as plt
 _THIS_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(_THIS_DIR.parent))
 from utils.cli import add_dataset_args, dataset_kwargs
-from utils.dataset import load_dataset
+from utils.dataset import load_dataset, restrict_to_complete_devices
 from utils.gpa import gpagen, two_d_array
-from utils.run_io import (
-    FAMILY_LDA, build_run_id, setup_console_logging, step_dir, write_params, write_run_log,
-)
+from utils.run_io import ANALYSIS_ROOT, build_variance_id, run_path, setup_console_logging, write_params, write_run_log
 from analysis.variance import nested_anova
 
-LEVEL_CHOICES = ("species", "caste", "specimen_id", "device")
+LEVEL_CHOICES = ("species", "caste", "specimen_id", "device", "device_tag")
 
 
 def plot_ms_by_level(table, out_path: Path, title: str) -> None:
@@ -68,6 +113,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
                               "avant l'analyse -- estimation trop instable sinon (défaut: 5).")
     parser.add_argument("--n-perm", type=int, default=0,
                          help="Nombre de permutations pour les p-values (0 = désactivé, juste les magnitudes).")
+    parser.add_argument(
+        "--balanced-devices", action="store_true",
+        help="Ne garder que les spécimens ayant TOUS les device_tag de --devices (requiert --devices). "
+             "Élimine le biais de pondération inégale entre individus dans une ANOVA à plusieurs niveaux "
+             "biologiques + appareil -- voir utils.dataset.restrict_to_complete_devices.",
+    )
     parser.add_argument("--seed", type=int, default=0)
     return parser
 
@@ -78,6 +129,11 @@ def main(argv: list[str] | None = None) -> None:
 
     ds_kwargs = dataset_kwargs(args, default_split="train")
     specimens, meta_df = load_dataset(args.dataset, labeled_only=True, **ds_kwargs)
+
+    if args.balanced_devices:
+        if not args.devices:
+            raise SystemExit("--balanced-devices nécessite --devices (ex: --devices P1 P2 S1 S2).")
+        specimens, meta_df = restrict_to_complete_devices(specimens, meta_df, args.devices)
 
     # lignes avec une valeur manquante sur un des niveaux demandés (ex: caste
     # non renseignée) -- nested_anova refuse les NaN, donc on les écarte ici
@@ -108,12 +164,14 @@ def main(argv: list[str] | None = None) -> None:
     levels = [(name, meta_df[name]) for name in args.levels]
     table = nested_anova(X, levels, n_perm=args.n_perm, rng=rng)
 
-    run_id = build_run_id("_".join(args.levels), ds_kwargs["split"], args.devices, args.landmarks_tps, args.run_label)
-    out_dir = step_dir(run_id, "variance", family=FAMILY_LDA)
+    variance_id = build_variance_id(args.levels, ds_kwargs["split"], args.devices, args.landmarks_tps, args.run_label)
+    if args.balanced_devices:
+        variance_id += "_balanced"
+    out_dir = run_path("variance", variance_id, root=ANALYSIS_ROOT)
 
     header = (
         f"ANOVA emboîtée : {' ⊃ '.join(args.levels)}  |  split={ds_kwargs['split']}  "
-        f"devices={args.devices or 'tous'}  n={len(specimens)}"
+        f"devices={args.devices or 'tous'}{' (équilibré)' if args.balanced_devices else ''}  n={len(specimens)}"
     )
     print("\n" + "=" * len(header))
     print(header)
@@ -124,7 +182,7 @@ def main(argv: list[str] | None = None) -> None:
     table.to_csv(csv_path)
     plot_ms_by_level(table, out_dir / "anova.png", header)
 
-    write_params(out_dir, args, extra={"run_id": run_id, "family": FAMILY_LDA, "resolved_split": ds_kwargs["split"]})
+    write_params(out_dir, args, extra={"variance_id": variance_id, "resolved_split": ds_kwargs["split"]})
     write_run_log(out_dir, header + "\n" + table.to_string() + f"\n\nTable -> {csv_path}\n")
     print(f"\nRun -> {out_dir}")
 

@@ -1,0 +1,13 @@
+{
+  "run_id": "species_train_auto18lm",
+  "level": "species",
+  "landmarks_source": "data/Bombus/landmarks/landmarks_numbered_18.tps",
+  "n_specimens": 2571,
+  "n_points": 18,
+  "n_pca_components": 32,
+  "pca_explained_variance_cum": 0.9993982829699626,
+  "gpa_n_iterations": 3,
+  "n": 2571,
+  "accuracy_top1": 0.9389342668222481,
+  "accuracy_top3": 0.9875534811357448
+}

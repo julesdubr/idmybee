@@ -3,7 +3,7 @@ Classe des spécimens avec un modèle GPA -> PCA -> LDA entraîné par train.py.
 
   batch  : évalue le modèle sur un dataset avec vérité connue (accuracy
            top-1/top-3, CSV de prédictions). Mêmes filtres que train.py
-           (--split/--devices/--species/--castes/--exclude-outliers/--tps).
+           (--split/--devices/--species/--castes/--include-outliers/--tps).
   single : classe une seule photo (pas de vérité connue, usage terrain).
 
 Le TPS d'entrée doit avoir le même schéma de landmarks (nombre et ordre) que
@@ -12,13 +12,20 @@ landmarks issus du UNet de Gabriel. Seul le nombre de points est vérifié
 ici, pas l'ordre : un mauvais schéma donne des prédictions fausses sans
 erreur.
 
+`batch` hérite automatiquement --tps/--landmarks-status-csv du train.py qui
+a produit le modèle (lus dans son params.json), pour éviter d'avoir à les
+resaisir et le risque de désynchronisation entre schéma d'entraînement et
+d'évaluation. Passer --tps explicitement ici pour évaluer volontairement
+contre une autre source de landmarks (l'écran affiche laquelle est utilisée
+et sa provenance).
+
 Chaque prédiction inclut une distance de Procrustes à la référence du
 modèle (procrustes_distance) : une valeur nettement supérieure à celles du
 jeu d'entraînement signale une forme atypique ou un problème de landmarks.
 
-Pour comparer plusieurs sources de landmarks entre elles, utiliser train.py
-avec --tps (voir classifiers/train.py) : predict.py sert à appliquer un
-modèle déjà entraîné à de nouvelles données.
+Pour comparer plusieurs sources de landmarks entre elles, entraîner un
+modèle par source avec train.py --tps (voir classifiers/train.py) puis
+comparer avec analysis/compare_runs.py.
 
 Usage :
     python -m classifiers.predict batch data/models/lda/species_train/train/model.joblib data/Bombus --split test
@@ -41,7 +48,8 @@ from utils.gpa import align_to_reference, procrustes_distance, two_d_array
 from utils.model_io import TrainedModel, load_model
 from utils.predictions import accuracy_summary, build_predictions_df, print_predictions_report
 from utils.run_io import (
-    FAMILY_LDA, build_run_id, setup_console_logging, step_dir, write_metrics, write_params, write_run_log,
+    build_eval_tag, read_params, result_path, run_id_from_model_path, run_path, setup_console_logging,
+    write_metrics, write_params, write_run_log,
 )
 from utils.tps_io import ImageLandmarks
 
@@ -106,6 +114,17 @@ def run_batch(args: argparse.Namespace) -> None:
     model = load_model(args.model_path)
     _print_model_info(model)
 
+    family, run_id = run_id_from_model_path(args.model_path)
+    train_params = read_params(result_path(family, run_id, "train"))
+
+    tps_explicit = args.landmarks_tps is not None
+    if not tps_explicit:
+        args.landmarks_tps = train_params.get("landmarks_tps")
+    if args.landmarks_status_csv is None:
+        args.landmarks_status_csv = train_params.get("landmarks_status_csv")
+    source_note = "--tps explicite" if tps_explicit else f"héritée du train ({run_id})"
+    print(f"Source landmarks ({source_note}) : {args.landmarks_tps or 'landmarks_numbered.tps (défaut)'}")
+
     ds_kwargs = dataset_kwargs(args, default_split="test")
     specimens, meta_df = load_dataset(args.dataset, labeled_only=True, **ds_kwargs)
     truth_col = "groupe" if model.level == "caste" else "species"
@@ -115,14 +134,15 @@ def run_batch(args: argparse.Namespace) -> None:
     acc = accuracy_summary(df, model.level)
     print(f"\nÉvaluation sur {acc['n']} spécimen(s) : top-1 = {acc['accuracy_top1']:.4f} | top-3 = {acc['accuracy_top3']:.4f}")
 
-    run_id = build_run_id(model.level, ds_kwargs["split"], args.devices, args.landmarks_tps, args.run_label)
-    out_dir = step_dir(run_id, "predict", family=FAMILY_LDA)
+    eval_tag = build_eval_tag(ds_kwargs["split"], args.devices, args.landmarks_tps, args.run_label)
+    out_dir = run_path(family, run_id, "predict", ds_kwargs["split"])
 
     predictions_path = out_dir / "predictions.csv"
     df.to_csv(predictions_path, index=False)
 
     metrics = {
         "run_id": run_id,
+        "eval_tag": eval_tag,
         "model_path": str(args.model_path),
         "level": model.level,
         "landmarks_source": str(args.landmarks_tps) if args.landmarks_tps else "landmarks_numbered.tps (défaut)",
@@ -130,10 +150,11 @@ def run_batch(args: argparse.Namespace) -> None:
     }
     write_metrics(out_dir, metrics)
     write_params(out_dir, args, extra={
-        "run_id": run_id, "family": FAMILY_LDA, "model_path": str(args.model_path), "resolved_split": ds_kwargs["split"],
+        "run_id": run_id, "eval_tag": eval_tag, "family": family,
+        "model_path": str(args.model_path), "resolved_split": ds_kwargs["split"],
     })
 
-    header = f"run_id={run_id} | modèle={args.model_path}"
+    header = f"run_id={run_id} | eval_tag={eval_tag} | modèle={args.model_path}"
     log_text = (
         f"{header}\n" + "=" * len(header) + "\n"
         f"Source landmarks : {metrics['landmarks_source']}\n"
