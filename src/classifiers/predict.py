@@ -34,14 +34,11 @@ Usage :
 from __future__ import annotations
 
 import argparse
-import sys
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
-_THIS_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(_THIS_DIR.parent))
 from utils.cli import add_dataset_args, dataset_kwargs
 from utils.dataset import load_dataset, load_unlabeled_tps
 from utils.gpa import align_to_reference, procrustes_distance, two_d_array

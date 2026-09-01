@@ -1,9 +1,4 @@
-torch>=2.1
-torchvision>=0.16
-opencv-python
-albumentations
-numpy
-pandas
-matplotlib
-scikit-learn
-tqdm
+# Kept only as a quick-reference list. The authoritative dependency list is
+# pyproject.toml (`pip install -e .` installs everything below, plus dev
+# extras via `pip install -e ".[dev]"`).
+-e .

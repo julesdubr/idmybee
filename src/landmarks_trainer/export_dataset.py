@@ -49,8 +49,6 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-_THIS_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(_THIS_DIR.parent))  # same idiom as landmarks/predict.py
 from landmarks.predict import load_target_crops
 from utils.pipeline_io import resolve_path
 from utils.tps_io import parse_tps

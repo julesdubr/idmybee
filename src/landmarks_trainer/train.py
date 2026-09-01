@@ -26,11 +26,11 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
 
-from constants import (DEFAULT_HEATMAP_RADIUS, DEFAULT_HEATMAP_POWER,
+from landmarks_trainer.constants import (DEFAULT_HEATMAP_RADIUS, DEFAULT_HEATMAP_POWER,
                         IMG_HEIGHT, IMG_WIDTH, N_LANDMARKS, MODEL_FAMILY)
-from dataset import load_manifest, split_manifest, LandmarkHeatmapDataset
-from model import UNet, load_weights
-from checkpoint import make_run_dir, save_run, append_runs_summary
+from landmarks_trainer.dataset import load_manifest, split_manifest, LandmarkHeatmapDataset
+from landmarks_trainer.model import UNet, load_weights
+from landmarks_trainer.checkpoint import make_run_dir, save_run, append_runs_summary
 
 
 def resolve_device(requested: str) -> str:

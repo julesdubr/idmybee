@@ -1,15 +1,13 @@
 """extraction_io.py
-Lecture de CSV et fonctions propres à l'extraction (détection + normalisation) :
-schéma des colonnes de detection.csv/crops.csv, sélection des images du
-manifest.
+CSV reading and extraction-specific (detection + normalization) helpers:
+detection.csv/crops.csv column schema, manifest image selection.
 
-Les utilitaires génériques de suivi (compteur de statuts, stats, durée,
-résolution de chemin) sont dans utils.pipeline_io -- réutilisés par toutes
-les étapes du pipeline, pas seulement l'extraction (anciennement mélangés
-ici sous le nom detection_io.py).
+Generic tracking utilities (status counter, stats, duration, path
+resolution) live in utils.pipeline_io -- reused by every pipeline step, not
+just extraction (formerly mixed in here under the name detection_io.py).
 
-Entrée : manifest.csv (manifest) ou detection.csv (selon l'appelant).
-Sortie : aucune (fonctions utilitaires pures).
+Input: manifest.csv (manifest) or detection.csv (depending on the caller).
+Output: none (pure helper functions).
 """
 from __future__ import annotations
 
@@ -17,7 +15,7 @@ from pathlib import Path
 
 from utils.pipeline_io import read_csv_rows
 
-# Sortie de detect_wing.py (mode split) : extraction/{mode}/detection.csv
+# Output of detect_wing.py (batch mode): extraction/{mode}/detection.csv
 DETECTION_FIELDS = [
     "image_id",
     "specimen_id",
@@ -31,7 +29,7 @@ DETECTION_FIELDS = [
     "processed_at",
 ]
 
-# Sortie de normalize_crop.py (mode split) : extraction/{mode}/crops.csv
+# Output of normalize_crop.py (batch mode): extraction/{mode}/crops.csv
 CROP_FIELDS = [
     "image_id",
     "specimen_id",
@@ -46,15 +44,15 @@ CROP_FIELDS = [
 
 
 def read_images_csv(path: Path) -> list[dict]:
-    """Charge manifest.csv et valide les colonnes minimales."""
+    """Load manifest.csv and validate its minimal columns."""
     required = {"image_id", "raw_path"}
     rows = read_csv_rows(path)
     if not rows:
-        raise ValueError(f"manifest.csv est vide : {path}")
+        raise ValueError(f"manifest.csv is empty: {path}")
 
     missing = required - set(rows[0].keys())
     if missing:
-        raise ValueError(f"Colonnes manquantes dans {path}: {sorted(missing)}")
+        raise ValueError(f"Missing columns in {path}: {sorted(missing)}")
 
     return rows
 
@@ -64,7 +62,7 @@ def select_images(
     split: str | None = None,
     image_ids: set[str] | None = None,
 ) -> list[dict]:
-    """Applique les filtres génériques aux lignes de manifest.csv."""
+    """Apply the generic filters to manifest.csv rows."""
     selected = []
 
     for row in rows:

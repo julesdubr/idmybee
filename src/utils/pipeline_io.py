@@ -1,14 +1,14 @@
 """pipeline_io.py
-Utilitaires génériques de suivi d'exécution, communs à TOUTES les étapes du
-pipeline (détection, normalisation, landmarks, renumérotation) : compteur de
-statuts, écriture incrémentale de CSV, résolution de chemin, et
-`pipeline_stats.csv` -- un seul fichier à la racine du dataset qui résume
-chaque (step, approach) pour comparer les étapes et les approches entre
-elles (nombre de sorties par statut, temps moyen/total par image).
+Generic run-tracking utilities shared by ALL pipeline steps (detection,
+normalization, landmarks, renumbering): status counter, incremental CSV
+writing, path resolution, and `pipeline_stats.csv` -- a single file at the
+dataset root summarizing each (step, approach) so steps and approaches can
+be compared against each other (output count per status, mean/total time
+per image).
 
-Rien ici n'est spécifique à une étape : les champs de CSV propres à une
-étape (DETECTION_FIELDS, CROP_FIELDS, LANDMARKS_FIELDS, ...) restent définis
-localement dans le module de cette étape (voir extraction/extraction_io.py,
+Nothing here is step-specific: CSV fields specific to a step
+(DETECTION_FIELDS, CROP_FIELDS, LANDMARKS_FIELDS, ...) stay defined locally
+in that step's own module (see extraction/extraction_io.py,
 landmarks/predict.py).
 """
 from __future__ import annotations
@@ -24,16 +24,16 @@ PIPELINE_STATS_FIELDS = [
 
 
 def read_csv_rows(path: Path) -> list[dict]:
-    """Charge un CSV quelconque en liste de dicts."""
+    """Load any CSV into a list of dicts."""
     with path.open("r", newline="", encoding="utf-8-sig") as handle:
         return list(csv.DictReader(handle))
 
 
 def append_rows(path: Path, rows: list[dict], fields: list[str], write_header: bool) -> None:
-    """Ajoute des lignes à un CSV, en écrivant l'entête si nécessaire.
+    """Append rows to a CSV, writing the header if needed.
 
-    `write_header=True` uniquement lors du tout premier flush d'un run
-    (écrase un éventuel fichier précédent) ; `False` pour les flush suivants.
+    `write_header=True` only on a run's very first flush (overwrites any
+    previous file); `False` for subsequent flushes.
     """
     if not rows:
         return
@@ -48,11 +48,11 @@ def append_rows(path: Path, rows: list[dict], fields: list[str], write_header: b
 
 
 def resolve_path(raw_path: str, base_dir: Path | None = None) -> Path:
-    """Résout un chemin absolu ou relatif à `base_dir`.
+    """Resolve a path, absolute or relative to `base_dir`.
 
-    Normalise aussi les séparateurs `\\` : un CSV produit sous Windows (ex:
-    output_path de crops.csv) contient des chemins avec des antislashs,
-    illisibles tels quels comme chemins relatifs sous Linux/macOS.
+    Also normalizes `\\` separators: a CSV produced on Windows (e.g.
+    crops.csv's output_path) contains backslash paths, unreadable as-is as
+    relative paths on Linux/macOS.
     """
     path = Path(str(raw_path).replace("\\", "/"))
     if path.is_absolute() or base_dir is None:
@@ -61,7 +61,7 @@ def resolve_path(raw_path: str, base_dir: Path | None = None) -> Path:
 
 
 def format_duration(seconds: float) -> str:
-    """Formate une durée en `1h05m30.0s` / `5m12.3s` / `3.2s`."""
+    """Format a duration as `1h05m30.0s` / `5m12.3s` / `3.2s`."""
     minutes, secs = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
     if hours:
@@ -71,14 +71,40 @@ def format_duration(seconds: float) -> str:
     return f"{secs:.1f}s"
 
 
-class RunCounter:
-    """Compte les statuts (OK/SUSPECT/SKIPPED/FAILED) au fil d'un run, pour
-    affichage + pipeline_stats.csv.
+def should_skip(
+    prev_row: dict | None, overwrite: bool, retry_failed: bool, output_exists: bool = True,
+) -> bool:
+    """Generic resume decision, reusable by any step that produces one
+    result per image/specimen with an OK/SUSPECT/FAILED status.
 
-    Générique et ouvert : un statut jamais ajouté reste à 0 plutôt que
-    d'être rangé ailleurs par erreur (l'ancienne version, propre à
-    l'extraction, comptait tout statut inconnu comme FAILED -- correct tant
-    qu'il n'existait que OK/SKIPPED/FAILED, plus vrai depuis SUSPECT).
+    OK/SUSPECT: skipped if `output_exists` (whatever "the output" means for
+    this step -- a file on disk, an entry in an in-memory working set
+    reloaded from the actual output file, ...) and `--overwrite` wasn't
+    requested. `output_exists` defaults to True (trust the log) for a
+    caller with no cheaper way to check; pass an actual check to auto-heal
+    if the output was partially deleted after being logged.
+    FAILED: skipped by default, otherwise a repeated run replays and
+    re-logs the same failures indefinitely; `retry_failed` to retry them
+    explicitly.
+    """
+    if prev_row is None:
+        return False
+    status = prev_row.get("status")
+    if status in ("OK", "SUSPECT"):
+        return output_exists and not overwrite
+    if status == "FAILED":
+        return not retry_failed
+    return False
+
+
+class RunCounter:
+    """Counts statuses (OK/SUSPECT/SKIPPED/FAILED) over the course of a run,
+    for display + pipeline_stats.csv.
+
+    Generic and open-ended: a status that's never added stays at 0 rather
+    than being filed elsewhere by mistake (the old version, specific to
+    extraction, counted any unknown status as FAILED -- correct as long as
+    only OK/SKIPPED/FAILED existed, no longer true since SUSPECT).
     """
 
     def __init__(self):
@@ -110,13 +136,13 @@ class RunCounter:
 def update_pipeline_stats(
     stats_path: Path, step: str, approach: str, counts: dict, total_time_s: float,
 ) -> None:
-    """Met à jour pipeline_stats.csv : une ligne par (step, approach).
+    """Update pipeline_stats.csv: one row per (step, approach).
 
-    `counts` vient de RunCounter.as_dict() (total/ok/suspect/skipped/failed).
-    La ligne existante pour ce (step, approach) est remplacée ; les autres
-    sont conservées -- permet de comparer plusieurs approches d'une même
-    étape (ex: light vs heavy, ou une future méthode de numérotation) et
-    plusieurs étapes entre elles, dans un seul fichier par dataset.
+    `counts` comes from RunCounter.as_dict() (total/ok/suspect/skipped/failed).
+    The existing row for this (step, approach) is replaced; others are kept
+    -- lets several approaches for the same step (e.g. light vs heavy, or a
+    future numbering method) and several steps be compared against each
+    other, in a single per-dataset file.
     """
     rows = read_csv_rows(stats_path) if stats_path.exists() else []
     rows = [r for r in rows if not (r.get("step") == step and r.get("approach") == approach)]

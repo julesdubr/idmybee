@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "idmybee"
+version = "0.1.0"
+description = "Identification de pollinisateurs a partir de photos d'aile (morphometrie geometrique)"
+requires-python = ">=3.11"
+dependencies = [
+    "torch>=2.1",
+    "torchvision>=0.16",
+    "opencv-python",
+    "albumentations",
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "scikit-learn",
+    "scipy",
+    "scikit-image",
+    "joblib",
+    "tqdm",
+    "ultralytics",
+    "pillow",
+    "pillow-heif",
+    "open-clip-torch",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+# src layout: chaque dossier de src/ (extraction, landmarks, utils, ...) devient
+# un package top-level importable une fois le projet installe (`pip install -e .`).
+# Pas de renommage des imports existants (from utils.xxx import ..., etc.) --
+# seule la resolution du chemin change, plus besoin de sys.path.insert.
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

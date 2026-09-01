@@ -1,30 +1,29 @@
 """hungarian_umeyama.py
-Numérotation par assignation hongroise + Umeyama (similarité sans réflexion),
-alternées jusqu'à convergence, avec multi-départs (rotation grossière x
-miroir) pour éviter les optima locaux.
+Numbering via Hungarian assignment + Umeyama (similarity, no reflection),
+alternated until convergence, with multi-start (coarse rotation x mirror)
+to avoid local optima.
 
-Anciennement numbering/hungarian_umeyama.py (register.py avant ça). Déplacé
-sous landmarks/methods/ pour cohabiter avec d'autres méthodes (ex:
-graph_matching.py, testée puis retirée -- moins bonne sur ce jeu de
-données) sous un nom qui décrit l'approche plutôt que le rôle générique ;
-implémente le contrat landmarks.methods.base.
+Formerly numbering/hungarian_umeyama.py (register.py before that). Moved
+under landmarks/methods/ to sit alongside other methods (e.g.
+graph_matching.py, tried then dropped -- worse on this dataset) under a
+name that describes the approach rather than the generic role; implements
+the landmarks.methods.base contract.
 
-La rotation+échelle est déléguée à utils.alignment.kabsch_umeyama (le même
-coeur SVD que la GPA), pour ne plus réimplémenter cette algèbre séparément.
+Rotation+scale is delegated to utils.alignment.kabsch_umeyama (the same
+SVD core as GPA), so this algebra isn't reimplemented separately.
 
-Principe en une phrase : on ne sait pas à l'avance quel landmark détecté
-correspond à quelle zone de la référence (le UNet produit un nuage de
-points non-ordonné) -- on alterne donc "étant donné l'orientation actuelle,
-quelle est la meilleure assignation point<->zone (Hongrois)" et "étant
-donné cette assignation, quelle est la meilleure rotation/échelle
-(Umeyama)" jusqu'à ce que l'assignation ne change plus plus. Comme cette
-alternance peut se bloquer sur un optimum local (ex: l'aile numérotée à
-l'envers, un mauvais minimum mais stable), on la relance depuis plusieurs
-orientations de départ et on garde la meilleure.
+Gist in one sentence: we don't know in advance which detected landmark
+corresponds to which reference zone (the UNet produces an unordered point
+cloud) -- so we alternate "given the current orientation, what's the best
+point<->zone assignment (Hungarian)" and "given this assignment, what's the
+best rotation/scale (Umeyama)" until the assignment stops changing. Since
+this alternation can get stuck on a local optimum (e.g. the wing numbered
+upside down, a bad but stable minimum), it's restarted from several initial
+orientations and the best one is kept.
 """
-# NB: l'ancienne détection d'ambiguïté d'orientation par-spécimen
-# (comparaison meilleur/deuxième-meilleur départ, paramètre
-# `ambiguity_ratio`) a été retirée -- voir la docstring de `numerate()`.
+# NB: the old per-specimen orientation-ambiguity detection (comparison of
+# the best vs. second-best start, `ambiguity_ratio` parameter) has been
+# removed -- see the `numerate()` docstring.
 from __future__ import annotations
 
 import numpy as np
@@ -35,7 +34,7 @@ from utils.alignment import kabsch_umeyama
 
 
 def umeyama(src: np.ndarray, dst: np.ndarray) -> tuple[np.ndarray, float, np.ndarray]:
-    """Similarité complète (R, scale, t), sans réflexion : dst_hat = scale*(src@R.T)+t."""
+    """Full similarity (R, scale, t), no reflection: dst_hat = scale*(src@R.T)+t."""
     mu_src, mu_dst = src.mean(axis=0), dst.mean(axis=0)
     R, scale = kabsch_umeyama(src - mu_src, dst - mu_dst, estimate_scale=True)
     t = mu_dst - scale * (R @ mu_src)
@@ -47,20 +46,20 @@ def apply_transform(pts: np.ndarray, R: np.ndarray, scale: float, t: np.ndarray)
 
 
 def _register_from_start(pts0: np.ndarray, cur_init: np.ndarray, zones: np.ndarray, n_iter: int):
-    """Assignation+Umeyama alternés jusqu'à convergence, depuis UN départ.
+    """Assignment+Umeyama alternated until convergence, from ONE start.
 
-    `pts0` : nuage centré original -- le transform est TOUJOURS recalculé
-    depuis celui-ci, jamais depuis `cur` de l'itération précédente (sinon les
-    rotations/miroirs initiaux se composeraient au lieu de ne servir qu'à
-    orienter la toute première assignation).
-    `cur_init` : pts0 après rotation/miroir initial, sert uniquement à ce
-    premier calcul de coût, pour éviter un optimum local de l'assignation.
+    `pts0`: original centered cloud -- the transform is ALWAYS recomputed
+    from this one, never from the previous iteration's `cur` (otherwise the
+    initial rotation/mirror would keep compounding instead of only serving
+    to orient the very first assignment).
+    `cur_init`: pts0 after the initial rotation/mirror, used only for this
+    first cost computation, to avoid a local optimum of the assignment.
 
-    Boucle : (1) coût = distance^2 entre chaque point courant et chaque
-    zone -> Hongrois donne l'assignation qui minimise la somme des coûts ;
-    (2) Umeyama réaligne pts0 entier sur les zones dans cet ordre ;
-    (3) on recommence avec la nouvelle position -- jusqu'à ce que
-    l'assignation elle-même ne change plus (convergence), ou n_iter atteint.
+    Loop: (1) cost = squared distance between each current point and each
+    zone -> Hungarian gives the assignment minimizing the summed cost;
+    (2) Umeyama realigns the whole pts0 onto the zones in that order;
+    (3) repeat with the new position -- until the assignment itself stops
+    changing (convergence), or n_iter is reached.
     """
     cur = cur_init
     assign_prev = None
@@ -86,33 +85,32 @@ def numerate(
     angle_inits: tuple[float, ...] = (0, 90, 180, 270),
     mirror_options: tuple[bool, ...] = (False, True),
 ) -> NumberingResult:
-    """Implémente le contrat landmarks.methods.base : renumérote `landmarks`
-    (k, 2) selon l'ordre de `reference` (n_zones, 2).
+    """Implements the landmarks.methods.base contract: renumbers
+    `landmarks` (k, 2) to match `reference`'s (n_zones, 2) order.
 
-    Ne gère pour l'instant que le cas k == n_zones (nombre de landmarks
-    détectés = nombre attendu) ; le cas k != n_zones (points en trop/en
-    moins) reste un FAILED explicite plutôt qu'une assignation rectangulaire
-    non testée -- à traiter séparément si le détecteur en a besoin un jour
-    (voir aussi landmarks/renumber.py, qui court-circuite déjà ce cas avant
-    d'appeler numerate()).
+    Only handles the k == n_zones case (detected landmark count = expected
+    count) for now; the k != n_zones case (too many/too few points) stays
+    an explicit FAILED rather than an untested rectangular assignment -- to
+    handle separately if the detector ever needs it (see also
+    landmarks/renumber.py, which already short-circuits this case before
+    calling numerate()).
 
-    Retourne toujours le meilleur des 8 départs (4 rotations x 2 miroirs :
-    on ne sait a priori ni dans quel sens ni avec quelle chiralité l'aile a
-    été photographiée), avec son coût de registration dans `score`. Ce
-    module ne juge plus lui-même de la fiabilité de ce coût (ancien
-    `ambiguity_ratio`, comparant meilleur et deuxième-meilleur départ) : sur
-    les données réelles, ce critère par-spécimen s'est avéré beaucoup trop
-    agressif (il marquait SUSPECT la quasi-totalité des spécimens, y
-    compris des registrations visiblement correctes) car deux départs
-    peuvent légitimement converger vers des coûts proches sans que
-    l'assignation soit fausse pour autant.
+    Always returns the best of the 8 starts (4 rotations x 2 mirrors: we
+    don't know a priori in which orientation or chirality the wing was
+    photographed), with its registration cost in `score`. This module no
+    longer judges that cost's reliability itself (the old
+    `ambiguity_ratio`, comparing the best and second-best starts): on real
+    data, that per-specimen criterion turned out far too aggressive (it
+    flagged nearly every specimen as SUSPECT, including visibly correct
+    registrations), because two starts can legitimately converge to close
+    costs without the assignment being wrong.
 
-    Voir landmarks.methods.base : la détection d'un coût anormal est une
-    décision de population, pas d'un spécimen isolé -- landmarks/renumber.py
-    s'en charge maintenant via une méthode plus robuste (comparaison
-    post-GPA à la position médiane du landmark, PAR ESPÈCE, voir
-    utils.outliers), qui distingue mieux une vraie erreur de registration
-    d'une simple variation de forme.
+    See landmarks.methods.base: detecting an abnormal cost is a
+    population-level decision, not a single specimen's -- landmarks/renumber.py
+    now handles it via a more robust method (post-GPA comparison to the
+    landmark's median position, PER SPECIES, see utils.outliers), which
+    better distinguishes a genuine registration error from a plain shape
+    variation.
     """
     if landmarks.shape[0] != reference.shape[0]:
         return NumberingResult(
@@ -120,8 +118,8 @@ def numerate(
             status="FAILED",
             score=float("inf"),
             reason=(
-                f"{landmarks.shape[0]} landmarks détectés, "
-                f"{reference.shape[0]} attendus dans le template"
+                f"{landmarks.shape[0]} landmarks detected, "
+                f"{reference.shape[0]} expected in the template"
             ),
         )
 
@@ -137,12 +135,12 @@ def numerate(
             if cost < best_cost:
                 best_assign, best_cost = assign, cost
 
-    # `best_assign[k]` = indice de la zone attribuée au k-ième landmark
-    # détecté. On veut l'inverse : pour chaque zone j (dans l'ordre de la
-    # référence), quel landmark détecté lui correspond -- `inv` est donc la
-    # permutation inverse de `best_assign`.
+    # `best_assign[k]` = index of the zone assigned to the k-th detected
+    # landmark. We want the inverse: for each zone j (in reference order),
+    # which detected landmark maps to it -- `inv` is therefore the inverse
+    # permutation of `best_assign`.
     inv = np.empty(len(reference), dtype=int)
-    inv[best_assign] = np.arange(len(best_assign))  # slot j (zone j) <- point assigné à j
+    inv[best_assign] = np.arange(len(best_assign))  # slot j (zone j) <- point assigned to j
     numbered = landmarks[inv]
 
     return NumberingResult(numbered=numbered, status="OK", score=best_cost)

@@ -32,7 +32,7 @@ a second, possibly-diverging implementation.
 
 import numpy as np
 
-from constants import DEFAULT_HEATMAP_RADIUS, DEFAULT_HEATMAP_POWER, IMG_HEIGHT, IMG_WIDTH
+from landmarks_trainer.constants import DEFAULT_HEATMAP_RADIUS, DEFAULT_HEATMAP_POWER, IMG_HEIGHT, IMG_WIDTH
 
 
 def encode_heatmap(points: np.ndarray, shape: tuple = (IMG_HEIGHT, IMG_WIDTH),

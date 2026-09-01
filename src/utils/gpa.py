@@ -1,10 +1,10 @@
 """gpa.py
-Generalized Procrustes Analysis (2D, sans réflexion).
+Generalized Procrustes Analysis (2D, no reflection).
 
-Reproduit geomorph::gpagen() : similarité uniquement (translation +
-échelle isotrope + rotation). La réflexion est explicitement interdite
-via det(R)=+1 (voir utils.alignment.kabsch_umeyama) -- sans ça, la moitié
-des spécimens s'alignent silencieusement en miroir.
+Mirrors geomorph::gpagen(): similarity only (translation + isotropic
+scale + rotation). Reflection is explicitly forbidden via det(R)=+1 (see
+utils.alignment.kabsch_umeyama) -- without that, half the specimens would
+silently align as mirror images.
 """
 from __future__ import annotations
 
@@ -24,7 +24,7 @@ def _center_and_scale(coords: np.ndarray) -> np.ndarray:
     centered = coords - coords.mean(axis=0)
     cs = centroid_size(coords)
     if cs == 0:
-        raise ValueError("Spécimen dégénéré : landmarks confondus (centroid size = 0)")
+        raise ValueError("Degenerate specimen: landmarks coincide (centroid size = 0)")
     return centered / cs
 
 
@@ -32,19 +32,19 @@ def _center_and_scale(coords: np.ndarray) -> np.ndarray:
 class GPAResult:
     aligned: np.ndarray        # (n_specimens, n_points, 2)
     mean_shape: np.ndarray     # (n_points, 2) -- consensus
-    centroid_sizes: np.ndarray  # (n_specimens,) -- tailles brutes pré-standardisation
+    centroid_sizes: np.ndarray  # (n_specimens,) -- raw sizes, pre-standardization
     n_iterations: int
 
 
 def gpagen(landmarks: list[np.ndarray], max_iter: int = 100, tol: float = 1e-8) -> GPAResult:
-    """landmarks: un (n_points, 2) par spécimen, même nombre/ordre de points partout."""
+    """landmarks: one (n_points, 2) array per specimen, same point count/order everywhere."""
     n_specimens = len(landmarks)
     if n_specimens == 0:
-        raise ValueError("Aucun spécimen fourni")
+        raise ValueError("No specimens provided")
     n_points = landmarks[0].shape[0]
     for idx, lm in enumerate(landmarks):
         if lm.shape != (n_points, 2):
-            raise ValueError(f"Spécimen {idx}: forme {lm.shape}, ({n_points}, 2) attendue")
+            raise ValueError(f"Specimen {idx}: shape {lm.shape}, expected ({n_points}, 2)")
 
     raw_cs = np.array([centroid_size(lm) for lm in landmarks])
     standardized = np.stack([_center_and_scale(lm) for lm in landmarks])
@@ -55,8 +55,8 @@ def gpagen(landmarks: list[np.ndarray], max_iter: int = 100, tol: float = 1e-8) 
     n_iterations = 0
     for n_iterations in range(1, max_iter + 1):
         for i in range(n_specimens):
-            # scale=1 : les formes sont déjà normalisées à centroid size 1
-            # par _center_and_scale, seule la rotation reste à optimiser.
+            # scale=1: shapes are already normalized to centroid size 1 by
+            # _center_and_scale, so only the rotation needs optimizing.
             R, _ = kabsch_umeyama(standardized[i], reference, estimate_scale=False)
             aligned[i] = standardized[i] @ R.T
 
@@ -72,24 +72,24 @@ def gpagen(landmarks: list[np.ndarray], max_iter: int = 100, tol: float = 1e-8) 
 
 
 def two_d_array(aligned: np.ndarray) -> np.ndarray:
-    """Équivalent geomorph::two.d.array() : (n, p, 2) -> (n, p*2), colonnes x1,y1,x2,y2,..."""
+    """Equivalent of geomorph::two.d.array(): (n, p, 2) -> (n, p*2), columns x1,y1,x2,y2,..."""
     return aligned.reshape(aligned.shape[0], -1)
 
 
 def align_to_reference(coords: np.ndarray, reference: np.ndarray) -> np.ndarray:
-    """Aligne UN spécimen sur une forme de référence déjà standardisée (ex: le
-    `mean_shape` d'un GPAResult précédent), en un seul passage (pas d'itération
-    de consensus). Utilisé pour projeter de nouveaux spécimens dans l'espace
-    de forme d'un modèle déjà entraîné (voir predict.py), là où `gpagen()`
-    calculerait un nouveau consensus commun à un groupe de spécimens.
+    """Align ONE specimen onto an already-standardized reference shape (e.g.
+    a previous GPAResult's `mean_shape`), in a single pass (no consensus
+    iteration). Used to project new specimens into the shape space of an
+    already-trained model (see predict.py), where `gpagen()` would compute
+    a new consensus shared by a group of specimens.
 
-    `reference` doit avoir la même forme (n_points, 2) que `coords`.
+    `reference` must have the same shape (n_points, 2) as `coords`.
     """
     if coords.shape != reference.shape:
         raise ValueError(
-            f"Forme incompatible avec la référence : {coords.shape} vs {reference.shape} "
-            "(nombre de landmarks différent -- vérifier que le schéma de landmarks du "
-            "nouveau TPS correspond bien à celui utilisé pour entraîner le modèle)."
+            f"Shape mismatch with the reference: {coords.shape} vs {reference.shape} "
+            "(different landmark count -- check that the new TPS's landmark scheme "
+            "matches the one used to train the model)."
         )
     standardized = _center_and_scale(coords)
     R, _ = kabsch_umeyama(standardized, reference, estimate_scale=False)
@@ -97,9 +97,9 @@ def align_to_reference(coords: np.ndarray, reference: np.ndarray) -> np.ndarray:
 
 
 def procrustes_distance(aligned_coords: np.ndarray, reference: np.ndarray) -> float:
-    """Distance de Procrustes (racine de la somme des carrés des écarts) entre
-    un spécimen déjà aligné (via `align_to_reference`) et la référence.
-    Sert de score de typicité : une valeur nettement supérieure à ce qui est
-    observé sur le jeu d'entraînement signale une forme atypique ou un
-    problème de landmarks (mauvais ordre, détection ratée, etc.)."""
+    """Procrustes distance (root sum of squared deviations) between an
+    already-aligned specimen (via `align_to_reference`) and the reference.
+    Used as a typicality score: a value well above what's observed on the
+    training set flags an atypical shape or a landmark issue (wrong order,
+    failed detection, etc.)."""
     return float(np.sqrt(np.sum((aligned_coords - reference) ** 2)))

@@ -68,14 +68,9 @@ Flux de révision (2 passes) :
 
 import argparse
 import csv
-import sys
 from pathlib import Path
 
 import numpy as np
-
-_THIS_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(_THIS_DIR.parent))              # src/  -- utils.*, landmarks.*, extraction.*
-sys.path.insert(0, str(_THIS_DIR.parent / "extraction"))  # extraction/normalize_crop.py's own bare "from extraction_io import ..."
 
 from extraction.normalize_crop import (
     compute_wing_transform, apply_wing_transform_to_points,

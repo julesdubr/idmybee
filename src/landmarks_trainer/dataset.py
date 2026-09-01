@@ -29,9 +29,9 @@ import pandas as pd
 import torch
 from torch.utils.data import Dataset
 
-from constants import N_LANDMARKS, IMG_HEIGHT, IMG_WIDTH
-from heatmap import encode_heatmap
-from augment import augment as augment_fn
+from landmarks_trainer.constants import N_LANDMARKS, IMG_HEIGHT, IMG_WIDTH
+from landmarks_trainer.heatmap import encode_heatmap
+from landmarks_trainer.augment import augment as augment_fn
 
 
 def load_manifest(csv_path: str, n_landmarks: int = N_LANDMARKS) -> pd.DataFrame:

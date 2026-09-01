@@ -15,7 +15,6 @@ Usage :
 from __future__ import annotations
 
 import argparse
-import sys
 from pathlib import Path
 
 import numpy as np
@@ -25,8 +24,6 @@ from sklearn.metrics import confusion_matrix
 
 import matplotlib.pyplot as plt
 
-_THIS_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(_THIS_DIR.parent))
 from utils.dataset import load_dataset, target_groupe
 from utils.gpa import align_to_reference, two_d_array
 from utils.model_io import load_model

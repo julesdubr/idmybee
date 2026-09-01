@@ -6,15 +6,11 @@ Usage:
 """
 
 import argparse
-from ast import arg
 from pathlib import Path
-import sys
 
 import cv2
 import matplotlib.pyplot as plt
 
-_THIS_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(_THIS_DIR.parent))
 from utils.tps_io import parse_tps
 
 

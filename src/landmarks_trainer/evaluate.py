@@ -20,7 +20,6 @@ localization failure.
 
 import argparse
 import json
-import sys
 from pathlib import Path
 
 import numpy as np
@@ -28,14 +27,12 @@ import torch
 from scipy.optimize import linear_sum_assignment
 from scipy.spatial.distance import cdist
 
-_THIS_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(_THIS_DIR.parent))  # same idiom as landmarks/predict.py
 from landmarks.predict import predict_landmarks_from_path
 
-from constants import N_LANDMARKS
-from dataset import load_manifest
-from model import load_weights
-from train import resolve_device
+from landmarks_trainer.constants import N_LANDMARKS
+from landmarks_trainer.dataset import load_manifest
+from landmarks_trainer.model import load_weights
+from landmarks_trainer.train import resolve_device
 
 
 def match_points(pred_xy: np.ndarray, gt_xy: np.ndarray):

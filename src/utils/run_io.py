@@ -1,26 +1,26 @@
 """run_io.py
-Convention de sortie partagée par train.py, predict.py,
-analysis/classification_report.py et analysis/variance_report.py :
+Output convention shared by train.py, predict.py,
+analysis/classification_report.py and analysis/variance_report.py:
 
-    data/models/<family>/<run_id>/train/                        ajustement du modèle (train.py)
-    data/models/<family>/<run_id>/predict/<eval_tag>/            évaluation de ce modèle sur d'autres données (predict.py batch)
-    data/models/<family>/<run_id>/classification_report/train/           figures/tableaux du train
-    data/models/<family>/<run_id>/classification_report/predict/<eval_tag>/   figures/tableaux d'une évaluation
-    data/analysis/variance/<variance_id>/                        analyse de variance de forme (indépendante de tout modèle)
+    data/models/<family>/<run_id>/train/                              model fit (train.py)
+    data/models/<family>/<run_id>/predict/<eval_tag>/                 evaluation of that model on other data (predict.py batch)
+    data/models/<family>/<run_id>/classification_report/train/            figures/tables for the train run
+    data/models/<family>/<run_id>/classification_report/predict/<eval_tag>/ figures/tables for an evaluation
+    data/analysis/variance/<variance_id>/                             shape variance analysis (independent of any model)
 
-`run_id` identifie un modèle entraîné (niveau, split, devices, source de
-landmarks -- voir build_run_id), un seul par appel à train.py. `eval_tag`
-identifie une évaluation de ce modèle par predict.py (voir build_eval_tag) ;
-un même run_id peut avoir plusieurs eval_tag (test, terrain, autre source de
-landmarks...). predict.py retrouve le run_id à partir du model.joblib fourni
-(voir run_id_from_model_path) plutôt que d'en recalculer un.
+`run_id` identifies a trained model (level, split, devices, landmarks
+source -- see build_run_id), one per call to train.py. `eval_tag`
+identifies one evaluation of that model by predict.py (see build_eval_tag);
+a single run_id can have several eval_tag (test, field data, another
+landmarks source...). predict.py recovers the run_id from the given
+model.joblib (see run_id_from_model_path) rather than recomputing one.
 
-`variance_id` (build_variance_id) est indépendant de tout run_id :
-analysis/variance_report.py ne charge ni n'ajuste de modèle -- son résultat
-vit sous data/analysis/, pas data/models/, précisément pour ça.
+`variance_id` (build_variance_id) is independent of any run_id:
+analysis/variance_report.py neither loads nor fits a model -- its output
+lives under data/analysis/, not data/models/, precisely for that reason.
 
-Chaque dossier de sortie a params.json (arguments CLI) et run.log (résumé),
-plus selon le cas metrics.json / model.joblib / *.csv / *.png.
+Every output folder has params.json (CLI arguments) and run.log (summary),
+plus metrics.json / model.joblib / *.csv / *.png depending on the case.
 """
 from __future__ import annotations
 
@@ -37,13 +37,13 @@ ANALYSIS_ROOT = Path("data/analysis")
 
 
 def slugify(text: str) -> str:
-    """Nom de fichier/dossier sûr : alphanumérique + '-', '_' seulement."""
+    """Safe file/folder name: alphanumeric plus '-', '_' only."""
     text = re.sub(r"[^A-Za-z0-9_-]+", "-", text.strip())
     return re.sub(r"-{2,}", "-", text).strip("-_") or "run"
 
 
 def tag_from_tps(tps_path: str | Path | None) -> str | None:
-    """Étiquette courte dérivée du nom de fichier d'un --tps custom. None si pas de --tps."""
+    """Short label derived from a custom --tps file's name. None if no --tps."""
     if tps_path is None:
         return None
     return slugify(Path(tps_path).stem)
@@ -65,7 +65,7 @@ def build_run_id(
     level: str, split: str, devices: list[str] | None = None,
     landmarks_tps: str | Path | None = None, run_label: str | None = None,
 ) -> str:
-    """Identifiant d'un modèle entraîné : level_split[_devices][_source]."""
+    """Identifier for a trained model: level_split[_devices][_source]."""
     return "_".join([slugify(level)] + _tag_parts(split, devices, landmarks_tps, run_label))
 
 
@@ -73,8 +73,8 @@ def build_eval_tag(
     split: str, devices: list[str] | None = None,
     landmarks_tps: str | Path | None = None, run_label: str | None = None,
 ) -> str:
-    """Identifiant d'une évaluation predict.py batch : split[_devices][_source],
-    nichée sous le run_id du modèle évalué (voir run_id_from_model_path)."""
+    """Identifier for a predict.py batch evaluation: split[_devices][_source],
+    nested under the run_id of the model being evaluated (see run_id_from_model_path)."""
     return "_".join(_tag_parts(split, devices, landmarks_tps, run_label))
 
 
@@ -82,30 +82,30 @@ def build_variance_id(
     levels: list[str], split: str, devices: list[str] | None = None,
     landmarks_tps: str | Path | None = None, run_label: str | None = None,
 ) -> str:
-    """Identifiant d'une analyse de variance : levels_split[_devices][_source]."""
+    """Identifier for a variance analysis: levels_split[_devices][_source]."""
     return "_".join([slugify("-".join(levels))] + _tag_parts(split, devices, landmarks_tps, run_label))
 
 
 def run_id_from_model_path(model_path: str | Path) -> tuple[str, str]:
-    """Retrouve (family, run_id) à partir de data/models/<family>/<run_id>/train/model.joblib."""
+    """Recover (family, run_id) from data/models/<family>/<run_id>/train/model.joblib."""
     model_path = Path(model_path).resolve()
     if model_path.name != "model.joblib" or model_path.parent.name != "train":
         raise ValueError(
-            f"{model_path} ne suit pas la convention data/models/<family>/<run_id>/train/model.joblib "
-            "-- impossible d'en déduire le run_id."
+            f"{model_path} does not follow the data/models/<family>/<run_id>/train/model.joblib "
+            "convention -- cannot infer its run_id."
         )
     return model_path.parent.parent.parent.name, model_path.parent.parent.name
 
 
 def run_path(family: str, *parts: str, root: Path = MODELS_ROOT) -> Path:
-    """Construit et crée un dossier de sortie, ex: run_path("lda", run_id, "train")."""
+    """Build and create an output folder, e.g. run_path("lda", run_id, "train")."""
     d = root.joinpath(family, *parts)
     d.mkdir(parents=True, exist_ok=True)
     return d
 
 
 def result_path(family: str, *parts: str, root: Path = MODELS_ROOT) -> Path:
-    """Comme run_path, mais en lecture seule (ne crée rien) -- pour localiser une sortie déjà écrite."""
+    """Like run_path, but read-only (creates nothing) -- to locate an already-written output."""
     return root.joinpath(family, *parts)
 
 

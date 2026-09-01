@@ -27,16 +27,12 @@ pas d'opinion sur QUI produit le TPS, juste sur comment le dessiner.
 
 import argparse
 import csv
-import sys
 from pathlib import Path
 
 import cv2
 import numpy as np
 
 from tqdm import tqdm
-
-_THIS_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(_THIS_DIR.parent))  # src/ -- même idiome que le reste du pipeline
 
 from utils.pipeline_io import read_csv_rows, resolve_path
 from utils.tps_io import parse_tps

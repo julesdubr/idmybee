@@ -22,14 +22,11 @@ Usage :
 from __future__ import annotations
 
 import argparse
-import sys
 from pathlib import Path
 
 import pandas as pd
 import matplotlib.pyplot as plt
 
-_THIS_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(_THIS_DIR.parent))
 from utils.run_io import FAMILY_LDA, MODELS_ROOT, ANALYSIS_ROOT, read_metrics, slugify
 
 

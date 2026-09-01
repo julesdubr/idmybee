@@ -20,7 +20,6 @@ from __future__ import annotations
 
 import argparse
 import logging
-import sys
 from pathlib import Path
 
 import numpy as np
@@ -29,8 +28,6 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.decomposition import PCA
 from sklearn.model_selection import LeaveOneOut, cross_val_predict
 
-_THIS_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(_THIS_DIR.parent))
 from utils.cli import add_dataset_args, dataset_kwargs
 from utils.dataset import load_dataset, target_groupe
 from utils.gpa import gpagen, two_d_array

@@ -1,31 +1,36 @@
 """
-Utilitaires I/O partagés pour les tables CSV consolidées du manifest
-(images.csv, specimens.csv, crops.csv, futures landmarks.csv, ...).
+Shared I/O helpers for the manifest's consolidated CSV tables (images.csv,
+specimens.csv, crops.csv, future landmarks.csv, ...).
 
-Chaque étape du pipeline (extraction, numérotation, classification) lit et
-écrit ses tables via ces mêmes fonctions, pour ne pas réimplémenter à chaque
-fois la même logique de reprise/compatibilité -- et pour qu'un changement de
-comportement (ex: comment on détecte un schéma incompatible) se fasse à un
-seul endroit.
+Every pipeline step (extraction, numbering, classification) reads and
+writes its tables through these same functions, so the same resume/
+compatibility logic isn't reimplemented each time -- and so a behavior
+change (e.g. how an incompatible schema is detected) happens in one place.
+
+`should_skip` lives in utils.pipeline_io (shared by every step, not just
+the manifest tables) -- re-exported here for convenience.
 """
 
 import csv
 from pathlib import Path
 
+from utils.pipeline_io import should_skip  # noqa: F401 -- re-exported
+
+__all__ = ["parse_bool", "read_table", "check_schema", "load_existing_by_key", "should_skip"]
+
 
 def parse_bool(value) -> bool:
-    """Un booléen Python écrit par csv.DictWriter redevient la chaîne
-    'True'/'False' à la lecture -- il faut le réinterpréter explicitement."""
+    """A Python bool written by csv.DictWriter comes back as the string
+    'True'/'False' on read -- must be reinterpreted explicitly."""
     if isinstance(value, bool):
         return value
     return str(value).strip().lower() == "true"
 
 
 def read_table(path) -> list[dict]:
-    """Lit une table CSV en liste de dicts. Table absente -> liste vide,
-    pour qu'une étape avale en aval sans planter si l'étape amont n'a pas
-    encore tourné (elle traitera juste 0 ligne, avec un message clair à
-    la charge de l'appelant)."""
+    """Read a CSV table into a list of dicts. Missing table -> empty list,
+    so a downstream step doesn't crash if the upstream step hasn't run yet
+    (it will just process 0 rows, with a clear message left to the caller)."""
     path = Path(path)
     if not path.exists():
         return []
@@ -34,10 +39,10 @@ def read_table(path) -> list[dict]:
 
 
 def check_schema(path, expected_fields: list[str]):
-    """Refuse de continuer si une table existante a un schéma de colonnes
-    différent de celui attendu par le code actuel (ex: écrite par une
-    version antérieure du script) -- mieux vaut s'arrêter net que corrompre
-    la table en mode append avec des colonnes mal alignées."""
+    """Refuses to continue if an existing table has a different column
+    schema than what the current code expects (e.g. written by an earlier
+    version of the script) -- better to stop outright than corrupt the
+    table in append mode with misaligned columns."""
     path = Path(path)
     if not path.exists():
         return
@@ -45,37 +50,15 @@ def check_schema(path, expected_fields: list[str]):
         header = next(csv.reader(f), [])
     if header and header != expected_fields:
         raise SystemExit(
-            f"{path} a un schéma différent de celui attendu par le code actuel.\n"
-            f"  attendu : {expected_fields}\n"
-            f"  trouvé  : {header}\n"
-            f"Renomme/déplace l'ancien fichier avant de relancer (rien n'a été modifié)."
+            f"{path} has a different schema than what the current code expects.\n"
+            f"  expected: {expected_fields}\n"
+            f"  found:    {header}\n"
+            f"Rename/move the old file before rerunning (nothing was changed)."
         )
 
 
 def load_existing_by_key(path, key_field: str) -> dict:
-    """Relit une table existante (déjà vérifiée compatible via check_schema)
-    indexée par `key_field`, pour reprendre un run sans dupliquer ni reperdre
-    les lignes déjà calculées."""
+    """Reload an existing table (already checked compatible via
+    check_schema) indexed by `key_field`, to resume a run without
+    duplicating or losing rows already computed."""
     return {row[key_field]: row for row in read_table(path)}
-
-
-def should_skip(prev_row: dict | None, overwrite: bool, retry_failed: bool) -> bool:
-    """Décision de reprise générique, réutilisable par toute étape qui
-    produit un résultat par image/specimen avec un statut OK/SUSPECT/FAILED
-    et (parfois) un fichier de sortie.
-
-    OK/SUSPECT : sautée si sa sortie existe encore (sinon on la reproduit --
-    auto-guérison si le dossier de sortie a été partiellement supprimé) et
-    que --overwrite n'est pas demandé.
-    FAILED : sautée par défaut, sinon un run répété rejoue et reloggue les
-    mêmes échecs indéfiniment ; --retry_failed pour les retenter explicitement.
-    """
-    if prev_row is None:
-        return False
-    status = prev_row.get("status")
-    if status in ("OK", "SUSPECT"):
-        out = prev_row.get("output_path") or ""
-        return bool(out) and Path(out).exists() and not overwrite
-    if status == "FAILED":
-        return not retry_failed
-    return False

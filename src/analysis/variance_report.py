@@ -69,14 +69,11 @@ Accepte --tps comme train.py/predict.py, pour analyser une autre source de landm
 from __future__ import annotations
 
 import argparse
-import sys
 from pathlib import Path
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-_THIS_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(_THIS_DIR.parent))
 from utils.cli import add_dataset_args, dataset_kwargs
 from utils.dataset import load_dataset, restrict_to_complete_devices
 from utils.gpa import gpagen, two_d_array

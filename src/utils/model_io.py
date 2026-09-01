@@ -1,10 +1,10 @@
-"""Sauvegarde et chargement d'un modèle GPA -> PCA -> LDA entraîné.
+"""Save and load a trained GPA -> PCA -> LDA model.
 
-Un `TrainedModel` regroupe tout ce qu'il faut pour classer de nouveaux
-spécimens sans réentraîner : la forme de référence GPA (`mean_shape`), le
-PCA et le LDA ajustés sur le jeu d'entraînement complet (pas la version
-LOOCV, qui ne sert qu'à estimer l'accuracy). Voir train.py (produit le
-modèle via --save-model) et predict.py (le consomme).
+A `TrainedModel` bundles everything needed to classify new specimens
+without retraining: the GPA reference shape (`mean_shape`), the PCA and
+LDA fitted on the full training set (not the LOOCV version, which is only
+used to estimate accuracy). See train.py (produces the model via
+--save-model) and predict.py (consumes it).
 """
 from __future__ import annotations
 
@@ -19,14 +19,14 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 
 @dataclass
 class TrainedModel:
-    mean_shape: np.ndarray               # (n_points, 2) -- référence GPA
+    mean_shape: np.ndarray               # (n_points, 2) -- GPA reference
     n_points: int
     pca: PCA
     lda: LinearDiscriminantAnalysis
-    level: str                           # "species" ou "caste" (colonne classée)
+    level: str                           # "species" or "caste" (classified column)
     classes: list[str] = field(default_factory=list)
-    split: str | None = None             # --split utilisé à l'entraînement (ex: "train"), si any
-    devices: list[str] | None = None     # --devices utilisé à l'entraînement (ex: ["P1","S1"]), si any
+    split: str | None = None             # --split used at training time (e.g. "train"), if any
+    devices: list[str] | None = None     # --devices used at training time (e.g. ["P1","S1"]), if any
     source_tps: str = ""
     n_train: int = 0
 
@@ -35,11 +35,11 @@ def save_model(model: TrainedModel, path: str | Path) -> None:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     joblib.dump(model, path)
-    print(f"Modèle -> {path}")
+    print(f"Model -> {path}")
 
 
 def load_model(path: str | Path) -> TrainedModel:
     model = joblib.load(Path(path))
     if not isinstance(model, TrainedModel):
-        raise TypeError(f"{path} ne contient pas un TrainedModel valide")
+        raise TypeError(f"{path} does not contain a valid TrainedModel")
     return model

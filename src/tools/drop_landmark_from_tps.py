@@ -4,14 +4,11 @@ Tancrède (19 LM) à un fichier reconstruit auquel il manque ce landmark.
 Usage: python drop_landmark_from_tps.py tancrede.tps tancrede_minus_lm3.tps --drop 3
 """
 import argparse
-import sys
 from pathlib import Path
 from dataclasses import replace
 
 import numpy as np
 
-_THIS_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(_THIS_DIR.parent)) 
 from utils.tps_io import parse_tps, write_tps
 
 if __name__ == "__main__":

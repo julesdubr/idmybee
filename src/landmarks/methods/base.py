@@ -1,28 +1,26 @@
 """base.py
-Contrat commun aux méthodes de numérotation (Phase 3) : associer un nuage de
-landmarks non-ordonné (sortie brute d'un détecteur) aux positions numérotées
-d'une forme de référence (voir landmarks.build_reference).
+Common contract for numbering methods (Phase 3): matching an unordered
+landmark cloud (a detector's raw output) to the numbered positions of a
+reference shape (see landmarks.build_reference).
 
-Toute nouvelle méthode (Hungarian+Umeyama, graph matching, ...) doit exposer
-une fonction module-level :
+Any new method (Hungarian+Umeyama, graph matching, ...) must expose a
+module-level function:
 
     def numerate(landmarks: np.ndarray, reference: np.ndarray) -> NumberingResult: ...
 
-pour rester interchangeable dans landmarks/renumber.py (pas besoin d'une
-classe abstraite pour ça -- voir le registre `METHODS` de renumber.py).
+to stay interchangeable in landmarks/renumber.py (no need for an abstract
+class for that -- see renumber.py's `METHODS` registry).
 
-Le `status` retourné ici ne couvre que les échecs intrinsèques à la méthode
-(ex: nombre de landmarks incompatible avec la référence). Le classement en
-SUSPECT pour un coût anormalement élevé par rapport au reste de la
-population est une décision de population, pas d'un spécimen isolé : elle
-est prise par l'appelant (renumber.py) une fois tous les scores connus, pas
-ici.
+The `status` returned here only covers failures intrinsic to the method
+(e.g. landmark count incompatible with the reference). Classifying as
+SUSPECT for an abnormally high cost relative to the rest of the population
+is a population-level decision, not a single specimen's: it's made by the
+caller (renumber.py) once every score is known, not here.
 
-Anciennement numbering/base.py -- déplacé sous landmarks/methods/ : la
-numérotation n'est pas une étape indépendante de la prédiction des
-landmarks, c'est la suite directe du même travail (positionner les
-landmarks d'une image), donc les deux vivent maintenant dans le même module
-`landmarks`.
+Formerly numbering/base.py -- moved under landmarks/methods/: numbering
+isn't a step independent from landmark prediction, it's the direct
+continuation of the same work (placing an image's landmarks), so both now
+live in the same `landmarks` module.
 """
 from __future__ import annotations
 
@@ -33,8 +31,8 @@ import numpy as np
 
 @dataclass
 class NumberingResult:
-    numbered: np.ndarray   # (n_zones, 2) -- landmarks réordonnés selon la référence
+    numbered: np.ndarray   # (n_zones, 2) -- landmarks reordered to match the reference
     status: str            # "OK" | "SUSPECT" | "FAILED"
-    score: float           # coût de registration (plus bas = meilleur), comparable
-                           # seulement entre spécimens numérotés par la MÊME méthode
-    reason: str = ""       # motif explicite si status != "OK"
+    score: float           # registration cost (lower = better), comparable
+                           # only between specimens numbered by the SAME method
+    reason: str = ""       # explicit reason if status != "OK"

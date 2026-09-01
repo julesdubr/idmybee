@@ -1,42 +1,44 @@
 """outliers.py
-Diagnostic post-GPA : distingue le bruit de détection ponctuel (1-2
-landmarks décalés) des échecs de registration complets (la quasi-totalité
-des landmarks du spécimen décalés -- specimen mal aligné dans son
-ensemble, souvent une forme d'aile hors gabarit, ou une mauvaise
-renumérotation).
+Post-GPA diagnostic: distinguishes pointwise detection noise (1-2 shifted
+landmarks) from full registration failures (nearly all of a specimen's
+landmarks shifted -- the specimen as a whole is misaligned, often an
+out-of-template wing shape, or a bad renumbering).
 
-Anciennement tools/flag_outlier_specimens.py (script CLI autonome). Extrait
-ici en pur module (plus de __main__/argparse) pour être appelé directement
-par numbering.reconstruct_tps.py juste après la renumérotation : la
-population de spécimens et leur numérotation viennent d'être calculées au
-même endroit, pas besoin de réécrire un TPS intermédiaire puis de le
-reparser dans un second script pour ce diagnostic.
+Formerly tools/flag_outlier_specimens.py (standalone CLI script). Extracted
+here as a pure module (no more __main__/argparse) to be called directly by
+landmarks/renumber.py right after renumbering: the specimen population and
+their numbering were just computed at the same place, no need to write an
+intermediate TPS and reparse it in a second script for this diagnostic.
 
-Le seuil (médiane + `mad_factor`*MAD de la distance à la position médiane,
-par landmark) est calculé PAR ESPÈCE, pas sur l'ensemble du jeu de données :
-les espèces ont des formes d'aile différentes par nature (c'est la base
-même de la classification), donc un seuil global confondrait "aile
-différente parce que d'une autre espèce" avec "aile mal alignée" --
-gonflant artificiellement le taux d'outliers des espèces les moins
-représentées ou aux ailes les plus atypiques (ex: B. rupestris). Un groupe
-avec moins de `min_group_size` spécimens n'a pas de médiane/MAD fiable : il
-est laissé de côté (considéré OK) plutôt que d'inventer un seuil.
+The threshold (median + `mad_factor`*MAD of the distance to the median
+position, per landmark) is computed PER SPECIES, not over the whole
+dataset: species naturally have different wing shapes (that's the whole
+basis of classification), so a global threshold would confuse "different
+wing because it's a different species" with "badly aligned wing" --
+artificially inflating the outlier rate of the least-represented species or
+those with the most atypical wings (e.g. B. rupestris). A group with fewer
+than `min_group_size` specimens doesn't have a reliable median/MAD: it's
+left alone (considered OK) rather than inventing a threshold.
 """
 from __future__ import annotations
+
+import logging
 
 import numpy as np
 
 from utils.gpa import gpagen
 from utils.tps_io import ImageLandmarks
 
-MIN_GROUP_SIZE = 10   # en dessous, une médiane/MAD par landmark n'est pas fiable
-MAD_FACTOR = 6.0       # médiane + MAD_FACTOR*MAD -> seuil "landmark outlier"
-HEAVY_LANDMARK_FRAC = 0.55  # au-delà de cette fraction de landmarks outliers -> specimen entier suspect
+logger = logging.getLogger(__name__)
+
+MIN_GROUP_SIZE = 10   # below this, a per-landmark median/MAD isn't reliable
+MAD_FACTOR = 6.0       # median + MAD_FACTOR*MAD -> "landmark outlier" threshold
+HEAVY_LANDMARK_FRAC = 0.55  # beyond this fraction of outlier landmarks -> whole specimen flagged
 
 
 def outlier_matrix(aligned: np.ndarray, mad_factor: float = MAD_FACTOR) -> np.ndarray:
-    """(n_specimens, n_landmarks) bool : True si le point est loin de la
-    position médiane de son landmark (médiane + mad_factor*MAD)."""
+    """(n_specimens, n_landmarks) bool: True if the point is far from its
+    landmark's median position (median + mad_factor*MAD)."""
     med = np.median(aligned, axis=0)
     dist = np.linalg.norm(aligned - med[None, :, :], axis=2)
     mad = np.median(np.abs(dist - np.median(dist, axis=0)), axis=0)
@@ -50,13 +52,12 @@ def flag_by_species(
     heavy_frac: float = HEAVY_LANDMARK_FRAC,
     min_group_size: int = MIN_GROUP_SIZE,
     mad_factor: float = MAD_FACTOR,
-    verbose: bool = True,
 ) -> tuple[np.ndarray, np.ndarray]:
-    """GPA + seuil MAD calculés séparément pour chaque espèce (voir docstring
-    du module). Retourne (n_outlier, heavy), alignés sur `specimens` :
-    n_outlier = nombre de landmarks outliers du spécimen, heavy = True si
-    >= heavy_frac des landmarks du spécimen sont outliers (specimen entier
-    suspect, pas juste un point bruité)."""
+    """GPA + MAD threshold computed separately for each species (see the
+    module docstring). Returns (n_outlier, heavy), aligned on `specimens`:
+    n_outlier = number of outlier landmarks for the specimen, heavy = True
+    if >= heavy_frac of the specimen's landmarks are outliers (whole
+    specimen suspect, not just a noisy point)."""
     if not specimens:
         return np.zeros(0, dtype=int), np.zeros(0, dtype=bool)
 
@@ -67,8 +68,7 @@ def flag_by_species(
     for sp_name in sorted(set(species)):
         idx = np.where(species == sp_name)[0]
         if len(idx) < min_group_size:
-            if verbose:
-                print(f"  {sp_name}: {len(idx)} spécimen(s), < {min_group_size} -- non évalué (considéré OK)")
+            logger.info("%s: %d specimen(s), < %d -- not evaluated (considered OK)", sp_name, len(idx), min_group_size)
             continue
         group = [specimens[i] for i in idx]
         result = gpagen([s.landmarks for s in group])
