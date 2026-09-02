@@ -1,22 +1,22 @@
 """variance.py
-Décomposition de variance de forme (distance de Procrustes² sur landmarks
-GPA-alignés) en facteurs emboîtés (ex : espèce ⊃ caste ⊃ individu, ou
-individu ⊃ appareil), avec test de signification par permutation (PERMANOVA
--- pas de distribution F théorique : la normalité multivariée est une
-hypothèse trop forte en haute dimension, la validité du test vient de la
-permutation des labels, même logique que geomorph::procD.lm).
+Shape variance decomposition (squared Procrustes distance on GPA-aligned
+landmarks) into nested factors (e.g. species ⊃ caste ⊃ individual, or
+individual ⊃ device), with permutation-based significance testing
+(PERMANOVA -- no theoretical F distribution: multivariate normality is too
+strong an assumption in high dimension, the test's validity comes from
+permuting labels, same logic as geomorph::procD.lm).
 
-Tout tourne autour de nested_anova() : ANOVA emboîtée à N niveaux (le
-premier niveau = le plus large, ex: espèce ; le dernier = le plus fin, ex:
-individu). Un seul niveau = ANOVA à un facteur classique. Généralise
-l'ancienne version à 2 niveaux (espèce/appareil) codée en dur -- même
-fonction pour espèce⊃caste⊃individu (3 niveaux) et individu⊃appareil
-(2 niveaux), voir analysis/variance_report.py.
+Everything revolves around nested_anova(): an N-level nested ANOVA (the
+first level = the broadest, e.g. species; the last = the finest, e.g.
+individual). A single level = a classic one-way ANOVA. Generalizes the old
+hardcoded 2-level version (species/device) -- same function for
+species⊃caste⊃individual (3 levels) and individual⊃device (2 levels), see
+analysis/variance_report.py.
 
-within_group_variance() est une fonction à part : une table DESCRIPTIVE
-(une ligne par groupe, ex: par espèce) pour repérer un groupe anormalement
-dispersé. Elle ne remplace PAS le MS résiduel poolé de nested_anova() (qui
-lui divise par N - n_groupes sur toute la population) -- voir sa docstring.
+within_group_variance() is a separate function: a DESCRIPTIVE table (one
+row per group, e.g. per species) to spot an abnormally dispersed group. It
+does NOT replace nested_anova()'s pooled residual MS (which divides by
+N - n_groups over the whole population) -- see its docstring.
 """
 from __future__ import annotations
 
@@ -37,11 +37,11 @@ def _total_ss(X: np.ndarray) -> float:
 
 
 def between_within_ss(X: np.ndarray, codes: np.ndarray, n_groups: int) -> tuple[float, float]:
-    """(SS_between, SS_within) pour un facteur seul : SS_total = SS_between + SS_within
-    (identité d'ANOVA standard, valable quels que soient les effectifs par groupe).
-    
-    `codes` doit être dense (0..n_groups-1) -- les groupes jamais observés comptent
-    pour 0 (comptage réel via `counts`, pas une moyenne inventée)."""
+    """(SS_between, SS_within) for a single factor: SS_total = SS_between + SS_within
+    (standard ANOVA identity, valid regardless of per-group sample sizes).
+
+    `codes` must be dense (0..n_groups-1) -- groups never observed count as
+    0 (an actual count via `counts`, not a made-up average)."""
     grand_mean = X.mean(axis=0)
     total_ss = _total_ss(X)
 
@@ -56,27 +56,26 @@ def between_within_ss(X: np.ndarray, codes: np.ndarray, n_groups: int) -> tuple[
 
 
 def combine_codes(codes_a: np.ndarray, n_a: int, codes_b: np.ndarray, n_b: int) -> np.ndarray:
-    """Code entier combiné (a, b) -> code unique dans [0, n_a*n_b)."""
+    """Combined integer code (a, b) -> a single code in [0, n_a*n_b)."""
     return codes_a.astype(np.int64) * n_b + codes_b.astype(np.int64)
 
 
 def variance_summary(ss: float, df: int) -> float:
-    """Mean square (SS/df) -- magnitude comparable entre niveaux."""
+    """Mean square (SS/df) -- comparable magnitude across levels."""
     return ss / df if df > 0 else float("nan")
 
 
 def within_group_variance(aligned: np.ndarray, groupe: pd.Series) -> pd.Series:
-    """Variance de Procrustes DESCRIPTIVE, groupe par groupe (une ligne par
-    espèce/appareil/etc.) : distance quadratique moyenne au centroïde du
-    groupe, corrigée du biais d'estimation (n-1, pas n -- le centroïde est
-    lui-même estimé à partir des mêmes points, donc n degrés de liberté
-    surestimeraient la précision).
+    """DESCRIPTIVE Procrustes variance, group by group (one row per
+    species/device/etc.): mean squared distance to the group's centroid,
+    bias-corrected (n-1, not n -- the centroid is itself estimated from the
+    same points, so n degrees of freedom would overstate the precision).
 
-    ATTENTION : ce n'est PAS la même quantité que le MS résiduel poolé de
-    nested_anova() (qui divise par N - n_groupes sur TOUTE la population en
-    une fois). Les deux coexistent : celle-ci sert à repérer un groupe
-    anormalement dispersé (table de détail), nested_anova() sert à comparer
-    les magnitudes entre niveaux (espèce vs individu vs appareil)."""
+    WARNING: this is NOT the same quantity as nested_anova()'s pooled
+    residual MS (which divides by N - n_groups over the WHOLE population at
+    once). The two coexist: this one is for spotting an abnormally
+    dispersed group (detail table), nested_anova() is for comparing
+    magnitudes across levels (species vs individual vs device)."""
     X = flatten(aligned)
     out = {}
     for g in groupe.unique():
@@ -89,12 +88,12 @@ def within_group_variance(aligned: np.ndarray, groupe: pd.Series) -> pd.Series:
 
 
 def _cumulative_cells(level_codes: list[np.ndarray], level_sizes: list[int]) -> list[tuple[np.ndarray, int]]:
-    """Pour chaque niveau i, le code dense de la partition CUMULÉE (niveaux
-    1..i combinés) + le nombre de cellules présentes. Ex : niveaux
-    [espèce, caste] -> cellules niveau 1 = espèces, cellules niveau 2 =
-    (espèce, caste) -- une caste "worker" de deux espèces différentes tombe
-    dans deux cellules distinctes automatiquement, pas besoin de
-    pré-construire un label "espèce_caste"."""
+    """For each level i, the dense code of the CUMULATIVE partition (levels
+    1..i combined) + the number of cells present. E.g. levels
+    [species, caste] -> level-1 cells = species, level-2 cells =
+    (species, caste) -- a "worker" caste from two different species falls
+    into two distinct cells automatically, no need to pre-build a
+    "species_caste" label."""
     cumulative: list[tuple[np.ndarray, int]] = []
     dense, n_dense = None, 1
     for codes, n in zip(level_codes, level_sizes):
@@ -109,14 +108,14 @@ def _permutation_p(
     X: np.ndarray, codes: np.ndarray, n_groups: int, strata: np.ndarray | None,
     observed_ss: float, ss_parent: float, n_perm: int, rng: np.random.Generator,
 ) -> float:
-    """p-value par permutation pour UN niveau. `strata=None` (niveau le plus
-    large, ex: espèce) -> mélange non stratifié sur toute la population.
-    `strata` fourni (niveau emboîté, ex: caste dans espèce) -> mélange
-    STRATIFIÉ : les labels de ce niveau ne sont mélangés qu'AU SEIN de
-    chaque cellule du niveau parent (la partition parente, donc ss_parent,
-    reste identique à chaque permutation) -- sinon un mélange non stratifié
-    confondrait l'effet de ce niveau avec celui des niveaux au-dessus."""
-    count = 1  # l'observé compte comme sa propre permutation -- évite p=0
+    """Permutation p-value for ONE level. `strata=None` (broadest level,
+    e.g. species) -> unstratified shuffle over the whole population.
+    `strata` provided (nested level, e.g. caste within species) -> STRATIFIED
+    shuffle: this level's labels are only shuffled WITHIN each parent-level
+    cell (the parent partition, hence ss_parent, stays identical at every
+    permutation) -- otherwise an unstratified shuffle would confound this
+    level's effect with that of the levels above it."""
+    count = 1  # the observed value counts as its own permutation -- avoids p=0
     if strata is None:
         for _ in range(n_perm):
             perm_codes = rng.permutation(codes)
@@ -146,29 +145,29 @@ def nested_anova(
     X: np.ndarray, levels: list[tuple[str, pd.Series]],
     n_perm: int = 0, rng: np.random.Generator | None = None,
 ) -> pd.DataFrame:
-    """ANOVA emboîtée à N niveaux. `levels` = [(nom, labels), ...] du plus
-    large (ex: espèce) au plus fin (ex: individu) -- chaque `labels` est une
-    pd.Series de même longueur que X, alignée ligne à ligne. Retourne une
-    table SS/df/MS/F/p, une ligne par niveau + une ligne "Résiduel" (bruit
-    non expliqué par aucun niveau, ex: reprises photo du même individu).
+    """N-level nested ANOVA. `levels` = [(name, labels), ...] from the
+    broadest (e.g. species) to the finest (e.g. individual) -- each `labels`
+    is a pd.Series the same length as X, row-aligned. Returns an
+    SS/df/MS/F/p table, one row per level + one "Residual" row (noise not
+    explained by any level, e.g. repeat photos of the same individual).
 
-    Principe (généralisation de l'identité SS_total = SS_between +
-    SS_within à N facteurs emboîtés) :
-        SS(niveau i | niveaux au-dessus) =
-            SS_between(cellules 1..i) - SS_between(cellules 1..i-1)
-    Empiler un niveau supplémentaire ajoute exactement la variance qu'il
-    explique en plus des niveaux au-dessus -- valable en somme des carrés
-    quels que soient les effectifs (souvent déséquilibrés) par cellule. p par
-    permutation stratifiée (voir _permutation_p) : n_perm=0 (défaut) saute
-    les tests de significativité (plus rapide, juste les magnitudes)."""
+    Principle (generalization of the identity SS_total = SS_between +
+    SS_within to N nested factors):
+        SS(level i | levels above) =
+            SS_between(cells 1..i) - SS_between(cells 1..i-1)
+    Stacking one more level adds exactly the variance it explains on top of
+    the levels above -- valid in sum-of-squares terms regardless of
+    (often unbalanced) per-cell sample sizes. p by stratified permutation
+    (see _permutation_p): n_perm=0 (default) skips significance testing
+    (faster, magnitudes only)."""
     if n_perm and rng is None:
-        raise ValueError("n_perm > 0 nécessite de fournir rng (np.random.default_rng(seed))")
+        raise ValueError("n_perm > 0 requires providing rng (np.random.default_rng(seed))")
 
     names = [name for name, _ in levels]
     level_codes, level_sizes = [], []
     for name, series in levels:
         if series.isna().any():
-            raise ValueError(f"Niveau {name!r} : valeurs manquantes -- exclure ces lignes avant l'appel.")
+            raise ValueError(f"Level {name!r}: missing values -- exclude these rows before calling.")
         codes, uniques = pd.factorize(series, sort=True)
         level_codes.append(codes)
         level_sizes.append(len(uniques))
@@ -177,7 +176,7 @@ def nested_anova(
     total_ss = _total_ss(X)
 
     rows = []
-    ss_prev, n_prev = 0.0, 1  # "niveau 0" = une seule cellule (la moyenne globale)
+    ss_prev, n_prev = 0.0, 1  # "level 0" = a single cell (the grand mean)
     for i, (name, (dense, n_present)) in enumerate(zip(names, cells)):
         ss_cells, _ = between_within_ss(X, dense, n_present)
         ss_level = ss_cells - ss_prev
@@ -193,13 +192,13 @@ def nested_anova(
         ss_prev, n_prev = ss_cells, n_present
 
     rows.append({
-        "source": "Résiduel", "SS": total_ss - ss_prev, "df": len(X) - n_prev,
+        "source": "Residual", "SS": total_ss - ss_prev, "df": len(X) - n_prev,
         "p (permutation)": float("nan"),
     })
 
     table = pd.DataFrame(rows).set_index("source")
     table["MS"] = [variance_summary(r.SS, r.df) for r in table.itertuples()]
-    ms_residual = table.loc["Résiduel", "MS"]
+    ms_residual = table.loc["Residual", "MS"]
     table["F"] = table["MS"] / ms_residual
-    table.loc["Résiduel", "F"] = float("nan")
+    table.loc["Residual", "F"] = float("nan")
     return table[["SS", "df", "MS", "F", "p (permutation)"]]

@@ -1,14 +1,14 @@
 """compare_runs.py
-Compare l'accuracy de plusieurs runs (train.py ou predict.py batch) côte à
-côte, à partir de leurs metrics.json (ex: quelle source de landmarks classe
-le mieux).
+Compares the accuracy of several runs (train.py or predict.py batch) side
+by side, from their metrics.json (e.g. which landmark source classifies
+best).
 
-Chaque entrée est un chemin relatif sous data/models/<family>/ jusqu'au
-dossier contenant metrics.json : "<run_id>/train" pour un LOOCV, ou
-"<run_id>/predict/<eval_tag>" pour une évaluation -- les deux peuvent être
-mélangés dans une même comparaison.
+Each entry is a path relative to data/models/<family>/ down to the folder
+containing metrics.json: "<run_id>/train" for a LOOCV run, or
+"<run_id>/predict/<eval_tag>" for an evaluation -- both can be mixed in the
+same comparison.
 
-Usage :
+Usage:
     python -m classifiers.train data/Bombus --level species --tps .../tancrede_19lm.tps --run-label tancrede19lm
     python -m classifiers.train data/Bombus --level species --tps .../tancrede_18lm.tps --run-label tancrede18lm
     python -m classifiers.train data/Bombus --level species --tps .../auto_19lm.tps --run-label auto19lm
@@ -22,12 +22,16 @@ Usage :
 from __future__ import annotations
 
 import argparse
+import logging
 from pathlib import Path
 
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
 
-from utils.run_io import FAMILY_LDA, MODELS_ROOT, ANALYSIS_ROOT, read_metrics, slugify
+from utils.cli import add_logging_args, log_level_from_args
+from utils.run_io import ANALYSIS_ROOT, FAMILY_LDA, MODELS_ROOT, read_metrics, setup_console_logging, slugify
+
+logger = logging.getLogger(__name__)
 
 
 def load_comparison_table(steps: list[str], family: str) -> pd.DataFrame:
@@ -36,7 +40,7 @@ def load_comparison_table(steps: list[str], family: str) -> pd.DataFrame:
         step_path = MODELS_ROOT / family / step
         metrics_path = step_path / "metrics.json"
         if not metrics_path.exists():
-            raise SystemExit(f"{metrics_path} introuvable.")
+            raise SystemExit(f"{metrics_path} not found.")
         metrics = read_metrics(step_path)
         metrics["run"] = step
         rows.append(metrics)
@@ -63,22 +67,25 @@ def plot_accuracy_comparison(df: pd.DataFrame, out_path: Path, title: str) -> No
     fig.tight_layout()
     fig.savefig(out_path, dpi=300)
     plt.close(fig)
-    print(f"Graphe comparatif -> {out_path}")
+    print(f"Comparison plot -> {out_path}")
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Compare l'accuracy de plusieurs runs train.py/predict.py côte à côte")
+    parser = argparse.ArgumentParser(description="Compare the accuracy of several train.py/predict.py runs side by side")
     parser.add_argument("steps", type=str, nargs="+",
-                         help="Chemins relatifs sous data/models/<family>/, ex: species_train_P1-S1/train "
-                              "ou species_train_P1-S1/predict/test")
-    parser.add_argument("--label", type=str, default=None, help="Nom du dossier de sortie (défaut: dérivé des chemins)")
+                         help="Paths relative to data/models/<family>/, e.g. species_train_P1-S1/train "
+                              "or species_train_P1-S1/predict/test")
+    parser.add_argument("--label", type=str, default=None, help="Output folder name (default: derived from the paths)")
+    parser.add_argument("--family", type=str, default=FAMILY_LDA)
+    add_logging_args(parser)
     return parser
 
 
 def main(argv: list[str] | None = None) -> None:
     args = build_arg_parser().parse_args(argv)
+    setup_console_logging(log_level_from_args(args))
 
-    table = load_comparison_table(args.steps, "lda")
+    table = load_comparison_table(args.steps, args.family)
     pd.set_option("display.width", 200)
     pd.set_option("display.max_columns", None)
     print(table)
@@ -91,7 +98,7 @@ def main(argv: list[str] | None = None) -> None:
     table.to_csv(csv_path)
     print(f"\nTable -> {csv_path}")
 
-    plot_accuracy_comparison(table, out_dir / "comparison.png", title=f"Comparaison -- {label}")
+    plot_accuracy_comparison(table, out_dir / "comparison.png", title=f"Comparison -- {label}")
     print(f"Run -> {out_dir}")
 
 

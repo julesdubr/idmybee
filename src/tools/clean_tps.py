@@ -1,24 +1,37 @@
-"""Modifie les IDs des spécimens dans un fichier .tps pour qu'ils soient consécutifs
-et commencent à 0.
+"""clean_tps.py
+Renumbers specimen IDs in a .tps file so they're consecutive starting at 0.
 
 Usage:
-    python3 scripts/clean_tps.py --tps annotations.tps --out cleaned.tps
+    python -m tools.clean_tps --tps annotations.tps --out cleaned.tps
 """
+from __future__ import annotations
 
 import argparse
-from pathlib import Path
+import logging
 
+from utils.cli import add_logging_args, log_level_from_args
+from utils.run_io import setup_console_logging
 from utils.tps_io import parse_tps
 
+logger = logging.getLogger(__name__)
 
-def main():
-    parser = argparse.ArgumentParser()
+
+def parse_args(argv: list[str] | None = None):
+    parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--tps", required=True)
     parser.add_argument("--out", default="cleaned.tps")
-    args = parser.parse_args()
+    add_logging_args(parser)
+    return parser.parse_args(argv)
 
-    specimens = parse_tps(args.tps)
-    print(f"{len(specimens)} spécimens trouvés dans le fichier .tps")
+
+def main(argv: list[str] | None = None) -> None:
+    args = parse_args(argv)
+    setup_console_logging(log_level_from_args(args))
+
+    specimens, errors = parse_tps(args.tps, strict=False)
+    if errors:
+        logger.warning("%d unreadable block(s) in %s (skipped)", len(errors), args.tps)
+    logger.info("%d specimen(s) found in %s", len(specimens), args.tps)
 
     with open(args.out, "wb") as f:
         for idx, spec in enumerate(specimens):
@@ -27,7 +40,9 @@ def main():
                 f.write(f"{x:.5f} {y:.5f}\n".encode())
             f.write(f"IMAGE={spec.image_path}\n".encode())
             f.write(f"ID={idx}\n".encode())
-        f.close()
+
+    print(f"{len(specimens)} specimen(s) written -> {args.out}")
+
 
 if __name__ == "__main__":
     main()

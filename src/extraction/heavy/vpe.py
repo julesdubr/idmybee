@@ -71,7 +71,7 @@ def compute_vpe(model, image_path, boxes, predictor_cls, imgsz=1024, device=None
 def bake_references(model, references, predictor_cls, imgsz=1024, device=None):
     """Average reference VPEs and inject the resulting class into YOLOE."""
     if not references:
-        raise ValueError("Aucune référence YOLOE fournie.")
+        raise ValueError("No YOLOE reference provided.")
 
     vpes = [
         compute_vpe(

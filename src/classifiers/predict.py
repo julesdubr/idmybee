@@ -1,45 +1,45 @@
 """predict.py
-Classe des spécimens avec un modèle GPA -> PCA -> LDA entraîné par train.py.
+Classifies specimens with a GPA -> PCA -> LDA model trained by train.py.
 
-  batch  : évalue le modèle sur un dataset avec vérité connue (accuracy
-           top-1/top-3, CSV de prédictions). Mêmes filtres que train.py
+  batch  : evaluates the model on a dataset with known truth (top-1/top-3
+           accuracy, predictions CSV). Same filters as train.py
            (--split/--devices/--species/--castes/--include-outliers/--tps).
-  single : classe une seule photo (pas de vérité connue, usage terrain).
+  single : classifies a single photo (no known truth, field use).
 
-Le TPS d'entrée doit avoir le même schéma de landmarks (nombre et ordre) que
-celui utilisé à l'entraînement -- passer par reconstruct_tps.py pour des
-landmarks issus du UNet de Gabriel. Seul le nombre de points est vérifié
-ici, pas l'ordre : un mauvais schéma donne des prédictions fausses sans
-erreur.
+The input TPS must have the same landmark scheme (count and order) as the
+one used at training time -- go through reconstruct_tps.py for landmarks
+coming from Gabriel's UNet. Only the point count is checked here, not the
+order: a wrong scheme gives wrong predictions with no error.
 
-`batch` hérite automatiquement --tps/--landmarks-status-csv du train.py qui
-a produit le modèle (lus dans son params.json), pour éviter d'avoir à les
-resaisir et le risque de désynchronisation entre schéma d'entraînement et
-d'évaluation. Passer --tps explicitement ici pour évaluer volontairement
-contre une autre source de landmarks (l'écran affiche laquelle est utilisée
-et sa provenance).
+`batch` automatically inherits --tps/--landmarks-status-csv from the
+train.py run that produced the model (read from its params.json), to avoid
+having to re-enter them and the risk of a mismatch between the training and
+evaluation schemes. Pass --tps explicitly here to deliberately evaluate
+against a different landmark source (the console shows which one is used
+and where it came from).
 
-Chaque prédiction inclut une distance de Procrustes à la référence du
-modèle (procrustes_distance) : une valeur nettement supérieure à celles du
-jeu d'entraînement signale une forme atypique ou un problème de landmarks.
+Each prediction includes a Procrustes distance to the model's reference
+(procrustes_distance): a value markedly higher than the training set's
+signals an atypical shape or a landmark problem.
 
-Pour comparer plusieurs sources de landmarks entre elles, entraîner un
-modèle par source avec train.py --tps (voir classifiers/train.py) puis
-comparer avec analysis/compare_runs.py.
+To compare several landmark sources against each other, train one model per
+source with train.py --tps (see classifiers/train.py), then compare with
+analysis/compare_runs.py.
 
-Usage :
+Usage:
     python -m classifiers.predict batch data/models/lda/species_train/train/model.joblib data/Bombus --split test
-    python -m classifiers.predict single data/models/lda/species_train/train/model.joblib data/Bombus/landmarks/nouvelle_photo.tps
+    python -m classifiers.predict single data/models/lda/species_train/train/model.joblib data/Bombus/landmarks/new_photo.tps
 """
 from __future__ import annotations
 
 import argparse
+import logging
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
-from utils.cli import add_dataset_args, dataset_kwargs
+from utils.cli import add_dataset_args, add_logging_args, dataset_kwargs, log_level_from_args
 from utils.dataset import load_dataset, load_unlabeled_tps
 from utils.gpa import align_to_reference, procrustes_distance, two_d_array
 from utils.model_io import TrainedModel, load_model
@@ -50,13 +50,15 @@ from utils.run_io import (
 )
 from utils.tps_io import ImageLandmarks
 
+logger = logging.getLogger(__name__)
+
 
 def predict_specimens(
     model: TrainedModel, specimens: list[ImageLandmarks], truth_by_tps_id: dict[int, str] | None = None,
 ) -> pd.DataFrame:
-    """Aligne chaque spécimen sur la référence du modèle, le projette dans
-    l'espace PCA/LDA, et retourne un DataFrame de prédictions (voir
-    utils.predictions.build_predictions_df pour le schéma)."""
+    """Aligns each specimen to the model's reference, projects it into
+    PCA/LDA space, and returns a predictions DataFrame (see
+    utils.predictions.build_predictions_df for the schema)."""
     valid: list[ImageLandmarks] = []
     aligned_list: list[np.ndarray] = []
     dist_list: list[float] = []
@@ -72,17 +74,18 @@ def predict_specimens(
         valid.append(sp)
 
     if skipped:
-        print(
-            f"{len(skipped)} spécimen(s) ignoré(s) (nombre de landmarks différent du "
-            f"modèle : attendu {model.n_points}) : tps_id={[s.tps_id for s in skipped][:10]}"
-            f"{', ...' if len(skipped) > 10 else ''}"
+        logger.warning(
+            "%d specimen(s) skipped (landmark count differs from the model's: "
+            "expected %d): tps_id=%s%s",
+            len(skipped), model.n_points, [s.tps_id for s in skipped][:10],
+            ", ..." if len(skipped) > 10 else "",
         )
 
     if not valid:
         raise ValueError(
-            "Aucun spécimen du TPS n'a le même nombre de landmarks que le modèle "
-            f"({model.n_points}). Vérifier le schéma de landmarks (ex: passer par "
-            "reconstruct_tps.py si les landmarks viennent du UNet de Gabriel)."
+            "No specimen in the TPS has the same landmark count as the model "
+            f"({model.n_points}). Check the landmark scheme (e.g. go through "
+            "reconstruct_tps.py if the landmarks come from Gabriel's UNet)."
         )
 
     X = two_d_array(np.stack(aligned_list))
@@ -101,13 +104,13 @@ def _print_model_info(model: TrainedModel) -> None:
     devices_str = f", devices={model.devices}" if model.devices else ""
     split_str = f", split={model.split}" if model.split else ""
     print(
-        f"Modèle chargé : niveau={model.level}, {len(model.classes)} classes, {model.n_points} landmarks, "
-        f"entraîné sur {model.n_train} spécimens{split_str}{devices_str} depuis {model.source_tps}"
+        f"Model loaded: level={model.level}, {len(model.classes)} classes, {model.n_points} landmarks, "
+        f"trained on {model.n_train} specimens{split_str}{devices_str} from {model.source_tps}"
     )
 
 
 def run_batch(args: argparse.Namespace) -> None:
-    setup_console_logging()
+    setup_console_logging(log_level_from_args(args))
     model = load_model(args.model_path)
     _print_model_info(model)
 
@@ -119,8 +122,8 @@ def run_batch(args: argparse.Namespace) -> None:
         args.landmarks_tps = train_params.get("landmarks_tps")
     if args.landmarks_status_csv is None:
         args.landmarks_status_csv = train_params.get("landmarks_status_csv")
-    source_note = "--tps explicite" if tps_explicit else f"héritée du train ({run_id})"
-    print(f"Source landmarks ({source_note}) : {args.landmarks_tps or 'landmarks_numbered.tps (défaut)'}")
+    source_note = "explicit --tps" if tps_explicit else f"inherited from train ({run_id})"
+    print(f"Landmarks source ({source_note}): {args.landmarks_tps or 'landmarks_numbered.tps (default)'}")
 
     ds_kwargs = dataset_kwargs(args, default_split="test")
     specimens, meta_df = load_dataset(args.dataset, labeled_only=True, **ds_kwargs)
@@ -129,7 +132,7 @@ def run_batch(args: argparse.Namespace) -> None:
 
     df = predict_specimens(model, specimens, truth_by_tps_id=truth_by_tps_id)
     acc = accuracy_summary(df, model.level)
-    print(f"\nÉvaluation sur {acc['n']} spécimen(s) : top-1 = {acc['accuracy_top1']:.4f} | top-3 = {acc['accuracy_top3']:.4f}")
+    print(f"\nEvaluation on {acc['n']} specimen(s): top-1 = {acc['accuracy_top1']:.4f} | top-3 = {acc['accuracy_top3']:.4f}")
 
     eval_tag = build_eval_tag(ds_kwargs["split"], args.devices, args.landmarks_tps, args.run_label)
     out_dir = run_path(family, run_id, "predict", ds_kwargs["split"])
@@ -142,7 +145,7 @@ def run_batch(args: argparse.Namespace) -> None:
         "eval_tag": eval_tag,
         "model_path": str(args.model_path),
         "level": model.level,
-        "landmarks_source": str(args.landmarks_tps) if args.landmarks_tps else "landmarks_numbered.tps (défaut)",
+        "landmarks_source": str(args.landmarks_tps) if args.landmarks_tps else "landmarks_numbered.tps (default)",
         **acc,
     }
     write_metrics(out_dir, metrics)
@@ -151,12 +154,12 @@ def run_batch(args: argparse.Namespace) -> None:
         "model_path": str(args.model_path), "resolved_split": ds_kwargs["split"],
     })
 
-    header = f"run_id={run_id} | eval_tag={eval_tag} | modèle={args.model_path}"
+    header = f"run_id={run_id} | eval_tag={eval_tag} | model={args.model_path}"
     log_text = (
         f"{header}\n" + "=" * len(header) + "\n"
-        f"Source landmarks : {metrics['landmarks_source']}\n"
-        f"Évaluation : top-1 = {acc['accuracy_top1']:.4f} | top-3 = {acc['accuracy_top3']:.4f} (n={acc['n']})\n"
-        f"Prédictions -> {predictions_path}\n"
+        f"Landmarks source: {metrics['landmarks_source']}\n"
+        f"Evaluation: top-1 = {acc['accuracy_top1']:.4f} | top-3 = {acc['accuracy_top3']:.4f} (n={acc['n']})\n"
+        f"Predictions -> {predictions_path}\n"
     )
     write_run_log(out_dir, log_text)
 
@@ -165,26 +168,26 @@ def run_batch(args: argparse.Namespace) -> None:
 
 
 def run_single(args: argparse.Namespace) -> None:
-    setup_console_logging()
+    setup_console_logging(log_level_from_args(args))
     model = load_model(args.model_path)
     _print_model_info(model)
 
     specimens = load_unlabeled_tps(args.tps_path, strict=not args.non_strict)
     if len(specimens) != 1:
         raise SystemExit(
-            f"{args.tps_path} contient {len(specimens)} spécimen(s) -- le mode 'single' attend "
-            "exactement une photo (une nouvelle photo terrain pas encore intégrée à data/Bombus). "
-            "Pour classer plusieurs spécimens d'un coup, utiliser le mode 'batch'."
+            f"{args.tps_path} contains {len(specimens)} specimen(s) -- 'single' mode expects "
+            "exactly one photo (a new field photo not yet merged into data/Bombus). "
+            "To classify several specimens at once, use 'batch' mode."
         )
 
     df = predict_specimens(model, specimens)
     row = df.iloc[0]
     pred_col = f"predicted_{model.level}"
     print(
-        f"\n{model.level} prédit : {row[pred_col]}  (confiance {row['confidence']:.3f})"
-        f"\n  2e choix : {row['second_choice']} ({row['second_confidence']})"
-        f"\n  3e choix : {row['third_choice']} ({row['third_confidence']})"
-        f"\n  distance de Procrustes à la référence : {row['procrustes_distance']:.4f}"
+        f"\npredicted {model.level}: {row[pred_col]}  (confidence {row['confidence']:.3f})"
+        f"\n  2nd choice: {row['second_choice']} ({row['second_confidence']})"
+        f"\n  3rd choice: {row['third_choice']} ({row['third_confidence']})"
+        f"\n  Procrustes distance to reference: {row['procrustes_distance']:.4f}"
     )
     if args.out:
         args.out.parent.mkdir(parents=True, exist_ok=True)
@@ -194,23 +197,25 @@ def run_single(args: argparse.Namespace) -> None:
 
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Classifie des spécimens avec un modèle entraîné par train.py"
+        description="Classify specimens with a model trained by train.py"
     )
     subparsers = parser.add_subparsers(dest="mode", required=True)
 
-    batch = subparsers.add_parser("batch", help="Valider le modèle sur un dossier de données (avec vérité connue)")
-    batch.add_argument("model_path", type=Path, help="Modèle sauvegardé (ex: data/models/lda/<run_id>/train/model.joblib)")
-    batch.add_argument("dataset", type=Path, help="Dossier racine (ex: data/Bombus) -- voir utils.dataset.load_dataset")
+    batch = subparsers.add_parser("batch", help="Validate the model on a data folder (with known truth)")
+    batch.add_argument("model_path", type=Path, help="Saved model (e.g. data/models/lda/<run_id>/train/model.joblib)")
+    batch.add_argument("dataset", type=Path, help="Root folder (e.g. data/Bombus) -- see utils.dataset.load_dataset")
     add_dataset_args(batch, default_split="test")
     batch.add_argument("--low-confidence-threshold", type=float, default=0.6,
-                        help="Seuil de confiance sous lequel une prédiction est listée pour relecture manuelle (défaut: 0.6)")
+                        help="Confidence threshold below which a prediction is listed for manual review (default: 0.6)")
+    add_logging_args(batch)
     batch.set_defaults(func=run_batch)
 
-    single = subparsers.add_parser("single", help="Classer une seule photo (usage terrain)")
-    single.add_argument("model_path", type=Path, help="Modèle sauvegardé")
-    single.add_argument("tps_path", type=Path, help="Fichier .tps d'une seule photo")
-    single.add_argument("--out", type=Path, default=None, help="Optionnel : sauvegarder aussi le résultat en CSV")
-    single.add_argument("--non-strict", action="store_true", help="Tolérer les blocs TPS malformés")
+    single = subparsers.add_parser("single", help="Classify a single photo (field use)")
+    single.add_argument("model_path", type=Path, help="Saved model")
+    single.add_argument("tps_path", type=Path, help=".tps file for a single photo")
+    single.add_argument("--out", type=Path, default=None, help="Optional: also save the result as CSV")
+    single.add_argument("--non-strict", action="store_true", help="Tolerate malformed TPS blocks")
+    add_logging_args(single)
     single.set_defaults(func=run_single)
 
     return parser

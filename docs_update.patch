@@ -1,0 +1,274 @@
+diff --git a/CONVENTIONS.md b/CONVENTIONS.md
+index 97f94d2..b60af6b 100644
+--- a/CONVENTIONS.md
++++ b/CONVENTIONS.md
+@@ -81,6 +81,26 @@ juste le nom de la variable suivante.
+   fichier du même dossier). Si un module a besoin d'un autre module du même
+   package, import qualifié complet.
+ 
++## Fonctions core réutilisables (pas seulement CLI)
++
++*(Ajouté session du 2 sept. 2026, suite à la conception de l'outil 1 --
++voir `RESUME.md` "Détails outil 1".)*
++
++- Toute étape de pipeline appelée par plusieurs outils (ex. la pose de
++  landmarks, consommée à la fois par le mode dataset de l'outil 1 et par
++  son mode terrain/single) doit exister comme **fonction Python pure**
++  (entrée -> sortie en mémoire, ex. `place_landmarks(image) -> Landmarks`)
++  en plus de son entrée CLI/fichier. Le CLI/l'UI appellent cette fonction
++  et gèrent l'I/O disque autour -- la fonction elle-même ne lit/écrit
++  jamais de fichier.
++- Même principe pour le dessin d'overlay annoté (landmarks numérotés sur
++  l'image, utilisé par l'étape de validation) :
++  `draw_landmarks_overlay(image, landmarks) -> Image`, partagée telle
++  quelle entre CLI (export d'overlays sur disque) et UI (affichage direct).
++- Objectif : éviter un aller-retour disque (écrire un TPS à une ligne puis
++  le relire) pour des usages "ad hoc" comme la prédiction terrain sur une
++  photo isolée.
++
+ ## Tests
+ 
+ - `pytest`, un fichier `tests/test_<module>.py` par module de `src/` qui
+diff --git a/RESUME.md b/RESUME.md
+index 75848ab..67ba17e 100644
+--- a/RESUME.md
++++ b/RESUME.md
+@@ -3,7 +3,21 @@
+ Document vivant, à tenir à jour à chaque session. But : permettre de
+ reprendre le travail dans une nouvelle discussion sans tout réexpliquer.
+ Voir aussi `CONVENTIONS.md` (style, validé) et `TODO.md` (tâches).
+- 
++
++## Conventions de session (méta)
++
++*(Ajouté session du 2 sept. 2026.)*
++
++- Ces trois documents (`RESUME.md`, `TODO.md`, `CONVENTIONS.md`) sont
++  amendés de façon **additive** : on ajoute/fusionne/corrige avec une note
++  datée, on ne supprime jamais une information existante ni ne la résume
++  silencieusement en renvoyant à "une version antérieure". Le travail se
++  fait à travers de nombreuses conversations séparées (limite de contexte
++  par session) et ces documents doivent rester complets à chaque reprise.
++- Les modifications de code sont livrées sous forme de **patchs git**
++  (diff/patch), pas de fichiers collés intégralement, pour rester
++  applicables et traçables dans le dépôt.
++
+ ## Contexte
+  
+ `idmybee` : pipeline de morphométrie géométrique sur ailes de bourdons
+@@ -18,15 +32,28 @@ majeure.
+  
+ Découpage en 3 outils + un cœur partagé :
+  
+-1. **Landmarking** (CLI + UI Streamlit/Gradio, lequel des deux reste
+-   ouvert) -- dossier d'images en entrée -> TPS + log d'échecs en sortie.
+-   Pas de manifest/specimens.csv requis. Sortie configurable : crops
+-   sauvegardés ou non, TPS espace original / crop / les deux.
+-2. **Classification / analyse** (CLI uniquement) -- couple TPS + CSV
+-   (ordonnés pareil, sans les images en erreur) en entrée. Train, predict,
+-   ET l'ANOVA/variance. **LDA train/predict reste ici** (rapide, pas de
+-   GPU, c'est la brique consommée par predict/anova -- pas rangé dans
+-   "trainers").
++1. **Landmarking** (CLI + UI). *Mis à jour session du 2 sept. 2026 :
++   framework UI tranché (Streamlit) et le "mode batch/single" initialement
++   envisagé s'est précisé en **deux usages distincts** -- détail complet
++   dans "Détails outil 1" plus bas :
++   - **Mode dataset** : dossier d'images en entrée -> TPS + log d'échecs
++     en sortie, toujours ; CSV de données biologiques en plus si un
++     manifest/specimens.csv est fourni (aligné, hors images en erreur),
++     sinon TPS+log seul. Sortie configurable : crops sauvegardés ou non,
++     TPS espace original / crop / les deux.
++   - **Mode terrain / single** (nouveau) : une photo ou un petit ensemble
++     ad hoc -> pas de fichier écrit sur disque, juste un résultat affiché
++     (stub TPS en attendant la classification, puis top-N espèce/caste +
++     confiance une fois l'outil 2 branché).
++2. **Classification / analyse**. *Mis à jour session du 2 sept. 2026 :*
++   train et ANOVA/variance restent **CLI uniquement** (réservé aux devs),
++   mais **une UI (batch + single) est prévue pour predict** (choix d'un
++   modèle LDA pré-fitté), consommée aussi bien directement que par le mode
++   terrain de l'outil 1 -- voir "Détails outil 1" et Phase 3 dans
++   `TODO.md`. Entrée : couple TPS + CSV (ordonnés pareil, sans les images
++   en erreur). Train, predict, ET l'ANOVA/variance. **LDA train/predict
++   reste ici** (rapide, pas de GPU, c'est la brique consommée par
++   predict/anova -- pas rangé dans "trainers").
+ 3. **Trainers** (CLI uniquement, pas de UI prévue) -- UNet landmarks,
+    YOLO-OBB. Entraînements lourds, GPU, produisent les poids consommés par
+    l'outil 1. Sorties encore à harmoniser (3 conventions différentes
+@@ -45,12 +72,87 @@ la Adrien-R.
+ type `error_reason`). Voir `CONVENTIONS.md`. Les CSV déjà produits en
+ français ne sont pas migrés rétroactivement.
+ 
++## Détails outil 1 -- conception validée (session du 2 sept. 2026)
++
++Conception uniquement, aucune implémentation commencée (Phase 1 -- core --
++pas encore lancée). Détail complet à conserver pour la reprise en Phase 2.
++
++**Framework UI : Streamlit** (tranché cette session). Raisons : l'app va
++héberger dans la durée deux outils (landmarking puis classification) qui
++partagent des composants -- le multipage natif de Streamlit et
++`st.session_state` collent mieux à ça qu'assembler plusieurs apps Gradio
++séparées ; l'étape de validation a besoin d'un état navigable/éditable
++persistant (parcourir/filtrer par statut, éditer un item, garder les
++modifs entre reruns) qui est le cas d'usage central de `st.session_state` ;
++les nombreux paramètres de pipeline (seuils, chemins de poids, booléens) se
++mappent naturellement sur des widgets de sidebar, même logique que
++l'`argparse` déjà en place -> bonne parité CLI/UI. Contre-argument honnête :
++Gradio a un `gr.Gallery` (grille + légendes + sélection) pensé pour la
++galerie de validation spécifiquement, ce qui coûterait moins de code sur
++cette seule partie -- mais l'avantage se renverse en regardant l'app dans
++son ensemble (multipage, état, formulaires). Question encore ouverte : une
++app unique (outil 1 + outil 2) ou deux apps séparées -- voir "Questions
++ouvertes".
++
++**Deux usages du même outil, pas juste un mode batch/single :**
++
++- **Mode dataset** -- construction/extension de dataset annoté. Dossier
++  d'images (+ manifest optionnel) -> TPS + log d'échecs, + CSV bio si
++  manifest fourni. Sortie configurable (crops sauvegardés ou non, TPS
++  espace original/crop/les deux). Passe par l'étape de validation
++  complète (galerie).
++- **Mode terrain / single** -- prédiction rapide, pas de construction de
++  dataset. Une photo, ou un petit ensemble ad hoc de photos (pas besoin de
++  manifest ni de structure "dataset") -> **aucun fichier TPS/CSV écrit sur
++  disque** (jugé sans intérêt pour une ligne unique). Tant que la
++  classification (outil 2, Phase 3) n'est pas branchée : affiche
++  uniquement les coordonnées TPS calculées -- zone de code copiable en UI,
++  impression sur stdout en CLI -- en guise de stub temporaire. Une fois
++  Phase 3 disponible : remplace le stub par un top-N espèce/caste + % de
++  confiance (appel direct à `predict.py`/sa fonction Python, pas de TPS
++  intermédiaire sur disque).
++
++**Fonctions core en mémoire (nouvelle convention, voir aussi
++`CONVENTIONS.md`)** : la pose de landmarks doit exister comme fonction
++Python pure (image -> landmarks), pas seulement via CLI/fichiers, pour être
++appelée directement par le mode terrain sans aller-retour disque. Idem pour
++l'overlay annoté (`draw_landmarks_overlay(image, landmarks) -> Image`),
++partagé tel quel entre CLI et UI.
++
++**Étape de validation** (mode dataset ; extension possible au mode terrain
++en aperçu seul, voir "Questions ouvertes") :
++
++- Statut auto calculé pendant le run, **identique CLI et UI** (pas un
++  artefact d'interface), écrit en colonne `status` : `FAILED` (détection,
++  crop ou pose échoués), `SUSPECT` (ex. flag outlier MAD, erreur de
++  reprojection GPA élevée, ambiguïté zones 0/1/13), `OK` sinon.
++- UI : galerie (mode dataset) ou vue unique, image annotée avec landmarks
++  numérotés + statut éditable (OK/SUSPECT/FAILED), navigable, export final
++  du TPS/CSV avec les statuts corrigés.
++- CLI (parité fonctionnelle, pas la même UX -- le geste humain de
++  "parcourir et cliquer" reste par nature UI-only, c'est la mécanique qui
++  est partagée) : un mode `--export-review` écrit les overlays annotés sur
++  disque + un `review.csv` (`image_id`, statut auto, chemin de l'overlay) ;
++  une commande de réconciliation (nom provisoire `reconcile-review`)
++  relit un `review.csv` édité à la main (statuts corrigés dans un tableur
++  ou éditeur de texte) et l'applique au TPS/CSV final.
++
++**Paramètres pipeline** (détection OBB, cropping, pose UNet,
++renumérotation) : configurables avec défauts, référence de renumérotation
++(blueprint Tancrède) embarquée comme asset par défaut. Détail
++d'implémentation à trancher en Phase 2 : un schéma de déclaration unique
++(nom/type/défaut/aide) dont dérivent à la fois le flag `argparse` et le
++widget Streamlit correspondant, pour éviter de dupliquer chaque paramètre.
++
+ ## Où on en est
+ 
+ **Phase actuelle : groundwork pré-découpage, terminé.** Le découpage
+ en 3 (phase 1) lui-même n'a pas commencé. Voir `TODO.md` pour le détail précis.
+  
+ Fait :
++- Conception détaillée de l'outil 1 (landmarking, modes dataset/terrain,
++  validation, framework UI) validée cette session (2 sept. 2026) -- voir
++  "Détails outil 1" plus haut. Conception uniquement, pas de code.
+ - Diagnostic complet du code existant.
+ - `CONVENTIONS.md` validé (docstrings, nommage CLI, logging, imports,
+   tests, langue).
+@@ -161,8 +263,22 @@ Fait :
+ 
+ ## Questions ouvertes
+ 
+-- Streamlit vs Gradio pour l'outil 1 -- toujours ouvert.
++- ~~Streamlit vs Gradio pour l'outil 1~~ -- résolu (session du 2 sept.
++  2026) : Streamlit. Voir "Détails outil 1" pour les raisons.
+ - **Nouvelle question : aligner `landmarks_trainer/train.py` (et le reste
+   du dossier) sur les conventions CLI/logging maintenant, ou reporter à la
+   Phase 4 (harmonisation des sorties de run) puisque ce dossier va de
+   toute façon être retouché à ce moment-là ?**
++- **(2 sept. 2026) App Streamlit unique** (page landmarking + page
++  classification, point d'entrée unique pour les utilisateurs
++  non-techniques) **ou deux apps séparées ?**
++- **(2 sept. 2026) Le mode terrain garde-t-il un aperçu overlay** (image
++  annotée, sans statut persistant/éditable) **pour vérification rapide
++  avant lecture de la prédiction** -- y compris pour un ensemble ad hoc de
++  plusieurs photos, pas seulement une seule ?
++- **(2 sept. 2026) Nommage/structure exacte** du mode dataset vs mode
++  terrain -- deux scripts distincts partageant le core, ou un seul script
++  avec un flag de mode ? Provisoire, pas figé.
++- **(2 sept. 2026) Nom définitif de la commande CLI de réconciliation** de
++  la validation (`reconcile-review` utilisé comme nom provisoire dans ce
++  document).
+diff --git a/TODO.md b/TODO.md
+index 968e1de..7a44a24 100644
+--- a/TODO.md
++++ b/TODO.md
+@@ -58,19 +58,56 @@ Reste en Phase 0 -- pas fait, décision à prendre (voir RESUME.md
+ 
+ ## Phase 2 -- outil 1 : landmarking
+ 
+-- [ ] Orchestrateur bout-en-bout : dossier d'images -> détection ->
+-      normalisation -> prédiction UNet -> renumérotation -> TPS + log
+-- [ ] Sortie configurable : crops sauvegardés (o/n), TPS espace original /
+-      crop / les deux
++Conception validée session du 2 sept. 2026 -- détail complet dans
++`RESUME.md` "Détails outil 1". Résumé actionnable ci-dessous.
++
++- [x] Framework UI : **Streamlit** (raisons dans `RESUME.md`)
++- [ ] Fonction core en mémoire `place_landmarks(image) -> Landmarks`
++      (pure Python, pas de lecture/écriture disque) -- prérequis du mode
++      terrain, voir `CONVENTIONS.md` "Fonctions core réutilisables"
++- [ ] Fonction core `draw_landmarks_overlay(image, landmarks) -> Image`
++      (overlay annoté partagé CLI/UI)
++- [ ] **Mode dataset** -- orchestrateur bout-en-bout : dossier d'images ->
++      détection -> normalisation -> prédiction UNet -> renumérotation ->
++      TPS + log d'échecs ; + CSV de données biologiques si un
++      manifest/specimens.csv est fourni
++- [ ] Sortie configurable (mode dataset) : crops sauvegardés (o/n), TPS
++      espace original / crop / les deux
+ - [ ] Référence de renumérotation (blueprint Tancrède) embarquée comme
+       asset par défaut
+-- [ ] UI Streamlit ou Gradio (à choisir)
++- [ ] **Mode terrain / single** -- une photo ou un petit ensemble ad hoc
++      (sans manifest) -> aucun fichier écrit ; stub temporaire = affiche
++      les coordonnées TPS calculées (zone de code copiable en UI, stdout
++      en CLI) en attendant la Phase 3 (voir item correspondant Phase 3)
++- [ ] Statut auto `FAILED`/`SUSPECT`/`OK` calculé pendant le run, colonne
++      `status`, identique CLI et UI (détail des critères dans
++      `RESUME.md`)
++- [ ] UI -- étape de validation (mode dataset) : galerie annotée
++      (landmarks numérotés) + statut éditable OK/SUSPECT/FAILED,
++      navigable, export final
++- [ ] CLI -- parité fonctionnelle de la validation : `--export-review`
++      (overlays + `review.csv`) et une commande de réconciliation (nom
++      provisoire `reconcile-review`) qui réapplique un `review.csv` édité
++      à la main au TPS/CSV final
++- [ ] Décider (question ouverte, voir `RESUME.md`) : le mode terrain
++      garde-t-il un aperçu overlay sans statut persistant ?
++- [ ] Décider (question ouverte) : app Streamlit unique (outil 1 + outil
++      2) ou deux apps séparées ?
+ 
+ ## Phase 3 -- outil 2 : classification / analyse
+ 
+ - [ ] CLI unique train/predict/anova depuis un couple TPS/CSV, join par
+       clé avec repli par ordre
+ - [ ] Valider l'usage "TPS/CSV autonome" sans manifest complet
++- [ ] `train.py` et l'ANOVA/variance restent **CLI uniquement** (réservé
++      aux devs) -- décision confirmée session du 2 sept. 2026
++- [ ] UI Streamlit (batch + single) pour **predict** uniquement :
++      sélection d'un modèle LDA pré-fitté parmi les runs publiés (liste
++      curatée depuis `data/models/lda/<run_id>/train/`)
++- [ ] Brancher ce predict dans le **mode terrain de l'outil 1** (remplace
++      le stub TPS-only du mode single/terrain, voir Phase 2) -- retourne
++      un top-N espèce/caste + % de confiance, appel direct fonction à
++      fonction, pas de TPS intermédiaire sur disque
+ 
+ ## Phase 4 -- outil 3 : trainers
+ 

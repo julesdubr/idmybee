@@ -1,23 +1,23 @@
 """dataset.py
-Chargement des landmarks + métadonnées biologiques pour classifiers/* et
+Loads landmarks + biological metadata for classifiers/* and
 analysis/variance_report.py.
 
-Requiert, sous `root` (ex: data/Bombus/) :
+Requires, under `root` (e.g. data/Bombus/):
     specimens.csv                       specimen_id, species, caste, is_labeled
     manifest.csv                        image_id, specimen_id, split, device_type, shot_index
-    landmarks/landmarks_numbered.tps    landmarks, tous spécimens
-    landmarks/landmarks_numbered.csv    statut OK/SUSPECT/FAILED par photo (tps_id, status)
+    landmarks/landmarks_numbered.tps    landmarks, all specimens
+    landmarks/landmarks_numbered.csv    OK/SUSPECT/FAILED status per photo (tps_id, status)
 
-Le TPS et son CSV de statut sont surchargeables (landmarks_tps,
-landmarks_status_csv) pour évaluer une autre source de landmarks sur les
-mêmes specimens.csv/manifest.csv. Jointure via COMMENT= (image_id/
-specimen_id) si présent dans le TPS, sinon via ID=/tps_id dans manifest.csv.
+The TPS and its status CSV can be overridden (landmarks_tps,
+landmarks_status_csv) to evaluate a different landmark source on the same
+specimens.csv/manifest.csv. Joined via COMMENT= (image_id/specimen_id) if
+present in the TPS, otherwise via ID=/tps_id in manifest.csv.
 
-Une ligne de sortie = une photo, pas un spécimen (un individu a souvent
-plusieurs photos). meta_df : specimen_id, species, caste, groupe
+One output row = one photo, not one specimen (an individual often has
+several photos). meta_df: specimen_id, species, caste, groupe
 (species_caste), device, device_tag, split.
 
-Usage :
+Usage:
     specimens, meta_df = load_dataset("data/Bombus", split="train")
 """
 from __future__ import annotations
@@ -35,33 +35,33 @@ logger = logging.getLogger(__name__)
 
 
 def add_groupe_column(df: pd.DataFrame) -> pd.DataFrame:
-    """Ajoute la colonne composée 'groupe' (species + '_' + caste), utilisée par --level=caste."""
+    """Adds the composite 'groupe' column (species + '_' + caste), used by --level=caste."""
     df = df.copy()
     df["groupe"] = df["species"].astype(str) + "_" + df["caste"].astype(str)
     return df
 
 
 def target_groupe(meta_df: pd.DataFrame, level: str) -> pd.Series:
-    """Colonne de regroupement pour la classification ('species' ou 'caste')."""
+    """Grouping column for classification ('species' or 'caste')."""
     if level == "caste":
         return meta_df["groupe"]
     if level not in meta_df.columns:
-        raise ValueError(f"--level {level!r} inconnu (attendu : 'species' ou 'caste')")
+        raise ValueError(f"--level {level!r} unknown (expected: 'species' or 'caste')")
     return meta_df[level]
 
 
 def load_unlabeled_tps(tps_path: str | Path, strict: bool = True) -> list[ImageLandmarks]:
-    """Lecture seule d'un TPS, sans jointure biologique (ex: une photo terrain, hors specimens.csv)."""
+    """Reads a TPS with no biological join (e.g. a field photo, outside specimens.csv)."""
     specimens, errors = parse_tps(tps_path, strict=strict)
     if errors:
-        logger.warning("%d erreur(s) de parsing TPS (voir ci-dessus)", len(errors))
+        logger.warning("%d TPS parsing error(s) (see above)", len(errors))
     return specimens
 
 
 def _drop_invalid_landmark_counts(
     specimens: list[ImageLandmarks], meta_df: pd.DataFrame
 ) -> tuple[list[ImageLandmarks], pd.DataFrame]:
-    """Écarte les spécimens dont le nombre de landmarks diffère du schéma majoritaire (requis par la GPA)."""
+    """Drops specimens whose landmark count differs from the majority scheme (required by GPA)."""
     if not specimens:
         return specimens, meta_df
     n_points, _ = Counter(sp.n_points for sp in specimens).most_common(1)[0]
@@ -70,7 +70,7 @@ def _drop_invalid_landmark_counts(
     if n_dropped:
         dropped_ids = [sp.tps_id for sp, keep in zip(specimens, keep_mask) if not keep]
         logger.warning(
-            "%d spécimen(s) écarté(s) : nombre de landmarks incohérent (%d points attendus) -- tps_id: %s%s",
+            "%d specimen(s) dropped: inconsistent landmark count (%d points expected) -- tps_id: %s%s",
             n_dropped, n_points, dropped_ids[:10], ", ..." if len(dropped_ids) > 10 else "",
         )
     specimens = [sp for sp, keep in zip(specimens, keep_mask) if keep]
@@ -79,7 +79,7 @@ def _drop_invalid_landmark_counts(
 
 
 def _device_tag(device_type: str, shot_index) -> str:
-    """Étiquette appareil+prise, ex: "P1", "S2" (voir --devices)."""
+    """Device+shot tag, e.g. "P1", "S2" (see --devices)."""
     device_type = "" if pd.isna(device_type) else str(device_type)
     shot_index = "" if pd.isna(shot_index) else str(int(shot_index))
     return device_type + shot_index
@@ -90,29 +90,29 @@ def _apply_mask(
 ) -> tuple[list[ImageLandmarks], pd.DataFrame]:
     specimens = [sp for sp, keep in zip(specimens, mask) if keep]
     meta_df = meta_df[mask].reset_index(drop=True)
-    print(f"Filtré sur {label} : {len(specimens)} photo(s) restante(s)")
+    logger.info("Filtered on %s: %d photo(s) remaining", label, len(specimens))
     return specimens, meta_df
 
 
 def restrict_to_complete_devices(
     specimens: list[ImageLandmarks], meta_df: pd.DataFrame, devices: Sequence[str]
 ) -> tuple[list[ImageLandmarks], pd.DataFrame]:
-    """Ne garde que les spécimens possédant TOUS les device_tag de `devices` (retire
-    l'individu entier -- toutes ses photos -- s'il n'en a qu'une partie, pas juste
-    les photos manquantes).
+    """Keeps only specimens that have ALL of the `devices` device_tags (drops
+    the entire individual -- all of its photos -- if it only has a subset,
+    not just the missing photos).
 
-    Sert à équilibrer une ANOVA emboîtée espèce ⊃ caste ⊃ individu ⊃ appareil (voir
-    analysis/variance_report.py) : sans ce filtre, un individu avec plus de photos
-    (ou une couverture device différente) pèse plus lourd dans la moyenne de son
-    groupe biologique, et sa "moyenne individu" est un mélange P/S différent d'un
-    individu à l'autre -- ce qui biaise à la fois les niveaux biologiques et
-    l'estimation de l'effet appareil.
+    Used to balance a nested ANOVA species ⊃ caste ⊃ individual ⊃ device
+    (see analysis/variance_report.py): without this filter, an individual
+    with more photos (or a different device coverage) weighs more heavily
+    in its biological group's average, and its "individual mean" is a
+    P/S mix that differs from one individual to the next -- which biases
+    both the biological levels and the device effect estimate.
     """
     required = set(devices)
     tag_sets = meta_df.groupby("specimen_id")["device_tag"].agg(set)
     complete_ids = set(tag_sets[tag_sets.apply(required.issubset)].index)
     mask = meta_df["specimen_id"].isin(complete_ids).tolist()
-    return _apply_mask(specimens, meta_df, mask, f"couverture complète devices={sorted(required)}")
+    return _apply_mask(specimens, meta_df, mask, f"complete devices coverage={sorted(required)}")
 
 
 def load_dataset(
@@ -127,21 +127,20 @@ def load_dataset(
     landmarks_tps: str | Path | None = None,
     landmarks_status_csv: str | Path | None = None,
 ) -> tuple[list[ImageLandmarks], pd.DataFrame]:
-    """Charge un dataset (TPS + specimens.csv + manifest.csv) et applique les filtres.
+    """Loads a dataset (TPS + specimens.csv + manifest.csv) and applies the filters.
 
-    split : valeur de la colonne 'split' de manifest.csv, ou "all".
-    devices : device_tag à garder (ex: ["P1", "S1"]). None = tout garder.
-    species / castes : liste blanche de valeurs à garder. None = tout garder.
-    exclude_outliers : exclut les photos SUSPECT/FAILED (voir landmarks_status_csv).
-        Si aucun CSV de statut n'est disponible, l'exclusion est sautée avec un avertissement.
-    labeled_only : écarte les photos sans espèce connue (défaut: True).
-    landmarks_tps / landmarks_status_csv : remplacent
-        root/landmarks/landmarks_numbered.{tps,csv} (ex: pour évaluer une
-        autre source de landmarks sur les mêmes specimens.csv/manifest.csv).
+    split: value of manifest.csv's 'split' column, or "all".
+    devices: device_tags to keep (e.g. ["P1", "S1"]). None = keep all.
+    species / castes: whitelist of values to keep. None = keep all.
+    exclude_outliers: excludes SUSPECT/FAILED photos (see landmarks_status_csv).
+        If no status CSV is available, exclusion is skipped with a warning.
+    labeled_only: drops photos with no known species (default: True).
+    landmarks_tps / landmarks_status_csv: override
+        root/landmarks/landmarks_numbered.{tps,csv} (e.g. to evaluate
+        another landmark source on the same specimens.csv/manifest.csv).
 
-    Écarte aussi, systématiquement, les spécimens dont le nombre de
-    landmarks diffère du schéma majoritaire (la GPA exige un nombre de
-    points homogène).
+    Also systematically drops specimens whose landmark count differs from
+    the majority scheme (GPA requires a homogeneous point count).
     """
     root = Path(root)
     tps_path = Path(landmarks_tps) if landmarks_tps is not None else root / "landmarks" / "landmarks_numbered.tps"
@@ -151,7 +150,7 @@ def load_dataset(
     required = {"specimen_id", "species", "caste"}
     missing = required - set(specimens_df.columns)
     if missing:
-        raise ValueError(f"Colonnes manquantes dans {root / 'specimens.csv'} : {missing}")
+        raise ValueError(f"Missing columns in {root / 'specimens.csv'}: {missing}")
     specimens_df = specimens_df.set_index("specimen_id", drop=False)
 
     manifest_df = pd.read_csv(root / "manifest.csv")
@@ -168,20 +167,20 @@ def load_dataset(
         elif landmarks_tps is None:
             status_path = root / "landmarks" / "landmarks_numbered.csv"
         else:
-            status_path = None  # tps custom sans --landmarks-status-csv : pas de statut par défaut
+            status_path = None  # custom tps with no --landmarks-status-csv: no default status
 
         if status_path is None or not status_path.exists():
             logger.warning(
-                "--exclude-outliers demandé mais aucun CSV de statut disponible%s -- exclusion sautée "
-                "(passer --landmarks-status-csv si un statut existe pour ce TPS).",
-                f" ({status_path} introuvable)" if status_path is not None else "",
+                "--exclude-outliers requested but no status CSV available%s -- exclusion skipped "
+                "(pass --landmarks-status-csv if a status exists for this TPS).",
+                f" ({status_path} not found)" if status_path is not None else "",
             )
             status_path = None
 
         if status_path is not None:
             status_df = pd.read_csv(status_path)
             if "tps_id" not in status_df.columns or "status" not in status_df.columns:
-                raise ValueError(f"{status_path} : colonnes 'tps_id'+'status' attendues pour --exclude-outliers.")
+                raise ValueError(f"{status_path}: expected columns 'tps_id'+'status' for --exclude-outliers.")
             exclude_set = set(status_df.loc[status_df["status"] != "OK", "tps_id"])
 
     kept_specimens: list[ImageLandmarks] = []
@@ -210,11 +209,11 @@ def load_dataset(
         kept_rows.append(row)
 
     if excluded:
-        print(f"Exclus {excluded} photo(s) SUSPECT/FAILED via --exclude-outliers")
+        logger.info("Excluded %d SUSPECT/FAILED photo(s) via --exclude-outliers", excluded)
     if unmatched:
-        logger.warning("%d photo(s) sans specimen_id résolu ou absent de specimens.csv, ignorée(s)", unmatched)
+        logger.warning("%d photo(s) with no resolved specimen_id or missing from specimens.csv, ignored", unmatched)
     if not kept_specimens:
-        raise ValueError(f"Aucun spécimen chargé depuis {root} -- vérifier les filtres et les fichiers.")
+        raise ValueError(f"No specimen loaded from {root} -- check filters and files.")
 
     meta_df = pd.DataFrame(kept_rows).reset_index(drop=True)
     meta_df = add_groupe_column(meta_df)
@@ -241,7 +240,7 @@ def load_dataset(
         kept_specimens, meta_df = _apply_mask(kept_specimens, meta_df, mask, f"castes={list(castes)}")
 
     if not kept_specimens:
-        raise ValueError("Aucun spécimen restant après filtrage -- vérifier split/devices/species/castes.")
+        raise ValueError("No specimen remaining after filtering -- check split/devices/species/castes.")
 
-    logger.info("%d photo(s) chargée(s) depuis %s", len(kept_specimens), root)
+    logger.info("%d photo(s) loaded from %s", len(kept_specimens), root)
     return kept_specimens, meta_df

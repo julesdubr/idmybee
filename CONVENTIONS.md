@@ -81,6 +81,26 @@ juste le nom de la variable suivante.
   fichier du même dossier). Si un module a besoin d'un autre module du même
   package, import qualifié complet.
 
+## Fonctions core réutilisables (pas seulement CLI)
+
+*(Ajouté session du 2 sept. 2026, suite à la conception de l'outil 1 --
+voir `RESUME.md` "Détails outil 1".)*
+
+- Toute étape de pipeline appelée par plusieurs outils (ex. la pose de
+  landmarks, consommée à la fois par le mode dataset de l'outil 1 et par
+  son mode terrain/single) doit exister comme **fonction Python pure**
+  (entrée -> sortie en mémoire, ex. `place_landmarks(image) -> Landmarks`)
+  en plus de son entrée CLI/fichier. Le CLI/l'UI appellent cette fonction
+  et gèrent l'I/O disque autour -- la fonction elle-même ne lit/écrit
+  jamais de fichier.
+- Même principe pour le dessin d'overlay annoté (landmarks numérotés sur
+  l'image, utilisé par l'étape de validation) :
+  `draw_landmarks_overlay(image, landmarks) -> Image`, partagée telle
+  quelle entre CLI (export d'overlays sur disque) et UI (affichage direct).
+- Objectif : éviter un aller-retour disque (écrire un TPS à une ligne puis
+  le relire) pour des usages "ad hoc" comme la prédiction terrain sur une
+  photo isolée.
+
 ## Tests
 
 - `pytest`, un fichier `tests/test_<module>.py` par module de `src/` qui

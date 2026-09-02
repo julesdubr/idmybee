@@ -1,52 +1,58 @@
-"""Aplatit l'arborescence des photos : déplace les fichiers imbriqués dans un
-sous-dossier portant leur propre nom, pour que toutes les photos d'un rôle
-(male/worker/queen) soient directement dans son dossier.
+"""flatten_image_dirs.py
+Flattens the photo tree: moves files nested in a subfolder that shares
+their own name, so all photos of a role (male/worker/queen) sit directly
+in its folder.
 
-Avant :
-    espece/Mâle/nom_image/nom_image_P1.jpg
-Après :
-    espece/male/nom_image_P1.jpg
+Before:
+    species/Male/image_name/image_name_P1.jpg
+After:
+    species/male/image_name_P1.jpg
 
-NOUVELLES FONCTIONNALITÉS :
-  1. Renomme les dossiers rôles français en anglais :
-     - Male → male
-     - Ouvriere → worker
-     - Fondatrice → queen
-     (renommage effectué à l'intérieur de chaque dossier "espèce")
-  2. Nettoie les noms de fichiers :
-     - Supprime les caractères non-UTF8 (ex. N°XXX → NXXX)
-     - Remplace les espaces par des underscores
-     - Simplifie pour une utilisation pandas-safe en tant que IDs
-  3. Gestion HEIC et dossiers "unknown" :
-     - Les .heic sont déplacés vers espece/role/heic/
-     - Les images présentes dans des sous-dossiers non-plats (non matching nom_parent == base)
-       sont déplacées vers espece/role/unknown/
+FEATURES:
+  1. Renames French role folders to English:
+     - mec -> male
+     - Ouvriere -> worker
+     - Fondatrice -> queen
+     (renaming happens inside each "species" folder)
+  2. Cleans up filenames:
+     - Removes non-UTF8 characters (e.g. N°XXX -> NXXX)
+     - Replaces spaces with underscores
+     - Simplifies for pandas-safe use as IDs
+  3. HEIC and "unknown" folder handling:
+     - .heic files are moved to species/role/heic/
+     - Images found in non-flat subfolders (parent folder name doesn't
+       match the base filename) are moved to species/role/unknown/
 
-Les photos déjà à plat (directement dans role/) sont laissées inchangées.
-Détection indépendante de la profondeur exacte espece/role.
+Photos already flat (directly in role/) are left unchanged. Detection is
+independent of the exact species/role depth.
 
-SÉCURITÉ : par défaut, le script ne fait qu'afficher ce qu'il ferait (mode
-simulation). Il faut passer --apply pour réellement déplacer les fichiers.
+SAFETY: by default the script only prints what it would do (dry-run mode).
+Pass --apply to actually move files.
 
-Usage :
-    python scripts/flatten_image_dirs.py --root data/images/groupe_images
-    python scripts/flatten_image_dirs.py --root data/images/groupe_images --apply
+Usage:
+    python -m tools.flatten_image_dirs data/images/groupe_images
+    python -m tools.flatten_image_dirs data/images/groupe_images --apply
 """
-
 from __future__ import annotations
 
 import argparse
+import logging
 import re
 import shutil
 import unicodedata
 from pathlib import Path
 
-# Suffixes de version de photo utilisés dans le projet (2 appareils photo + 3 smartphones)
+from utils.cli import add_dataset_positional, add_logging_args, log_level_from_args
+from utils.run_io import setup_console_logging
+
+logger = logging.getLogger(__name__)
+
+# Photo-version suffixes used in the project (2 cameras + 3 smartphones)
 PHOTO_RE = re.compile(
     r"^(?P<base>.+)_(?:P\d+|S\d+)\.(?:jpe?g|png|heic)$", re.IGNORECASE
 )
 
-# Mappage rôles français → anglais
+# French -> English role folder mapping
 ROLE_TRANSLATIONS = {
     "mec": "male",
     "Ouvriere": "worker",
@@ -55,35 +61,34 @@ ROLE_TRANSLATIONS = {
 
 
 def sanitize_filename(filename: str) -> str:
-    """Nettoie un nom de fichier pour le rendre pandas-safe et cross-platform.
+    """Cleans up a filename to make it pandas-safe and cross-platform.
 
-    - Supprime les caractères diacritiques (é → e)
-    - Remplace les caractères spéciaux par underscore
-    - Convertit en ASCII
-    - Gère les cas comme N°XXX → NXXX
+    - Strips diacritics (e -> e)
+    - Replaces special characters with underscore
+    - Converts to ASCII
+    - Handles cases like N°XXX -> NXXX
     """
-    # Décompose les caractères accentués (NFKD), puis garde que l'ascii
+    # Decomposes accented characters (NFKD), then keeps ASCII only
     normalized = unicodedata.normalize("NFKD", filename)
     ascii_str = "".join(c for c in normalized if ord(c) < 128)
 
-    # Remplace les espaces par des underscores
+    # Replaces spaces with underscores
     ascii_str = ascii_str.replace(" ", "_")
 
-    # Supprime ou remplace les caractères spéciaux (garde alphanumérique, underscore, point, tiret)
-    # Exception : traite les cas comme "N°XXX" (° disparaît, N et XXX restent collés)
+    # Strips or replaces special characters (keeps alphanumeric, underscore, dot, hyphen)
+    # Handles cases like "N°XXX" (° disappears, N and XXX stay glued together)
     cleaned = re.sub(r"[^a-zA-Z0-9._\-]", "", ascii_str)
 
-    # Évite les underscores multiples consécutifs
+    # Avoids multiple consecutive underscores
     cleaned = re.sub(r"_{2,}", "_", cleaned)
 
     return cleaned
 
 
 def rename_role_dirs(root: Path, apply: bool) -> dict[Path, Path]:
-    """Renomme les dossiers rôles français en anglais à l'intérieur de chaque espèce.
+    """Renames French role folders to English inside each species folder.
 
-    Retourne un mapping {ancienne_path: nouvelle_path} pour les rôles renommés.
-    """
+    Returns a mapping {old_path: new_path} for the renamed roles."""
     renamed: dict[Path, Path] = {}
 
     for species in root.iterdir():
@@ -95,15 +100,15 @@ def rename_role_dirs(root: Path, apply: bool) -> dict[Path, Path]:
 
             if old_path.exists() and old_path.is_dir():
                 if new_path.exists():
-                    print(f"[avertissement] {new_path} existe déjà, on garde {old_path} inchangé.")
+                    print(f"[warning] {new_path} already exists, leaving {old_path} unchanged.")
                     continue
 
                 if apply:
-                    print(f"  Renommage : {old_path} → {new_path}")
+                    print(f"  Renamed: {old_path} -> {new_path}")
                     old_path.rename(new_path)
                     renamed[old_path] = new_path
                 else:
-                    print(f"  [simulation] {old_path} → {new_path}")
+                    print(f"  [dry-run] {old_path} -> {new_path}")
                     renamed[old_path] = new_path
 
     return renamed
@@ -112,24 +117,24 @@ def rename_role_dirs(root: Path, apply: bool) -> dict[Path, Path]:
 def flatten(root: Path, apply: bool) -> None:
     root = Path(root)
 
-    # Étape 1 : Renommer les dossiers rôles français (par espèce)
-    print("=== ÉTAPE 1 : Renommage des dossiers rôles (français → anglais) ===\n")
+    # Step 1: rename French role folders (per species)
+    print("=== STEP 1: renaming role folders (French -> English) ===\n")
     role_renames = rename_role_dirs(root, apply)
 
     if not role_renames and not apply:
-        print("  [simulation] Aucun dossier rôle français trouvé.\n")
+        print("  [dry-run] No French role folder found.\n")
     elif not role_renames and apply:
-        print("  Aucun dossier rôle français trouvé.\n")
+        print("  No French role folder found.\n")
     else:
         print()
 
-    # Étape 2 : Aplatir l'arborescence et nettoyer les noms
-    print("=== ÉTAPE 2 : Aplatissement et nettoyage des noms ===\n")
+    # Step 2: flatten the tree and clean up names
+    print("=== STEP 2: flattening and cleaning up names ===\n")
 
     moved, conflicts, renamed_files = 0, [], []
     parent_dirs = set()
 
-    # Parcours : pour chaque espèce, pour chaque dossier rôle (réel), traiter les fichiers dedans
+    # Walk: for each species, for each (real) role folder, process its files
     for species in root.iterdir():
         if not species.is_dir():
             continue
@@ -137,32 +142,32 @@ def flatten(root: Path, apply: bool) -> None:
             if not role_dir.is_dir():
                 continue
 
-            # Déterminer le chemin cible effectif (si en simulation un renommage a été prévu)
+            # Effective target path (if a rename was planned, even in dry-run)
             effective_role_dir = role_renames.get(role_dir, role_dir)
 
-            # Parcourir tout ce qui est sous role_dir (récursif)
+            # Walk everything under role_dir (recursive)
             for f in role_dir.rglob("*"):
                 if not f.is_file():
                     continue
 
-                # Ignore les fichiers déjà à plat (directement dans role_dir)
+                # Skips files already flat (directly in role_dir)
                 if f.parent == role_dir:
                     continue
 
                 ext = f.suffix.lower()
                 cleaned_name = sanitize_filename(f.name)
 
-                # Déterminer la destination :
+                # Determines the destination:
                 # - .heic -> role/heic/
                 # - nested matching base -> role/
-                # - autres images dans sous-dossiers -> role/unknown/
+                # - other images in subfolders -> role/unknown/
                 m = PHOTO_RE.match(f.name)
                 if ext == ".heic":
                     target_dir = effective_role_dir / "heic"
                 elif m and f.parent.name.lower() == m.group("base").lower():
                     target_dir = effective_role_dir
                 else:
-                    # autres fichiers/images dans des sous-dossiers non-plats
+                    # other files/images in non-flat subfolders
                     target_dir = effective_role_dir / "unknown"
 
                 target = target_dir / cleaned_name
@@ -176,35 +181,33 @@ def flatten(root: Path, apply: bool) -> None:
                     continue
 
                 if apply:
-                    # créer le dossier cible si nécessaire
                     target_dir.mkdir(parents=True, exist_ok=True)
                     shutil.move(str(f), str(target))
-                    # Affichage concis
                     if cleaned_name != f.name:
-                        print(f"  {f.parent.name}/{f.name}  →  {target.parent.name}/{cleaned_name}")
+                        print(f"  {f.parent.name}/{f.name}  ->  {target.parent.name}/{cleaned_name}")
                     else:
-                        print(f"  {f.parent.name}/{f.name}  →  {target.parent.name}/{f.name}")
+                        print(f"  {f.parent.name}/{f.name}  ->  {target.parent.name}/{f.name}")
                 else:
-                    # Simulation : afficher la destination prévue (en utilisant effective_role_dir)
+                    # Dry-run: shows the planned destination (using effective_role_dir)
                     if cleaned_name != f.name:
-                        print(f"  [simulation] {f.parent.name}/{f.name}  →  {target.parent.name}/{cleaned_name}")
+                        print(f"  [dry-run] {f.parent.name}/{f.name}  ->  {target.parent.name}/{cleaned_name}")
                     else:
-                        print(f"  [simulation] {f.parent.name}/{f.name}  →  {target.parent.name}/{f.name}")
+                        print(f"  [dry-run] {f.parent.name}/{f.name}  ->  {target.parent.name}/{f.name}")
 
                 moved += 1
 
     if renamed_files:
-        print(f"\n{len(renamed_files)} fichier(s) renommé(s) :")
+        print(f"\n{len(renamed_files)} file(s) renamed:")
         for f, new in renamed_files[:20]:
-            print(f"    {f}  →  {new}")
+            print(f"    {f}  ->  {new}")
 
     if conflicts:
         print(
-            f"\n[avertissement] {len(conflicts)} conflit(s) : un fichier existe déjà à la "
-            "destination, ceux-ci n'ont PAS été déplacés (à vérifier manuellement) :"
+            f"\n[warning] {len(conflicts)} conflict(s): a file already exists at the "
+            "destination, these were NOT moved (check manually):"
         )
         for f, target in conflicts[:20]:
-            print(f"    {f}  →  {target} (déjà existant)")
+            print(f"    {f}  ->  {target} (already exists)")
 
     removed_dirs, non_empty_dirs = 0, []
     if apply:
@@ -222,46 +225,47 @@ def flatten(root: Path, apply: bool) -> None:
 
     if non_empty_dirs:
         print(
-            f"\n[avertissement] {len(non_empty_dirs)} dossier(s) non supprimé(s) car il reste "
-            "d'autres fichiers dedans (à vérifier manuellement) :"
+            f"\n[warning] {len(non_empty_dirs)} folder(s) not removed because other files "
+            "remain inside (check manually):"
         )
         for d, remaining in non_empty_dirs[:10]:
-            print(f"    {d} : {[p.name for p in remaining]}")
+            print(f"    {d}: {[p.name for p in remaining]}")
 
     print()
     if apply:
         print(
-            f"{moved} fichier(s) déplacé(s) et nettoyé(s), {len(conflicts)} conflit(s) évité(s), "
-            f"{removed_dirs} dossier(s) vide(s) supprimé(s)."
+            f"{moved} file(s) moved and cleaned, {len(conflicts)} conflict(s) avoided, "
+            f"{removed_dirs} empty folder(s) removed."
         )
         if role_renames:
-            print(f"{len(role_renames)} dossier(s) rôle renommé(s).")
+            print(f"{len(role_renames)} role folder(s) renamed.")
     else:
         print(
-            f"[SIMULATION] {moved} fichier(s) seraient déplacés et nettoyé(s), {len(conflicts)} conflit(s) détecté(s). "
-            "Relancer avec --apply pour exécuter réellement."
+            f"[DRY-RUN] {moved} file(s) would be moved and cleaned, {len(conflicts)} conflict(s) detected. "
+            "Rerun with --apply to actually execute."
         )
         if role_renames:
-            print(f"[SIMULATION] {len(role_renames)} dossier(s) rôle seraient renommé(s).")
+            print(f"[DRY-RUN] {len(role_renames)} role folder(s) would be renamed.")
+
+
+def parse_args(argv: list[str] | None = None):
+    parser = argparse.ArgumentParser(description="Flatten a species/role photo tree (see module docstring).")
+    add_dataset_positional(parser, help="Root to walk, e.g. data/images/groupe_images")
+    parser.add_argument("--apply", action="store_true",
+                         help="Actually apply the moves and renames (default: dry-run only)")
+    add_logging_args(parser)
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> None:
+    args = parse_args(argv)
+    setup_console_logging(log_level_from_args(args))
+
+    if not args.dataset.exists():
+        raise SystemExit(f"Folder not found: {args.dataset}")
+
+    flatten(args.dataset, apply=args.apply)
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--root",
-        required=True,
-        help="Racine à parcourir, ex. data/images/groupe_images",
-    )
-    parser.add_argument(
-        "--apply",
-        action="store_true",
-        help="Applique réellement les déplacements et renommages (sinon : simulation seule)",
-    )
-    args = parser.parse_args()
-
-    root = Path(args.root)
-    if not root.exists():
-        raise SystemExit(f"Dossier introuvable : {root}")
-
-    flatten(root, apply=args.apply)
-# ...existing code...
+    main()

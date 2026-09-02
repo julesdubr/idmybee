@@ -1,10 +1,9 @@
-"""
-Build the UNet fine-tuning manifest: pairs each crop image with its
+"""export_dataset.py
+Builds the UNet fine-tuning manifest: pairs each crop image with its
 ground-truth landmark points, ready for dataset.py / train.py.
 
-    python export_dataset.py \
-        --dataset data/Bombus --mode light \
-        --tps data/Bombus/landmarks/tancrede_reference.tps \
+    python export_dataset.py data/Bombus --mode light \\
+        --tps data/Bombus/landmarks/tancrede_reference.tps \\
         --output data/models/unet_landmarks/train_manifest.csv
 
 Goal of this fine-tuning round: train the UNet to predict Tancrede's full
@@ -39,19 +38,24 @@ reproject_reference.py first -- it resolves image_id via manifest.csv
 matching and writes a new TPS with COMMENT= already set, ready for this
 script.
 """
+from __future__ import annotations
 
 import argparse
 import csv
+import logging
 import random
-import sys
 from pathlib import Path
 
 import cv2
 import numpy as np
 
 from landmarks.predict import load_target_crops
+from utils.cli import add_dataset_positional, add_logging_args, log_level_from_args
 from utils.pipeline_io import resolve_path
+from utils.run_io import setup_console_logging
 from utils.tps_io import parse_tps
+
+logger = logging.getLogger(__name__)
 
 
 def save_debug_overlay(crop_path: str, points_xy: np.ndarray, out_path: Path):
@@ -64,9 +68,9 @@ def save_debug_overlay(crop_path: str, points_xy: np.ndarray, out_path: Path):
     cv2.imwrite(str(out_path), image)
 
 
-def main():
+def parse_args(argv: list[str] | None = None):
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--dataset", type=Path, required=True, help="Dataset root, e.g. data/Bombus")
+    add_dataset_positional(parser, help="Dataset root, e.g. data/Bombus")
     parser.add_argument("--mode", default="light", choices=["heavy", "light"],
                          help="Backend whose crops.csv to join against (extraction/{mode}/crops.csv).")
     parser.add_argument("--tps", required=True, help="Path to Tancrede's reference TPS file")
@@ -83,7 +87,13 @@ def main():
                               "for visual sanity-checking before training")
     parser.add_argument("--n-debug-overlays", type=int, default=20)
     parser.add_argument("--seed", type=int, default=58)
-    args = parser.parse_args()
+    add_logging_args(parser)
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> None:
+    args = parse_args(argv)
+    setup_console_logging(log_level_from_args(args))
 
     crops_path = args.dataset / "extraction" / args.mode / "crops.csv"
     base_dir = Path(args.base_dir) if args.base_dir else None
@@ -91,28 +101,26 @@ def main():
 
     crop_rows = load_target_crops(crops_path, split_filter=None)
     crop_lookup = {row["image_id"]: row for row in crop_rows}
-    print(f"{len(crop_lookup)} crop(s) available in {crops_path}")
+    logger.info("%d crop(s) available in %s", len(crop_lookup), crops_path)
 
     specimens, errors = parse_tps(Path(args.tps), strict=False)
     if errors:
-        print(f"ATTENTION: {len(errors)} bloc(s) illisible(s) dans {args.tps} (ignorés):")
+        logger.warning("%d unreadable block(s) in %s (skipped):", len(errors), args.tps)
         for e in errors[:10]:
-            print(f"  spécimen #{e.specimen_index}, ligne {e.line_no} : {e.message}")
-    print(f"{len(specimens)} specimen(s) in {args.tps}")
+            logger.warning("  specimen #%s, line %s: %s", e.specimen_index, e.line_no, e.message)
+    logger.info("%d specimen(s) in %s", len(specimens), args.tps)
 
     n_with_image_id = sum(1 for sp in specimens if sp.image_id is not None)
-    print(f"{n_with_image_id}/{len(specimens)} specimen(s) have image_id set (COMMENT= present)")
+    logger.info("%d/%d specimen(s) have image_id set (COMMENT= present)", n_with_image_id, len(specimens))
     if n_with_image_id == 0:
-        print(
-            "Aucun spécimen n'a de COMMENT= image_id= dans ce TPS -- probablement le cas de la "
-            "référence de Tancrède, digitisée avec un outil tiers (tpsDig ou équivalent), pas avec "
-            "ce pipeline. tps_io.py dit explicitement que l'appelant doit alors rejoindre via "
-            "utils.dataset -- ce script ne le fait PAS encore (signature inconnue). Rien ne sera "
-            "exporté tant que ça n'est pas branché plutôt que de deviner un appariement par nom de "
-            "fichier, qui pourrait associer silencieusement de mauvais points à la mauvaise image.",
-            file=sys.stderr,
+        raise SystemExit(
+            "No specimen has a COMMENT= image_id= in this TPS -- likely Tancrede's reference, "
+            "digitized with a third-party tool (tpsDig or equivalent), not this pipeline. tps_io.py "
+            "explicitly states the caller must then join via utils.dataset -- this script does NOT "
+            "do that yet (unknown signature). Nothing will be exported until that's wired in, rather "
+            "than guessing a filename-based match that could silently pair wrong points with the "
+            "wrong image."
         )
-        sys.exit(1)
 
     exported_rows = []
     skipped_rows = []
@@ -147,8 +155,8 @@ def main():
             img = cv2.imread(str(crop_path))
             if img is not None:
                 reported_shape = img.shape[:2]
-                print(f"First crop image shape (height, width): {reported_shape} "
-                      f"-- confirm this matches constants.IMG_HEIGHT/IMG_WIDTH")
+                logger.info("First crop image shape (height, width): %s "
+                            "-- confirm this matches constants.IMG_HEIGHT/IMG_WIDTH", reported_shape)
 
         row = {
             "image_id": sp.image_id,
@@ -161,8 +169,7 @@ def main():
         exported_rows.append(row)
 
     if not exported_rows:
-        print("Nothing exported -- check the ASSUMPTION in this file's docstring.", file=sys.stderr)
-        sys.exit(1)
+        raise SystemExit("Nothing exported -- check the ASSUMPTION in this file's docstring.")
 
     out_path = Path(args.output)
     out_path.parent.mkdir(parents=True, exist_ok=True)

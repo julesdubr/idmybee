@@ -1,26 +1,43 @@
+"""build_dataset.py
+Scans one or more local image roots (organized/terrain/loose, see
+config/roots.json), parses specimen_id/device_type/shot_index from
+filenames, deduplicates by content hash, and writes manifest.csv +
+specimens.csv (+ manifest/unparsed.csv, manifest/duplicates.csv) under
+<out-dir>/<name>/.
+
+Usage:
+    python -m manifest.build_dataset config/roots.json --name Bombus \\
+        --identification data/identification/species.csv
+"""
 from __future__ import annotations
 
 import argparse
 import csv
 import hashlib
 import json
+import logging
 import re
 import sys
 from collections import defaultdict
-from dataclasses import dataclass, asdict
+from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Optional
 
+from utils.cli import add_logging_args, log_level_from_args
+from utils.run_io import setup_console_logging
+
+logger = logging.getLogger(__name__)
+
 IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".heic", ".heif", ".tif", ".tiff", ".bmp"}
 
-# suffixe organized/vrac : ex. "S1", "P12"
+# organized/loose suffix: e.g. "S1", "P12"
 _ORGANIZED_SUFFIX = re.compile(r"^([SP])(\d+)$", re.IGNORECASE)
-# suffixe terrain : ex. "3"
+# terrain suffix: e.g. "3"
 _TERRAIN_SUFFIX = re.compile(r"^(\d+)$")
 
 
 def _parse_organized_underscore(stem: str):
-    """num_inv_[S|P]<n>  (lettre+numero colles, separateur = underscore)"""
+    """num_inv_[S|P]<n>  (letter+number glued together, separator = underscore)"""
     if "_" not in stem:
         return None
     specimen_id, suffix = stem.rsplit("_", 1)
@@ -33,7 +50,7 @@ def _parse_organized_underscore(stem: str):
 
 
 def _parse_terrain_underscore(stem: str):
-    """num_inv_<n>  (pas de lettre d'appareil, separateur = underscore)"""
+    """num_inv_<n>  (no device letter, separator = underscore)"""
     if "_" not in stem:
         return None
     specimen_id, suffix = stem.rsplit("_", 1)
@@ -46,8 +63,9 @@ def _parse_terrain_underscore(stem: str):
 
 
 def _parse_organized_hyphen(stem: str):
-    """num_inv-[S|P]-<n>  (lettre et numero separes par un tiret, PAS colles
-    comme dans le schema underscore -> convention vue sur le disque externe)."""
+    """num_inv-[S|P]-<n>  (letter and number separated by a hyphen, NOT
+    glued together like in the underscore scheme -- convention seen on the
+    external drive)."""
     parts = stem.split("-")
     if len(parts) < 3:
         return None
@@ -60,8 +78,8 @@ def _parse_organized_hyphen(stem: str):
     return specimen_id, device.upper(), int(shot)
 
 
-# registre des conventions de nommage connues -> ajouter une nouvelle
-# convention = une fonction de plus ici, rien d'autre a toucher.
+# registry of known naming conventions -> adding a new convention means one
+# more function here, nothing else to touch.
 NAMING_PARSERS = {
     "organized_underscore": _parse_organized_underscore,
     "terrain_underscore": _parse_terrain_underscore,
@@ -70,10 +88,10 @@ NAMING_PARSERS = {
 
 
 def resolve_naming(root_cfg: dict) -> str:
-    """Convention de nommage a utiliser pour cette racine : explicite via
-    root_cfg['naming'] si presente, sinon deduite de collector_subfolder
-    pour rester compatible avec les roots.json ecrits avant l'ajout du
-    schema a tirets."""
+    """Naming convention to use for this root: explicit via
+    root_cfg['naming'] if present, otherwise inferred from
+    collector_subfolder to stay compatible with roots.json files written
+    before the hyphen scheme was added."""
     if "naming" in root_cfg:
         return root_cfg["naming"]
     return "terrain_underscore" if root_cfg.get("collector_subfolder") else "organized_underscore"
@@ -81,11 +99,11 @@ def resolve_naming(root_cfg: dict) -> str:
 
 @dataclass
 class ImageRecord:
-    image_id: str  # = content_hash tronque : stable meme si le fichier est deplace/copie
+    image_id: str  # = truncated content hash: stable even if the file is moved/copied
     specimen_id: Optional[str]
     split: str
     collector: Optional[str]
-    device_type: Optional[str]   # "S" / "P" / None (terrain -> None, voir collector)
+    device_type: Optional[str]   # "S" / "P" / None (terrain -> None, see collector)
     shot_index: Optional[int]
     raw_path: str
     source_root: str
@@ -97,9 +115,9 @@ class ImageRecord:
 
 
 def compute_hash(path: Path, chunk_size: int = 1 << 20) -> str:
-    """Hash du CONTENU brut (pas de decodage image) -> marche aussi sur HEIC,
-    et sert de cle de dedup si la meme photo existe en double (disque externe
-    + copie locale, par ex.)."""
+    """Hashes the raw CONTENT (no image decoding) -- also works on HEIC,
+    and serves as the dedup key when the same photo exists twice (external
+    drive + local copy, for example)."""
     h = hashlib.sha256()
     with open(path, "rb") as f:
         while chunk := f.read(chunk_size):
@@ -108,16 +126,16 @@ def compute_hash(path: Path, chunk_size: int = 1 << 20) -> str:
 
 
 def parse_filename(stem: str, naming: str):
-    """Retourne (specimen_id, device_type, shot_index, ok) en appliquant la
-    convention de nommage `naming` (voir NAMING_PARSERS). On ne suppose rien
-    sur le format du numero d'inventaire lui-meme (peut contenir des
-    underscores/tirets) : chaque parseur ne consomme que le suffixe qui lui
-    est propre et laisse le reste comme specimen_id."""
+    """Returns (specimen_id, device_type, shot_index, ok) by applying the
+    `naming` convention (see NAMING_PARSERS). Makes no assumption about the
+    format of the inventory number itself (can contain underscores/hyphens):
+    each parser only consumes its own suffix and leaves the rest as
+    specimen_id."""
     parser = NAMING_PARSERS.get(naming)
     if parser is None:
         raise ValueError(
-            f"convention de nommage inconnue: {naming!r} "
-            f"(connues: {list(NAMING_PARSERS)})"
+            f"unknown naming convention: {naming!r} "
+            f"(known: {list(NAMING_PARSERS)})"
         )
     result = parser(stem)
     if result is None:
@@ -133,7 +151,7 @@ def scan_root(root_cfg: dict, base_dir: Path) -> list[ImageRecord]:
     naming = resolve_naming(root_cfg)
 
     if not root_path.exists():
-        print(f"[avertissement] racine introuvable, ignoree : {root_path}", file=sys.stderr)
+        logger.warning("root not found, skipped: %s", root_path)
         return []
 
     records: list[ImageRecord] = []
@@ -161,7 +179,7 @@ def scan_root(root_cfg: dict, base_dir: Path) -> list[ImageRecord]:
             content_hash = ""
             size = -1
             status = "unreadable"
-            print(f"[avertissement] illisible : {path} ({e})", file=sys.stderr)
+            logger.warning("unreadable: %s (%s)", path, e)
 
         image_id = content_hash if content_hash else f"unreadable:{path}"
 
@@ -185,19 +203,19 @@ def scan_root(root_cfg: dict, base_dir: Path) -> list[ImageRecord]:
     return records
 
 
-def load_roots_config(path: Optional[str]) -> list[dict]:
+def load_roots_config(path: Optional[str]) -> dict:
     if not path:
-        return []
+        return {}
     p = Path(path)
     if not p.exists():
-        print(f"[avertissement] fichier de racines introuvable, ignore : {p}", file=sys.stderr)
-        return []
+        logger.warning("roots file not found, skipped: %s", p)
+        return {}
     with open(p, encoding="utf-8") as f:
         return json.load(f)
 
 
 def build_images_table(all_records: list[ImageRecord]) -> tuple[list[dict], list[dict], list[dict]]:
-    """Separe les enregistrements en (images_ok, unparsed, duplicate_groups)."""
+    """Splits records into (images_ok, unparsed, duplicate_groups)."""
     by_hash: dict[str, list[ImageRecord]] = defaultdict(list)
     for r in all_records:
         if r.content_hash:
@@ -212,8 +230,8 @@ def build_images_table(all_records: list[ImageRecord]) -> tuple[list[dict], list
         if r.status_ingest != "parsed_ok":
             unparsed_rows.append(row)
             continue
-        # marque les doublons de contenu (memes octets, chemins differents)
-        # sans les exclure : on garde tout, on ajoute juste un indicateur.
+        # flags content duplicates (same bytes, different paths) without
+        # excluding them: everything is kept, just an indicator is added.
         row["is_duplicate_content"] = r.content_hash in seen_hash
         seen_hash.add(r.content_hash)
         images_rows.append(row)
@@ -239,7 +257,7 @@ def build_specimens_table(
     species_col: str,
     caste_col: Optional[str],
 ) -> list[dict]:
-    # specimens vus dans les images (source de verite pour "quels num_inv existent")
+    # specimens seen in the images (source of truth for "which num_inv exist")
     by_specimen: dict[str, dict] = defaultdict(lambda: {"n_images": 0, "splits": set()})
     for row in images_rows:
         sid = row.get("specimen_id")
@@ -252,15 +270,14 @@ def build_specimens_table(
     if identification:
         p = Path(identification)
         if not p.exists():
-            print(f"[avertissement] CSV d'identification introuvable, ignore : {p}", file=sys.stderr)
+            logger.warning("identification CSV not found, skipped: %s", p)
         else:
             with open(p, encoding="utf-8-sig") as f:
                 reader = csv.DictReader(f)
                 if id_col not in (reader.fieldnames or []):
-                    print(
-                        f"[avertissement] colonne id '{id_col}' absente de {p} "
-                        f"(colonnes trouvees : {reader.fieldnames})",
-                        file=sys.stderr,
+                    logger.warning(
+                        "id column '%s' missing from %s (columns found: %s)",
+                        id_col, p, reader.fieldnames,
                     )
                 else:
                     for row in reader:
@@ -293,8 +310,8 @@ def build_specimens_table(
 def write_csv(rows: list[dict], out_path: Path, fieldnames: Optional[list[str]] = None):
     out_path.parent.mkdir(parents=True, exist_ok=True)
     if not rows:
-        # ecrit quand meme un fichier vide avec en-tete si on la connait, pour
-        # que les etapes suivantes n'aient pas a gerer un fichier absent.
+        # still writes an empty file with a header if known, so downstream
+        # steps don't have to handle a missing file.
         with open(out_path, "w", newline="", encoding="utf-8") as f:
             if fieldnames:
                 csv.writer(f).writerow(fieldnames)
@@ -306,20 +323,26 @@ def write_csv(rows: list[dict], out_path: Path, fieldnames: Optional[list[str]] 
         writer.writerows(rows)
 
 
-def main():
-    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--name", required=True, help="Nom du dataset")
-    ap.add_argument("--roots", required=True, help="JSON des racines locales (organized/terrain/vrac)")
-    ap.add_argument("--identification", default=None, help="CSV d'identification espece/caste par num_inv")
-    ap.add_argument("--id-col", default="num_inv")
-    ap.add_argument("--species-col", default="species")
-    ap.add_argument("--caste-col", default="caste")
-    ap.add_argument("--out-dir", default="data")
-    args = ap.parse_args()
+def parse_args(argv: list[str] | None = None):
+    parser = argparse.ArgumentParser(description="Scan local image roots and build manifest.csv + specimens.csv.")
+    parser.add_argument("roots", type=str, help="JSON file describing local roots (organized/terrain/loose), e.g. config/roots.json.")
+    parser.add_argument("--name", required=True, help="Dataset name (output goes to <out-dir>/<name>/).")
+    parser.add_argument("--identification", default=None, help="Species/caste identification CSV, keyed by num_inv.")
+    parser.add_argument("--id-col", default="num_inv")
+    parser.add_argument("--species-col", default="species")
+    parser.add_argument("--caste-col", default="caste")
+    parser.add_argument("--out-dir", default="data")
+    add_logging_args(parser)
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> None:
+    args = parse_args(argv)
+    setup_console_logging(log_level_from_args(args))
 
     roots = load_roots_config(args.roots)
     if not roots:
-        print("Aucune racine valide a scanner.", file=sys.stderr)
+        logger.error("No valid root to scan.")
         sys.exit(1)
 
     base_dir = Path(roots["base_root"][sys.platform])
@@ -327,7 +350,7 @@ def main():
     all_records: list[ImageRecord] = []
     for root_cfg in roots["splits"]:
         recs = scan_root(root_cfg, base_dir)
-        print(f"  {root_cfg['path']:60s} [{root_cfg['split']:10s}] -> {len(recs)} images")
+        logger.info("%-60s [%-10s] -> %d images", root_cfg["path"], root_cfg["split"], len(recs))
         all_records.extend(recs)
 
     images_rows, unparsed_rows, duplicate_rows = build_images_table(all_records)
@@ -352,13 +375,12 @@ def main():
     )
 
     n_unlabeled = sum(1 for r in specimens_rows if not r["is_labeled"])
-    print("\n--- Resume ---")
-    print(f"manifest.csv   : {len(images_rows)} lignes")
-    print(f"unparsed.csv   : {len(unparsed_rows)} lignes (noms non reconnus -> a revoir a la main)")
-    print(f"duplicates.csv : {len(duplicate_rows)} groupes de contenu identique")
-    print(f"specimens.csv  : {len(specimens_rows)} specimens ({n_unlabeled} sans espece -> pool de prediction)")
-
-    print(f"\nEcrit dans : {out_dir.resolve()}")
+    print("\n--- Summary ---")
+    print(f"manifest.csv   : {len(images_rows)} row(s)")
+    print(f"unparsed.csv   : {len(unparsed_rows)} row(s) (unrecognized names -- for manual review)")
+    print(f"duplicates.csv : {len(duplicate_rows)} group(s) of identical content")
+    print(f"specimens.csv  : {len(specimens_rows)} specimen(s) ({n_unlabeled} without species -- prediction pool)")
+    print(f"\nWritten to: {out_dir.resolve()}")
 
 
 if __name__ == "__main__":

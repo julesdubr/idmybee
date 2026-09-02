@@ -1,32 +1,31 @@
-"""Backend de détection light (YOLO-OBB spécialisé).
+"""Light detection backend (specialized YOLO-OBB).
 
-Entrée : une image BGR (np.ndarray).
-Sortie : `detect_one()` -> dict avec status/box/scores (voir detect_wing.py).
+Input: a BGR image (np.ndarray).
+Output: `detect_one()` -> dict with status/box/scores (see detect_wing.py).
 """
-
 from __future__ import annotations
 
 import numpy as np
 
 
 def add_arguments(parser) -> None:
-    """Déclare les arguments CLI spécifiques au backend light."""
+    """Declares the light backend's specific CLI arguments."""
     parser.add_argument("--model", required=True)
     parser.add_argument("--max-det", type=int, default=10)
 
 
 def load_model(args):
-    """Charge le modèle YOLO-OBB. Retourne un contexte (dict)."""
+    """Loads the YOLO-OBB model. Returns a context (dict)."""
     from ultralytics import YOLO
 
     return {"model": YOLO(args.model)}
 
 
 def detect_one(ctx: dict, image: np.ndarray, args) -> dict:
-    """Détecte l'aile sur une image unique.
+    """Detects the wing on a single image.
 
-    Retourne un dict : `status` (OK/FAILED), `error_reason`, `confidence`,
-    `n_detections`, `box` (4x2 np.ndarray normalisé [0,1] ou None).
+    Returns a dict: `status` (OK/FAILED), `error_reason`, `confidence`,
+    `n_detections`, `box` (4x2 np.ndarray normalized [0,1] or None).
     """
     result = {
         "status": "FAILED",
@@ -52,7 +51,7 @@ def detect_one(ctx: dict, image: np.ndarray, args) -> dict:
         result["n_detections"] = count
 
         if prediction.obb is None or count == 0:
-            result["error_reason"] = "aucune_detection"
+            result["error_reason"] = "no_detection"
             return result
 
         confidences = prediction.obb.conf.detach().cpu().numpy()

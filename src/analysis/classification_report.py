@@ -1,33 +1,36 @@
 """classification_report.py
-Figures et tableaux d'un run de classification (train ou predict) : matrice
-de confusion, tableau par espèce, tableau par appareil, alignement GPA,
-projection LDA. Lit les sorties déjà écrites par train.py/predict.py
-(predictions.csv, params.json) et recharge le modèle pour projeter les
-spécimens dans son espace -- ne réajuste rien.
+Figures and tables for a classification run (train or predict): confusion
+matrix, per-species table, per-device table, GPA alignment, LDA projection.
+Reads outputs already written by train.py/predict.py (predictions.csv,
+params.json) and reloads the model to project specimens into its space --
+refits nothing.
 
-La dispersion de forme (shape_variance) reste exclusivement dans
+Shape dispersion (shape_variance) stays exclusively in
 analysis/variance_report.py.
 
-Usage :
+Usage:
     python -m analysis.classification_report species_train_P1-S1 --step train
     python -m analysis.classification_report species_train_P1-S1 --step predict --eval-tag test
 """
 from __future__ import annotations
 
 import argparse
+import logging
 from pathlib import Path
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.metrics import classification_report as sk_classification_report
 from sklearn.metrics import confusion_matrix
 
-import matplotlib.pyplot as plt
-
+from utils.cli import add_logging_args, log_level_from_args
 from utils.dataset import load_dataset, target_groupe
 from utils.gpa import align_to_reference, two_d_array
 from utils.model_io import load_model
 from utils.run_io import FAMILY_LDA, read_params, result_path, run_path, setup_console_logging, write_params
+
+logger = logging.getLogger(__name__)
 
 pd.set_option("display.width", 200)
 pd.set_option("display.max_columns", None)
@@ -42,7 +45,7 @@ def confusion_matrix_df(df: pd.DataFrame, level: str) -> pd.DataFrame:
 
 
 def species_report_df(df: pd.DataFrame, level: str) -> pd.DataFrame:
-    """Precision/recall/f1 par classe (espèce ou espèce_caste)."""
+    """Precision/recall/f1 per class (species or species_caste)."""
     truth, predicted = df[f"true_{level}"], df[f"predicted_{level}"]
     labels = sorted(truth.unique())
     report = sk_classification_report(truth, predicted, labels=labels, output_dict=True, zero_division=0)
@@ -54,8 +57,8 @@ def species_report_df(df: pd.DataFrame, level: str) -> pd.DataFrame:
 
 
 def device_report_df(merged: pd.DataFrame, level: str) -> pd.DataFrame | None:
-    """Accuracy par appareil. None si la colonne 'device' est absente ou
-    n'a qu'une seule valeur (rien à comparer)."""
+    """Accuracy per device. None if the 'device' column is absent or has
+    only a single value (nothing to compare)."""
     if "device" not in merged.columns or merged["device"].dropna().nunique() <= 1:
         return None
     known = merged["device"].notna()
@@ -77,8 +80,8 @@ def plot_confusion_matrix(cm_df: pd.DataFrame, out_path: Path, title: str) -> No
     ax.set_xticklabels(cm_df.columns, rotation=45, ha="right")
     ax.set_yticks(range(len(cm_df.index)))
     ax.set_yticklabels(cm_df.index)
-    ax.set_xlabel("Prédiction")
-    ax.set_ylabel("Vérité terrain")
+    ax.set_xlabel("Predicted")
+    ax.set_ylabel("Ground truth")
     ax.set_title(title)
 
     values = cm_df.values
@@ -90,17 +93,17 @@ def plot_confusion_matrix(cm_df: pd.DataFrame, out_path: Path, title: str) -> No
                 ax.text(j, i, str(v), ha="center", va="center", fontsize=8,
                         color="white" if v > thresh else "black")
 
-    fig.colorbar(im, ax=ax, shrink=0.8, label="n spécimens")
+    fig.colorbar(im, ax=ax, shrink=0.8, label="n specimens")
     fig.tight_layout()
     fig.savefig(out_path, dpi=300)
     plt.close(fig)
-    print(f"Matrice de confusion -> {out_path}")
+    print(f"Confusion matrix -> {out_path}")
 
 
 def plot_gpa_alignment(aligned: np.ndarray, groupe: pd.Series, out_path: Path, title: str) -> None:
-    """Affiche les formes (déjà alignées sur la référence du modèle) en 2D, coloriées par groupe."""
+    """Displays shapes (already aligned to the model's reference) in 2D, colored by group."""
     if aligned.ndim != 3 or aligned.shape[2] != 2:
-        raise ValueError("aligned doit être un tableau de forme (n_specimens, n_points, 2).")
+        raise ValueError("aligned must be an array of shape (n_specimens, n_points, 2).")
 
     unique_groups = sorted(groupe.unique())
     cmap = plt.get_cmap("tab20")
@@ -119,16 +122,16 @@ def plot_gpa_alignment(aligned: np.ndarray, groupe: pd.Series, out_path: Path, t
         ax2.scatter(centroids[:, 0], centroids[:, 1], color=color, s=20, label=group, marker="x")
 
     for ax, subtitle in ((ax1, "all"), (ax2, "centroids")):
-        ax.set_xlabel("Coordonnée X")
-        ax.set_ylabel("Coordonnée Y")
+        ax.set_xlabel("X coordinate")
+        ax.set_ylabel("Y coordinate")
         ax.set_title(f"{title} ({subtitle})")
-        ax.legend(title="Groupe", loc="best", fontsize="small")
+        ax.legend(title="Group", loc="best", fontsize="small")
         ax.set_aspect("equal", adjustable="box")
 
     plt.tight_layout()
     plt.savefig(out_path, dpi=300)
     plt.close()
-    print(f"Alignement GPA -> {out_path}")
+    print(f"GPA alignment -> {out_path}")
 
 
 def plot_lda(lda_scores: np.ndarray, groupe: pd.Series, out_path: Path, title: str) -> None:
@@ -150,43 +153,44 @@ def plot_lda(lda_scores: np.ndarray, groupe: pd.Series, out_path: Path, title: s
         plt.scatter(x[mask], y[mask], label=group, color=colors[i], alpha=0.25, s=20)
 
     plt.xlabel("LDA 1")
-    plt.ylabel("LDA 2" if lda_scores.shape[1] > 1 else "Constante")
+    plt.ylabel("LDA 2" if lda_scores.shape[1] > 1 else "Constant")
     plt.title(title)
-    plt.legend(title="Groupe", loc="best", fontsize="small")
+    plt.legend(title="Group", loc="best", fontsize="small")
     plt.tight_layout()
     plt.savefig(out_path, dpi=300)
     plt.close()
-    print(f"Projection LDA -> {out_path}")
+    print(f"LDA projection -> {out_path}")
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Figures et tableaux d'un run de classification (voir docstring du module)"
+        description="Figures and tables for a classification run (see module docstring)"
     )
-    parser.add_argument("run_id", type=str, help="Identifiant de run (voir utils.run_io.build_run_id)")
+    parser.add_argument("run_id", type=str, help="Run identifier (see utils.run_io.build_run_id)")
     parser.add_argument("--step", type=str, choices=["train", "predict"], default="train",
-                         help="Quelles prédictions analyser : celles du LOOCV (train) ou d'un batch predict.py (predict).")
+                         help="Which predictions to analyze: LOOCV's (train) or a predict.py batch's (predict).")
     parser.add_argument("--eval-tag", type=str, default=None,
-                         help="Requis si --step predict -- voir data/models/<family>/<run_id>/predict/ pour la liste.")
+                         help="Required if --step predict -- see data/models/<family>/<run_id>/predict/ for the list.")
     parser.add_argument("--family", type=str, default=FAMILY_LDA)
+    add_logging_args(parser)
     return parser
 
 
 def main(argv: list[str] | None = None) -> None:
-    setup_console_logging()
     args = build_arg_parser().parse_args(argv)
+    setup_console_logging(log_level_from_args(args))
 
     if args.step == "predict" and not args.eval_tag:
         available = result_path(args.family, args.run_id, "predict")
         options = sorted(p.name for p in available.iterdir()) if available.exists() else []
-        raise SystemExit(f"--eval-tag requis avec --step predict. Disponibles pour {args.run_id!r} : {options}")
+        raise SystemExit(f"--eval-tag required with --step predict. Available for {args.run_id!r}: {options}")
 
     step_path = result_path(args.family, args.run_id, "predict", args.eval_tag) if args.step == "predict" \
         else result_path(args.family, args.run_id, "train")
     if not step_path.exists():
         raise SystemExit(
-            f"{step_path} introuvable -- lancer classifiers.train ou classifiers.predict batch d'abord "
-            f"pour run_id={args.run_id!r}."
+            f"{step_path} not found -- run classifiers.train or classifiers.predict batch first "
+            f"for run_id={args.run_id!r}."
         )
     params = read_params(step_path)
 
@@ -195,14 +199,14 @@ def main(argv: list[str] | None = None) -> None:
     true_cols = [c for c in df.columns if c.startswith("true_")]
     if not true_cols:
         raise SystemExit(
-            f"{pred_csv} n'a pas de colonne 'true_<level>' -- pas de vérité connue, pas de rapport possible "
-            "(ex: sorties de predict.py single, qui n'a pas de vérité terrain)."
+            f"{pred_csv} has no 'true_<level>' column -- no known truth, no report possible "
+            "(e.g. predict.py single outputs, which have no ground truth)."
         )
     level = true_cols[0].removeprefix("true_")
 
     model_path = result_path(args.family, args.run_id, "train") / "model.joblib"
     if not model_path.exists():
-        raise SystemExit(f"Modèle introuvable : {model_path} (train.py a-t-il été lancé avec --no-save-model ?)")
+        raise SystemExit(f"Model not found: {model_path} (was train.py run with --no-save-model?)")
     model = load_model(model_path)
 
     dataset_root = Path(params["dataset"])
@@ -226,18 +230,18 @@ def main(argv: list[str] | None = None) -> None:
 
     cm_df = confusion_matrix_df(df, level)
     cm_df.to_csv(out_dir / "confusion_matrix.csv")
-    plot_confusion_matrix(cm_df, out_dir / "confusion_matrix.png", title=f"Matrice de confusion -- {run_label}")
-    print("\nMatrice de confusion :\n" + str(cm_df))
+    plot_confusion_matrix(cm_df, out_dir / "confusion_matrix.png", title=f"Confusion matrix -- {run_label}")
+    print("\nConfusion matrix:\n" + str(cm_df))
 
     species_df = species_report_df(df, level)
     species_df.to_csv(out_dir / "species_report.csv")
-    print(f"\nTableau par {level} -> {out_dir / 'species_report.csv'}\n" + str(species_df))
+    print(f"\nTable by {level} -> {out_dir / 'species_report.csv'}\n" + str(species_df))
 
     merged = df.merge(meta_df[["tps_id", "device", "device_tag"]], on="tps_id", how="left")
     device_df = device_report_df(merged, level)
     if device_df is not None:
         device_df.to_csv(out_dir / "device_report.csv")
-        print(f"\nTableau par appareil -> {out_dir / 'device_report.csv'}\n" + str(device_df))
+        print(f"\nTable by device -> {out_dir / 'device_report.csv'}\n" + str(device_df))
 
     pred_tps_ids = set(df["tps_id"])
     keep_mask = [sp.tps_id in pred_tps_ids for sp in specimens]
@@ -246,11 +250,11 @@ def main(argv: list[str] | None = None) -> None:
     if plot_specimens:
         groupe = target_groupe(plot_meta, level)
         aligned = np.stack([align_to_reference(sp.landmarks, model.mean_shape) for sp in plot_specimens])
-        plot_gpa_alignment(aligned, groupe, out_dir / "gpa_alignment.png", title=f"Alignement GPA -- {run_label}")
+        plot_gpa_alignment(aligned, groupe, out_dir / "gpa_alignment.png", title=f"GPA alignment -- {run_label}")
 
         scores = model.pca.transform(two_d_array(aligned))
         lda_scores = model.lda.transform(scores)
-        plot_lda(lda_scores, groupe, out_dir / "lda_projection.png", title=f"Projection LDA -- {run_label}")
+        plot_lda(lda_scores, groupe, out_dir / "lda_projection.png", title=f"LDA projection -- {run_label}")
 
     write_params(out_dir, args, extra={"run_id": args.run_id, "eval_tag": args.eval_tag, "family": args.family, "step": args.step})
     print(f"\nRun -> {out_dir}")

@@ -1,16 +1,16 @@
 """train.py
-Ajuste un modèle de classification GPA -> PCA -> LDA sur un dataset (voir
-utils.dataset.load_dataset) et évalue sa précision par LOOCV.
+Fits a GPA -> PCA -> LDA classification model on a dataset (see
+utils.dataset.load_dataset) and evaluates its accuracy by LOOCV.
 
-Écrit le modèle et les prédictions brutes dans
-data/models/lda/<run_id>/train/. Figures et tableaux détaillés sont produits
-séparément par analysis/classification_report.py ; la variance de forme
-(ANOVA/PERMANOVA) reste dans analysis/variance_report.py.
+Writes the model and raw predictions to data/models/lda/<run_id>/train/.
+Detailed figures and tables are produced separately by
+analysis/classification_report.py; shape variance (ANOVA/PERMANOVA) stays
+in analysis/variance_report.py.
 
---level species : discrimine par espèce.
---level caste   : discrimine par (espèce, caste) -- voir utils.dataset.target_groupe.
+--level species : discriminates by species.
+--level caste   : discriminates by (species, caste) -- see utils.dataset.target_groupe.
 
-Usage :
+Usage:
     python -m classifiers.train data/Bombus --level species
     python -m classifiers.train data/Bombus --level species --devices P1 S1
     python -m classifiers.train data/Bombus --level species \\
@@ -28,7 +28,7 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.decomposition import PCA
 from sklearn.model_selection import LeaveOneOut, cross_val_predict
 
-from utils.cli import add_dataset_args, dataset_kwargs
+from utils.cli import add_dataset_args, add_dataset_positional, add_logging_args, dataset_kwargs, log_level_from_args
 from utils.dataset import load_dataset, target_groupe
 from utils.gpa import gpagen, two_d_array
 from utils.model_io import TrainedModel, save_model
@@ -42,46 +42,46 @@ logger = logging.getLogger(__name__)
 
 
 def run_gpa_pca(specimens: list[ImageLandmarks]):
-    """GPA puis PCA. Retourne (scores, gpa_result, pca). Suppose un nombre
-    de landmarks homogène (garanti par utils.dataset.load_dataset)."""
+    """GPA then PCA. Returns (scores, gpa_result, pca). Assumes a
+    homogeneous landmark count (guaranteed by utils.dataset.load_dataset)."""
     if not specimens:
         raise ValueError(
-            "Aucun spécimen à traiter (liste vide après chargement/filtrage) -- vérifier "
-            "--split/--devices/--species/--castes, ou que le TPS contient des landmarks valides."
+            "No specimen to process (empty list after loading/filtering) -- check "
+            "--split/--devices/--species/--castes, or that the TPS contains valid landmarks."
         )
     n_points = specimens[0].n_points
     gpa_result = gpagen([sp.landmarks for sp in specimens])
     X = two_d_array(gpa_result.aligned)  # (n_specimens, 2*n_points)
 
-    n_components = 2 * n_points - 4  # ddl restants après GPA en 2D
+    n_components = 2 * n_points - 4  # degrees of freedom remaining after 2D GPA
     pca = PCA(n_components=n_components)
     scores = pca.fit_transform(X)
 
     logger.info(
-        "PCA : %d composantes conservées sur %d spécimens (variance expliquée cumulée = %.1f%%)",
+        "PCA: %d component(s) kept over %d specimen(s) (cumulative explained variance = %.1f%%)",
         n_components, len(specimens), 100 * pca.explained_variance_ratio_.sum(),
     )
     return scores, gpa_result, pca
 
 
 def fit_lda(scores: np.ndarray, groupe: pd.Series, n_components: int = 2):
-    """Ajuste la LDA finale (sur tout le jeu, sauvée dans le modèle).
-    n_components ne limite que .transform() (projection) ; predict()/
-    predict_proba() ne sont pas affectés."""
+    """Fits the final LDA (on the whole set, saved in the model).
+    n_components only limits .transform() (projection); predict()/
+    predict_proba() are unaffected."""
     n_components = min(n_components, len(np.unique(groupe)) - 1)
     if n_components < 1:
-        raise ValueError("LDA nécessite au moins deux classes pour calculer une projection.")
+        raise ValueError("LDA needs at least two classes to compute a projection.")
     lda = LinearDiscriminantAnalysis(n_components=n_components)
     lda.fit(scores, groupe)
     return lda
 
 
 def loocv_lda(scores: np.ndarray, groupe: pd.Series) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-    """LDA en validation croisée leave-one-out. Retourne (proba, predicted, classes).
+    """Leave-one-out cross-validated LDA. Returns (proba, predicted, classes).
 
-    Note : le LOOCV retire une photo, pas un spécimen -- un individu avec
-    plusieurs photos reste partiellement dans le train quand une de ses
-    photos est testée, ce qui optimise artificiellement l'accuracy."""
+    Note: LOOCV holds out one photo, not one specimen -- an individual with
+    several photos stays partly in the training set when one of its photos
+    is held out, which artificially inflates accuracy."""
     clf = LinearDiscriminantAnalysis()
     loo = LeaveOneOut()
     proba = cross_val_predict(clf, scores, groupe, cv=loo, method="predict_proba")
@@ -92,25 +92,26 @@ def loocv_lda(scores: np.ndarray, groupe: pd.Series) -> tuple[np.ndarray, np.nda
 
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="GPA -> PCA -> LDA sur landmarks de bourdons -- ajustement du modèle + évaluation LOOCV"
+        description="GPA -> PCA -> LDA on bumblebee landmarks -- model fitting + LOOCV evaluation"
     )
-    parser.add_argument("dataset", type=Path, help="Dossier racine (ex: data/Bombus) -- voir utils.dataset.load_dataset")
+    add_dataset_positional(parser, help="Root folder (e.g. data/Bombus) -- see utils.dataset.load_dataset")
     add_dataset_args(parser, default_split="train")
     parser.add_argument("--level", type=str, default="species", choices=["species", "caste"],
-                         help="'species' : discrimination par espèce. 'caste' : discrimination par "
-                              "(espèce, caste) -- voir utils.dataset.target_groupe.")
+                         help="'species': discriminate by species. 'caste': discriminate by "
+                              "(species, caste) -- see utils.dataset.target_groupe.")
     parser.add_argument("--lda-components", type=int, default=2,
-                         help="Composantes LDA conservées dans le modèle sauvé, pour la projection "
-                              "(défaut: 2 -- n'affecte pas predict()/predict_proba()).")
+                         help="LDA components kept in the saved model, for the projection "
+                              "(default: 2 -- doesn't affect predict()/predict_proba()).")
     parser.add_argument("--no-save-model", action="store_true",
-                         help="Ne pas écrire model.joblib (par défaut, toujours sauvé -- pas de raison de "
-                              "s'en priver, chaque run vit dans son propre dossier).")
+                         help="Don't write model.joblib (saved by default -- no reason not to, "
+                              "each run lives in its own folder).")
+    add_logging_args(parser)
     return parser
 
 
 def main(argv: list[str] | None = None) -> None:
-    setup_console_logging()
     args = build_arg_parser().parse_args(argv)
+    setup_console_logging(log_level_from_args(args))
 
     ds_kwargs = dataset_kwargs(args, default_split="train")
     specimens, meta_df = load_dataset(args.dataset, labeled_only=True, **ds_kwargs)
@@ -135,7 +136,7 @@ def main(argv: list[str] | None = None) -> None:
     metrics = {
         "run_id": run_id,
         "level": args.level,
-        "landmarks_source": str(args.landmarks_tps) if args.landmarks_tps else "landmarks_numbered.tps (défaut)",
+        "landmarks_source": str(args.landmarks_tps) if args.landmarks_tps else "landmarks_numbered.tps (default)",
         "n_specimens": len(specimens),
         "n_points": specimens[0].n_points,
         "n_pca_components": n_components,
@@ -146,15 +147,15 @@ def main(argv: list[str] | None = None) -> None:
     write_metrics(out_dir, metrics)
     write_params(out_dir, args, extra={"run_id": run_id, "family": FAMILY_LDA, "resolved_split": ds_kwargs["split"]})
 
-    header = f"run_id={run_id} | level={args.level} | n={len(specimens)} spécimen(s) | {specimens[0].n_points} landmarks"
+    header = f"run_id={run_id} | level={args.level} | n={len(specimens)} specimen(s) | {specimens[0].n_points} landmarks"
     log_text = (
         f"{header}\n" + "=" * len(header) + "\n"
-        f"Source landmarks : {metrics['landmarks_source']}\n"
-        f"GPA : convergence en {gpa_result.n_iterations} itération(s)\n"
-        f"PCA : {n_components} composante(s) conservée(s) "
-        f"(variance expliquée cumulée = {100 * metrics['pca_explained_variance_cum']:.1f}%)\n"
-        f"LDA (LOOCV) : top-1 = {acc['accuracy_top1']:.4f} | top-3 = {acc['accuracy_top3']:.4f}\n"
-        f"Prédictions -> {predictions_path}\n"
+        f"Landmarks source: {metrics['landmarks_source']}\n"
+        f"GPA: converged in {gpa_result.n_iterations} iteration(s)\n"
+        f"PCA: {n_components} component(s) kept "
+        f"(cumulative explained variance = {100 * metrics['pca_explained_variance_cum']:.1f}%)\n"
+        f"LDA (LOOCV): top-1 = {acc['accuracy_top1']:.4f} | top-3 = {acc['accuracy_top3']:.4f}\n"
+        f"Predictions -> {predictions_path}\n"
     )
     write_run_log(out_dir, log_text)
     print("\n" + log_text)

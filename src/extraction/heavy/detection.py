@@ -1,9 +1,8 @@
-"""Backend de détection heavy (YOLOE segmentation).
+"""Heavy detection backend (YOLOE segmentation).
 
-Entrée : une image BGR (np.ndarray).
-Sortie : `detect_one()` -> dict avec status/box/scores (voir detect_wing.py).
+Input: a BGR image (np.ndarray).
+Output: `detect_one()` -> dict with status/box/scores (see detect_wing.py).
 """
-
 from __future__ import annotations
 
 import cv2
@@ -13,14 +12,14 @@ from . import vpe
 
 
 def add_arguments(parser) -> None:
-    """Déclare les arguments CLI spécifiques au backend heavy."""
-    parser.add_argument("--ref", required=True, help="JSON des références YOLOE.")
+    """Declares the heavy backend's specific CLI arguments."""
+    parser.add_argument("--ref", required=True, help="JSON file of YOLOE references.")
     parser.add_argument("--model", default="yoloe-11s-seg.pt")
     parser.add_argument("--min-aspect-ok", type=float, default=1.3)
 
 
 def mask_to_obb(mask_points: np.ndarray, image_width: int, image_height: int):
-    """Convertit un masque en OBB normalisé [0,1] + aspect ratio."""
+    """Converts a mask to a normalized [0,1] OBB + aspect ratio."""
     if mask_points is None or len(mask_points) < 3:
         return None
 
@@ -39,7 +38,7 @@ def mask_to_obb(mask_points: np.ndarray, image_width: int, image_height: int):
 
 
 def load_model(args):
-    """Charge YOLOE avec ses références baked-in. Retourne un contexte (dict)."""
+    """Loads YOLOE with its baked-in references. Returns a context (dict)."""
     from ultralytics import YOLOE
     from ultralytics.models.yolo.yoloe import YOLOEVPSegPredictor
 
@@ -57,10 +56,10 @@ def load_model(args):
 
 
 def detect_one(ctx: dict, image: np.ndarray, args) -> dict:
-    """Détecte l'aile sur une image unique.
+    """Detects the wing on a single image.
 
-    Retourne un dict : `status` (OK/FAILED), `error_reason`, `confidence`,
-    `n_detections`, `box` (4x2 np.ndarray normalisé [0,1] ou None).
+    Returns a dict: `status` (OK/FAILED), `error_reason`, `confidence`,
+    `n_detections`, `box` (4x2 np.ndarray normalized [0,1] or None).
     """
     result = {
         "status": "FAILED",
@@ -85,11 +84,11 @@ def detect_one(ctx: dict, image: np.ndarray, args) -> dict:
         result["n_detections"] = count
 
         if count == 0:
-            result["error_reason"] = "aucune_detection"
+            result["error_reason"] = "no_detection"
             return result
 
         if prediction.masks is None:
-            result["error_reason"] = "pas_de_masque"
+            result["error_reason"] = "no_mask"
             return result
 
         confidences = prediction.boxes.conf.cpu().numpy()
@@ -101,14 +100,14 @@ def detect_one(ctx: dict, image: np.ndarray, args) -> dict:
             image.shape[0],
         )
         if candidate is None:
-            result["error_reason"] = "obb_degenere"
+            result["error_reason"] = "degenerate_obb"
             return result
 
         box, aspect = candidate
         result["confidence"] = float(confidences[best])
 
         if aspect < args.min_aspect_ok:
-            result["error_reason"] = "aspect_ratio_insuffisant"
+            result["error_reason"] = "insufficient_aspect_ratio"
         else:
             result["status"] = "OK"
             result["box"] = box
