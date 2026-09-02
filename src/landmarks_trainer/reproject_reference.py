@@ -79,7 +79,7 @@ from extraction.normalize_crop import (
 from utils.cli import add_dataset_positional, add_logging_args, log_level_from_args
 from utils.pipeline_io import RunCounter, read_csv_rows, resolve_path
 from utils.run_io import setup_console_logging
-from utils.tps_io import ImageLandmarks, parse_tps, write_tps
+from core.tps_io import ImageLandmarks, parse_tps, write_tps
 from utils.tps_overlay import render_tps_overlays
 
 logger = logging.getLogger(__name__)

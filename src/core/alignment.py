@@ -3,7 +3,7 @@ Shared SVD core for any rigid 2D alignment without reflection (Kabsch /
 Umeyama): optimal rotation, with optional scale.
 
 Used by:
-- utils/gpa.py (rotation only -- shapes are already centered/scaled
+- core/gpa.py (rotation only -- shapes are already centered/scaled
   upstream by the GPA standardization, so scale=1 always).
 - landmarks/methods/hungarian_umeyama.py (full similarity -- rotation and
   scale, since a detector's raw landmarks are neither centered nor at the

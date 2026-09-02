@@ -26,8 +26,8 @@ from sklearn.metrics import confusion_matrix
 
 from utils.cli import add_logging_args, log_level_from_args
 from utils.dataset import load_dataset, target_groupe
-from utils.gpa import align_to_reference, two_d_array
-from utils.model_io import load_model
+from core.gpa import align_to_reference, two_d_array
+from core.model_io import load_model
 from utils.run_io import FAMILY_LDA, read_params, result_path, run_path, setup_console_logging, write_params
 
 logger = logging.getLogger(__name__)

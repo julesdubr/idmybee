@@ -29,7 +29,7 @@ from typing import Sequence
 
 import pandas as pd
 
-from utils.tps_io import ImageLandmarks, image_id_to_sid, parse_tps
+from core.tps_io import ImageLandmarks, image_id_to_sid, parse_tps
 
 logger = logging.getLogger(__name__)
 

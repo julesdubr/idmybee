@@ -77,7 +77,7 @@ import numpy as np
 from analysis.variance import nested_anova
 from utils.cli import add_dataset_args, add_dataset_positional, add_logging_args, dataset_kwargs, log_level_from_args
 from utils.dataset import load_dataset, restrict_to_complete_devices
-from utils.gpa import gpagen, two_d_array
+from core.gpa import gpagen, two_d_array
 from utils.run_io import ANALYSIS_ROOT, build_variance_id, run_path, setup_console_logging, write_params, write_run_log
 
 logger = logging.getLogger(__name__)

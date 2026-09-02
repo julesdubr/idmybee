@@ -38,7 +38,7 @@ Statuses:
     bug, numerate_one() doesn't handle differing point counts (see
     landmarks.methods.hungarian_umeyama).
   - SUSPECT : successfully numbered, but a post-GPA outlier relative to its
-    own species (see utils.outliers.flag_by_species) -- requires
+    own species (see core.outliers.flag_by_species) -- requires
     --specimens; without it, or for an unlabeled specimen, stays OK.
   - OK      : numbered, no anomaly signal.
 
@@ -66,10 +66,10 @@ from landmarks.build_reference import load_reference
 from landmarks.methods.base import NumberingResult
 from landmarks.methods.hungarian_umeyama import numerate as numerate_hungarian_umeyama
 from utils.cli import add_dataset_positional, add_logging_args, log_level_from_args
-from utils.outliers import HEAVY_LANDMARK_FRAC, MAD_FACTOR, MIN_GROUP_SIZE, flag_by_species
+from core.outliers import HEAVY_LANDMARK_FRAC, MAD_FACTOR, MIN_GROUP_SIZE, flag_by_species
 from utils.pipeline_io import update_pipeline_stats
 from utils.run_io import setup_console_logging
-from utils.tps_io import ImageLandmarks, parse_tps, write_tps
+from core.tps_io import ImageLandmarks, parse_tps, write_tps
 
 logger = logging.getLogger(__name__)
 

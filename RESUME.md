@@ -146,10 +146,46 @@ widget Streamlit correspondant, pour éviter de dupliquer chaque paramètre.
 
 ## Où on en est
 
-**Phase actuelle : groundwork pré-découpage, terminé.** Le découpage
-en 3 (phase 1) lui-même n'a pas commencé. Voir `TODO.md` pour le détail précis.
- 
-Fait :
+**Phase actuelle : Phase 1 (`core/`), démarrée.** Groundwork pré-découpage
+(Phase 0) terminé pour tout ce qui était planifié ; `landmarks_trainer/`
+volontairement reporté à la Phase 4 (voir "Questions ouvertes"). Voir
+`TODO.md` pour le détail précis.
+
+Fait (session Phase 1, 2 sept. 2026) :
+- `src/core/` créé comme nouveau package (pas un renommage de `utils/` --
+  `utils/` continue d'exister). Déplacés : `tps_io.py`, `gpa.py`,
+  `alignment.py`, `outliers.py`, `model_io.py`. Le sort des 7 autres
+  fichiers de `utils/` (`dataset.py`, `predictions.py`, `pipeline_io.py`,
+  `run_io.py`, `cli.py`, `repair_images.py`, `tps_overlay.py`) reste
+  **une décision ouverte, non traitée cette session** -- ils restent dans
+  `utils/` en l'état, seuls leurs imports vers les 5 fichiers déplacés ont
+  été corrigés (ils importaient tous `utils.tps_io`, directement ou en
+  cascade).
+- Tous les imports du reste du codebase vers ces 5 modules mis à jour
+  (`from utils.xxx import ...` -> `from core.xxx import ...`), y compris
+  les imports croisés entre les 5 fichiers eux-mêmes (`gpa.py` ->
+  `core.alignment`, `outliers.py` -> `core.gpa`/`core.tps_io`) et les
+  mentions en docstring/commentaire (pas seulement les lignes `import` --
+  ex. le docstring d'`alignment.py` référençait `utils/gpa.py`). Détail des
+  fichiers touchés dans `TODO.md` Phase 1.
+- Vérifié : compilation (`py_compile`) OK sur tout `src/`+`tests/`,
+  60 tests toujours verts sans modification (`from core.xxx import ...`
+  dans les 5 fichiers de test concernés), import runtime de `core.*` +
+  `utils.dataset`/`utils.predictions` (les deux fichiers restés dans
+  `utils/` qui dépendent le plus directement de `core.tps_io`) confirmé
+  sain.
+- `pyproject.toml` non modifié -- le layout `src/` avec
+  `packages.find(where=["src"])` découvre `core/` automatiquement au même
+  titre que les autres dossiers, aucun changement nécessaire.
+- Décisions Phase 2 tranchées par Jules cette session (voir "Questions
+  ouvertes" ci-dessous pour le détail) : `landmarks_trainer/` reporté à la
+  Phase 4 (priorité basse confirmée), app Streamlit unique, mode terrain
+  garde un aperçu overlay, deux scripts distincts (dataset/terrain),
+  `reconcile-review` confirmé comme nom définitif. Conception uniquement --
+  aucun code Phase 2 commencé, Phase 1 pas terminée (7 fichiers `utils/`
+  encore à trancher).
+
+Fait (sessions précédentes) :
 - Conception détaillée de l'outil 1 (landmarking, modes dataset/terrain,
   validation, framework UI) validée cette session (2 sept. 2026) -- voir
   "Détails outil 1" plus haut. Conception uniquement, pas de code.
@@ -265,20 +301,45 @@ Fait :
 
 - ~~Streamlit vs Gradio pour l'outil 1~~ -- résolu (session du 2 sept.
   2026) : Streamlit. Voir "Détails outil 1" pour les raisons.
-- **Nouvelle question : aligner `landmarks_trainer/train.py` (et le reste
-  du dossier) sur les conventions CLI/logging maintenant, ou reporter à la
-  Phase 4 (harmonisation des sorties de run) puisque ce dossier va de
-  toute façon être retouché à ce moment-là ?**
-- **(2 sept. 2026) App Streamlit unique** (page landmarking + page
-  classification, point d'entrée unique pour les utilisateurs
-  non-techniques) **ou deux apps séparées ?**
-- **(2 sept. 2026) Le mode terrain garde-t-il un aperçu overlay** (image
-  annotée, sans statut persistant/éditable) **pour vérification rapide
-  avant lecture de la prédiction** -- y compris pour un ensemble ad hoc de
-  plusieurs photos, pas seulement une seule ?
-- **(2 sept. 2026) Nommage/structure exacte** du mode dataset vs mode
-  terrain -- deux scripts distincts partageant le core, ou un seul script
-  avec un flag de mode ? Provisoire, pas figé.
-- **(2 sept. 2026) Nom définitif de la commande CLI de réconciliation** de
-  la validation (`reconcile-review` utilisé comme nom provisoire dans ce
-  document).
+- ~~Aligner `landmarks_trainer/train.py` (et le reste du dossier) sur les
+  conventions CLI/logging maintenant, ou reporter à la Phase 4~~ -- résolu
+  (session Phase 1, 2 sept. 2026) : **reporté à la Phase 4**, priorité
+  basse confirmée par Jules.
+- ~~App Streamlit unique (page landmarking + page classification) ou deux
+  apps séparées ?~~ -- résolu (session Phase 1, 2 sept. 2026) : **une
+  seule app.** Jules : focus sur un premier outil (landmarking) simple et
+  fonctionnel d'abord, la classification s'ajoute plus tard dans la même
+  app de façon incrémentale -- pas de refonte d'archi à prévoir pour
+  l'ajout.
+- ~~Le mode terrain garde-t-il un aperçu overlay~~ -- résolu (session
+  Phase 1, 2 sept. 2026) : **oui**, aperçu overlay conservé en mode
+  terrain (image annotée avec landmarks numérotés, sans statut
+  persistant/éditable -- cf. distinction avec le mode dataset qui, lui, a
+  la validation complète). Le cas "plusieurs photos ad hoc" n'a pas été
+  explicitement retranché de "une seule photo" dans la réponse de Jules --
+  à confirmer en Phase 2 si le comportement diffère entre les deux au
+  moment de l'implémentation.
+- ~~Nommage/structure exacte du mode dataset vs mode terrain -- deux
+  scripts distincts ou un seul script avec flag de mode ?~~ -- résolu
+  (session Phase 1, 2 sept. 2026) : **deux scripts distincts**, Jules :
+  "plus simple". Confirme l'option déjà provisoirement envisagée.
+- ~~Nom définitif de la commande CLI de réconciliation~~ -- résolu (session
+  Phase 1, 2 sept. 2026) : **`reconcile-review` confirmé**, n'est plus un
+  nom provisoire.
+- **Nouvelle question (session Phase 1, 2 sept. 2026), toujours ouverte :
+  le sort des 7 fichiers `utils/` non déplacés en Phase 1**
+  (`dataset.py`, `predictions.py`, `pipeline_io.py`, `run_io.py`,
+  `cli.py`, `repair_images.py`, `tps_overlay.py`) -- à trancher avant de
+  clore la Phase 1. Piste de départ pour la prochaine session : `dataset.py`
+  et `predictions.py` sont a priori spécifiques à l'outil 2
+  (classification -- chargement/join TPS+CSV, schéma de prédictions), donc
+  candidats à finir ailleurs qu'en `core/` (probablement dans le futur
+  dossier de l'outil 2, pas encore créé) plutôt qu'en `core/` lui-même ;
+  `pipeline_io.py`, `run_io.py`, `cli.py` semblent au contraire assez
+  génériques (statut/CSV incrémental pour `pipeline_io.py`, convention de
+  sortie de run pour `run_io.py`, briques `argparse` communes pour
+  `cli.py`) pour rester utiles aux 3 outils sans être de la géométrie pure
+  -- pas évident que ce soit la définition de `core/` telle que posée dans
+  "Décisions d'architecture" (`core` = TPS I/O, GPA, alignement, outliers).
+  Hypothèse non tranchée, à valider avec Jules plutôt qu'à décider
+  unilatéralement.

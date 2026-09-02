@@ -1,8 +1,8 @@
-"""Tests for utils.gpa."""
+"""Tests for core.gpa."""
 import numpy as np
 import pytest
 
-from utils.gpa import align_to_reference, centroid_size, gpagen, procrustes_distance
+from core.gpa import align_to_reference, centroid_size, gpagen, procrustes_distance
 
 BASE_SHAPE = np.array([
     [0.0, 0.0], [1.0, 0.2], [2.0, -0.3], [1.5, 1.0],

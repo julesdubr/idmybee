@@ -3,7 +3,7 @@ Generalized Procrustes Analysis (2D, no reflection).
 
 Mirrors geomorph::gpagen(): similarity only (translation + isotropic
 scale + rotation). Reflection is explicitly forbidden via det(R)=+1 (see
-utils.alignment.kabsch_umeyama) -- without that, half the specimens would
+core.alignment.kabsch_umeyama) -- without that, half the specimens would
 silently align as mirror images.
 """
 from __future__ import annotations
@@ -12,7 +12,7 @@ from dataclasses import dataclass
 
 import numpy as np
 
-from utils.alignment import kabsch_umeyama
+from core.alignment import kabsch_umeyama
 
 
 def centroid_size(coords: np.ndarray) -> float:

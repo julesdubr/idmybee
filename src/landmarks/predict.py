@@ -44,7 +44,7 @@ Two substantive fixes relative to the original notebook:
      than expected is explicitly marked SUSPECT with the reason, never
      just written through unflagged.
 
-`utils.tps_io.ImageLandmarks.tps_id` must be an integer, and `write_tps`
+`core.tps_io.ImageLandmarks.tps_id` must be an integer, and `write_tps`
 rewrites the whole file (no append): `image_id` (the Phase 0 content hash)
 therefore isn't directly usable as `tps_id`, and `specimen_id` doesn't work
 either (a single specimen often has several photos, which must stay
@@ -86,7 +86,7 @@ from landmarks_trainer.model import load_weights
 from utils.cli import add_dataset_positional, add_logging_args, log_level_from_args
 from utils.pipeline_io import RunCounter, format_duration, read_csv_rows, resolve_path, should_skip, update_pipeline_stats
 from utils.run_io import setup_console_logging
-from utils.tps_io import ImageLandmarks, image_id_to_sid, parse_tps, write_tps
+from core.tps_io import ImageLandmarks, image_id_to_sid, parse_tps, write_tps
 
 logger = logging.getLogger(__name__)
 

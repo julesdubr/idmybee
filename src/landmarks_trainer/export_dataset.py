@@ -18,7 +18,7 @@ or TPS files independently:
     filtering predict.py itself uses (OK+SKIPPED, latest row per image_id).
   - utils.pipeline_io.resolve_path -- same relative-path resolution as
     predict.py's crop_path handling.
-  - utils.tps_io.parse_tps -- same TPS parser predict.py uses to reload its
+  - core.tps_io.parse_tps -- same TPS parser predict.py uses to reload its
     own output.
 
 ASSUMPTION -- please check before trusting the output: `ImageLandmarks`
@@ -53,7 +53,7 @@ from landmarks.predict import load_target_crops
 from utils.cli import add_dataset_positional, add_logging_args, log_level_from_args
 from utils.pipeline_io import resolve_path
 from utils.run_io import setup_console_logging
-from utils.tps_io import parse_tps
+from core.tps_io import parse_tps
 
 logger = logging.getLogger(__name__)
 

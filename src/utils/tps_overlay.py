@@ -3,7 +3,7 @@ Renders overlays (image + numbered landmarks) from any .tps file --
 reusable anywhere the pipeline produces a TPS with IMAGE= pointing to a
 readable image: outputs of landmarks/predict.py (landmarks.tps), of
 landmarks_trainer/reproject_reference.py, or any other TPS following the
-format read by utils.tps_io.parse_tps.
+format read by core.tps_io.parse_tps.
 
     python -m utils.tps_overlay data/Bombus/landmarks/landmarks.tps \\
         --output-dir data/Bombus/landmarks/overlays \\
@@ -20,7 +20,7 @@ Without --csv (or a TPS with no COMMENT=): all images go straight into
 <output-dir>/, flat, named by image_id if known, otherwise by ID= (tps_id),
 otherwise by specimen index.
 
-Doesn't modify or depend on anything other than utils.tps_io -- this file
+Doesn't modify or depend on anything other than core.tps_io -- this file
 has no opinion on WHO produces the TPS, only on how to draw it.
 """
 from __future__ import annotations
@@ -37,7 +37,7 @@ from tqdm import tqdm
 from utils.cli import add_logging_args, log_level_from_args
 from utils.pipeline_io import read_csv_rows, resolve_path
 from utils.run_io import setup_console_logging
-from utils.tps_io import parse_tps
+from core.tps_io import parse_tps
 
 logger = logging.getLogger(__name__)
 

@@ -9,7 +9,7 @@ graph_matching.py, tried then dropped -- worse on this dataset) under a
 name that describes the approach rather than the generic role; implements
 the landmarks.methods.base contract.
 
-Rotation+scale is delegated to utils.alignment.kabsch_umeyama (the same
+Rotation+scale is delegated to core.alignment.kabsch_umeyama (the same
 SVD core as GPA), so this algebra isn't reimplemented separately.
 
 Gist in one sentence: we don't know in advance which detected landmark
@@ -30,7 +30,7 @@ import numpy as np
 from scipy.optimize import linear_sum_assignment
 
 from landmarks.methods.base import NumberingResult
-from utils.alignment import kabsch_umeyama
+from core.alignment import kabsch_umeyama
 
 
 def umeyama(src: np.ndarray, dst: np.ndarray) -> tuple[np.ndarray, float, np.ndarray]:
@@ -108,7 +108,7 @@ def numerate(
     See landmarks.methods.base: detecting an abnormal cost is a
     population-level decision, not a single specimen's -- landmarks/renumber.py
     now handles it via a more robust method (post-GPA comparison to the
-    landmark's median position, PER SPECIES, see utils.outliers), which
+    landmark's median position, PER SPECIES, see core.outliers), which
     better distinguishes a genuine registration error from a plain shape
     variation.
     """

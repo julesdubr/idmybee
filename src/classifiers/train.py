@@ -30,13 +30,13 @@ from sklearn.model_selection import LeaveOneOut, cross_val_predict
 
 from utils.cli import add_dataset_args, add_dataset_positional, add_logging_args, dataset_kwargs, log_level_from_args
 from utils.dataset import load_dataset, target_groupe
-from utils.gpa import gpagen, two_d_array
-from utils.model_io import TrainedModel, save_model
+from core.gpa import gpagen, two_d_array
+from core.model_io import TrainedModel, save_model
 from utils.predictions import build_predictions_df, accuracy_summary
 from utils.run_io import (
     FAMILY_LDA, build_run_id, run_path, setup_console_logging, write_metrics, write_params, write_run_log,
 )
-from utils.tps_io import ImageLandmarks
+from core.tps_io import ImageLandmarks
 
 logger = logging.getLogger(__name__)
 

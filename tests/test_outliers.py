@@ -1,8 +1,8 @@
-"""Tests for utils.outliers."""
+"""Tests for core.outliers."""
 import numpy as np
 
-from utils.outliers import flag_by_species, outlier_matrix
-from utils.tps_io import ImageLandmarks
+from core.outliers import flag_by_species, outlier_matrix
+from core.tps_io import ImageLandmarks
 
 BASE_SHAPE = np.array([
     [0.0, 0.0], [1.0, 0.2], [2.0, -0.3], [1.5, 1.0],

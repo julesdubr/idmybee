@@ -17,7 +17,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from utils.tps_io import ImageLandmarks
+from core.tps_io import ImageLandmarks
 
 CHOICE_RANKS = ("second", "third")  # beyond top-1 (predicted/confidence)
 

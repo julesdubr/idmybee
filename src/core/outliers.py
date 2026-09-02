@@ -26,8 +26,8 @@ import logging
 
 import numpy as np
 
-from utils.gpa import gpagen
-from utils.tps_io import ImageLandmarks
+from core.gpa import gpagen
+from core.tps_io import ImageLandmarks
 
 logger = logging.getLogger(__name__)
 

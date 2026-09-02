@@ -1,8 +1,8 @@
-"""Tests for utils.tps_io."""
+"""Tests for core.tps_io."""
 import numpy as np
 import pytest
 
-from utils.tps_io import (
+from core.tps_io import (
     ImageLandmarks,
     TpsParseException,
     image_id_to_sid,

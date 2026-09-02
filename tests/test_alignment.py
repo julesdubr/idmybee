@@ -1,4 +1,4 @@
-"""Tests for utils.alignment.kabsch_umeyama.
+"""Tests for core.alignment.kabsch_umeyama.
 
 The scale test pins down a bug that was fixed once already (H not
 normalized by n -> scale overestimated by a factor of n, see the
@@ -8,7 +8,7 @@ regardless of n_points. A regression here means the bug is back.
 import numpy as np
 import pytest
 
-from utils.alignment import kabsch_umeyama
+from core.alignment import kabsch_umeyama
 
 SHAPE = np.array([
     [0.0, 0.0], [1.0, 0.2], [2.0, -0.3], [1.5, 1.0],
