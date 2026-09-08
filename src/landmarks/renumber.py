@@ -19,8 +19,10 @@ Two uses, same numbering logic:
 Input (CLI):
   - <dataset>/landmarks/<tps>        (output of landmarks/predict.py)
   - <reference>                      (frozen artifact, see build_reference.py)
-  - <dataset>/specimens.csv          (optional: enables the per-species
-    outlier diagnostic -- without it, every numbered specimen stays OK)
+  - <dataset>/biological_data.csv    (optional: enables the per-species
+    outlier diagnostic -- without it, every numbered specimen stays OK.
+    See tools/export_clean_dataset.py -- "labeled" here means a non-empty
+    `species`, there is no `is_labeled` column in this schema)
 
 Output (CLI):
   - <dataset>/landmarks/<tps stem>_numbered.tps: every successfully
@@ -39,16 +41,16 @@ Statuses:
     landmarks.methods.hungarian_umeyama).
   - SUSPECT : successfully numbered, but a post-GPA outlier relative to its
     own species (see core.outliers.flag_by_species) -- requires
-    --specimens; without it, or for an unlabeled specimen, stays OK.
+    --biological-data; without it, or for an unlabeled specimen, stays OK.
   - OK      : numbered, no anomaly signal.
 
 Usage:
     python -m landmarks.build_reference --ref data/references/ref-landmarks.tps \\
         --drop 3 --out data/references/reference_shape.npz          # once
 
-    python -m landmarks.renumber data/Bombus --tps landmarks.tps \\
+    python -m landmarks.renumber data/clean/collection --tps landmarks.tps \\
         --reference data/references/reference_shape.npz \\
-        --specimens data/Bombus/specimens.csv
+        --biological-data data/clean/collection/biological_data.csv
 """
 from __future__ import annotations
 
@@ -96,18 +98,22 @@ def numerate_one(
     return METHODS[method](landmarks, zones)
 
 
-def load_specimen_labels(specimens_csv: Path) -> tuple[dict[str, str], set[str]]:
-    """Reads specimens.csv -> (species per labeled specimen_id, set of
-    labeled specimen_id). A specimen absent from the dict/set is treated as
+def load_specimen_labels(biological_data_csv: Path) -> tuple[dict[str, str], set[str]]:
+    """Reads biological_data.csv -> (species per labeled inv_id, set of
+    labeled inv_id). A specimen absent from the dict/set is treated as
     unlabeled (prediction pool), including if it's absent from
-    specimens_csv."""
-    df = pd.read_csv(specimens_csv)
-    required = {"specimen_id", "species", "is_labeled"}
+    biological_data_csv.
+
+    "Labeled" = non-empty `species` -- there is no `is_labeled` column in
+    this schema (see tools/export_clean_dataset.py), matching the same
+    convention already used by utils.dataset.load_dataset."""
+    df = pd.read_csv(biological_data_csv)
+    required = {"inv_id", "species"}
     missing = required - set(df.columns)
     if missing:
-        raise SystemExit(f"Missing columns in {specimens_csv}: {missing}")
-    labeled = df[df["is_labeled"].astype(bool)]
-    species_by_id = dict(zip(labeled["specimen_id"], labeled["species"]))
+        raise SystemExit(f"Missing columns in {biological_data_csv}: {missing}")
+    labeled = df[df["species"].notna()]
+    species_by_id = dict(zip(labeled["inv_id"], labeled["species"]))
     return species_by_id, set(species_by_id)
 
 
@@ -118,8 +124,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
                          help="TPS to renumber, unordered landmarks (in <dataset>/landmarks/).")
     parser.add_argument("--reference", type=Path, required=True,
                          help="Frozen reference shape (see landmarks.build_reference).")
-    parser.add_argument("--specimens", type=Path, default=None,
-                         help="specimens.csv -- enables the per-species SUSPECT diagnostic. "
+    parser.add_argument("--biological-data", type=Path, default=None,
+                         help="biological_data.csv -- enables the per-species SUSPECT diagnostic. "
                               "Without it, every numbered specimen stays OK.")
     parser.add_argument("--method", default="hungarian_umeyama", choices=sorted(METHODS),
                          help="Numbering method.")
@@ -166,12 +172,12 @@ def main(argv: list[str] | None = None) -> None:
     pipeline_start = time.perf_counter()
     results: list[NumberingResult] = []
     processing_times: list[float] = []
-    specimen_refs = []  # (image_id, specimen_id, tps_id, image_path), parallel to `results`
+    specimen_refs = []  # (photo_id, inv_id, tps_id, image_path), parallel to `results`
     for sp in inputs:
         item_start = time.perf_counter()
         results.append(numerate_one(sp.landmarks, zones, method=args.method))
         processing_times.append(time.perf_counter() - item_start)
-        specimen_refs.append((sp.image_id, sp.specimen_id, sp.tps_id, sp.image_path))
+        specimen_refs.append((sp.photo_id, sp.inv_id, sp.tps_id, sp.image_path))
 
     numbered_specimens = [
         replace(sp, landmarks=r.numbered) for sp, r in zip(inputs, results) if r.status != "FAILED"
@@ -185,16 +191,16 @@ def main(argv: list[str] | None = None) -> None:
     # second-best start, removed -- flagged nearly 100% of specimens as
     # SUSPECT on this dataset), this diagnostic compares each specimen to
     # its species' POPULATION, which makes it far more specific. Requires
-    # --specimens.
+    # --biological-data.
     n_outlier_by_index: dict[int, int] = {}
-    if args.specimens is not None:
-        species_by_id, labeled_ids = load_specimen_labels(args.specimens)
+    if args.biological_data is not None:
+        species_by_id, labeled_ids = load_specimen_labels(args.biological_data)
         labeled_positions = [
-            j for j, sp in enumerate(numbered_specimens) if sp.specimen_id in labeled_ids
+            j for j, sp in enumerate(numbered_specimens) if sp.inv_id in labeled_ids
         ]
         if labeled_positions:
             labeled_specimens = [numbered_specimens[j] for j in labeled_positions]
-            species = np.array([species_by_id[s.specimen_id] for s in labeled_specimens])
+            species = np.array([species_by_id[s.inv_id] for s in labeled_specimens])
             n_outlier, heavy = flag_by_species(
                 labeled_specimens, species,
                 heavy_frac=args.outlier_landmark_frac,
@@ -207,7 +213,7 @@ def main(argv: list[str] | None = None) -> None:
                 if is_heavy:
                     results[result_idx].status = "SUSPECT"
     else:
-        logger.info("No --specimens given: per-species outlier diagnostic disabled (all OK).")
+        logger.info("No --biological-data given: per-species outlier diagnostic disabled (all OK).")
 
     # --- Writing the renumbered TPS ----------------------------------------------
     landmarks_dir = args.dataset / "landmarks"
@@ -230,14 +236,14 @@ def main(argv: list[str] | None = None) -> None:
     with log_path.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow([
-            "image_id", "specimen_id", "tps_id", "image_path", "status",
+            "photo_id", "inv_id", "tps_id", "image_path", "status",
             "registration_cost", "n_outlier_landmarks", "error_reason", "processing_time_s",
         ])
-        for i, ((image_id, specimen_id, tps_id, image_path), r, pt) in enumerate(
+        for i, ((photo_id, inv_id, tps_id, image_path), r, pt) in enumerate(
             zip(specimen_refs, results, processing_times)
         ):
             w.writerow([
-                image_id, specimen_id, tps_id, image_path, r.status, r.score,
+                photo_id, inv_id, tps_id, image_path, r.status, r.score,
                 n_outlier_by_index.get(i, ""), r.reason, f"{pt:.4f}",
             ])
     print(f"Detailed statuses -> {log_path}")

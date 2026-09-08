@@ -1,4 +1,5 @@
 """Tests for utils.pipeline_io."""
+import csv
 from pathlib import Path
 
 import pytest

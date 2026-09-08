@@ -10,7 +10,7 @@ After:
 
 FEATURES:
   1. Renames French role folders to English:
-     - mec -> male
+     - Male -> drone
      - Ouvriere -> worker
      - Fondatrice -> queen
      (renaming happens inside each "species" folder)
@@ -54,7 +54,7 @@ PHOTO_RE = re.compile(
 
 # French -> English role folder mapping
 ROLE_TRANSLATIONS = {
-    "mec": "male",
+    "Male": "drone",
     "Ouvriere": "worker",
     "Fondatrice": "queen",
 }
@@ -96,7 +96,7 @@ def rename_role_dirs(root: Path, apply: bool) -> dict[Path, Path]:
             continue
         for old_name, new_name in ROLE_TRANSLATIONS.items():
             old_path = species / old_name
-            new_path = species / new_name
+            new_path = species / new_name.lower()
 
             if old_path.exists() and old_path.is_dir():
                 if new_path.exists():

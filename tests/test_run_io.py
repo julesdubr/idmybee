@@ -34,22 +34,22 @@ def test_tag_from_tps_uses_stem():
 
 
 def test_build_run_id_composes_parts_in_order():
-    run_id = build_run_id("species", "train", devices=["P1", "S1"], run_label="tancrede19lm")
-    assert run_id == "species_train_P1-S1_tancrede19lm"
+    run_id = build_run_id("species", "collection", devices=["P1", "S1"], run_label="tancrede19lm")
+    assert run_id == "species_collection_P1-S1_tancrede19lm"
 
 
 def test_build_run_id_without_optional_parts():
-    assert build_run_id("caste", "test") == "caste_test"
+    assert build_run_id("caste", "terrain") == "caste_terrain"
 
 
 def test_build_eval_tag_has_no_level_prefix():
-    tag = build_eval_tag("test", devices=["P2"])
-    assert tag == "test_P2"
+    tag = build_eval_tag("terrain", devices=["P2"])
+    assert tag == "terrain_P2"
 
 
 def test_build_variance_id_joins_levels():
-    vid = build_variance_id(["species", "caste"], "all", devices=["P1", "P2", "S1", "S2"])
-    assert vid == "species-caste_all_P1-P2-S1-S2"
+    vid = build_variance_id(["species", "caste"], "collection", devices=["P1", "P2", "S1", "S2"])
+    assert vid == "species-caste_collection_P1-P2-S1-S2"
 
 
 def test_run_id_from_model_path_parses_convention():

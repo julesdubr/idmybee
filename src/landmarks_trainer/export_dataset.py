@@ -15,7 +15,7 @@ export if ever needed for comparison.
 Reuses the pipeline's own building blocks rather than re-parsing crops.csv
 or TPS files independently:
   - landmarks.predict.load_target_crops -- same crops.csv dedup/status/split
-    filtering predict.py itself uses (OK+SKIPPED, latest row per image_id).
+    filtering predict.py itself uses (OK+SKIPPED, latest row per photo_id).
   - utils.pipeline_io.resolve_path -- same relative-path resolution as
     predict.py's crop_path handling.
   - core.tps_io.parse_tps -- same TPS parser predict.py uses to reload its
@@ -30,11 +30,11 @@ exactly why this script always renders debug overlays (crop + plotted
 points) for a sample of exported specimens. Look at those before launching
 a training run.
 
-KNOWN GAP: joining a TPS specimen to its crop requires `.image_id`, which
-is only set if the TPS has a `COMMENT=image_id=...` line (this pipeline's
+KNOWN GAP: joining a TPS specimen to its crop requires `.photo_id`, which
+is only set if the TPS has a `COMMENT=photo_id=...` line (this pipeline's
 own convention). If your reference TPS doesn't have that (e.g. Tancrede's
 raw-space reference, digitized with a third-party tool), see
-reproject_reference.py first -- it resolves image_id via manifest.csv
+reproject_reference.py first -- it resolves photo_id via manifest.csv
 matching and writes a new TPS with COMMENT= already set, ready for this
 script.
 """
@@ -100,7 +100,7 @@ def main(argv: list[str] | None = None) -> None:
     drop_idx = args.drop - 1 if args.drop else None
 
     crop_rows = load_target_crops(crops_path, split_filter=None)
-    crop_lookup = {row["image_id"]: row for row in crop_rows}
+    crop_lookup = {row["photo_id"]: row for row in crop_rows}
     logger.info("%d crop(s) available in %s", len(crop_lookup), crops_path)
 
     specimens, errors = parse_tps(Path(args.tps), strict=False)
@@ -110,11 +110,11 @@ def main(argv: list[str] | None = None) -> None:
             logger.warning("  specimen #%s, line %s: %s", e.specimen_index, e.line_no, e.message)
     logger.info("%d specimen(s) in %s", len(specimens), args.tps)
 
-    n_with_image_id = sum(1 for sp in specimens if sp.image_id is not None)
-    logger.info("%d/%d specimen(s) have image_id set (COMMENT= present)", n_with_image_id, len(specimens))
-    if n_with_image_id == 0:
+    n_with_photo_id = sum(1 for sp in specimens if sp.photo_id is not None)
+    logger.info("%d/%d specimen(s) have photo_id set (COMMENT= present)", n_with_photo_id, len(specimens))
+    if n_with_photo_id == 0:
         raise SystemExit(
-            "No specimen has a COMMENT= image_id= in this TPS -- likely Tancrede's reference, "
+            "No specimen has a COMMENT= photo_id= in this TPS -- likely Tancrede's reference, "
             "digitized with a third-party tool (tpsDig or equivalent), not this pipeline. tps_io.py "
             "explicitly states the caller must then join via utils.dataset -- this script does NOT "
             "do that yet (unknown signature). Nothing will be exported until that's wired in, rather "
@@ -127,13 +127,13 @@ def main(argv: list[str] | None = None) -> None:
     reported_shape = None
 
     for sp in specimens:
-        if sp.image_id is None:
-            skipped_rows.append({"image_id": f"(tps_id={sp.tps_id})", "reason": "no image_id (no COMMENT= in this TPS block)"})
+        if sp.photo_id is None:
+            skipped_rows.append({"photo_id": f"(tps_id={sp.tps_id})", "reason": "no photo_id (no COMMENT= in this TPS block)"})
             continue
 
-        crop_row = crop_lookup.get(sp.image_id)
+        crop_row = crop_lookup.get(sp.photo_id)
         if crop_row is None:
-            skipped_rows.append({"image_id": sp.image_id, "reason": "no matching crop in crops.csv"})
+            skipped_rows.append({"photo_id": sp.photo_id, "reason": "no matching crop in crops.csv"})
             continue
 
         crop_path = resolve_path(crop_row["output_path"], base_dir).resolve()  # absolute:
@@ -144,7 +144,7 @@ def main(argv: list[str] | None = None) -> None:
         # (data/models/unet_landmarks/...) instead of the dataset root. Absolute sidesteps
         # the mismatch entirely.
         if not crop_path.exists():
-            skipped_rows.append({"image_id": sp.image_id, "reason": f"crop file missing: {crop_path}"})
+            skipped_rows.append({"photo_id": sp.photo_id, "reason": f"crop file missing: {crop_path}"})
             continue
 
         points = np.asarray(sp.landmarks, dtype=np.float64)
@@ -159,8 +159,8 @@ def main(argv: list[str] | None = None) -> None:
                             "-- confirm this matches constants.IMG_HEIGHT/IMG_WIDTH", reported_shape)
 
         row = {
-            "image_id": sp.image_id,
-            "specimen_id": getattr(sp, "specimen_id", crop_row.get("specimen_id", "")),
+            "photo_id": sp.photo_id,
+            "inv_id": getattr(sp, "inv_id", crop_row.get("inv_id", "")),
             "crop_path": str(crop_path),
         }
         for i, (x, y) in enumerate(points):
@@ -181,7 +181,7 @@ def main(argv: list[str] | None = None) -> None:
 
     skipped_path = Path(args.skipped_output or f"{args.output}.skipped.csv")
     with open(skipped_path, "w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=["image_id", "reason"])
+        writer = csv.DictWriter(f, fieldnames=["photo_id", "reason"])
         writer.writeheader()
         writer.writerows(skipped_rows)
 
@@ -196,7 +196,7 @@ def main(argv: list[str] | None = None) -> None:
         for row in sample:
             points_xy = np.array([[row[f"x{i}"], row[f"y{i}"]] for i in range(n_landmarks)])
             save_debug_overlay(row["crop_path"], points_xy,
-                                overlays_dir / f"{row['image_id']}.png")
+                                overlays_dir / f"{row['photo_id']}.png")
         print(f"Wrote {len(sample)} debug overlays -> {overlays_dir}  "
               f"(LOOK AT THESE before training -- see the ASSUMPTION in the docstring)")
 

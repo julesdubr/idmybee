@@ -25,7 +25,7 @@ class TrainedModel:
     lda: LinearDiscriminantAnalysis
     level: str                           # "species" or "caste" (classified column)
     classes: list[str] = field(default_factory=list)
-    split: str | None = None             # --split used at training time (e.g. "train"), if any
+    dataset_label: str = ""              # dataset root's name used at training time (e.g. "collection")
     devices: list[str] | None = None     # --devices used at training time (e.g. ["P1","S1"]), if any
     source_tps: str = ""
     n_train: int = 0

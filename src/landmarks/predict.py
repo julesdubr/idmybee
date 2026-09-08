@@ -44,21 +44,21 @@ Two substantive fixes relative to the original notebook:
      than expected is explicitly marked SUSPECT with the reason, never
      just written through unflagged.
 
-`core.tps_io.ImageLandmarks.tps_id` must be an integer, and `write_tps`
-rewrites the whole file (no append): `image_id` (the Phase 0 content hash)
-therefore isn't directly usable as `tps_id`, and `specimen_id` doesn't work
-either (a single specimen often has several photos, which must stay
-separate TPS entries). `ImageLandmarks.from_image()` computes `tps_id` from
-`image_id` and persists it in the TPS (COMMENT=) along with `specimen_id`:
-later steps no longer need to join against crops.csv/manifest.csv to
-recover these identifiers.
+`core.tps_io.ImageLandmarks.tps_id` must be an integer, unique per photo
+WITHIN THE FILE, but carries no identity across runs -- `photo_id` (already
+a stable, unique string per photo, see tools/export_clean_dataset.py) is
+what this script actually tracks; `tps_id` is only assigned, sequentially,
+at checkpoint time (see `core.tps_io.assign_sequential_ids`).
+`ImageLandmarks.from_image()` persists `photo_id`/`inv_id` in the TPS
+(COMMENT=): later steps no longer need to join against crops.csv/
+manifest.csv to recover these identifiers.
 
 Since write_tps rewrites everything, this script works by "checkpoint": at
 startup, the existing TPS is reparsed to know what's already there; each
 processed image updates (or removes, if it now fails after having
-succeeded before) the corresponding entry in an in-memory dict; the TPS and
-landmarks.csv are rewritten in full every `--log-every` (and once more at
-the end).
+succeeded before) the corresponding entry in an in-memory dict (keyed by
+`photo_id`); the TPS and landmarks.csv are rewritten in full every
+`--log-every` (and once more at the end).
 
 Usage:
     python -m landmarks.predict data/Bombus --mode light \\
@@ -86,12 +86,12 @@ from landmarks_trainer.model import load_weights
 from utils.cli import add_dataset_positional, add_logging_args, log_level_from_args
 from utils.pipeline_io import RunCounter, format_duration, read_csv_rows, resolve_path, should_skip, update_pipeline_stats
 from utils.run_io import setup_console_logging
-from core.tps_io import ImageLandmarks, image_id_to_sid, parse_tps, write_tps
+from core.tps_io import ImageLandmarks, assign_sequential_ids, parse_tps, write_tps
 
 logger = logging.getLogger(__name__)
 
 LANDMARKS_FIELDS = [
-    "image_id", "specimen_id", "split", "status", "error_reason",
+    "photo_id", "inv_id", "status", "error_reason",
     "n_landmarks_found", "model_name", "processing_time_s", "processed_at",
 ]
 
@@ -166,12 +166,11 @@ def predict_landmarks_from_path(
 # Selecting the crops to process (Phase 1 -> Phase 2)
 # ---------------------------------------------------------------------------
 
-def load_target_crops(crops_path: Path, split_filter: str | None) -> list[dict]:
+def load_target_crops(crops_path: Path) -> list[dict]:
     """Reads crops.csv and keeps only the LATEST occurrence of each
-    image_id (crops.csv is append-only -- a Phase 1 retry/overwrite may
+    photo_id (crops.csv is append-only -- a Phase 1 retry/overwrite may
     have added a more recent row, different status, for the same
-    image_id). The status/split filter applies AFTER, on this latest known
-    state.
+    photo_id). The status filter applies AFTER, on this latest known state.
 
     A SKIPPED crop (file already present on disk at Phase 1, not a failed
     detection) is treated as an OK: the file is valid, only how it was
@@ -185,11 +184,8 @@ def load_target_crops(crops_path: Path, split_filter: str | None) -> list[dict]:
     if not crops:
         raise SystemExit(f"{crops_path} is empty -- nothing to process.")
 
-    latest_by_id = {row["image_id"]: row for row in crops}
-    return [
-        row for row in latest_by_id.values()
-        if row.get("status") in ("OK", "SKIPPED") and (not split_filter or row.get("split") == split_filter)
-    ]
+    latest_by_id = {row["photo_id"]: row for row in crops}
+    return [row for row in latest_by_id.values() if row.get("status") in ("OK", "SKIPPED")]
 
 
 # ---------------------------------------------------------------------------
@@ -208,13 +204,15 @@ def load_previous_status(landmarks_path: Path) -> dict[str, dict]:
             f"{landmarks_path} exists with a different schema -- move or delete it "
             f"before rerunning (expected columns: {LANDMARKS_FIELDS})."
         )
-    return {row["image_id"]: row for row in rows}
+    return {row["photo_id"]: row for row in rows}
 
 
-def load_working_tps(tps_path: Path) -> dict[int, ImageLandmarks]:
-    """Reparses the existing TPS (if any) into a {tps_id: ImageLandmarks}
-    dict. Malformed blocks are explicitly reported (never silently
-    swallowed), the rest is carried over as-is."""
+def load_working_tps(tps_path: Path) -> dict[str, ImageLandmarks]:
+    """Reparses the existing TPS (if any) into a {photo_id: ImageLandmarks}
+    dict -- photo_id, not tps_id: the TPS ID= field carries no identity
+    across runs (see core.tps_io module docstring), only photo_id does.
+    Malformed blocks are explicitly reported (never silently swallowed),
+    the rest is carried over as-is."""
     if not tps_path.exists():
         return {}
     specimens, errors = parse_tps(tps_path, strict=False)
@@ -224,12 +222,12 @@ def load_working_tps(tps_path: Path) -> dict[int, ImageLandmarks]:
             logger.warning("  specimen #%d, line %d: %s", e.specimen_index, e.line_no, e.message)
         if len(errors) > 10:
             logger.warning("  ... and %d more.", len(errors) - 10)
-    return {sp.tps_id: sp for sp in specimens}
+    return {sp.photo_id: sp for sp in specimens}
 
 
 def checkpoint(tps_path: Path, working_tps: dict, landmarks_path: Path, landmarks_status: dict) -> None:
     tps_path.parent.mkdir(parents=True, exist_ok=True)
-    write_tps(tps_path, sorted(working_tps.values(), key=lambda s: s.tps_id))
+    write_tps(tps_path, assign_sequential_ids(list(working_tps.values())))
 
     landmarks_path.parent.mkdir(parents=True, exist_ok=True)
     with landmarks_path.open("w", newline="", encoding="utf-8") as f:
@@ -253,7 +251,6 @@ def parse_args(argv: list[str] | None = None):
     parser.add_argument("--n-landmarks", type=int, default=19,
                          help="19 = Tancrede's full blueprint (LM3 included, current default). "
                               "Pass 18 to run an older/legacy model that doesn't predict LM3.")
-    parser.add_argument("--split", default=None, help="Process only one split (train/test/...). Empty = all.")
     parser.add_argument("--device", default=None, help="'cpu', 'cuda', etc. Empty = auto-detect.")
     parser.add_argument("--overwrite", action="store_true", help="Reprocess even if already logged.")
     parser.add_argument("--retry-failed", action="store_true", help="Retry images logged FAILED in a previous run.")
@@ -272,7 +269,7 @@ def main(argv: list[str] | None = None) -> None:
     stats_path = args.dataset / "pipeline_stats.csv"
     base_dir = Path(args.base_dir) if args.base_dir else None
 
-    targets = load_target_crops(crops_path, args.split)
+    targets = load_target_crops(crops_path)
     logger.info("Mode: %s", args.mode)
     logger.info("%d crop(s) to consider (%s)", len(targets), crops_path)
     if not targets:
@@ -299,11 +296,10 @@ def main(argv: list[str] | None = None) -> None:
     n_resumed = 0
 
     for row in targets:
-        image_id = row["image_id"]
-        tps_id = image_id_to_sid(image_id)
+        photo_id = row["photo_id"]
 
-        prev_row = landmarks_status.get(image_id)
-        if should_skip(prev_row, args.overwrite, args.retry_failed, output_exists=tps_id in working_tps):
+        prev_row = landmarks_status.get(photo_id)
+        if should_skip(prev_row, args.overwrite, args.retry_failed, output_exists=photo_id in working_tps):
             n_resumed += 1
             continue
 
@@ -318,18 +314,18 @@ def main(argv: list[str] | None = None) -> None:
         processing_time_s = time.perf_counter() - item_start
 
         if coords_xy is not None:
-            working_tps[tps_id] = ImageLandmarks.from_image(
+            working_tps[photo_id] = ImageLandmarks.from_image(
                 n_points=len(coords_xy), landmarks=coords_xy, image_path=str(crop_path),
-                image_id=image_id, specimen_id=row.get("specimen_id"),
+                tps_id=0, photo_id=photo_id, inv_id=row.get("inv_id"),
             )
-        elif tps_id in working_tps:
+        elif photo_id in working_tps:
             # succeeded in a previous run, fails this time (--overwrite):
             # drop the stale entry rather than leave a TPS that no longer
             # matches the logged status.
-            del working_tps[tps_id]
+            del working_tps[photo_id]
 
-        landmarks_status[image_id] = dict(
-            image_id=image_id, specimen_id=row.get("specimen_id"), split=row.get("split"),
+        landmarks_status[photo_id] = dict(
+            photo_id=photo_id, inv_id=row.get("inv_id"),
             status=status, error_reason=error_reason or "", n_landmarks_found=n_found,
             model_name=model_name, processing_time_s=f"{processing_time_s:.4f}",
             processed_at=datetime.now(timezone.utc).isoformat(timespec="seconds"),

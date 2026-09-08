@@ -1,0 +1,13 @@
+{
+  "base_root": {
+    "win32": "D:/",
+    "darwin": "/Volumes/EXT DATA/"
+  },
+  "roots": [
+    {
+      "path": "IDMB/images/Bombus/collection",
+      "source_type": "collection",
+      "photographer_subfolder": false
+    }
+  ]
+}

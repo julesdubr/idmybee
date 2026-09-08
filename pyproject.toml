@@ -24,6 +24,7 @@ dependencies = [
     "pillow",
     "pillow-heif",
     "open-clip-torch",
+    "streamlit",
 ]
 
 [project.optional-dependencies]

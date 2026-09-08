@@ -212,7 +212,6 @@ def main(argv: list[str] | None = None) -> None:
     dataset_root = Path(params["dataset"])
     specimens, meta_df = load_dataset(
         dataset_root,
-        split=params.get("resolved_split") or "all",
         devices=params.get("devices"),
         species=params.get("species"),
         castes=params.get("castes"),

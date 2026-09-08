@@ -1,0 +1,18 @@
+{
+  "base_root": {
+    "win32": "D:/",
+    "darwin": "/Volumes/EXT DATA/"
+  },
+  "roots": [
+    {
+      "path": "IDMB/images/Tancrede/collection",
+      "source_type": "collection",
+      "photographer_subfolder": false
+    },
+    {
+      "path": "IDMB/images/Tancrede/terrain",
+      "source_type": "terrain",
+      "photographer_subfolder": true
+    }
+  ]
+}

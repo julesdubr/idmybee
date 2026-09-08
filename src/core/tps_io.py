@@ -7,22 +7,24 @@ Format, one block per specimen:
     ...              (n_points lines "x y")
     IMAGE=relative/path/to/image.jpg
     ID=0
-    COMMENT=image_id=...;specimen_id=...     (optional, our own convention)
+    COMMENT=photo_id=...;inv_id=...     (required, our own convention)
 
 An ImageLandmarks represents the landmarks of ONE PHOTO (one row of
-crops.csv/landmarks.csv), not of a biological specimen: a single
-specimen_id can have several photos, hence several TPS entries.
-`tps_id` (the ID= field) must be an integer, unique per photo -- see
-image_id_to_sid() below.
+crops.csv/landmarks.csv), not of a biological specimen: a single inv_id
+can have several photos, hence several TPS entries.
 
-`image_id` (the real key, a hex string) and `specimen_id` are not standard
-tps fields. We persist them in a COMMENT= -- a tps field meant for free
-text, explicitly ignored by geomorph::readland.tps ("all other
-information... comments, variables, radii, etc. is ignored"), so it's safe
-for R compatibility -- to avoid having to join images.csv/specimens.csv on
-every read. A TPS written before this field existed (or by a third-party
-tool) won't have a COMMENT=: image_id/specimen_id then stay None after
-parse_tps, and the caller joins via utils.dataset as before.
+`tps_id` (the ID= field) is just a TPS-format requirement (must be a
+unique integer per photo *within one file*) -- it carries no identity
+across files/runs. `photo_id` (the real, human-readable, stable key -- see
+tools/export_clean_dataset.py) and `inv_id` are not standard tps fields.
+We persist them in a COMMENT= -- a tps field meant for free text,
+explicitly ignored by geomorph::readland.tps ("all other information...
+comments, variables, radii, etc. is ignored"), so it's safe for R
+compatibility. Unlike an earlier, hash-based `image_id` scheme, this
+COMMENT= is the SOLE join mechanism now (see assign_sequential_ids() below
+for how `ID=` is assigned) -- a TPS missing it (written before this
+convention, or by a third-party tool) simply can't be joined back to a
+manifest by this codebase.
 
 parse_tps never raises in non-strict mode: malformed blocks are skipped
 and returned in `errors` (never silently swallowed). In strict mode
@@ -31,7 +33,7 @@ and returned in `errors` (never silently swallowed). In strict mode
 from __future__ import annotations
 
 import logging
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 
 import numpy as np
@@ -52,22 +54,23 @@ class ImageLandmarks:
     n_points: int
     landmarks: np.ndarray           # (n_points, 2)
     image_path: str
-    tps_id: int                     # raw TPS ID= value -- unique integer per PHOTO
-    image_id: str | None = None     # canonical identifier (hex hash, Phase 0) if known
-    specimen_id: str | None = None  # idem -- None if it still needs joining via images.csv/specimens.csv
+    tps_id: int                     # raw TPS ID= value -- unique integer per photo WITHIN THIS FILE only
+    photo_id: str | None = None     # canonical per-photo identifier if known
+    inv_id: str | None = None       # canonical specimen identifier -- None if still needs joining
 
     @classmethod
     def from_image(
         cls, n_points: int, landmarks: np.ndarray, image_path: str,
-        image_id: str, specimen_id: str | None = None,
+        tps_id: int, photo_id: str, inv_id: str | None = None,
     ) -> "ImageLandmarks":
-        """Build from a known image_id (e.g. predict_unet.py, which already
-        has it via crops.csv): computes tps_id automatically and persists
-        image_id/specimen_id in the file (COMMENT=) so future reads no
-        longer need to join against the manifest."""
+        """Build from a known photo_id (e.g. landmarks/predict.py, which
+        already has it via crops.csv): persists photo_id/inv_id in the file
+        (COMMENT=) so future reads no longer need to join against the
+        manifest. `tps_id` is caller-supplied (a placeholder is fine --
+        see assign_sequential_ids() for how it's finalized at write time)."""
         return cls(
             n_points=n_points, landmarks=landmarks, image_path=image_path,
-            tps_id=image_id_to_sid(image_id), image_id=image_id, specimen_id=specimen_id,
+            tps_id=tps_id, photo_id=photo_id, inv_id=inv_id,
         )
 
 
@@ -82,23 +85,18 @@ class TpsParseException(Exception):
     pass
 
 
-def image_id_to_sid(image_id: str) -> int:
-    """Encode an image_id (hex hash, e.g. truncated sha256) as an integer
-    usable as ImageLandmarks.tps_id / TPS ID=. Used when writing, and to
-    join a TPS to images.csv when image_id isn't already known (no
-    COMMENT=) -- always in this direction (image_id -> integer), never the
-    reverse for comparison (see sid_to_image_id)."""
-    return int(image_id, 16)
+def assign_sequential_ids(specimens: list[ImageLandmarks]) -> list[ImageLandmarks]:
+    """Returns a copy of `specimens` with `tps_id` reassigned 1..N, sorted
+    by `photo_id`.
 
-
-def sid_to_image_id(sid: int) -> str:
-    """Best-effort inverse of image_id_to_sid, for display/debugging ONLY --
-    never for joining data. `hex(sid)[2:]` does not restore any leading
-    zeros the original image_id may have had, so it can differ from the
-    real image_id even when sid is correct. To recover a reliable
-    image_id: COMMENT= if present, otherwise a join via images.csv
-    (image_id_to_sid applied to each row, never the reverse)."""
-    return hex(sid)[2:]
+    `ID=` is purely a TPS-format requirement (a unique int per block in
+    the file) -- this is the only place it gets assigned. Callers that
+    need a different row order for their TPS (e.g.
+    tools/export_final_landmarks.py, which numbers by biological_data.csv
+    row order) should not use this helper and assign `tps_id` themselves.
+    """
+    ordered = sorted(specimens, key=lambda sp: sp.photo_id or "")
+    return [replace(sp, tps_id=i) for i, sp in enumerate(ordered, start=1)]
 
 
 def _parse_comment(comment: str) -> dict[str, str]:
@@ -117,12 +115,12 @@ def _parse_comment(comment: str) -> dict[str, str]:
     return fields
 
 
-def _format_comment(image_id: str | None, specimen_id: str | None) -> str | None:
+def _format_comment(photo_id: str | None, inv_id: str | None) -> str | None:
     parts = []
-    if image_id is not None:
-        parts.append(f"image_id={image_id}")
-    if specimen_id is not None:
-        parts.append(f"specimen_id={specimen_id}")
+    if photo_id is not None:
+        parts.append(f"photo_id={photo_id}")
+    if inv_id is not None:
+        parts.append(f"inv_id={inv_id}")
     return ";".join(parts) if parts else None
 
 
@@ -188,7 +186,7 @@ def parse_tps(path: str | Path, strict: bool = True) -> tuple[list[ImageLandmark
             block_ok = False
 
         image_path, tps_id = "", None
-        image_id, specimen_id = None, None
+        photo_id, inv_id = None, None
         while i < n_lines:
             meta = lines[i].strip()
             if not meta:
@@ -206,8 +204,8 @@ def parse_tps(path: str | Path, strict: bool = True) -> tuple[list[ImageLandmark
                     fail_or_record(f"non-integer ID: {meta!r}", i + 1)
             elif upper.startswith("COMMENT="):
                 fields = _parse_comment(meta.split("=", 1)[1].strip())
-                image_id = fields.get("image_id", image_id)
-                specimen_id = fields.get("specimen_id", specimen_id)
+                photo_id = fields.get("photo_id", photo_id)
+                inv_id = fields.get("inv_id", inv_id)
             i += 1
 
         if tps_id is None:
@@ -217,7 +215,7 @@ def parse_tps(path: str | Path, strict: bool = True) -> tuple[list[ImageLandmark
         if block_ok:
             specimens.append(ImageLandmarks(
                 n_points, np.array(coords, dtype=float), image_path, tps_id,
-                image_id=image_id, specimen_id=specimen_id,
+                photo_id=photo_id, inv_id=inv_id,
             ))
         specimen_index += 1
 
@@ -228,7 +226,7 @@ def parse_tps(path: str | Path, strict: bool = True) -> tuple[list[ImageLandmark
 
 def write_tps(path: str | Path, specimens: list[ImageLandmarks]) -> None:
     """Write a list of ImageLandmarks to .tps format (CRLF). A COMMENT= is
-    added if image_id and/or specimen_id are set (ignored by
+    added if photo_id and/or inv_id are set (ignored by
     geomorph::readland.tps, so safe for R compatibility)."""
     with open(path, "w", newline="\r\n") as f:
         for sp in specimens:
@@ -237,6 +235,6 @@ def write_tps(path: str | Path, specimens: list[ImageLandmarks]) -> None:
                 f.write(f"{x:.4f} {y:.4f}\n")
             f.write(f"IMAGE={sp.image_path}\n")
             f.write(f"ID={sp.tps_id}\n")
-            comment = _format_comment(sp.image_id, sp.specimen_id)
+            comment = _format_comment(sp.photo_id, sp.inv_id)
             if comment:
                 f.write(f"COMMENT={comment}\n")

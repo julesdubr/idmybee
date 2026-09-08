@@ -5,7 +5,7 @@ import pytest
 from core.tps_io import (
     ImageLandmarks,
     TpsParseException,
-    image_id_to_sid,
+    assign_sequential_ids,
     parse_tps,
     write_tps,
 )
@@ -15,9 +15,9 @@ SAMPLE = [
         n_points=3,
         landmarks=np.array([[1.0, 2.0], [3.5, 4.5], [-1.0, 0.0]]),
         image_path="crops/a.jpg",
-        tps_id=image_id_to_sid("deadbeef00000001"),
-        image_id="deadbeef00000001",
-        specimen_id="SPEC001",
+        tps_id=1,
+        photo_id="ARLY_0001_P_1",
+        inv_id="ARLY_0001",
     ),
     ImageLandmarks(
         n_points=3,
@@ -38,17 +38,24 @@ def test_write_then_parse_round_trip(tmp_path):
     assert len(parsed) == 2
     np.testing.assert_allclose(parsed[0].landmarks, SAMPLE[0].landmarks)
     assert parsed[0].image_path == "crops/a.jpg"
-    assert parsed[0].image_id == "deadbeef00000001"
-    assert parsed[0].specimen_id == "SPEC001"
-    # entry without image_id/specimen_id: no COMMENT= written, stays None on reread
-    assert parsed[1].image_id is None
-    assert parsed[1].specimen_id is None
+    assert parsed[0].photo_id == "ARLY_0001_P_1"
+    assert parsed[0].inv_id == "ARLY_0001"
+    # entry without photo_id/inv_id: no COMMENT= written, stays None on reread
+    assert parsed[1].photo_id is None
+    assert parsed[1].inv_id is None
     assert parsed[1].tps_id == 42
 
 
-def test_image_id_to_sid_is_injective_for_hex_strings():
-    assert image_id_to_sid("00ff") != image_id_to_sid("ff00")
-    assert image_id_to_sid("00ff") == 255
+def test_assign_sequential_ids_orders_by_photo_id():
+    specimens = [
+        ImageLandmarks(n_points=1, landmarks=np.zeros((1, 2)), image_path="c.jpg", tps_id=99, photo_id="B_0001_P_1"),
+        ImageLandmarks(n_points=1, landmarks=np.zeros((1, 2)), image_path="a.jpg", tps_id=99, photo_id="A_0001_P_1"),
+    ]
+
+    result = assign_sequential_ids(specimens)
+
+    assert [sp.photo_id for sp in result] == ["A_0001_P_1", "B_0001_P_1"]
+    assert [sp.tps_id for sp in result] == [1, 2]
 
 
 def test_parse_tps_strict_raises_on_malformed_block(tmp_path):

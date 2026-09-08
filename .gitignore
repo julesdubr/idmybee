@@ -1,16 +1,25 @@
 # Python
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
-*.dylib
-*.pyd
-*.egg
 *.egg-info/
-dist/
-build/
 .eggs/
-.python-version
+build/
+dist/
+
+# Test / tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Editors / OS
+.DS_Store
+.vscode/
+.idea/
+
+# Virtual environments (mamba/conda env itself lives outside the repo,
+# this only guards against an accidental venv/ created inside it)
 .env
 .venv/
 venv/
@@ -27,7 +36,6 @@ logs/
 *.log
 
 # Images
-data/images/
 *.png
 *.jpg
 *.jpeg
@@ -36,21 +44,13 @@ data/images/
 *.tif
 *.tiff
 
+# Copied/cropped image directories -- these are symlinks/junctions onto an
+# external volume (see PIPELINE.md "External storage", tools/link_external_data.py),
+# machine-specific and never committed regardless of which dataset they sit under.
+data/**/images/
+
 # labels
 *.txt
 
 # Jupyter Notebook
 .ipynb_checkpoints/
-
-# VS Code
-.vscode/
-
-# Mac
-.DS_Store
-
-# PyCharm
-.idea/
-*.iml
-
-# Gabriel notebooks
-bwm_gabriel/

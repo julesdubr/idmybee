@@ -1,0 +1,18 @@
+{
+  "dataset": "data/Bombus/collection",
+  "devices": null,
+  "species": null,
+  "castes": null,
+  "exclude_outliers": true,
+  "non_strict": false,
+  "landmarks_tps": null,
+  "landmarks_status_csv": null,
+  "run_label": null,
+  "level": "species",
+  "lda_components": 2,
+  "no_save_model": false,
+  "verbose": false,
+  "quiet": false,
+  "run_id": "species_collection",
+  "family": "lda"
+}

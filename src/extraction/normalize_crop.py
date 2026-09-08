@@ -70,6 +70,19 @@ def read_image(path: Path) -> np.ndarray | None:
         return None
 
 
+def read_image_size(path: Path) -> tuple[int, int] | None:
+    """Returns (width, height) of an image without decoding its pixels
+    (PIL only reads the header for this). Used by reprojection, which needs
+    the raw image's dimensions to rebuild its OBB in pixels but never
+    touches its content -- unlike read_image(), no cv2/full-decode fallback
+    is attempted: a header PIL can't parse is treated as unreadable."""
+    try:
+        with Image.open(path) as img:
+            return img.size
+    except Exception:
+        return None
+
+
 def normalized_points_to_pixels(row: dict, width: int, height: int) -> np.ndarray | None:
     """Converts normalized x1..y4 (0..1) into four pixel corners."""
     try:
@@ -260,14 +273,14 @@ def normalize_one(
     return balanced, aspect_ratio
 
 
-def build_output_path(output_root: Path, source: dict, image_id: str) -> Path:
-    """Builds the `{output_root}/{split}/{specimen}_{device}{shot}.jpg` path."""
-    split = source.get("split") or "split"
-    specimen = source.get("specimen_id") or "unknown"
-    device = source.get("device_type") or source.get("collector") or "x"
-    shot = source.get("shot_index") or "0"
+def build_output_path(output_root: Path, photo_id: str) -> Path:
+    """Builds the `{output_root}/{photo_id}.jpg` path.
 
-    return output_root / split / f"{specimen}-{device}{shot}.jpg"
+    `photo_id` (`<inv_id>_<device_type>_<n>`, see
+    tools/export_clean_dataset.py) is already globally unique and
+    human-readable -- no need to also derive a filename from
+    specimen/device/shot or bucket by split."""
+    return output_root / f"{photo_id}.jpg"
 
 
 def write_normalized_crop(final: np.ndarray, out_path: Path, overwrite: bool = False) -> tuple[str, str]:
@@ -433,6 +446,28 @@ def apply_wing_transform_to_points(
     return crop_xy
 
 
+def apply_wing_transform_to_points_inverse(
+    crop_xy: np.ndarray, transform: WingTransform, out_width: int, out_height: int,
+) -> np.ndarray:
+    """Inverse of apply_wing_transform_to_points: projects points (N,2) from
+    final crop space (same space as the .jpg files written by
+    write_normalized_crop) back into raw image space (same space as the OBB
+    corners passed to compute_wing_transform).
+
+    Exact algebraic inverse of the forward transform -- undoes the
+    out_width/out_height rescale and crop_box translation, then inverts the
+    rotation matrix (cv2.invertAffineTransform). Like the forward direction,
+    an out-of-bounds result is returned as-is, not clamped."""
+    ix0, iy0, ix1, iy1 = transform.crop_box
+    scale_x = out_width / (ix1 - ix0)
+    scale_y = out_height / (iy1 - iy0)
+    rotated = np.empty_like(crop_xy, dtype=np.float32)
+    rotated[:, 0] = crop_xy[:, 0] / scale_x + ix0
+    rotated[:, 1] = crop_xy[:, 1] / scale_y + iy0
+    inverse_matrix = cv2.invertAffineTransform(transform.matrix)
+    return cv2.transform(rotated[None, :, :], inverse_matrix)[0]
+
+
 def parse_args(argv: list[str] | None = None):
     parser = argparse.ArgumentParser(description="Crop normalization to 512x256 (batch mode).")
     add_dataset_positional(parser)
@@ -448,11 +483,10 @@ def parse_args(argv: list[str] | None = None):
     return parser.parse_args(argv)
 
 
-def new_row(image_id: str, source: dict | None, detection: dict) -> dict:
+def new_row(photo_id: str, source: dict | None, detection: dict) -> dict:
     return {
-        "image_id": image_id,
-        "specimen_id": (source or {}).get("specimen_id", detection.get("specimen_id", "")),
-        "split": (source or {}).get("split", detection.get("split", "")),
+        "photo_id": photo_id,
+        "inv_id": (source or {}).get("inv_id", detection.get("inv_id", "")),
         "status": "FAILED",
         "error_reason": "",
         "aspect_ratio": "",
@@ -476,7 +510,7 @@ def normalize_row(row: dict, image: np.ndarray, detection: dict, source: dict, o
         row["error_reason"] = "normalization_failed"
         return
 
-    out_path = build_output_path(output_root, source, row["image_id"])
+    out_path = build_output_path(output_root, row["photo_id"])
     status, error_reason = write_normalized_crop(final, out_path, overwrite=args.overwrite)
 
     row["status"] = status
@@ -501,7 +535,7 @@ def main(argv: list[str] | None = None) -> None:
     stats_path = Path(args.dataset) / "pipeline_stats.csv"
 
     images = {
-        row["image_id"]: row for row in read_csv_rows(Path(args.dataset / "manifest.csv"))
+        row["photo_id"]: row for row in read_csv_rows(Path(args.dataset / "manifest.csv"))
     }
     detections = read_csv_rows(detection_csv)
 
@@ -520,17 +554,17 @@ def main(argv: list[str] | None = None) -> None:
 
     for index, detection in enumerate(detections, start=1):
         start = time.perf_counter()
-        image_id = detection.get("image_id", "")
-        source = images.get(image_id)
-        row = new_row(image_id, source, detection)
+        photo_id = detection.get("photo_id", "")
+        source = images.get(photo_id)
+        row = new_row(photo_id, source, detection)
 
         if source is None:
-            row["error_reason"] = "image_id_missing_from_manifest"
+            row["error_reason"] = "photo_id_missing_from_manifest"
         elif detection.get("status") != "OK":
             row["error_reason"] = "detection_not_OK"
         else:
-            raw_path = resolve_path(source["raw_path"], base_dir)
-            image = read_image(raw_path)
+            image_path = resolve_path(source["path"], base_dir)
+            image = read_image(image_path)
             if image is None:
                 row["error_reason"] = "unreadable_image_or_unsupported_format"
             else:

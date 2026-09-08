@@ -22,6 +22,17 @@ PIPELINE_STATS_FIELDS = [
     "mean_time_s", "total_time_s", "updated_at",
 ]
 
+# Canonical location of tools/export_final_landmarks.py's package, relative
+# to a dataset root. Distinct from the root's own biological_data.csv
+# (specimen-level, from tools/export_clean_dataset.py): the file of the
+# same name in this folder is photo-level, row-aligned to the exported TPS.
+DATASET_EXPORT_DIRNAME = "export"
+
+
+def dataset_export_dir(dataset: Path) -> Path:
+    """R-facing landmarks package for this dataset: <dataset>/export/."""
+    return Path(dataset) / DATASET_EXPORT_DIRNAME
+
 
 def read_csv_rows(path: Path) -> list[dict]:
     """Load any CSV into a list of dicts."""

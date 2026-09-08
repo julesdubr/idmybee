@@ -1,0 +1,3 @@
+step,approach,total,ok,suspect,skipped,failed,mean_time_s,total_time_s,updated_at
+detection,light,613,583,0,0,30,0.1070,65.5979,2026-09-03T09:26:47+00:00
+normalization,light,613,583,0,0,30,0.0428,26.2137,2026-09-03T09:31:58+00:00

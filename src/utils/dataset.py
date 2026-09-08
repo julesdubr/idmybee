@@ -2,23 +2,27 @@
 Loads landmarks + biological metadata for classifiers/* and
 analysis/variance_report.py.
 
-Requires, under `root` (e.g. data/Bombus/):
-    specimens.csv                       specimen_id, species, caste, is_labeled
-    manifest.csv                        image_id, specimen_id, split, device_type, shot_index
+Requires, under `root` (e.g. data/clean/collection/, or a
+`tools/combine_manifests.py` output combining several sources):
+    biological_data.csv                 inv_id, species, caste, ... (see
+                                         tools/export_clean_dataset.py)
+    manifest.csv                        photo_id, inv_id, device_type,
+                                         device, photo_index, path, status
     landmarks/landmarks_numbered.tps    landmarks, all specimens
     landmarks/landmarks_numbered.csv    OK/SUSPECT/FAILED status per photo (tps_id, status)
 
 The TPS and its status CSV can be overridden (landmarks_tps,
 landmarks_status_csv) to evaluate a different landmark source on the same
-specimens.csv/manifest.csv. Joined via COMMENT= (image_id/specimen_id) if
-present in the TPS, otherwise via ID=/tps_id in manifest.csv.
+biological_data.csv/manifest.csv. Joined via COMMENT= (photo_id/inv_id) --
+required, see core.tps_io module docstring: a TPS with no COMMENT= (e.g.
+from a third-party tool) simply can't be joined by this function.
 
 One output row = one photo, not one specimen (an individual often has
-several photos). meta_df: specimen_id, species, caste, groupe
-(species_caste), device, device_tag, split.
+several photos). meta_df: inv_id, species, caste, groupe (species_caste),
+device_type, device, device_tag.
 
 Usage:
-    specimens, meta_df = load_dataset("data/Bombus", split="train")
+    specimens, meta_df = load_dataset("data/clean/collection")
 """
 from __future__ import annotations
 
@@ -29,7 +33,7 @@ from typing import Sequence
 
 import pandas as pd
 
-from core.tps_io import ImageLandmarks, image_id_to_sid, parse_tps
+from core.tps_io import ImageLandmarks, parse_tps
 
 logger = logging.getLogger(__name__)
 
@@ -51,7 +55,7 @@ def target_groupe(meta_df: pd.DataFrame, level: str) -> pd.Series:
 
 
 def load_unlabeled_tps(tps_path: str | Path, strict: bool = True) -> list[ImageLandmarks]:
-    """Reads a TPS with no biological join (e.g. a field photo, outside specimens.csv)."""
+    """Reads a TPS with no biological join (e.g. a field photo, outside biological_data.csv)."""
     specimens, errors = parse_tps(tps_path, strict=strict)
     if errors:
         logger.warning("%d TPS parsing error(s) (see above)", len(errors))
@@ -68,9 +72,9 @@ def _drop_invalid_landmark_counts(
     keep_mask = [sp.n_points == n_points for sp in specimens]
     n_dropped = sum(not k for k in keep_mask)
     if n_dropped:
-        dropped_ids = [sp.tps_id for sp, keep in zip(specimens, keep_mask) if not keep]
+        dropped_ids = [sp.photo_id for sp, keep in zip(specimens, keep_mask) if not keep]
         logger.warning(
-            "%d specimen(s) dropped: inconsistent landmark count (%d points expected) -- tps_id: %s%s",
+            "%d specimen(s) dropped: inconsistent landmark count (%d points expected) -- photo_id: %s%s",
             n_dropped, n_points, dropped_ids[:10], ", ..." if len(dropped_ids) > 10 else "",
         )
     specimens = [sp for sp, keep in zip(specimens, keep_mask) if keep]
@@ -78,11 +82,11 @@ def _drop_invalid_landmark_counts(
     return specimens, meta_df
 
 
-def _device_tag(device_type: str, shot_index) -> str:
+def _device_tag(device_type: str, photo_index) -> str:
     """Device+shot tag, e.g. "P1", "S2" (see --devices)."""
     device_type = "" if pd.isna(device_type) else str(device_type)
-    shot_index = "" if pd.isna(shot_index) else str(int(shot_index))
-    return device_type + shot_index
+    photo_index = "" if pd.isna(photo_index) else str(int(photo_index))
+    return device_type + photo_index
 
 
 def _apply_mask(
@@ -109,15 +113,14 @@ def restrict_to_complete_devices(
     both the biological levels and the device effect estimate.
     """
     required = set(devices)
-    tag_sets = meta_df.groupby("specimen_id")["device_tag"].agg(set)
+    tag_sets = meta_df.groupby("inv_id")["device_tag"].agg(set)
     complete_ids = set(tag_sets[tag_sets.apply(required.issubset)].index)
-    mask = meta_df["specimen_id"].isin(complete_ids).tolist()
+    mask = meta_df["inv_id"].isin(complete_ids).tolist()
     return _apply_mask(specimens, meta_df, mask, f"complete devices coverage={sorted(required)}")
 
 
 def load_dataset(
     root: str | Path,
-    split: str = "all",
     devices: Sequence[str] | None = None,
     species: Sequence[str] | None = None,
     castes: Sequence[str] | None = None,
@@ -127,9 +130,8 @@ def load_dataset(
     landmarks_tps: str | Path | None = None,
     landmarks_status_csv: str | Path | None = None,
 ) -> tuple[list[ImageLandmarks], pd.DataFrame]:
-    """Loads a dataset (TPS + specimens.csv + manifest.csv) and applies the filters.
+    """Loads a dataset (TPS + biological_data.csv + manifest.csv) and applies the filters.
 
-    split: value of manifest.csv's 'split' column, or "all".
     devices: device_tags to keep (e.g. ["P1", "S1"]). None = keep all.
     species / castes: whitelist of values to keep. None = keep all.
     exclude_outliers: excludes SUSPECT/FAILED photos (see landmarks_status_csv).
@@ -137,7 +139,7 @@ def load_dataset(
     labeled_only: drops photos with no known species (default: True).
     landmarks_tps / landmarks_status_csv: override
         root/landmarks/landmarks_numbered.{tps,csv} (e.g. to evaluate
-        another landmark source on the same specimens.csv/manifest.csv).
+        another landmark source on the same biological_data.csv/manifest.csv).
 
     Also systematically drops specimens whose landmark count differs from
     the majority scheme (GPA requires a homogeneous point count).
@@ -146,19 +148,18 @@ def load_dataset(
     tps_path = Path(landmarks_tps) if landmarks_tps is not None else root / "landmarks" / "landmarks_numbered.tps"
     specimens = load_unlabeled_tps(tps_path, strict=strict)
 
-    specimens_df = pd.read_csv(root / "specimens.csv")
-    required = {"specimen_id", "species", "caste"}
+    specimens_df = pd.read_csv(root / "biological_data.csv")
+    required = {"inv_id", "species", "caste"}
     missing = required - set(specimens_df.columns)
     if missing:
-        raise ValueError(f"Missing columns in {root / 'specimens.csv'}: {missing}")
-    specimens_df = specimens_df.set_index("specimen_id", drop=False)
+        raise ValueError(f"Missing columns in {root / 'biological_data.csv'}: {missing}")
+    specimens_df = specimens_df.set_index("inv_id", drop=False)
 
     manifest_df = pd.read_csv(root / "manifest.csv")
     manifest_df["_device_tag"] = [
-        _device_tag(d, s) for d, s in zip(manifest_df["device_type"], manifest_df["shot_index"])
+        _device_tag(d, p) for d, p in zip(manifest_df["device_type"], manifest_df["photo_index"])
     ]
-    manifest_df["_tps_id"] = manifest_df["image_id"].apply(image_id_to_sid)
-    manifest_df = manifest_df.set_index("_tps_id", drop=True)
+    manifest_df = manifest_df.set_index("photo_id", drop=False)
 
     exclude_set: set[int] = set()
     if exclude_outliers:
@@ -192,26 +193,24 @@ def load_dataset(
             excluded += 1
             continue
 
-        specimen_id = sp.specimen_id
-        img_row = manifest_df.loc[sp.tps_id] if sp.tps_id in manifest_df.index else None
-        if specimen_id is None and img_row is not None:
-            specimen_id = img_row["specimen_id"]
-        if specimen_id is None or specimen_id not in specimens_df.index:
+        inv_id = sp.inv_id
+        img_row = manifest_df.loc[sp.photo_id] if sp.photo_id is not None and sp.photo_id in manifest_df.index else None
+        if inv_id is None or inv_id not in specimens_df.index:
             unmatched += 1
             continue
 
-        row = specimens_df.loc[specimen_id].copy()
+        row = specimens_df.loc[inv_id].copy()
         if img_row is not None:
-            row["device"] = img_row["device_type"]
+            row["device_type"] = img_row["device_type"]
+            row["device"] = img_row.get("device")
             row["device_tag"] = img_row["_device_tag"]
-            row["split"] = img_row["split"]
         kept_specimens.append(sp)
         kept_rows.append(row)
 
     if excluded:
         logger.info("Excluded %d SUSPECT/FAILED photo(s) via --exclude-outliers", excluded)
     if unmatched:
-        logger.warning("%d photo(s) with no resolved specimen_id or missing from specimens.csv, ignored", unmatched)
+        logger.warning("%d photo(s) with no resolved inv_id or missing from biological_data.csv, ignored", unmatched)
     if not kept_specimens:
         raise ValueError(f"No specimen loaded from {root} -- check filters and files.")
 
@@ -222,10 +221,6 @@ def load_dataset(
     if labeled_only:
         mask = meta_df["species"].notna().tolist()
         kept_specimens, meta_df = _apply_mask(kept_specimens, meta_df, mask, "labeled_only=True")
-
-    if split and split != "all":
-        mask = (meta_df["split"] == split).tolist()
-        kept_specimens, meta_df = _apply_mask(kept_specimens, meta_df, mask, f"split={split}")
 
     if devices:
         mask = meta_df["device_tag"].isin(devices).tolist()
@@ -240,7 +235,7 @@ def load_dataset(
         kept_specimens, meta_df = _apply_mask(kept_specimens, meta_df, mask, f"castes={list(castes)}")
 
     if not kept_specimens:
-        raise ValueError("No specimen remaining after filtering -- check split/devices/species/castes.")
+        raise ValueError("No specimen remaining after filtering -- check devices/species/castes.")
 
     logger.info("%d photo(s) loaded from %s", len(kept_specimens), root)
     return kept_specimens, meta_df

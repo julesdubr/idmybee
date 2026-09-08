@@ -4,7 +4,7 @@ classifiers/predict.py (batch): same columns, so
 analysis/classification_report.py can read either without distinction.
 
 Columns produced by build_predictions_df():
-    tps_id, image_id, specimen_id, image_path,
+    tps_id, photo_id, inv_id, image_path,
     predicted_<level>, confidence, second_choice, second_confidence,
     third_choice, third_confidence,
     [procrustes_distance]                 -- only if provided (predict.py)
@@ -40,8 +40,8 @@ def build_predictions_df(
 
     columns = {
         "tps_id": [sp.tps_id for sp in specimens],
-        "image_id": [sp.image_id for sp in specimens],
-        "specimen_id": [sp.specimen_id for sp in specimens],
+        "photo_id": [sp.photo_id for sp in specimens],
+        "inv_id": [sp.inv_id for sp in specimens],
         "image_path": [sp.image_path for sp in specimens],
         f"predicted_{level}": predicted,
         "confidence": confidence,
@@ -95,7 +95,7 @@ def print_predictions_report(df: pd.DataFrame, level: str, low_confidence_thresh
     )
     low_conf = df[df["confidence"] < low_confidence_threshold]
     if len(low_conf):
-        cols = [c for c in ["tps_id", "specimen_id", "image_path", f"predicted_{level}", "confidence", "second_choice"]
+        cols = [c for c in ["tps_id", "inv_id", "image_path", f"predicted_{level}", "confidence", "second_choice"]
                 if c in low_conf.columns]
         print(
             f"\n{len(low_conf)} prediction(s) below the confidence threshold "

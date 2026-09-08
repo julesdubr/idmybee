@@ -1,0 +1,5 @@
+step,approach,total,ok,suspect,skipped,failed,mean_time_s,total_time_s,updated_at
+detection,light,2771,2733,0,0,38,0.1284,355.8625,2026-09-07T21:02:01+00:00
+normalization,light,2771,2733,0,0,38,0.1119,310.1777,2026-09-07T21:07:11+00:00
+landmarks,weights,2733,2620,113,0,0,0.0957,261.6380,2026-09-07T21:18:08+00:00
+renumbering,hungarian_umeyama,2733,2600,20,0,113,0.0009,2.4033,2026-09-07T21:18:10+00:00

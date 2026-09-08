@@ -1,0 +1,88 @@
+"""train_dataset.py
+Process ANY clean dataset (detection -> crop -> landmarks -> renumbering),
+write its R-facing landmarks package to <dataset>/export/, then fit a
+GPA-PCA-LDA model on it.
+
+Dataset-agnostic: pass the dataset root as the positional argument -- there
+is no default, and nothing here is specific to collection vs terrain vs a
+future source. See tools/predict_dataset.py to classify another dataset
+with the model this produces.
+
+Stages (each stage's own main(argv), in-process -- see
+utils.landmarking_pipeline and PIPELINE.md):
+    extraction.detect_wing            -> <dataset>/extraction/<mode>/detection.csv
+    extraction.normalize_crop         -> <dataset>/extraction/<mode>/images/, crops.csv
+    landmarks.predict                 -> <dataset>/landmarks/landmarks.{tps,csv}
+    landmarks.renumber                -> <dataset>/landmarks/landmarks_numbered.{tps,csv}
+    tools.export_final_landmarks      -> <dataset>/export/
+    classifiers.train                 -> data/models/lda/<run_id>/train/model.joblib
+
+Usage:
+    python -m tools.train_dataset data/Bombus/collection \\
+        --unet-model data/models/unet_landmarks/2026-08-29_131929/weights.pt
+
+    python -m tools.train_dataset data/Bombus/terrain \\
+        --unet-model data/models/unet_landmarks/legacy_baseline/weights.pt \\
+        --n-landmarks 18 --overwrite
+"""
+from __future__ import annotations
+
+import argparse
+
+from classifiers.train import main as train_main
+from utils.cli import add_dataset_args, add_dataset_positional, add_logging_args, log_level_from_args
+from utils.landmarking_pipeline import add_landmarking_args, run_export, run_landmarking, verbosity_flags
+from utils.run_io import setup_console_logging
+
+
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Process a dataset, export its landmarks package, and fit an LDA model."
+    )
+    add_dataset_positional(parser, help="Clean dataset root (contains manifest.csv + biological_data.csv).")
+    add_landmarking_args(parser)
+    add_dataset_args(parser)
+    parser.add_argument("--level", default="species", choices=["species", "caste"], help="classifiers.train --level.")
+    parser.add_argument("--lda-components", type=int, default=2)
+    add_logging_args(parser)
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> None:
+    args = parse_args(argv)
+    setup_console_logging(log_level_from_args(args))
+
+    run_landmarking(args)
+    export_dir = run_export(args)
+
+    print(f"\n=== LDA training (level={args.level}) ===")
+    train_argv = [
+        str(args.dataset), "--level", args.level,
+        "--lda-components", str(args.lda_components), *verbosity_flags(args),
+    ]
+    if args.devices:
+        train_argv += ["--devices", *args.devices]
+    if args.species:
+        train_argv += ["--species", *args.species]
+    if args.castes:
+        train_argv += ["--castes", *args.castes]
+    if not args.exclude_outliers:
+        train_argv += ["--include-outliers"]
+    if args.non_strict:
+        train_argv += ["--non-strict"]
+    if args.landmarks_tps:
+        train_argv += ["--tps", str(args.landmarks_tps)]
+    if args.landmarks_status_csv:
+        train_argv += ["--landmarks-status-csv", str(args.landmarks_status_csv)]
+    if args.run_label:
+        train_argv += ["--run-label", args.run_label]
+    train_main(train_argv)
+
+    print(f"\nDone.")
+    print(f"  Landmarks package -> {export_dir}")
+    print(f"  LDA model         -> data/models/lda/<run_id>/train/model.joblib")
+
+
+if __name__ == "__main__":
+    main()

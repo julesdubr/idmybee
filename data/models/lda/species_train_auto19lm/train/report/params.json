@@ -1,6 +1,0 @@
-{
-  "run_id": "species_train_auto19lm",
-  "step": "train",
-  "eval_tag": null,
-  "family": "lda"
-}

@@ -47,7 +47,7 @@ def run_gpa_pca(specimens: list[ImageLandmarks]):
     if not specimens:
         raise ValueError(
             "No specimen to process (empty list after loading/filtering) -- check "
-            "--split/--devices/--species/--castes, or that the TPS contains valid landmarks."
+            "--devices/--species/--castes, or that the TPS contains valid landmarks."
         )
     n_points = specimens[0].n_points
     gpa_result = gpagen([sp.landmarks for sp in specimens])
@@ -94,8 +94,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="GPA -> PCA -> LDA on bumblebee landmarks -- model fitting + LOOCV evaluation"
     )
-    add_dataset_positional(parser, help="Root folder (e.g. data/Bombus) -- see utils.dataset.load_dataset")
-    add_dataset_args(parser, default_split="train")
+    add_dataset_positional(parser, help="Root folder (e.g. data/Bombus/collection) -- see utils.dataset.load_dataset")
+    add_dataset_args(parser)
     parser.add_argument("--level", type=str, default="species", choices=["species", "caste"],
                          help="'species': discriminate by species. 'caste': discriminate by "
                               "(species, caste) -- see utils.dataset.target_groupe.")
@@ -113,11 +113,12 @@ def main(argv: list[str] | None = None) -> None:
     args = build_arg_parser().parse_args(argv)
     setup_console_logging(log_level_from_args(args))
 
-    ds_kwargs = dataset_kwargs(args, default_split="train")
+    ds_kwargs = dataset_kwargs(args)
     specimens, meta_df = load_dataset(args.dataset, labeled_only=True, **ds_kwargs)
     groupe = target_groupe(meta_df, args.level)
 
-    run_id = build_run_id(args.level, ds_kwargs["split"], args.devices, args.landmarks_tps, args.run_label)
+    dataset_label = args.dataset.name
+    run_id = build_run_id(args.level, dataset_label, args.devices, args.landmarks_tps, args.run_label)
     out_dir = run_path(FAMILY_LDA, run_id, "train")
 
     scores, gpa_result, pca = run_gpa_pca(specimens)
@@ -145,7 +146,7 @@ def main(argv: list[str] | None = None) -> None:
         **acc,  # n, accuracy_top1, accuracy_top3
     }
     write_metrics(out_dir, metrics)
-    write_params(out_dir, args, extra={"run_id": run_id, "family": FAMILY_LDA, "resolved_split": ds_kwargs["split"]})
+    write_params(out_dir, args, extra={"run_id": run_id, "family": FAMILY_LDA})
 
     header = f"run_id={run_id} | level={args.level} | n={len(specimens)} specimen(s) | {specimens[0].n_points} landmarks"
     log_text = (
@@ -168,7 +169,7 @@ def main(argv: list[str] | None = None) -> None:
             lda=lda_final,
             level=args.level,
             classes=sorted(groupe.unique()),
-            split=ds_kwargs["split"],
+            dataset_label=dataset_label,
             devices=args.devices,
             source_tps=str(args.landmarks_tps) if args.landmarks_tps else str(args.dataset / "landmarks" / "landmarks_numbered.tps"),
             n_train=len(specimens),

@@ -53,7 +53,7 @@ def main(argv: list[str] | None = None) -> None:
     plt.figure(figsize=(10, 8))
     plt.imshow(image)
     plt.scatter(landmarks[:, 0], landmarks[:, 1], c="red", s=20)
-    plt.title(f"ID={spec.tps_id} -- image {spec.specimen_id} ({w}x{h})")
+    plt.title(f"ID={spec.tps_id} -- inv_id {spec.inv_id} ({w}x{h})")
     plt.axis("off")
     plt.show()
 

@@ -3,7 +3,11 @@ Classifies specimens with a GPA -> PCA -> LDA model trained by train.py.
 
   batch  : evaluates the model on a dataset with known truth (top-1/top-3
            accuracy, predictions CSV). Same filters as train.py
-           (--split/--devices/--species/--castes/--include-outliers/--tps).
+           (--devices/--species/--castes/--include-outliers/--tps). Usually
+           a DIFFERENT dataset root than the one the model was trained on
+           (e.g. a model trained on data/Bombus/collection, evaluated on
+           data/Bombus/terrain) -- see build_eval_tag, keyed off the
+           dataset root's own name rather than a train/test split.
   single : classifies a single photo (no known truth, field use).
 
 The input TPS must have the same landmark scheme (count and order) as the
@@ -27,8 +31,8 @@ source with train.py --tps (see classifiers/train.py), then compare with
 analysis/compare_runs.py.
 
 Usage:
-    python -m classifiers.predict batch data/models/lda/species_train/train/model.joblib data/Bombus --split test
-    python -m classifiers.predict single data/models/lda/species_train/train/model.joblib data/Bombus/landmarks/new_photo.tps
+    python -m classifiers.predict batch data/models/lda/species_collection/train/model.joblib data/Bombus/terrain
+    python -m classifiers.predict single data/models/lda/species_collection/train/model.joblib data/Bombus/terrain/landmarks/new_photo.tps
 """
 from __future__ import annotations
 
@@ -102,10 +106,10 @@ def predict_specimens(
 
 def _print_model_info(model: TrainedModel) -> None:
     devices_str = f", devices={model.devices}" if model.devices else ""
-    split_str = f", split={model.split}" if model.split else ""
+    dataset_str = f", dataset={model.dataset_label}" if model.dataset_label else ""
     print(
         f"Model loaded: level={model.level}, {len(model.classes)} classes, {model.n_points} landmarks, "
-        f"trained on {model.n_train} specimens{split_str}{devices_str} from {model.source_tps}"
+        f"trained on {model.n_train} specimens{dataset_str}{devices_str} from {model.source_tps}"
     )
 
 
@@ -125,7 +129,7 @@ def run_batch(args: argparse.Namespace) -> None:
     source_note = "explicit --tps" if tps_explicit else f"inherited from train ({run_id})"
     print(f"Landmarks source ({source_note}): {args.landmarks_tps or 'landmarks_numbered.tps (default)'}")
 
-    ds_kwargs = dataset_kwargs(args, default_split="test")
+    ds_kwargs = dataset_kwargs(args)
     specimens, meta_df = load_dataset(args.dataset, labeled_only=True, **ds_kwargs)
     truth_col = "groupe" if model.level == "caste" else "species"
     truth_by_tps_id = dict(zip((sp.tps_id for sp in specimens), meta_df[truth_col]))
@@ -134,8 +138,8 @@ def run_batch(args: argparse.Namespace) -> None:
     acc = accuracy_summary(df, model.level)
     print(f"\nEvaluation on {acc['n']} specimen(s): top-1 = {acc['accuracy_top1']:.4f} | top-3 = {acc['accuracy_top3']:.4f}")
 
-    eval_tag = build_eval_tag(ds_kwargs["split"], args.devices, args.landmarks_tps, args.run_label)
-    out_dir = run_path(family, run_id, "predict", ds_kwargs["split"])
+    eval_tag = build_eval_tag(args.dataset.name, args.devices, args.landmarks_tps, args.run_label)
+    out_dir = run_path(family, run_id, "predict", eval_tag)
 
     predictions_path = out_dir / "predictions.csv"
     df.to_csv(predictions_path, index=False)
@@ -151,7 +155,7 @@ def run_batch(args: argparse.Namespace) -> None:
     write_metrics(out_dir, metrics)
     write_params(out_dir, args, extra={
         "run_id": run_id, "eval_tag": eval_tag, "family": family,
-        "model_path": str(args.model_path), "resolved_split": ds_kwargs["split"],
+        "model_path": str(args.model_path),
     })
 
     header = f"run_id={run_id} | eval_tag={eval_tag} | model={args.model_path}"
@@ -203,8 +207,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
     batch = subparsers.add_parser("batch", help="Validate the model on a data folder (with known truth)")
     batch.add_argument("model_path", type=Path, help="Saved model (e.g. data/models/lda/<run_id>/train/model.joblib)")
-    batch.add_argument("dataset", type=Path, help="Root folder (e.g. data/Bombus) -- see utils.dataset.load_dataset")
-    add_dataset_args(batch, default_split="test")
+    batch.add_argument("dataset", type=Path, help="Root folder (e.g. data/Bombus/terrain) -- see utils.dataset.load_dataset")
+    add_dataset_args(batch)
     batch.add_argument("--low-confidence-threshold", type=float, default=0.6,
                         help="Confidence threshold below which a prediction is listed for manual review (default: 0.6)")
     add_logging_args(batch)

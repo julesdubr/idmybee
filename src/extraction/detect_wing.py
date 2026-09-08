@@ -37,9 +37,9 @@ BATCH_SIZE = 50
 def get_backend(mode: str):
     """Import the backend (heavy or light) matching `mode`."""
     if mode == "heavy":
-        from heavy import detection as backend
+        from extraction.heavy import detection as backend
     else:
-        from light import detection as backend
+        from extraction.light import detection as backend
     return backend
 
 
@@ -72,7 +72,6 @@ def parse_args(argv: list[str] | None = None):
     )
     add_dataset_positional(parser)
     parser.add_argument("--mode", default="light", choices=["heavy", "light"])
-    parser.add_argument("--split", default=None)
 
     parser.add_argument("--imgsz", type=int, default=1024)
     parser.add_argument("--conf", type=float, default=0.10)
@@ -92,9 +91,8 @@ def parse_args(argv: list[str] | None = None):
 
 def new_row(source: dict) -> dict:
     return {
-        "image_id": source.get("image_id", ""),
-        "specimen_id": source.get("specimen_id", ""),
-        "split": source.get("split", ""),
+        "photo_id": source.get("photo_id", ""),
+        "inv_id": source.get("inv_id", ""),
         "status": "FAILED",
         "error_reason": "",
         "confidence": "",
@@ -108,7 +106,7 @@ def main(argv: list[str] | None = None) -> None:
     setup_console_logging(log_level_from_args(args))
 
     images = read_images_csv(Path(args.dataset / "manifest.csv"))
-    targets = select_images(images, split=args.split)
+    targets = select_images(images)
 
     logger.info("Mode: %s", args.mode)
     logger.info("Images to process: %d", len(targets))
@@ -133,8 +131,8 @@ def main(argv: list[str] | None = None) -> None:
         item_start = time.perf_counter()
         row = new_row(source)
 
-        raw_path = resolve_path(source["raw_path"], base_dir)
-        image = read_image(raw_path)
+        image_path = resolve_path(source["path"], base_dir)
+        image = read_image(image_path)
 
         if image is None:
             row["error_reason"] = "unreadable_image_or_unsupported_format"

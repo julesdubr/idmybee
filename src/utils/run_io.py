@@ -8,12 +8,16 @@ analysis/classification_report.py and analysis/variance_report.py:
     data/models/<family>/<run_id>/classification_report/predict/<eval_tag>/ figures/tables for an evaluation
     data/analysis/variance/<variance_id>/                             shape variance analysis (independent of any model)
 
-`run_id` identifies a trained model (level, split, devices, landmarks
-source -- see build_run_id), one per call to train.py. `eval_tag`
-identifies one evaluation of that model by predict.py (see build_eval_tag);
-a single run_id can have several eval_tag (test, field data, another
-landmarks source...). predict.py recovers the run_id from the given
-model.joblib (see run_id_from_model_path) rather than recomputing one.
+`run_id` identifies a trained model (level, dataset_label, devices,
+landmarks source -- see build_run_id), one per call to train.py.
+`dataset_label` is the dataset root's own name (e.g. `Path(dataset).name`,
+"collection"/"terrain") -- there is no train/test split within one dataset
+anymore, each dataset root is either used to fit a model or to evaluate
+one. `eval_tag` identifies one evaluation of that model by predict.py (see
+build_eval_tag); a single run_id can have several eval_tag (one per
+dataset evaluated, e.g. "terrain", plus devices/landmarks source).
+predict.py recovers the run_id from the given model.joblib (see
+run_id_from_model_path) rather than recomputing one.
 
 `variance_id` (build_variance_id) is independent of any run_id:
 analysis/variance_report.py neither loads nor fits a model -- its output
@@ -50,9 +54,9 @@ def tag_from_tps(tps_path: str | Path | None) -> str | None:
 
 
 def _tag_parts(
-    split: str, devices: list[str] | None, landmarks_tps: str | Path | None, run_label: str | None,
+    devices: list[str] | None, landmarks_tps: str | Path | None, run_label: str | None,
 ) -> list[str]:
-    parts = [slugify(split)]
+    parts = []
     if devices:
         parts.append(slugify("-".join(devices)))
     source = run_label or tag_from_tps(landmarks_tps)
@@ -62,28 +66,30 @@ def _tag_parts(
 
 
 def build_run_id(
-    level: str, split: str, devices: list[str] | None = None,
+    level: str, dataset_label: str, devices: list[str] | None = None,
     landmarks_tps: str | Path | None = None, run_label: str | None = None,
 ) -> str:
-    """Identifier for a trained model: level_split[_devices][_source]."""
-    return "_".join([slugify(level)] + _tag_parts(split, devices, landmarks_tps, run_label))
+    """Identifier for a trained model: level_dataset_label[_devices][_source]."""
+    return "_".join([slugify(level), slugify(dataset_label)] + _tag_parts(devices, landmarks_tps, run_label))
 
 
 def build_eval_tag(
-    split: str, devices: list[str] | None = None,
+    dataset_label: str, devices: list[str] | None = None,
     landmarks_tps: str | Path | None = None, run_label: str | None = None,
 ) -> str:
-    """Identifier for a predict.py batch evaluation: split[_devices][_source],
+    """Identifier for a predict.py batch evaluation: dataset_label[_devices][_source],
     nested under the run_id of the model being evaluated (see run_id_from_model_path)."""
-    return "_".join(_tag_parts(split, devices, landmarks_tps, run_label))
+    return "_".join([slugify(dataset_label)] + _tag_parts(devices, landmarks_tps, run_label))
 
 
 def build_variance_id(
-    levels: list[str], split: str, devices: list[str] | None = None,
+    levels: list[str], dataset_label: str, devices: list[str] | None = None,
     landmarks_tps: str | Path | None = None, run_label: str | None = None,
 ) -> str:
-    """Identifier for a variance analysis: levels_split[_devices][_source]."""
-    return "_".join([slugify("-".join(levels))] + _tag_parts(split, devices, landmarks_tps, run_label))
+    """Identifier for a variance analysis: levels_dataset_label[_devices][_source]."""
+    return "_".join(
+        [slugify("-".join(levels)), slugify(dataset_label)] + _tag_parts(devices, landmarks_tps, run_label)
+    )
 
 
 def run_id_from_model_path(model_path: str | Path) -> tuple[str, str]:
