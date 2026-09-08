@@ -36,7 +36,7 @@ from utils.tps_overlay import draw_landmarks
 LOGO_PATH = Path("logo/logo3fb2_orig.png")
 
 st.set_page_config(
-    page_title="idmybee -- single image",
+    page_title="idmybee -- bees prediction",
     page_icon=str(LOGO_PATH) if LOGO_PATH.exists() else None,
     layout="wide",
 )
@@ -45,10 +45,10 @@ col_logo, col_title = st.columns([1, 8])
 if LOGO_PATH.exists():
     col_logo.image(str(LOGO_PATH), width=100)
 with col_title:
-    st.title("Single-image species prediction")
+    st.title("Identifying bees by their wings")
     st.caption(
-        "One photo in, a ranked species (or caste) prediction out -- nothing "
-        "written to disk. See TODO.md/PIPELINE.md for the full pipeline."
+        "Geometric morphometric analysis of bee wings for identification using automatic"
+        "wing detection and landmarks placement, before running GPA-PCA-LDA."
     )
 
 
