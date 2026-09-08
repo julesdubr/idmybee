@@ -8,7 +8,7 @@ file.
 Files that fail to open/save are reported, never dropped silently.
 
 Usage:
-    python -m utils.repair_images data/Bombus/images
+    python -m tools.maintenance.repair_images data/Bombus/images
 """
 from __future__ import annotations
 
@@ -20,7 +20,7 @@ from PIL import Image, ImageOps
 from tqdm import tqdm
 
 from utils.cli import add_dataset_positional, add_logging_args, log_level_from_args
-from utils.run_io import setup_console_logging
+from core.run_io import setup_console_logging
 
 logger = logging.getLogger(__name__)
 

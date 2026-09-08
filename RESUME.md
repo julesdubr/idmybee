@@ -77,6 +77,17 @@ la Adrien-R.
 type `error_reason`). Voir `CONVENTIONS.md`. Les CSV déjà produits en
 français ne sont pas migrés rétroactivement.
 
+*Révisé session du 8 sept. 2026* : deux points ci-dessus ont finalement
+changé à l'usage (détail complet dans "Fait (session, 8 sept. 2026)"
+plus bas) -- (1) l'outil 1 (landmarking) et l'outil 2 (classification)
+vivent dans **deux apps Streamlit séparées** (`app/single_image.py`,
+`app/build_dataset.py`), pas une seule comme envisagé au point 1 ; (2)
+**construire un modèle de référence (train) est maintenant aussi possible
+depuis l'UI** (`app/build_dataset.py`), pas seulement en CLI comme prévu
+au point 2 -- l'ANOVA/variance, elle, reste CLI uniquement comme prévu.
+Le point 4 (`core/`) est acté : voir `CONVENTIONS.md` "Clôture de la
+question ouverte `utils/` -> `core/`".
+
 ## Détails outil 1 -- conception validée (session du 2 sept. 2026)
 
 Conception uniquement, aucune implémentation commencée (Phase 1 -- core --
@@ -150,6 +161,226 @@ d'implémentation à trancher en Phase 2 : un schéma de déclaration unique
 widget Streamlit correspondant, pour éviter de dupliquer chaque paramètre.
 
 ## Où on en est
+
+Fait (session, 8 sept. 2026) -- demande en plusieurs volets : un
+orchestrateur CLI pour l'étape 0 (ingestion brute), en profitant pour
+clarifier `tools/` (découpage possible en sous-modules) et `utils/`
+(question ouverte depuis la Phase 1) ; une interface pour le scénario 1
+(préparer un jeu de données, construire un modèle de référence, prédire
+dessus), indépendante de `single_image.py`, avec deux étapes de validation
+(recadrage, placement des landmarks) à statut éditable OK/SUSPECT/FAILED ;
+pouvoir nommer clairement le modèle produit (les `.joblib` actuels ont des
+noms abstraits, ex. `species_collection` ne dit pas "identification
+bourdons à abdomen rouge") ; liberté de simplifier le code CLI existant si
+ça facilite l'intégration UI ; mettre à jour les `.md`.
+
+**`core`/`utils`/`tools` réorganisés (clôture de la question ouverte
+Phase 1).** `utils/dataset.py`, `predictions.py`, `pipeline_io.py`,
+`run_io.py` déplacés vers `core/` (aucune dépendance `argparse`/CLI,
+partagés largement -- même critère que les 5 fichiers `core/` déjà là,
+même si ce ne sont pas de la géométrie au sens strict) ; `core/` compte
+maintenant 9 fichiers. `utils/repair_images.py` déplacé vers
+`tools/maintenance/` (CLI autonome, jamais importé ailleurs -- répondait
+déjà au critère `tools/`, resté dans `utils/` par oubli). `utils/cli.py`/
+`tps_overlay.py` restent dans `utils/` (respectivement lié à `argparse`,
+et double usage bibliothèque+CLI). `src/manifest/io.py` (confirmé mort
+depuis la session du 7 sept., suite 7) supprimé au passage. `tools/`
+découpé en trois sous-paquets par responsabilité -- `ingestion/` (brut ->
+manifest propre : `ingest_raw.py`, `export_clean_dataset.py`,
+`build_manifest.py`, `combine_manifests.py`, `prepare_dataset.py` --
+nouveau, voir plus bas), `pipeline/` (orchestrateurs dataset-agnostiques +
+outils de validation : `export_final_landmarks.py`, `export_review.py`/
+`reconcile_review.py` -- nouveaux, `train_dataset.py`, `predict_dataset.py`),
+`maintenance/` (scripts ponctuels sans rapport avec le pipeline courant).
+Chaque commande `python -m tools.X` change en conséquence (ex.
+`tools.build_manifest` -> `tools.ingestion.build_manifest`) -- tous les
+`.md` ont été mis à jour en conséquence pour les commandes CLI qu'ils
+documentent, MAIS PAS pour les mentions purement historiques dans
+`RESUME.md`/`TODO.md`/`CONVENTIONS.md` (les anciens chemins plats y sont
+volontairement laissés tels quels : ils étaient exacts au moment décrit).
+Détail complet du raisonnement dans `CONVENTIONS.md` "Clôture de la
+question ouverte `utils/` -> `core/`".
+
+**`tools/ingestion/prepare_dataset.py` créé** : orchestrateur étape 0,
+piloté par un fichier de config JSON (un bloc par source, puisque l'étape
+0 a vraiment besoin d'options par source -- CSV d'identification, colonnes
+-- pas réductible à une poignée de flags communs). Chaîne, en process
+(comme les orchestrateurs existants -- `main(argv)` de chaque étage, pas
+de sous-processus) : `ingest_raw` (une fois, optionnel) -> par source de
+type `"raw"` : `export_clean_dataset` -> par source, toujours :
+`build_manifest` -> une fois, sur N sources (N=1 marche aussi) :
+`combine_manifests`. Une source de type `"compliant"` (déjà un CSV par
+photo conforme) saute directement à `build_manifest`. Une source dont
+`build_manifest` ne produit que `manifest_raw.csv` (pas `manifest.csv`)
+est rapportée et exclue de la combinaison finale plutôt que de faire
+échouer tout le run pour une seule source en défaut. `--skip-ingest`
+réutilise un manifest brut déjà scanné (le scan complet est lent). Testé
+avec 5 tests synthétiques (`tests/test_prepare_dataset.py`, les 4 scripts
+enchaînés sont monkeypatchés -- chacun déjà couvert séparément par
+ailleurs) : source "compliant" seule, source "raw" (export puis build),
+absence de `mapping_file` sur une source "raw" (erreur explicite), source
+en échec exclue de la combinaison, `--skip-ingest`.
+
+**`utils/review.py` créé** : cœur partagé de la validation manuelle
+(recadrage, placement des landmarks), utilisé identiquement par
+`app/build_dataset.py` et par le nouveau couple CLI
+`tools/pipeline/export_review.py`/`reconcile_review.py` -- voir
+`CONVENTIONS.md` "Fonctions core réutilisables" et "Validation review :
+format des CSV". Principe : `build_crop_review_df`/`build_landmark_review_df`
+lisent le statut auto déjà écrit par le pipeline (`crops.csv`,
+`landmarks_numbered.csv`) dans un DataFrame `photo_id, ..., auto_status,
+reviewed_status` (les deux colonnes distinctes, jamais fusionnées -- sinon
+on perd la trace de ce qui a été corrigé à la main) ; `write_crop_review`/
+`write_landmarks_review` persistent la review éditée en DEUX choses :
+un fichier réconcilié, même schéma que l'original
+(`crops_reviewed.csv`/`landmarks_reviewed.csv`), qui se branche
+directement sur un mécanisme déjà existant (`landmarks.predict
+--crops-csv` -- nouveau flag, cf. plus bas ; `--landmarks-status-csv`, déjà
+là) sans qu'aucun code consommateur n'ait besoin de savoir qu'une review a
+eu lieu ; et un fichier d'audit minimal
+(`<dataset>/review/<nom>_review.csv`, `photo_id, auto_status,
+reviewed_status`) pensé pour être ouvert/édité dans un tableur. Jamais de
+mutation des fichiers auto originaux (gardés intacts pour l'audit).
+
+**`landmarks/predict.py` : `--crops-csv` ajouté** (défaut : chemin
+inchangé `extraction/<mode>/crops.csv`) -- lit un fichier différent si
+donné, pour permettre à une review de recadrage de faire sauter une photo
+rejetée à la main avant de dépenser du calcul UNet dessus, sans muter
+`crops.csv` lui-même.
+
+**`utils/landmarking_pipeline.py::run_landmarking` scindé** en
+`run_detection_and_crop` (étapes 1-2) + `run_landmark_placement` (étapes
+3-4), `run_landmarking` devenant un simple appel des deux à la suite
+(inchangé pour `tools/pipeline/train_dataset.py`/`predict_dataset.py`,
+qui continuent à l'utiliser tel quel). Nécessaire pour qu'un appelant
+comme `app/build_dataset.py` puisse s'arrêter entre les deux pour la
+review du recadrage. `run_export` mis à jour pour transmettre les mêmes
+filtres dataset (`--devices`/`--species`/`--castes`/`--include-outliers`/
+`--tps`/`--landmarks-status-csv`, factorisés dans un nouveau
+`dataset_filter_argv`) que `classifiers.train` -- **bug réel trouvé et
+corrigé au passage** : avant cette session, `run_export` n'transmettait
+PAS ces filtres, donc le paquet exporté (pour Adrien/R) pouvait ne pas
+refléter les mêmes specimens/statuts que ceux effectivement utilisés pour
+entraîner le modèle -- silencieux, jamais remarqué faute d'un cas d'usage
+qui l'aurait révélé. `dataset_filter_argv` réutilisé aussi dans
+`tools/pipeline/train_dataset.py`, qui dupliquait les 7 mêmes blocs `if`
+à la main. `verbosity_flags` (défini seulement dans
+`landmarking_pipeline.py`) remonté vers `utils/cli.py::verbosity_argv`,
+seul point de définition maintenant.
+
+**`app/build_dataset.py` créé** (`streamlit run app/build_dataset.py`) --
+assistant en 7 étapes pour le scénario 1, indépendant de
+`single_image.py` (fichier séparé, pas un mode caché dans le même) :
+1. **Setup** : objectif (construire un modèle vs. prédire avec un modèle
+   existant) ; jeu de données (racine déjà propre, ou construction du
+   manifest depuis un CSV via `tools.ingestion.build_manifest` directement
+   depuis l'UI) ; paramètres du pipeline de landmarking (mêmes flags que
+   la CLI, formulaire). Construit l'objet `args` (un `argparse.Namespace`)
+   en réutilisant le PARSER de la CLI (`add_dataset_positional`/
+   `add_landmarking_args`/`add_dataset_args`) sur un argv construit depuis
+   les widgets -- pas de Namespace reconstruit à la main champ par champ,
+   une seule logique de parsing/validation/défauts pour la CLI et l'UI
+   (voir `CONVENTIONS.md` "Fonctions core réutilisables").
+2. **Detection & crop** : bouton "Run" (`run_detection_and_crop(args)`) ou
+   "Skip -- already done" (reprendre un dataset déjà partiellement traité,
+   par la CLI ou une session précédente de l'appli, sans tout relancer).
+3. **Crop review** : `build_crop_review_df` -> tableau filtrable
+   (statut, recherche `photo_id`/`inv_id`) et éditable (`st.data_editor`,
+   colonne `reviewed_status`) + aperçu du crop de la ligne sélectionnée.
+   "Enregistrer et continuer" -> `write_crop_review`, pose
+   `args.crops_csv` sur le Namespace partagé (lu par l'étape suivante).
+4. **Landmark placement** : même mécanique Run/Skip que l'étape 2, avec
+   `run_landmark_placement(args)`.
+5. **Landmark review** : même mécanique que l'étape 3, avec en plus
+   l'aperçu de l'overlay de landmarks numérotés (`utils.tps_overlay.draw_landmarks`
+   sur le crop chargé via le TPS numéroté) et le coût d'enregistrement.
+   "Enregistrer et continuer" pose `args.landmarks_status_csv`.
+6. **Export** : Run/Skip sur `run_export(args)` -- reflète maintenant la
+   review landmarks (voir le bug corrigé ci-dessus).
+7. **Construire le modèle ou prédire**, selon l'objectif choisi à
+   l'étape 1 : formulaire nom du modèle (`--model-name`, voir plus bas) +
+   niveau espèce/caste -> `classifiers.train`, résultats affichés
+   (top-1/top-3 LOOCV, chemin du modèle) ; ou sélection d'un modèle
+   existant (par nom si `--model-name` a été utilisé) + seuil de
+   confiance basse -> `classifiers.predict.run_batch`, résultats affichés
+   en tableau + top-1/top-3 si vérité connue.
+
+**Choix "tableau + aperçu" plutôt qu'une vraie galerie d'images.** Le
+brief évoquait une "galerie annotée" (vocabulaire déjà présent dans
+`TODO.md` Phase 2) ; retenu à la place : un tableau (`st.data_editor`,
+filtrable/triable, colonne de statut éditable directement) + un aperçu à
+la demande (une image à la fois, sélectionnée dans une liste déroulante
+filtrée) plutôt qu'une grille de vignettes. Raison : la collection compte
+~2600 spécimens -- charger/afficher des milliers de vignettes ne passe pas
+à l'échelle dans Streamlit (mémoire navigateur, temps de rendu), alors que
+le tableau reste utilisable à cette taille (le composant sous-jacent,
+glide-data-grid, est virtualisé) et couvre le besoin réel (voir/corriger
+le statut) sans la partie "parcourir visuellement" que seule une vraie
+galerie apporterait en plus. Pas testé au clic sur un dataset de cette
+taille réelle depuis cet environnement (voir "À faire par Jules").
+
+**`--model-name` ajouté** (`classifiers/train.py`, relayé par
+`tools/pipeline/train_dataset.py --model-name` et le formulaire de l'étape
+7 de l'UI) : nom lisible optionnel, stocké dans
+`core.model_io.TrainedModel.model_name` et dans `metrics.json`. Purement
+descriptif -- ne construit jamais `run_id`/le chemin de sortie (reste
+dérivé de niveau/dataset/appareils/source de landmarks pour la
+reproductibilité, voir `core/run_io.py::build_run_id`) ; à défaut, le
+`run_id` technique reste utilisé comme avant. Nouvelle fonction
+`core.run_io.model_display_name(model_path)` (lit `metrics.json`, ne
+charge jamais le pickle du modèle juste pour un libellé) branchée dans les
+deux sélecteurs de modèle (`app/single_image.py`, `app/build_dataset.py`)
+et dans la bannière console de `classifiers/predict.py`.
+
+**Bug réel trouvé et corrigé pendant les tests** (pas anticipé à la
+conception) : `utils/review.py::write_crop_review`/`write_landmarks_review`
+plantaient (`pandas.errors.LossySetitemError`) dès que TOUTES les valeurs
+de `error_reason` du fichier d'origine étaient vides -- pandas lit alors
+la colonne en `float64` (NaN) plutôt qu'en texte/objet, et y assigner une
+chaîne lève une exception au lieu de l'accepter. Cas réel très probable
+(un dataset qui n'a encore eu aucun échec avant la review). Repéré en
+testant `app/build_dataset.py` via `streamlit.testing.v1.AppTest` sur un
+jeu de données synthétique bout en bout (pas seulement des tests
+unitaires sur `utils/review.py` isolément -- mon premier jeu de test
+unitaire avait par coïncidence toujours au moins une ligne FAILED avec un
+`error_reason` non vide, qui masquait le bug en forçant la colonne en
+`object` dès la lecture). Corrigé par un cast explicite en `object` avant
+assignation dans les deux fonctions ; deux tests de régression ajoutés
+(`tests/test_review.py`).
+
+**Testé** : 109 tests verts (95 existants + 7 `tests/test_review.py` + 5
+`tests/test_prepare_dataset.py`, + 2 tests de régression ajoutés après le
+bug ci-dessus), `py_compile` sur tout `src/`+`app/`, `--help` sans crash
+sur chaque script CLI déplacé ou créé. `app/build_dataset.py` exercé avec
+`streamlit.testing.v1.AppTest` (pas seulement un lancement headless +
+`curl` comme pour `single_image.py` en session 7 -- cette fois
+l'exécution réelle du script, étape par étape, avec de vraies
+interactions simulées) : rendu de l'étape 1 (formulaire complet une fois
+un dataset synthétique détecté), soumission des paramètres pipeline (avance
+bien à l'étape 2), review recadrage (édition du tableau, aperçu image,
+écriture réelle de `crops_reviewed.csv`), review landmarks (aperçu overlay
+réel via un vrai crop + un vrai TPS numéroté synthétiques, écriture de
+`landmarks_reviewed.csv`), export réel (`run_export` exécuté pour de vrai
+sur le jeu synthétique, produit bien `export/landmarks_3lm_crop.tps`).
+Limitation notée en cours de route : `streamlit.testing.v1.AppTest`
+reconstruit son propre arbre de widgets à chaque `.run()` et ne gère pas
+bien un script qui change de branche conditionnelle (`if
+st.session_state.step == ...`) entre deux interactions successives DANS
+LA MÊME session `AppTest` (`KeyError` sur un widget de l'étape
+précédente qui ne se ré-affiche plus) -- confirmé être une limitation du
+harnais de test lui-même (reproduit sur un script minimal de 15 lignes
+suivant exactement le même motif, qui plante pareil) et non un bug de
+l'appli réelle (chaque étape testée séparément, en pré-positionnant
+`session_state`, fonctionne sans exception ; le serveur réel démarre sans
+erreur, `curl` renvoie HTTP 200) -- contourné en testant chaque étape dans
+sa propre instance `AppTest` plutôt qu'en enchaînant tous les clics dans
+une seule session de test.
+- **À faire par Jules** : premier run réel de `app/build_dataset.py` sur
+  un vrai dataset (collection ou terrain) avec les vrais poids UNet/
+  YOLO-OBB, au clic dans un vrai navigateur -- non testé au-delà du
+  scénario synthétique dans cet environnement, en particulier le
+  comportement du tableau de review sur les ~2600 photos réelles de la
+  collection (voir "Choix tableau + aperçu" ci-dessus).
 
 Fait (session, 7 sept. 2026, suite 8) -- Jules a demandé de passer à
 l'implémentation du **mode single-image en Streamlit** (Phase 2/3 : "mode

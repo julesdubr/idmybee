@@ -2,7 +2,7 @@
 Renumbers specimen IDs in a .tps file so they're consecutive starting at 0.
 
 Usage:
-    python -m tools.clean_tps --tps annotations.tps --out cleaned.tps
+    python -m tools.maintenance.clean_tps --tps annotations.tps --out cleaned.tps
 """
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ import argparse
 import logging
 
 from utils.cli import add_logging_args, log_level_from_args
-from utils.run_io import setup_console_logging
+from core.run_io import setup_console_logging
 from core.tps_io import parse_tps
 
 logger = logging.getLogger(__name__)

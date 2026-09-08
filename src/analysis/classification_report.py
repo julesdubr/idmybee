@@ -25,10 +25,10 @@ from sklearn.metrics import classification_report as sk_classification_report
 from sklearn.metrics import confusion_matrix
 
 from utils.cli import add_logging_args, log_level_from_args
-from utils.dataset import load_dataset, target_groupe
+from core.dataset import load_dataset, target_groupe
 from core.gpa import align_to_reference, two_d_array
 from core.model_io import load_model
-from utils.run_io import FAMILY_LDA, read_params, result_path, run_path, setup_console_logging, write_params
+from core.run_io import FAMILY_LDA, read_params, result_path, run_path, setup_console_logging, write_params
 
 logger = logging.getLogger(__name__)
 
@@ -166,7 +166,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Figures and tables for a classification run (see module docstring)"
     )
-    parser.add_argument("run_id", type=str, help="Run identifier (see utils.run_io.build_run_id)")
+    parser.add_argument("run_id", type=str, help="Run identifier (see core.run_io.build_run_id)")
     parser.add_argument("--step", type=str, choices=["train", "predict"], default="train",
                          help="Which predictions to analyze: LOOCV's (train) or a predict.py batch's (predict).")
     parser.add_argument("--eval-tag", type=str, default=None,

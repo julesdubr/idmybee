@@ -3,7 +3,7 @@ Checks that a .tps file parses correctly by overlaying its points on the
 original image.
 
 Usage:
-    python -m tools.verify_tps --tps annotations.tps --sid 0 --out out/check.png --flip-y
+    python -m tools.maintenance.verify_tps --tps annotations.tps --sid 0 --out out/check.png --flip-y
 """
 from __future__ import annotations
 
@@ -14,7 +14,7 @@ import cv2
 import matplotlib.pyplot as plt
 
 from utils.cli import add_logging_args, log_level_from_args
-from utils.run_io import setup_console_logging
+from core.run_io import setup_console_logging
 from core.tps_io import parse_tps
 
 logger = logging.getLogger(__name__)

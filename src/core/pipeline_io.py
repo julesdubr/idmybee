@@ -22,9 +22,9 @@ PIPELINE_STATS_FIELDS = [
     "mean_time_s", "total_time_s", "updated_at",
 ]
 
-# Canonical location of tools/export_final_landmarks.py's package, relative
+# Canonical location of tools/pipeline/export_final_landmarks.py's package, relative
 # to a dataset root. Distinct from the root's own biological_data.csv
-# (specimen-level, from tools/export_clean_dataset.py): the file of the
+# (specimen-level, from tools/ingestion/export_clean_dataset.py): the file of the
 # same name in this folder is photo-level, row-aligned to the exported TPS.
 DATASET_EXPORT_DIRNAME = "export"
 

@@ -22,22 +22,22 @@ Canonical identifiers, used everywhere below:
 
 There is no local-vs-external distinction to manage: a dataset root's
 images can sit anywhere (a repo folder, an external volume, a third-party
-location) -- `tools/export_clean_dataset.py --output-dir` can point
-straight at an external mount, and `tools/build_manifest.py`'s path column
+location) -- `tools/ingestion/export_clean_dataset.py --output-dir` can point
+straight at an external mount, and `tools/ingestion/build_manifest.py`'s path column
 is used exactly as given (absolute, or resolved against `--base-dir`).
 Every downstream stage already reads `manifest.csv`'s `path` via
-`utils.pipeline_io.resolve_path`, unchanged. There is no copy-then-symlink
+`core.pipeline_io.resolve_path`, unchanged. There is no copy-then-symlink
 step to run and nothing to configure for it. In practice: point
-`tools/export_clean_dataset.py --output-dir` at the external volume (its
+`tools/ingestion/export_clean_dataset.py --output-dir` at the external volume (its
 `images/` subfolder is the only thing that scales into GBs), but give
-`tools/build_manifest.py --output-dir` a local, tracked path under
+`tools/ingestion/build_manifest.py --output-dir` a local, tracked path under
 `data/clean/<source>/` -- `manifest.csv`/`biological_data.csv` are a few
 KB-MB and belong in the repo like any other small pipeline output; the
 `path` column inside them can still point at the external volume just
 fine.
 
-## 1. Clean dataset (`tools/ingest_raw.py` -> `tools/export_clean_dataset.py`
-[optional] -> `tools/build_manifest.py` [-> `tools/combine_manifests.py`])
+## 1. Clean dataset (`tools/ingestion/ingest_raw.py` -> `tools/ingestion/export_clean_dataset.py`
+[optional] -> `tools/ingestion/build_manifest.py` [-> `tools/ingestion/combine_manifests.py`])
 
 Two independent jobs, split across three tools:
 - **Cleaning identity** (`ingest_raw.py`/`export_clean_dataset.py`) --
@@ -60,7 +60,7 @@ images + a per-photo CSV with the required columns) can skip
 `ingest_raw`/`export_clean_dataset` entirely and go straight to
 `build_manifest.py`.
 
-### 1a. `tools/ingest_raw.py` -> `tools/export_clean_dataset.py` (optional cleaning)
+### 1a. `tools/ingestion/ingest_raw.py` -> `tools/ingestion/export_clean_dataset.py` (optional cleaning)
 
 **Input**: a local raw image root (`config/roots.json`) for `ingest_raw.py`;
 its raw manifest.csv + a raw identification CSV for `export_clean_dataset.py`.
@@ -73,7 +73,7 @@ its raw manifest.csv + a raw identification CSV for `export_clean_dataset.py`.
   `original_id` if `--origin-codes` was given). `path` is the freshly
   copied, renamed image under `<output-dir>/images/...` -- independent of
   wherever the raw file lived. This is the compliant per-photo CSV
-  `tools/build_manifest.py` expects next, with zero extra steps. `device`
+  `tools/ingestion/build_manifest.py` expects next, with zero extra steps. `device`
   is the specific camera/phone used for that photo (may be NaN if
   unresolved) -- distinct from `device_type`, a coarse code (`P`/`S`) that
   can cover several physical devices over time.
@@ -99,7 +99,7 @@ its raw manifest.csv + a raw identification CSV for `export_clean_dataset.py`.
 no clean copy written -- excluded from `dataset.csv`, which needs a valid
 `path`).
 
-### 1b. `tools/build_manifest.py` (always run)
+### 1b. `tools/ingestion/build_manifest.py` (always run)
 
 **Input**: one per-photo CSV (`--path-column`, default `path`), mandatory
 columns `inv_id`/`species`/`caste` + the path column. Any other column is
@@ -124,7 +124,7 @@ sharing an `inv_id` -- reported, not arbitrated).
 default: the input CSV's own parent directory), `--default-device-type`.
 
 Several sources for one dataset: run `build_manifest.py` once per source,
-then `tools/combine_manifests.py` concatenates their `manifest.csv`/
+then `tools/ingestion/combine_manifests.py` concatenates their `manifest.csv`/
 `biological_data.csv` (no rescan, no rejoining -- each source is already
 validated and independent).
 
@@ -228,19 +228,19 @@ processing_time_s` -- every INPUT specimen, including `FAILED` ones).
 every stage-4 `SUSPECT` ends up here), `SUSPECT` (numbered but a
 per-species post-GPA outlier, needs `--biological-data`), `OK`.
 
-## 6. Final export (`tools/export_final_landmarks.py`)
+## 6. Final export (`tools/pipeline/export_final_landmarks.py`)
 
 The terminal, R-facing export: reads a dataset already through stages 1-5,
 produces a self-contained TPS+CSV package.
 
-**Input**: `utils.dataset.load_dataset()` (stage 7's join contract) +
+**Input**: `core.dataset.load_dataset()` (stage 7's join contract) +
 stage 2's `detection.csv` (for reprojection) + `<dataset>/manifest.csv`.
 Exports the WHOLE dataset root given in one call -- no train/test split,
 run it once per dataset root (e.g. once for `data/Bombus/collection`, once
 for `data/Bombus/terrain`).
 
 **Output**, in `--output-dir` (default: `<dataset>/export/` -- see
-`utils.pipeline_io.dataset_export_dir` -- kept alongside `extraction/` and
+`core.pipeline_io.dataset_export_dir` -- kept alongside `extraction/` and
 `landmarks/` under the dataset root rather than an ad hoc path the caller
 has to invent each time):
 - `landmarks_<n>lm_crop.tps` -- crop-space, sequential `ID=1,2,...`,
@@ -290,7 +290,7 @@ individual with several photos stays partly in training when one photo is
 held out, inflating accuracy slightly).
 **Output**, under `data/models/lda/<run_id>/train/` (`run_id` now built
 from the dataset root's own name, e.g. `species_collection`, instead of a
-split -- see `utils.run_io.build_run_id`): `model.joblib`
+split -- see `core.run_io.build_run_id`): `model.joblib`
 (a `core.model_io.TrainedModel`: `mean_shape, n_points, pca, lda, level,
 classes, dataset_label, devices, source_tps, n_train`),
 `loocv_predictions.csv`, `metrics.json`, `params.json`, `run.log`.
@@ -306,7 +306,7 @@ training run's `params.json` unless overridden. Normally run on a
 DIFFERENT dataset root than the one used to train the model (e.g. a model
 trained on `data/Bombus/collection`, evaluated on `data/Bombus/terrain`) --
 `eval_tag` is keyed off that dataset root's own name (see
-`utils.run_io.build_eval_tag`), not a split, so evaluating the same model
+`core.run_io.build_eval_tag`), not a split, so evaluating the same model
 against two different datasets never collides.
 **Output**: `data/models/<family>/<run_id>/predict/<eval_tag>/predictions.csv`
 (`tps_id, photo_id, inv_id, image_path, predicted_<level>, confidence,
@@ -315,7 +315,7 @@ procrustes_distance, true_<level>, correct_top1, correct_top3`) +
 `metrics.json`/`params.json`/`run.log`.
 
 **`single`** (field use, no truth): one TPS with exactly one specimen, NO
-biological join at all (`utils.dataset.load_unlabeled_tps`) -- pure
+biological join at all (`core.dataset.load_unlabeled_tps`) -- pure
 geometry-in, prediction-out. Console output only, unless `--out` given.
 This is the function the future single-image UI tool (see `TODO.md` Phase
 3) will call directly.
@@ -332,7 +332,7 @@ specimens. **Input**: `load_dataset()` (same shared filters) + `--levels`
 (nested, broadest to finest, from `species, caste, inv_id, device,
 device_tag`) + `--n-perm` (permutation p-values) + `--balanced-devices`
 (keep only specimens with every requested device_tag, via
-`utils.dataset.restrict_to_complete_devices` -- avoids biasing the device
+`core.dataset.restrict_to_complete_devices` -- avoids biasing the device
 effect estimate by uneven photo coverage per individual).
 **Output**, under `data/analysis/variance/<variance_id>/`: `anova.csv`
 (`SS, df, MS, F, p (permutation)` per level + `Residual`), `anova.png`
@@ -347,10 +347,10 @@ discriminate below that threshold.
 ## Cross-stage data flow (exact chaining)
 
 ```
-[tools/ingest_raw.py --> tools/export_clean_dataset.py, optional]
+[tools/ingestion/ingest_raw.py --> tools/ingestion/export_clean_dataset.py, optional]
   dataset.csv (photo_id, inv_id, device_type, device, path, species, caste, ...)
    |
-   v  tools/build_manifest.py [--> tools/combine_manifests.py]
+   v  tools/ingestion/build_manifest.py [--> tools/ingestion/combine_manifests.py]
 manifest.csv (photo_id, inv_id, device_type, device, path, status)
 biological_data.csv (inv_id, species, caste, n_photos_<device_type>, ...)
    |
@@ -370,7 +370,7 @@ landmarks/landmarks.csv    (photo_id, inv_id, status, ...)
 landmarks/<tps stem>_numbered.tps   (crop-space, reordered, OK+SUSPECT only)
 landmarks/landmarks_numbered.csv    (ALL input specimens incl. FAILED)
    |
-   +--> tools/export_final_landmarks.py --tps <numbered.tps> --output-dir <dir> [--mode] [--base-dir]
+   +--> tools/pipeline/export_final_landmarks.py --tps <numbered.tps> --output-dir <dir> [--mode] [--base-dir]
    |      landmarks_<n>lm_crop.tps / _original.tps
    |      biological_data.csv / failed.csv
    |
@@ -390,11 +390,11 @@ renumber.py` (stages 2-5) followed by the export (stage 6) and either
 `train.py` or `predict.py batch` are each chained end to end by a single,
 DATASET-AGNOSTIC orchestrator script -- see "Orchestrator scripts" below.
 
-## Orchestrator scripts (session 7 sept. 2026, suite 5/6)
+## Orchestrator scripts (session 7 sept. 2026, suite 5/6; split + validation hooks added session 8 sept. 2026)
 
-Two `tools/` scripts chain stages 2-6 plus the classification step. Both
-take the dataset root as a REQUIRED positional argument with no default --
-nothing in either script or in the shared helper they call
+Two `tools/pipeline/` scripts chain stages 2-6 plus the classification
+step. Both take the dataset root as a REQUIRED positional argument with no
+default -- nothing in either script or in the shared helper they call
 (`utils/landmarking_pipeline.py`) is specific to "collection" or "terrain";
 any clean dataset root (`manifest.csv` + `biological_data.csv` + images,
 stage 1's output) works. `data/Bombus/collection`/`data/Bombus/terrain`
@@ -402,27 +402,48 @@ below are just the two concrete datasets this project happens to have --
 not special-cased anywhere in the code.
 
 **`utils/landmarking_pipeline.py`** -- shared, not duplicated between the
-two scripts below:
+two scripts below, or with `app/build_dataset.py` (see "Validation review"
+below):
 - `add_landmarking_args(parser)`: every flag for stages 2-6 (detection,
   crop, landmark placement, renumbering, export) in one place.
-- `run_landmarking(args)`: stages 2-5, in-process (`extraction.detect_wing`
-  -> `extraction.normalize_crop` -> `landmarks.predict` -> `landmarks.renumber`),
-  each stage's own `main(argv)` -- no subprocess, no duplicated logic.
-- `run_export(args)`: stage 6 (`tools.export_final_landmarks`), writing to
-  `<dataset>/export/` by default (`--export-dir` to override).
+- `run_detection_and_crop(args)`: stages 1-2 (`extraction.detect_wing` ->
+  `extraction.normalize_crop`).
+- `run_landmark_placement(args)`: stages 3-4 (`landmarks.predict` ->
+  `landmarks.renumber`). Honors `args.crops_csv` if set (an override
+  written by a validation review, see below) as `landmarks.predict
+  --crops-csv`, skipping a human-rejected crop instead of the default
+  `extraction/<mode>/crops.csv`.
+- `run_landmarking(args)`: `run_detection_and_crop` then
+  `run_landmark_placement` in one call -- what `train_dataset.py`/
+  `predict_dataset.py` use; a validation-gated caller (`app/build_dataset.py`)
+  calls the two halves separately, with a review step of its own in between.
+- `run_export(args)`: stage 6 (`tools.pipeline.export_final_landmarks`),
+  writing to `<dataset>/export/` by default (`--export-dir` to override).
+  Forwards `--devices`/`--species`/`--castes`/`--include-outliers`/`--tps`/
+  `--landmarks-status-csv` (see `dataset_filter_argv`) -- so a landmark
+  review override (`args.landmarks_status_csv` pointing at a
+  `landmarks_reviewed.csv`) is reflected in the exported package the same
+  way it already was in the fitted model, rather than the export silently
+  using the unreviewed statuses (a real gap before session 8 sept. 2026,
+  fixed alongside the review mechanism itself).
+- `dataset_filter_argv(args)`: the same seven dataset-filter flags as CLI
+  argv, for a caller that invokes another script's `main(argv)` rather than
+  passing a `Namespace` through directly -- used by `run_export` and
+  `tools/pipeline/train_dataset.py` (previously duplicated in both).
 
-- **`tools/train_dataset.py`**: `run_landmarking` -> `run_export` ->
+- **`tools/pipeline/train_dataset.py`**: `run_landmarking` -> `run_export` ->
   `classifiers.train`, producing a `model.joblib` fitted on the given
   dataset (GPA mean shape + PCA + LDA).
   ```
-  python -m tools.train_dataset data/Bombus/collection \
-      --unet-model data/models/unet_landmarks/2026-08-29_131929/weights.pt
+  python -m tools.pipeline.train_dataset data/Bombus/collection \
+      --unet-model data/models/unet_landmarks/2026-08-29_131929/weights.pt \
+      --model-name "Identification bourdons (collection)"
   ```
-- **`tools/predict_dataset.py`**: `run_landmarking` -> `run_export` ->
+- **`tools/pipeline/predict_dataset.py`**: `run_landmarking` -> `run_export` ->
   `classifiers.predict batch` against an already-trained `--model`
   (typically one produced by `train_dataset.py` on a DIFFERENT dataset).
   ```
-  python -m tools.predict_dataset data/Bombus/terrain \
+  python -m tools.pipeline.predict_dataset data/Bombus/terrain \
       --model data/models/lda/species_collection/train/model.joblib \
       --unet-model data/models/unet_landmarks/2026-08-29_131929/weights.pt
   ```
@@ -445,22 +466,117 @@ already does on its own -- they are sequencing convenience, not a new
 execution engine.
 
 **Run end to end on real data (session 7 sept. 2026, suite 6)**:
-`tools/train_dataset.py data/Bombus/collection` (2600 specimens, 19
-landmarks) -> LOOCV top-1 = 94.77%, top-3 = 98.73%. `tools/predict_dataset.py
+`tools/pipeline/train_dataset.py data/Bombus/collection` (2600 specimens, 19
+landmarks) -> LOOCV top-1 = 94.77%, top-3 = 98.73%. `tools/pipeline/predict_dataset.py
 data/Bombus/terrain` with that model -> top-1 = 82.26%, top-3 = 96.98% on
 the 265 terrain specimens with known truth. First real confirmation the
 whole chain works end to end past stage 1, not just on synthetic fixtures.
 
+## Stage 0 orchestrator (session 8 sept. 2026)
+
+`tools/ingestion/prepare_dataset.py` closes the previously-flagged "no
+orchestrator covers stage 1" gap: driven by a single JSON config (one
+block per source, since stage 1 genuinely needs per-source identification
+CSV/columns -- see the module's own docstring for the exact schema), it
+chains, in-process, exactly the tools already documented in stage 1 above:
+
+```
+[config.ingest, optional]  tools.ingestion.ingest_raw           (once)
+[per source, "raw" type]   tools.ingestion.export_clean_dataset (identity resolution)
+[per source, always]       tools.ingestion.build_manifest       (structural validation)
+[once, over N sources]     tools.ingestion.combine_manifests    (N=1 works too)
+```
+
+A source can be `"raw"` (needs `export_clean_dataset`, e.g. a museum
+collection with messy identifiers) or `"compliant"` (already a per-photo
+CSV meeting stage 1b's standard -- straight to `build_manifest`). A
+source whose `build_manifest` run only produces `manifest_raw.csv` (not
+`manifest.csv`) is reported and excluded from the final combine, rather
+than aborting the whole run for one bad source. `--skip-ingest` reuses an
+already-scanned raw manifest instead of a full rescan.
+
+```
+python -m tools.ingestion.prepare_dataset config/prepare_ma_source.json
+```
+
+## Validation review (session 8 sept. 2026)
+
+A human checkpoint between stages 1-2 (cropping) and 3-4 (landmark
+placement): review the auto OK/SUSPECT/FAILED status per photo, correct it
+if needed, and have the correction flow through to everything downstream
+with no other code change -- see `utils/review.py` for the shared
+implementation (used identically by the CLI pair below and by
+`app/build_dataset.py`'s two validation steps).
+
+Mechanism: a review is a DataFrame (`photo_id, inv_id, auto_status,
+reviewed_status, ...`) built from a stage's own status log
+(`build_crop_review_df`/`build_landmark_review_df`, reading
+`extraction/<mode>/crops.csv`/`landmarks/landmarks_numbered.csv`).
+Persisting it (`write_crop_review`/`write_landmarks_review`) never mutates
+the original log (kept intact for audit) -- it writes a schema-compatible
+override file the rest of the pipeline already knows how to consume:
+- `extraction/<mode>/crops_reviewed.csv` -> `landmarks.predict --crops-csv`
+  (a human-rejected crop is skipped before spending UNet compute on it,
+  and everything downstream of it).
+- `landmarks/landmarks_reviewed.csv` -> `--landmarks-status-csv` (see
+  `utils.cli.add_dataset_args`), consumed by `run_export`/`classifiers.train`/
+  `classifiers.predict batch` exactly as `landmarks_numbered.csv` would be.
+
+Both also get an audit trail at `<dataset>/review/{crops,landmarks}_review.csv`
+(`photo_id, auto_status, reviewed_status`).
+
+CLI counterpart, for parity without the UI (`tools/pipeline/`):
+```
+python -m tools.pipeline.export_review data/Bombus/collection --overlays
+#   -> <dataset>/review/{crops,landmarks}_review.csv (reviewed_status column
+#      ready for hand-editing in a spreadsheet), plus numbered-landmark
+#      overlays sorted by status if --overlays.
+# ... edit reviewed_status by hand ...
+python -m tools.pipeline.reconcile_review data/Bombus/collection
+#   -> re-applies the edited review CSV(s), producing crops_reviewed.csv/
+#      landmarks_reviewed.csv exactly as write_crop_review/write_landmarks_review would.
+```
+
+`app/build_dataset.py` (see also README.md "Scenario 1") does the same
+thing interactively: a filterable, searchable, editable table
+(`st.data_editor`, `reviewed_status` column) plus a preview of the crop or
+the numbered-landmark overlay for the selected photo, "Save & continue"
+calling `write_crop_review`/`write_landmarks_review` and setting
+`args.crops_csv`/`args.landmarks_status_csv` on the shared pipeline
+`Namespace` before the next stage runs.
+
+## Model naming (session 8 sept. 2026)
+
+`classifiers/train.py --model-name "..."` (also exposed by
+`tools/pipeline/train_dataset.py` and `app/build_dataset.py`'s training
+step) attaches a human-facing name to a model, stored as
+`core.model_io.TrainedModel.model_name` and in the run's `metrics.json`.
+Purely descriptive: it never affects `model.joblib`'s path, still derived
+reproducibly from level/dataset_label/devices/landmarks-source (see
+`core/run_io.py::build_run_id`) -- omit it and the run_id is used as
+before. `core.run_io.model_display_name(model_path)` resolves the name to
+show in a model picker (reads the run's `metrics.json`, never unpickles
+the model just for a label) -- used by both `app/single_image.py` and
+`app/build_dataset.py`'s model selectors, and by
+`classifiers/predict.py`'s console banner.
+
 ## Known gaps (verbatim, not glossed over)
 
-- No orchestrator covers stage 1 (raw ingestion) or exposes the
-  landmarking validation UI (design-only per `RESUME.md`/`TODO.md` Phase
-  2) -- `tools/train_dataset.py`/`tools/predict_dataset.py` (see above)
-  only chain stages 2-6 plus training/prediction, each stage still
-  runnable on its own too.
+- `tools/` is split into three subpackages by responsibility
+  (`ingestion/`, `pipeline/`, `maintenance/` -- see each `__init__.py`),
+  replacing the previous flat layout (session 8 sept. 2026). Every
+  `python -m tools.<script>` command written before that session needs its
+  package inserted, e.g. `tools.build_manifest` -> `tools.ingestion.build_manifest`.
+  `core/` absorbed the four `utils/` files with no CLI/argparse dependency
+  that were shared by several modules (`dataset.py`, `predictions.py`,
+  `pipeline_io.py`, `run_io.py` -- the "Décider du sort de..." item open
+  since Phase 1, see `TODO.md`); `utils/repair_images.py` moved to
+  `tools/maintenance/` (standalone CLI, matches that package's own
+  criterion). `utils/` now holds only CLI-entangled or orchestration glue
+  (`cli.py`, `tps_overlay.py`, `landmarking_pipeline.py`, `review.py`).
 - `data/Bombus/collection` and `data/Bombus/terrain` are the current,
-  photo_id/inv_id-clean dataset roots (output of `tools/export_clean_dataset.py`
-  chained into `tools/build_manifest.py`, see stage 1) -- the OLD flat
+  photo_id/inv_id-clean dataset roots (output of `tools/ingestion/export_clean_dataset.py`
+  chained into `tools/ingestion/build_manifest.py`, see stage 1) -- the OLD flat
   `data/Bombus/` (a single `manifest.csv` with an
   `image_id`/`specimen_id`/`shot_index`/in-manifest `split` column) has
   been replaced, not merely deprecated; nothing in this pipeline reads
@@ -473,5 +589,5 @@ whole chain works end to end past stage 1, not just on synthetic fixtures.
   loading them with the current `core.model_io.TrainedModel` (now
   `dataset_label`, no `split`) raises `AttributeError` on `model.dataset_label`
   or `model.split` wherever that's read. Not a bug to fix: retrain with
-  `tools/train_dataset.py` (or `classifiers/train.py` directly) to get a
+  `tools/pipeline/train_dataset.py` (or `classifiers/train.py` directly) to get a
   model matching the current schema.

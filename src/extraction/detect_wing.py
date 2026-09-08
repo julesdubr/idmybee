@@ -26,8 +26,8 @@ import numpy as np
 from extraction.extraction_io import DETECTION_FIELDS, read_images_csv, select_images
 from extraction.normalize_crop import read_image
 from utils.cli import add_dataset_positional, add_logging_args, log_level_from_args
-from utils.pipeline_io import RunCounter, append_rows, format_duration, resolve_path, update_pipeline_stats
-from utils.run_io import setup_console_logging
+from core.pipeline_io import RunCounter, append_rows, format_duration, resolve_path, update_pipeline_stats
+from core.run_io import setup_console_logging
 
 logger = logging.getLogger(__name__)
 

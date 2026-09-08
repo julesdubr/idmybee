@@ -2,7 +2,7 @@
 Removes one landmark from every specimen of a TPS -- useful to compare
 Tancrede (19 LM) against a reconstructed file that's missing that landmark.
 
-Usage: python -m tools.drop_landmark_from_tps tancrede.tps tancrede_minus_lm3.tps --drop 3
+Usage: python -m tools.maintenance.drop_landmark_from_tps tancrede.tps tancrede_minus_lm3.tps --drop 3
 """
 from __future__ import annotations
 
@@ -13,7 +13,7 @@ from dataclasses import replace
 import numpy as np
 
 from utils.cli import add_logging_args, log_level_from_args
-from utils.run_io import setup_console_logging
+from core.run_io import setup_console_logging
 from core.tps_io import parse_tps, write_tps
 
 logger = logging.getLogger(__name__)

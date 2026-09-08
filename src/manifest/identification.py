@@ -1,7 +1,7 @@
 """Normalization of raw specimen identification data into a clean,
 specimen-level dataset with stable `inv_id` values.
 
-`tools/export_clean_dataset.py` runs this module once per source (e.g. once
+`tools/ingestion/export_clean_dataset.py` runs this module once per source (e.g. once
 for collection, once for terrain, once for a future other-pollinator
 dataset) -- nothing here combines several sources into one table. Sources
 share identity space only through the frozen mapping file passed to
@@ -11,7 +11,7 @@ share identity space only through the frozen mapping file passed to
 Terminology:
 - `original_id`: specimen identifier as found in the raw data for this
   source -- the identification CSV's `--key-column` and the raw ingest
-  manifest's own `original_id` column (see `tools/ingest_raw.py`) are the
+  manifest's own `original_id` column (see `tools/ingestion/ingest_raw.py`) are the
   same value, just read from two different files. May collide across
   physically different specimens -- see `resolve_identification`. Never
   the canonical identifier -- see `inv_id`.
@@ -232,7 +232,7 @@ def extend_mapping(
 
     `specimens_df` is one run's worth of specimens -- a single
     `source_type` (one `export_clean_dataset` run processes one source at
-    a time, see `tools/export_clean_dataset.py`) -- with columns
+    a time, see `tools/ingestion/export_clean_dataset.py`) -- with columns
     `source_type`, `original_id`, `inv_name`, `yyyy`, `mm`, `dd`,
     `resolved_conflict`.
 
@@ -430,7 +430,7 @@ def build_specimen_device_table(
     device took a given photo when a `device_type` covers several), this
     is specimen-level: within one (specimen, device_type) group, the raw
     identification CSV already pins down one specific camera/phone name.
-    Feeds `tools/export_clean_dataset.py`'s `manifest.csv` `device` column
+    Feeds `tools/ingestion/export_clean_dataset.py`'s `manifest.csv` `device` column
     -- photo-level `device_type` alone isn't enough once a code covers more
     than one physical device dataset-wide.
 
@@ -453,7 +453,7 @@ def assign_photo_ids(
     """One row per photo with a clean `photo_id`.
 
     `mapping_df` should already be restricted to this run's `source_type`
-    (see `tools/export_clean_dataset.py`) -- an `original_id` string is
+    (see `tools/ingestion/export_clean_dataset.py`) -- an `original_id` string is
     only guaranteed unique within its own source, so merging against an
     unfiltered multi-source mapping could match the wrong specimen.
 

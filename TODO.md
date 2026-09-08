@@ -59,11 +59,15 @@ Reste en Phase 0 -- pas fait, décision prise (voir RESUME.md
       `core.gpa`/`core.tps_io`). Mentions en docstring (pas seulement les
       `import`) corrigées aussi (ex. `alignment.py` référençait
       `utils/gpa.py`).
-- [ ] Décider du sort de `utils/dataset.py`, `predictions.py`,
+- [x] Décider du sort de `utils/dataset.py`, `predictions.py`,
       `pipeline_io.py`, `run_io.py`, `cli.py`, `repair_images.py`,
-      `tps_overlay.py` -- **toujours ouvert**, non traité cette session
-      (voir RESUME.md "Où on en est" / "Questions ouvertes" pour le détail).
-      Ces 7 fichiers restent dans `utils/` pour l'instant.
+      `tps_overlay.py` -- resté ouvert plusieurs sessions (voir RESUME.md
+      "Où on en est" / "Questions ouvertes" pour le détail historique).
+      **Tranché (session 8 sept. 2026)** : `dataset.py`/`predictions.py`/
+      `pipeline_io.py`/`run_io.py` -> `core/` ; `repair_images.py` ->
+      `tools/maintenance/` ; `cli.py`/`tps_overlay.py` restent dans
+      `utils/`. Voir `CONVENTIONS.md` "Clôture de la question ouverte
+      `utils/` -> `core/`" pour le raisonnement complet.
 - [x] Mettre à jour tous les imports (`from utils.xxx` -> `from core.xxx`)
       -- fait, mais seulement pour les 5 modules déplacés ci-dessus. Les
       imports vers les 7 fichiers restés dans `utils/` (`utils.dataset`,
@@ -273,10 +277,15 @@ Conception validée session du 2 sept. 2026 -- détail complet dans
       8)** : déjà couvert par `utils/tps_overlay.py::draw_landmarks`
       (existait déjà, pure, sans I/O) -- réutilisé tel quel plutôt que
       dupliqué.
-- [ ] **Mode dataset** -- orchestrateur bout-en-bout : dossier d'images ->
+- [x] **Mode dataset** -- orchestrateur bout-en-bout : dossier d'images ->
       détection -> normalisation -> prédiction UNet -> renumérotation ->
       TPS + log d'échecs ; + CSV de données biologiques si un
-      manifest/specimens.csv est fourni
+      manifest/specimens.csv est fourni. **Fait (session 7 sept. 2026,
+      suite 5/6)** en CLI : `tools/train_dataset.py`/`tools/predict_dataset.py`
+      (voir `PIPELINE.md` "Orchestrator scripts"). **Étendu (session
+      8 sept. 2026)** : accessible aussi depuis l'UI, `app/build_dataset.py`
+      pilote exactement les mêmes fonctions (`utils/landmarking_pipeline.py`),
+      avec en plus les deux étapes de validation ci-dessous.
 - [ ] Sortie configurable (mode dataset) : crops sauvegardés (o/n), TPS
       espace original / crop / les deux
 - [ ] Référence de renumérotation (blueprint Tancrède) embarquée comme
@@ -289,16 +298,38 @@ Conception validée session du 2 sept. 2026 -- détail complet dans
       (classification) a été branchée directement plutôt que de passer par
       un stub TPS-only, voir `app/single_image.py` et l'item Phase 3
       correspondant.
-- [ ] Statut auto `FAILED`/`SUSPECT`/`OK` calculé pendant le run, colonne
+- [x] Statut auto `FAILED`/`SUSPECT`/`OK` calculé pendant le run, colonne
       `status`, identique CLI et UI (détail des critères dans
-      `RESUME.md`)
-- [ ] UI -- étape de validation (mode dataset) : galerie annotée
+      `RESUME.md`). Déjà vrai côté fichiers depuis plusieurs sessions
+      (`crops.csv`, `landmarks_numbered.csv`) ; **le "identique CLI et UI"
+      est maintenant vérifié pour de vrai (session 8 sept. 2026)** --
+      `utils/review.py` lit ces mêmes statuts pour construire la review,
+      qu'elle soit affichée par `app/build_dataset.py` ou par
+      `tools/pipeline/export_review.py`.
+- [x] UI -- étape de validation (mode dataset) : galerie annotée
       (landmarks numérotés) + statut éditable OK/SUSPECT/FAILED,
-      navigable, export final
-- [ ] CLI -- parité fonctionnelle de la validation : `--export-review`
+      navigable, export final. **Fait (session 8 sept. 2026)** :
+      `app/build_dataset.py`, deux étapes de validation (recadrage puis
+      landmarks) -- tableau filtrable/éditable (`st.data_editor`,
+      colonne `reviewed_status`) + aperçu (crop ou overlay de landmarks
+      numérotés) pour la ligne sélectionnée. "Galerie" au sens strict
+      (une vignette par photo) pas retenue au profit d'un tableau +
+      aperçu à la demande -- ne passe pas à l'échelle pour un dataset de
+      plusieurs milliers de photos (la collection en a ~2600), voir
+      `RESUME.md` pour le détail du choix.
+- [x] CLI -- parité fonctionnelle de la validation : `--export-review`
       (overlays + `review.csv`) et une commande de réconciliation (nom
       provisoire `reconcile-review`) qui réapplique un `review.csv` édité
-      à la main au TPS/CSV final
+      à la main au TPS/CSV final. **Fait (session 8 sept. 2026)** :
+      `tools/pipeline/export_review.py` (écrit les CSV de review + overlays
+      optionnels) et `tools/pipeline/reconcile_review.py` (réapplique),
+      tous deux au-dessus de `utils/review.py` -- même implémentation que
+      l'UI, voir `CONVENTIONS.md` "Fonctions core réutilisables". Nom
+      final `reconcile_review.py`/`export_review.py` (pas de tiret, pour
+      rester cohérent avec le nommage `python -m tools.pipeline.xxx` du
+      reste du paquet -- `reconcile-review` était un nom de COMMANDE
+      envisagé à l'époque d'une éventuelle CLI unifiée avec sous-commandes,
+      jamais construite).
 - [x] Décider (question ouverte, voir `RESUME.md`) : le mode terrain
       garde-t-il un aperçu overlay sans statut persistant ? **Décidé
       (2 sept. 2026, Phase 1) : oui**, aperçu overlay conservé en mode
@@ -308,6 +339,16 @@ Conception validée session du 2 sept. 2026 -- détail complet dans
       seule app.** Focus immédiat sur le landmarking ; la classification
       (outil 2) s'ajoute plus tard dans la même app, de façon
       incrémentale.
+      **Révisé (session 8 sept. 2026)** : finalement DEUX apps distinctes
+      -- `app/single_image.py` (terrain, une photo, déjà là depuis la
+      session 7) et `app/build_dataset.py` (nouveau, dataset -- préparer,
+      valider, entraîner ou prédire). Les deux usages se sont avérés assez
+      différents dans leur flux (une photo + résultat immédiat, vs. un
+      assistant à plusieurs étapes avec deux points de validation) pour
+      qu'une seule app avec un mode caché aurait ajouté de la complexité
+      sans bénéfice réel ; ils partagent déjà le code qui compte
+      (`utils/landmarking_pipeline.py`, `classifiers/predict.py`,
+      `core/run_io.py::model_display_name`), donc rien n'est dupliqué.
 - [x] Mode dataset / mode terrain : **deux scripts distincts** (pas un
       seul script avec flag de mode) -- décidé (2 sept. 2026, Phase 1),
       confirme l'option déjà provisoirement retenue dans `RESUME.md`.
@@ -320,11 +361,27 @@ Conception validée session du 2 sept. 2026 -- détail complet dans
 - [ ] CLI unique train/predict/anova depuis un couple TPS/CSV, join par
       clé avec repli par ordre
 - [ ] Valider l'usage "TPS/CSV autonome" sans manifest complet
-- [ ] `train.py` et l'ANOVA/variance restent **CLI uniquement** (réservé
-      aux devs) -- décision confirmée session du 2 sept. 2026
-- [ ] UI Streamlit (batch + single) pour **predict** uniquement :
-      sélection d'un modèle LDA pré-fitté parmi les runs publiés (liste
-      curatée depuis `data/models/lda/<run_id>/train/`)
+- [ ] L'ANOVA/variance reste **CLI uniquement** (réservé aux devs) --
+      décision confirmée session du 2 sept. 2026, toujours valable pour
+      `analysis/variance_report.py`.
+      **`train.py`, en revanche, révisé (session 8 sept. 2026)** : demande
+      explicite d'une UI couvrant "préparer un jeu de données, construire
+      un modèle de référence, et prédire dessus" (scénario 1) -- construire
+      un modèle est maintenant possible depuis `app/build_dataset.py`
+      (nom du modèle, niveau espèce/caste), en plus de la ligne de
+      commande. Reste réservé aux devs : l'ANOVA/variance (ci-dessus) et
+      les options fines de `classifiers/train.py` non exposées dans l'UI
+      (`--lda-components` l'est, mais pas par ex. `--devices`/`--species`/
+      `--castes`/`--tps` -- l'UI couvre le cas courant, la CLI reste l'outil
+      complet).
+- [x] UI Streamlit (batch + single) pour **predict** : sélection d'un
+      modèle LDA pré-fitté parmi les runs publiés (liste curatée depuis
+      `data/models/lda/<run_id>/train/`). **Single fait (session 7 sept.
+      2026, suite 8)** : `app/single_image.py`. **Batch fait (session
+      8 sept. 2026)** : `app/build_dataset.py`, objectif "Predict with an
+      existing model" -- sélection du modèle par nom (voir `--model-name`
+      dans `CONVENTIONS.md`), résultats affichés en tableau +
+      top-1/top-3 si vérité connue.
 - [x] Brancher ce predict dans le **mode terrain de l'outil 1** (remplace
       le stub TPS-only du mode single/terrain, voir Phase 2) -- retourne
       un top-N espèce/caste + % de confiance, appel direct fonction à
@@ -611,13 +668,82 @@ cet outil UI consommera.
 voir la section détaillée dans `RESUME.md` ("Fait (session, 7 sept. 2026,
 suite 8)").
 
+## Interface Scénario 1, orchestrateur étape 0, review de validation, `core`/`tools` réorganisés, `--model-name` (session 8 sept. 2026)
+
+Demande de Jules : un orchestrateur CLI pour l'étape 0 (ingestion brute),
+en profitant pour clarifier `tools/`/`utils/` ; une interface pour le
+scénario 1 (préparer un jeu de données, construire un modèle de référence,
+prédire dessus), indépendante de `single_image.py`, avec deux étapes de
+validation (recadrage, landmarks) à statut éditable ; pouvoir nommer
+clairement le modèle produit ; mettre à jour les `.md`. Détail complet de
+chaque décision dans les sections déjà référencées ci-dessus/dans
+`CONVENTIONS.md`/`PIPELINE.md` -- résumé actionnable ici :
+
+- [x] **Clôture de la question ouverte `utils/` -> `core/`** (Phase 1) et
+      **découpage de `tools/`** en `ingestion/`/`pipeline/`/`maintenance/`
+      -- voir `CONVENTIONS.md` "Clôture de la question ouverte...".
+- [x] **`tools/ingestion/prepare_dataset.py`** : orchestrateur étape 0,
+      config JSON, chaîne `ingest_raw` (optionnel) -> `export_clean_dataset`
+      (par source "raw") -> `build_manifest` (toujours) ->
+      `combine_manifests` -- voir `PIPELINE.md` "Stage 0 orchestrator".
+- [x] **`utils/review.py`** + `tools/pipeline/export_review.py`/
+      `reconcile_review.py` (parité CLI) : validation recadrage/landmarks,
+      statut éditable OK/SUSPECT/FAILED, réconciliation transparente pour
+      la suite du pipeline (`--crops-csv`, `--landmarks-status-csv`) --
+      voir `PIPELINE.md` "Validation review" et `CONVENTIONS.md`.
+- [x] **`app/build_dataset.py`** : assistant Streamlit en 7 étapes
+      couvrant le scénario 1 de bout en bout (choix objectif -> dataset ->
+      paramètres -> détection/crop -> **validation recadrage** ->
+      landmarks -> **validation landmarks** -> export -> construction du
+      modèle ou prédiction), indépendant de `single_image.py` -- voir
+      `README.md` "Scénario 1" et `RESUME.md` pour le détail de conception
+      (dont le choix `st.data_editor` + aperçu plutôt qu'une vraie galerie
+      d'images, pour rester utilisable sur ~2600 photos).
+- [x] **`--model-name`** (`classifiers/train.py`, relayé par
+      `tools/pipeline/train_dataset.py` et `app/build_dataset.py`) :
+      nom lisible optionnel stocké dans le modèle (`TrainedModel.model_name`)
+      et ses métriques, affiché par un sélecteur de modèle
+      (`core.run_io.model_display_name`) à la place du `run_id` technique
+      -- répond directement à "les .joblib ont des noms abstraits" (ex.
+      `species_collection` ne dit pas "identification bourdons à
+      abdomen rouge"). Purement descriptif, n'affecte jamais le chemin.
+- [x] `.md` mis à jour : `README.md` (scénario 1 enrichi, section 6, point
+      d'attention sur les seuils de validation), `PIPELINE.md` (nouvelles
+      sections "Stage 0 orchestrator"/"Validation review"/"Model naming",
+      "Orchestrator scripts" et "Known gaps" mis à jour), `CONVENTIONS.md`
+      (clôture de la question `core/`, conventions review/`--model-name`),
+      `TODO.md`/`RESUME.md` (ce document).
+- Testé : 109 tests verts (95 existants + 7 `tests/test_review.py` + 5
+  `tests/test_prepare_dataset.py` -- le décompte grimpe encore avec les 2
+  tests de régression ajoutés après le bug ci-dessous), `py_compile` sur
+  tout `src/`+`app/`, `--help` sans crash sur chaque script CLI déplacé ou
+  créé, `app/build_dataset.py` exercé via `streamlit.testing.v1.AppTest`
+  (rendu de chaque étape + interactions clé : construction du manifest,
+  soumission des paramètres pipeline, review recadrage avec écriture du
+  fichier réconcilié, review landmarks avec aperçu overlay réel, export
+  réel sur un jeu de données synthétique).
+- **Bug réel trouvé et corrigé pendant les tests** (pas seulement un test
+  qui aurait pu être vert par chance) : `utils/review.py::write_crop_review`/
+  `write_landmarks_review` plantaient (`pandas.errors.LossySetitemError`)
+  dès que TOUTES les valeurs de `error_reason` du fichier d'origine
+  étaient vides -- pandas lit alors la colonne en `float64` (NaN) plutôt
+  qu'en texte, et y assigner une chaîne lève une exception. Cas réel très
+  probable (un dataset sans aucun échec avant la review). Corrigé par un
+  cast explicite en `object` avant assignation ; test de régression ajouté
+  pour les deux fonctions (`tests/test_review.py`).
+- **À faire par Jules** : premier run réel de `app/build_dataset.py` sur
+  un vrai dataset (collection ou terrain) avec les vrais poids UNet/YOLO-OBB
+  -- testé dans cet environnement via `AppTest` sur un jeu synthétique
+  (2 spécimens, 3 landmarks) pour valider l'orchestration et la review,
+  pas encore au clic dans un vrai navigateur sur un jeu réel de plusieurs
+  milliers de photos (où la pagination/le filtre du tableau de review
+  n'ont encore jamais été éprouvés en pratique).
+
 ## Non planifié / à discuter
 
-- `src/manifest/io.py` : confirmé mort (aucune référence nulle part dans
-  `src/`/`tests/`, repéré en implémentant `build_manifest.py` -- session 7
-  sept. 2026, suite 7) -- reste du schéma pré-refactor
-  (`images.csv`/`specimens.csv`/`crops.csv`). À supprimer à l'occasion,
-  sans rapport avec le reste de cette session.
+- ~~`src/manifest/io.py` : confirmé mort (...). À supprimer à l'occasion~~
+  -- **fait (session 8 sept. 2026)**, supprimé au passage du tri
+  `core/`/`utils/`/`tools/` (voir `CONVENTIONS.md`).
 - Tests de non-régression avec données réelles (redemander le
   micro-dataset le moment venu)
 - Suppression définitive du contenu de `tools/` une fois ses scripts

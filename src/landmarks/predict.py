@@ -12,7 +12,8 @@ Two uses, same prediction logic:
   whole dataset from `extraction/{mode}/crops.csv`, writes
   `landmarks/<tps>` + `landmarks/landmarks.csv`.
 
-Input (CLI): extraction/{mode}/crops.csv (Phase 1).
+Input (CLI): extraction/{mode}/crops.csv (Phase 1), or --crops-csv to read a
+reviewed override instead (see utils.review.write_crop_review).
 Output (CLI): landmarks/<tps>, landmarks/landmarks.csv, <dataset>/pipeline_stats.csv.
 
 A crop SKIPPED in Phase 1 (file already present on disk, not a failed
@@ -21,7 +22,7 @@ ignored. The previous version of this script only kept status=="OK",
 silently losing the SKIPPED crops of a previous Phase 1 run (5 images on
 this dataset).
 
-Statuses (see also utils.pipeline_io.RunCounter):
+Statuses (see also core.pipeline_io.RunCounter):
   - OK      : the expected `n_landmarks` points were found.
   - SUSPECT : fewer points than expected (but at least one) -- renumbering
     (Phase 3, landmarks/renumber.py) will automatically fail for these
@@ -46,7 +47,7 @@ Two substantive fixes relative to the original notebook:
 
 `core.tps_io.ImageLandmarks.tps_id` must be an integer, unique per photo
 WITHIN THE FILE, but carries no identity across runs -- `photo_id` (already
-a stable, unique string per photo, see tools/export_clean_dataset.py) is
+a stable, unique string per photo, see tools/ingestion/export_clean_dataset.py) is
 what this script actually tracks; `tps_id` is only assigned, sequentially,
 at checkpoint time (see `core.tps_io.assign_sequential_ids`).
 `ImageLandmarks.from_image()` persists `photo_id`/`inv_id` in the TPS
@@ -84,8 +85,8 @@ from skimage.morphology import local_maxima
 
 from landmarks_trainer.model import load_weights
 from utils.cli import add_dataset_positional, add_logging_args, log_level_from_args
-from utils.pipeline_io import RunCounter, format_duration, read_csv_rows, resolve_path, should_skip, update_pipeline_stats
-from utils.run_io import setup_console_logging
+from core.pipeline_io import RunCounter, format_duration, read_csv_rows, resolve_path, should_skip, update_pipeline_stats
+from core.run_io import setup_console_logging
 from core.tps_io import ImageLandmarks, assign_sequential_ids, parse_tps, write_tps
 
 logger = logging.getLogger(__name__)
@@ -245,6 +246,11 @@ def parse_args(argv: list[str] | None = None):
     add_dataset_positional(parser)
     parser.add_argument("--mode", default="light", choices=["heavy", "light"],
                          help="Phase 1 backend whose crops are read (extraction/{mode}/crops.csv).")
+    parser.add_argument("--crops-csv", type=Path, default=None,
+                         help="Read this CSV instead of the default extraction/{mode}/crops.csv -- "
+                              "e.g. a crops_reviewed.csv written by utils.review.write_crop_review "
+                              "after a manual validation pass, to skip a human-rejected crop here "
+                              "without mutating the original crops.csv.")
     parser.add_argument("--model", required=True, help="Path to the UNet .pth model.")
     parser.add_argument("--base-dir", default=None, help="Root to resolve crops.csv's relative output_path values.")
     parser.add_argument("--tps", default="landmarks.tps", help="Output TPS filename (in <dataset>/landmarks/).")
@@ -263,7 +269,7 @@ def main(argv: list[str] | None = None) -> None:
     args = parse_args(argv)
     setup_console_logging(log_level_from_args(args))
 
-    crops_path = args.dataset / "extraction" / args.mode / "crops.csv"
+    crops_path = args.crops_csv or (args.dataset / "extraction" / args.mode / "crops.csv")
     tps_path = args.dataset / "landmarks" / args.tps
     landmarks_path = args.dataset / "landmarks" / "landmarks.csv"
     stats_path = args.dataset / "pipeline_stats.csv"

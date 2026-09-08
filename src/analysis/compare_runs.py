@@ -29,7 +29,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from utils.cli import add_logging_args, log_level_from_args
-from utils.run_io import ANALYSIS_ROOT, FAMILY_LDA, MODELS_ROOT, read_metrics, setup_console_logging, slugify
+from core.run_io import ANALYSIS_ROOT, FAMILY_LDA, MODELS_ROOT, read_metrics, setup_console_logging, slugify
 
 logger = logging.getLogger(__name__)
 

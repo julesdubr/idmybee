@@ -16,7 +16,7 @@ Reuses the pipeline's own building blocks rather than re-parsing crops.csv
 or TPS files independently:
   - landmarks.predict.load_target_crops -- same crops.csv dedup/status/split
     filtering predict.py itself uses (OK+SKIPPED, latest row per photo_id).
-  - utils.pipeline_io.resolve_path -- same relative-path resolution as
+  - core.pipeline_io.resolve_path -- same relative-path resolution as
     predict.py's crop_path handling.
   - core.tps_io.parse_tps -- same TPS parser predict.py uses to reload its
     own output.
@@ -51,8 +51,8 @@ import numpy as np
 
 from landmarks.predict import load_target_crops
 from utils.cli import add_dataset_positional, add_logging_args, log_level_from_args
-from utils.pipeline_io import resolve_path
-from utils.run_io import setup_console_logging
+from core.pipeline_io import resolve_path
+from core.run_io import setup_console_logging
 from core.tps_io import parse_tps
 
 logger = logging.getLogger(__name__)
@@ -116,7 +116,7 @@ def main(argv: list[str] | None = None) -> None:
         raise SystemExit(
             "No specimen has a COMMENT= photo_id= in this TPS -- likely Tancrede's reference, "
             "digitized with a third-party tool (tpsDig or equivalent), not this pipeline. tps_io.py "
-            "explicitly states the caller must then join via utils.dataset -- this script does NOT "
+            "explicitly states the caller must then join via core.dataset -- this script does NOT "
             "do that yet (unknown signature). Nothing will be exported until that's wired in, rather "
             "than guessing a filename-based match that could silently pair wrong points with the "
             "wrong image."

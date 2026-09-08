@@ -35,7 +35,7 @@ import numpy as np
 
 from utils.cli import add_logging_args, log_level_from_args
 from core.gpa import gpagen
-from utils.run_io import setup_console_logging
+from core.run_io import setup_console_logging
 from core.tps_io import parse_tps
 
 logger = logging.getLogger(__name__)

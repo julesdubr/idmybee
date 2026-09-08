@@ -2,7 +2,10 @@
 Shared command-line building blocks.
 
 add_logging_args()/log_level_from_args() : --verbose/--quiet, used by every
-script (see utils.run_io.setup_console_logging).
+script (see core.run_io.setup_console_logging). verbosity_argv() converts a
+parsed Namespace back into ["--verbose"]/["--quiet"]/[] -- for a caller that
+forwards its own verbosity to another script's main(argv) (see
+utils.landmarking_pipeline, tools.ingestion.prepare_dataset).
 
 add_dataset_args() : --devices, --species, --castes, --include-outliers,
 --non-strict, --tps, --landmarks-status-csv, --run-label -- shared by
@@ -32,13 +35,22 @@ def log_level_from_args(args: argparse.Namespace) -> int:
     return logging.INFO
 
 
+def verbosity_argv(args: argparse.Namespace) -> list[str]:
+    """["--verbose"]/["--quiet"]/[] -- see module docstring."""
+    if getattr(args, "verbose", False):
+        return ["--verbose"]
+    if getattr(args, "quiet", False):
+        return ["--quiet"]
+    return []
+
+
 def add_dataset_positional(parser: argparse.ArgumentParser, help: str = "Dataset root (contains manifest.csv).") -> None:
     parser.add_argument("dataset", type=Path, help=help)
 
 
 def add_dataset_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--devices", type=str, nargs="+", default=None,
-                         help="Keep only these photos (e.g. --devices P1 S1). See utils.dataset._device_tag.")
+                         help="Keep only these photos (e.g. --devices P1 S1). See core.dataset._device_tag.")
     parser.add_argument("--species", type=str, nargs="+", default=None, help="Keep only these species.")
     parser.add_argument("--castes", type=str, nargs="+", default=None, help="Keep only these castes.")
     parser.add_argument(
@@ -50,7 +62,7 @@ def add_dataset_args(parser: argparse.ArgumentParser) -> None:
         "--tps", type=Path, default=None, dest="landmarks_tps",
         help="Use this .tps file instead of root/landmarks/landmarks_numbered.tps "
              "(e.g. reference manual annotations). specimens.csv/manifest.csv are still "
-             "used as-is for the join -- see utils.dataset.load_dataset.",
+             "used as-is for the join -- see core.dataset.load_dataset.",
     )
     parser.add_argument(
         "--landmarks-status-csv", type=Path, default=None,

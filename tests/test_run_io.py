@@ -1,9 +1,9 @@
-"""Tests for utils.run_io."""
+"""Tests for core.run_io."""
 from pathlib import Path
 
 import pytest
 
-from utils.run_io import (
+from core.run_io import (
     build_eval_tag,
     build_run_id,
     build_variance_id,

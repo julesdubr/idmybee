@@ -10,14 +10,14 @@ for the identity-resolution logic itself.
 
 This tool is OPTIONAL and only produces a clean dataset -- it does not
 build the pipeline's own `manifest.csv`/`biological_data.csv` (see
-`tools/build_manifest.py` for that, which works on this tool's output just
+`tools/ingestion/build_manifest.py` for that, which works on this tool's output just
 as well as on any other compliant dataset). Run it only when the raw data
 actually needs identity resolution.
 
 Outputs: `biological_data_all.csv` (every specimen, photographed or not --
 useful even without a photo, no equivalent downstream) and `dataset.csv`
 (one row per successfully copied photo, biological columns merged in
-directly -- the compliant, per-photo input `tools/build_manifest.py`
+directly -- the compliant, per-photo input `tools/ingestion/build_manifest.py`
 expects; `--device-column`/`--device-name-column` add a per-photo `device`
 column). `--mapping-file` is read-modify-written: existing `inv_id`
 assignments are frozen, only newly-seen specimens get a number appended --
@@ -33,7 +33,7 @@ not kept as a separate `original_id` column in the output (unlike the
 collection-style case, where it is genuinely distinct information).
 
 Usage (collection):
-    python -m tools.export_clean_dataset data/bombus_collection_raw/manifest.csv \\
+    python -m tools.ingestion.export_clean_dataset data/bombus_collection_raw/manifest.csv \\
         --identification-csv data/identification/IDMB_Bombus_collect.csv \\
         --source-type collection --key-column inv_id --device-column device_type \\
         --compare-columns genus,species,caste,collection_origin,identification_year,dd,mm,yyyy \\
@@ -43,7 +43,7 @@ Usage (collection):
         --output-dir data/clean/collection
 
 Usage (terrain):
-    python -m tools.export_clean_dataset data/bombus_terrain_raw/manifest.csv \\
+    python -m tools.ingestion.export_clean_dataset data/bombus_terrain_raw/manifest.csv \\
         --identification-csv data/identification/IDMB_Bombus_terrain.csv \\
         --source-type terrain --key-column inv_id \\
         --compare-columns genus,species,caste,dd,mm,yyyy \\
@@ -53,9 +53,9 @@ Usage (terrain):
 
 If several sources make up one dataset (e.g. collection + terrain), run
 this once per source, pointing `--mapping-file` at the same file so
-`inv_id` stays unique across sources, run `tools/build_manifest.py` on
+`inv_id` stays unique across sources, run `tools/ingestion/build_manifest.py` on
 each source's `dataset.csv`, then combine the results with
-`tools/combine_manifests.py`.
+`tools/ingestion/combine_manifests.py`.
 """
 from __future__ import annotations
 
@@ -71,7 +71,7 @@ from tqdm import tqdm
 
 from manifest import identification as ident
 from utils.cli import add_logging_args, log_level_from_args
-from utils.run_io import setup_console_logging
+from core.run_io import setup_console_logging
 
 logger = logging.getLogger(__name__)
 
@@ -149,7 +149,7 @@ def main(argv: list[str] | None = None) -> None:
     if "status" in manifest_df.columns:
         failed = manifest_df["status"] == "FAILED"
         if failed.any():
-            logger.info("%d manifest row(s) dropped: status=FAILED in the raw scan (see tools/ingest_raw.py)", int(failed.sum()))
+            logger.info("%d manifest row(s) dropped: status=FAILED in the raw scan (see tools/ingestion/ingest_raw.py)", int(failed.sum()))
         # the raw scan's own status is spent once used to drop FAILED rows here --
         # this run's export produces its own status (copy outcome), see below.
         manifest_df = manifest_df[~failed].drop(columns=["status", "status_reason"], errors="ignore").copy()
@@ -313,7 +313,7 @@ def main(argv: list[str] | None = None) -> None:
 
     # `dataset.csv` is this script's actual deliverable: one row per
     # successfully copied photo, biological columns merged in directly
-    # (denormalized) -- the compliant, per-photo input tools/build_manifest.py
+    # (denormalized) -- the compliant, per-photo input tools/ingestion/build_manifest.py
     # turns into manifest.csv/biological_data.csv. Rows whose copy failed or
     # was skipped (--no-copy-images) have no valid path to hand off, so
     # they're excluded (already traced via reports/copy_failures.csv or
@@ -336,7 +336,7 @@ def main(argv: list[str] | None = None) -> None:
     dataset_df[dataset_columns].to_csv(output_dir / "dataset.csv", index=False)
     print(
         f"\nWritten to {output_dir} ({len(dataset_df)} photo(s) in dataset.csv -- "
-        "run tools/build_manifest.py on it next to get manifest.csv/biological_data.csv)"
+        "run tools/ingestion/build_manifest.py on it next to get manifest.csv/biological_data.csv)"
     )
 
 

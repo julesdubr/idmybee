@@ -16,7 +16,7 @@ can have several photos, hence several TPS entries.
 `tps_id` (the ID= field) is just a TPS-format requirement (must be a
 unique integer per photo *within one file*) -- it carries no identity
 across files/runs. `photo_id` (the real, human-readable, stable key -- see
-tools/export_clean_dataset.py) and `inv_id` are not standard tps fields.
+tools/ingestion/export_clean_dataset.py) and `inv_id` are not standard tps fields.
 We persist them in a COMMENT= -- a tps field meant for free text,
 explicitly ignored by geomorph::readland.tps ("all other information...
 comments, variables, radii, etc. is ignored"), so it's safe for R
@@ -92,7 +92,7 @@ def assign_sequential_ids(specimens: list[ImageLandmarks]) -> list[ImageLandmark
     `ID=` is purely a TPS-format requirement (a unique int per block in
     the file) -- this is the only place it gets assigned. Callers that
     need a different row order for their TPS (e.g.
-    tools/export_final_landmarks.py, which numbers by biological_data.csv
+    tools/pipeline/export_final_landmarks.py, which numbers by biological_data.csv
     row order) should not use this helper and assign `tps_id` themselves.
     """
     ordered = sorted(specimens, key=lambda sp: sp.photo_id or "")

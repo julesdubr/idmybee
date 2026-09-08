@@ -1,10 +1,10 @@
-"""Tests for utils.pipeline_io."""
+"""Tests for core.pipeline_io."""
 import csv
 from pathlib import Path
 
 import pytest
 
-from utils.pipeline_io import RunCounter, append_rows, format_duration, read_csv_rows, resolve_path, should_skip
+from core.pipeline_io import RunCounter, append_rows, format_duration, read_csv_rows, resolve_path, should_skip
 
 
 @pytest.mark.parametrize("seconds,expected", [

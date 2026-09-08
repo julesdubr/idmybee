@@ -125,15 +125,74 @@ d'architecture #4.)*
   ailleurs, il doit remonter vers `utils/` (ou `core/` si la logique
   ajoutée est de la géométrie/I-O pure).
 
+### Clôture de la question ouverte `utils/` -> `core/`, et sous-découpage de `tools/` (session 8 sept. 2026)
+
+*(Répond à l'item resté ouvert depuis la Phase 1 -- "Décider du sort de
+`utils/dataset.py`, `predictions.py`, `pipeline_io.py`, `run_io.py`,
+`cli.py`, `repair_images.py`, `tps_overlay.py`" -- voir `TODO.md` Phase 1
+et `RESUME.md` "Emplacement final de `utils/`".)*
+
+- **`utils/dataset.py`, `predictions.py`, `pipeline_io.py`, `run_io.py`
+  déplacés vers `core/`.** Les quatre satisfont le critère déjà écrit
+  ci-dessus pour `core/` (aucune dépendance à `argparse`/CLI, partagés par
+  plusieurs outils) même s'ils ne sont pas de la géométrie au sens strict
+  (jointure dataset, schéma de prédictions, tracking de run/statuts,
+  convention de nommage des modèles) -- le critère retenu au final est
+  "pas de dépendance CLI, partagé largement", pas "géométrique
+  spécifiquement". `core/` compte maintenant 9 fichiers : les 5 déjà là
+  (`tps_io.py`, `gpa.py`, `alignment.py`, `outliers.py`, `model_io.py`) +
+  ces 4.
+- **`utils/repair_images.py` déplacé vers `tools/maintenance/`.** C'est un
+  script CLI autonome (`python -m ...`, jamais importé ailleurs) --
+  répondait déjà au critère `tools/` ci-dessus, resté dans `utils/` par
+  oubli plutôt que par choix.
+- **`utils/cli.py` et `utils/tps_overlay.py` restent dans `utils/`** :
+  `cli.py` est intrinsèquement lié à `argparse` (ne peut pas aller dans
+  `core/`) ; `tps_overlay.py` a un usage double (fonctions réutilisées --
+  `draw_landmarks` par `app/single_image.py` et `app/build_dataset.py` --
+  ET son propre CLI), ce qui l'exclut de `tools/` (référencé ailleurs).
+  `utils/landmarking_pipeline.py` et le nouveau `utils/review.py` (voir
+  plus bas) sont dans le même cas : glue d'orchestration partagée, pas de
+  la géométrie pure, donc `utils/` plutôt que `core/`.
+- **`tools/` découpé en trois sous-paquets** (`ingestion/`, `pipeline/`,
+  `maintenance/`, chacun avec son propre `__init__.py` documentant son
+  rôle) plutôt que laissé en vrac -- la commande CLI change en conséquence,
+  ex. `python -m tools.build_manifest` devient `python -m
+  tools.ingestion.build_manifest`. Répartition : `ingestion/` = brut vers
+  manifest propre (`ingest_raw.py`, `export_clean_dataset.py`,
+  `build_manifest.py`, `combine_manifests.py`, `prepare_dataset.py`) ;
+  `pipeline/` = orchestrateurs dataset-agnostiques + outils de validation
+  (`export_final_landmarks.py`, `export_review.py`, `reconcile_review.py`,
+  `train_dataset.py`, `predict_dataset.py`) ; `maintenance/` = scripts
+  ponctuels sans rapport avec le pipeline courant (`clean_tps.py`,
+  `clean_images_from_tps.py`, `convert_heic_to_jpeg.py`,
+  `drop_landmark_from_tps.py`, `flatten_image_dirs.py`, `verify_tps.py`,
+  `repair_images.py`). `tools/pipeline/export_final_landmarks.py` reste le
+  seul fichier de `tools/` importé ailleurs (par
+  `utils/landmarking_pipeline.py::run_export`) -- exception assumée au
+  critère "aucune référence ailleurs" ci-dessus, déjà le cas avant ce
+  découpage.
+- **`src/manifest/io.py` supprimé** : confirmé mort (déjà signalé comme
+  piste de nettoyage dans `TODO.md`, aucune référence nulle part dans
+  `src/`/`tests/`, reste du schéma pré-refactor `images.csv`/
+  `specimens.csv`/`crops.csv`).
+- Migration mécanique vérifiée par `py_compile` sur tout `src/`+`app/`,
+  `--help` sans crash sur chaque script CLI déplacé, et la suite de tests
+  complète (109 tests, tous verts) -- aucun changement de comportement,
+  seulement des chemins d'import/de commande.
+
 ## Tests
 
 - `pytest`, un fichier `tests/test_<module>.py` par module de `src/` qui
   contient de la logique pure (géométrie, parsing, nommage). Pas besoin de
   données réelles : données synthétiques minimales dans le test lui-même.
-- Toute fonction dans `utils/gpa.py`, `utils/alignment.py`, `utils/tps_io.py`,
-  `utils/outliers.py`, `utils/run_io.py`, `utils/pipeline_io.py` (le futur
-  `core/`) doit avoir un test qui ne dépend pas du dataset -- c'est le filet
-  de sécurité du refactor à venir.
+- Toute fonction dans `core/` (`gpa.py`, `alignment.py`, `tps_io.py`,
+  `outliers.py`, `model_io.py`, `dataset.py`, `predictions.py`,
+  `run_io.py`, `pipeline_io.py`) doit avoir un test qui ne dépend pas du
+  dataset -- c'est le filet de sécurité du refactor. Même exigence pour
+  `utils/review.py` (logique de validation partagée CLI/UI, pas
+  purement géométrique mais tout aussi facile à tester en synthétique --
+  voir `tests/test_review.py`).
 - Un bug corrigé une fois (ex. le facteur d'échelle Kabsch-Umeyama) doit
   laisser un test de non-régression, pas seulement une note dans le
   docstring.
@@ -415,11 +474,47 @@ deux métiers à la fois (nettoyage d'identité + construction du manifest).)*
   `manifest.csv`/`biological_data.csv` déjà produits par `build_manifest.py`
   (même logique de concat pure qu'annoncé, juste jamais implémentée).
 
+## Validation review : format des CSV, `reviewed_status` (session 8 sept. 2026)
+
+*(Convention introduite avec `utils/review.py` -- voir `PIPELINE.md`
+"Validation review" pour le mécanisme complet.)*
+
+- Un DataFrame de review garde toujours `auto_status` (jamais modifié une
+  fois construit) à côté de `reviewed_status` (éditable, initialisé à la
+  même valeur) -- jamais un seul champ `status` réutilisé pour les deux :
+  perdre la trace de la valeur automatique interdirait de savoir, après
+  coup, ce qui a été corrigé à la main vs ce qui était déjà comme ça.
+- Les fichiers réconciliés (`crops_reviewed.csv`, `landmarks_reviewed.csv`)
+  gardent le **même schéma** que le fichier qu'ils remplacent
+  (`crops.csv`, `landmarks_numbered.csv`) -- c'est ce qui leur permet de
+  se brancher directement sur un mécanisme déjà existant (`--crops-csv`,
+  `--landmarks-status-csv`) sans qu'aucun code consommateur n'ait besoin
+  de savoir qu'une review a eu lieu.
+- Le fichier d'audit (`<dataset>/review/<nom>_review.csv`) ne contient que
+  `photo_id, auto_status, reviewed_status` -- délibérément minimal, pensé
+  pour être ouvert et modifié dans un tableur (`tools.pipeline.export_review`
+  / `reconcile_review`) sans risquer d'y modifier accidentellement une
+  colonne technique du fichier source.
+
+## `--model-name` : nom descriptif, jamais dans le chemin (session 8 sept. 2026)
+
+- `core.model_io.TrainedModel.model_name` (rempli par `classifiers.train
+  --model-name`) est **purement descriptif** -- jamais utilisé pour
+  construire `run_id`/le chemin de sortie (`core.run_io.build_run_id`
+  reste la seule source de vérité pour ça, dérivé de
+  niveau/dataset/appareils/source de landmarks pour rester reproductible).
+  Un sélecteur de modèle (CLI ou UI) doit toujours passer par
+  `core.run_io.model_display_name(model_path)` plutôt que d'afficher le nom
+  de dossier `run_id` brut -- cette fonction lit `metrics.json` (jamais le
+  pickle du modèle lui-même, coût minimal) et retombe sur `run_id` si
+  aucun nom n'a été donné.
+
 ## Ce qui n'est *pas* couvert ici (volontairement, à traiter dans le
 découpage à venir)
 
 - Convention finale de sortie de run (`run_io.py` vs `landmarks_trainer/
   checkpoint.py` vs convention native Ultralytics) -- attend la
   réorganisation en `landmarking/` / `classification/` / `training/`.
-- Emplacement final de `utils/` (deviendra probablement `core/`) --
-  idem, pas de renommage avant le découpage pour éviter de bouger deux fois.
+- ~~Emplacement final de `utils/` (deviendra probablement `core/`)~~ --
+  **tranché (session 8 sept. 2026)** : voir "Clôture de la question
+  ouverte `utils/` -> `core/`" plus haut.

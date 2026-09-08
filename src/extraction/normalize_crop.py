@@ -32,7 +32,7 @@ from PIL import Image
 
 from extraction.extraction_io import CROP_FIELDS
 from utils.cli import add_dataset_positional, add_logging_args, log_level_from_args
-from utils.pipeline_io import (
+from core.pipeline_io import (
     RunCounter,
     append_rows,
     format_duration,
@@ -40,7 +40,7 @@ from utils.pipeline_io import (
     resolve_path,
     update_pipeline_stats,
 )
-from utils.run_io import setup_console_logging
+from core.run_io import setup_console_logging
 
 logger = logging.getLogger(__name__)
 
@@ -277,7 +277,7 @@ def build_output_path(output_root: Path, photo_id: str) -> Path:
     """Builds the `{output_root}/{photo_id}.jpg` path.
 
     `photo_id` (`<inv_id>_<device_type>_<n>`, see
-    tools/export_clean_dataset.py) is already globally unique and
+    tools/ingestion/export_clean_dataset.py) is already globally unique and
     human-readable -- no need to also derive a filename from
     specimen/device/shot or bucket by split."""
     return output_root / f"{photo_id}.jpg"

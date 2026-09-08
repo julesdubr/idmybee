@@ -3,7 +3,7 @@ CSV reading and extraction-specific (detection + normalization) helpers:
 detection.csv/crops.csv column schema, manifest image selection.
 
 Generic tracking utilities (status counter, stats, duration, path
-resolution) live in utils.pipeline_io -- reused by every pipeline step, not
+resolution) live in core.pipeline_io -- reused by every pipeline step, not
 just extraction (formerly mixed in here under the name detection_io.py).
 
 Input: manifest.csv (manifest) or detection.csv (depending on the caller).
@@ -13,7 +13,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from utils.pipeline_io import read_csv_rows
+from core.pipeline_io import read_csv_rows
 
 # Output of detect_wing.py (batch mode): extraction/{mode}/detection.csv
 DETECTION_FIELDS = [

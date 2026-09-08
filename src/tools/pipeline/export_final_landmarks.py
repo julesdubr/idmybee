@@ -3,7 +3,7 @@ Exports a clean, self-contained landmarks package for external use (e.g.
 Adrien's R/geomorph pipeline) from a dataset already processed by the
 landmarking pipeline (extraction -> landmarks/predict.py -> renumber.py).
 
-Reuses utils.dataset.load_dataset() for the TPS/manifest/biological_data
+Reuses core.dataset.load_dataset() for the TPS/manifest/biological_data
 join and OK/SUSPECT/FAILED exclusion -- see utils.cli.add_dataset_args()
 for the exact filtering semantics (--tps chooses the 19- or 18-landmark
 file, --devices/--species/--castes, --include-outliers). Exports the WHOLE
@@ -14,7 +14,7 @@ train/test split within a single call anymore.
 Canonical output directory: `<dataset>/export/` (override with --output-dir).
 This is the R-facing package for the dataset, kept separate from the
 working files (`extraction/`, `landmarks/`) and from the root
-`biological_data.csv` (specimen-level, from tools/export_clean_dataset.py).
+`biological_data.csv` (specimen-level, from tools/ingestion/export_clean_dataset.py).
 The `biological_data.csv` written HERE is photo-level, row-aligned to the
 TPS.
 
@@ -34,15 +34,15 @@ Original-image-space reprojection uses extraction.normalize_crop's wing
 transform (inverse of raw -> crop) together with extraction/<mode>/
 detection.csv's OBB and the clean dataset's own image dimensions (the same
 `path` detect_wing.py itself reads to run detection -- there is no
-separate "raw" file anymore, see tools/export_clean_dataset.py). A photo
+separate "raw" file anymore, see tools/ingestion/export_clean_dataset.py). A photo
 that fails reprojection is excluded from ALL outputs (not just the
 original-space TPS), to keep the three files in lockstep; it's listed in
 failed.csv under stage "reprojection". --padding/--out-width/--out-height
 must match whatever normalize_crop.py actually used to produce the crops.
 
 Biological columns come straight from biological_data.csv (via
-utils.dataset.load_dataset()'s meta_df, joined by inv_id) -- no separate
-identification CSV merge here anymore (tools/export_clean_dataset.py
+core.dataset.load_dataset()'s meta_df, joined by inv_id) -- no separate
+identification CSV merge here anymore (tools/ingestion/export_clean_dataset.py
 already produced a clean, single-schema biological_data.csv per source).
 """
 from __future__ import annotations
@@ -68,9 +68,9 @@ from utils.cli import (
     dataset_kwargs,
     log_level_from_args,
 )
-from utils.dataset import load_dataset
-from utils.pipeline_io import dataset_export_dir, read_csv_rows, resolve_path
-from utils.run_io import setup_console_logging
+from core.dataset import load_dataset
+from core.pipeline_io import dataset_export_dir, read_csv_rows, resolve_path
+from core.run_io import setup_console_logging
 
 logger = logging.getLogger(__name__)
 
@@ -96,7 +96,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--output-dir", type=Path, default=None,
         help="Directory to write the exported files to "
-             "(default: <dataset>/export/ -- see utils.pipeline_io.dataset_export_dir).",
+             "(default: <dataset>/export/ -- see core.pipeline_io.dataset_export_dir).",
     )
     parser.add_argument(
         "--no-original-space", action="store_true",

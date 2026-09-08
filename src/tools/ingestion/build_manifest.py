@@ -1,8 +1,8 @@
 """build_manifest.py
 Builds `manifest.csv`/`biological_data.csv` -- the contract every
-downstream pipeline stage reads via `utils.dataset.load_dataset()` -- from
+downstream pipeline stage reads via `core.dataset.load_dataset()` -- from
 ANY per-photo dataset CSV, whether or not it came from
-`tools/export_clean_dataset.py`. See `manifest/build.py` for the input
+`tools/ingestion/export_clean_dataset.py`. See `manifest/build.py` for the input
 contract (mandatory/optional columns) and the pure validation logic itself.
 
 This tool never copies or renames files -- image paths (absolute, or
@@ -10,18 +10,18 @@ relative to `--base-dir`) are used exactly as given, wherever they live (a
 repo folder, an external volume, anywhere else on disk). It does
 structural validation only (files present/readable, no duplicate
 `photo_id`, biological columns consistent per `inv_id`), never identity
-arbitration -- run `tools/export_clean_dataset.py` first if the input
+arbitration -- run `tools/ingestion/export_clean_dataset.py` first if the input
 actually needs that (the same raw label reused across two different
 specimens, messy multi-convention filenames, ...).
 
 Output: `manifest.csv` + `biological_data.csv` if every row validates OK.
 Otherwise `manifest_raw.csv` only (same schema, `status`/`status_reason`
 explain what's wrong per row) -- fix it by hand, or run
-`tools/export_clean_dataset.py` on the underlying raw data if it turns out
+`tools/ingestion/export_clean_dataset.py` on the underlying raw data if it turns out
 to need real identity resolution, then re-run this tool on its output.
 
 Usage:
-    python -m tools.build_manifest data/clean/collection/dataset.csv \\
+    python -m tools.ingestion.build_manifest data/clean/collection/dataset.csv \\
         --output-dir data/clean/collection
 """
 from __future__ import annotations
@@ -34,8 +34,8 @@ import pandas as pd
 
 from manifest import build as mbuild
 from utils.cli import add_logging_args, log_level_from_args
-from utils.pipeline_io import RunCounter
-from utils.run_io import setup_console_logging
+from core.pipeline_io import RunCounter
+from core.run_io import setup_console_logging
 
 logger = logging.getLogger(__name__)
 
@@ -95,7 +95,7 @@ def main(argv: list[str] | None = None) -> None:
         print(f"\n--- Summary ---\nmanifest_raw.csv : {len(manifest)} row(s) -- {counter}")
         print(
             f"\n{dataset_csv} does not meet the compliant-dataset standard -- see manifest_raw.csv's "
-            "status/status_reason column. Fix it by hand, or run tools/export_clean_dataset.py on the "
+            "status/status_reason column. Fix it by hand, or run tools/ingestion/export_clean_dataset.py on the "
             "underlying raw data if identity resolution is needed, then re-run this tool."
         )
 

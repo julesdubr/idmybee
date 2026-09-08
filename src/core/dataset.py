@@ -3,9 +3,9 @@ Loads landmarks + biological metadata for classifiers/* and
 analysis/variance_report.py.
 
 Requires, under `root` (e.g. data/clean/collection/, or a
-`tools/combine_manifests.py` output combining several sources):
+`tools/ingestion/combine_manifests.py` output combining several sources):
     biological_data.csv                 inv_id, species, caste, ... (see
-                                         tools/export_clean_dataset.py)
+                                         tools/ingestion/export_clean_dataset.py)
     manifest.csv                        photo_id, inv_id, device_type,
                                          device, photo_index, path, status
     landmarks/landmarks_numbered.tps    landmarks, all specimens

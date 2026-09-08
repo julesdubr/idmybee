@@ -1,6 +1,6 @@
 """train.py
 Fits a GPA -> PCA -> LDA classification model on a dataset (see
-utils.dataset.load_dataset) and evaluates its accuracy by LOOCV.
+core.dataset.load_dataset) and evaluates its accuracy by LOOCV.
 
 Writes the model and raw predictions to data/models/lda/<run_id>/train/.
 Detailed figures and tables are produced separately by
@@ -8,7 +8,7 @@ analysis/classification_report.py; shape variance (ANOVA/PERMANOVA) stays
 in analysis/variance_report.py.
 
 --level species : discriminates by species.
---level caste   : discriminates by (species, caste) -- see utils.dataset.target_groupe.
+--level caste   : discriminates by (species, caste) -- see core.dataset.target_groupe.
 
 Usage:
     python -m classifiers.train data/Bombus --level species
@@ -29,11 +29,11 @@ from sklearn.decomposition import PCA
 from sklearn.model_selection import LeaveOneOut, cross_val_predict
 
 from utils.cli import add_dataset_args, add_dataset_positional, add_logging_args, dataset_kwargs, log_level_from_args
-from utils.dataset import load_dataset, target_groupe
+from core.dataset import load_dataset, target_groupe
 from core.gpa import gpagen, two_d_array
 from core.model_io import TrainedModel, save_model
-from utils.predictions import build_predictions_df, accuracy_summary
-from utils.run_io import (
+from core.predictions import build_predictions_df, accuracy_summary
+from core.run_io import (
     FAMILY_LDA, build_run_id, run_path, setup_console_logging, write_metrics, write_params, write_run_log,
 )
 from core.tps_io import ImageLandmarks
@@ -43,7 +43,7 @@ logger = logging.getLogger(__name__)
 
 def run_gpa_pca(specimens: list[ImageLandmarks]):
     """GPA then PCA. Returns (scores, gpa_result, pca). Assumes a
-    homogeneous landmark count (guaranteed by utils.dataset.load_dataset)."""
+    homogeneous landmark count (guaranteed by core.dataset.load_dataset)."""
     if not specimens:
         raise ValueError(
             "No specimen to process (empty list after loading/filtering) -- check "
@@ -94,14 +94,19 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="GPA -> PCA -> LDA on bumblebee landmarks -- model fitting + LOOCV evaluation"
     )
-    add_dataset_positional(parser, help="Root folder (e.g. data/Bombus/collection) -- see utils.dataset.load_dataset")
+    add_dataset_positional(parser, help="Root folder (e.g. data/Bombus/collection) -- see core.dataset.load_dataset")
     add_dataset_args(parser)
     parser.add_argument("--level", type=str, default="species", choices=["species", "caste"],
                          help="'species': discriminate by species. 'caste': discriminate by "
-                              "(species, caste) -- see utils.dataset.target_groupe.")
+                              "(species, caste) -- see core.dataset.target_groupe.")
     parser.add_argument("--lda-components", type=int, default=2,
                          help="LDA components kept in the saved model, for the projection "
                               "(default: 2 -- doesn't affect predict()/predict_proba()).")
+    parser.add_argument("--model-name", type=str, default=None,
+                         help="Human-facing name saved in the model (e.g. "
+                              "'Red-rumped bumblebee identifier') -- purely descriptive, shown by a "
+                              "model picker (CLI or UI) instead of the abstract run_id; doesn't affect "
+                              "where the model is written. Defaults to the run_id if omitted.")
     parser.add_argument("--no-save-model", action="store_true",
                          help="Don't write model.joblib (saved by default -- no reason not to, "
                               "each run lives in its own folder).")
@@ -134,8 +139,11 @@ def main(argv: list[str] | None = None) -> None:
     predictions_path = out_dir / "loocv_predictions.csv"
     df.to_csv(predictions_path, index=False)
 
+    model_name = args.model_name or run_id
+
     metrics = {
         "run_id": run_id,
+        "model_name": model_name,
         "level": args.level,
         "landmarks_source": str(args.landmarks_tps) if args.landmarks_tps else "landmarks_numbered.tps (default)",
         "n_specimens": len(specimens),
@@ -148,7 +156,7 @@ def main(argv: list[str] | None = None) -> None:
     write_metrics(out_dir, metrics)
     write_params(out_dir, args, extra={"run_id": run_id, "family": FAMILY_LDA})
 
-    header = f"run_id={run_id} | level={args.level} | n={len(specimens)} specimen(s) | {specimens[0].n_points} landmarks"
+    header = f"model_name={model_name} | run_id={run_id} | level={args.level} | n={len(specimens)} specimen(s) | {specimens[0].n_points} landmarks"
     log_text = (
         f"{header}\n" + "=" * len(header) + "\n"
         f"Landmarks source: {metrics['landmarks_source']}\n"
@@ -173,6 +181,7 @@ def main(argv: list[str] | None = None) -> None:
             devices=args.devices,
             source_tps=str(args.landmarks_tps) if args.landmarks_tps else str(args.dataset / "landmarks" / "landmarks_numbered.tps"),
             n_train=len(specimens),
+            model_name=model_name,
         )
         save_model(model, out_dir / "model.joblib")
 

@@ -29,6 +29,17 @@ class TrainedModel:
     devices: list[str] | None = None     # --devices used at training time (e.g. ["P1","S1"]), if any
     source_tps: str = ""
     n_train: int = 0
+    model_name: str = ""                 # human-facing name (--model-name), e.g. "Red-rumped bumblebee identifier".
+                                          # Purely descriptive: never used to build run_id/the output path (see
+                                          # core.run_io.build_run_id), which stays derived from
+                                          # level/dataset_label/devices for reproducibility. Falls back to run_id
+                                          # for display wherever unset (see display_name()).
+
+    def display_name(self, run_id: str = "") -> str:
+        """model_name if one was given at training time, otherwise run_id
+        (or "" if neither is known) -- what a model picker (CLI or UI)
+        should show instead of a bare, abstract run_id."""
+        return self.model_name or run_id
 
 
 def save_model(model: TrainedModel, path: str | Path) -> None:

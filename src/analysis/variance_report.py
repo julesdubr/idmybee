@@ -76,9 +76,9 @@ import numpy as np
 
 from analysis.variance import nested_anova
 from utils.cli import add_dataset_args, add_dataset_positional, add_logging_args, dataset_kwargs, log_level_from_args
-from utils.dataset import load_dataset, restrict_to_complete_devices
+from core.dataset import load_dataset, restrict_to_complete_devices
 from core.gpa import gpagen, two_d_array
-from utils.run_io import ANALYSIS_ROOT, build_variance_id, run_path, setup_console_logging, write_params, write_run_log
+from core.run_io import ANALYSIS_ROOT, build_variance_id, run_path, setup_console_logging, write_params, write_run_log
 
 logger = logging.getLogger(__name__)
 
@@ -115,7 +115,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
         "--balanced-devices", action="store_true",
         help="Keep only specimens that have ALL of --devices' device_tags (requires --devices). "
              "Removes the unequal-weighting bias between individuals in a multi-level biological + "
-             "device ANOVA -- see utils.dataset.restrict_to_complete_devices.",
+             "device ANOVA -- see core.dataset.restrict_to_complete_devices.",
     )
     parser.add_argument("--seed", type=int, default=0)
     add_logging_args(parser)

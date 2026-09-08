@@ -32,7 +32,7 @@ not an architecture change.
 2. **`export_dataset.py`** -- build `train_manifest.csv` (crop path + 19
    ground-truth points per specimen) from Tancrede's reference TPS +
    `crops.csv`, reusing `landmarks.predict.load_target_crops` and
-   `utils.pipeline_io.resolve_path` rather than re-deriving that logic.
+   `core.pipeline_io.resolve_path` rather than re-deriving that logic.
    **Still has one unverified assumption -- read its docstring, and look
    at the debug overlays it generates before trusting the output.**
 3. **`train.py`** -- fine-tune (from `legacy_baseline` or from scratch),
@@ -121,4 +121,4 @@ legacy weights reproduce the original pickle's output bit-for-bit,
 `train.py` runs (from scratch and from migrated weights) and writes valid
 run artifacts, and `evaluate.py` was exercised against the real, unmodified
 `predict.py` functions (`load_target_crops`, `predict_landmarks_from_path`)
-using synthetic fixtures standing in for `utils.tps_io`/`utils.pipeline_io`.
+using synthetic fixtures standing in for `core.tps_io`/`core.pipeline_io`.

@@ -77,8 +77,8 @@ from extraction.normalize_crop import (
     normalized_points_to_pixels, read_image,
 )
 from utils.cli import add_dataset_positional, add_logging_args, log_level_from_args
-from utils.pipeline_io import RunCounter, read_csv_rows, resolve_path
-from utils.run_io import setup_console_logging
+from core.pipeline_io import RunCounter, read_csv_rows, resolve_path
+from core.run_io import setup_console_logging
 from core.tps_io import ImageLandmarks, parse_tps, write_tps
 from utils.tps_overlay import render_tps_overlays
 

@@ -199,8 +199,8 @@ Description complète et à jour, avec les scripts qui implémentent chaque
 CLI est dans [`PIPELINE.md`](PIPELINE.md) — je ne le duplique pas ici,
 seulement le "pourquoi" de chaque étape.
 
-**Étape 0 — Jeu de données propre** (`tools/build_manifest.py`, et en
-amont si besoin `tools/ingest_raw.py` + `tools/export_clean_dataset.py`).
+**Étape 0 — Jeu de données propre** (`tools/ingestion/build_manifest.py`, et en
+amont si besoin `tools/ingestion/ingest_raw.py` + `tools/ingestion/export_clean_dataset.py`).
 Avant toute chose, il faut un dossier avec des photos et un tableur
 associant chaque photo à un individu (`inv_id`) et ses données
 biologiques (espèce, caste...). Cette étape produit deux fichiers pivots,
@@ -244,7 +244,7 @@ compare chaque spécimen renuméroté à la position médiane du même landmark
 détection localisé vs échec de renumérotation généralisé à tout le
 spécimen).
 
-**Étape 4 — Export final** (`tools/export_final_landmarks.py`). Produit un
+**Étape 4 — Export final** (`tools/pipeline/export_final_landmarks.py`). Produit un
 paquet TPS + CSV autonome, compatible avec un usage sous R/`geomorph` si
 besoin, à la fois dans l'espace du recadrage et dans l'espace de la photo
 d'origine (reprojection).
@@ -270,8 +270,8 @@ individus d'une même espèce à la variance introduite par l'appareil photo
 utilisé — utile pour savoir si le bruit de mesure (matériel photo) reste
 en dessous du signal biologique qu'on cherche à détecter.
 
-Deux scripts "orchestrateurs" (`tools/train_dataset.py`,
-`tools/predict_dataset.py`) enchaînent les étapes 1 à 6 automatiquement
+Deux scripts "orchestrateurs" (`tools/pipeline/train_dataset.py`,
+`tools/pipeline/predict_dataset.py`) enchaînent les étapes 1 à 6 automatiquement
 sur un jeu de données donné — voir scénario 1.
 
 ## 5. Comment lire les scores de l'appli
@@ -350,19 +350,38 @@ rapport à une valeur absolue universelle).
 
 ```
 app/                    Applications Streamlit
-  single_image.py         -> l'outil de prédiction pour une photo (voir scénario 2)
+  build_dataset.py         -> préparer un jeu de données, construire un modèle de référence,
+                              et prédire avec (voir scénario 1) -- les deux étapes de validation
+                              (recadrage, landmarks) sont des checkpoints humains dans cette appli
+  single_image.py          -> l'outil de prédiction pour une seule photo, terrain (scénario 2)
   annotate_wings.py        outil d'annotation manuelle (usage ponctuel, pas la voie principale)
 
 src/
-  core/                  Brique commune : TPS, GPA/Procrustes, alignement, détection d'aberrants
+  core/                  Brique commune : TPS, GPA/Procrustes, alignement, détection d'aberrants,
+                          jointure dataset (`dataset.py`), schéma des prédictions (`predictions.py`),
+                          I/O de run et convention de nommage des modèles (`run_io.py`,
+                          `pipeline_io.py`) -- géométrie/I-O pure, sans dépendance CLI/argparse,
+                          partagée par plusieurs outils (voir CONVENTIONS.md "Placement d'un fichier")
   extraction/            Détection de l'aile + recadrage normalisé
   landmarks/             Placement + renumérotation des landmarks (utilise le UNet déjà entraîné)
   landmarks_trainer/      (Ré-)entraînement du UNet de landmarks (GPU, avancé)
   obb_trainer/            (Ré-)entraînement du détecteur YOLO-OBB (GPU, avancé)
-  classifiers/            Entraînement/prédiction du modèle GPA-PCA-LDA
+  classifiers/            Entraînement/prédiction du modèle GPA-PCA-LDA (`--model-name` pour un nom
+                          humain, voir scénario 1 étape 4)
   analysis/               ANOVA / analyse de variance, comparaison de runs
-  manifest/, utils/       Construction du manifest, utilitaires partagés (dataset, CLI, I/O)
-  tools/                  Scripts CLI de haut niveau (ingestion, orchestrateurs train/predict...)
+  manifest/               Construction du manifest et résolution d'identité (source brute désordonnée)
+  utils/                  CLI partagé (`cli.py`), orchestration multi-étapes (`landmarking_pipeline.py`),
+                          validation manuelle recadrage/landmarks (`review.py`), overlay TPS
+                          (`tps_overlay.py`) -- logique partagée mais pas purement géométrique
+  tools/                  Scripts CLI autonomes, groupés par rôle :
+    ingestion/              nettoyage brut -> manifest.csv/biological_data.csv, y compris
+                             `prepare_dataset.py` (orchestrateur "étape 0", config JSON)
+    pipeline/               orchestrateurs dataset-agnostiques (`train_dataset.py`,
+                             `predict_dataset.py`), export final, et les outils de validation
+                             CLI (`export_review.py`/`reconcile_review.py`, pendant CLI des
+                             étapes de validation de l'appli)
+    maintenance/            scripts ponctuels (nettoyage TPS, conversion HEIC, réparation
+                             d'images...), sans rapport avec le pipeline courant
 
 data/
   Bombus/collection/     Jeu de données de référence (collection identifiée)
@@ -430,7 +449,20 @@ tourner sans tout réentraîner.
 
 Cette partie concerne la préparation de *nouvelles* données (par exemple
 un nouveau lot de photos de collection ou de terrain) et l'entraînement
-d'un modèle dessus, pas juste l'utilisation de l'appli.
+d'un modèle dessus, pas juste l'utilisation de l'appli. Deux façons de la
+mener, qui font exactement la même chose en coulisses (mêmes fonctions
+Python, voir "Fonctions core réutilisables" dans `CONVENTIONS.md`) :
+
+- **En ligne de commande**, étape par étape — décrit en détail ci-dessous,
+  utile pour scripter/automatiser ou pour un jeu de données bien connu.
+- **Avec l'interface graphique** (`streamlit run app/build_dataset.py`) —
+  un assistant pas-à-pas qui enchaîne les mêmes étapes, avec en plus deux
+  **points de contrôle visuels** (recadrage, puis placement des landmarks)
+  où l'on peut vérifier et corriger à la main le statut automatique
+  (OK/SUSPECT/FAILED) de chaque photo avant de continuer — voir "Interface
+  graphique" plus bas pour le détail. Recommandé pour un premier passage
+  sur un nouveau jeu de données, où l'on veut *voir* ce qui se passe avant
+  de faire confiance au modèle qui en sortira.
 
 **1. Format attendu en entrée.** Il faut un dossier de photos et un CSV
 "par photo" avec au minimum les colonnes `inv_id` (identifiant de
@@ -445,8 +477,8 @@ nommage, doublons, identifiants bruts venant d'un musée...), deux outils
 enchaînés s'en chargent :
 
 ```bash
-python -m tools.ingest_raw config/roots_collection.json --name ma_source
-python -m tools.export_clean_dataset data/ma_source/manifest.csv \
+python -m tools.ingestion.ingest_raw config/roots_collection.json --name ma_source
+python -m tools.ingestion.export_clean_dataset data/ma_source/manifest.csv \
     --identification-csv chemin/vers/identifications.csv \
     --source-type collection \
     --key-column mon_identifiant_brut \
@@ -460,10 +492,20 @@ pour le détail complet des options (c'est la partie la plus "avancée" du
 pipeline — je ne la relance moi-même que quand j'intègre une nouvelle
 source de données brute).
 
+Pour plusieurs sources à la fois (collection + terrain, par exemple), ou
+pour rejouer cette étape + la suivante sans retaper toutes les options à
+la main, `tools.ingestion.prepare_dataset` enchaîne ingestion brute ->
+nettoyage par source -> manifest par source -> combinaison, depuis un seul
+fichier de config JSON (voir le docstring du module pour le schéma exact) :
+
+```bash
+python -m tools.ingestion.prepare_dataset config/prepare_ma_source.json
+```
+
 **3. Construire le manifest (étape obligatoire, toujours).**
 
 ```bash
-python -m tools.build_manifest data/clean/ma_source/dataset.csv \
+python -m tools.ingestion.build_manifest data/clean/ma_source/dataset.csv \
     --output-dir data/MonJeuDeDonnees
 ```
 
@@ -480,8 +522,9 @@ ligne plutôt que de deviner.
 **4. Construire le modèle de référence (entraînement complet).**
 
 ```bash
-python -m tools.train_dataset data/MonJeuDeDonnees \
-    --unet-model data/models/unet_landmarks/2026-08-29_131929/weights.pt
+python -m tools.pipeline.train_dataset data/MonJeuDeDonnees \
+    --unet-model data/models/unet_landmarks/2026-08-29_131929/weights.pt \
+    --model-name "Identification bourdons (collection)"
 ```
 
 Ce script enchaîne automatiquement détection -> recadrage -> landmarks ->
@@ -492,10 +535,20 @@ renumérotation -> export -> entraînement GPA-PCA-LDA. Résultat :
 ensuite de "référence" pour toute prédiction (c'est lui qui contient la
 forme moyenne GPA, la PCA et la LDA entraînées).
 
+`--model-name` (optionnel) donne un nom lisible au modèle — par exemple
+"Identification bourdons à abdomen rouge (collection)" plutôt que l'id
+technique `species_collection` généré automatiquement à partir du niveau
+et du nom du dataset. Ce nom est purement descriptif (il n'affecte pas
+l'emplacement du fichier, toujours dérivé de façon reproductible du
+niveau/dataset/appareils — voir `core/run_io.py`) : à défaut, l'id
+technique reste utilisé. Il est repris tel quel dans les listes
+déroulantes de modèle, aussi bien dans `app/single_image.py` que dans
+`app/build_dataset.py` (voir `core.run_io.model_display_name`).
+
 **5. Prédire sur un autre jeu de données (évaluation).**
 
 ```bash
-python -m tools.predict_dataset data/UnAutreJeuDeDonnees \
+python -m tools.pipeline.predict_dataset data/UnAutreJeuDeDonnees \
     --model data/models/lda/MonJeuDeDonnees/train/model.joblib \
     --unet-model data/models/unet_landmarks/2026-08-29_131929/weights.pt
 ```
@@ -514,6 +567,44 @@ deux scores de la section 5.
 entre les deux illustre bien pourquoi évaluer sur un jeu terrain distinct
 compte : la précision en LOOCV sur la collection est optimiste par rapport
 à des photos prises dans des conditions réelles.
+
+**Étapes de validation (recadrage, landmarks).** Entre les étapes 4/5
+(détection+recadrage) et 5/6 (placement des landmarks), le statut
+automatique de chaque photo (OK/SUSPECT/FAILED) peut être vérifié et
+corrigé à la main avant de poursuivre — voir `utils/review.py`. Deux
+façons d'y accéder :
+- **Interface graphique** (`app/build_dataset.py`) : galerie filtrable
+  (par statut, par recherche `photo_id`/`inv_id`), aperçu de la photo ou
+  de l'overlay de landmarks numérotés, statut éditable directement dans
+  le tableau. "Enregistrer et continuer" écrit la correction et
+  l'applique automatiquement à la suite du pipeline (recadrage rejeté ->
+  jamais passé par le placement de landmarks ; landmark rejeté/récupéré ->
+  exclu/inclus de l'export et du modèle).
+- **Ligne de commande**, pour parité fonctionnelle sans interface :
+  `tools.pipeline.export_review` écrit deux CSV éditables
+  (`<dataset>/review/{crops,landmarks}_review.csv`, avec une colonne
+  `reviewed_status` à modifier dans un tableur) plus, avec `--overlays`,
+  les images annotées triées par statut ; une fois corrigé à la main,
+  `tools.pipeline.reconcile_review <dataset>` applique le résultat.
+
+**Interface graphique (`app/build_dataset.py`).**
+
+```bash
+streamlit run app/build_dataset.py
+```
+
+Un assistant en 7 étapes : choix de l'objectif (construire un modèle ou
+prédire avec un modèle existant) puis du jeu de données (racine déjà
+propre, ou construction du manifest depuis un CSV) ; paramètres du
+pipeline (mêmes options que la ligne de commande, sous forme de
+formulaire) ; détection + recadrage ; validation du recadrage (voir
+ci-dessus) ; placement des landmarks ; validation des landmarks ; export ;
+puis, selon l'objectif choisi à la première étape, soit la construction du
+modèle (nom du modèle, niveau espèce/caste), soit la classification avec
+un modèle existant (sélection dans la liste, par nom si `--model-name` a
+été utilisé). Chaque étape "Run" a un bouton "Skip -- already done" pour
+reprendre un jeu de données déjà partiellement traité (par la ligne de
+commande ou une session précédente de l'appli) sans tout relancer.
 
 ### Scénario 2 — Identifier une aile à partir d'une photo (l'appli)
 
@@ -553,7 +644,7 @@ qu'on réentraîne le plus souvent : dès qu'on ajoute des spécimens à la
 collection de référence, ou qu'on veut tester une variante (par exemple
 `--level caste` plutôt que `--level species`, ou un autre nombre de
 composantes LDA). C'est exactement le scénario 1, étape 4
-(`tools/train_dataset.py`), ou directement :
+(`tools/pipeline/train_dataset.py`), ou directement :
 
 ```bash
 python -m classifiers.train data/MonJeuDeDonnees --level species
@@ -603,10 +694,11 @@ faire évoluer les briques de détection/localisation elles-mêmes.
   (il attend encore un ancien format de CSV `image_id`/`specimen_id`) —
   concerne uniquement le réentraînement du détecteur (scénario 3c), pas
   l'usage courant.
-- Il n'y a pour l'instant **pas d'orchestrateur pour l'étape 0** (ingestion
-  de données brutes désordonnées) ni pour une éventuelle interface de
-  validation manuelle des landmarks — ces étapes restent scriptées à la
-  main.
+- **Les seuils de la distance de Procrustes/du registration cost dans
+  `app/build_dataset.py` (validation des landmarks) sont, comme dans
+  `single_image.py`, des repères empiriques** — la décision finale (statut
+  éditable OK/SUSPECT/FAILED) reste humaine, l'appli ne fait qu'aider à la
+  prendre plus vite (tri, aperçu annoté).
 
 ## 9. Pour aller plus loin
 

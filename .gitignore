@@ -54,3 +54,7 @@ data/**/images/
 
 # Jupyter Notebook
 .ipynb_checkpoints/
+
+# Agents
+.agents/
+.claude/

@@ -26,6 +26,7 @@ import streamlit as st
 
 from classifiers.predict import predict_specimens
 from core.model_io import load_model as load_lda_model_impl
+from core.run_io import model_display_name
 from core.tps_io import ImageLandmarks
 from extraction.light import detection as light_backend
 from landmarks.build_reference import load_reference
@@ -93,8 +94,9 @@ with st.sidebar:
     lda_choices = discover("data/models/lda/*/train/model.joblib")
     if lda_choices:
         lda_model_path = st.selectbox(
-            "Classification model", lda_choices, format_func=lambda p: Path(p).parts[-3],
-            help="A model.joblib produced by classifiers/train.py or tools/train_dataset.py.",
+            "Classification model", lda_choices, format_func=model_display_name,
+            help="A model.joblib produced by classifiers/train.py or tools/pipeline/train_dataset.py "
+                 "-- shown by its --model-name if it was given one, otherwise its run_id.",
         )
     else:
         lda_model_path = st.text_input("Classification model path")
@@ -136,7 +138,7 @@ if uploaded is not None:
         col_original, col_result = st.columns(2)
         original_slot = col_original.empty()
         original_slot.image(
-            cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB), caption="Uploaded photo", use_container_width=True,
+            cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB), caption="Uploaded photo",
         )
 
         if st.button("Run pipeline", type="primary"):
@@ -164,7 +166,7 @@ if uploaded is not None:
                 if result.detection_box is not None:
                     original_slot.image(
                         cv2.cvtColor(draw_obb(image_bgr, result.detection_box), cv2.COLOR_BGR2RGB),
-                        caption="Detected wing (OBB)", use_container_width=True,
+                        caption="Detected wing (OBB)",
                     )
 
                 if result.status != "OK":
@@ -172,13 +174,13 @@ if uploaded is not None:
                     if result.crop_image is not None:
                         col_result.image(
                             cv2.cvtColor(result.crop_image, cv2.COLOR_BGR2RGB),
-                            caption="Normalized crop (before failure)", use_container_width=True,
+                            caption="Normalized crop (before failure)",
                         )
                 else:
                     overlay = draw_landmarks(result.crop_image, result.landmarks)
                     col_result.image(
                         cv2.cvtColor(overlay, cv2.COLOR_BGR2RGB),
-                        caption="Numbered landmarks (crop space)", use_container_width=True,
+                        caption="Numbered landmarks (crop space)",
                     )
                     col_result.caption(f"Registration cost: {result.registration_score:.4f}")
 
@@ -191,6 +193,7 @@ if uploaded is not None:
                     level = lda_model.level
 
                     st.subheader(f"Predicted {level}")
+                    st.caption(f"Model: {model_display_name(lda_model_path)}")
                     ranked = [
                         (row[f"predicted_{level}"], row["confidence"]),
                         (row["second_choice"], row["second_confidence"]),

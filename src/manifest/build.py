@@ -1,14 +1,14 @@
-"""Turns ANY per-photo dataset CSV -- produced by `tools/export_clean_dataset.py`
+"""Turns ANY per-photo dataset CSV -- produced by `tools/ingestion/export_clean_dataset.py`
 or not -- into `manifest.csv`/`biological_data.csv`, the exact contract
-every downstream pipeline stage reads via `utils.dataset.load_dataset()`.
+every downstream pipeline stage reads via `core.dataset.load_dataset()`.
 
 Unlike `manifest/identification.py` (identity resolution: frozen mapping,
 conflict arbitration between rows claiming the same specimen), this module
 does structural validation only: required columns present, referenced
 image files exist and are readable, no duplicate `photo_id`, biological
 data consistent per `inv_id`. It never decides which of two disagreeing
-rows is right -- that stays `tools/export_clean_dataset.py`'s job, for
-messy raw data. See `tools/build_manifest.py` for the CLI wrapping this.
+rows is right -- that stays `tools/ingestion/export_clean_dataset.py`'s job, for
+messy raw data. See `tools/ingestion/build_manifest.py` for the CLI wrapping this.
 
 Input contract (one row per photo):
 - mandatory: `inv_id`, `species`, `caste`, plus a path column (default
@@ -29,7 +29,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from utils.pipeline_io import resolve_path
+from core.pipeline_io import resolve_path
 
 REQUIRED_COLUMNS = ["inv_id", "species", "caste"]
 PHOTO_LEVEL_COLUMNS = ["photo_id", "device_type", "device", "photo_index", "photographer", "source_type"]
@@ -120,7 +120,7 @@ def check_biological_consistency(df: pd.DataFrame, bio_columns: list[str]) -> tu
     returns a report of the distinct variants found per conflicting
     `inv_id` (one row per variant, first occurrence). Reporting only -- no
     harmonization: this is a structural sanity check, not identity
-    arbitration (see `tools/export_clean_dataset.py` for that)."""
+    arbitration (see `tools/ingestion/export_clean_dataset.py` for that)."""
     empty_report = df.iloc[0:0].copy()
     if not bio_columns or "inv_id" not in df.columns:
         return df, empty_report

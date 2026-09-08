@@ -44,11 +44,11 @@ import numpy as np
 import pandas as pd
 
 from utils.cli import add_dataset_args, add_logging_args, dataset_kwargs, log_level_from_args
-from utils.dataset import load_dataset, load_unlabeled_tps
+from core.dataset import load_dataset, load_unlabeled_tps
 from core.gpa import align_to_reference, procrustes_distance, two_d_array
 from core.model_io import TrainedModel, load_model
-from utils.predictions import accuracy_summary, build_predictions_df, print_predictions_report
-from utils.run_io import (
+from core.predictions import accuracy_summary, build_predictions_df, print_predictions_report
+from core.run_io import (
     build_eval_tag, read_params, result_path, run_id_from_model_path, run_path, setup_console_logging,
     write_metrics, write_params, write_run_log,
 )
@@ -62,7 +62,7 @@ def predict_specimens(
 ) -> pd.DataFrame:
     """Aligns each specimen to the model's reference, projects it into
     PCA/LDA space, and returns a predictions DataFrame (see
-    utils.predictions.build_predictions_df for the schema)."""
+    core.predictions.build_predictions_df for the schema)."""
     valid: list[ImageLandmarks] = []
     aligned_list: list[np.ndarray] = []
     dist_list: list[float] = []
@@ -107,9 +107,10 @@ def predict_specimens(
 def _print_model_info(model: TrainedModel) -> None:
     devices_str = f", devices={model.devices}" if model.devices else ""
     dataset_str = f", dataset={model.dataset_label}" if model.dataset_label else ""
+    name_str = f"{model.model_name!r} " if model.model_name else ""
     print(
-        f"Model loaded: level={model.level}, {len(model.classes)} classes, {model.n_points} landmarks, "
-        f"trained on {model.n_train} specimens{dataset_str}{devices_str} from {model.source_tps}"
+        f"Model loaded: {name_str}(level={model.level}, {len(model.classes)} classes, {model.n_points} landmarks, "
+        f"trained on {model.n_train} specimens{dataset_str}{devices_str} from {model.source_tps})"
     )
 
 
@@ -207,7 +208,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
     batch = subparsers.add_parser("batch", help="Validate the model on a data folder (with known truth)")
     batch.add_argument("model_path", type=Path, help="Saved model (e.g. data/models/lda/<run_id>/train/model.joblib)")
-    batch.add_argument("dataset", type=Path, help="Root folder (e.g. data/Bombus/terrain) -- see utils.dataset.load_dataset")
+    batch.add_argument("dataset", type=Path, help="Root folder (e.g. data/Bombus/terrain) -- see core.dataset.load_dataset")
     add_dataset_args(batch)
     batch.add_argument("--low-confidence-threshold", type=float, default=0.6,
                         help="Confidence threshold below which a prediction is listed for manual review (default: 0.6)")

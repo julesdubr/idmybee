@@ -1,6 +1,6 @@
 """combine_manifests.py
 Concatenates `manifest.csv`/`biological_data.csv` from several dataset
-roots -- each already built by `tools/build_manifest.py` -- into one
+roots -- each already built by `tools/ingestion/build_manifest.py` -- into one
 combined pair, for downstream stages that need a single dataset root
 spanning more than one source (e.g. collection + terrain).
 
@@ -10,7 +10,7 @@ already validated, this only concatenates them. Raises if `photo_id`/
 `CONVENTIONS.md` "Identification des spécimens").
 
 Usage:
-    python -m tools.combine_manifests data/clean/collection data/clean/terrain \\
+    python -m tools.ingestion.combine_manifests data/clean/collection data/clean/terrain \\
         --output-dir data/clean/combined
 """
 from __future__ import annotations
@@ -22,7 +22,7 @@ from pathlib import Path
 import pandas as pd
 
 from utils.cli import add_logging_args, log_level_from_args
-from utils.run_io import setup_console_logging
+from core.run_io import setup_console_logging
 
 logger = logging.getLogger(__name__)
 
@@ -43,7 +43,7 @@ def combine(roots: list[Path]) -> tuple[pd.DataFrame, pd.DataFrame]:
 
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("roots", nargs="+", type=Path, help="Dataset roots to combine (each must already have manifest.csv/biological_data.csv, e.g. from tools/build_manifest.py).")
+    parser.add_argument("roots", nargs="+", type=Path, help="Dataset roots to combine (each must already have manifest.csv/biological_data.csv, e.g. from tools/ingestion/build_manifest.py).")
     parser.add_argument("--output-dir", required=True, help="Directory to write the combined manifest.csv/biological_data.csv into.")
     add_logging_args(parser)
     args = parser.parse_args(argv)

@@ -30,8 +30,8 @@ SAFETY: by default the script only prints what it would do (dry-run mode).
 Pass --apply to actually move files.
 
 Usage:
-    python -m tools.flatten_image_dirs data/images/groupe_images
-    python -m tools.flatten_image_dirs data/images/groupe_images --apply
+    python -m tools.maintenance.flatten_image_dirs data/images/groupe_images
+    python -m tools.maintenance.flatten_image_dirs data/images/groupe_images --apply
 """
 from __future__ import annotations
 
@@ -43,7 +43,7 @@ import unicodedata
 from pathlib import Path
 
 from utils.cli import add_dataset_positional, add_logging_args, log_level_from_args
-from utils.run_io import setup_console_logging
+from core.run_io import setup_console_logging
 
 logger = logging.getLogger(__name__)
 

@@ -1,7 +1,7 @@
 """predict_dataset.py
 Process ANY clean dataset (detection -> crop -> landmarks -> renumbering),
 write its R-facing landmarks package to <dataset>/export/, then classify
-every specimen with an already-trained model (see tools/train_dataset.py).
+every specimen with an already-trained model (see tools/pipeline/train_dataset.py).
 
 Dataset-agnostic: pass the dataset root as the positional argument -- there
 is no default, and nothing here is specific to collection vs terrain vs a
@@ -16,7 +16,7 @@ utils.landmarking_pipeline and PIPELINE.md):
     extraction.normalize_crop         -> <dataset>/extraction/<mode>/images/, crops.csv
     landmarks.predict                 -> <dataset>/landmarks/landmarks.{tps,csv}
     landmarks.renumber                -> <dataset>/landmarks/landmarks_numbered.{tps,csv}
-    tools.export_final_landmarks      -> <dataset>/export/
+    tools.pipeline.export_final_landmarks      -> <dataset>/export/
     classifiers.predict batch         -> data/models/lda/<run_id>/predict/<eval_tag>/predictions.csv
 
 If biological_data.csv has little or no known species/caste, the printed
@@ -24,7 +24,7 @@ top-1/top-3 "accuracy" only reflects the labeled rows -- exploratory, not a
 held-out test set.
 
 Usage:
-    python -m tools.predict_dataset data/Bombus/terrain \\
+    python -m tools.pipeline.predict_dataset data/Bombus/terrain \\
         --model data/models/lda/species_collection/train/model.joblib \\
         --unet-model data/models/unet_landmarks/2026-08-29_131929/weights.pt
 """
@@ -36,7 +36,7 @@ from pathlib import Path
 from classifiers.predict import run_batch
 from utils.cli import add_dataset_args, add_dataset_positional, add_logging_args, log_level_from_args
 from utils.landmarking_pipeline import add_landmarking_args, run_export, run_landmarking
-from utils.run_io import setup_console_logging
+from core.run_io import setup_console_logging
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -45,7 +45,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     add_dataset_positional(parser, help="Clean dataset root (contains manifest.csv + biological_data.csv).")
     parser.add_argument("--model", dest="model_path", type=Path, required=True,
-                         help="Trained model (see tools/train_dataset.py).")
+                         help="Trained model (see tools/pipeline/train_dataset.py).")
     add_landmarking_args(parser)
     add_dataset_args(parser)
     parser.add_argument("--low-confidence-threshold", type=float, default=0.6,

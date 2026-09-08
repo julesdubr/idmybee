@@ -103,6 +103,29 @@ def run_id_from_model_path(model_path: str | Path) -> tuple[str, str]:
     return model_path.parent.parent.parent.name, model_path.parent.parent.name
 
 
+def model_display_name(model_path: str | Path) -> str:
+    """Human-facing name for a model.joblib, for a picker (CLI or UI): the
+    model_name recorded in its training run's metrics.json (see
+    classifiers.train --model-name / core.model_io.TrainedModel.model_name)
+    if present, otherwise the run_id itself -- never unpickles the model
+    just to get a label. Falls back to the model's grandparent folder name
+    if the path doesn't even follow the run_id convention (e.g. a
+    model.joblib moved out of data/models/)."""
+    model_path = Path(model_path)
+    try:
+        metrics = read_metrics(model_path.parent)
+    except FileNotFoundError:
+        metrics = {}
+    name = metrics.get("model_name")
+    if name:
+        return name
+    try:
+        _family, run_id = run_id_from_model_path(model_path)
+        return run_id
+    except ValueError:
+        return model_path.resolve().parent.parent.name
+
+
 def run_path(family: str, *parts: str, root: Path = MODELS_ROOT) -> Path:
     """Build and create an output folder, e.g. run_path("lda", run_id, "train")."""
     d = root.joinpath(family, *parts)

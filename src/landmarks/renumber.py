@@ -21,7 +21,7 @@ Input (CLI):
   - <reference>                      (frozen artifact, see build_reference.py)
   - <dataset>/biological_data.csv    (optional: enables the per-species
     outlier diagnostic -- without it, every numbered specimen stays OK.
-    See tools/export_clean_dataset.py -- "labeled" here means a non-empty
+    See tools/ingestion/export_clean_dataset.py -- "labeled" here means a non-empty
     `species`, there is no `is_labeled` column in this schema)
 
 Output (CLI):
@@ -69,8 +69,8 @@ from landmarks.methods.base import NumberingResult
 from landmarks.methods.hungarian_umeyama import numerate as numerate_hungarian_umeyama
 from utils.cli import add_dataset_positional, add_logging_args, log_level_from_args
 from core.outliers import HEAVY_LANDMARK_FRAC, MAD_FACTOR, MIN_GROUP_SIZE, flag_by_species
-from utils.pipeline_io import update_pipeline_stats
-from utils.run_io import setup_console_logging
+from core.pipeline_io import update_pipeline_stats
+from core.run_io import setup_console_logging
 from core.tps_io import ImageLandmarks, parse_tps, write_tps
 
 logger = logging.getLogger(__name__)
@@ -105,8 +105,8 @@ def load_specimen_labels(biological_data_csv: Path) -> tuple[dict[str, str], set
     biological_data_csv.
 
     "Labeled" = non-empty `species` -- there is no `is_labeled` column in
-    this schema (see tools/export_clean_dataset.py), matching the same
-    convention already used by utils.dataset.load_dataset."""
+    this schema (see tools/ingestion/export_clean_dataset.py), matching the same
+    convention already used by core.dataset.load_dataset."""
     df = pd.read_csv(biological_data_csv)
     required = {"inv_id", "species"}
     missing = required - set(df.columns)

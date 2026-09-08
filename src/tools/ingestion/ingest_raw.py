@@ -5,8 +5,8 @@ filenames (several naming conventions supported, see NAMING_PARSERS), and
 writes manifest.csv (+ manifest/duplicates.csv) under <out-dir>/<name>/.
 
 This is the first of two steps for messy raw data:
-    tools/ingest_raw.py          (this file)  raw folder -> raw manifest.csv
-    tools/export_clean_dataset.py             raw manifest.csv + raw
+    tools/ingestion/ingest_raw.py          (this file)  raw folder -> raw manifest.csv
+    tools/ingestion/export_clean_dataset.py             raw manifest.csv + raw
                                                identification CSV -> clean,
                                                independent, canonically-named
                                                dataset (its own manifest.csv
@@ -17,7 +17,7 @@ If a dataset is already clean (canonical `<inv_id>_<device_type>_<n>`
 naming from the start), skip both -- there's nothing to ingest or export.
 
 No identification/biological data here on purpose -- resolving specimen
-identity (conflicts, `inv_id` assignment) is `tools/export_clean_dataset.py`'s
+identity (conflicts, `inv_id` assignment) is `tools/ingestion/export_clean_dataset.py`'s
 job, not this one's. This script only ever answers "what image files exist,
 and can their filename be parsed".
 
@@ -29,13 +29,13 @@ config/roots.json:
         {"path": "terrain", "source_type": "terrain", "photographer_subfolder": true}
       ]
     }
-`source_type` is later passed as-is to `tools/export_clean_dataset.py
+`source_type` is later passed as-is to `tools/ingestion/export_clean_dataset.py
 --source-type` -- if this manifest ever combines several source_types (as
 in the example above), export_clean_dataset.py filters it down to the one
 it's processing, so it doesn't need to be pre-split by hand.
 
 Usage:
-    python -m tools.ingest_raw config/roots.json --name bombus_raw
+    python -m tools.ingestion.ingest_raw config/roots.json --name bombus_raw
 """
 from __future__ import annotations
 
@@ -52,8 +52,8 @@ from pathlib import Path
 from typing import Optional
 
 from utils.cli import add_logging_args, log_level_from_args
-from utils.pipeline_io import RunCounter
-from utils.run_io import setup_console_logging
+from core.pipeline_io import RunCounter
+from core.run_io import setup_console_logging
 
 logger = logging.getLogger(__name__)
 
@@ -139,7 +139,7 @@ class ImageRecord:
     ext: str
     file_size_bytes: int
     content_hash: str
-    status: str          # OK | SUSPECT | FAILED (see utils/pipeline_io.py; SKIPPED unused, always a full rescan)
+    status: str          # OK | SUSPECT | FAILED (see core/pipeline_io.py; SKIPPED unused, always a full rescan)
     status_reason: str   # explains SUSPECT/FAILED, empty for OK
 
 
@@ -314,7 +314,7 @@ def main(argv: list[str] | None = None) -> None:
     print(f"manifest.csv   : {len(all_records)} row(s) -- {counter}")
     print(f"duplicates.csv : {len(duplicate_rows)} group(s) of identical content")
     print(f"\nWritten to: {out_dir.resolve()}")
-    print("Next: tools/export_clean_dataset.py to resolve identity and produce a clean, independent dataset.")
+    print("Next: tools/ingestion/export_clean_dataset.py to resolve identity and produce a clean, independent dataset.")
 
 
 if __name__ == "__main__":

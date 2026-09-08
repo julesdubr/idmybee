@@ -1,10 +1,10 @@
-"""Tests for utils.dataset."""
+"""Tests for core.dataset."""
 import csv
 
 import numpy as np
 
 from core.tps_io import ImageLandmarks, write_tps
-from utils.dataset import load_dataset
+from core.dataset import load_dataset
 
 
 def _write_csv(path, fieldnames, rows):

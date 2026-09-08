@@ -229,7 +229,7 @@ def _make_conflict_fixture() -> pd.DataFrame:
 def test_reports_are_one_row_per_specimen_with_canonical_inv_id():
     """Regression for the reports showing one line per device (device-
     suffixed inv_id) instead of one per specimen -- see
-    tools/export_clean_dataset.py, which follows this exact sequence."""
+    tools/ingestion/export_clean_dataset.py, which follows this exact sequence."""
     identification_df = _make_conflict_fixture()
     manifest_df = pd.DataFrame({"original_id": ["CD1", "CD1"]})  # only CD1 was photographed
 

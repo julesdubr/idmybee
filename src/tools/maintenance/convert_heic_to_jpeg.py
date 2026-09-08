@@ -12,7 +12,7 @@ Dependencies:
   pip install pillow pillow-heif
 
 Usage:
-    python -m tools.convert_heic_to_jpeg organized
+    python -m tools.maintenance.convert_heic_to_jpeg organized
 """
 from __future__ import annotations
 
@@ -25,7 +25,7 @@ from pathlib import Path
 from PIL import Image
 
 from utils.cli import add_logging_args, log_level_from_args
-from utils.run_io import setup_console_logging
+from core.run_io import setup_console_logging
 
 logger = logging.getLogger(__name__)
 
