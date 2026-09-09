@@ -6,6 +6,8 @@ __pycache__/
 build/
 dist/
 
+docs/
+
 # Test / tooling caches
 .pytest_cache/
 .mypy_cache/
