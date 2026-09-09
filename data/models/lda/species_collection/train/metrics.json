@@ -1,5 +1,6 @@
 {
   "run_id": "species_collection",
+  "model_name": "Red-rumped_Bombus",
   "level": "species",
   "landmarks_source": "landmarks_numbered.tps (default)",
   "n_specimens": 2600,

@@ -20,10 +20,24 @@ for stages 2-6):
 
 Config file (JSON):
 {
-  "ingest": {                             // omit entirely if every source is
-    "roots_json": "config/roots.json",    // already a per-photo CSV, or if
-    "name": "bombus_raw",                 // ingest_raw was already run by hand
-    "out_dir": "data"                     // (default: "data")
+  // "ingest": omit entirely if every source is already a per-photo CSV, or
+  // if ingest_raw was already run by hand. Otherwise, one of:
+  //   "roots": {...}       -- the roots config inline (base_root/roots,
+  //                            see tools.ingestion.ingest_raw's docstring
+  //                            for the shape) -- one JSON, end to end.
+  //   "roots_json": "..."  -- path to a separate roots file instead, for
+  //                            the few roots configs actually reused
+  //                            across several prepare runs (e.g. one per
+  //                            external drive -- see config/roots_*.json).
+  "ingest": {
+    "roots": {
+      "base_root": {"darwin": "/Volumes/EXT DATA/"},
+      "roots": [
+        {"path": "IDMB/images/Bombus/collection", "source_type": "collection"}
+      ]
+    },
+    "name": "bombus_raw",
+    "out_dir": "data"                       // default: "data"
   },
   "mapping_file": "data/identification/inv_id_mapping.csv",  // required iff
                                                                // any source is "raw"
@@ -109,13 +123,19 @@ def _optional_flags(source: dict) -> list[str]:
     return argv
 
 
-def run_ingest(config: dict, verbosity: list[str]) -> Path:
-    """Runs tools.ingestion.ingest_raw once, returns the raw manifest.csv it wrote."""
+def run_ingest(config: dict) -> Path:
+    """Runs tools.ingestion.ingest_raw once, returns the raw manifest.csv it
+    wrote. ingest_cfg['roots'] (inline) is the common case -- one config
+    end to end; ingest_cfg['roots_json'] (a separate file) is kept for the
+    few roots configs actually reused across several prepare runs."""
     ingest_cfg = config["ingest"]
     out_dir = ingest_cfg.get("out_dir", "data")
-    print(f"\n=== Step 0a: raw ingestion ({ingest_cfg['roots_json']}) ===")
-    ingest_raw.main([ingest_cfg["roots_json"], "--name", ingest_cfg["name"], "--out-dir", out_dir, *verbosity])
-    return Path(out_dir) / ingest_cfg["name"] / "manifest.csv"
+    if "roots" in ingest_cfg:
+        roots, label = ingest_cfg["roots"], "inline"
+    else:
+        roots, label = ingest_raw.load_roots_config(ingest_cfg["roots_json"]), ingest_cfg["roots_json"]
+    print(f"\n=== Step 0a: raw ingestion ({label}) ===")
+    return ingest_raw.run(roots, ingest_cfg["name"], out_dir)
 
 
 def run_source(source: dict, default_raw_manifest: Path | None, mapping_file: str | None, verbosity: list[str]) -> Path:
@@ -168,26 +188,22 @@ def run_source(source: dict, default_raw_manifest: Path | None, mapping_file: st
     return manifest_output_dir
 
 
-def main(argv: list[str] | None = None) -> None:
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("config", help="JSON config file (see module docstring).")
-    parser.add_argument("--skip-ingest", action="store_true",
-                         help="Skip tools.ingestion.ingest_raw even if the config has an 'ingest' block "
-                              "-- reuse whatever raw manifest.csv is already on disk (faster than a full "
-                              "rescan when re-running after fixing a source's own config).")
-    add_logging_args(parser)
-    args = parser.parse_args(argv)
-    setup_console_logging(log_level_from_args(args))
-    verbosity = verbosity_argv(args)
-
-    config = json.loads(Path(args.config).read_text(encoding="utf-8"))
+def run(config: dict, skip_ingest: bool = False, verbosity: list[str] | None = None) -> dict:
+    """Runs the config exactly as `main()` does, but takes an already-
+    parsed dict rather than a JSON file path -- the in-process entry point
+    for a caller that already has the config in memory (e.g.
+    app/build_dataset.py's dataset-prep wizard), same pattern as every
+    other stage here already offers both a CLI main(argv) and a direct
+    Python call. Returns {"output_dir", "manifest_dirs", "failed_sources"}.
+    """
+    verbosity = verbosity or []
     sources = config["sources"]
     if not sources:
-        raise SystemExit(f"{args.config}: 'sources' is empty -- nothing to do.")
+        raise SystemExit("config: 'sources' is empty -- nothing to do.")
 
     default_raw_manifest = None
-    if "ingest" in config and not args.skip_ingest:
-        default_raw_manifest = run_ingest(config, verbosity)
+    if "ingest" in config and not skip_ingest:
+        default_raw_manifest = run_ingest(config)
     elif "ingest" in config:
         default_raw_manifest = Path(config["ingest"].get("out_dir", "data")) / config["ingest"]["name"] / "manifest.csv"
         print(f"\n--skip-ingest: reusing {default_raw_manifest}")
@@ -216,6 +232,22 @@ def main(argv: list[str] | None = None) -> None:
         f"Next: python -m tools.pipeline.train_dataset {config['output_dir']} "
         "--unet-model <weights.pt>   (see PIPELINE.md scenario 1)"
     )
+    return {"output_dir": config["output_dir"], "manifest_dirs": manifest_dirs, "failed_sources": failed_sources}
+
+
+def main(argv: list[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("config", help="JSON config file (see module docstring).")
+    parser.add_argument("--skip-ingest", action="store_true",
+                         help="Skip tools.ingestion.ingest_raw even if the config has an 'ingest' block "
+                              "-- reuse whatever raw manifest.csv is already on disk (faster than a full "
+                              "rescan when re-running after fixing a source's own config).")
+    add_logging_args(parser)
+    args = parser.parse_args(argv)
+    setup_console_logging(log_level_from_args(args))
+
+    config = json.loads(Path(args.config).read_text(encoding="utf-8"))
+    run(config, skip_ingest=args.skip_ingest, verbosity=verbosity_argv(args))
 
 
 if __name__ == "__main__":

@@ -277,19 +277,18 @@ def write_csv(rows: list[dict], out_path: Path, fieldnames: Optional[list[str]] 
         writer.writerows(rows)
 
 
-def main(argv: list[str] | None = None) -> None:
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("roots", type=str, help="JSON file describing local roots (organized/terrain/loose), e.g. config/roots.json.")
-    parser.add_argument("--name", required=True, help="Output goes to <out-dir>/<name>/.")
-    parser.add_argument("--out-dir", default="data")
-    add_logging_args(parser)
-    args = parser.parse_args(argv)
-    setup_console_logging(log_level_from_args(args))
-
-    roots = load_roots_config(args.roots)
+def run(roots: dict, name: str, out_dir: str = "data") -> Path:
+    """Scans every root in `roots` (an already-parsed roots config -- see
+    module docstring for the shape) and writes manifest.csv (+
+    manifest/duplicates.csv) under <out_dir>/<name>/. In-process entry
+    point for a caller that already has the config in memory (e.g.
+    tools.ingestion.prepare_dataset, or app/build_dataset.py's dataset-prep
+    wizard, which builds `roots` straight from its own widgets) -- same
+    pattern as every other stage here already offers both a CLI main(argv)
+    and a direct Python call. Returns the manifest.csv path."""
     if not roots:
         logger.error("No valid root to scan.")
-        sys.exit(1)
+        raise SystemExit(1)
 
     base_dir = Path(roots["base_root"][sys.platform])
 
@@ -305,16 +304,30 @@ def main(argv: list[str] | None = None) -> None:
 
     duplicate_rows = build_duplicates_report(all_records)
 
-    out_dir = Path(args.out_dir) / args.name
+    out_path = Path(out_dir) / name
     image_fields = [f.name for f in fields(ImageRecord)]
-    write_csv([asdict(r) for r in all_records], out_dir / "manifest.csv", image_fields)
-    write_csv(duplicate_rows, out_dir / "manifest/duplicates.csv", ["content_hash", "n_copies", "paths"])
+    write_csv([asdict(r) for r in all_records], out_path / "manifest.csv", image_fields)
+    write_csv(duplicate_rows, out_path / "manifest/duplicates.csv", ["content_hash", "n_copies", "paths"])
 
     print("\n--- Summary ---")
     print(f"manifest.csv   : {len(all_records)} row(s) -- {counter}")
     print(f"duplicates.csv : {len(duplicate_rows)} group(s) of identical content")
-    print(f"\nWritten to: {out_dir.resolve()}")
+    print(f"\nWritten to: {out_path.resolve()}")
     print("Next: tools/ingestion/export_clean_dataset.py to resolve identity and produce a clean, independent dataset.")
+    return out_path / "manifest.csv"
+
+
+def main(argv: list[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("roots", type=str, help="JSON file describing local roots (organized/terrain/loose), e.g. config/roots.json.")
+    parser.add_argument("--name", required=True, help="Output goes to <out-dir>/<name>/.")
+    parser.add_argument("--out-dir", default="data")
+    add_logging_args(parser)
+    args = parser.parse_args(argv)
+    setup_console_logging(log_level_from_args(args))
+
+    roots = load_roots_config(args.roots)
+    run(roots, args.name, args.out_dir)
 
 
 if __name__ == "__main__":

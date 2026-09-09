@@ -45,7 +45,7 @@ UNMATCHED_DIR = "_unmatched"
 
 
 def draw_landmarks(image: np.ndarray, points_xy: np.ndarray, radius: int = 4,
-                    point_color: tuple = (0, 0, 255), text_color: tuple = (0, 255, 0),
+                    point_color: tuple = (0, 0, 255), text_color: tuple = (255, 0, 0),
                     font_scale: float = 0.35) -> np.ndarray:
     """Draws numbered points (0, 1, 2, ...) on a copy of `image`. Does not
     modify `image` in place."""

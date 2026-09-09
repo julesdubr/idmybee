@@ -34,7 +34,7 @@ from landmarks_trainer.model import load_weights as load_unet_weights
 from utils.landmarking_pipeline import DEFAULT_DETECTOR_MODEL, default_gpa_reference, place_landmarks
 from utils.tps_overlay import draw_landmarks
 
-LOGO_PATH = Path("logo/logo3fb2_orig.png")
+LOGO_PATH = Path("app/assets/idmb_logo.png")
 
 st.set_page_config(
     page_title="idmybee -- bees prediction",

@@ -582,9 +582,9 @@ def main(argv: list[str] | None = None) -> None:
             batch = []
 
             elapsed = time.perf_counter() - pipeline_start
-            logger.info(
-                "[%d/%d] elapsed: %s -- average: %.3f s/image -- %s",
-                index, len(detections), format_duration(elapsed), elapsed / index, counter,
+            print(
+                f"[{index}/{len(detections)}] elapsed: {format_duration(elapsed)} -- "
+                f"average: {elapsed / index:.3f} s/image -- {counter}"
             )
 
     total_time_s = time.perf_counter() - pipeline_start

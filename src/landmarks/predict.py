@@ -342,10 +342,10 @@ def main(argv: list[str] | None = None) -> None:
         if n_done % args.log_every == 0:
             checkpoint(tps_path, working_tps, landmarks_path, landmarks_status)
             elapsed = time.perf_counter() - pipeline_start
-            logger.info(
-                "[%d/%d] elapsed: %s -- average: %.3f s/image -- %s%s",
-                n_done, len(targets) - n_resumed, format_duration(elapsed), elapsed / n_done, counter,
-                f"  ({n_resumed} resumed)" if n_resumed else "",
+            print(
+                f"[{n_done}/{len(targets) - n_resumed}] elapsed: {format_duration(elapsed)} -- "
+                f"average: {elapsed / n_done:.3f} s/image -- {counter}"
+                f"{f'  ({n_resumed} resumed)' if n_resumed else ''}"
             )
 
     checkpoint(tps_path, working_tps, landmarks_path, landmarks_status)

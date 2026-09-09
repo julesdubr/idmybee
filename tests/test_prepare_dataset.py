@@ -140,6 +140,47 @@ def test_failed_source_excluded_from_combine(tmp_path, monkeypatch):
         pd.main([config])
 
 
+def test_ingest_with_inline_roots_skips_roots_json(tmp_path, monkeypatch):
+    """The common case: 'ingest.roots' embedded straight in the main
+    config (e.g. built by app/build_dataset.py's wizard) -- no second
+    JSON file needed."""
+    calls = []
+
+    def fake_ingest_run(roots, name, out_dir):
+        calls.append((roots, name, out_dir))
+        out_path = tmp_path / "data" / name
+        out_path.mkdir(parents=True, exist_ok=True)
+        (out_path / "manifest.csv").write_text("")
+        return out_path / "manifest.csv"
+
+    monkeypatch.setattr(pd.ingest_raw, "run", fake_ingest_run)
+    monkeypatch.setattr(pd.ingest_raw, "main", lambda argv: pytest.fail("should call run(), not main()"))
+    monkeypatch.setattr(pd.export_clean_dataset, "main", lambda argv: (
+        (tmp_path / "clean").mkdir(parents=True, exist_ok=True),
+        (tmp_path / "clean" / "dataset.csv").write_text(""),
+    ))
+    monkeypatch.setattr(pd.build_manifest, "main", lambda argv: (tmp_path / "clean" / "manifest.csv").write_text(""))
+    monkeypatch.setattr(pd.combine_manifests, "main", lambda argv: None)
+
+    inline_roots = {"base_root": {"darwin": "/Volumes/EXT DATA/"}, "roots": [
+        {"path": "IDMB/images/Bombus/collection", "source_type": "collection"},
+    ]}
+    config = _write_config(tmp_path, {
+        "ingest": {"roots": inline_roots, "name": "bombus_raw", "out_dir": str(tmp_path / "data")},
+        "mapping_file": str(tmp_path / "mapping.csv"),
+        "output_dir": str(tmp_path / "combined"),
+        "sources": [{
+            "type": "raw", "source_type": "collection",
+            "identification_csv": str(tmp_path / "ident.csv"), "key_column": "inv_id",
+            "clean_output_dir": str(tmp_path / "clean"), "manifest_output_dir": str(tmp_path / "clean"),
+        }],
+    })
+
+    pd.main([config])
+
+    assert calls == [(inline_roots, "bombus_raw", str(tmp_path / "data"))]
+
+
 def test_skip_ingest_reuses_existing_manifest_without_rescanning(tmp_path, monkeypatch):
     monkeypatch.setattr(pd.ingest_raw, "main", lambda argv: pytest.fail("should not rescan with --skip-ingest"))
 
