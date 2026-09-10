@@ -253,7 +253,14 @@ def parse_args(argv: list[str] | None = None):
                               "without mutating the original crops.csv.")
     parser.add_argument("--model", required=True, help="Path to the UNet .pth model.")
     parser.add_argument("--base-dir", default=None, help="Root to resolve crops.csv's relative output_path values.")
-    parser.add_argument("--tps", default="landmarks.tps", help="Output TPS filename (in <dataset>/landmarks/).")
+    parser.add_argument("--tps", default="landmarks.tps", help="Output TPS filename (in <dataset>/<landmarks-dir>/).")
+    parser.add_argument(
+        "--landmarks-dir", default="landmarks",
+        help="Subfolder (under <dataset>/) to write the TPS + landmarks.csv into (default: 'landmarks'). "
+             "Override (e.g. via utils.landmarking_pipeline's --landmarks-tag) to keep a second "
+             "landmark-placement run -- a different --model/--n-landmarks on the same cropped dataset "
+             "-- from overwriting an earlier one.",
+    )
     parser.add_argument("--n-landmarks", type=int, default=19,
                          help="19 = Tancrede's full blueprint (LM3 included, current default). "
                               "Pass 18 to run an older/legacy model that doesn't predict LM3.")
@@ -270,8 +277,8 @@ def main(argv: list[str] | None = None) -> None:
     setup_console_logging(log_level_from_args(args))
 
     crops_path = args.crops_csv or (args.dataset / "extraction" / args.mode / "crops.csv")
-    tps_path = args.dataset / "landmarks" / args.tps
-    landmarks_path = args.dataset / "landmarks" / "landmarks.csv"
+    tps_path = args.dataset / args.landmarks_dir / args.tps
+    landmarks_path = args.dataset / args.landmarks_dir / "landmarks.csv"
     stats_path = args.dataset / "pipeline_stats.csv"
     base_dir = Path(args.base_dir) if args.base_dir else None
 

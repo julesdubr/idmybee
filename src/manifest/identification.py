@@ -35,6 +35,8 @@ import re
 
 import pandas as pd
 
+from manifest.origin_table import resolve_origin_codes
+
 logger = logging.getLogger(__name__)
 
 DEFAULT_COMPARE_COLUMNS = ["genus", "species", "caste", "dd", "mm", "yyyy"]
@@ -55,9 +57,11 @@ def _lead_with(df: pd.DataFrame, columns: list[str]) -> pd.DataFrame:
 
 
 def load_origin_codes(path: str) -> dict[str, str]:
-    """Load the origin -> `inv_name` lookup table."""
+    """Load the origin -> `inv_name` lookup table. A row left with a blank
+    `inv_name` keeps its `collection_origin` value as-is -- see
+    `manifest.origin_table.resolve_origin_codes`."""
     df = pd.read_csv(path)
-    return dict(zip(df["collection_origin"], df["inv_name"]))
+    return resolve_origin_codes(df["collection_origin"], df["inv_name"])
 
 
 def restrict_to_present_images(

@@ -31,8 +31,8 @@ source with train.py --tps (see classifiers/train.py), then compare with
 analysis/compare_runs.py.
 
 Usage:
-    python -m classifiers.predict batch models/lda/species_collection/train/model.joblib data/Bombus/terrain
-    python -m classifiers.predict single models/lda/species_collection/train/model.joblib data/Bombus/terrain/landmarks/new_photo.tps
+    python -m classifiers.predict batch models/lda/species_collection/model.joblib data/Bombus/terrain
+    python -m classifiers.predict single models/lda/species_collection/model.joblib data/Bombus/terrain/landmarks/new_photo.tps
 """
 from __future__ import annotations
 
@@ -49,7 +49,7 @@ from core.gpa import align_to_reference, procrustes_distance, two_d_array
 from core.model_io import TrainedModel, load_model
 from core.predictions import accuracy_summary, build_predictions_df, print_predictions_report
 from core.run_io import (
-    build_eval_tag, read_params, result_path, run_id_from_model_path, run_path, setup_console_logging,
+    RUNS_ROOT, build_eval_tag, read_params, result_path, run_id_from_model_path, run_path, setup_console_logging,
     write_metrics, write_params, write_run_log,
 )
 from core.tps_io import ImageLandmarks
@@ -120,7 +120,7 @@ def run_batch(args: argparse.Namespace) -> None:
     _print_model_info(model)
 
     family, run_id = run_id_from_model_path(args.model_path)
-    train_params = read_params(result_path(family, run_id, "train"))
+    train_params = read_params(result_path(family, run_id, "train", root=RUNS_ROOT))
 
     tps_explicit = args.landmarks_tps is not None
     if not tps_explicit:
@@ -140,13 +140,14 @@ def run_batch(args: argparse.Namespace) -> None:
     print(f"\nEvaluation on {acc['n']} specimen(s): top-1 = {acc['accuracy_top1']:.4f} | top-3 = {acc['accuracy_top3']:.4f}")
 
     eval_tag = build_eval_tag(args.dataset.name, args.devices, args.landmarks_tps, args.run_label)
-    out_dir = run_path(family, run_id, "predict", eval_tag)
+    out_dir = run_path(family, run_id, "predict", eval_tag, root=RUNS_ROOT)
 
     predictions_path = out_dir / "predictions.csv"
     df.to_csv(predictions_path, index=False)
 
     metrics = {
         "run_id": run_id,
+        "model_name": model.model_name,
         "eval_tag": eval_tag,
         "model_path": str(args.model_path),
         "level": model.level,
@@ -207,7 +208,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     subparsers = parser.add_subparsers(dest="mode", required=True)
 
     batch = subparsers.add_parser("batch", help="Validate the model on a data folder (with known truth)")
-    batch.add_argument("model_path", type=Path, help="Saved model (e.g. models/lda/<run_id>/train/model.joblib)")
+    batch.add_argument("model_path", type=Path, help="Saved model (e.g. models/lda/<run_id>/model.joblib)")
     batch.add_argument("dataset", type=Path, help="Root folder (e.g. data/Bombus/terrain) -- see core.dataset.load_dataset")
     add_dataset_args(batch)
     batch.add_argument("--low-confidence-threshold", type=float, default=0.6,

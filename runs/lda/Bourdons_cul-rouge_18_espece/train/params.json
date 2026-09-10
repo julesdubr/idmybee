@@ -1,0 +1,19 @@
+{
+  "dataset": "/var/folders/wp/phsg97rs6j31sswl5xpbmbs80000gn/T/idmybee_train_upload_cn03ocbl/landmarks_18lm_original",
+  "devices": null,
+  "species": null,
+  "castes": null,
+  "exclude_outliers": true,
+  "non_strict": false,
+  "landmarks_tps": null,
+  "landmarks_status_csv": null,
+  "run_label": null,
+  "level": "species",
+  "lda_components": 2,
+  "model_name": "Bourdons_cul-rouge_18_espece",
+  "no_save_model": false,
+  "verbose": false,
+  "quiet": false,
+  "run_id": "Bourdons_cul-rouge_18_espece",
+  "family": "lda"
+}

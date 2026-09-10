@@ -43,12 +43,12 @@ def crops_reviewed_path(dataset: Path, mode: str) -> Path:
     return Path(dataset) / "extraction" / mode / "crops_reviewed.csv"
 
 
-def landmarks_numbered_csv_path(dataset: Path) -> Path:
-    return Path(dataset) / "landmarks" / "landmarks_numbered.csv"
+def landmarks_numbered_csv_path(dataset: Path, landmarks_dir: str = "landmarks") -> Path:
+    return Path(dataset) / landmarks_dir / "landmarks_numbered.csv"
 
 
-def landmarks_reviewed_csv_path(dataset: Path) -> Path:
-    return Path(dataset) / "landmarks" / "landmarks_reviewed.csv"
+def landmarks_reviewed_csv_path(dataset: Path, landmarks_dir: str = "landmarks") -> Path:
+    return Path(dataset) / landmarks_dir / "landmarks_reviewed.csv"
 
 
 def review_audit_path(dataset: Path, name: str) -> Path:
@@ -72,11 +72,13 @@ def build_crop_review_df(dataset: Path, mode: str = "light") -> pd.DataFrame:
     return df[["photo_id", "inv_id", "auto_status", "reviewed_status", "error_reason", "output_path"]]
 
 
-def build_landmark_review_df(dataset: Path) -> pd.DataFrame:
+def build_landmark_review_df(dataset: Path, landmarks_dir: str = "landmarks") -> pd.DataFrame:
     """One row per photo processed by landmarks.renumber: photo_id, inv_id,
     tps_id, auto_status, reviewed_status (defaults to auto_status),
-    registration_cost, n_outlier_landmarks, error_reason."""
-    path = landmarks_numbered_csv_path(dataset)
+    registration_cost, n_outlier_landmarks, error_reason. `landmarks_dir`
+    picks which landmark-placement run to review -- see
+    utils.landmarking_pipeline.landmarks_dirname."""
+    path = landmarks_numbered_csv_path(dataset, landmarks_dir)
     if not path.exists():
         raise FileNotFoundError(f"{path} not found -- run landmarks.renumber first.")
     df = pd.read_csv(path).rename(columns={"status": "auto_status"})
@@ -88,12 +90,12 @@ def build_landmark_review_df(dataset: Path) -> pd.DataFrame:
 
 
 def load_numbered_landmarks_by_photo_id(
-    dataset: Path, tps_name: str = "landmarks_numbered.tps",
+    dataset: Path, tps_name: str = "landmarks_numbered.tps", landmarks_dir: str = "landmarks",
 ) -> dict[str, ImageLandmarks]:
     """For on-demand overlay preview during landmark review (see
     utils.tps_overlay.draw_landmarks) -- loaded once per review session,
     not per row, to stay light on a large dataset."""
-    tps_path = Path(dataset) / "landmarks" / tps_name
+    tps_path = Path(dataset) / landmarks_dir / tps_name
     specimens, _errors = parse_tps(tps_path, strict=False)
     return {sp.photo_id: sp for sp in specimens if sp.photo_id}
 
@@ -131,15 +133,17 @@ def write_crop_review(dataset: Path, mode: str, df: pd.DataFrame) -> tuple[Path,
     return out_path, audit_path
 
 
-def write_landmarks_review(dataset: Path, df: pd.DataFrame) -> tuple[Path, Path]:
+def write_landmarks_review(dataset: Path, df: pd.DataFrame, landmarks_dir: str = "landmarks") -> tuple[Path, Path]:
     """Persists edited landmark statuses (df: photo_id, auto_status,
     reviewed_status, other columns ignored): a reconciled
     landmarks_reviewed.csv (same schema as landmarks_numbered.csv -- pass
     as --landmarks-status-csv, see utils.cli.add_dataset_args, to export/
     train/predict on the reviewed statuses with no other code change) and
-    an audit trail (<dataset>/review/landmarks_review.csv). Returns
-    (reconciled_path, audit_path)."""
-    original = pd.read_csv(landmarks_numbered_csv_path(dataset))
+    an audit trail (<dataset>/review/<landmarks_dir>_review.csv -- e.g.
+    review/landmarks_review.csv by default, review/landmarks_18lm_review.csv
+    for a tagged run, see utils.landmarking_pipeline.landmarks_dirname).
+    Returns (reconciled_path, audit_path)."""
+    original = pd.read_csv(landmarks_numbered_csv_path(dataset, landmarks_dir))
     overrides = dict(zip(df["photo_id"], df["reviewed_status"]))
     changed = set(df.loc[df["auto_status"] != df["reviewed_status"], "photo_id"])
 
@@ -153,9 +157,9 @@ def write_landmarks_review(dataset: Path, df: pd.DataFrame) -> tuple[Path, Path]
         "manual review override (was: " + reconciled.loc[is_changed, "error_reason"].fillna("") + ")"
     )
 
-    out_path = landmarks_reviewed_csv_path(dataset)
+    out_path = landmarks_reviewed_csv_path(dataset, landmarks_dir)
     reconciled.to_csv(out_path, index=False)
-    audit_path = review_audit_path(dataset, "landmarks")
+    audit_path = review_audit_path(dataset, landmarks_dir)
     _write_audit(df, audit_path)
     logger.info("%d landmark status override(s) applied -- %s, %s", len(changed), out_path, audit_path)
     return out_path, audit_path

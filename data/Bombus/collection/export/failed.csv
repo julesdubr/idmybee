@@ -1,134 +1,134 @@
 photo_id,inv_id,stage,reason
-ARLY_0001_P_1,ARLY_0001,landmark_placement,"11 landmarks, 19 expected"
-ARLY_0001_P_2,ARLY_0001,landmark_placement,"12 landmarks, 19 expected"
-ARLY_0001_P_3,ARLY_0001,landmark_placement,"13 landmarks, 19 expected"
-ARLY_0001_P_4,ARLY_0001,landmark_placement,"18 landmarks, 19 expected"
-ARLY_0001_P_5,ARLY_0001,landmark_placement,"10 landmarks, 19 expected"
-ARLY_0001_S_1,ARLY_0001,outlier_registration,flagged by per-species MAD outlier detection
-ARLY_0001_S_2,ARLY_0001,landmark_placement,"14 landmarks, 19 expected"
-ARLY_0001_S_4,ARLY_0001,landmark_placement,"15 landmarks, 19 expected"
-ARLY_0001_S_5,ARLY_0001,landmark_placement,"9 landmarks, 19 expected"
-ARLY_0004_P_1,ARLY_0004,landmark_placement,"17 landmarks, 19 expected"
-ARLY_0004_P_2,ARLY_0004,landmark_placement,"17 landmarks, 19 expected"
-ARLY_0004_P_3,ARLY_0004,landmark_placement,"6 landmarks, 19 expected"
-ARLY_0004_P_4,ARLY_0004,landmark_placement,"11 landmarks, 19 expected"
-ARLY_0004_P_5,ARLY_0004,landmark_placement,"8 landmarks, 19 expected"
-ARLY_0004_S_1,ARLY_0004,outlier_registration,flagged by per-species MAD outlier detection
-ARLY_0004_S_2,ARLY_0004,landmark_placement,"16 landmarks, 19 expected"
-ARLY_0005_P_3,ARLY_0005,landmark_placement,"17 landmarks, 19 expected"
-ARLY_0005_P_4,ARLY_0005,landmark_placement,"16 landmarks, 19 expected"
-ARLY_0005_P_5,ARLY_0005,landmark_placement,"16 landmarks, 19 expected"
-ARLY_0005_S_1,ARLY_0005,outlier_registration,flagged by per-species MAD outlier detection
-ARLY_0005_S_3,ARLY_0005,landmark_placement,"17 landmarks, 19 expected"
-ARLY_0005_S_4,ARLY_0005,landmark_placement,"15 landmarks, 19 expected"
-ARLY_0005_S_5,ARLY_0005,landmark_placement,"17 landmarks, 19 expected"
-ARLY_0013_S_2,ARLY_0013,landmark_placement,"18 landmarks, 19 expected"
-ARLY_0016_P_1,ARLY_0016,landmark_placement,"12 landmarks, 19 expected"
-ARLY_0016_P_2,ARLY_0016,landmark_placement,"9 landmarks, 19 expected"
-ARLY_0016_P_3,ARLY_0016,landmark_placement,"6 landmarks, 19 expected"
-ARLY_0016_P_4,ARLY_0016,landmark_placement,"6 landmarks, 19 expected"
-ARLY_0016_P_5,ARLY_0016,landmark_placement,"1 landmarks, 19 expected"
-ARLY_0016_S_1,ARLY_0016,landmark_placement,"15 landmarks, 19 expected"
-ARLY_0016_S_2,ARLY_0016,landmark_placement,"16 landmarks, 19 expected"
+ARLY_0001_P_1,ARLY_0001,outlier_registration,flagged by per-species MAD outlier detection
+ARLY_0001_P_3,ARLY_0001,landmark_placement,"13 landmarks, 18 expected"
+ARLY_0001_P_4,ARLY_0001,landmark_placement,"17 landmarks, 18 expected"
+ARLY_0001_P_5,ARLY_0001,outlier_registration,flagged by per-species MAD outlier detection
+ARLY_0001_S_2,ARLY_0001,outlier_registration,flagged by per-species MAD outlier detection
+ARLY_0001_S_4,ARLY_0001,landmark_placement,"16 landmarks, 18 expected"
+ARLY_0001_S_5,ARLY_0001,landmark_placement,"15 landmarks, 18 expected"
+ARLY_0004_P_2,ARLY_0004,outlier_registration,flagged by per-species MAD outlier detection
+ARLY_0004_P_3,ARLY_0004,landmark_placement,"12 landmarks, 18 expected"
+ARLY_0004_P_4,ARLY_0004,outlier_registration,flagged by per-species MAD outlier detection
+ARLY_0004_P_5,ARLY_0004,outlier_registration,flagged by per-species MAD outlier detection
+ARLY_0005_P_3,ARLY_0005,outlier_registration,flagged by per-species MAD outlier detection
+ARLY_0005_P_4,ARLY_0005,landmark_placement,"15 landmarks, 18 expected"
+ARLY_0005_P_5,ARLY_0005,outlier_registration,flagged by per-species MAD outlier detection
+ARLY_0005_S_1,ARLY_0005,landmark_placement,"17 landmarks, 18 expected"
+ARLY_0005_S_3,ARLY_0005,outlier_registration,flagged by per-species MAD outlier detection
+ARLY_0005_S_4,ARLY_0005,outlier_registration,flagged by per-species MAD outlier detection
+ARLY_0013_S_2,ARLY_0013,outlier_registration,flagged by per-species MAD outlier detection
+ARLY_0016_P_1,ARLY_0016,landmark_placement,"13 landmarks, 18 expected"
+ARLY_0016_P_2,ARLY_0016,landmark_placement,"12 landmarks, 18 expected"
+ARLY_0016_P_3,ARLY_0016,landmark_placement,"10 landmarks, 18 expected"
+ARLY_0016_P_4,ARLY_0016,landmark_placement,"7 landmarks, 18 expected"
+ARLY_0016_P_5,ARLY_0016,landmark_placement,"6 landmarks, 18 expected"
+ARLY_0016_S_1,ARLY_0016,landmark_placement,"15 landmarks, 18 expected"
+ARLY_0016_S_2,ARLY_0016,landmark_placement,"15 landmarks, 18 expected"
 ARLY_0016_S_3,ARLY_0016,outlier_registration,flagged by per-species MAD outlier detection
-ARLY_0016_S_4,ARLY_0016,landmark_placement,"14 landmarks, 19 expected"
-ARLY_0016_S_5,ARLY_0016,landmark_placement,"16 landmarks, 19 expected"
-ARLY_0038_P_1,ARLY_0038,landmark_placement,"16 landmarks, 19 expected"
-ARLY_0038_P_2,ARLY_0038,landmark_placement,"16 landmarks, 19 expected"
-ARLY_0038_P_3,ARLY_0038,landmark_placement,"13 landmarks, 19 expected"
-ARLY_0038_P_4,ARLY_0038,landmark_placement,"10 landmarks, 19 expected"
-ARLY_0038_P_5,ARLY_0038,landmark_placement,"16 landmarks, 19 expected"
-ARLY_0050_P_1,ARLY_0050,landmark_placement,"3 landmarks, 19 expected"
-ARLY_0050_P_2,ARLY_0050,landmark_placement,"3 landmarks, 19 expected"
-ARLY_0050_P_3,ARLY_0050,landmark_placement,"3 landmarks, 19 expected"
-ARLY_0050_S_1,ARLY_0050,landmark_placement,"3 landmarks, 19 expected"
-ARLY_0050_S_2,ARLY_0050,landmark_placement,"9 landmarks, 19 expected"
-ARLY_0050_S_3,ARLY_0050,landmark_placement,"5 landmarks, 19 expected"
-ARLY_0054_P_1,ARLY_0054,landmark_placement,"13 landmarks, 19 expected"
-ARLY_0054_P_2,ARLY_0054,landmark_placement,"12 landmarks, 19 expected"
-ARLY_0054_P_3,ARLY_0054,outlier_registration,flagged by per-species MAD outlier detection
-ARLY_0054_P_4,ARLY_0054,landmark_placement,"16 landmarks, 19 expected"
-ARLY_0054_P_5,ARLY_0054,landmark_placement,"14 landmarks, 19 expected"
+ARLY_0016_S_4,ARLY_0016,landmark_placement,"15 landmarks, 18 expected"
+ARLY_0016_S_5,ARLY_0016,outlier_registration,flagged by per-species MAD outlier detection
+ARLY_0038_P_1,ARLY_0038,landmark_placement,"15 landmarks, 18 expected"
+ARLY_0038_P_2,ARLY_0038,landmark_placement,"15 landmarks, 18 expected"
+ARLY_0038_P_3,ARLY_0038,landmark_placement,"14 landmarks, 18 expected"
+ARLY_0038_P_4,ARLY_0038,landmark_placement,"16 landmarks, 18 expected"
+ARLY_0038_P_5,ARLY_0038,landmark_placement,"17 landmarks, 18 expected"
+ARLY_0050_P_1,ARLY_0050,landmark_placement,"1 landmarks, 18 expected"
+ARLY_0050_P_2,ARLY_0050,landmark_placement,"1 landmarks, 18 expected"
+ARLY_0050_P_3,ARLY_0050,landmark_placement,"1 landmarks, 18 expected"
+ARLY_0050_S_1,ARLY_0050,landmark_placement,"4 landmarks, 18 expected"
+ARLY_0050_S_2,ARLY_0050,landmark_placement,"7 landmarks, 18 expected"
+ARLY_0050_S_3,ARLY_0050,landmark_placement,"5 landmarks, 18 expected"
+ARLY_0054_P_1,ARLY_0054,outlier_registration,flagged by per-species MAD outlier detection
+ARLY_0054_P_2,ARLY_0054,landmark_placement,"15 landmarks, 18 expected"
+ARLY_0054_P_3,ARLY_0054,landmark_placement,"17 landmarks, 18 expected"
+ARLY_0054_P_4,ARLY_0054,outlier_registration,flagged by per-species MAD outlier detection
+ARLY_0054_P_5,ARLY_0054,landmark_placement,"17 landmarks, 18 expected"
 ARLY_0054_S_1,ARLY_0054,outlier_registration,flagged by per-species MAD outlier detection
-ARLY_0054_S_2,ARLY_0054,landmark_placement,"18 landmarks, 19 expected"
-ARLY_0054_S_4,ARLY_0054,outlier_registration,flagged by per-species MAD outlier detection
-ARLY_0054_S_5,ARLY_0054,landmark_placement,"17 landmarks, 19 expected"
-ARLY_0055_P_1,ARLY_0055,landmark_placement,"4 landmarks, 19 expected"
-ARLY_0055_P_2,ARLY_0055,landmark_placement,"3 landmarks, 19 expected"
-ARLY_0055_P_3,ARLY_0055,landmark_placement,"4 landmarks, 19 expected"
-ARLY_0055_P_4,ARLY_0055,landmark_placement,"2 landmarks, 19 expected"
-ARLY_0055_P_5,ARLY_0055,landmark_placement,"4 landmarks, 19 expected"
-ARLY_0055_S_1,ARLY_0055,landmark_placement,"14 landmarks, 19 expected"
-ARLY_0055_S_2,ARLY_0055,landmark_placement,"12 landmarks, 19 expected"
-ARLY_0055_S_3,ARLY_0055,landmark_placement,"13 landmarks, 19 expected"
-ARLY_0055_S_4,ARLY_0055,landmark_placement,"13 landmarks, 19 expected"
-ARLY_0055_S_5,ARLY_0055,landmark_placement,"13 landmarks, 19 expected"
-ARLY_0055_S_6,ARLY_0055,landmark_placement,"9 landmarks, 19 expected"
-ARLY_PRAT_0003_P_2,ARLY_PRAT_0003,landmark_placement,"18 landmarks, 19 expected"
+ARLY_0054_S_2,ARLY_0054,landmark_placement,"15 landmarks, 18 expected"
+ARLY_0054_S_3,ARLY_0054,outlier_registration,flagged by per-species MAD outlier detection
+ARLY_0054_S_5,ARLY_0054,outlier_registration,flagged by per-species MAD outlier detection
+ARLY_0055_P_1,ARLY_0055,landmark_placement,"6 landmarks, 18 expected"
+ARLY_0055_P_2,ARLY_0055,landmark_placement,"3 landmarks, 18 expected"
+ARLY_0055_P_3,ARLY_0055,landmark_placement,"6 landmarks, 18 expected"
+ARLY_0055_P_4,ARLY_0055,landmark_placement,"6 landmarks, 18 expected"
+ARLY_0055_P_5,ARLY_0055,landmark_placement,"3 landmarks, 18 expected"
+ARLY_0055_S_1,ARLY_0055,landmark_placement,"11 landmarks, 18 expected"
+ARLY_0055_S_2,ARLY_0055,outlier_registration,flagged by per-species MAD outlier detection
+ARLY_0055_S_3,ARLY_0055,landmark_placement,"15 landmarks, 18 expected"
+ARLY_0055_S_4,ARLY_0055,landmark_placement,"17 landmarks, 18 expected"
+ARLY_0055_S_5,ARLY_0055,landmark_placement,"16 landmarks, 18 expected"
+ARLY_0055_S_6,ARLY_0055,landmark_placement,"14 landmarks, 18 expected"
+ARLY_PRAT_0035_S_1,ARLY_PRAT_0035,outlier_registration,flagged by per-species MAD outlier detection
+ARLY_PRAT_0035_S_3,ARLY_PRAT_0035,landmark_placement,"17 landmarks, 18 expected"
+ARLY_PRAT_0043_S_2,ARLY_PRAT_0043,landmark_placement,"17 landmarks, 18 expected"
+ARLY_PRAT_0053_P_1,ARLY_PRAT_0053,landmark_placement,"17 landmarks, 18 expected"
 ARLY_SORO_0001_P_1,ARLY_SORO_0001,outlier_registration,flagged by per-species MAD outlier detection
-ARLY_SORO_0001_P_2,ARLY_SORO_0001,outlier_registration,flagged by per-species MAD outlier detection
+ARLY_SORO_0001_P_2,ARLY_SORO_0001,landmark_placement,"17 landmarks, 18 expected"
 ARLY_SORO_0001_S_1,ARLY_SORO_0001,outlier_registration,flagged by per-species MAD outlier detection
 ARLY_SORO_0001_S_2,ARLY_SORO_0001,outlier_registration,flagged by per-species MAD outlier detection
 ARLY_SORO_0001_S_3,ARLY_SORO_0001,outlier_registration,flagged by per-species MAD outlier detection
-ARLY_SORO_0073_P_1,ARLY_SORO_0073,landmark_placement,"18 landmarks, 19 expected"
-ARLY_SORO_0073_P_2,ARLY_SORO_0073,landmark_placement,"17 landmarks, 19 expected"
-ARLY_SORO_0073_S_1,ARLY_SORO_0073,landmark_placement,"16 landmarks, 19 expected"
-ARLY_SORO_0073_S_2,ARLY_SORO_0073,landmark_placement,"16 landmarks, 19 expected"
-ARLY_SORO_0073_S_3,ARLY_SORO_0073,landmark_placement,"16 landmarks, 19 expected"
-ARLY_SORO_0152_S_3,ARLY_SORO_0152,landmark_placement,"16 landmarks, 19 expected"
-CPIE15_0017_P_1,CPIE15_0017,landmark_placement,"17 landmarks, 19 expected"
-CPIE15_0017_P_2,CPIE15_0017,landmark_placement,"17 landmarks, 19 expected"
-CPIE15_0017_S_1,CPIE15_0017,landmark_placement,"17 landmarks, 19 expected"
-CPIE15_0017_S_2,CPIE15_0017,landmark_placement,"17 landmarks, 19 expected"
-CPIE15_0017_S_3,CPIE15_0017,landmark_placement,"17 landmarks, 19 expected"
-CPIE15_0018_P_1,CPIE15_0018,outlier_registration,flagged by per-species MAD outlier detection
-CPIE15_0018_S_2,CPIE15_0018,outlier_registration,flagged by per-species MAD outlier detection
-IEESZ_0019_P_1,IEESZ_0019,landmark_placement,"18 landmarks, 19 expected"
-IEESZ_0063_S_4,IEESZ_0063,landmark_placement,"17 landmarks, 19 expected"
-ISSERTES_0003_P_1,ISSERTES_0003,landmark_placement,"4 landmarks, 19 expected"
-ISSERTES_0003_P_2,ISSERTES_0003,landmark_placement,"4 landmarks, 19 expected"
-ISSERTES_0003_S_1,ISSERTES_0003,landmark_placement,"8 landmarks, 19 expected"
-ISSERTES_0003_S_2,ISSERTES_0003,landmark_placement,"18 landmarks, 19 expected"
-ISSERTES_0003_S_3,ISSERTES_0003,landmark_placement,"13 landmarks, 19 expected"
-ISSERTES_0017_S_1,ISSERTES_0017,landmark_placement,"18 landmarks, 19 expected"
-ISSERTES_0017_S_2,ISSERTES_0017,landmark_placement,"18 landmarks, 19 expected"
-ISSERTES_0018_P_2,ISSERTES_0018,landmark_placement,"18 landmarks, 19 expected"
-ISSERTES_0034_P_1,ISSERTES_0034,landmark_placement,"16 landmarks, 19 expected"
-ISSERTES_0034_P_2,ISSERTES_0034,landmark_placement,"12 landmarks, 19 expected"
-ISSERTES_0034_S_1,ISSERTES_0034,landmark_placement,"11 landmarks, 19 expected"
-ISSERTES_0034_S_2,ISSERTES_0034,landmark_placement,"13 landmarks, 19 expected"
-ISSERTES_0034_S_3,ISSERTES_0034,outlier_registration,flagged by per-species MAD outlier detection
-ISSERTES_0035_P_1,ISSERTES_0035,landmark_placement,"14 landmarks, 19 expected"
-ISSERTES_0035_P_2,ISSERTES_0035,landmark_placement,"15 landmarks, 19 expected"
-ISSERTES_0035_S_1,ISSERTES_0035,landmark_placement,"13 landmarks, 19 expected"
-ISSERTES_0035_S_2,ISSERTES_0035,landmark_placement,"16 landmarks, 19 expected"
-ISSERTES_0035_S_3,ISSERTES_0035,landmark_placement,"14 landmarks, 19 expected"
-ISSERTES_0036_P_1,ISSERTES_0036,landmark_placement,"9 landmarks, 19 expected"
-ISSERTES_0036_P_2,ISSERTES_0036,landmark_placement,"5 landmarks, 19 expected"
-ISSERTES_0036_S_1,ISSERTES_0036,landmark_placement,"14 landmarks, 19 expected"
-ISSERTES_0036_S_2,ISSERTES_0036,landmark_placement,"15 landmarks, 19 expected"
-ISSERTES_0036_S_3,ISSERTES_0036,landmark_placement,"18 landmarks, 19 expected"
-ISSERTES_0038_P_1,ISSERTES_0038,landmark_placement,"8 landmarks, 19 expected"
-ISSERTES_0038_P_2,ISSERTES_0038,landmark_placement,"14 landmarks, 19 expected"
-ISSERTES_0038_S_1,ISSERTES_0038,landmark_placement,"12 landmarks, 19 expected"
-ISSERTES_0038_S_2,ISSERTES_0038,landmark_placement,"13 landmarks, 19 expected"
-ISSERTES_0038_S_3,ISSERTES_0038,landmark_placement,"18 landmarks, 19 expected"
-ISSERTES_0039_P_1,ISSERTES_0039,landmark_placement,"4 landmarks, 19 expected"
-ISSERTES_0039_P_2,ISSERTES_0039,landmark_placement,"1 landmarks, 19 expected"
-ISSERTES_0039_S_1,ISSERTES_0039,landmark_placement,"5 landmarks, 19 expected"
-ISSERTES_0039_S_2,ISSERTES_0039,landmark_placement,"4 landmarks, 19 expected"
-ISSERTES_0039_S_3,ISSERTES_0039,landmark_placement,"15 landmarks, 19 expected"
-ISSERTES_0054_P_1,ISSERTES_0054,landmark_placement,"18 landmarks, 19 expected"
-ISSERTES_0054_S_1,ISSERTES_0054,landmark_placement,"14 landmarks, 19 expected"
-ISSERTES_0054_S_2,ISSERTES_0054,landmark_placement,"12 landmarks, 19 expected"
-ISSERTES_0064_S_3,ISSERTES_0064,landmark_placement,"18 landmarks, 19 expected"
+ARLY_SORO_0012_S_2,ARLY_SORO_0012,landmark_placement,"17 landmarks, 18 expected"
+ARLY_SORO_0073_P_1,ARLY_SORO_0073,landmark_placement,"17 landmarks, 18 expected"
+ARLY_SORO_0073_P_2,ARLY_SORO_0073,landmark_placement,"16 landmarks, 18 expected"
+ARLY_SORO_0073_S_1,ARLY_SORO_0073,landmark_placement,"17 landmarks, 18 expected"
+ARLY_SORO_0073_S_2,ARLY_SORO_0073,landmark_placement,"16 landmarks, 18 expected"
+ARLY_SORO_0073_S_3,ARLY_SORO_0073,landmark_placement,"16 landmarks, 18 expected"
+ARLY_SORO_0152_S_3,ARLY_SORO_0152,landmark_placement,"14 landmarks, 18 expected"
+BRUGEROLLES_0019_S_3,BRUGEROLLES_0019,outlier_registration,flagged by per-species MAD outlier detection
+CPIE15_0017_P_1,CPIE15_0017,landmark_placement,"16 landmarks, 18 expected"
+CPIE15_0017_P_2,CPIE15_0017,landmark_placement,"16 landmarks, 18 expected"
+CPIE15_0017_S_1,CPIE15_0017,landmark_placement,"15 landmarks, 18 expected"
+CPIE15_0017_S_2,CPIE15_0017,landmark_placement,"16 landmarks, 18 expected"
+CPIE15_0017_S_3,CPIE15_0017,landmark_placement,"15 landmarks, 18 expected"
+CPIE15_0031_S_2,CPIE15_0031,outlier_registration,flagged by per-species MAD outlier detection
+IEESZ_0063_S_4,IEESZ_0063,landmark_placement,"15 landmarks, 18 expected"
+IEESZ_0072_P_5,IEESZ_0072,outlier_registration,flagged by per-species MAD outlier detection
+ISSERTES_0003_P_1,ISSERTES_0003,landmark_placement,"13 landmarks, 18 expected"
+ISSERTES_0003_P_2,ISSERTES_0003,landmark_placement,"11 landmarks, 18 expected"
+ISSERTES_0003_S_1,ISSERTES_0003,landmark_placement,"15 landmarks, 18 expected"
+ISSERTES_0003_S_2,ISSERTES_0003,outlier_registration,flagged by per-species MAD outlier detection
+ISSERTES_0003_S_3,ISSERTES_0003,outlier_registration,flagged by per-species MAD outlier detection
+ISSERTES_0017_S_1,ISSERTES_0017,outlier_registration,flagged by per-species MAD outlier detection
+ISSERTES_0018_P_2,ISSERTES_0018,landmark_placement,"17 landmarks, 18 expected"
+ISSERTES_0034_P_1,ISSERTES_0034,landmark_placement,"12 landmarks, 18 expected"
+ISSERTES_0034_P_2,ISSERTES_0034,landmark_placement,"16 landmarks, 18 expected"
+ISSERTES_0034_S_1,ISSERTES_0034,landmark_placement,"15 landmarks, 18 expected"
+ISSERTES_0034_S_2,ISSERTES_0034,outlier_registration,flagged by per-species MAD outlier detection
+ISSERTES_0034_S_3,ISSERTES_0034,landmark_placement,"17 landmarks, 18 expected"
+ISSERTES_0035_P_1,ISSERTES_0035,landmark_placement,"14 landmarks, 18 expected"
+ISSERTES_0035_P_2,ISSERTES_0035,landmark_placement,"14 landmarks, 18 expected"
+ISSERTES_0035_S_1,ISSERTES_0035,landmark_placement,"15 landmarks, 18 expected"
+ISSERTES_0035_S_2,ISSERTES_0035,landmark_placement,"15 landmarks, 18 expected"
+ISSERTES_0035_S_3,ISSERTES_0035,landmark_placement,"16 landmarks, 18 expected"
+ISSERTES_0036_P_1,ISSERTES_0036,landmark_placement,"14 landmarks, 18 expected"
+ISSERTES_0036_P_2,ISSERTES_0036,landmark_placement,"15 landmarks, 18 expected"
+ISSERTES_0036_S_1,ISSERTES_0036,landmark_placement,"17 landmarks, 18 expected"
+ISSERTES_0037_S_1,ISSERTES_0037,outlier_registration,flagged by per-species MAD outlier detection
+ISSERTES_0037_S_3,ISSERTES_0037,outlier_registration,flagged by per-species MAD outlier detection
+ISSERTES_0038_P_1,ISSERTES_0038,landmark_placement,"12 landmarks, 18 expected"
+ISSERTES_0038_P_2,ISSERTES_0038,landmark_placement,"17 landmarks, 18 expected"
+ISSERTES_0038_S_1,ISSERTES_0038,landmark_placement,"14 landmarks, 18 expected"
+ISSERTES_0038_S_2,ISSERTES_0038,outlier_registration,flagged by per-species MAD outlier detection
+ISSERTES_0038_S_3,ISSERTES_0038,landmark_placement,"17 landmarks, 18 expected"
+ISSERTES_0039_P_1,ISSERTES_0039,landmark_placement,"6 landmarks, 18 expected"
+ISSERTES_0039_P_2,ISSERTES_0039,landmark_placement,"8 landmarks, 18 expected"
+ISSERTES_0039_S_1,ISSERTES_0039,landmark_placement,"8 landmarks, 18 expected"
+ISSERTES_0039_S_2,ISSERTES_0039,landmark_placement,"14 landmarks, 18 expected"
+ISSERTES_0039_S_3,ISSERTES_0039,landmark_placement,"16 landmarks, 18 expected"
+ISSERTES_0054_S_1,ISSERTES_0054,landmark_placement,"16 landmarks, 18 expected"
+ISSERTES_0054_S_2,ISSERTES_0054,landmark_placement,"15 landmarks, 18 expected"
+ISSERTES_0054_S_3,ISSERTES_0054,outlier_registration,flagged by per-species MAD outlier detection
+ISSERTES_0064_P_1,ISSERTES_0064,outlier_registration,flagged by per-species MAD outlier detection
+ISSERTES_0064_P_2,ISSERTES_0064,outlier_registration,flagged by per-species MAD outlier detection
+ISSERTES_0064_S_1,ISSERTES_0064,outlier_registration,flagged by per-species MAD outlier detection
+ISSERTES_0064_S_2,ISSERTES_0064,landmark_placement,"17 landmarks, 18 expected"
+ISSERTES_0064_S_3,ISSERTES_0064,outlier_registration,flagged by per-species MAD outlier detection
+ISSERTES_0077_P_1,ISSERTES_0077,outlier_registration,flagged by per-species MAD outlier detection
 ISSERTES_0121_P_1,ISSERTES_0121,outlier_registration,flagged by per-species MAD outlier detection
 ISSERTES_0121_P_2,ISSERTES_0121,outlier_registration,flagged by per-species MAD outlier detection
 ISSERTES_0121_S_1,ISSERTES_0121,outlier_registration,flagged by per-species MAD outlier detection
 ISSERTES_0121_S_2,ISSERTES_0121,outlier_registration,flagged by per-species MAD outlier detection
-ISSERTES_0182_P_1,ISSERTES_0182,landmark_placement,"18 landmarks, 19 expected"
-ISSERTES_0182_S_3,ISSERTES_0182,landmark_placement,"18 landmarks, 19 expected"
-ISSERTES_0195_P_2,ISSERTES_0195,landmark_placement,"18 landmarks, 19 expected"
-ISSERTES_0195_S_3,ISSERTES_0195,outlier_registration,flagged by per-species MAD outlier detection
-OPIE_0003_S_1,OPIE_0003,landmark_placement,"18 landmarks, 19 expected"
-OPIE_0003_S_2,OPIE_0003,landmark_placement,"18 landmarks, 19 expected"
+ISSERTES_0182_S_2,ISSERTES_0182,landmark_placement,"17 landmarks, 18 expected"
+ISSERTES_0198_P_1,ISSERTES_0198,outlier_registration,flagged by per-species MAD outlier detection
+ISSERTES_0198_P_2,ISSERTES_0198,outlier_registration,flagged by per-species MAD outlier detection
+OPIE_0017_P_2,OPIE_0017,outlier_registration,flagged by per-species MAD outlier detection

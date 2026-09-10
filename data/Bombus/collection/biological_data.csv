@@ -1,540 +1,540 @@
-inv_id,dd,mm,yyyy,collection_origin,capture_mode,capture_region,capture_locality,collector,order,family,genus,species,caste,identifier,identification_year,specimen_state,n_photos_P,n_photos_S
-ARLY_0001,19.0,5.0,2007.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Boussuivre,H.MOURET,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Gilles MAHÉ,2007.0,pinned,5,5
-ARLY_0004,30.0,4.0,2014.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,,H.MOURET,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Gilles MAHÉ,2014.0,pinned,5,5
-ARLY_0005,13.0,5.0,2014.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Saint-Pierre-la-Palud,H.MOURET,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Gilles MAHÉ,2011.0,pinned,5,5
-ARLY_0006,15.0,9.0,2019.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Chalet des 2 ours,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2019.0,pinned,3,3
-ARLY_0007,15.0,9.0,2019.0,Arthropologia Lyon,net,Auvergen-Rhône Alpes,Chalet des 2 ours,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2019.0,pinned,3,3
-ARLY_0008,15.0,9.0,2019.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Chalet des 2 ours,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2019.0,pinned,3,3
-ARLY_0009,15.0,9.0,2019.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Chalet des 2 ours,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2019.0,pinned,3,3
-ARLY_0010,15.0,9.0,2019.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Chalet des 2 ours,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2019.0,pinned,3,3
-ARLY_0011,15.0,9.0,2019.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Chalet de la Marine,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2019.0,pinned,3,3
-ARLY_0012,15.0,9.0,2019.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Chalet de la Marine,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2019.0,pinned,3,3
-ARLY_0013,15.0,9.0,2019.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Chalet des 2 ours,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2019.0,pinned,3,3
-ARLY_0014,15.0,9.0,2019.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Chalet de la Marine,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2019.0,pinned,3,3
-ARLY_0015,15.0,9.0,2019.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Chalet de la Marine,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2019.0,pinned,3,3
-ARLY_0016,20.0,3.0,2021.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Yvan BRUGEROLLES,2021.0,pinned,5,5
-ARLY_0028,,,2020.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2020.0,pinned,3,3
-ARLY_0029,,,2020.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2020.0,pinned,3,3
-ARLY_0036,,,2020.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,,pinned,3,3
-ARLY_0037,,,2020.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Col du Granier,,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2020.0,pinned,3,3
-ARLY_0038,,,,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Yvan BRUGEROLLES,2022.0,pinned,5,0
-ARLY_0049,,,2021.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,lucorum,drone,Yvan BRUGEROLLES,2021.0,pinned,2,3
-ARLY_0050,,,2021.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Frederic VYGHEN,2021.0,pinned,3,3
-ARLY_0054,,,2021.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Frederic VYGHEN,2021.0,pinned,5,5
-ARLY_0055,,,2021.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Yvan BRUGEROLLES,2021.0,pinned,5,6
-ARLY_PRAT_0001,5.0,6.0,2007.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,Marcy l'etoile,H.Mouret,Hymenoptera,Apidae,Bombus,pratorum,drone,Frederic VYGHEN,,pinned,2,3
-ARLY_PRAT_0002,11.0,6.0,2021.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0003,,,2013.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0004,,,2019.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Gilles MAHÉ,2019.0,pinned,2,3
-ARLY_PRAT_0005,,,2019.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,fondatrice,Frederic VYGHEN,2019.0,pinned,2,3
-ARLY_PRAT_0006,,,2019.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Frederic VYGHEN,,pinned,2,3
-ARLY_PRAT_0007,,,2019.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Frederic VYGHEN,,pinned,2,3
-ARLY_PRAT_0008,,,2019.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Frederic VYGHEN,,pinned,2,3
-ARLY_PRAT_0009,,,2019.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,fondatrice,Frederic VYGHEN,2019.0,pinned,2,3
-ARLY_PRAT_0010,,,2019.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0011,,,2019.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0012,,,2019.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,fondatrice,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0013,,,2019.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0014,,,2020.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Frederic VYGHEN,2020.0,pinned,2,3
-ARLY_PRAT_0015,,,2020.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Frederic VYGHEN,,pinned,2,3
-ARLY_PRAT_0016,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0017,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0018,,,2021.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,fondatrice,Frederic VYGHEN,2021.0,pinned,2,3
-ARLY_PRAT_0019,,,2021.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,fondatrice,Frederic VYGHEN,2021.0,pinned,2,3
-ARLY_PRAT_0020,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0021,,,2021.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,fondatrice,Frederic VYGHEN,2021.0,pinned,2,3
-ARLY_PRAT_0022,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0023,,,2021.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,fondatrice,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0024,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0025,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0026,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0027,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0028,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0029,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0030,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0031,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0032,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0033,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0034,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0035,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0036,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0037,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0038,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0039,,,2017.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0040,,,2016.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,H.Mouret,2017.0,pinned,2,3
-ARLY_PRAT_0041,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0042,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,monticola,drone,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0043,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,monticola,drone,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0044,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0045,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0046,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2022.0,pinned,4,6
-ARLY_PRAT_0047,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,monticola,drone,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0048,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0049,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,monticola,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0050,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0051,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0052,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0053,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0054,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0055,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,monticola,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0056,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0057,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0058,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0059,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0060,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_PRAT_0061,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,fondatrice,Frederic VYGHEN,,pinned,2,3
-ARLY_PRAT_0062,,,2021.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,fondatrice,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_PRAT_0063,,,2021.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Frederic VYGHEN,2021.0,pinned,2,3
-ARLY_PRAT_0064,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2021.0,pinned,2,3
-ARLY_PRAT_0065,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Frederic VYGHEN,2021.0,pinned,2,3
-ARLY_SORO_0001,2.0,5.0,1975.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,DEMARCEL,Hymenoptera,Apidae,Bombus,sylvarum,worker,DEMARCEL,1975.0,pinned,2,3
-ARLY_SORO_0002,10.0,9.0,2018.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,Barraux,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,sylvarum,worker,Frederic VYGHEN,2021.0,pinned,2,3
-ARLY_SORO_0003,15.0,9.0,2019.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,Saint-Marcel,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,ruderarius,worker,Frederic VYGHEN,2020.0,pinned,2,3
-ARLY_SORO_0004,22.0,8.0,2021.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,drone,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0005,22.0,8.0,2021.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0006,7.0,5.0,2022.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,fondatrice,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0007,25.0,8.0,2022.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,Saulzet-le-Froid,F.FOURNIER,Hymenoptera,Apidae,Bombus,pomorum,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0008,,,2012.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,Hugues MOURET,Hymenoptera,Apidae,Bombus,sylvarum,worker,Gilles MAHÉ,2012.0,pinned,2,3
-ARLY_SORO_0009,,,2017.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Gilles MAHÉ,2019.0,pinned,2,3
-ARLY_SORO_0010,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Frederic VYGHEN,2020.0,pinned,2,3
-ARLY_SORO_0011,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Frederic VYGHEN,2020.0,pinned,2,3
-ARLY_SORO_0012,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Frederic VYGHEN,2020.0,pinned,2,3
-ARLY_SORO_0013,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Frederic VYGHEN,2020.0,pinned,2,3
-ARLY_SORO_0014,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Frederic VYGHEN,2020.0,pinned,2,3
-ARLY_SORO_0015,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Frederic VYGHEN,2020.0,pinned,2,3
-ARLY_SORO_0016,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,drone,Frederic VYGHEN,2020.0,pinned,2,3
-ARLY_SORO_0017,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Frederic VYGHEN,2020.0,pinned,2,3
-ARLY_SORO_0018,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Frederic VYGHEN,2021.0,pinned,2,3
-ARLY_SORO_0019,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0020,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Frederic VYGHEN,2020.0,pinned,2,3
-ARLY_SORO_0021,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,drone,Frederic VYGHEN,2020.0,pinned,2,3
-ARLY_SORO_0022,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,fondatrice,Frederic VYGHEN,2018.0,pinned,2,3
-ARLY_SORO_0023,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2021.0,pinned,2,3
-ARLY_SORO_0024,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0025,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2021.0,pinned,2,3
-ARLY_SORO_0026,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2021.0,pinned,2,3
-ARLY_SORO_0027,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2021.0,pinned,2,3
-ARLY_SORO_0028,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2021.0,pinned,2,3
-ARLY_SORO_0029,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2021.0,pinned,2,3
-ARLY_SORO_0030,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0031,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Yvan BRUGEROLLES,2021.0,pinned,2,3
-ARLY_SORO_0032,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2021.0,pinned,2,3
-ARLY_SORO_0033,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,fondatrice,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0034,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,fondatrice,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0035,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,fondatrice,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0036,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0037,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0038,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,fondatrice,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0039,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0040,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0041,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0042,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,drone,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0043,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0044,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0045,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0046,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0047,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0048,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0049,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0050,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0051,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0052,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0053,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0054,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0055,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0056,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0057,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0058,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0059,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0060,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0061,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0062,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0063,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0064,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0065,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0066,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,drone,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0067,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0068,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0069,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,fondatrice,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0070,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Frederic VYGHEN,2022.0,pinned,2,3
-ARLY_SORO_0071,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0072,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,drone,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0073,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0074,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0075,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pomorum,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0076,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0077,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0078,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0079,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,fondatrice,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0080,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,fondatrice,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0081,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Frederic VYGHEN,2020.0,pinned,2,3
-ARLY_SORO_0082,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Frederic VYGHEN,2021.0,pinned,2,3
-ARLY_SORO_0083,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Frederic VYGHEN,2020.0,pinned,2,3
-ARLY_SORO_0084,,,2018.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Gilles MAHÉ,2019.0,pinned,2,3
-ARLY_SORO_0085,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Gilles MAHÉ,2018.0,pinned,2,3
-ARLY_SORO_0086,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0087,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0088,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Frederic VYGHEN,2022.0,pinned,2,3
-ARLY_SORO_0089,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Frederic VYGHEN,2022.0,pinned,2,3
-ARLY_SORO_0090,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0091,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0092,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0093,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Frederic VYGHEN,2021.0,pinned,2,2
-ARLY_SORO_0094,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2022.0,pinned,2,2
-ARLY_SORO_0095,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0096,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0097,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0099,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Frederic VYGHEN,2022.0,pinned,2,3
-ARLY_SORO_0100,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Frederic VYGHEN,2022.0,pinned,2,3
-ARLY_SORO_0101,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Frederic VYGHEN,2022.0,pinned,2,3
-ARLY_SORO_0102,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,drone,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0103,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Frederic VYGHEN,2022.0,pinned,2,3
-ARLY_SORO_0104,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,drone,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0105,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,drone,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0106,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0107,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Frederic VYGHEN,2022.0,pinned,2,3
-ARLY_SORO_0108,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0109,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Frederic VYGHEN,2022.0,pinned,2,3
-ARLY_SORO_0110,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0111,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0112,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Frederic VYGHEN,2022.0,pinned,2,3
-ARLY_SORO_0113,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0114,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARLY_SORO_0116,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0117,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0118,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,fondatrice,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0119,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0120,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0121,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0122,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0123,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0124,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0125,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0126,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0127,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2021.0,pinned,2,3
-ARLY_SORO_0128,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0129,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0130,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2021.0,pinned,2,3
-ARLY_SORO_0131,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2021.0,pinned,2,3
-ARLY_SORO_0132,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2021.0,pinned,2,3
-ARLY_SORO_0133,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0134,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0135,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0136,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0137,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,fondatrice,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0139,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Frederic VYGHEN,,pinned,2,3
-ARLY_SORO_0140,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,fondatrice,Frederic VYGHEN,2021.0,pinned,2,3
-ARLY_SORO_0141,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Yvan BRUGEROLLES,2021.0,pinned,2,3
-ARLY_SORO_0142,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Frederic VYGHEN,2021.0,pinned,2,3
-ARLY_SORO_0143,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Frederic VYGHEN,,pinned,2,3
-ARLY_SORO_0144,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Frederic VYGHEN,2021.0,pinned,2,3
-ARLY_SORO_0145,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pomorum,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARLY_SORO_0146,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Frederic VYGHEN,,pinned,2,3
-ARLY_SORO_0147,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,fondatrice,Frederic VYGHEN,2021.0,pinned,2,3
-ARLY_SORO_0148,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,fondatrice,Frederic VYGHEN,2021.0,pinned,2,3
-ARLY_SORO_0149,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,fondatrice,Frederic VYGHEN,2021.0,pinned,2,3
-ARLY_SORO_0150,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2021.0,pinned,2,3
-ARLY_SORO_0151,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2021.0,pinned,2,3
-ARLY_SORO_0152,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2021.0,pinned,2,3
-ARLY_SORO_0153,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2023.0,pinned,2,3
-ARTHRO_0001,,,2020.0,Arthropologia,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Frederic VYGHEN,2020.0,pinned,2,3
-ARTHRO_0002,,,2020.0,Arthropologia,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Frederic VYGHEN,2020.0,pinned,2,3
-ARTHRO_0003,,,2022.0,Arthropologia,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-ARTHRO_0004,,,2022.0,Arthropologia,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-BRUGEROLLES_0002,9.0,8.0,2021.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Glacier Blanc,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2021.0,pinned,2,3
-BRUGEROLLES_0003,9.0,8.0,2021.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Glacier Blanc,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2021.0,pinned,2,3
-BRUGEROLLES_0004,9.0,8.0,2021.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Glacier Blanc,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Yvan BRUGEROLLES,2021.0,pinned,2,3
-BRUGEROLLES_0006,20.0,8.0,2021.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Cime de Caron,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2021.0,pinned,2,3
-BRUGEROLLES_0007,20.0,8.0,2021.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Cime de Caron,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2021.0,pinned,2,3
-BRUGEROLLES_0009,7.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Col de la lousterle,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-BRUGEROLLES_0010,7.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Col de la lousterle,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-BRUGEROLLES_0011,7.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Col de la lousterle,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-BRUGEROLLES_0012,7.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Col de la lousterle,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-BRUGEROLLES_0013,7.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Refuge des Bans,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-BRUGEROLLES_0014,16.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Vaunjany,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-BRUGEROLLES_0015,16.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Vaunjany,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-BRUGEROLLES_0016,18.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Croix de Chamrousse,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-BRUGEROLLES_0018,28.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Sagnabous,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,confusus,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-BRUGEROLLES_0019,28.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Sagnabous,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,confusus,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-BRUGEROLLES_0020,28.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Sagnabous,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,confusus,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-BRUGEROLLES_0021,28.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Cirque de Recusset,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Yvan BRUGEROLLES,2022.0,pinned,2,3
-BRUGEROLLES_0022,28.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Sagnabous,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,confusus,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-BRUGEROLLES_0023,28.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Sagnabous,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,confusus,worker,Yvan BRUGEROLLES,2022.0,pinned,2,3
-BRUGEROLLES_0024,8.0,8.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,RNR Spartias,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-BRUGEROLLES_0025,10.0,8.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Puy-St-Vincent,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-BRUGEROLLES_0027,11.0,8.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Lac de l'Orceyrette,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-BRUGEROLLES_0029,,,,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2021.0,pinned,2,3
-CPIE15_0001,24.0,6.0,2020.0,CPIE15,net,Auvergne-Rhônes Alpes,Saint-Poncy,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,worker,Mehdi ISSERTES,2020.0,pinned,2,3
-CPIE15_0002,3.0,8.0,2020.0,CPIE15,net,Auvergne-Rhônes Alpes,Saint-Poncy,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,worker,Mehdi ISSERTES,2020.0,pinned,2,3
-CPIE15_0003,3.0,8.0,2020.0,CPIE15,net,Auvergne-Rhônes Alpes,Saint-Poncy,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2020.0,pinned,2,3
-CPIE15_0004,5.0,8.0,2020.0,CPIE15,net,Auvergne-Rhônes Alpes,Saint-Poncy,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2020.0,pinned,2,3
-CPIE15_0005,7.0,8.0,2020.0,CPIE15,net,Auvergne-Rhônes Alpes,Aurillac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Gilles MAHÉ,2020.0,pinned,2,3
-CPIE15_0006,6.0,6.0,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,Aurillac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,fondatrice,Gilles MAHÉ,2020.0,pinned,2,3
-CPIE15_0007,30.0,9.0,2021.0,CPIE15,Pantrap,Auvergne-Rhônes Alpes,Saint-Poncy,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-CPIE15_0008,30.0,9.0,2021.0,CPIE15,Pantrap,Auvergne-Rhônes Alpes,Saint-Poncy,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-CPIE15_0009,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-CPIE15_0010,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,worker,Mehdi ISSERTES,2021.0,pinned,2,3
-CPIE15_0011,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-CPIE15_0012,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,soroeensis,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-CPIE15_0013,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-CPIE15_0014,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-CPIE15_0015,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-CPIE15_0016,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-CPIE15_0017,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-CPIE15_0018,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-CPIE15_0019,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,soroeensis,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-CPIE15_0020,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,soroeensis,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-CPIE15_0021,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,soroeensis,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-CPIE15_0022,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,soroeensis,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-CPIE15_0023,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,soroeensis,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-CPIE15_0024,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,soroeensis,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-CPIE15_0025,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-CPIE15_0026,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-CPIE15_0027,,,,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,,pinned,2,3
-CPIE15_0028,,,,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,,pinned,2,3
-CPIE15_0029,,,,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,,pinned,2,3
-CPIE15_0030,,,,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,,pinned,2,3
-CPIE15_0031,,,,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,,pinned,2,3
-CPIE15_0032,,,,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2020.0,pinned,2,3
-IEESZ_0004,,,2020.0,IEES ZANINOTTO,net,Île-de-France,Paris,Vincent ZANINOTTO,Hymenoptera,Apidae,Bombus,pratorum,drone,Vincent ZANINOTTO,2020.0,pinned,5,5
-IEESZ_0019,,,2020.0,IEES ZANINOTTO,net,Île-de-France,Paris,Vincent ZANINOTTO,Hymenoptera,Apidae,Bombus,pratorum,worker,Vincent ZANINOTTO,2020.0,pinned,3,3
-IEESZ_0042,,,2020.0,IEES ZANINOTTO,net,Île-de-France,Paris,Vincent ZANINOTTO,Hymenoptera,Apidae,Bombus,pratorum,drone,Vincent ZANINOTTO,2020.0,pinned,5,5
-IEESZ_0043,,,2020.0,IEES ZANINOTTO,net,Île-de-France,Paris,Vincent ZANINOTTO,Hymenoptera,Apidae,Bombus,pratorum,drone,Vincent ZANINOTTO,2020.0,pinned,5,5
-IEESZ_0048,,,2020.0,IEES ZANINOTTO,net,Île-de-France,Paris,Vincent ZANINOTTO,Hymenoptera,Apidae,Bombus,pratorum,worker,Vincent ZANINOTTO,2020.0,pinned,3,3
-IEESZ_0063,,,2020.0,IEES ZANINOTTO,net,Île-de-France,Paris,Vincent ZANINOTTO,Hymenoptera,Apidae,Bombus,pratorum,drone,Vincent ZANINOTTO,2020.0,pinned,5,5
-IEESZ_0072,,,2020.0,IEES ZANINOTTO,net,Île-de-France,Paris,Vincent ZANINOTTO,Hymenoptera,Apidae,Bombus,pratorum,drone,Vincent ZANINOTTO,2020.0,pinned,5,5
-ISSERTES_0001,10.0,5.0,2018.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lavigerie,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,fondatrice,Gilles MAHÉ,2018.0,pinned,2,3
-ISSERTES_0002,21.0,8.0,2018.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2018.0,pinned,2,3
-ISSERTES_0003,31.0,5.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Thiezac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0004,15.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Charmensac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0005,18.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lavigerie,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0006,18.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lavigerie,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0007,18.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lavigerie,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0008,18.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lavigerie,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0009,18.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lavigerie,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0010,30.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lieutadès,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0011,30.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lieutadès,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0012,30.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lieutadès,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0013,30.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lieutadès,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0014,30.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lieutadès,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0015,30.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lieutadès,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0016,30.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lieutadès,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0017,7.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Aurillac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0018,7.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Aurillac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0019,7.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,St-Paul-des-Landes,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0020,8.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Arpajon-sur-Cère,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0021,9.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Reilhac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0022,9.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Naucelles,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0023,9.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Naucelles,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0024,9.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Naucelles,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0025,14.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Nieudan,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0026,15.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Charmensac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0027,17.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Charmensac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0028,17.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Peyrusse,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0029,17.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Charmensac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0030,23.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Giou-de-Mamou,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0031,25.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Auriac-l'Église,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0032,25.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Auriac-l'Église,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0033,25.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Auriac-l'Église,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2020.0,pinned,2,3
-ISSERTES_0034,12.0,6.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Sansac-de-Marmiesse,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0035,13.0,6.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Arpajon-sur-Cère,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0036,10.0,7.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Malbo,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0037,10.0,7.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,St-Martin-sous-Vigouroux,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0038,10.0,7.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,St-Martin-sous-Vigouroux,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0039,11.0,7.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Cirgues-de-Jordanne,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0040,15.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Pleaux,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0041,17.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vieillespesse,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0042,17.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Coren,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0043,17.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Coren,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0044,17.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Coren,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0045,17.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Coren,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0046,17.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Talizat,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0047,17.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Talizat,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0048,17.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Talizat,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0049,20.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Trizac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0050,20.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Trizac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0051,20.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Trizac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0052,20.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Trizac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0053,20.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Amandin,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0054,20.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Condat,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0055,20.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Montgreleix,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0056,20.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Montgreleix,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0057,20.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Montgreleix,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0058,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vieillespesse,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0059,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Marcenat,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0060,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Marcenat,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0061,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Marcenat,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0062,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Ségur-les-Villas,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0063,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Ségur-les-Villas,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0064,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vèze,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0065,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vèze,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0066,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vèze,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0067,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vèze,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0068,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vèze,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0069,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vèze,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0070,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Allanche,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0071,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Allanche,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0072,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Allanche,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0073,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Allanche,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0074,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Allanche,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0075,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Allanche,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0076,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Allanche,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0077,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Molèdes,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0078,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Molèdes,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0079,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Mollèdes,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0080,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Mollèdes,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0081,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Molompize,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0082,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Molompize,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0083,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Molompize,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0084,22.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lorcières,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0085,22.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lorcières,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0086,22.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lorcières,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0087,22.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lorcières,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0088,22.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Ruynes-en-Margeride,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0089,22.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Ruynes-en-Margeride,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0090,10.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lacapelle-Barrès,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,fondatrice,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0091,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Champagny-en-Vanoise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0092,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Champagny-en-Vanoise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0093,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Bozel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,ruderarius,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0094,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Bozel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0095,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Bozel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0096,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Bozel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0097,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Bozel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0098,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Champagny-en-Vanoise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0099,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Champagny-en-Vanoise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0100,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Champagny-en-Vanoise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0101,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Champagny-en-Vanoise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0102,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Bozel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0103,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Courchevel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0104,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Courchevel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0105,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Courchevel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0106,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Courchevel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0107,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Courchevel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0108,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Courchevel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0109,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Courchevel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0110,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Courchevel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0111,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0112,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0113,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0114,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0115,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0116,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0117,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0118,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0119,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0120,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0121,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0122,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0123,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0124,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0125,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0126,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0127,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0128,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0129,14.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Belleville,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0130,14.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Belleville,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0131,14.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Belleville,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0132,14.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Belleville,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0133,14.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Belleville,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,fondatrice,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0134,14.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Belleville,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0135,14.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Belleville,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0136,14.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Belleville,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0137,14.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Belleville,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0138,15.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Bonneval-sur-Arc,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0139,15.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Bonneval-sur-Arc,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0140,16.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Chamonix,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0141,16.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Chamonix,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0142,17.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Chamonix,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0143,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Champagny-en-Vanoise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0144,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0145,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0146,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0147,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0148,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0149,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0150,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0151,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0152,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0153,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0154,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0155,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0156,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0157,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0158,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0159,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0160,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0161,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0162,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0163,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0164,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0165,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Jausiers,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,fondatrice,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0166,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Paul-sur-Ubaye,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0167,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Paul-sur-Ubaye,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0168,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Paul-sur-Ubaye,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0169,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Paul-sur-Ubaye,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,ruderarius,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0170,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Paul-sur-Ubaye,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,ruderarius,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0171,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Paul-sur-Ubaye,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,ruderarius,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0172,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Paul-sur-Ubaye,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,ruderarius,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0173,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Paul-sur-Ubaye,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,ruderarius,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0174,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Paul-sur-Ubaye,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0175,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Paul-sur-Ubaye,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0176,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Jausiers,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0177,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Jausiers,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,fondatrice,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0178,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Jausiers,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0179,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vars,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,ruderarius,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0180,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vars,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,ruderarius,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0181,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vars,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,ruderarius,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0182,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vars,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0183,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vars,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0184,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vars,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,ruderarius,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0185,21.0,8.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vernois,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0186,21.0,8.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Neussargues-en-Pinatelle,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0187,21.0,8.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Neussargues-en-Pinatelle,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0188,21.0,8.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Neussargues-en-Pinatelle,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0189,21.0,8.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Neussargues-en-Pinatelle,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2022.0,pinned,2,3
-ISSERTES_0194,,,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2021.0,pinned,2,3
-ISSERTES_0195,,7.0,2012.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Arpajon-sur-Cère,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Gilles MAHÉ,2022.0,pinned,2,3
-ISSERTES_0196,,,,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,,pinned,2,3
-ISSERTES_0197,,,,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,,pinned,2,3
-ISSERTES_0198,,,,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Mehdi ISSERTES,,pinned,2,3
-OPIE_0001,29.0,6.0,2002.0,OPIE,net,Île-de-France,Mesnil-le-Roi,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0002,11.0,7.0,2002.0,OPIE,net,Île-de-France,Bregy,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0003,18.0,7.0,2002.0,OPIE,net,Île-de-France,Mantes-la-Jolie,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2004.0,pinned,2,3
-OPIE_0004,27.0,7.0,2002.0,OPIE,net,Île-de-France,Frouville,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0005,18.0,7.0,2003.0,OPIE,net,Île-de-France,Mantes-la-Jolie,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2004.0,pinned,2,3
-OPIE_0006,20.0,7.0,2003.0,OPIE,net,Île-de-France,Paris,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2004.0,pinned,2,3
-OPIE_0007,20.0,7.0,2003.0,OPIE,net,Île-de-France,Paris,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2004.0,pinned,2,3
-OPIE_0008,3.0,8.0,2003.0,OPIE,net,Île-de-France,Carrière de Vigny,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2004.0,pinned,2,3
-OPIE_0009,3.0,8.0,2003.0,OPIE,net,Île-de-France,Carrière de Vigny,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2004.0,pinned,2,3
-OPIE_0010,3.0,8.0,2003.0,OPIE,net,Île-de-France,Guernes,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2004.0,pinned,2,3
-OPIE_0011,6.0,8.0,2003.0,OPIE,net,Île-de-France,Herbeville,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2004.0,pinned,2,3
-OPIE_0012,12.0,8.0,2009.0,OPIE,net,Île-de-France,Versailles,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2011.0,pinned,2,3
-OPIE_0013,18.0,8.0,2009.0,OPIE,net,Île-de-France,Evecquement,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2011.0,pinned,2,3
-OPIE_0014,24.0,8.0,2009.0,OPIE,net,Île-de-France,Chaussy,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2011.0,pinned,2,3
-OPIE_0015,25.0,6.0,2010.0,OPIE,net,Île-de-France,Nanterre,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2011.0,pinned,2,3
-OPIE_0016,5.0,8.0,2010.0,OPIE,net,Île-de-France,Nanterre,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2011.0,pinned,2,3
-OPIE_0017,5.0,8.0,2010.0,OPIE,net,Île-de-France,Nanterre,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2011.0,pinned,2,3
-OPIE_0018,5.0,8.0,2010.0,OPIE,net,Île-de-France,Nanterre,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2011.0,pinned,2,3
-OPIE_0019,10.0,8.0,2010.0,OPIE,net,Île-de-France,Nanterre,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2011.0,pinned,2,3
-OPIE_0020,19.0,8.0,2010.0,OPIE,net,Île-de-France,Carrière-sous-Poissy,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2011.0,pinned,2,3
-OPIE_0021,19.0,8.0,2010.0,OPIE,net,Île-de-France,Carrière-sous-Poissy,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2011.0,pinned,2,3
-OPIE_0022,22.0,6.0,2020.0,OPIE,net,Île-de-France,Vieil-Evreux,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0023,22.0,6.0,2020.0,OPIE,net,Île-de-France,Vieil-Evreux,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0024,22.0,6.0,2020.0,OPIE,net,Île-de-France,Vieil-Evreux,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0025,22.0,6.0,2020.0,OPIE,net,Île-de-France,Vieil-Evreux,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0026,23.0,6.0,2020.0,OPIE,net,Île-de-France,Sacquenville,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0027,23.0,6.0,2020.0,OPIE,net,Île-de-France,Sacquenville,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0028,24.0,6.0,2020.0,OPIE,net,Île-de-France,Pacy,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0029,24.0,6.0,2020.0,OPIE,net,Île-de-France,Pacy,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0030,26.0,6.0,2020.0,OPIE,net,Île-de-France,Ormes,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0031,26.0,6.0,2020.0,OPIE,net,Île-de-France,Ormes,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0032,13.0,7.0,2020.0,OPIE,net,Île-de-France,Vieil-Evreux,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0033,13.0,7.0,2020.0,OPIE,net,Île-de-France,Vieil-Evreux,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0034,13.0,7.0,2020.0,OPIE,net,Île-de-France,Le Plessis Hebert,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0035,13.0,7.0,2020.0,OPIE,net,Île-de-France,Vieil-Evreux,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0036,16.0,7.0,2020.0,OPIE,net,Île-de-France,Reuilly,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0037,16.0,7.0,2020.0,OPIE,net,Île-de-France,Sacquenville,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0038,20.0,7.0,2020.0,OPIE,net,Île-de-France,Pacy,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0039,7.0,8.0,2020.0,OPIE,net,Île-de-France,Vendoeuvrés,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0040,7.0,8.0,2020.0,OPIE,net,Île-de-France,Vendoeuvrés,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,2,3
-OPIE_0041,10.0,8.0,2020.0,OPIE,net,Île-de-France,Le Plessis Hebert,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Serge GADOUM,2020.0,pinned,2,3
+inv_id,dd,mm,yyyy,collection_origin,capture_mode,capture_region,capture_locality,collector,order,family,genus,species,caste,identifier,identification_year,specimen_state,device.1,n_photos_P,n_photos_S
+ARLY_0001,19.0,5.0,2007.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Boussuivre,H.MOURET,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Gilles MAHÉ,2007.0,pinned,Canon EOS 70D - 40mm,5,5
+ARLY_0004,30.0,4.0,2014.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,,H.MOURET,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Gilles MAHÉ,2014.0,pinned,Canon EOS 70D - 40mm,5,5
+ARLY_0005,13.0,5.0,2014.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Saint-Pierre-la-Palud,H.MOURET,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Gilles MAHÉ,2011.0,pinned,Canon EOS 70D - 40mm,5,5
+ARLY_0006,15.0,9.0,2019.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Chalet des 2 ours,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2019.0,pinned,Canon EOS 70D - 40mm,3,3
+ARLY_0007,15.0,9.0,2019.0,Arthropologia Lyon,net,Auvergen-Rhône Alpes,Chalet des 2 ours,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2019.0,pinned,Canon EOS 70D - 40mm,3,3
+ARLY_0008,15.0,9.0,2019.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Chalet des 2 ours,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2019.0,pinned,Canon EOS 70D - 40mm,3,3
+ARLY_0009,15.0,9.0,2019.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Chalet des 2 ours,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2019.0,pinned,Canon EOS 70D - 40mm,3,3
+ARLY_0010,15.0,9.0,2019.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Chalet des 2 ours,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2019.0,pinned,Smartphone Samsung s10,3,3
+ARLY_0011,15.0,9.0,2019.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Chalet de la Marine,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2019.0,pinned,Canon EOS 70D - 40mm,3,3
+ARLY_0012,15.0,9.0,2019.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Chalet de la Marine,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2019.0,pinned,Canon EOS 70D - 40mm,3,3
+ARLY_0013,15.0,9.0,2019.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Chalet des 2 ours,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2019.0,pinned,Canon EOS 70D - 40mm,3,3
+ARLY_0014,15.0,9.0,2019.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Chalet de la Marine,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2019.0,pinned,Canon EOS 70D - 40mm,3,3
+ARLY_0015,15.0,9.0,2019.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Chalet de la Marine,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2019.0,pinned,Smartphone Samsung s10,3,3
+ARLY_0016,20.0,3.0,2021.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Yvan BRUGEROLLES,2021.0,pinned,Canon EOS 70D - 40mm,5,5
+ARLY_0028,,,2020.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2020.0,pinned,Smartphone Samsung s10,3,3
+ARLY_0029,,,2020.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2020.0,pinned,Canon EOS 70D - 40mm,3,3
+ARLY_0036,,,2020.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,,pinned,Smartphone Samsung s10,3,3
+ARLY_0037,,,2020.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,Col du Granier,,Hymenoptera,Apidae,Bombus,rupestris,drone,Frederic VYGHEN,2020.0,pinned,Smartphone Samsung s10,3,3
+ARLY_0038,,,,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Yvan BRUGEROLLES,2022.0,pinned,Canon EOS 70D - 40mm,5,0
+ARLY_0049,,,2021.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,lucorum,drone,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_0050,,,2021.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Frederic VYGHEN,2021.0,pinned,Canon EOS 70D - 40mm,3,3
+ARLY_0054,,,2021.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Frederic VYGHEN,2021.0,pinned,Canon EOS 70D - 40mm,5,5
+ARLY_0055,,,2021.0,Arthropologia Lyon,net,Auvergne-Rhônes Alpes,,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Yvan BRUGEROLLES,2021.0,pinned,Canon EOS 70D - 40mm,5,6
+ARLY_PRAT_0001,5.0,6.0,2007.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,Marcy l'etoile,H.Mouret,Hymenoptera,Apidae,Bombus,pratorum,drone,Frederic VYGHEN,,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0002,11.0,6.0,2021.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0003,,,2013.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0004,,,2019.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Gilles MAHÉ,2019.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0005,,,2019.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,fondatrice,Frederic VYGHEN,2019.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0006,,,2019.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Frederic VYGHEN,,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0007,,,2019.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Frederic VYGHEN,,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0008,,,2019.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Frederic VYGHEN,,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0009,,,2019.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,fondatrice,Frederic VYGHEN,2019.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0010,,,2019.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0011,,,2019.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2022.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_PRAT_0012,,,2019.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,fondatrice,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0013,,,2019.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0014,,,2020.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Frederic VYGHEN,2020.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0015,,,2020.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Frederic VYGHEN,,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0016,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_PRAT_0017,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_PRAT_0018,,,2021.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,fondatrice,Frederic VYGHEN,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0019,,,2021.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,fondatrice,Frederic VYGHEN,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0020,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_PRAT_0021,,,2021.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,fondatrice,Frederic VYGHEN,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0022,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_PRAT_0023,,,2021.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,fondatrice,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0024,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0025,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0026,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0027,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0028,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0029,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0030,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0031,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_PRAT_0032,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_PRAT_0033,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_PRAT_0034,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_PRAT_0035,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0036,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0037,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2022.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_PRAT_0038,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2022.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_PRAT_0039,,,2017.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0040,,,2016.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,H.Mouret,2017.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0041,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_PRAT_0042,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,monticola,drone,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0043,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,monticola,drone,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0044,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0045,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0046,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,4,6
+ARLY_PRAT_0047,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,monticola,drone,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0048,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0049,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,monticola,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0050,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0051,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0052,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0053,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0054,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_PRAT_0055,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,monticola,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0056,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0057,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0058,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0059,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0060,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Yvan BRUGEROLLES,2023.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_PRAT_0061,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,fondatrice,Frederic VYGHEN,,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0062,,,2021.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,fondatrice,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0063,,,2021.0,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Frederic VYGHEN,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0064,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,drone,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_PRAT_0065,,,,Arthropologia Lyon (stock pratorum),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pratorum,worker,Frederic VYGHEN,2021.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_SORO_0001,2.0,5.0,1975.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,DEMARCEL,Hymenoptera,Apidae,Bombus,sylvarum,worker,DEMARCEL,1975.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0002,10.0,9.0,2018.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,Barraux,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,sylvarum,worker,Frederic VYGHEN,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0003,15.0,9.0,2019.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,Saint-Marcel,Frederic VYGHEN,Hymenoptera,Apidae,Bombus,ruderarius,worker,Frederic VYGHEN,2020.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0004,22.0,8.0,2021.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,drone,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0005,22.0,8.0,2021.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0006,7.0,5.0,2022.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,fondatrice,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0007,25.0,8.0,2022.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,Saulzet-le-Froid,F.FOURNIER,Hymenoptera,Apidae,Bombus,pomorum,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0008,,,2012.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,Hugues MOURET,Hymenoptera,Apidae,Bombus,sylvarum,worker,Gilles MAHÉ,2012.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0009,,,2017.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Gilles MAHÉ,2019.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0010,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Frederic VYGHEN,2020.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0011,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Frederic VYGHEN,2020.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0012,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Frederic VYGHEN,2020.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0013,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Frederic VYGHEN,2020.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0014,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Frederic VYGHEN,2020.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0015,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Frederic VYGHEN,2020.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0016,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,drone,Frederic VYGHEN,2020.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0017,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Frederic VYGHEN,2020.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0018,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Frederic VYGHEN,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0019,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0020,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Frederic VYGHEN,2020.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0021,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,drone,Frederic VYGHEN,2020.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0022,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,fondatrice,Frederic VYGHEN,2018.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0023,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0024,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2022.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_SORO_0025,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0026,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0027,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0028,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0029,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0030,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0031,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0032,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0033,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,fondatrice,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0034,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,fondatrice,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0035,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,fondatrice,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0036,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0037,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2022.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_SORO_0038,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,fondatrice,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0039,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0040,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0041,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0042,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,drone,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0043,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2022.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_SORO_0044,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2022.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_SORO_0045,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2022.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_SORO_0046,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0047,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0048,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0049,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0050,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0051,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0052,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0053,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0054,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0055,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0056,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0057,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0058,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0059,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0060,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0061,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0062,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0063,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0064,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0065,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0066,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,drone,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0067,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0068,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2022.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_SORO_0069,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,fondatrice,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0070,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Frederic VYGHEN,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0071,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0072,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,drone,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0073,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2022.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_SORO_0074,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0075,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pomorum,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0076,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0077,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0078,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0079,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,fondatrice,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0080,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,fondatrice,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0081,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Frederic VYGHEN,2020.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0082,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Frederic VYGHEN,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0083,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Frederic VYGHEN,2020.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0084,,,2018.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Gilles MAHÉ,2019.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0085,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Gilles MAHÉ,2018.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0086,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0087,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0088,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Frederic VYGHEN,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0089,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Frederic VYGHEN,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0090,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0091,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0092,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0093,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Frederic VYGHEN,2021.0,pinned,Smartphone Samsung s10,2,2
+ARLY_SORO_0094,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Yvan BRUGEROLLES,2022.0,pinned,Canon EOS 70D - 40mm,2,2
+ARLY_SORO_0095,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0096,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0097,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0099,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Frederic VYGHEN,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0100,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Frederic VYGHEN,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0101,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Frederic VYGHEN,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0102,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,drone,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0103,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Frederic VYGHEN,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0104,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,drone,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0105,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,drone,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0106,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0107,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Frederic VYGHEN,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0108,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0109,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Frederic VYGHEN,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0110,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0111,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0112,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Frederic VYGHEN,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0113,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0114,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0116,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0117,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,Canon EOS 70D - 40mm,2,3
+ARLY_SORO_0118,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,fondatrice,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0119,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0120,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0121,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0122,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0123,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0124,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0125,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0126,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0127,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0128,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0129,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0130,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0131,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0132,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0133,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0134,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sichelii,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0135,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0136,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0137,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,fondatrice,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0139,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Frederic VYGHEN,,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0140,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,fondatrice,Frederic VYGHEN,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0141,,,2020.0,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,worker,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0142,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,worker,Frederic VYGHEN,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0143,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Frederic VYGHEN,,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0144,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Frederic VYGHEN,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0145,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pomorum,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0146,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,ruderarius,worker,Frederic VYGHEN,,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0147,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,fondatrice,Frederic VYGHEN,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0148,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,fondatrice,Frederic VYGHEN,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0149,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,sylvarum,fondatrice,Frederic VYGHEN,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0150,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0151,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0152,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,soroeensis,drone,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+ARLY_SORO_0153,,,,Arthropologia Lyon (stock soroeensis),net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,worker,Yvan BRUGEROLLES,2023.0,pinned,Smartphone Samsung s10,2,3
+ARTHRO_0001,,,2020.0,Arthropologia,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Frederic VYGHEN,2020.0,pinned,Smartphone Samsung s10,2,3
+ARTHRO_0002,,,2020.0,Arthropologia,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Frederic VYGHEN,2020.0,pinned,Smartphone Samsung s10,2,3
+ARTHRO_0003,,,2022.0,Arthropologia,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+ARTHRO_0004,,,2022.0,Arthropologia,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,wurflenii,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0002,9.0,8.0,2021.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Glacier Blanc,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0003,9.0,8.0,2021.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Glacier Blanc,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0004,9.0,8.0,2021.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Glacier Blanc,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0006,20.0,8.0,2021.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Cime de Caron,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0007,20.0,8.0,2021.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Cime de Caron,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0009,7.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Col de la lousterle,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0010,7.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Col de la lousterle,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0011,7.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Col de la lousterle,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0012,7.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Col de la lousterle,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0013,7.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Refuge des Bans,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0014,16.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Vaunjany,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0015,16.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Vaunjany,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0016,18.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Croix de Chamrousse,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0018,28.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Sagnabous,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,confusus,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0019,28.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Sagnabous,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,confusus,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0020,28.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Sagnabous,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,confusus,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0021,28.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Cirque de Recusset,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0022,28.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Sagnabous,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,confusus,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0023,28.0,7.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Sagnabous,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,confusus,worker,Yvan BRUGEROLLES,2022.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0024,8.0,8.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,RNR Spartias,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0025,10.0,8.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Puy-St-Vincent,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0027,11.0,8.0,2022.0,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,Lac de l'Orceyrette,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+BRUGEROLLES_0029,,,,Yvan BRUGEROLLES,net,Auvergne-Rhônes Alpes,,Yvan BRUGEROLLES,Hymenoptera,Apidae,Bombus,monticola,worker,Yvan BRUGEROLLES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0001,24.0,6.0,2020.0,CPIE15,net,Auvergne-Rhônes Alpes,Saint-Poncy,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,worker,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0002,3.0,8.0,2020.0,CPIE15,net,Auvergne-Rhônes Alpes,Saint-Poncy,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,worker,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0003,3.0,8.0,2020.0,CPIE15,net,Auvergne-Rhônes Alpes,Saint-Poncy,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0004,5.0,8.0,2020.0,CPIE15,net,Auvergne-Rhônes Alpes,Saint-Poncy,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0005,7.0,8.0,2020.0,CPIE15,net,Auvergne-Rhônes Alpes,Aurillac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Gilles MAHÉ,2020.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0006,6.0,6.0,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,Aurillac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,fondatrice,Gilles MAHÉ,2020.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0007,30.0,9.0,2021.0,CPIE15,Pantrap,Auvergne-Rhônes Alpes,Saint-Poncy,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0008,30.0,9.0,2021.0,CPIE15,Pantrap,Auvergne-Rhônes Alpes,Saint-Poncy,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0009,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0010,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,worker,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0011,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0012,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,soroeensis,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0013,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0014,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0015,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0016,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0017,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0018,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0019,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,soroeensis,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0020,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,soroeensis,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0021,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,soroeensis,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0022,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,soroeensis,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0023,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,soroeensis,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0024,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,soroeensis,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0025,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0026,,,2021.0,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+CPIE15_0027,,,,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,,pinned,Smartphone Samsung s10,2,3
+CPIE15_0028,,,,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,,pinned,Smartphone Samsung s10,2,3
+CPIE15_0029,,,,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,,pinned,Smartphone Samsung s10,2,3
+CPIE15_0030,,,,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,,pinned,Smartphone Samsung s10,2,3
+CPIE15_0031,,,,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,,pinned,Smartphone Samsung s10,2,3
+CPIE15_0032,,,,CPIE15,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+IEESZ_0004,,,2020.0,IEES ZANINOTTO,net,Île-de-France,Paris,Vincent ZANINOTTO,Hymenoptera,Apidae,Bombus,pratorum,drone,Vincent ZANINOTTO,2020.0,pinned,Canon EOS 70D - 40mm,5,5
+IEESZ_0019,,,2020.0,IEES ZANINOTTO,net,Île-de-France,Paris,Vincent ZANINOTTO,Hymenoptera,Apidae,Bombus,pratorum,worker,Vincent ZANINOTTO,2020.0,pinned,Canon EOS 70D - 40mm,3,3
+IEESZ_0042,,,2020.0,IEES ZANINOTTO,net,Île-de-France,Paris,Vincent ZANINOTTO,Hymenoptera,Apidae,Bombus,pratorum,drone,Vincent ZANINOTTO,2020.0,pinned,Canon EOS 70D - 40mm,5,5
+IEESZ_0043,,,2020.0,IEES ZANINOTTO,net,Île-de-France,Paris,Vincent ZANINOTTO,Hymenoptera,Apidae,Bombus,pratorum,drone,Vincent ZANINOTTO,2020.0,pinned,Canon EOS 70D - 40mm,5,5
+IEESZ_0048,,,2020.0,IEES ZANINOTTO,net,Île-de-France,Paris,Vincent ZANINOTTO,Hymenoptera,Apidae,Bombus,pratorum,worker,Vincent ZANINOTTO,2020.0,pinned,Canon EOS 70D - 40mm,3,3
+IEESZ_0063,,,2020.0,IEES ZANINOTTO,net,Île-de-France,Paris,Vincent ZANINOTTO,Hymenoptera,Apidae,Bombus,pratorum,drone,Vincent ZANINOTTO,2020.0,pinned,Canon EOS 70D - 40mm,5,5
+IEESZ_0072,,,2020.0,IEES ZANINOTTO,net,Île-de-France,Paris,Vincent ZANINOTTO,Hymenoptera,Apidae,Bombus,pratorum,drone,Vincent ZANINOTTO,2020.0,pinned,Canon EOS 70D - 40mm,5,5
+ISSERTES_0001,10.0,5.0,2018.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lavigerie,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,fondatrice,Gilles MAHÉ,2018.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0002,21.0,8.0,2018.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2018.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0003,31.0,5.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Thiezac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0004,15.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Charmensac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0005,18.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lavigerie,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0006,18.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lavigerie,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0007,18.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lavigerie,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0008,18.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lavigerie,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0009,18.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lavigerie,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0010,30.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lieutadès,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0011,30.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lieutadès,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0012,30.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lieutadès,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0013,30.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lieutadès,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0014,30.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lieutadès,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0015,30.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lieutadès,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0016,30.0,7.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lieutadès,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0017,7.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Aurillac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0018,7.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Aurillac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0019,7.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,St-Paul-des-Landes,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0020,8.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Arpajon-sur-Cère,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0021,9.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Reilhac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0022,9.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Naucelles,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0023,9.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Naucelles,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0024,9.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Naucelles,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0025,14.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Nieudan,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0026,15.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Charmensac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0027,17.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Charmensac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0028,17.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Peyrusse,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2020.0,pinned,Canon EOS 70D - 100mm macro,2,3
+ISSERTES_0029,17.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Charmensac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0030,23.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Giou-de-Mamou,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0031,25.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Auriac-l'Église,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0032,25.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Auriac-l'Église,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0033,25.0,8.0,2020.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Auriac-l'Église,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2020.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0034,12.0,6.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Sansac-de-Marmiesse,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0035,13.0,6.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Arpajon-sur-Cère,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0036,10.0,7.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Malbo,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0037,10.0,7.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,St-Martin-sous-Vigouroux,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0038,10.0,7.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,St-Martin-sous-Vigouroux,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0039,11.0,7.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Cirgues-de-Jordanne,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0040,15.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Pleaux,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0041,17.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vieillespesse,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0042,17.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Coren,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0043,17.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Coren,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0044,17.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Coren,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0045,17.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Coren,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0046,17.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Talizat,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0047,17.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Talizat,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0048,17.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Talizat,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0049,20.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Trizac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0050,20.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Trizac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0051,20.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Trizac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0052,20.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Trizac,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0053,20.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Amandin,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0054,20.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Condat,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0055,20.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Montgreleix,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0056,20.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Montgreleix,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0057,20.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Montgreleix,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0058,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vieillespesse,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0059,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Marcenat,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0060,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Marcenat,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0061,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Marcenat,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0062,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Ségur-les-Villas,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0063,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Ségur-les-Villas,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0064,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vèze,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0065,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vèze,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0066,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vèze,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0067,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vèze,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0068,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vèze,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0069,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vèze,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0070,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Allanche,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0071,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Allanche,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0072,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Allanche,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0073,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Allanche,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0074,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Allanche,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0075,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Allanche,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0076,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Allanche,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0077,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Molèdes,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0078,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Molèdes,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0079,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Mollèdes,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0080,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Mollèdes,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sylvarum,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0081,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Molompize,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0082,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Molompize,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0083,21.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Molompize,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0084,22.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lorcières,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0085,22.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lorcières,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,worker,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0086,22.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lorcières,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0087,22.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lorcières,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0088,22.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Ruynes-en-Margeride,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0089,22.0,8.0,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Ruynes-en-Margeride,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,confusus,worker,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0090,10.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Lacapelle-Barrès,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,fondatrice,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0091,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Champagny-en-Vanoise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0092,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Champagny-en-Vanoise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0093,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Bozel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,ruderarius,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0094,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Bozel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0095,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Bozel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0096,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Bozel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0097,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Bozel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0098,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Champagny-en-Vanoise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0099,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Champagny-en-Vanoise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0100,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Champagny-en-Vanoise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0101,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Champagny-en-Vanoise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0102,12.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Bozel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0103,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Courchevel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0104,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Courchevel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0105,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Courchevel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0106,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Courchevel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0107,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Courchevel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0108,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Courchevel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0109,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Courchevel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0110,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Courchevel,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0111,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0112,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0113,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0114,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0115,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0116,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0117,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0118,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0119,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0120,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0121,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0122,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0123,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0124,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0125,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0126,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0127,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0128,13.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0129,14.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Belleville,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0130,14.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Belleville,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0131,14.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Belleville,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0132,14.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Belleville,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0133,14.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Belleville,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,fondatrice,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0134,14.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Belleville,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0135,14.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Belleville,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0136,14.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Belleville,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0137,14.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Belleville,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0138,15.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Bonneval-sur-Arc,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0139,15.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Bonneval-sur-Arc,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0140,16.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Chamonix,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0141,16.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Chamonix,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0142,17.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Chamonix,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0143,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Champagny-en-Vanoise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0144,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Les Allues,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0145,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0146,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0147,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0148,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0149,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0150,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,wurflenii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0151,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0152,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0153,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0154,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0155,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0156,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0157,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0158,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0159,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0160,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloire,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0161,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0162,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0163,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0164,20.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Valloise,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0165,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Jausiers,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,fondatrice,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0166,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Paul-sur-Ubaye,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0167,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Paul-sur-Ubaye,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0168,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Paul-sur-Ubaye,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0169,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Paul-sur-Ubaye,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,ruderarius,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0170,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Paul-sur-Ubaye,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,ruderarius,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0171,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Paul-sur-Ubaye,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,ruderarius,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0172,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Paul-sur-Ubaye,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,ruderarius,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0173,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Paul-sur-Ubaye,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,ruderarius,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0174,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Paul-sur-Ubaye,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0175,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Saint-Paul-sur-Ubaye,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0176,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Jausiers,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,monticola,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0177,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Jausiers,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,fondatrice,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0178,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Jausiers,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pyrenaeus,worker,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0179,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vars,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,ruderarius,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0180,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vars,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,ruderarius,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0181,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vars,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,ruderarius,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0182,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vars,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0183,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vars,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,sichelii,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0184,22.0,7.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vars,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,ruderarius,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0185,21.0,8.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Vernois,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0186,21.0,8.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Neussargues-en-Pinatelle,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0187,21.0,8.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Neussargues-en-Pinatelle,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0188,21.0,8.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Neussargues-en-Pinatelle,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0189,21.0,8.0,2022.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Neussargues-en-Pinatelle,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0194,,,2021.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,2021.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0195,,7.0,2012.0,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,Arpajon-sur-Cère,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Gilles MAHÉ,2022.0,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0196,,,,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0197,,,,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,,,Hymenoptera,Apidae,Bombus,pomorum,drone,Mehdi ISSERTES,,pinned,Smartphone Samsung s10,2,3
+ISSERTES_0198,,,,Mehdi ISSERTES,net,Auvergne-Rhônes Alpes,,Mehdi ISSERTES,Hymenoptera,Apidae,Bombus,rupestris,fondatrice,Mehdi ISSERTES,,pinned,Smartphone Samsung s10,2,3
+OPIE_0001,29.0,6.0,2002.0,OPIE,net,Île-de-France,Mesnil-le-Roi,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0002,11.0,7.0,2002.0,OPIE,net,Île-de-France,Bregy,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0003,18.0,7.0,2002.0,OPIE,net,Île-de-France,Mantes-la-Jolie,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2004.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0004,27.0,7.0,2002.0,OPIE,net,Île-de-France,Frouville,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0005,18.0,7.0,2003.0,OPIE,net,Île-de-France,Mantes-la-Jolie,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2004.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0006,20.0,7.0,2003.0,OPIE,net,Île-de-France,Paris,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2004.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0007,20.0,7.0,2003.0,OPIE,net,Île-de-France,Paris,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2004.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0008,3.0,8.0,2003.0,OPIE,net,Île-de-France,Carrière de Vigny,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2004.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0009,3.0,8.0,2003.0,OPIE,net,Île-de-France,Carrière de Vigny,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2004.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0010,3.0,8.0,2003.0,OPIE,net,Île-de-France,Guernes,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2004.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0011,6.0,8.0,2003.0,OPIE,net,Île-de-France,Herbeville,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2004.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0012,12.0,8.0,2009.0,OPIE,net,Île-de-France,Versailles,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2011.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0013,18.0,8.0,2009.0,OPIE,net,Île-de-France,Evecquement,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2011.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0014,24.0,8.0,2009.0,OPIE,net,Île-de-France,Chaussy,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2011.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0015,25.0,6.0,2010.0,OPIE,net,Île-de-France,Nanterre,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2011.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0016,5.0,8.0,2010.0,OPIE,net,Île-de-France,Nanterre,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2011.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0017,5.0,8.0,2010.0,OPIE,net,Île-de-France,Nanterre,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2011.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0018,5.0,8.0,2010.0,OPIE,net,Île-de-France,Nanterre,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2011.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0019,10.0,8.0,2010.0,OPIE,net,Île-de-France,Nanterre,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2011.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0020,19.0,8.0,2010.0,OPIE,net,Île-de-France,Carrière-sous-Poissy,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2011.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0021,19.0,8.0,2010.0,OPIE,net,Île-de-France,Carrière-sous-Poissy,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Pierre RASMONT,2011.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0022,22.0,6.0,2020.0,OPIE,net,Île-de-France,Vieil-Evreux,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0023,22.0,6.0,2020.0,OPIE,net,Île-de-France,Vieil-Evreux,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0024,22.0,6.0,2020.0,OPIE,net,Île-de-France,Vieil-Evreux,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0025,22.0,6.0,2020.0,OPIE,net,Île-de-France,Vieil-Evreux,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0026,23.0,6.0,2020.0,OPIE,net,Île-de-France,Sacquenville,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0027,23.0,6.0,2020.0,OPIE,net,Île-de-France,Sacquenville,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0028,24.0,6.0,2020.0,OPIE,net,Île-de-France,Pacy,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0029,24.0,6.0,2020.0,OPIE,net,Île-de-France,Pacy,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0030,26.0,6.0,2020.0,OPIE,net,Île-de-France,Ormes,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0031,26.0,6.0,2020.0,OPIE,net,Île-de-France,Ormes,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0032,13.0,7.0,2020.0,OPIE,net,Île-de-France,Vieil-Evreux,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0033,13.0,7.0,2020.0,OPIE,net,Île-de-France,Vieil-Evreux,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0034,13.0,7.0,2020.0,OPIE,net,Île-de-France,Le Plessis Hebert,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0035,13.0,7.0,2020.0,OPIE,net,Île-de-France,Vieil-Evreux,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0036,16.0,7.0,2020.0,OPIE,net,Île-de-France,Reuilly,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0037,16.0,7.0,2020.0,OPIE,net,Île-de-France,Sacquenville,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0038,20.0,7.0,2020.0,OPIE,net,Île-de-France,Pacy,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0039,7.0,8.0,2020.0,OPIE,net,Île-de-France,Vendoeuvrés,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0040,7.0,8.0,2020.0,OPIE,net,Île-de-France,Vendoeuvrés,,Hymenoptera,Apidae,Bombus,lapidarius,worker,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3
+OPIE_0041,10.0,8.0,2020.0,OPIE,net,Île-de-France,Le Plessis Hebert,,Hymenoptera,Apidae,Bombus,lapidarius,drone,Serge GADOUM,2020.0,pinned,Smartphone Samsung s10,2,3

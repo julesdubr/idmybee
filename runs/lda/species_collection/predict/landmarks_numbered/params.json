@@ -1,0 +1,16 @@
+{
+  "dataset": "/var/folders/wp/phsg97rs6j31sswl5xpbmbs80000gn/T/idmybee_predict_upload_pyrfzmp_/landmarks_numbered",
+  "model_path": "models/lda/species_collection/train/model.joblib",
+  "devices": null,
+  "species": null,
+  "castes": null,
+  "exclude_outliers": true,
+  "non_strict": false,
+  "landmarks_tps": null,
+  "landmarks_status_csv": "data/Bombus/collection/landmarks/landmarks_reviewed.csv",
+  "run_label": null,
+  "low_confidence_threshold": 0.6,
+  "run_id": "species_collection",
+  "eval_tag": "landmarks_numbered",
+  "family": "lda"
+}

@@ -63,17 +63,19 @@ import argparse
 import hashlib
 import logging
 import shutil
+import time
 from pathlib import Path
 
 import pandas as pd
 
-from tqdm import tqdm
-
 from manifest import identification as ident
 from utils.cli import add_logging_args, log_level_from_args
+from core.pipeline_io import RunCounter, format_duration
 from core.run_io import setup_console_logging
 
 logger = logging.getLogger(__name__)
+
+BATCH_SIZE = 50  # console progress checkpoint, see the image-copy loop in main()
 
 
 def _compute_hash(path: Path, chunk_size: int = 1 << 20) -> str:
@@ -285,9 +287,13 @@ def main(argv: list[str] | None = None) -> None:
     excluded_no_image.to_csv(reports_dir / "excluded_identification_rows.csv", index=False)
     orphans_report.to_csv(reports_dir / "missing_biological_data.csv", index=False)
 
+    print(f"\n=== Copying images ({args.source_type}) ===")
     paths, hashes, sizes, statuses, reasons = [], [], [], [], []
     copy_failures = []
-    for i in tqdm(range(len(photos))):
+    counter = RunCounter()
+    pipeline_start = time.perf_counter()
+    n_photos = len(photos)
+    for i in range(n_photos):
         photo_row = photos.iloc[i]
         if args.no_copy_images:
             paths.append(None)
@@ -295,16 +301,26 @@ def main(argv: list[str] | None = None) -> None:
             sizes.append(photo_row.get("file_size_bytes"))
             statuses.append("SKIPPED")
             reasons.append("--no-copy-images: no clean copy written (hash/size below are from the raw scan, not verified)")
-            continue
-        dest = output_dir / "images" / _relative_image_path(group_by_source.iloc[i], image_group_by, photo_row["photo_id"], photo_row["ext"])
-        path, content_hash, size, error = _copy_and_verify(photo_row["raw_path"], dest)
-        paths.append(path)
-        hashes.append(content_hash)
-        sizes.append(size)
-        statuses.append("OK" if error is None else "FAILED")
-        reasons.append("" if error is None else error)
-        if error:
-            copy_failures.append({"photo_id": photo_row["photo_id"], "raw_path": photo_row["raw_path"], "error": error})
+            counter.add("SKIPPED")
+        else:
+            dest = output_dir / "images" / _relative_image_path(group_by_source.iloc[i], image_group_by, photo_row["photo_id"], photo_row["ext"])
+            path, content_hash, size, error = _copy_and_verify(photo_row["raw_path"], dest)
+            paths.append(path)
+            hashes.append(content_hash)
+            sizes.append(size)
+            statuses.append("OK" if error is None else "FAILED")
+            reasons.append("" if error is None else error)
+            counter.add(statuses[-1])
+            if error:
+                copy_failures.append({"photo_id": photo_row["photo_id"], "raw_path": photo_row["raw_path"], "error": error})
+
+        index = i + 1
+        if index % BATCH_SIZE == 0 or index == n_photos:
+            elapsed = time.perf_counter() - pipeline_start
+            print(
+                f"[{index}/{n_photos}] elapsed: {format_duration(elapsed)} -- "
+                f"average: {elapsed / index:.3f} s/image -- {counter}"
+            )
 
     photos = photos.assign(path=paths, content_hash=hashes, file_size_bytes=sizes, status=statuses, status_reason=reasons)
     if copy_failures:

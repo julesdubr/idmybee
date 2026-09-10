@@ -28,9 +28,9 @@ def test_build_origin_table_prefills_blank_inv_name():
     assert list(table["inv_name"]) == ["", ""]
 
 
-def test_origin_codes_from_table_drops_unfilled_rows():
+def test_origin_codes_from_table_keeps_unfilled_rows_as_is():
     table = pd.DataFrame({ORIGIN_CODES_COLUMN: ["EE", "WB"], "inv_name": ["ESQ", "  "]})
-    assert origin_codes_from_table(table) == {"EE": "ESQ"}
+    assert origin_codes_from_table(table) == {"EE": "ESQ", "WB": "WB"}
 
 
 def test_origin_codes_from_table_feeds_assign_inv_name():

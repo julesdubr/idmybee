@@ -24,8 +24,8 @@ def _write_config(tmp_path, config: dict) -> str:
 def _patch_ingest(monkeypatch, tmp_path, *, reused: bool = False):
     calls = []
 
-    def fake_run_for_folder(images_dir, source_type, *, photographer_subfolder=False, naming=None):
-        calls.append((images_dir, source_type, photographer_subfolder, naming))
+    def fake_run_for_folder(images_dir, source_type, *, photographer_subfolder=False):
+        calls.append((images_dir, source_type, photographer_subfolder))
         ingest_dir = tmp_path / "raw" / "ingest"
         ingest_dir.mkdir(parents=True, exist_ok=True)
         manifest = ingest_dir / "manifest.csv"
@@ -69,7 +69,7 @@ def test_source_runs_scan_then_export_then_build_manifest(tmp_path, monkeypatch)
 
     pd.main([config])
 
-    assert ingest_calls == [(str(tmp_path / "raw" / "collection"), "collection", False, None)]
+    assert ingest_calls == [(str(tmp_path / "raw" / "collection"), "collection", False)]
     kinds = [c[0] for c in calls]
     assert kinds == ["export_clean_dataset", "build_manifest", "combine_manifests"]
     export_argv = calls[0][1]

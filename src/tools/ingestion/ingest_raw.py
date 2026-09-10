@@ -1,8 +1,9 @@
 """ingest_raw.py
 Scans one or more local RAW image roots (organized/terrain/loose, see
 config/roots.json), parses original_id/device_type/shot_index from
-filenames (several naming conventions supported, see NAMING_PARSERS), and
-writes manifest.csv (+ manifest/duplicates.csv) under <out-dir>/<name>/.
+filenames (shape auto-detected per file, see parse_filename -- no naming
+convention to declare or select), and writes manifest.csv (+
+manifest/duplicates.csv) under <out-dir>/<name>/.
 
 This is the first of two steps for messy raw data:
     tools/ingestion/ingest_raw.py          (this file)  raw folder -> raw manifest.csv
@@ -115,25 +116,14 @@ def _parse_organized_hyphen(stem: str):
     return original_id, device.upper(), int(shot)
 
 
-# registry of known naming conventions -> adding a new convention means one
-# more function here, nothing else to touch. Which one matched is used to
-# parse the row and then discarded -- not stored in the output (see module
-# docstring): downstream steps only ever need the parsed result.
-NAMING_PARSERS = {
-    "organized_underscore": _parse_organized_underscore,
-    "terrain_underscore": _parse_terrain_underscore,
-    "organized_hyphen": _parse_organized_hyphen,
-}
-
-
-def resolve_naming(root_cfg: dict) -> str:
-    """Naming convention to use for this root: explicit via
-    root_cfg['naming'] if present, otherwise inferred from
-    photographer_subfolder to stay compatible with roots.json files written
-    before the hyphen scheme was added."""
-    if "naming" in root_cfg:
-        return root_cfg["naming"]
-    return "terrain_underscore" if root_cfg.get("photographer_subfolder") else "organized_underscore"
+# Known raw-filename shapes, tried in turn by parse_filename() below --
+# adding a new shape means one more function here, nothing else to touch.
+# Which one matched is used to parse the row and then discarded -- not
+# stored in the output (see module docstring): downstream steps only ever
+# need the parsed result. No convention to declare/select per root anymore:
+# each file's shape is auto-detected on its own, so a root can freely mix
+# sources that were photographed under different naming habits.
+_FILENAME_SHAPES = (_parse_organized_hyphen, _parse_organized_underscore, _parse_terrain_underscore)
 
 
 @dataclass
@@ -162,23 +152,18 @@ def compute_hash(path: Path, chunk_size: int = 1 << 20) -> str:
     return h.hexdigest()[:16]
 
 
-def parse_filename(stem: str, naming: str):
-    """Returns (original_id, device_type, shot_index, ok) by applying the
-    `naming` convention (see NAMING_PARSERS). Makes no assumption about the
-    format of the inventory number itself (can contain underscores/hyphens):
-    each parser only consumes its own suffix and leaves the rest as
-    original_id."""
-    parser = NAMING_PARSERS.get(naming)
-    if parser is None:
-        raise ValueError(
-            f"unknown naming convention: {naming!r} "
-            f"(known: {list(NAMING_PARSERS)})"
-        )
-    result = parser(stem)
-    if result is None:
-        return None, None, None, False
-    original_id, device_type, shot_index = result
-    return original_id, device_type, shot_index, True
+def parse_filename(stem: str):
+    """Returns (original_id, device_type, shot_index, ok) by trying each
+    known filename shape in turn (see _FILENAME_SHAPES) and using the first
+    one that matches. Makes no assumption about the format of the inventory
+    number itself (can contain underscores/hyphens): each shape only
+    consumes its own suffix and leaves the rest as original_id."""
+    for parser in _FILENAME_SHAPES:
+        result = parser(stem)
+        if result is not None:
+            original_id, device_type, shot_index = result
+            return original_id, device_type, shot_index, True
+    return None, None, None, False
 
 
 def scan_root(root_cfg: dict, base_dir: Path, seen_hash: set[str]) -> list[ImageRecord]:
@@ -189,7 +174,6 @@ def scan_root(root_cfg: dict, base_dir: Path, seen_hash: set[str]) -> list[Image
     root_path = base_dir / Path(root_cfg["path"])
     source_type = root_cfg["source_type"]
     photographer_subfolder = bool(root_cfg.get("photographer_subfolder", False))
-    naming = resolve_naming(root_cfg)
 
     if not root_path.exists():
         logger.warning("root not found, skipped: %s", root_path)
@@ -208,7 +192,7 @@ def scan_root(root_cfg: dict, base_dir: Path, seen_hash: set[str]) -> list[Image
             except ValueError:
                 photographer = None
 
-        original_id, device_type, shot_index, name_ok = parse_filename(path.stem, naming=naming)
+        original_id, device_type, shot_index, name_ok = parse_filename(path.stem)
 
         try:
             content_hash = compute_hash(path)
@@ -228,7 +212,7 @@ def scan_root(root_cfg: dict, base_dir: Path, seen_hash: set[str]) -> list[Image
                 original_id=None, source_type=source_type, photographer=photographer,
                 device_type=None, shot_index=None, raw_path=str(path), ext=path.suffix.lower(),
                 file_size_bytes=size, content_hash=content_hash,
-                status="FAILED", status_reason=f"filename does not match naming convention {naming!r}",
+                status="FAILED", status_reason="filename format not recognized",
             ))
             continue
 
@@ -286,7 +270,7 @@ def write_csv(rows: list[dict], out_path: Path, fieldnames: Optional[list[str]] 
 
 
 def run_for_folder(
-    images_dir: str, source_type: str, *, photographer_subfolder: bool = False, naming: Optional[str] = None,
+    images_dir: str, source_type: str, *, photographer_subfolder: bool = False,
 ) -> tuple[Path, Path, bool]:
     """Scans ONE raw images folder and writes its manifest.csv (+
     manifest/duplicates.csv) into a hidden subfolder inside it
@@ -314,8 +298,6 @@ def run_for_folder(
         "path": str(Path(images_dir).resolve()), "source_type": source_type,
         "photographer_subfolder": photographer_subfolder,
     }
-    if naming:
-        root_cfg["naming"] = naming
 
     # root_cfg["path"] is already absolute, so the base_dir passed to
     # scan_root() here is irrelevant (Path.__truediv__ discards the left

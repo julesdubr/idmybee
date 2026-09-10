@@ -1,12 +1,14 @@
 """compare_runs.py
 Compares the accuracy of several runs (train.py or predict.py batch) side
 by side, from their metrics.json (e.g. which landmark source classifies
-best).
+best, or how one model performs across several datasets).
 
-Each entry is a path relative to models/<family>/ down to the folder
+Each entry is a path relative to runs/<family>/ down to the folder
 containing metrics.json: "<run_id>/train" for a LOOCV run, or
 "<run_id>/predict/<eval_tag>" for an evaluation -- both can be mixed in the
-same comparison.
+same comparison. Pass --all instead of listing entries by hand to build
+the table from every run/eval recorded under runs/<family>/ (see
+discover_all_runs) -- the full model x dataset performance matrix.
 
 Usage:
     python -m classifiers.train data/Bombus --level species --tps .../tancrede_19lm.tps --run-label tancrede19lm
@@ -18,6 +20,8 @@ Usage:
         species_all_tancrede19lm/train species_all_tancrede18lm/train \\
         species_all_auto19lm/train species_all_auto18lm/train \\
         --label landmarks_source_comparison
+
+    python -m analysis.compare_runs --all --label every_run
 """
 from __future__ import annotations
 
@@ -29,15 +33,35 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from utils.cli import add_logging_args, log_level_from_args
-from core.run_io import ANALYSIS_ROOT, FAMILY_LDA, MODELS_ROOT, read_metrics, setup_console_logging, slugify
+from core.run_io import ANALYSIS_ROOT, FAMILY_LDA, RUNS_ROOT, read_metrics, setup_console_logging, slugify
 
 logger = logging.getLogger(__name__)
+
+
+def discover_all_runs(family: str) -> list[str]:
+    """Every train/predict step recorded under runs/<family>/, as entries
+    compatible with load_comparison_table's `steps` -- lets --all build the
+    full model x dataset comparison table without the caller having to
+    list every run/eval_tag by hand."""
+    family_dir = RUNS_ROOT / family
+    if not family_dir.exists():
+        return []
+    steps = []
+    for run_dir in sorted(family_dir.iterdir()):
+        if (run_dir / "train" / "metrics.json").exists():
+            steps.append(f"{run_dir.name}/train")
+        predict_dir = run_dir / "predict"
+        if predict_dir.exists():
+            for eval_dir in sorted(predict_dir.iterdir()):
+                if (eval_dir / "metrics.json").exists():
+                    steps.append(f"{run_dir.name}/predict/{eval_dir.name}")
+    return steps
 
 
 def load_comparison_table(steps: list[str], family: str) -> pd.DataFrame:
     rows = []
     for step in steps:
-        step_path = MODELS_ROOT / family / step
+        step_path = RUNS_ROOT / family / step
         metrics_path = step_path / "metrics.json"
         if not metrics_path.exists():
             raise SystemExit(f"{metrics_path} not found.")
@@ -45,7 +69,7 @@ def load_comparison_table(steps: list[str], family: str) -> pd.DataFrame:
         metrics["run"] = step
         rows.append(metrics)
     df = pd.DataFrame(rows).set_index("run")
-    preferred = ["landmarks_source", "n", "n_points", "accuracy_top1", "accuracy_top3"]
+    preferred = ["model_name", "eval_tag", "landmarks_source", "n", "n_points", "accuracy_top1", "accuracy_top3"]
     ordered = [c for c in preferred if c in df.columns] + [c for c in df.columns if c not in preferred]
     return df[ordered]
 
@@ -72,9 +96,12 @@ def plot_accuracy_comparison(df: pd.DataFrame, out_path: Path, title: str) -> No
 
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Compare the accuracy of several train.py/predict.py runs side by side")
-    parser.add_argument("steps", type=str, nargs="+",
-                         help="Paths relative to models/<family>/, e.g. species_train_P1-S1/train "
-                              "or species_train_P1-S1/predict/test")
+    parser.add_argument("steps", type=str, nargs="*",
+                         help="Paths relative to runs/<family>/, e.g. species_train_P1-S1/train "
+                              "or species_train_P1-S1/predict/test. Omit with --all.")
+    parser.add_argument("--all", action="store_true",
+                         help="Compare every run/eval recorded under runs/<family>/ instead of a hand-picked list "
+                              "(see discover_all_runs) -- ignores `steps` if also given.")
     parser.add_argument("--label", type=str, default=None, help="Output folder name (default: derived from the paths)")
     parser.add_argument("--family", type=str, default=FAMILY_LDA)
     add_logging_args(parser)
@@ -84,6 +111,13 @@ def build_arg_parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> None:
     args = build_arg_parser().parse_args(argv)
     setup_console_logging(log_level_from_args(args))
+
+    if args.all:
+        args.steps = discover_all_runs(args.family)
+        if not args.steps:
+            raise SystemExit(f"No run found under {RUNS_ROOT / args.family}/.")
+    elif not args.steps:
+        raise SystemExit("Pass at least one step, or --all to compare every recorded run.")
 
     table = load_comparison_table(args.steps, args.family)
     pd.set_option("display.width", 200)

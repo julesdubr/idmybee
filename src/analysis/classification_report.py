@@ -28,7 +28,7 @@ from utils.cli import add_logging_args, log_level_from_args
 from core.dataset import load_dataset, target_groupe
 from core.gpa import align_to_reference, two_d_array
 from core.model_io import load_model
-from core.run_io import FAMILY_LDA, read_params, result_path, run_path, setup_console_logging, write_params
+from core.run_io import FAMILY_LDA, RUNS_ROOT, read_params, result_path, run_path, setup_console_logging, write_params
 
 logger = logging.getLogger(__name__)
 
@@ -170,7 +170,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--step", type=str, choices=["train", "predict"], default="train",
                          help="Which predictions to analyze: LOOCV's (train) or a predict.py batch's (predict).")
     parser.add_argument("--eval-tag", type=str, default=None,
-                         help="Required if --step predict -- see models/<family>/<run_id>/predict/ for the list.")
+                         help="Required if --step predict -- see runs/<family>/<run_id>/predict/ for the list.")
     parser.add_argument("--family", type=str, default=FAMILY_LDA)
     add_logging_args(parser)
     return parser
@@ -181,12 +181,12 @@ def main(argv: list[str] | None = None) -> None:
     setup_console_logging(log_level_from_args(args))
 
     if args.step == "predict" and not args.eval_tag:
-        available = result_path(args.family, args.run_id, "predict")
+        available = result_path(args.family, args.run_id, "predict", root=RUNS_ROOT)
         options = sorted(p.name for p in available.iterdir()) if available.exists() else []
         raise SystemExit(f"--eval-tag required with --step predict. Available for {args.run_id!r}: {options}")
 
-    step_path = result_path(args.family, args.run_id, "predict", args.eval_tag) if args.step == "predict" \
-        else result_path(args.family, args.run_id, "train")
+    step_path = result_path(args.family, args.run_id, "predict", args.eval_tag, root=RUNS_ROOT) if args.step == "predict" \
+        else result_path(args.family, args.run_id, "train", root=RUNS_ROOT)
     if not step_path.exists():
         raise SystemExit(
             f"{step_path} not found -- run classifiers.train or classifiers.predict batch first "
@@ -204,7 +204,7 @@ def main(argv: list[str] | None = None) -> None:
         )
     level = true_cols[0].removeprefix("true_")
 
-    model_path = result_path(args.family, args.run_id, "train") / "model.joblib"
+    model_path = result_path(args.family, args.run_id) / "model.joblib"
     if not model_path.exists():
         raise SystemExit(f"Model not found: {model_path} (was train.py run with --no-save-model?)")
     model = load_model(model_path)
@@ -225,7 +225,10 @@ def main(argv: list[str] | None = None) -> None:
     meta_df["tps_id"] = [sp.tps_id for sp in specimens]
 
     run_label = f"{args.run_id}/predict/{args.eval_tag}" if args.step == "predict" else f"{args.run_id}/train"
-    out_dir = run_path(args.family, args.run_id, args.step, *([args.eval_tag] if args.step == "predict" else []), "report")
+    out_dir = run_path(
+        args.family, args.run_id, args.step, *([args.eval_tag] if args.step == "predict" else []), "report",
+        root=RUNS_ROOT,
+    )
 
     cm_df = confusion_matrix_df(df, level)
     cm_df.to_csv(out_dir / "confusion_matrix.csv")

@@ -121,7 +121,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     add_dataset_positional(parser)
     parser.add_argument("--tps", type=Path, default=Path("landmarks.tps"),
-                         help="TPS to renumber, unordered landmarks (in <dataset>/landmarks/).")
+                         help="TPS to renumber, unordered landmarks (in <dataset>/<landmarks-dir>/).")
+    parser.add_argument(
+        "--landmarks-dir", default="landmarks",
+        help="Subfolder (under <dataset>/) to read --tps from and write the numbered TPS/CSV into "
+             "(default: 'landmarks') -- see landmarks.predict's own --landmarks-dir.",
+    )
     parser.add_argument("--reference", type=Path, required=True,
                          help="Frozen reference shape (see landmarks.build_reference).")
     parser.add_argument("--biological-data", type=Path, default=None,
@@ -147,7 +152,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> None:
     args = build_arg_parser().parse_args(argv)
     setup_console_logging(log_level_from_args(args))
-    input_path = args.dataset / "landmarks" / args.tps
+    input_path = args.dataset / args.landmarks_dir / args.tps
 
     zones = load_reference(args.reference)
     logger.info("Reference: %d zones (%s)", len(zones), args.reference)
@@ -208,10 +213,10 @@ def main(argv: list[str] | None = None) -> None:
         logger.info("No --biological-data given: per-species outlier diagnostic disabled (all OK).")
 
     # --- Writing the renumbered TPS ----------------------------------------------
-    landmarks_dir = args.dataset / "landmarks"
-    landmarks_dir.mkdir(parents=True, exist_ok=True)
+    out_dir = args.dataset / args.landmarks_dir
+    out_dir.mkdir(parents=True, exist_ok=True)
     stem = args.tps.stem
-    out_path = landmarks_dir / f"{stem}_numbered.tps"
+    out_path = out_dir / f"{stem}_numbered.tps"
     write_tps(out_path, numbered_specimens)
 
     n_failed = len(inputs) - len(numbered_specimens)
@@ -223,7 +228,7 @@ def main(argv: list[str] | None = None) -> None:
     print(f"Statuses: {n_by_status}")
 
     # --- Detailed log + stats -----------------------------------------------------
-    log_path = args.log or (landmarks_dir / "landmarks_numbered.csv")
+    log_path = args.log or (out_dir / "landmarks_numbered.csv")
     log_path.parent.mkdir(parents=True, exist_ok=True)
     with log_path.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)

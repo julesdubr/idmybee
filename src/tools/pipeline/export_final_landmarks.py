@@ -15,18 +15,32 @@ Canonical output directory: `<dataset>/export/` (override with --output-dir).
 This is the R-facing package for the dataset, kept separate from the
 working files (`extraction/`, `landmarks/`) and from the root
 `biological_data.csv` (specimen-level, from tools/ingestion/export_clean_dataset.py).
-The `biological_data.csv` written HERE is photo-level, row-aligned to the
-TPS.
+The `landmarks_<n>lm_biological_data.csv` written HERE is photo-level,
+row-aligned to the TPS, and named after the same `<n>lm` scheme as its
+sibling TPS files -- deliberately not plain `biological_data.csv`, which
+would (a) collide in name (though not in path) with the root's own,
+differently-shaped file, and (b) get overwritten if a second landmark
+scheme (e.g. 18lm after 19lm) is later exported into the same directory.
 
 Output (in --output-dir, default `<dataset>/export/`), for the requested specimens:
-    landmarks_<n>lm_crop.tps       crop-space coordinates
-    landmarks_<n>lm_original.tps   raw-image-space coordinates
-                                    (omitted with --no-original-space)
-    biological_data.csv            same row order/IDs as the TPS (photo-level)
-    failed.csv                     excluded photos, by stage
+    landmarks_<n>lm_crop.tps               crop-space coordinates
+    landmarks_<n>lm_original.tps           raw-image-space coordinates
+                                            (omitted with --no-original-space)
+    landmarks_<n>lm_biological_data.csv    same row order/IDs as the TPS
+                                            (photo-level) -- carries both an
+                                            "id" and a "tps_id" column
+                                            (identical values): "id" for
+                                            external (R) consumers, "tps_id"
+                                            is the exact column
+                                            utils.uploaded_dataset.
+                                            join_specimens_to_bio looks for
+                                            when this export is re-uploaded
+                                            into app/train_model.py /
+                                            app/predict_dataset.py
+    failed.csv                             excluded photos, by stage
 
 In both TPS files: sequential integer IDs (ID=1, 2, ...), no COMMENT=,
-identical order to biological_data.csv's first column -- this is the
+identical order to the biological data CSV's first column -- this is the
 final, R-facing export, deliberately not using
 core.tps_io.assign_sequential_ids()'s photo_id ordering.
 
@@ -75,7 +89,12 @@ from core.run_io import setup_console_logging
 logger = logging.getLogger(__name__)
 
 FAILED_FIELDS = ["photo_id", "inv_id", "stage", "reason"]
-BASE_BIO_COLUMNS = ["id", "inv_id", "species", "caste", "device", "device_tag"]
+# "id" is the R-facing row number (matches the TPS ID= field); "tps_id" duplicates
+# it under the exact column name utils.uploaded_dataset.join_specimens_to_bio looks
+# for -- so an export produced here can be re-uploaded into app/train_model.py /
+# app/predict_dataset.py and join positionally, without also renaming "id" and
+# risking breaking an external (R) consumer that already expects that name.
+BASE_BIO_COLUMNS = ["id", "tps_id", "inv_id", "species", "caste", "device", "device_tag"]
 
 # Consecutive "image unreadable" failures before aborting reprojection
 # entirely -- a handful is a few corrupt/missing files (kept in
@@ -128,13 +147,17 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 
 def build_failure_report(
-    dataset: Path, kept_tps_ids: set[int], extra_filters_active: bool,
+    dataset: Path, landmarks_status_csv: Path, kept_tps_ids: set[int], extra_filters_active: bool,
 ) -> list[dict]:
     """Explains, for every photo in the dataset absent from the final
     export, at which stage it was excluded and why -- see module docstring
-    for the exact scope (extra_filters_active caveat)."""
+    for the exact scope (extra_filters_active caveat). `landmarks_status_csv`
+    is the landmarks_numbered.csv belonging to the --tps actually exported
+    (see main()'s own default derivation) -- not necessarily the default
+    <dataset>/landmarks/landmarks_numbered.csv, e.g. when exporting a
+    landmarks_<tag>/ run (see utils.landmarking_pipeline.landmarks_dirname)."""
     manifest = {row["photo_id"]: row for row in read_csv_rows(dataset / "manifest.csv")}
-    landmarks_status = read_csv_rows(dataset / "landmarks" / "landmarks_numbered.csv")
+    landmarks_status = read_csv_rows(landmarks_status_csv)
     biological_data = {row["inv_id"]: row for row in read_csv_rows(dataset / "biological_data.csv")}
 
     rows: list[dict] = []
@@ -244,17 +267,24 @@ def main(argv: list[str] | None = None) -> None:
 
     if args.landmarks_tps is not None and args.landmarks_status_csv is None:
         # load_dataset() only defaults the status CSV for the *default* TPS path -- with an
-        # explicit --tps (e.g. the 18-landmark variant) it otherwise skips outlier exclusion
-        # entirely with a warning, even though landmarks_numbered.csv applies to both variants.
-        args.landmarks_status_csv = dataset / "landmarks" / "landmarks_numbered.csv"
-        logger.info("No --landmarks-status-csv given with --tps: defaulting to %s", args.landmarks_status_csv)
+        # explicit --tps it otherwise skips outlier exclusion entirely with a warning. The
+        # sibling landmarks_numbered.csv next to --tps applies just as well here (this is also
+        # how a tagged landmarks_<n>lm/ run -- see utils.landmarking_pipeline.landmarks_dirname
+        # -- gets its own status file picked up automatically); left unset (old behavior) if
+        # --tps points somewhere with no such sibling (e.g. a hand-digitized TPS elsewhere).
+        candidate = args.landmarks_tps.parent / "landmarks_numbered.csv"
+        if candidate.exists():
+            args.landmarks_status_csv = candidate
+            logger.info("No --landmarks-status-csv given with --tps: defaulting to %s", args.landmarks_status_csv)
+
+    landmarks_status_csv = args.landmarks_status_csv or (dataset / "landmarks" / "landmarks_numbered.csv")
 
     specimens, meta_df = load_dataset(dataset, labeled_only=True, **dataset_kwargs(args))
     n_points = specimens[0].n_points
 
     extra_filters_active = bool(args.devices or args.species or args.castes)
     kept_tps_ids = {sp.tps_id for sp in specimens}
-    failed_rows = build_failure_report(dataset, kept_tps_ids, extra_filters_active)
+    failed_rows = build_failure_report(dataset, landmarks_status_csv, kept_tps_ids, extra_filters_active)
 
     reproject = not args.no_original_space
     manifest_by_photo = {row["photo_id"]: row for row in read_csv_rows(dataset / "manifest.csv")}
@@ -297,8 +327,8 @@ def main(argv: list[str] | None = None) -> None:
             original_out.append(ImageLandmarks(sp.n_points, original_xy, image_path, new_id))
 
         row = {
-            "id": new_id, "inv_id": _clean(meta.inv_id), "species": _clean(meta.species), "caste": _clean(meta.caste),
-            "device": _clean(meta.device), "device_tag": _clean(meta.device_tag),
+            "id": new_id, "tps_id": new_id, "inv_id": _clean(meta.inv_id), "species": _clean(meta.species),
+            "caste": _clean(meta.caste), "device": _clean(meta.device), "device_tag": _clean(meta.device_tag),
         }
         bio_rows.append(row)
 
@@ -313,7 +343,7 @@ def main(argv: list[str] | None = None) -> None:
         tps_original_path = args.output_dir / f"landmarks_{n_lm}_original.tps"
         write_tps(tps_original_path, original_out)
 
-    bio_path = args.output_dir / "biological_data.csv"
+    bio_path = args.output_dir / f"landmarks_{n_lm}_biological_data.csv"
     with bio_path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=BASE_BIO_COLUMNS)
         writer.writeheader()

@@ -2,10 +2,12 @@
 Fits a GPA -> PCA -> LDA classification model on a dataset (see
 core.dataset.load_dataset) and evaluates its accuracy by LOOCV.
 
-Writes the model and raw predictions to models/lda/<run_id>/train/.
-Detailed figures and tables are produced separately by
-analysis/classification_report.py; shape variance (ANOVA/PERMANOVA) stays
-in analysis/variance_report.py.
+Writes the model to models/lda/<run_id>/model.joblib and the LOOCV
+performance record (metrics.json/params.json/run.log/loocv_predictions.csv)
+to runs/lda/<run_id>/train/ -- see core.run_io module docstring for why
+these are two separate trees. Detailed figures and tables are produced
+separately by analysis/classification_report.py; shape variance
+(ANOVA/PERMANOVA) stays in analysis/variance_report.py.
 
 --level species : discriminates by species.
 --level caste   : discriminates by (species, caste) -- see core.dataset.target_groupe.
@@ -21,6 +23,7 @@ from __future__ import annotations
 import argparse
 import logging
 from pathlib import Path
+from typing import NamedTuple
 
 import numpy as np
 import pandas as pd
@@ -34,12 +37,21 @@ from core.gpa import gpagen, two_d_array
 from core.model_io import TrainedModel, save_model
 from core.predictions import build_predictions_df, accuracy_summary
 from core.run_io import (
-    FAMILY_LDA, build_run_id, resolve_model_slug, run_path, setup_console_logging, slugify, write_metrics,
-    write_params, write_run_log,
+    FAMILY_LDA, MODELS_ROOT, RUNS_ROOT, build_run_id, resolve_model_slug, run_path, setup_console_logging, slugify,
+    write_metrics, write_params, write_run_log,
 )
 from core.tps_io import ImageLandmarks
 
 logger = logging.getLogger(__name__)
+
+
+class TrainOutput(NamedTuple):
+    """train.py's own return value: the model artifact and its performance
+    record live in two separate trees (see core.run_io module docstring),
+    so a caller (app/train_model.py, tools/pipeline/train_dataset.py) needs
+    both paths rather than a single output folder."""
+    runs_dir: Path  # runs/lda/<run_id>/train/ -- metrics.json/params.json/run.log/loocv_predictions.csv
+    model_path: Path  # models/lda/<run_id>/model.joblib
 
 
 def run_gpa_pca(specimens: list[ImageLandmarks]):
@@ -106,10 +118,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--model-name", type=str, default=None,
                          help="Human-facing name for this model (e.g. 'Red-rumped bumblebee "
                               "identifier') -- shown by a model picker (CLI or UI), and now also what "
-                              "the output folder under models/lda/ is named (slugified). A name "
-                              "already in use gets an automatic _v2/_v3/... suffix rather than "
-                              "overwriting the earlier run (see core.run_io.resolve_model_slug). "
-                              "Defaults to level_dataset_label[_devices][_source] if omitted.")
+                              "the output folder under models/lda/ is named (slugified). A "
+                              "'_<n>LM_<level>' tag (landmark count in the TPS + --level) is always "
+                              "appended, and a name already in use on top of that gets an automatic "
+                              "_v2/_v3/... suffix rather than overwriting the earlier run (see "
+                              "core.run_io.resolve_model_slug). Defaults to "
+                              "level_dataset_label[_devices][_source] if omitted.")
     parser.add_argument("--no-save-model", action="store_true",
                          help="Don't write model.joblib (saved by default -- no reason not to, "
                               "each run lives in its own folder).")
@@ -117,10 +131,10 @@ def build_arg_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def main(argv: list[str] | None = None) -> Path:
-    """Returns the run's output folder (models/lda/<run_id>/train/) -- lets
-    a caller (e.g. app/train_model.py) report on this exact run without
-    recomputing/guessing its path."""
+def main(argv: list[str] | None = None) -> TrainOutput:
+    """Returns (runs_dir, model_path) for this exact run -- lets a caller
+    (e.g. app/train_model.py) report on it without recomputing/guessing
+    either path."""
     args = build_arg_parser().parse_args(argv)
     setup_console_logging(log_level_from_args(args))
 
@@ -128,13 +142,21 @@ def main(argv: list[str] | None = None) -> Path:
     specimens, meta_df = load_dataset(args.dataset, labeled_only=True, **ds_kwargs)
     groupe = target_groupe(meta_df, args.level)
 
-    dataset_label = args.dataset.name
-    base_name = args.model_name or build_run_id(args.level, dataset_label, args.devices, args.landmarks_tps, args.run_label)
-    run_id = resolve_model_slug(FAMILY_LDA, base_name)
-    out_dir = run_path(FAMILY_LDA, run_id, "train")
-
     scores, gpa_result, pca = run_gpa_pca(specimens)
     n_components = scores.shape[1]
+
+    # Landmark count + classification level, always appended to the model
+    # name (typed or defaulted) so two models fit on different landmark
+    # schemes (e.g. 19LM vs. 18LM, see app/setup_dataset.py) or different
+    # --level are never confusable in a model picker -- computed only now
+    # since it needs specimens[0], guaranteed non-empty past run_gpa_pca().
+    dataset_label = args.dataset.name
+    name_root = args.model_name or build_run_id(args.level, dataset_label, args.devices, args.landmarks_tps, args.run_label)
+    base_name = f"{name_root}_{specimens[0].n_points}LM_{args.level}"
+    run_id = resolve_model_slug(FAMILY_LDA, base_name)
+    out_dir = run_path(FAMILY_LDA, run_id, "train", root=RUNS_ROOT)
+    model_dir = run_path(FAMILY_LDA, run_id, root=MODELS_ROOT)
+    model_path = model_dir / "model.joblib"
 
     lda_final = fit_lda(scores, groupe, n_components=args.lda_components)
 
@@ -148,11 +170,11 @@ def main(argv: list[str] | None = None) -> Path:
 
     # run_id may carry a "_v{n}" suffix resolve_model_slug added on a name
     # collision -- append that same suffix to the human-facing model_name
-    # too (typed or defaulted to base_name), so two versions of the same
-    # name stay visually distinct in a model picker instead of showing the
-    # identical label twice.
+    # too (base_name, itself typed or defaulted, plus the _<n>LM_<level>
+    # tag above), so two versions of the same name stay visually distinct
+    # in a model picker instead of showing the identical label twice.
     version_suffix = run_id[len(slugify(base_name)):]
-    model_name = (args.model_name or base_name) + version_suffix
+    model_name = base_name + version_suffix
 
     metrics = {
         "run_id": run_id,
@@ -196,10 +218,11 @@ def main(argv: list[str] | None = None) -> Path:
             n_train=len(specimens),
             model_name=model_name,
         )
-        save_model(model, out_dir / "model.joblib")
+        save_model(model, model_path)
 
     print(f"Run -> {out_dir}")
-    return out_dir
+    print(f"Model -> {model_path}")
+    return TrainOutput(runs_dir=out_dir, model_path=model_path)
 
 
 if __name__ == "__main__":

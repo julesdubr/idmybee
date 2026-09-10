@@ -1,37 +1,39 @@
 """predict_dataset.py
 Streamlit prediction tool -- Tool 3 of 3 (see README.md "Scenario 1").
-Classifies a dataset root already prepared and exported by
-app/setup_dataset.py with an existing model (see app/train_model.py) --
-this tool never runs detection/landmark placement itself, it just points
-classifiers.predict at an already-exported dataset.
+Classifies landmarks + biological data uploaded directly (drag-and-drop
+TPS + CSV, same export format as app/train_model.py) with an existing
+model (see app/train_model.py) -- this tool never runs detection/landmark
+placement itself, it just merges the uploaded files into a throwaway
+dataset root (see utils.uploaded_dataset.write_dataset_root) and points
+classifiers.predict at it.
 
     streamlit run app/predict_dataset.py
-
-Reuses the same dataset-filter argument definitions as the CLI
-(utils.cli.add_dataset_args, utils.landmarking_pipeline.dataset_filter_argv)
-to build classifiers.predict's argv from the widget values, same reasoning
-as app/setup_dataset.py/app/train_model.py.
 """
 from __future__ import annotations
 
 import argparse
+import shutil
 import sys
+import tempfile
 from pathlib import Path
 
 import pandas as pd
 import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _common import LOGO_PATH, discover, path_picker, run_with_log  # noqa: E402
+from _common import LOGO_PATH, discover, path_picker, run_with_log, save_uploaded_files  # noqa: E402
 from classifiers.predict import run_batch as predict_run_batch  # noqa: E402
-from utils.cli import add_dataset_args, add_dataset_positional  # noqa: E402
-from utils.landmarking_pipeline import resolve_export_dir  # noqa: E402
+from core.model_io import load_model  # noqa: E402
 from core.run_io import (  # noqa: E402
-    build_eval_tag, model_display_name, read_metrics, result_path, run_id_from_model_path,
+    RUNS_ROOT, build_eval_tag, model_display_name, read_metrics, result_path, run_id_from_model_path, slugify,
+)
+from utils.uploaded_dataset import (  # noqa: E402
+    DatasetMergeError, join_specimens_to_bio, parse_uploaded_bio_csv, parse_uploaded_tps_files,
+    write_dataset_root,
 )
 
 st.set_page_config(
-    page_title="idmybee -- predict",
+    page_title="idmybee -- prédire",
     page_icon=str(LOGO_PATH) if LOGO_PATH.exists() else None,
     layout="wide",
 )
@@ -40,83 +42,112 @@ col_logo, col_title = st.columns([1, 8])
 if LOGO_PATH.exists():
     col_logo.image(str(LOGO_PATH), width=100)
 with col_title:
-    st.title("Predict")
-    st.caption("Classify a prepared dataset with an existing GPA-PCA-LDA model.")
+    st.title("Prédire")
+    st.caption("Classifier des landmarks + données biologiques déposés avec un modèle GPA-PCA-LDA existant.")
 
 
-def _dataset_args_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser()
-    add_dataset_positional(parser)
-    add_dataset_args(parser)
-    return parser
+with st.container(border=True):
+    st.subheader("Jeu de données")
+    tps_uploads = st.file_uploader(
+        "Fichier(s) TPS de landmarks", type=["tps"], accept_multiple_files=True, key="pr_tps_upload",
+        help="landmarks_numbered.tps (ou plusieurs) -- exporté par app/setup_dataset.py / "
+             "tools.pipeline.export_final_landmarks, ou landmarké à la main dans un autre outil (pas "
+             "besoin de COMMENT= dans ce cas, voir le champ CSV ci-dessous).",
+    )
+    csv_uploads = st.file_uploader(
+        "Fichier(s) CSV de données biologiques", type=["csv"], accept_multiple_files=True, key="pr_csv_upload",
+        help="biological_data.csv -- doit avoir au moins les colonnes inv_id, species, caste. Si le(s) "
+             "fichier(s) TPS ci-dessus n'ont pas été exportés par ce code (pas d'inv_id pour la jointure), "
+             "ajoutez une colonne 'tps_id' avec une ligne par spécimen, dans le même ordre que le(s) "
+             "fichier(s) TPS.",
+    )
 
-
-dataset_root = path_picker(
-    "Dataset root (already prepared/exported by app/setup_dataset.py)",
-    mode="dir", key="pr_dataset_root",
-)
-dataset_ready = bool(dataset_root) and (Path(dataset_root) / "manifest.csv").exists()
-if dataset_root and not dataset_ready:
-    st.warning("manifest.csv not found at this path -- prepare it with app/setup_dataset.py first.")
-if dataset_root:
-    export_dir = resolve_export_dir(argparse.Namespace(dataset=Path(dataset_root), export_dir=None))
-    if not export_dir.exists():
-        st.warning(f"{export_dir} not found -- run app/setup_dataset.py's export step on this dataset first.")
-
-if dataset_ready:
-    model_choices = discover("models/lda/*/train/model.joblib")
-    with st.form("predict_form", border=True):
-        if model_choices:
-            model_path = st.selectbox(
-                "Classification model", model_choices, format_func=model_display_name, key="pr_model_choice",
-            )
-        else:
-            model_path = st.text_input("Classification model path", key="pr_model_text")
-
-        col_a, col_b = st.columns(2)
-        devices = col_a.text_input("Devices (comma-separated, optional)", key="pr_devices")
-        species = col_b.text_input("Species (comma-separated, optional)", key="pr_species")
-        col_a, col_b = st.columns(2)
-        castes = col_a.text_input("Castes (comma-separated, optional)", key="pr_castes")
-        run_label = col_b.text_input("Run label (optional)", key="pr_run_label")
-        include_outliers = st.checkbox("Include SUSPECT/FAILED photos", key="pr_include_outliers")
-        landmarks_tps = path_picker("Landmarks .tps override (optional)", mode="file", key="pr_landmarks_tps")
-
-        low_confidence_threshold = st.slider(
-            "Low-confidence review threshold", 0.0, 1.0, 0.6, 0.05, key="pr_low_confidence_threshold",
+    st.subheader("Modèle")
+    model_choices = discover("models/lda/*/model.joblib")
+    if model_choices:
+        model_path = st.selectbox(
+            "Modèle de classification", model_choices, format_func=model_display_name, key="pr_model_choice",
         )
-        submitted = st.form_submit_button("Classify dataset", icon=":material/query_stats:", type="primary")
+    else:
+        model_path = st.text_input("Chemin du modèle de classification", key="pr_model_text")
 
-    if submitted:
-        if not model_path:
-            st.error("A classification model is required.")
-        else:
-            args = _dataset_args_parser().parse_args([
-                dataset_root,
-                *(["--devices", *[d.strip() for d in devices.split(",") if d.strip()]] if devices else []),
-                *(["--species", *[s.strip() for s in species.split(",") if s.strip()]] if species else []),
-                *(["--castes", *[c.strip() for c in castes.split(",") if c.strip()]] if castes else []),
-                *(["--include-outliers"] if include_outliers else []),
-                *(["--tps", landmarks_tps] if landmarks_tps else []),
-                *(["--run-label", run_label] if run_label else []),
-            ])
-            args.model_path = Path(model_path)
-            args.low_confidence_threshold = low_confidence_threshold
-            run_with_log("Classifying...", predict_run_batch, args)
+    low_confidence_threshold = st.slider(
+        "Seuil de confiance faible à revérifier", 0.0, 1.0, 0.6, 0.05, key="pr_low_confidence_threshold",
+    )
+    save_path = path_picker(
+        "Copier aussi predictions.csv vers (optionnel)", mode="save", key="pr_save_path",
+        default_filename="predictions.csv",
+        help="predictions.csv est toujours écrit sous runs/ -- ne renseigner ce champ que pour en "
+             "copier aussi une version ailleurs (ex. pour partager le résultat).",
+    )
+    submitted = st.button("Classifier le jeu de données", icon=":material/query_stats:", type="primary", key="pr_submit")
+
+if submitted:
+    if not tps_uploads or not csv_uploads:
+        st.error("Au moins un fichier TPS et un fichier CSV sont requis.")
+    elif not model_path:
+        st.error("Un modèle de classification est requis.")
+    else:
+        with tempfile.TemporaryDirectory(prefix="idmybee_predict_upload_") as tmp:
+            tmp_path = Path(tmp)
+            tps_paths = save_uploaded_files(tps_uploads, tmp_path / "uploaded_tps")
+            csv_paths = save_uploaded_files(csv_uploads, tmp_path / "uploaded_csv")
+
+            try:
+                specimens = parse_uploaded_tps_files(tps_paths)
+                bio_df = parse_uploaded_bio_csv(csv_paths)
+                specimens = join_specimens_to_bio(specimens, bio_df)
+            except DatasetMergeError as exc:
+                st.error(str(exc))
+                st.stop()
+
+            model = load_model(Path(model_path))
+            mismatched = [sp for sp in specimens if sp.n_points != model.n_points]
+            if mismatched:
+                other_counts = sorted({sp.n_points for sp in mismatched})
+                if len(mismatched) == len(specimens):
+                    st.error(
+                        f"Nombre de landmarks incohérent : {model_display_name(model_path)!r} attend "
+                        f"{model.n_points} landmark(s), mais aucun des {len(specimens)} spécimen(s) "
+                        f"déposés n'en a autant (trouvé {other_counts}). Déposez un TPS avec le même "
+                        "schéma de landmarks que celui sur lequel le modèle a été entraîné."
+                    )
+                    st.stop()
+                st.warning(
+                    f"{len(mismatched)} spécimen(s) sur {len(specimens)} ont un nombre de landmarks "
+                    f"différent du modèle ({model.n_points}, trouvé {other_counts}) et seront ignorés."
+                )
+
+            dataset_label = slugify(Path(tps_uploads[0].name).stem)
+            dataset_root = write_dataset_root(specimens, bio_df, tmp_path / dataset_label)
+
+            args = argparse.Namespace(
+                dataset=dataset_root, model_path=Path(model_path),
+                devices=None, species=None, castes=None, exclude_outliers=True, non_strict=False,
+                landmarks_tps=None, landmarks_status_csv=None, run_label=None,
+                low_confidence_threshold=low_confidence_threshold,
+            )
+            run_with_log("Classification en cours...", predict_run_batch, args)
 
             family, run_id = run_id_from_model_path(args.model_path)
-            eval_tag = build_eval_tag(args.dataset.name, args.devices, args.landmarks_tps, args.run_label)
-            out_dir = result_path(family, run_id, "predict", eval_tag)
+            eval_tag = build_eval_tag(dataset_label, args.devices, args.landmarks_tps, args.run_label)
+            out_dir = result_path(family, run_id, "predict", eval_tag, root=RUNS_ROOT)
             metrics = read_metrics(out_dir)
             predictions = pd.read_csv(out_dir / "predictions.csv")
 
-            st.success(f"Classified with {model_display_name(args.model_path)}")
+            if save_path:
+                Path(save_path).parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(out_dir / "predictions.csv", save_path)
+
+            st.success(f"Classifié avec {model_display_name(args.model_path)}")
             if "accuracy_top1" in metrics:
                 col_a, col_b, col_c = st.columns(3)
-                col_a.metric("Top-1 accuracy", f"{metrics['accuracy_top1']:.1%}")
-                col_b.metric("Top-3 accuracy", f"{metrics['accuracy_top3']:.1%}")
-                col_c.metric("Specimens", metrics["n"])
+                col_a.metric("Précision top-1", f"{metrics['accuracy_top1']:.1%}")
+                col_b.metric("Précision top-3", f"{metrics['accuracy_top3']:.1%}")
+                col_c.metric("Spécimens", metrics["n"])
             else:
-                st.caption(f"{len(predictions)} specimen(s) classified (no known truth to score against).")
+                st.caption(f"{len(predictions)} spécimen(s) classifié(s) (pas de vérité connue pour scorer).")
             st.dataframe(predictions, hide_index=True)
             st.caption(f"predictions.csv -> {out_dir / 'predictions.csv'}")
+            if save_path:
+                st.caption(f"Copié aussi vers -> {save_path}")

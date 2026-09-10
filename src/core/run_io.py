@@ -1,30 +1,42 @@
 """run_io.py
 Output convention shared by train.py, predict.py,
-analysis/classification_report.py and analysis/variance_report.py:
+analysis/classification_report.py and analysis/variance_report.py.
 
-    models/<family>/<run_id>/train/                              model fit (train.py)
-    models/<family>/<run_id>/predict/<eval_tag>/                 evaluation of that model on other data (predict.py batch)
-    models/<family>/<run_id>/classification_report/train/            figures/tables for the train run
-    models/<family>/<run_id>/classification_report/predict/<eval_tag>/ figures/tables for an evaluation
-    data/analysis/variance/<variance_id>/                             shape variance analysis (independent of any model)
+`models/` holds only the deployable artifact, nothing else:
+
+    models/<family>/<run_id>/model.joblib                        model fit (train.py)
+
+`runs/` holds every performance record for that artifact -- how it did,
+on which dataset, never the artifact itself -- so `models/` stays a small,
+swappable store while `runs/` is the full ledger a comparison table (see
+analysis/compare_runs.py) scans:
+
+    runs/<family>/<run_id>/train/                                 LOOCV performance of the fit (train.py)
+    runs/<family>/<run_id>/predict/<eval_tag>/                    evaluation of that model on other data (predict.py batch)
+    runs/<family>/<run_id>/train/report/                          figures/tables for the train run
+    runs/<family>/<run_id>/predict/<eval_tag>/report/             figures/tables for an evaluation
+    data/analysis/variance/<variance_id>/                         shape variance analysis (independent of any model)
+    data/analysis/compare/<label>/                                cross-run comparison table (independent of any single run)
 
 `run_id` identifies a trained model (level, dataset_label, devices,
-landmarks source -- see build_run_id), one per call to train.py.
-`dataset_label` is the dataset root's own name (e.g. `Path(dataset).name`,
-"collection"/"terrain") -- there is no train/test split within one dataset
-anymore, each dataset root is either used to fit a model or to evaluate
-one. `eval_tag` identifies one evaluation of that model by predict.py (see
-build_eval_tag); a single run_id can have several eval_tag (one per
-dataset evaluated, e.g. "terrain", plus devices/landmarks source).
-predict.py recovers the run_id from the given model.joblib (see
+landmarks source -- see build_run_id), one per call to train.py, and is the
+folder name shared by both trees (models/<family>/<run_id>/ and
+runs/<family>/<run_id>/) -- the only link between an artifact and its
+performance records. `dataset_label` is the dataset root's own name (e.g.
+`Path(dataset).name`, "collection"/"terrain") -- there is no train/test
+split within one dataset anymore, each dataset root is either used to fit
+a model or to evaluate one. `eval_tag` identifies one evaluation of that
+model by predict.py (see build_eval_tag); a single run_id can have several
+eval_tag (one per dataset evaluated, e.g. "terrain", plus devices/landmarks
+source). predict.py recovers the run_id from the given model.joblib (see
 run_id_from_model_path) rather than recomputing one.
 
 `variance_id` (build_variance_id) is independent of any run_id:
 analysis/variance_report.py neither loads nor fits a model -- its output
-lives under data/analysis/, not models/, precisely for that reason.
+lives under data/analysis/, not models/ or runs/, precisely for that reason.
 
-Every output folder has params.json (CLI arguments) and run.log (summary),
-plus metrics.json / model.joblib / *.csv / *.png depending on the case.
+Every performance folder has params.json (CLI arguments) and run.log
+(summary), plus metrics.json / *.csv / *.png depending on the case.
 """
 from __future__ import annotations
 
@@ -37,6 +49,7 @@ from typing import Any
 
 FAMILY_LDA = "lda"
 MODELS_ROOT = Path("models")
+RUNS_ROOT = Path("runs")
 ANALYSIS_ROOT = Path("data/analysis")
 
 
@@ -119,37 +132,87 @@ def resolve_model_slug(family: str, base_name: str, root: Path = MODELS_ROOT) ->
 
 
 def run_id_from_model_path(model_path: str | Path) -> tuple[str, str]:
-    """Recover (family, run_id) from models/<family>/<run_id>/train/model.joblib."""
+    """Recover (family, run_id) from models/<family>/<run_id>/model.joblib."""
     model_path = Path(model_path).resolve()
-    if model_path.name != "model.joblib" or model_path.parent.name != "train":
+    if model_path.name != "model.joblib":
         raise ValueError(
-            f"{model_path} does not follow the models/<family>/<run_id>/train/model.joblib "
+            f"{model_path} does not follow the models/<family>/<run_id>/model.joblib "
             "convention -- cannot infer its run_id."
         )
-    return model_path.parent.parent.parent.name, model_path.parent.parent.name
+    return model_path.parent.parent.name, model_path.parent.name
+
+
+def find_model_path(model_name: str, family: str = FAMILY_LDA, root: Path = MODELS_ROOT) -> Path:
+    """Resolves a human-facing --model-name (classifiers.train's own
+    --model-name, or its deterministic fallback) to its model.joblib, for a
+    caller (tools/pipeline/predict_dataset.py) that takes a name rather
+    than a full path -- the reverse of model_display_name below.
+
+    Tries slugify(model_name) as the run_id first: exact and cheap for
+    every name classifiers.train itself produced, since the output folder
+    IS slugify(--model-name) (or its own _v2/_v3/... suffix, itself part
+    of the slugified name -- see resolve_model_slug/CONVENTIONS.md
+    "--model-name"). Falls back to scanning every trained model's
+    performance record (runs/<family>/<run_id>/train/metrics.json) for a
+    literal model_name match, in case slugify() isn't idempotent on this
+    particular name (e.g. two different names collapsing to the same
+    slug).
+    """
+    slug_path = root / family / slugify(model_name) / "model.joblib"
+    if slug_path.exists():
+        return slug_path
+
+    family_dir = root / family
+    runs_family_dir = RUNS_ROOT / family
+    matches: list[Path] = []
+    if runs_family_dir.exists():
+        for entry in sorted(runs_family_dir.iterdir()):
+            metrics_path = entry / "train" / "metrics.json"
+            if not metrics_path.exists():
+                continue
+            try:
+                metrics = json.loads(metrics_path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                continue
+            if metrics.get("model_name") == model_name:
+                candidate = family_dir / entry.name / "model.joblib"
+                if candidate.exists():
+                    matches.append(candidate)
+
+    if len(matches) == 1:
+        return matches[0]
+    if len(matches) > 1:
+        raise ValueError(
+            f"{model_name!r} matches several models under {family_dir}/: "
+            f"{[str(m) for m in matches]} -- pass the exact run_id (folder name) instead."
+        )
+    available = sorted(e.name for e in family_dir.iterdir()) if family_dir.exists() else []
+    raise FileNotFoundError(
+        f"No model named {model_name!r} under {family_dir}/ (checked as a run_id, and "
+        f"against every model's own model_name in runs/{family}/*/train/metrics.json). "
+        f"Available: {available}"
+    )
 
 
 def model_display_name(model_path: str | Path) -> str:
     """Human-facing name for a model.joblib, for a picker (CLI or UI): the
-    model_name recorded in its training run's metrics.json (see
+    model_name recorded in its training run's performance record (see
     classifiers.train --model-name / core.model_io.TrainedModel.model_name)
-    if present, otherwise the run_id itself -- never unpickles the model
-    just to get a label. Falls back to the model's grandparent folder name
-    if the path doesn't even follow the run_id convention (e.g. a
-    model.joblib moved out of models/)."""
+    under runs/<family>/<run_id>/train/metrics.json if present, otherwise
+    the run_id itself -- never unpickles the model just to get a label.
+    Falls back to the model's own parent folder name if the path doesn't
+    even follow the run_id convention (e.g. a model.joblib moved out of
+    models/)."""
     model_path = Path(model_path)
     try:
-        metrics = read_metrics(model_path.parent)
+        family, run_id = run_id_from_model_path(model_path)
+    except ValueError:
+        return model_path.resolve().parent.name
+    try:
+        metrics = read_metrics(result_path(family, run_id, "train", root=RUNS_ROOT))
     except FileNotFoundError:
         metrics = {}
-    name = metrics.get("model_name")
-    if name:
-        return name
-    try:
-        _family, run_id = run_id_from_model_path(model_path)
-        return run_id
-    except ValueError:
-        return model_path.resolve().parent.parent.name
+    return metrics.get("model_name") or run_id
 
 
 def run_path(family: str, *parts: str, root: Path = MODELS_ROOT) -> Path:

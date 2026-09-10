@@ -42,13 +42,26 @@ def build_origin_table(identification_df: pd.DataFrame, origin_column: str) -> p
     return pd.DataFrame({ORIGIN_CODES_COLUMN: origins, "inv_name": [""] * len(origins)})
 
 
+def resolve_origin_codes(origins: pd.Series, inv_names: pd.Series) -> dict[str, str]:
+    """{origin: inv_name}, defaulting a blank/missing inv_name to its own
+    origin value -- a row left blank is accepted as-is rather than
+    erroring downstream. Shared by `origin_codes_from_table` (the
+    interactive table, still in memory) and
+    `manifest.identification.load_origin_codes` (an imported CSV, already
+    on disk) -- same blank-handling either way an origin_codes table
+    reaches the pipeline."""
+    origins = origins.astype(str)
+    filled = inv_names.fillna("").astype(str).str.strip()
+    resolved = filled.where(filled != "", origins)
+    return dict(zip(origins, resolved))
+
+
 def origin_codes_from_table(table: pd.DataFrame) -> dict[str, str]:
     """`table` (as returned/edited from `build_origin_table`) ->
-    {collection_origin value: inv_name}, dropping rows not filled in yet
-    (blank inv_name) -- the same dict[str, str] shape
-    `manifest.identification.assign_inv_name` accepts as `origin_codes`."""
-    filled = table[table["inv_name"].astype(str).str.strip() != ""]
-    return dict(zip(filled[ORIGIN_CODES_COLUMN], filled["inv_name"]))
+    {collection_origin value: inv_name}, the same dict[str, str] shape
+    `manifest.identification.assign_inv_name` accepts as `origin_codes`.
+    See `resolve_origin_codes` for the blank-row default."""
+    return resolve_origin_codes(table[ORIGIN_CODES_COLUMN], table["inv_name"])
 
 
 def assign_constant_origin(

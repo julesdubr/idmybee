@@ -54,7 +54,7 @@ def test_build_variance_id_joins_levels():
 
 
 def test_run_id_from_model_path_parses_convention():
-    p = Path("models/lda/species_train/train/model.joblib")
+    p = Path("models/lda/species_train/model.joblib")
     family, run_id = run_id_from_model_path(p)
     assert family == "lda"
     assert run_id == "species_train"
@@ -62,7 +62,7 @@ def test_run_id_from_model_path_parses_convention():
 
 def test_run_id_from_model_path_rejects_other_layouts():
     with pytest.raises(ValueError):
-        run_id_from_model_path(Path("models/lda/species_train/model.joblib"))
+        run_id_from_model_path(Path("models/lda/species_train/weights.pt"))
 
 
 def test_resolve_model_slug_no_collision(tmp_path):

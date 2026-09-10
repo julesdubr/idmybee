@@ -1,0 +1,14 @@
+{
+  "run_id": "Bourdons_cul-rouge_18_espece",
+  "model_name": "Bourdons_cul-rouge_18_espece",
+  "level": "species",
+  "landmarks_source": "landmarks_numbered.tps (default)",
+  "n_specimens": 2600,
+  "n_points": 18,
+  "n_pca_components": 32,
+  "pca_explained_variance_cum": 0.9997553522356055,
+  "gpa_n_iterations": 3,
+  "n": 2600,
+  "accuracy_top1": 0.94,
+  "accuracy_top3": 0.9857692307692307
+}

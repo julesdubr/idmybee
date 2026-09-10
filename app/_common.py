@@ -13,8 +13,10 @@ from __future__ import annotations
 import base64
 import contextlib
 import io
+import re
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 import cv2
@@ -27,6 +29,54 @@ LOGO_PATH = Path("app/assets/idmb_logo.png")
 
 def discover(pattern: str) -> list[str]:
     return sorted(str(p) for p in Path(".").glob(pattern))
+
+
+def save_uploaded_files(uploaded_files, dest_dir: Path) -> list[Path]:
+    """Writes one or more st.file_uploader UploadedFile objects to
+    `dest_dir` under their original names and returns the resulting paths
+    -- st.file_uploader only hands back in-memory bytes, and every
+    file-based reader in src/ (core.tps_io.parse_tps, pd.read_csv(path),
+    ...) needs a real path on disk, so a caller that wants to reuse those
+    readers has to persist the upload first (into a throwaway directory it
+    owns, e.g. a tempfile.TemporaryDirectory -- this function doesn't
+    clean up after itself)."""
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    paths = []
+    for uploaded_file in uploaded_files:
+        dest = dest_dir / uploaded_file.name
+        dest.write_bytes(uploaded_file.getvalue())
+        paths.append(dest)
+    return paths
+
+
+def _session_upload_dir() -> Path:
+    """A scratch dir that outlives a single script rerun, unlike a `with
+    tempfile.TemporaryDirectory()` block -- created once per browser
+    session (mkdtemp, never cleaned up here) and reused by every
+    `file_picker()` call in that session. Needed by a multi-step wizard
+    (app/setup_dataset.py) where an uploaded file's path must still
+    resolve several reruns/steps later, not just within the run that
+    uploaded it."""
+    if "_common_upload_dir" not in st.session_state:
+        st.session_state["_common_upload_dir"] = tempfile.mkdtemp(prefix="idmybee_upload_")
+    return Path(st.session_state["_common_upload_dir"])
+
+
+def file_picker(
+    label: str, *, key: str, help: str | None = None, type: str | list[str] | None = None,
+) -> str:
+    """st.file_uploader wrapper returning a real path on disk -- same
+    calling convention as path_picker(mode="file"): a path string once
+    something's uploaded, "" until then. Every file-based reader in src/
+    (pd.read_csv(path), open(path), a CLI --flag, ...) needs a real path;
+    st.file_uploader only ever hands back in-memory bytes (see
+    save_uploaded_files/_session_upload_dir). Use path_picker(mode="dir")
+    instead for a folder -- there's no file to upload, just a location to
+    point at."""
+    uploaded = st.file_uploader(label, key=key, help=help, type=type)
+    if uploaded is None:
+        return ""
+    return str(save_uploaded_files([uploaded], _session_upload_dir())[0])
 
 
 # ---------------------------------------------------------------------------
@@ -43,13 +93,17 @@ root.withdraw()
 root.attributes("-topmost", True)
 if sys.argv[1] == "dir":
     path = filedialog.askdirectory(initialdir=sys.argv[2] or None)
+elif sys.argv[1] == "save":
+    initial_dir = sys.argv[2] or None
+    initial_file = sys.argv[3] if len(sys.argv) > 3 else ""
+    path = filedialog.asksaveasfilename(initialdir=initial_dir, initialfile=initial_file)
 else:
     path = filedialog.askopenfilename(initialdir=sys.argv[2] or None)
 print(path)
 """
 
 
-def _browse(mode: str, initial_dir: str) -> str | None:
+def _browse(mode: str, initial_dir: str, initial_file: str = "") -> str | None:
     """Opens a native folder/file picker via a throwaway subprocess -- Tk
     must own the main thread of its own process, and Streamlit's script
     thread isn't the main thread of this one (an in-process tkinter call
@@ -59,7 +113,7 @@ def _browse(mode: str, initial_dir: str) -> str | None:
     cancelled or no display is available."""
     try:
         result = subprocess.run(
-            [sys.executable, "-c", _PICKER_SCRIPT, mode, initial_dir],
+            [sys.executable, "-c", _PICKER_SCRIPT, mode, initial_dir, initial_file],
             capture_output=True, text=True, timeout=120,
         )
     except (OSError, subprocess.TimeoutExpired):
@@ -70,11 +124,16 @@ def _browse(mode: str, initial_dir: str) -> str | None:
 
 def path_picker(
     label: str, *, mode: str = "dir", value: str = "", key: str, help: str | None = None,
+    default_filename: str = "",
 ) -> str:
     """A text input plus a "Browse..." button that opens the OS's native
-    folder/file picker (mode="dir"/"file") and writes the chosen path back
-    into the text input. Returns the current text value (typed or
-    browsed) every rerun, same calling convention as st.text_input.
+    folder/file/save picker (mode="dir"/"file"/"save") and writes the
+    chosen path back into the text input. mode="save" (filedialog.
+    asksaveasfilename, pre-filled with `default_filename`) is for a path
+    that doesn't exist yet (e.g. an optional predictions.csv export
+    location), as opposed to mode="file" which is for picking an existing
+    file. Returns the current text value (typed or browsed) every rerun,
+    same calling convention as st.text_input.
 
     Once a widget has its own `key`, Streamlit always displays that
     widget's own persisted state on rerun and ignores `value` -- so two
@@ -100,9 +159,9 @@ def path_picker(
 
     with st.container(horizontal=True):
         text_value = st.text_input(label, help=help, key=widget_key)
-        if st.button(":material/folder_open: Browse...", key=f"{key}__browse"):
+        if st.button(":material/folder_open: Parcourir...", key=f"{key}__browse"):
             initial_dir = text_value if mode == "dir" and text_value else (str(Path(text_value).parent) if text_value else "")
-            chosen = _browse(mode, initial_dir)
+            chosen = _browse(mode, initial_dir, default_filename if mode == "save" else "")
             if chosen:
                 st.session_state[pending_key] = chosen
                 st.rerun()
@@ -110,38 +169,89 @@ def path_picker(
 
 
 # ---------------------------------------------------------------------------
-# Live-streaming run log
+# Live-streaming run log + progress bar
 # ---------------------------------------------------------------------------
+
+# Two conventions every batch-processing stage under src/ already prints on
+# stdout (see e.g. extraction/detect_wing.py, extraction/normalize_crop.py,
+# landmarks/predict.py) -- parsed here rather than threading a progress
+# callback through every CLI main(argv), so this stays presentation-only
+# (see module docstring) and every stage keeps working identically from a
+# plain terminal:
+#   "=== Section name ==="       -- a sub-operation starting (e.g. one of
+#                                    utils.landmarking_pipeline.run_detection_
+#                                    and_crop's two stages)
+#   "[done/total] ...detail..."  -- a batch checkpoint within it
+_SECTION_RE = re.compile(r"^=+\s*(.+?)\s*=+$")
+_PROGRESS_RE = re.compile(r"^\[(\d+)/(\d+)\]\s*(.*)$")
+
 
 class _LiveBuffer(io.StringIO):
     """A stdout target that mirrors every write() into a placeholder
     immediately -- fn() runs synchronously in the same script execution as
     this call, so updating a Streamlit element mid-call is enough to
-    stream output live, no threading/queueing needed."""
+    stream output live, no threading/queueing needed. Also drives a
+    progress bar (see _SECTION_RE/_PROGRESS_RE above) when the caller
+    passes one -- stays untouched (never rendered) for a stage that prints
+    neither convention, e.g. classifiers.train's single fit/LOOCV call."""
 
-    def __init__(self, placeholder):
+    def __init__(self, placeholder, progress_placeholder=None):
         super().__init__()
         self._placeholder = placeholder
+        self._progress_placeholder = progress_placeholder
+        self._pending_line = ""
+        self._section = ""
 
     def write(self, s: str) -> int:
         n = super().write(s)
         if s:
             self._placeholder.code(self.getvalue(), language=None)
+            if self._progress_placeholder is not None:
+                self._scan_for_progress(s)
         return n
+
+    def _scan_for_progress(self, chunk: str) -> None:
+        """Buffers a partial last line across write() calls (print()'s own
+        chunking is not guaranteed to land on newline boundaries) and hands
+        each complete line to _handle_line()."""
+        self._pending_line += chunk
+        *complete_lines, self._pending_line = self._pending_line.split("\n")
+        for line in complete_lines:
+            self._handle_line(line.strip())
+
+    def _handle_line(self, line: str) -> None:
+        section_match = _SECTION_RE.match(line)
+        if section_match:
+            self._section = section_match.group(1)
+            self._progress_placeholder.progress(0.0, text=self._section)
+            return
+
+        progress_match = _PROGRESS_RE.match(line)
+        if progress_match:
+            done, total, detail = progress_match.groups()
+            done, total = int(done), int(total)
+            fraction = min(done / total, 1.0) if total else 1.0
+            label = f"{self._section} -- {done}/{total}" if self._section else f"{done}/{total}"
+            if detail:
+                label += f" ({detail})"
+            self._progress_placeholder.progress(fraction, text=label)
 
 
 def run_with_log(label: str, fn, *args, **kwargs):
     """Runs a pipeline stage inside a live-updating st.status console:
     every print() the stage's own main()/run_batch() makes (see
     CONVENTIONS.md "Logging") appears in the console as it happens,
-    instead of only after the whole stage finishes. logger.info/warning
+    instead of only after the whole stage finishes -- plus a progress bar
+    above it, parsed from that same stdout (see _LiveBuffer), for whichever
+    stage actually reports batch progress that way. logger.info/warning
     messages still go only to the terminal running `streamlit run`, same
     as before -- only print() output is captured here."""
     status = st.status(label, expanded=True)
     with status:
+        progress_placeholder = st.empty()
         placeholder = st.empty()
         placeholder.code("(nothing printed yet)", language=None)
-        buffer = _LiveBuffer(placeholder)
+        buffer = _LiveBuffer(placeholder, progress_placeholder)
         try:
             with contextlib.redirect_stdout(buffer):
                 result = fn(*args, **kwargs)

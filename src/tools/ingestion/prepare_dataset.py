@@ -47,8 +47,6 @@ Config file (JSON):
       "output_dir": "data/clean/collection",  // this source's own clean
                                                // dataset.csv + manifest.csv
       "photographer_subfolder": false,    // optional (default: false)
-      "naming": null,                     // optional -- see ingest_raw.NAMING_PARSERS
-                                           // (default: inferred from photographer_subfolder)
       "device_column": "device_type",     // optional
       "device_name_column": "device",     // optional (default: "device")
       "compare_columns": null,            // optional, comma-separated (default:
@@ -128,7 +126,6 @@ def run_source(source: dict, mapping_file: str, verbosity: list[str]) -> Path:
     raw_manifest, ingest_dir, reused = ingest_raw.run_for_folder(
         source["images_dir"], source["source_type"],
         photographer_subfolder=source.get("photographer_subfolder", False),
-        naming=source.get("naming"),
     )
     print(f"{'reusing kept scan' if reused else 'scanned'}: {raw_manifest}")
 
