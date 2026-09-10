@@ -15,14 +15,14 @@ utils.landmarking_pipeline and PIPELINE.md):
     landmarks.predict                 -> <dataset>/landmarks/landmarks.{tps,csv}
     landmarks.renumber                -> <dataset>/landmarks/landmarks_numbered.{tps,csv}
     tools.pipeline.export_final_landmarks      -> <dataset>/export/
-    classifiers.train                 -> data/models/lda/<run_id>/train/model.joblib
+    classifiers.train                 -> models/lda/<run_id>/train/model.joblib
 
 Usage:
     python -m tools.pipeline.train_dataset data/Bombus/collection \\
-        --unet-model data/models/unet_landmarks/2026-08-29_131929/weights.pt
+        --unet-model models/unet_landmarks/2026-08-29_131929/weights.pt
 
     python -m tools.pipeline.train_dataset data/Bombus/terrain \\
-        --unet-model data/models/unet_landmarks/legacy_baseline/weights.pt \\
+        --unet-model models/unet_landmarks/legacy_baseline/weights.pt \\
         --n-landmarks 18 --overwrite
 """
 from __future__ import annotations
@@ -69,7 +69,7 @@ def main(argv: list[str] | None = None) -> None:
 
     print(f"\nDone.")
     print(f"  Landmarks package -> {export_dir}")
-    print(f"  LDA model         -> data/models/lda/<run_id>/train/model.joblib")
+    print(f"  LDA model         -> models/lda/<run_id>/train/model.joblib")
 
 
 if __name__ == "__main__":

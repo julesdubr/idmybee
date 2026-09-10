@@ -1,5 +1,5 @@
 """_common.py
-Shared Streamlit UI helpers for app/build_dataset.py (and anything else
+Shared Streamlit UI helpers for app/setup_dataset.py (and anything else
 under app/ that wants them) -- native path pickers, a live-streaming
 progress console, and image-to-data-URL encoding for st.column_config.
 ImageColumn (which only accepts URLs/data-URLs, never local file paths).
@@ -18,6 +18,7 @@ import sys
 from pathlib import Path
 
 import cv2
+import matplotlib.pyplot as plt
 import numpy as np
 import streamlit as st
 
@@ -196,3 +197,25 @@ def array_to_data_url(image: np.ndarray, *, max_width: int = 360) -> str:
     on the fly) -- not cached here, caller decides the cache key since the
     inputs aren't hashable/stable the way a file path+mtime is."""
     return _encode_bgr(image, max_width)
+
+
+# ---------------------------------------------------------------------------
+# Reference shape preview
+# ---------------------------------------------------------------------------
+
+def plot_reference_shape(zones: np.ndarray):
+    """Numbered scatter of a reference shape's (x, y) zones (see
+    landmarks.build_reference/landmarks.renumber) -- lets a non-developer
+    eyeball a reference .tps (picked to land landmarking on, or just
+    built) before relying on it, instead of trusting an opaque file. Y is
+    flipped since these are image-space coordinates (origin top-left)."""
+    fig, ax = plt.subplots(figsize=(4, 4))
+    ax.scatter(zones[:, 0], zones[:, 1], s=24)
+    for i, (x, y) in enumerate(zones):
+        ax.annotate(str(i), (x, y), textcoords="offset points", xytext=(4, 4), fontsize=8)
+    ax.set_aspect("equal")
+    ax.invert_yaxis()
+    ax.set_xticks([])
+    ax.set_yticks([])
+    fig.tight_layout()
+    return fig

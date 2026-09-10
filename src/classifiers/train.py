@@ -2,7 +2,7 @@
 Fits a GPA -> PCA -> LDA classification model on a dataset (see
 core.dataset.load_dataset) and evaluates its accuracy by LOOCV.
 
-Writes the model and raw predictions to data/models/lda/<run_id>/train/.
+Writes the model and raw predictions to models/lda/<run_id>/train/.
 Detailed figures and tables are produced separately by
 analysis/classification_report.py; shape variance (ANOVA/PERMANOVA) stays
 in analysis/variance_report.py.
@@ -34,7 +34,8 @@ from core.gpa import gpagen, two_d_array
 from core.model_io import TrainedModel, save_model
 from core.predictions import build_predictions_df, accuracy_summary
 from core.run_io import (
-    FAMILY_LDA, build_run_id, run_path, setup_console_logging, write_metrics, write_params, write_run_log,
+    FAMILY_LDA, build_run_id, resolve_model_slug, run_path, setup_console_logging, slugify, write_metrics,
+    write_params, write_run_log,
 )
 from core.tps_io import ImageLandmarks
 
@@ -103,10 +104,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
                          help="LDA components kept in the saved model, for the projection "
                               "(default: 2 -- doesn't affect predict()/predict_proba()).")
     parser.add_argument("--model-name", type=str, default=None,
-                         help="Human-facing name saved in the model (e.g. "
-                              "'Red-rumped bumblebee identifier') -- purely descriptive, shown by a "
-                              "model picker (CLI or UI) instead of the abstract run_id; doesn't affect "
-                              "where the model is written. Defaults to the run_id if omitted.")
+                         help="Human-facing name for this model (e.g. 'Red-rumped bumblebee "
+                              "identifier') -- shown by a model picker (CLI or UI), and now also what "
+                              "the output folder under models/lda/ is named (slugified). A name "
+                              "already in use gets an automatic _v2/_v3/... suffix rather than "
+                              "overwriting the earlier run (see core.run_io.resolve_model_slug). "
+                              "Defaults to level_dataset_label[_devices][_source] if omitted.")
     parser.add_argument("--no-save-model", action="store_true",
                          help="Don't write model.joblib (saved by default -- no reason not to, "
                               "each run lives in its own folder).")
@@ -114,7 +117,10 @@ def build_arg_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def main(argv: list[str] | None = None) -> None:
+def main(argv: list[str] | None = None) -> Path:
+    """Returns the run's output folder (models/lda/<run_id>/train/) -- lets
+    a caller (e.g. app/train_model.py) report on this exact run without
+    recomputing/guessing its path."""
     args = build_arg_parser().parse_args(argv)
     setup_console_logging(log_level_from_args(args))
 
@@ -123,7 +129,8 @@ def main(argv: list[str] | None = None) -> None:
     groupe = target_groupe(meta_df, args.level)
 
     dataset_label = args.dataset.name
-    run_id = build_run_id(args.level, dataset_label, args.devices, args.landmarks_tps, args.run_label)
+    base_name = args.model_name or build_run_id(args.level, dataset_label, args.devices, args.landmarks_tps, args.run_label)
+    run_id = resolve_model_slug(FAMILY_LDA, base_name)
     out_dir = run_path(FAMILY_LDA, run_id, "train")
 
     scores, gpa_result, pca = run_gpa_pca(specimens)
@@ -139,7 +146,13 @@ def main(argv: list[str] | None = None) -> None:
     predictions_path = out_dir / "loocv_predictions.csv"
     df.to_csv(predictions_path, index=False)
 
-    model_name = args.model_name or run_id
+    # run_id may carry a "_v{n}" suffix resolve_model_slug added on a name
+    # collision -- append that same suffix to the human-facing model_name
+    # too (typed or defaulted to base_name), so two versions of the same
+    # name stay visually distinct in a model picker instead of showing the
+    # identical label twice.
+    version_suffix = run_id[len(slugify(base_name)):]
+    model_name = (args.model_name or base_name) + version_suffix
 
     metrics = {
         "run_id": run_id,
@@ -186,6 +199,7 @@ def main(argv: list[str] | None = None) -> None:
         save_model(model, out_dir / "model.joblib")
 
     print(f"Run -> {out_dir}")
+    return out_dir
 
 
 if __name__ == "__main__":

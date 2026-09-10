@@ -10,7 +10,7 @@ the consuming side:
     landmarks_reviewed.csv   (same schema as landmarks_numbered.csv) -> anything
                               reading via utils.cli.add_dataset_args's --landmarks-status-csv
 
-Used identically by app/build_dataset.py's two validation steps and by the
+Used identically by app/setup_dataset.py's two validation steps and by the
 CLI pair tools.pipeline.export_review (writes the editable review CSV) /
 tools.pipeline.reconcile_review (re-applies a hand-edited one) -- one
 implementation, see CONVENTIONS.md "Fonctions core réutilisables".

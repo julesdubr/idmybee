@@ -181,9 +181,10 @@ def assign_inv_name(
 
     Two strategies, chosen by whether `origin_codes` is given:
     - Lookup (`origin_codes` provided): maps `df[origin_column]` through the
-      table (e.g. `data/identification/collection_origin_codes.csv`).
-      Raises if a value has no entry -- an unmapped origin must be added to
-      that table explicitly, never silently defaulted.
+      table (e.g. `<source_output_dir>/collection_origin_codes.csv` --
+      see `manifest.origin_table` for how the interactive setup tool
+      builds one). Raises if a value has no entry -- an unmapped origin
+      must be added to that table explicitly, never silently defaulted.
     - Embedded (`origin_codes=None`): `key_column` is already a canonical
       `<inv_name>_<number>` id (e.g. a terrain campaign id such as
       `WB1_23_0007`) -- only the `inv_name` half is used here, see

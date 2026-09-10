@@ -1,6 +1,6 @@
 """reconcile_review.py
 Re-applies a (possibly hand-edited) review CSV written by
-tools.pipeline.export_review -- or by app/build_dataset.py's validation
+tools.pipeline.export_review -- or by app/setup_dataset.py's validation
 steps -- as an override consumed downstream with no other code change:
 
     <dataset>/review/crops_review.csv     -> <dataset>/extraction/<mode>/crops_reviewed.csv

@@ -7,6 +7,7 @@ from core.run_io import (
     build_eval_tag,
     build_run_id,
     build_variance_id,
+    resolve_model_slug,
     run_id_from_model_path,
     slugify,
     tag_from_tps,
@@ -53,7 +54,7 @@ def test_build_variance_id_joins_levels():
 
 
 def test_run_id_from_model_path_parses_convention():
-    p = Path("data/models/lda/species_train/train/model.joblib")
+    p = Path("models/lda/species_train/train/model.joblib")
     family, run_id = run_id_from_model_path(p)
     assert family == "lda"
     assert run_id == "species_train"
@@ -61,4 +62,26 @@ def test_run_id_from_model_path_parses_convention():
 
 def test_run_id_from_model_path_rejects_other_layouts():
     with pytest.raises(ValueError):
-        run_id_from_model_path(Path("data/models/lda/species_train/model.joblib"))
+        run_id_from_model_path(Path("models/lda/species_train/model.joblib"))
+
+
+def test_resolve_model_slug_no_collision(tmp_path):
+    assert resolve_model_slug("lda", "Red-rumped identifier", root=tmp_path) == "Red-rumped-identifier"
+
+
+def test_resolve_model_slug_first_collision_becomes_v2(tmp_path):
+    (tmp_path / "lda" / "my-model").mkdir(parents=True)
+    assert resolve_model_slug("lda", "my-model", root=tmp_path) == "my-model_v2"
+
+
+def test_resolve_model_slug_picks_next_free_version(tmp_path):
+    (tmp_path / "lda" / "my-model").mkdir(parents=True)
+    (tmp_path / "lda" / "my-model_v2").mkdir(parents=True)
+    (tmp_path / "lda" / "my-model_v3").mkdir(parents=True)
+    assert resolve_model_slug("lda", "my-model", root=tmp_path) == "my-model_v4"
+
+
+def test_resolve_model_slug_ignores_unrelated_siblings(tmp_path):
+    (tmp_path / "lda" / "my-model").mkdir(parents=True)
+    (tmp_path / "lda" / "other-model_v2").mkdir(parents=True)
+    assert resolve_model_slug("lda", "my-model", root=tmp_path) == "my-model_v2"

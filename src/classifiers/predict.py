@@ -31,8 +31,8 @@ source with train.py --tps (see classifiers/train.py), then compare with
 analysis/compare_runs.py.
 
 Usage:
-    python -m classifiers.predict batch data/models/lda/species_collection/train/model.joblib data/Bombus/terrain
-    python -m classifiers.predict single data/models/lda/species_collection/train/model.joblib data/Bombus/terrain/landmarks/new_photo.tps
+    python -m classifiers.predict batch models/lda/species_collection/train/model.joblib data/Bombus/terrain
+    python -m classifiers.predict single models/lda/species_collection/train/model.joblib data/Bombus/terrain/landmarks/new_photo.tps
 """
 from __future__ import annotations
 
@@ -207,7 +207,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     subparsers = parser.add_subparsers(dest="mode", required=True)
 
     batch = subparsers.add_parser("batch", help="Validate the model on a data folder (with known truth)")
-    batch.add_argument("model_path", type=Path, help="Saved model (e.g. data/models/lda/<run_id>/train/model.joblib)")
+    batch.add_argument("model_path", type=Path, help="Saved model (e.g. models/lda/<run_id>/train/model.joblib)")
     batch.add_argument("dataset", type=Path, help="Root folder (e.g. data/Bombus/terrain) -- see core.dataset.load_dataset")
     add_dataset_args(batch)
     batch.add_argument("--low-confidence-threshold", type=float, default=0.6,

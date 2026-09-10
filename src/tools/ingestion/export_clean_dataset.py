@@ -34,21 +34,21 @@ collection-style case, where it is genuinely distinct information).
 
 Usage (collection):
     python -m tools.ingestion.export_clean_dataset data/bombus_collection_raw/manifest.csv \\
-        --identification-csv data/identification/IDMB_Bombus_collect.csv \\
+        --identification-csv /path/to/IDMB_Bombus_collect.csv \\
         --source-type collection --key-column inv_id --device-column device_type \\
         --compare-columns genus,species,caste,collection_origin,identification_year,dd,mm,yyyy \\
-        --origin-codes data/identification/collection_origin_codes.csv \\
+        --origin-codes data/clean/collection/collection_origin_codes.csv \\
         --image-group-by genus,species,caste \\
-        --mapping-file data/identification/inv_id_mapping.csv \\
+        --mapping-file data/Bombus/collection/inv_id_mapping.csv \\
         --output-dir data/clean/collection
 
 Usage (terrain):
     python -m tools.ingestion.export_clean_dataset data/bombus_terrain_raw/manifest.csv \\
-        --identification-csv data/identification/IDMB_Bombus_terrain.csv \\
+        --identification-csv /path/to/IDMB_Bombus_terrain.csv \\
         --source-type terrain --key-column inv_id \\
         --compare-columns genus,species,caste,dd,mm,yyyy \\
         --image-group-by photographer \\
-        --mapping-file data/identification/inv_id_mapping.csv \\
+        --mapping-file data/Bombus/terrain/inv_id_mapping.csv \\
         --output-dir data/clean/terrain
 
 If several sources make up one dataset (e.g. collection + terrain), run

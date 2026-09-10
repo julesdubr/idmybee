@@ -63,7 +63,7 @@ succeeded before) the corresponding entry in an in-memory dict (keyed by
 
 Usage:
     python -m landmarks.predict data/Bombus --mode light \\
-        --model data/models/unet_landmarks/<run_id>/weights.pth
+        --model models/unet_landmarks/<run_id>/weights.pth
 
     # only retry a previous run's failures:
     python -m landmarks.predict data/Bombus --mode light --model ... --retry-failed

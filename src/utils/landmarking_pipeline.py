@@ -36,12 +36,8 @@ from tools.pipeline.export_final_landmarks import main as export_final_landmarks
 from utils.cli import verbosity_argv
 from core.pipeline_io import dataset_export_dir
 
-DEFAULT_DETECTOR_MODEL = Path("data/models/yolon_obb/best.pt")
-DEFAULT_GPA_REFERENCE_TEMPLATE = "data/references/shapes/reference_shape_{n_landmarks}.npz"
-
-
-def default_gpa_reference(n_landmarks: int) -> Path:
-    return Path(DEFAULT_GPA_REFERENCE_TEMPLATE.format(n_landmarks=n_landmarks))
+DEFAULT_DETECTOR_MODEL = Path("models/yolon_obb/best.pt")
+REFERENCE_SHAPES_DIR = Path("references/shapes")
 
 
 def add_landmarking_args(parser: argparse.ArgumentParser) -> None:
@@ -62,9 +58,10 @@ def add_landmarking_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--unet-model", type=Path, required=True, help="UNet weights (.pt) for landmark placement.")
     parser.add_argument("--n-landmarks", type=int, default=19,
                          help="19 = Tancrede's full blueprint (default). 18 for an older/legacy UNet model.")
-    parser.add_argument("--reference", type=Path, default=None,
-                         help="Frozen GPA reference shape (see landmarks.build_reference). "
-                              f"Default: {DEFAULT_GPA_REFERENCE_TEMPLATE}")
+    parser.add_argument("--reference", type=Path, required=True,
+                         help="Frozen GPA reference shape, a plain .tps (see landmarks.build_reference) -- "
+                              f"e.g. one of {REFERENCE_SHAPES_DIR}/*.tps. Its own landmark count is read "
+                              "directly from the file, not encoded in its name.")
     parser.add_argument("--base-dir", default=None, help="Root to resolve manifest.csv's path, if relative.")
     parser.add_argument("--device", default=None, help="'cpu'/'cuda' for detection AND landmark placement.")
     parser.add_argument("--overwrite", action="store_true",
@@ -79,7 +76,7 @@ def add_landmarking_args(parser: argparse.ArgumentParser) -> None:
 
 
 def resolve_gpa_reference(args: argparse.Namespace) -> Path:
-    return args.reference or default_gpa_reference(args.n_landmarks)
+    return args.reference
 
 
 def resolve_export_dir(args: argparse.Namespace) -> Path:
@@ -123,7 +120,7 @@ def run_detection_and_crop(args: argparse.Namespace) -> None:
 
     Split out from run_landmarking() so a caller can pause here for a
     validation step (review the crops, see utils.review) before spending
-    UNet compute in run_landmark_placement() -- see app/build_dataset.py.
+    UNet compute in run_landmark_placement() -- see app/setup_dataset.py.
     """
     if args.mode == "heavy" and args.heavy_ref is None:
         raise SystemExit("--mode heavy requires --heavy-ref (JSON file of YOLOE references).")

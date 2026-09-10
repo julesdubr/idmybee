@@ -30,5 +30,5 @@ N_LANDMARKS = 19
 DEFAULT_HEATMAP_RADIUS = 60.0 * (2 ** 0.5)  # ~84.85 px
 DEFAULT_HEATMAP_POWER = 30
 
-# Model family name under data/models/<family>/<run_id>/
+# Model family name under models/<family>/<run_id>/
 MODEL_FAMILY = "unet_landmarks"

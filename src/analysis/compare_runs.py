@@ -3,7 +3,7 @@ Compares the accuracy of several runs (train.py or predict.py batch) side
 by side, from their metrics.json (e.g. which landmark source classifies
 best).
 
-Each entry is a path relative to data/models/<family>/ down to the folder
+Each entry is a path relative to models/<family>/ down to the folder
 containing metrics.json: "<run_id>/train" for a LOOCV run, or
 "<run_id>/predict/<eval_tag>" for an evaluation -- both can be mixed in the
 same comparison.
@@ -73,7 +73,7 @@ def plot_accuracy_comparison(df: pd.DataFrame, out_path: Path, title: str) -> No
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Compare the accuracy of several train.py/predict.py runs side by side")
     parser.add_argument("steps", type=str, nargs="+",
-                         help="Paths relative to data/models/<family>/, e.g. species_train_P1-S1/train "
+                         help="Paths relative to models/<family>/, e.g. species_train_P1-S1/train "
                               "or species_train_P1-S1/predict/test")
     parser.add_argument("--label", type=str, default=None, help="Output folder name (default: derived from the paths)")
     parser.add_argument("--family", type=str, default=FAMILY_LDA)

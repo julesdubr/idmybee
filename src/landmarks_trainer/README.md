@@ -27,7 +27,7 @@ not an architecture change.
    annotes les mauvais dans review.csv, un second run avec `--exclude-csv`
    les retire de la référence finale.
 1. **`migrate_legacy_weights.py`** (one-off) -- convert Gabriel's existing
-   pickled `.pth` into `data/models/unet_landmarks/legacy_baseline/weights.pth`.
+   pickled `.pth` into `models/unet_landmarks/legacy_baseline/weights.pth`.
    Verified to reproduce bit-identical outputs to the original pickle.
 2. **`export_dataset.py`** -- build `train_manifest.csv` (crop path + 19
    ground-truth points per specimen) from Tancrede's reference TPS +
@@ -37,7 +37,7 @@ not an architecture change.
    at the debug overlays it generates before trusting the output.**
 3. **`train.py`** -- fine-tune (from `legacy_baseline` or from scratch),
    early stopping on val loss, saves a full run under
-   `data/models/unet_landmarks/<run_id>/`.
+   `models/unet_landmarks/<run_id>/`.
 4. **`evaluate.py`** -- point-localization metrics (mean/median pixel
    error, detection rate) on a held-out manifest, computed through the
    *actual* `landmarks.predict.predict_landmarks_from_path` inference
@@ -53,7 +53,7 @@ not an architecture change.
 | `heatmap.py` | Ground-truth heatmap encoding only -- decode lives in `landmarks/predict.py` |
 | `augment.py` | Joint image/point zoom-shift + quality augmentation |
 | `dataset.py` | Manifest CSV <-> PyTorch `Dataset`, train/val/test split |
-| `checkpoint.py` | `data/models/<family>/<run_id>/` artifact writer, shared by train + migration |
+| `checkpoint.py` | `models/<family>/<run_id>/` artifact writer, shared by train + migration |
 | `reproject_reference.py` | Raw-space Tancrede TPS -> crop-space reference + review workflow |
 | `export_dataset.py` | TPS + crops.csv -> training manifest |
 | `train.py` | Fine-tuning CLI |
@@ -111,7 +111,7 @@ provided), just flagging it so it's not a surprise.
 ## Not done here (out of scope for this pass)
 
 - `obb_detector` was **not** touched or renamed. Aligning it to these same
-  `data/models/<family>/<run_id>/` conventions is a separate pass.
+  `models/<family>/<run_id>/` conventions is a separate pass.
 
 ## Testing notes
 

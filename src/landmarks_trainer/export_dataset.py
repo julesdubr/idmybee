@@ -4,7 +4,7 @@ ground-truth landmark points, ready for dataset.py / train.py.
 
     python export_dataset.py data/Bombus --mode light \\
         --tps data/Bombus/landmarks/tancrede_reference.tps \\
-        --output data/models/unet_landmarks/train_manifest.csv
+        --output models/unet_landmarks/train_manifest.csv
 
 Goal of this fine-tuning round: train the UNet to predict Tancrede's full
 19-point blueprint (LM3 included), instead of Gabriel's original 18-point
@@ -141,7 +141,7 @@ def main(argv: list[str] | None = None) -> None:
         # wherever the manifest CSV ends up living. dataset.py's load_manifest() re-resolves
         # any relative crop_path against the *manifest's own* directory (see its docstring) --
         # leaving crop_path relative here silently double-joins it with the run dir
-        # (data/models/unet_landmarks/...) instead of the dataset root. Absolute sidesteps
+        # (models/unet_landmarks/...) instead of the dataset root. Absolute sidesteps
         # the mismatch entirely.
         if not crop_path.exists():
             skipped_rows.append({"photo_id": sp.photo_id, "reason": f"crop file missing: {crop_path}"})

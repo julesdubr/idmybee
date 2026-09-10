@@ -170,7 +170,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--step", type=str, choices=["train", "predict"], default="train",
                          help="Which predictions to analyze: LOOCV's (train) or a predict.py batch's (predict).")
     parser.add_argument("--eval-tag", type=str, default=None,
-                         help="Required if --step predict -- see data/models/<family>/<run_id>/predict/ for the list.")
+                         help="Required if --step predict -- see models/<family>/<run_id>/predict/ for the list.")
     parser.add_argument("--family", type=str, default=FAMILY_LDA)
     add_logging_args(parser)
     return parser

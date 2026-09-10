@@ -1,9 +1,10 @@
 """tests/test_prepare_dataset.py
 Synthetic tests for tools.ingestion.prepare_dataset's ORCHESTRATION logic
 (which script gets called with which argv, in what order, and what happens
-when a source's build_manifest fails) -- the four wrapped scripts
-(ingest_raw/export_clean_dataset/build_manifest/combine_manifests) are
-monkeypatched, each already covered on its own elsewhere.
+when a source's build_manifest fails) -- the wrapped scripts
+(ingest_raw.run_for_folder/export_clean_dataset/build_manifest/
+combine_manifests) are monkeypatched, each already covered on its own
+elsewhere.
 """
 from __future__ import annotations
 
@@ -20,39 +21,24 @@ def _write_config(tmp_path, config: dict) -> str:
     return str(path)
 
 
-def test_compliant_source_skips_ingest_and_export(tmp_path, monkeypatch):
+def _patch_ingest(monkeypatch, tmp_path, *, reused: bool = False):
     calls = []
-    monkeypatch.setattr(pd.build_manifest, "main", lambda argv: (calls.append(("build_manifest", argv)), (
-        (tmp_path / "clean" / "manifest.csv").parent.mkdir(parents=True, exist_ok=True),
-        (tmp_path / "clean" / "manifest.csv").write_text(""),
-    ))[0])
-    monkeypatch.setattr(pd.combine_manifests, "main", lambda argv: calls.append(("combine_manifests", argv)))
-    monkeypatch.setattr(pd.export_clean_dataset, "main", lambda argv: pytest.fail("should not be called"))
-    monkeypatch.setattr(pd.ingest_raw, "main", lambda argv: pytest.fail("should not be called"))
 
-    config = _write_config(tmp_path, {
-        "output_dir": str(tmp_path / "combined"),
-        "sources": [{
-            "type": "compliant",
-            "dataset_csv": str(tmp_path / "third_party" / "dataset.csv"),
-            "manifest_output_dir": str(tmp_path / "clean"),
-        }],
-    })
+    def fake_run_for_folder(images_dir, source_type, *, photographer_subfolder=False, naming=None):
+        calls.append((images_dir, source_type, photographer_subfolder, naming))
+        ingest_dir = tmp_path / "raw" / "ingest"
+        ingest_dir.mkdir(parents=True, exist_ok=True)
+        manifest = ingest_dir / "manifest.csv"
+        manifest.write_text("")
+        return manifest, ingest_dir, reused
 
-    pd.main([config])
-
-    kinds = [c[0] for c in calls]
-    assert kinds == ["build_manifest", "combine_manifests"]
-    build_argv = calls[0][1]
-    assert build_argv[0] == str(tmp_path / "third_party" / "dataset.csv")
-    assert "--output-dir" in build_argv and str(tmp_path / "clean") in build_argv
-    combine_argv = calls[1][1]
-    assert str(tmp_path / "clean") in combine_argv
-    assert "--output-dir" in combine_argv and str(tmp_path / "combined") in combine_argv
+    monkeypatch.setattr(pd.ingest_raw, "run_for_folder", fake_run_for_folder)
+    return calls
 
 
-def test_raw_source_runs_export_then_build_manifest(tmp_path, monkeypatch):
+def test_source_runs_scan_then_export_then_build_manifest(tmp_path, monkeypatch):
     calls = []
+    ingest_calls = _patch_ingest(monkeypatch, tmp_path)
 
     def fake_export(argv):
         calls.append(("export_clean_dataset", argv))
@@ -69,58 +55,87 @@ def test_raw_source_runs_export_then_build_manifest(tmp_path, monkeypatch):
     monkeypatch.setattr(pd.build_manifest, "main", fake_build_manifest)
     monkeypatch.setattr(pd.combine_manifests, "main", lambda argv: calls.append(("combine_manifests", argv)))
 
-    raw_manifest = tmp_path / "raw" / "manifest.csv"
-    raw_manifest.parent.mkdir(parents=True)
-    raw_manifest.write_text("")
-
     config = _write_config(tmp_path, {
         "mapping_file": str(tmp_path / "mapping.csv"),
         "output_dir": str(tmp_path / "combined"),
         "sources": [{
-            "type": "raw",
-            "source_type": "collection",
-            "raw_manifest": str(raw_manifest),
+            "images_dir": str(tmp_path / "raw" / "collection"),
             "identification_csv": str(tmp_path / "ident.csv"),
+            "source_type": "collection",
             "key_column": "inv_id",
-            "clean_output_dir": str(tmp_path / "clean" / "collection"),
-            "manifest_output_dir": str(tmp_path / "clean" / "collection"),
+            "output_dir": str(tmp_path / "clean" / "collection"),
         }],
     })
 
     pd.main([config])
 
+    assert ingest_calls == [(str(tmp_path / "raw" / "collection"), "collection", False, None)]
     kinds = [c[0] for c in calls]
     assert kinds == ["export_clean_dataset", "build_manifest", "combine_manifests"]
     export_argv = calls[0][1]
-    assert export_argv[0] == str(raw_manifest)
     assert "--identification-csv" in export_argv
     assert "--mapping-file" in export_argv and str(tmp_path / "mapping.csv") in export_argv
     build_argv = calls[1][1]
     assert build_argv[0] == str(tmp_path / "clean" / "collection" / "dataset.csv")
 
 
-def test_raw_source_without_mapping_file_raises(tmp_path, monkeypatch):
+def test_missing_output_dir_raises(tmp_path, monkeypatch):
     config = _write_config(tmp_path, {
-        "output_dir": str(tmp_path / "combined"),
         "sources": [{
-            "type": "raw", "source_type": "collection",
-            "raw_manifest": str(tmp_path / "raw.csv"),
-            "identification_csv": str(tmp_path / "ident.csv"), "key_column": "inv_id",
-            "clean_output_dir": str(tmp_path / "clean"), "manifest_output_dir": str(tmp_path / "clean"),
+            "images_dir": str(tmp_path / "raw" / "collection"),
+            "identification_csv": str(tmp_path / "ident.csv"), "source_type": "collection", "key_column": "inv_id",
+            "output_dir": str(tmp_path / "clean"),
         }],
     })
-    with pytest.raises(SystemExit, match="mapping_file"):
+    with pytest.raises(SystemExit, match="output_dir"):
         pd.main([config])
+
+
+def test_omitted_mapping_file_defaults_inside_output_dir(tmp_path, monkeypatch):
+    """No 'mapping_file' in the config -- it must default to
+    <output_dir>/inv_id_mapping.csv (the combined dataset root this run
+    itself produces), not a separate shared location."""
+    _patch_ingest(monkeypatch, tmp_path)
+    export_calls = []
+    monkeypatch.setattr(pd.export_clean_dataset, "main", lambda argv: (
+        export_calls.append(argv),
+        (tmp_path / "clean").mkdir(parents=True, exist_ok=True),
+        (tmp_path / "clean" / "dataset.csv").write_text(""),
+    ))
+    monkeypatch.setattr(pd.build_manifest, "main", lambda argv: (
+        (tmp_path / "clean" / "manifest.csv").write_text(""),
+    ))
+    monkeypatch.setattr(pd.combine_manifests, "main", lambda argv: None)
+
+    output_dir = tmp_path / "combined"
+    config = _write_config(tmp_path, {
+        "output_dir": str(output_dir),
+        "sources": [{
+            "images_dir": str(tmp_path / "raw" / "collection"),
+            "identification_csv": str(tmp_path / "ident.csv"), "source_type": "collection", "key_column": "inv_id",
+            "output_dir": str(tmp_path / "clean"),
+        }],
+    })
+
+    pd.main([config])
+
+    export_argv = export_calls[0]
+    assert "--mapping-file" in export_argv
+    mapping_arg = export_argv[export_argv.index("--mapping-file") + 1]
+    assert mapping_arg == str(output_dir / "inv_id_mapping.csv")
 
 
 def test_failed_source_excluded_from_combine(tmp_path, monkeypatch):
     """build_manifest.py writes manifest_raw.csv (not manifest.csv) on
     failure -- that source must be skipped, not fed to combine_manifests."""
-    calls = []
+    _patch_ingest(monkeypatch, tmp_path)
+    monkeypatch.setattr(pd.export_clean_dataset, "main", lambda argv: (
+        (tmp_path / "clean").mkdir(parents=True, exist_ok=True),
+        (tmp_path / "clean" / "dataset.csv").write_text(""),
+    ))
 
     def fake_build_manifest(argv):
-        calls.append(("build_manifest", argv))
-        out_dir = tmp_path / "bad"
+        out_dir = tmp_path / "clean"
         out_dir.mkdir(parents=True, exist_ok=True)
         (out_dir / "manifest_raw.csv").write_text("")  # no manifest.csv written
 
@@ -128,11 +143,12 @@ def test_failed_source_excluded_from_combine(tmp_path, monkeypatch):
     monkeypatch.setattr(pd.combine_manifests, "main", lambda argv: pytest.fail("should not be called"))
 
     config = _write_config(tmp_path, {
+        "mapping_file": str(tmp_path / "mapping.csv"),
         "output_dir": str(tmp_path / "combined"),
         "sources": [{
-            "type": "compliant",
-            "dataset_csv": str(tmp_path / "bad" / "dataset.csv"),
-            "manifest_output_dir": str(tmp_path / "bad"),
+            "images_dir": str(tmp_path / "raw" / "bad"),
+            "identification_csv": str(tmp_path / "ident.csv"), "source_type": "collection", "key_column": "inv_id",
+            "output_dir": str(tmp_path / "clean"),
         }],
     })
 
@@ -140,21 +156,11 @@ def test_failed_source_excluded_from_combine(tmp_path, monkeypatch):
         pd.main([config])
 
 
-def test_ingest_with_inline_roots_skips_roots_json(tmp_path, monkeypatch):
-    """The common case: 'ingest.roots' embedded straight in the main
-    config (e.g. built by app/build_dataset.py's wizard) -- no second
-    JSON file needed."""
-    calls = []
+def test_kept_raw_manifest_is_not_deleted(tmp_path, monkeypatch):
+    rmtree_calls = []
+    monkeypatch.setattr(pd.shutil, "rmtree", lambda *a, **k: rmtree_calls.append(a))
 
-    def fake_ingest_run(roots, name, out_dir):
-        calls.append((roots, name, out_dir))
-        out_path = tmp_path / "data" / name
-        out_path.mkdir(parents=True, exist_ok=True)
-        (out_path / "manifest.csv").write_text("")
-        return out_path / "manifest.csv"
-
-    monkeypatch.setattr(pd.ingest_raw, "run", fake_ingest_run)
-    monkeypatch.setattr(pd.ingest_raw, "main", lambda argv: pytest.fail("should call run(), not main()"))
+    _patch_ingest(monkeypatch, tmp_path)
     monkeypatch.setattr(pd.export_clean_dataset, "main", lambda argv: (
         (tmp_path / "clean").mkdir(parents=True, exist_ok=True),
         (tmp_path / "clean" / "dataset.csv").write_text(""),
@@ -162,52 +168,43 @@ def test_ingest_with_inline_roots_skips_roots_json(tmp_path, monkeypatch):
     monkeypatch.setattr(pd.build_manifest, "main", lambda argv: (tmp_path / "clean" / "manifest.csv").write_text(""))
     monkeypatch.setattr(pd.combine_manifests, "main", lambda argv: None)
 
-    inline_roots = {"base_root": {"darwin": "/Volumes/EXT DATA/"}, "roots": [
-        {"path": "IDMB/images/Bombus/collection", "source_type": "collection"},
-    ]}
     config = _write_config(tmp_path, {
-        "ingest": {"roots": inline_roots, "name": "bombus_raw", "out_dir": str(tmp_path / "data")},
         "mapping_file": str(tmp_path / "mapping.csv"),
         "output_dir": str(tmp_path / "combined"),
         "sources": [{
-            "type": "raw", "source_type": "collection",
-            "identification_csv": str(tmp_path / "ident.csv"), "key_column": "inv_id",
-            "clean_output_dir": str(tmp_path / "clean"), "manifest_output_dir": str(tmp_path / "clean"),
+            "images_dir": str(tmp_path / "raw" / "collection"),
+            "identification_csv": str(tmp_path / "ident.csv"), "source_type": "collection", "key_column": "inv_id",
+            "output_dir": str(tmp_path / "clean"), "keep_raw_manifest": True,
         }],
     })
 
     pd.main([config])
 
-    assert calls == [(inline_roots, "bombus_raw", str(tmp_path / "data"))]
+    assert rmtree_calls == []
 
 
-def test_skip_ingest_reuses_existing_manifest_without_rescanning(tmp_path, monkeypatch):
-    monkeypatch.setattr(pd.ingest_raw, "main", lambda argv: pytest.fail("should not rescan with --skip-ingest"))
+def test_unkept_raw_manifest_is_deleted(tmp_path, monkeypatch):
+    rmtree_calls = []
+    monkeypatch.setattr(pd.shutil, "rmtree", lambda *a, **k: rmtree_calls.append(a))
 
-    calls = []
-
-    def fake_export(argv):
-        calls.append(argv)
-        out_dir = tmp_path / "clean"
-        out_dir.mkdir(parents=True, exist_ok=True)
-        (out_dir / "dataset.csv").write_text("")
-
-    monkeypatch.setattr(pd.export_clean_dataset, "main", fake_export)
+    _patch_ingest(monkeypatch, tmp_path)
+    monkeypatch.setattr(pd.export_clean_dataset, "main", lambda argv: (
+        (tmp_path / "clean").mkdir(parents=True, exist_ok=True),
+        (tmp_path / "clean" / "dataset.csv").write_text(""),
+    ))
     monkeypatch.setattr(pd.build_manifest, "main", lambda argv: (tmp_path / "clean" / "manifest.csv").write_text(""))
     monkeypatch.setattr(pd.combine_manifests, "main", lambda argv: None)
 
     config = _write_config(tmp_path, {
-        "ingest": {"roots_json": "config/roots.json", "name": "bombus_raw", "out_dir": str(tmp_path / "data")},
         "mapping_file": str(tmp_path / "mapping.csv"),
         "output_dir": str(tmp_path / "combined"),
         "sources": [{
-            "type": "raw", "source_type": "collection",
-            "identification_csv": str(tmp_path / "ident.csv"), "key_column": "inv_id",
-            "clean_output_dir": str(tmp_path / "clean"), "manifest_output_dir": str(tmp_path / "clean"),
+            "images_dir": str(tmp_path / "raw" / "collection"),
+            "identification_csv": str(tmp_path / "ident.csv"), "source_type": "collection", "key_column": "inv_id",
+            "output_dir": str(tmp_path / "clean"),
         }],
     })
 
-    pd.main([config, "--skip-ingest"])
+    pd.main([config])
 
-    expected_raw_manifest = str(tmp_path / "data" / "bombus_raw" / "manifest.csv")
-    assert calls[0][0] == expected_raw_manifest
+    assert len(rmtree_calls) == 1

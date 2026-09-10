@@ -5,9 +5,9 @@ a separate decode implementation -- so these numbers reflect what actually
 happens when the model is deployed, plateau-grouping bugfixes included.
 
     python evaluate.py \
-        --weights data/models/unet_landmarks/2026-08-26_finetune1/weights.pth \
-        --manifest data/models/unet_landmarks/2026-08-26_finetune1/test_manifest.csv \
-        --output data/models/unet_landmarks/2026-08-26_finetune1/eval.json
+        --weights models/unet_landmarks/2026-08-26_finetune1/weights.pth \
+        --manifest models/unet_landmarks/2026-08-26_finetune1/test_manifest.csv \
+        --output models/unet_landmarks/2026-08-26_finetune1/eval.json
 
 Scope: this measures raw point localization (predicted points vs ground
 truth points, matched by nearest position via the Hungarian algorithm,

@@ -45,11 +45,11 @@ Statuses:
   - OK      : numbered, no anomaly signal.
 
 Usage:
-    python -m landmarks.build_reference --ref data/references/ref-landmarks.tps \\
-        --drop 3 --out data/references/reference_shape.npz          # once
+    python -m landmarks.build_reference --ref references/ref-landmarks.tps \\
+        --drop 3 --out references/shapes/reference_shape.tps          # once
 
     python -m landmarks.renumber data/clean/collection --tps landmarks.tps \\
-        --reference data/references/reference_shape.npz \\
+        --reference references/shapes/reference_shape.tps \\
         --biological-data data/clean/collection/biological_data.csv
 """
 from __future__ import annotations
@@ -149,16 +149,8 @@ def main(argv: list[str] | None = None) -> None:
     setup_console_logging(log_level_from_args(args))
     input_path = args.dataset / "landmarks" / args.tps
 
-    zones, ref_meta = load_reference(args.reference)
-    logger.info(
-        "Reference: %d zones (%s, %s specimen(s) used, frozen on %s)",
-        len(zones), args.reference, ref_meta.get("n_specimens_used", "?"), ref_meta.get("created_at", "?"),
-    )
-    drop = ref_meta.get("drop")
-    if drop is not None and drop >= 0:
-        zone_orig_idx = ref_meta.get("zone_orig_idx")
-        idx_repr = [int(i) for i in zone_orig_idx] if zone_orig_idx is not None else "?"
-        logger.info("  order = source reference %s (LM%d dropped)", idx_repr, drop)
+    zones = load_reference(args.reference)
+    logger.info("Reference: %d zones (%s)", len(zones), args.reference)
 
     inputs, parse_errors = parse_tps(input_path, strict=False)
     if not inputs:

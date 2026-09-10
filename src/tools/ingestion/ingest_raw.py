@@ -36,6 +36,14 @@ it's processing, so it doesn't need to be pre-split by hand.
 
 Usage:
     python -m tools.ingestion.ingest_raw config/roots.json --name bombus_raw
+
+`tools.ingestion.prepare_dataset` doesn't go through this CLI/`run()` at
+all -- it scans one source's own images folder at a time via
+`run_for_folder()` below (no roots config, no per-platform `base_root`),
+since a source there already IS one images folder. `run()`/this CLI stay
+useful standalone for scanning several roots from an external drive by
+hand in one pass (e.g. cross-source duplicate-content detection, which
+`run_for_folder()`'s one-folder-at-a-time scans can't do).
 """
 from __future__ import annotations
 
@@ -277,12 +285,59 @@ def write_csv(rows: list[dict], out_path: Path, fieldnames: Optional[list[str]] 
         writer.writerows(rows)
 
 
+def run_for_folder(
+    images_dir: str, source_type: str, *, photographer_subfolder: bool = False, naming: Optional[str] = None,
+) -> tuple[Path, Path, bool]:
+    """Scans ONE raw images folder and writes its manifest.csv (+
+    manifest/duplicates.csv) into a hidden subfolder inside it
+    (`<images_dir>/.idmybee_ingest/`) rather than some separately-configured
+    output location -- the scan is a byproduct of preparing that one
+    source, not a shared artifact spanning several sources/roots the way
+    `run()` above is. This is what `tools.ingestion.prepare_dataset` calls,
+    once per source (see its module docstring) -- a source there IS one
+    images folder, no separate roots config needed.
+
+    If that hidden subfolder already holds a manifest.csv from an earlier
+    run (kept on purpose -- see prepare_dataset's `keep_raw_manifest`),
+    it's reused as-is instead of rescanning.
+
+    Returns (manifest.csv path, the hidden subfolder itself -- caller's to
+    delete unless the source asked to keep it, whether it was reused
+    rather than freshly scanned).
+    """
+    ingest_dir = Path(images_dir) / ".idmybee_ingest"
+    manifest_path = ingest_dir / "manifest.csv"
+    if manifest_path.exists():
+        return manifest_path, ingest_dir, True
+
+    root_cfg = {
+        "path": str(Path(images_dir).resolve()), "source_type": source_type,
+        "photographer_subfolder": photographer_subfolder,
+    }
+    if naming:
+        root_cfg["naming"] = naming
+
+    # root_cfg["path"] is already absolute, so the base_dir passed to
+    # scan_root() here is irrelevant (Path.__truediv__ discards the left
+    # side when the right side is absolute) -- there's no per-platform
+    # base_root to resolve for a single folder the caller already picked
+    # on this machine.
+    records = scan_root(root_cfg, Path("."), seen_hash=set())
+    logger.info("%-60s [%-10s] -> %d images", images_dir, source_type, len(records))
+
+    duplicate_rows = build_duplicates_report(records)
+    image_fields = [f.name for f in fields(ImageRecord)]
+    write_csv([asdict(r) for r in records], manifest_path, image_fields)
+    write_csv(duplicate_rows, ingest_dir / "duplicates.csv", ["content_hash", "n_copies", "paths"])
+    return manifest_path, ingest_dir, False
+
+
 def run(roots: dict, name: str, out_dir: str = "data") -> Path:
     """Scans every root in `roots` (an already-parsed roots config -- see
     module docstring for the shape) and writes manifest.csv (+
     manifest/duplicates.csv) under <out_dir>/<name>/. In-process entry
     point for a caller that already has the config in memory (e.g.
-    tools.ingestion.prepare_dataset, or app/build_dataset.py's dataset-prep
+    tools.ingestion.prepare_dataset, or app/setup_dataset.py's dataset-prep
     wizard, which builds `roots` straight from its own widgets) -- same
     pattern as every other stage here already offers both a CLI main(argv)
     and a direct Python call. Returns the manifest.csv path."""

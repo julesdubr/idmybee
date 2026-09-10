@@ -1,7 +1,7 @@
 """export_review.py
 Writes the two validation-review CSVs (crops and landmark placement) for a
 dataset already through extraction.normalize_crop / landmarks.renumber --
-the CLI counterpart of app/build_dataset.py's two validation steps, sharing
+the CLI counterpart of app/setup_dataset.py's two validation steps, sharing
 the exact same core logic (utils.review).
 
 Each review CSV (<dataset>/review/{crops,landmarks}_review.csv) has a

@@ -2,12 +2,12 @@
 Fine-tune (or train from scratch) the landmark UNet.
 
     python train.py \
-        --manifest data/models/unet_landmarks/train_manifest.csv \
-        --init-weights data/models/unet_landmarks/legacy_baseline/weights.pth \
-        --output-root data/models --epochs 150 --patience 20
+        --manifest models/unet_landmarks/train_manifest.csv \
+        --init-weights models/unet_landmarks/legacy_baseline/weights.pth \
+        --output-root models --epochs 150 --patience 20
 
-Produces data/models/<family>/<run_id>/weights.pth, train_config.json,
-metrics.csv, and appends a summary row to data/models/<family>/runs.csv.
+Produces models/<family>/<run_id>/weights.pth, train_config.json,
+metrics.csv, and appends a summary row to models/<family>/runs.csv.
 
 Fixes two issues present in the original UNet_training.ipynb loop:
 - patience_count was read before being initialized (NameError risk on a
@@ -69,7 +69,7 @@ def main():
     parser.add_argument("--manifest", required=True)
     parser.add_argument("--init-weights", default=None,
                          help="Existing weights.pth to fine-tune from; omit to train from scratch")
-    parser.add_argument("--output-root", default="data/models")
+    parser.add_argument("--output-root", default="models")
     parser.add_argument("--family", default=MODEL_FAMILY)
     parser.add_argument("--run-id", default=None, help="Default: UTC timestamp")
     parser.add_argument("--epochs", type=int, default=150)

@@ -17,7 +17,7 @@ utils.landmarking_pipeline and PIPELINE.md):
     landmarks.predict                 -> <dataset>/landmarks/landmarks.{tps,csv}
     landmarks.renumber                -> <dataset>/landmarks/landmarks_numbered.{tps,csv}
     tools.pipeline.export_final_landmarks      -> <dataset>/export/
-    classifiers.predict batch         -> data/models/lda/<run_id>/predict/<eval_tag>/predictions.csv
+    classifiers.predict batch         -> models/lda/<run_id>/predict/<eval_tag>/predictions.csv
 
 If biological_data.csv has little or no known species/caste, the printed
 top-1/top-3 "accuracy" only reflects the labeled rows -- exploratory, not a
@@ -25,8 +25,8 @@ held-out test set.
 
 Usage:
     python -m tools.pipeline.predict_dataset data/Bombus/terrain \\
-        --model data/models/lda/species_collection/train/model.joblib \\
-        --unet-model data/models/unet_landmarks/2026-08-29_131929/weights.pt
+        --model models/lda/species_collection/train/model.joblib \\
+        --unet-model models/unet_landmarks/2026-08-29_131929/weights.pt
 """
 from __future__ import annotations
 

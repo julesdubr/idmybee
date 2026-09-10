@@ -11,19 +11,24 @@ will call directly.").
 Only the light (YOLO-OBB) detector backend is wired up here -- the heavy
 (YOLOE) backend additionally needs a --heavy-ref JSON of reference
 embeddings, not exposed in this first version, and isn't what the two
-existing production models (data/models/yolon_obb/best.pt) were run with.
+existing production models (models/yolon_obb/best.pt) were run with.
 
     streamlit run app/single_image.py
 """
 from __future__ import annotations
 
 import argparse
+import sys
 from pathlib import Path
 
 import cv2
 import numpy as np
 import streamlit as st
 
+# app/ itself isn't an installed package -- see app/setup_dataset.py's
+# identical sys.path assist for why this is needed for a sibling import.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common import plot_reference_shape  # noqa: E402
 from classifiers.predict import predict_specimens
 from core.model_io import load_model as load_lda_model_impl
 from core.run_io import model_display_name
@@ -31,7 +36,7 @@ from core.tps_io import ImageLandmarks
 from extraction.light import detection as light_backend
 from landmarks.build_reference import load_reference
 from landmarks_trainer.model import load_weights as load_unet_weights
-from utils.landmarking_pipeline import DEFAULT_DETECTOR_MODEL, default_gpa_reference, place_landmarks
+from utils.landmarking_pipeline import DEFAULT_DETECTOR_MODEL, REFERENCE_SHAPES_DIR, place_landmarks
 from utils.tps_overlay import draw_landmarks
 
 LOGO_PATH = Path("app/assets/idmb_logo.png")
@@ -75,8 +80,7 @@ def load_unet(weights_path: str, device: str):
 
 @st.cache_resource(show_spinner="Loading reference shape...")
 def load_zones(reference_path: str):
-    zones, _meta = load_reference(Path(reference_path))
-    return zones
+    return load_reference(Path(reference_path))
 
 
 @st.cache_resource(show_spinner="Loading classification model...")
@@ -91,7 +95,7 @@ def discover(pattern: str) -> list[str]:
 with st.sidebar:
     st.header("Models")
 
-    lda_choices = discover("data/models/lda/*/train/model.joblib")
+    lda_choices = discover("models/lda/*/train/model.joblib")
     if lda_choices:
         lda_model_path = st.selectbox(
             "Classification model", lda_choices, format_func=model_display_name,
@@ -103,7 +107,7 @@ with st.sidebar:
 
     detector_model_path = st.text_input("Wing detector (YOLO-OBB) weights", value=str(DEFAULT_DETECTOR_MODEL))
 
-    unet_choices = discover("data/models/unet_landmarks/*/weights.pt")
+    unet_choices = discover("models/unet_landmarks/*/weights.pt")
     if unet_choices:
         unet_model_path = st.selectbox(
             "UNet landmark weights", unet_choices, format_func=lambda p: Path(p).parent.name,
@@ -115,10 +119,21 @@ with st.sidebar:
 
     st.header("Pipeline parameters")
     n_landmarks = st.number_input("Number of landmarks", min_value=1, value=19, step=1)
-    reference_path = st.text_input(
-        "GPA reference shape", value=str(default_gpa_reference(n_landmarks)),
-        key=f"reference_path_{n_landmarks}",
-    )
+
+    reference_choices = discover(f"{REFERENCE_SHAPES_DIR}/*.tps")
+    if reference_choices:
+        reference_path = st.selectbox(
+            "GPA reference shape", reference_choices, format_func=lambda p: Path(p).stem,
+            help="A plain .tps, one specimen block (see landmarks.build_reference).",
+        )
+    else:
+        reference_path = st.text_input("GPA reference shape path")
+    if reference_path and Path(reference_path).exists():
+        with st.expander("Preview reference shape"):
+            zones = load_zones(reference_path)
+            st.caption(f"{len(zones)} landmark(s)")
+            st.pyplot(plot_reference_shape(zones))
+
     imgsz = st.number_input("Detection image size", min_value=64, value=1024, step=32)
     conf = st.slider("Detection confidence threshold", 0.0, 1.0, 0.10, 0.01)
     max_det = st.number_input("Max detections", min_value=1, value=10, step=1)

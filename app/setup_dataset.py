@@ -1,15 +1,14 @@
-"""build_dataset.py
-Streamlit dataset-builder / reference-model workflow -- Scenario 1 (see
-README.md "Scenario 1 -- prepare a dataset, build a reference model, and
-make predictions on it"). Independent of app/single_image.py (the
-field/single-photo tool): this one drives the DATASET-level orchestrators
-(utils.landmarking_pipeline, classifiers.train/predict) a human can pause
-mid-run to check and correct the automatic OK/SUSPECT/FAILED statuses (see
-utils.review) before they feed a model, then either fit a new reference
-model or classify the dataset with an existing one -- see the "goal" choice
-in step 1.
+"""setup_dataset.py
+Streamlit dataset setup/cleaning tool -- Tool 1 of 3 (see README.md
+"Scenario 1"). Prepares a raw or existing dataset root, runs it through
+detection -> crop -> UNet landmark placement -> renumbering -> export with
+two human review checkpoints in between, and stops once the dataset is
+ready. Fitting a model on it (app/train_model.py) or classifying it with
+one (app/predict_dataset.py) are separate tools, run afterwards -- neither
+runs any landmarking of its own, they just point at a dataset this tool has
+already prepared.
 
-    streamlit run app/build_dataset.py
+    streamlit run app/setup_dataset.py
 
 Reuses the exact same argument definitions as the CLI (utils.cli.
 add_dataset_args/add_landmarking_args, utils.landmarking_pipeline.
@@ -21,15 +20,20 @@ still runs through its own main(argv)/run_batch(args), in-process, exactly
 as tools.pipeline.train_dataset/predict_dataset do -- this app only adds
 the two validation checkpoints and the step-by-step pacing around them.
 
-Preparing a dataset (raw images + a per-photo CSV, several sources, ...)
-goes through tools.ingestion.prepare_dataset.run() -- the exact same
-config-driven orchestrator the CLI uses (see that module's docstring for
-the config shape), just built from the step 1 wizard's widgets instead of
-a hand-written JSON file.
+Preparing a dataset (raw images + a per-photo identification CSV, several
+sources, ...) goes through tools.ingestion.prepare_dataset.run() -- the
+exact same config-driven orchestrator the CLI uses (see that module's
+docstring for the config shape), just built from the step 1 wizard's
+widgets instead of a hand-written JSON file. inv_id_mapping.csv and (when
+built interactively rather than supplied) collection_origin_codes.csv are
+written inside the dataset this run produces -- see manifest.origin_table
+and tools.ingestion.prepare_dataset's module docstring, no separate shared
+identification/ folder anymore.
 """
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -42,48 +46,40 @@ import streamlit as st
 # this file's own directory on sys.path, so a sibling import needs an
 # explicit assist.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _common import LOGO_PATH, discover, image_to_data_url, array_to_data_url, path_picker, run_with_log  # noqa: E402
-from classifiers.predict import run_batch as predict_run_batch
-from classifiers.train import main as train_main
-from tools.ingestion import prepare_dataset
-from tools.ingestion.ingest_raw import NAMING_PARSERS
-from utils.cli import add_dataset_args, add_dataset_positional, add_logging_args
-from utils.landmarking_pipeline import (
+from _common import (  # noqa: E402
+    LOGO_PATH, discover, image_to_data_url, array_to_data_url, path_picker, plot_reference_shape, run_with_log,
+)
+from tools.ingestion import prepare_dataset  # noqa: E402
+from tools.ingestion.ingest_raw import NAMING_PARSERS  # noqa: E402
+from manifest.origin_table import (  # noqa: E402
+    assign_constant_origin, build_origin_table, origin_codes_from_table, write_origin_codes,
+)
+from utils.cli import add_dataset_args, add_dataset_positional, add_logging_args  # noqa: E402
+from utils.landmarking_pipeline import (  # noqa: E402
     DEFAULT_DETECTOR_MODEL,
+    REFERENCE_SHAPES_DIR,
     add_landmarking_args,
-    dataset_filter_argv,
-    default_gpa_reference,
+    resolve_export_dir,
     run_detection_and_crop,
     run_export,
     run_landmark_placement,
 )
-from utils.review import (
+from utils.review import (  # noqa: E402
     build_crop_review_df,
     build_landmark_review_df,
     load_numbered_landmarks_by_photo_id,
     write_crop_review,
     write_landmarks_review,
 )
-from utils.tps_overlay import draw_landmarks
-from core.pipeline_io import resolve_path
-from core.run_io import (
-    FAMILY_LDA,
-    build_eval_tag,
-    build_run_id,
-    model_display_name,
-    read_metrics,
-    result_path,
-    run_id_from_model_path,
-)
+from utils.tps_overlay import draw_landmarks  # noqa: E402
+from core.pipeline_io import resolve_path  # noqa: E402
+from landmarks.build_reference import load_reference  # noqa: E402
 
 STATUSES = ["OK", "SUSPECT", "FAILED"]
-STEPS = [
-    "Setup", "Detection & crop", "Crop review",
-    "Landmark placement", "Landmark review", "Export", "Build model / predict",
-]
+STEPS = ["Setup", "Detection & crop", "Crop review", "Landmark placement", "Landmark review", "Export"]
 
 st.set_page_config(
-    page_title="idmybee -- build a reference model",
+    page_title="idmybee -- setup a dataset",
     page_icon=str(LOGO_PATH) if LOGO_PATH.exists() else None,
     layout="wide",
 )
@@ -94,15 +90,13 @@ st.set_page_config(
 # ---------------------------------------------------------------------------
 
 st.session_state.setdefault("step", 1)
-st.session_state.setdefault("goal", "train")
 st.session_state.setdefault("dataset_root", "")
 st.session_state.setdefault("args", None)
 st.session_state.setdefault("crop_review_df", None)
 st.session_state.setdefault("landmark_review_df", None)
 st.session_state.setdefault("prep_sources", [{"id": 0}])
 st.session_state.setdefault("prep_next_id", 1)
-st.session_state.setdefault("prep_raw_roots", [{"id": 0}])
-st.session_state.setdefault("prep_raw_roots_next_id", 1)
+st.session_state.setdefault("export_dir", None)
 
 
 def restart() -> None:
@@ -117,10 +111,8 @@ def advance(step: int) -> None:
 
 
 def landmarking_only_parser() -> argparse.ArgumentParser:
-    """dataset + landmarking + dataset-filter flags only -- goal-specific
-    flags (--level/--model-name for training, --model/--low-confidence-
-    threshold for predicting) are added directly onto `args` in step 7,
-    once the goal is known, rather than parsed here."""
+    """dataset + landmarking + dataset-filter flags only -- this tool never
+    fits/applies a model itself (see app/train_model.py, app/predict_dataset.py)."""
     parser = argparse.ArgumentParser()
     add_dataset_positional(parser)
     add_landmarking_args(parser)
@@ -134,8 +126,8 @@ def header() -> None:
     if LOGO_PATH.exists():
         col_logo.image(str(LOGO_PATH), width=100)
     with col_title:
-        st.title("Build a reference model")
-        st.caption("Prepare a dataset, validate it, then fit or apply a GPA-PCA-LDA model.")
+        st.title("Set up a dataset")
+        st.caption("Prepare a dataset and validate it -- detection, landmark placement, human review, export.")
     with st.sidebar:
         st.progress(st.session_state.step / len(STEPS), text=f"Step {st.session_state.step} of {len(STEPS)}")
         for i, name in enumerate(STEPS, start=1):
@@ -153,159 +145,198 @@ header()
 
 
 # ---------------------------------------------------------------------------
-# Step 1 -- setup: goal, dataset source, landmarking parameters
+# Step 1 -- setup: dataset source, origin codes, landmarking parameters
 # ---------------------------------------------------------------------------
 
 def _source_to_config(source: dict) -> dict:
-    return {k: v for k, v in source.items() if k != "id" and v not in (None, "", False)}
+    return {k: v for k, v in source.items() if k != "id" and not k.startswith("_") and v not in (None, "", False)}
+
+
+def _render_origin_codes(sid, source: dict) -> None:
+    """Origin-codes UI: an explicit CSV (power-user path, unchanged), or an
+    interactive table built from the identification CSV's own origin
+    column values -- or, if that column doesn't exist at all, a single
+    inv_name applied to every row of this source. See
+    manifest.origin_table and _resolve_source_for_submit()."""
+    source["origin_codes"] = path_picker(
+        "Origin codes CSV (optional -- overrides the automatic table below)",
+        mode="file", key=f"src_{sid}_origin_codes",
+    )
+    source["origin_column"] = st.text_input(
+        "Origin column in the identification CSV (optional, default: collection_origin)",
+        key=f"src_{sid}_origin_column",
+    )
+    if source["origin_codes"]:
+        return
+
+    source["_auto_origin"] = st.checkbox(
+        "Build inv_name codes automatically for this source", key=f"src_{sid}_auto_origin",
+        help="Shows an editable table pre-filled with the origin values found in the identification "
+             "CSV -- or, if it has no origin column, a single inv_name for the whole source.",
+    )
+    if not source["_auto_origin"]:
+        return
+    identification_csv = source.get("identification_csv")
+    if not identification_csv or not Path(identification_csv).exists():
+        st.caption("Pick an identification CSV above first.")
+        return
+
+    origin_column = source["origin_column"] or "collection_origin"
+    try:
+        identification_df = pd.read_csv(identification_csv)
+    except (OSError, pd.errors.ParserError) as exc:
+        st.error(f"Could not read {identification_csv}: {exc}")
+        return
+
+    if origin_column in identification_df.columns:
+        table = build_origin_table(identification_df, origin_column)
+        if table.empty:
+            st.warning(f"No values found in column {origin_column!r}.")
+            return
+        st.caption(f"Fill in an inv_name for each {origin_column!r} value found:")
+        source["_origin_table"] = st.data_editor(
+            table, key=f"src_{sid}_origin_table", hide_index=True, num_rows="fixed",
+        )
+    else:
+        st.caption(f"No {origin_column!r} column found in the identification CSV.")
+        source["_constant_inv_name"] = st.text_input(
+            "inv_name to use for every specimen in this source", key=f"src_{sid}_constant_inv_name",
+        )
 
 
 def _render_source(index: int, source: dict, n_sources: int) -> None:
     sid = source["id"]
     with st.container(border=True):
-        col_type, col_remove = st.columns([5, 1])
-        source["type"] = col_type.segmented_control(
-            f"Source {index + 1}", options=["compliant", "raw"],
-            format_func=lambda t: "Compliant per-photo CSV" if t == "compliant" else "Raw (needs identity resolution)",
-            default=source.get("type", "compliant"), required=True, key=f"src_{sid}_type",
-        )
+        col_title, col_remove = st.columns([5, 1])
+        col_title.markdown(f"**Source {index + 1}**")
         if n_sources > 1 and col_remove.button(":material/delete:", key=f"src_{sid}_remove", help="Remove this source"):
             st.session_state.prep_sources.remove(source)
             st.rerun()
 
-        if source["type"] == "compliant":
-            source["dataset_csv"] = path_picker(
-                "Per-photo CSV", mode="file", key=f"src_{sid}_dataset_csv",
-                help="One row per photo -- see 'Expected format' above.",
-            )
-            col_a, col_b = st.columns(2)
-            source["path_column"] = col_a.text_input("Path column", value="path", key=f"src_{sid}_path_column")
-            source["default_device_type"] = col_b.text_input("Default device type", value="S", key=f"src_{sid}_ddt")
-            source["base_dir"] = path_picker("Base dir (optional, resolves relative paths)", mode="dir", key=f"src_{sid}_base_dir")
-            source["manifest_output_dir"] = path_picker("Manifest output dir", mode="dir", key=f"src_{sid}_manifest_out")
-        else:
-            col_a, col_b = st.columns(2)
-            source["source_type"] = col_a.text_input("Source type label", key=f"src_{sid}_source_type", placeholder="collection")
-            source["key_column"] = col_b.text_input(
-                "Key column", key=f"src_{sid}_key_column", placeholder="inv_id",
-                help="Identification CSV column matching the raw manifest's original_id.",
-            )
-            source["identification_csv"] = path_picker("Identification CSV", mode="file", key=f"src_{sid}_id_csv")
-            source["raw_manifest"] = path_picker(
-                "Raw manifest.csv (optional -- else derived from raw ingestion below)",
-                mode="file", key=f"src_{sid}_raw_manifest",
-            )
-            source["clean_output_dir"] = path_picker("Clean export dir", mode="dir", key=f"src_{sid}_clean_out")
-            source["manifest_output_dir"] = path_picker("Manifest output dir", mode="dir", key=f"src_{sid}_manifest_out")
-            with st.expander("Advanced identity-resolution options"):
-                source["device_column"] = st.text_input("Device column (optional)", key=f"src_{sid}_device_column")
-                source["device_name_column"] = st.text_input(
-                    "Device name column (optional, default: device)", key=f"src_{sid}_device_name_column",
-                )
-                source["compare_columns"] = st.text_input(
-                    "Compare columns (comma-separated, optional, default: genus,species,caste,dd,mm,yyyy)",
-                    key=f"src_{sid}_compare_columns",
-                )
-                source["origin_codes"] = path_picker("Origin codes CSV (optional)", mode="file", key=f"src_{sid}_origin_codes")
-                source["origin_column"] = st.text_input(
-                    "Origin column (optional, default: collection_origin)", key=f"src_{sid}_origin_column",
-                )
-                source["image_group_by"] = st.text_input(
-                    "Group copied images by columns (comma-separated, optional)", key=f"src_{sid}_image_group_by",
-                )
-                source["default_device_type"] = st.text_input("Default device type", value="S", key=f"src_{sid}_ddt_raw")
-                source["no_copy_images"] = st.checkbox("Don't copy image files (CSVs/reports only)", key=f"src_{sid}_no_copy")
-
-
-def _render_raw_root(index: int, root: dict, n_roots: int) -> None:
-    rid = root["id"]
-    with st.container(border=True):
-        col_path, col_remove = st.columns([5, 1])
-        root["path"] = col_path.text_input(
-            f"Root {index + 1} -- subfolder under the base dir", value=root.get("path", ""),
-            key=f"root_{rid}_path", placeholder="IDMB/images/Bombus/collection",
+        source["images_dir"] = path_picker(
+            "Raw images folder", mode="dir", key=f"src_{sid}_images_dir",
+            help="Scanned for photos; each filename is parsed for an original id/device/shot index.",
         )
-        if n_roots > 1 and col_remove.button(":material/delete:", key=f"root_{rid}_remove", help="Remove this root"):
-            st.session_state.prep_raw_roots.remove(root)
-            st.rerun()
+        source["identification_csv"] = path_picker(
+            "Identification CSV (biological data)", mode="file", key=f"src_{sid}_id_csv",
+        )
         col_a, col_b = st.columns(2)
-        root["source_type"] = col_a.text_input(
-            "Source type", value=root.get("source_type", ""), key=f"root_{rid}_source_type", placeholder="collection",
+        source["source_type"] = col_a.text_input("Source type", key=f"src_{sid}_source_type", placeholder="collection")
+        source["key_column"] = col_b.text_input(
+            "Key column", key=f"src_{sid}_key_column", placeholder="inv_id",
+            help="Identification CSV column matching each photo's parsed original id.",
         )
-        root["photographer_subfolder"] = col_b.checkbox(
-            "First-level subfolder is the photographer (terrain style)",
-            value=root.get("photographer_subfolder", False), key=f"root_{rid}_photog",
+        source["output_dir"] = path_picker(
+            "Output dir (this source's own dataset.csv + manifest.csv)", mode="dir", key=f"src_{sid}_output_dir",
         )
-        naming = st.selectbox(
-            "Filename convention (blank = inferred from the checkbox above)",
-            [""] + list(NAMING_PARSERS), index=0, key=f"root_{rid}_naming",
-        )
-        if naming:
-            root["naming"] = naming
-        else:
-            root.pop("naming", None)
+        with st.expander("Origin codes (inv_name)", icon=":material/tag:"):
+            _render_origin_codes(sid, source)
+        with st.expander("Advanced options"):
+            col_a, col_b = st.columns(2)
+            source["photographer_subfolder"] = col_a.checkbox(
+                "First-level subfolder is the photographer (terrain style)", key=f"src_{sid}_photog",
+            )
+            naming = col_b.selectbox(
+                "Filename convention (blank = inferred from the checkbox above)",
+                [""] + list(NAMING_PARSERS), index=0, key=f"src_{sid}_naming",
+            )
+            if naming:
+                source["naming"] = naming
+            else:
+                source.pop("naming", None)
+            source["device_column"] = st.text_input("Device column (optional)", key=f"src_{sid}_device_column")
+            source["device_name_column"] = st.text_input(
+                "Device name column (optional, default: device)", key=f"src_{sid}_device_name_column",
+            )
+            source["compare_columns"] = st.text_input(
+                "Compare columns (comma-separated, optional, default: genus,species,caste,dd,mm,yyyy)",
+                key=f"src_{sid}_compare_columns",
+            )
+            source["image_group_by"] = st.text_input(
+                "Group copied images by columns (comma-separated, optional)", key=f"src_{sid}_image_group_by",
+            )
+            source["default_device_type"] = st.text_input("Default device type", value="S", key=f"src_{sid}_ddt")
+            source["no_copy_images"] = st.checkbox("Don't copy image files (CSVs/reports only)", key=f"src_{sid}_no_copy")
+            source["keep_raw_manifest"] = st.checkbox(
+                "Keep the raw scan report after preparing (written inside the images folder as "
+                ".idmybee_ingest/ -- also reused instead of rescanned on the next run)",
+                key=f"src_{sid}_keep_raw",
+            )
+
+
+def _resolve_source_for_submit(source: dict) -> dict:
+    """Returns a copy of `source` with origin_codes/origin_column/
+    identification_csv finalized for tools.ingestion.prepare_dataset --
+    writes the auto-built origin table (and, for the no-origin-column
+    case, an adjusted identification CSV with a synthetic constant column)
+    into this source's own output_dir. Raises ValueError if the user
+    opted into auto-building but hasn't filled it in yet. See
+    _render_origin_codes()/manifest.origin_table."""
+    resolved = dict(source)
+    if resolved.get("origin_codes") or not resolved.get("_auto_origin"):
+        resolved.pop("_auto_origin", None)
+        resolved.pop("_origin_table", None)
+        resolved.pop("_constant_inv_name", None)
+        return resolved
+
+    output_dir = Path(resolved["output_dir"])
+    output_dir.mkdir(parents=True, exist_ok=True)
+    origin_column = resolved.get("origin_column") or "collection_origin"
+    identification_df = pd.read_csv(resolved["identification_csv"])
+    label = resolved.get("source_type", "?")
+
+    if origin_column in identification_df.columns:
+        table = resolved.get("_origin_table")
+        if table is None or not origin_codes_from_table(table):
+            raise ValueError(f"Source {label!r}: fill in the origin codes table before preparing.")
+        codes_path = output_dir / "collection_origin_codes.csv"
+        write_origin_codes(table, codes_path)
+        resolved["origin_codes"] = str(codes_path)
+        resolved["origin_column"] = origin_column
+    else:
+        inv_name = (resolved.get("_constant_inv_name") or "").strip()
+        if not inv_name:
+            raise ValueError(f"Source {label!r}: enter an inv_name before preparing.")
+        df_with_col, col, table = assign_constant_origin(identification_df, inv_name)
+        adjusted_csv = output_dir / "identification_with_origin.csv"
+        df_with_col.to_csv(adjusted_csv, index=False)
+        codes_path = output_dir / "collection_origin_codes.csv"
+        write_origin_codes(table, codes_path)
+        resolved["identification_csv"] = str(adjusted_csv)
+        resolved["origin_column"] = col
+        resolved["origin_codes"] = str(codes_path)
+
+    resolved.pop("_auto_origin", None)
+    resolved.pop("_origin_table", None)
+    resolved.pop("_constant_inv_name", None)
+    return resolved
 
 
 def _prepare_dataset_wizard() -> None:
     with st.expander("Expected format", icon=":material/info:"):
         st.markdown(
-            "- **Compliant per-photo CSV** (what `tools.ingestion.build_manifest` expects): one row "
-            "per photo. Columns `inv_id`, `species`, `caste` are mandatory, plus a path column "
-            "(default `path`) pointing at each photo's image file. Everything else becomes "
-            "biological data; `photo_id`/`device_type`/`device`/`photo_index`/`photographer`/"
-            "`source_type` are optional photo-level columns, auto-derived if left out.\n"
-            "- **Raw source** (several filename conventions, the same raw label reused across "
-            "specimens, ...): point at a raw identification CSV and the column that matches each "
-            "photo's parsed original id -- identity conflicts get resolved into a compliant CSV "
-            "first, automatically.\n"
+            "Each source is a folder of raw photos (several filename conventions supported -- "
+            "the same raw label can be reused across specimens) plus an identification CSV with "
+            "the biological data (species, caste, ...) and a column matching each photo's parsed "
+            "id. Identity conflicts are resolved automatically into one clean, canonical dataset "
+            "-- no per-photo CSV to hand-prepare first.\n"
             "- Add more than one source (e.g. collection + terrain) to combine them into one "
-            "dataset root."
+            "dataset root.\n"
+            "- inv_id_mapping.csv is written inside the output dir below (shared across sources) -- "
+            "no separate mapping file to point at unless you're deliberately sharing one across "
+            "several dataset roots."
         )
 
     output_dir = path_picker(
         "Output dir (final combined manifest.csv/biological_data.csv)",
         mode="dir", key="prep_output_dir",
     )
-
-    needs_ingest = st.checkbox(
-        "Source(s) start as raw image folders (need raw ingestion first)", key="prep_needs_ingest",
+    mapping_file = path_picker(
+        "Identity mapping file (optional -- default: <output dir>/inv_id_mapping.csv)",
+        mode="file", key="prep_mapping_file",
     )
-    ingest_cfg = None
-    if needs_ingest:
-        with st.container(border=True):
-            st.caption("Raw ingestion")
-            base_dir = path_picker(
-                "Raw images base dir", mode="dir", key="prep_raw_base_dir",
-                help="Local folder (or mounted drive) every root below is a subfolder of.",
-            )
-            raw_roots: list[dict] = st.session_state.prep_raw_roots
-            for i, root in enumerate(raw_roots):
-                _render_raw_root(i, root, len(raw_roots))
-            if st.button(":material/add: Add root", key="prep_add_root"):
-                raw_roots.append({"id": st.session_state.prep_raw_roots_next_id})
-                st.session_state.prep_raw_roots_next_id += 1
-                st.rerun()
-
-            col_a, col_b = st.columns(2)
-            ingest_name = col_a.text_input("Ingest name", key="prep_ingest_name", placeholder="bombus_raw")
-            ingest_out_dir = col_b.text_input("Ingest out dir", value="data", key="prep_ingest_out_dir")
-            ingest_cfg = {
-                "roots": {
-                    "base_root": {sys.platform: base_dir},
-                    "roots": [{k: v for k, v in r.items() if k != "id"} for r in raw_roots],
-                },
-                "name": ingest_name, "out_dir": ingest_out_dir,
-            }
 
     sources: list[dict] = st.session_state.prep_sources
-    needs_mapping = any(s.get("type") == "raw" for s in sources)
-    mapping_file = ""
-    if needs_mapping:
-        mapping_file = path_picker(
-            "Identity mapping file (frozen original_id -> inv_id, shared across raw sources)",
-            mode="file", key="prep_mapping_file",
-        )
-
     st.caption("Sources")
     for i, source in enumerate(sources):
         _render_source(i, source, len(sources))
@@ -320,18 +351,8 @@ def _prepare_dataset_wizard() -> None:
         errors = []
         if not output_dir:
             errors.append("Output dir is required.")
-        if needs_ingest:
-            if not (ingest_cfg["roots"]["base_root"][sys.platform] and ingest_cfg["name"]):
-                errors.append("Raw ingestion needs a base dir and a name.")
-            if any(not r.get("path") or not r.get("source_type") for r in ingest_cfg["roots"]["roots"]):
-                errors.append("Raw ingestion: every root needs a path and a source type.")
-        if needs_mapping and not mapping_file:
-            errors.append("A mapping file is required when any source is raw.")
+        required = ["images_dir", "identification_csv", "source_type", "key_column", "output_dir"]
         for i, source in enumerate(sources):
-            if source.get("type") == "raw":
-                required = ["identification_csv", "key_column", "source_type", "manifest_output_dir", "clean_output_dir"]
-            else:
-                required = ["dataset_csv", "manifest_output_dir"]
             if any(not source.get(field) for field in required):
                 errors.append(f"Source {i + 1}: {', '.join(required)} are all required.")
 
@@ -340,9 +361,13 @@ def _prepare_dataset_wizard() -> None:
                 st.error(error)
             return
 
-        config: dict = {"output_dir": output_dir, "sources": [_source_to_config(s) for s in sources]}
-        if ingest_cfg:
-            config["ingest"] = ingest_cfg
+        try:
+            resolved_sources = [_resolve_source_for_submit(s) for s in sources]
+        except ValueError as exc:
+            st.error(str(exc))
+            return
+
+        config: dict = {"output_dir": output_dir, "sources": [_source_to_config(s) for s in resolved_sources]}
         if mapping_file:
             config["mapping_file"] = mapping_file
 
@@ -354,27 +379,34 @@ def _prepare_dataset_wizard() -> None:
             st.success(f"Dataset prepared -- {n_photos} photo(s) -> {output_dir}")
         if result["failed_sources"]:
             st.warning(f"{len(result['failed_sources'])} source(s) failed: {result['failed_sources']}")
-            for source in sources:
-                manifest_output_dir = Path(source.get("manifest_output_dir") or "")
-                raw_path = manifest_output_dir / "manifest_raw.csv"
+            for source in resolved_sources:
+                source_output_dir = Path(source.get("output_dir") or "")
+                raw_path = source_output_dir / "manifest_raw.csv"
                 if raw_path.exists():
-                    st.caption(f"{manifest_output_dir}/manifest_raw.csv:")
+                    st.caption(f"{source_output_dir}/manifest_raw.csv:")
                     st.dataframe(pd.read_csv(raw_path), hide_index=True)
-                inconsistencies = manifest_output_dir / "reports" / "biological_inconsistencies.csv"
+                inconsistencies = source_output_dir / "reports" / "biological_inconsistencies.csv"
                 if inconsistencies.exists():
-                    st.caption(f"{manifest_output_dir}/reports/biological_inconsistencies.csv:")
+                    st.caption(f"{source_output_dir}/reports/biological_inconsistencies.csv:")
                     st.dataframe(pd.read_csv(inconsistencies), hide_index=True)
+
+
+def _unet_landmark_count(weights_path: str) -> int | None:
+    """n_landmarks this UNet checkpoint was trained for, read from its
+    sibling train_config.json (see landmarks_trainer/train.py) -- None if
+    that file is missing or doesn't record it (e.g. a migrated legacy
+    checkpoint), letting the caller fall back to manual entry."""
+    config_path = Path(weights_path).parent / "train_config.json"
+    if not config_path.exists():
+        return None
+    try:
+        return json.loads(config_path.read_text(encoding="utf-8")).get("n_landmarks")
+    except (OSError, json.JSONDecodeError):
+        return None
 
 
 def step_setup() -> None:
     st.header(STEPS[0])
-
-    st.session_state.goal = st.segmented_control(
-        "What do you want to do?",
-        options=["train", "predict"],
-        format_func=lambda g: "Build a reference model" if g == "train" else "Predict with an existing model",
-        default=st.session_state.goal, required=True, key="goal_control",
-    )
 
     st.subheader("Dataset")
     source_mode = st.segmented_control(
@@ -406,7 +438,7 @@ def step_setup() -> None:
         return
 
     st.subheader("Pipeline parameters")
-    unet_choices = discover("data/models/unet_landmarks/*/weights.pt")
+    unet_choices = discover("models/unet_landmarks/*/weights.pt")
     with st.container(border=True):
         mode = st.segmented_control(
             "Detection backend", options=["light", "heavy"], default="light", required=True, key="lf_mode",
@@ -424,11 +456,35 @@ def step_setup() -> None:
             )
         else:
             unet_model = path_picker("UNet landmark weights path", mode="file", key="lf_unet_text")
-        n_landmarks = st.number_input("Number of landmarks", min_value=1, value=19, step=1, key="lf_n_landmarks")
-        reference = path_picker(
-            "GPA reference shape (blank = default for the landmark count above)",
-            mode="file", key="lf_reference", help=f"Default: {default_gpa_reference(19)}",
-        )
+
+        unet_n_landmarks = _unet_landmark_count(unet_model) if unet_model else None
+        if unet_n_landmarks:
+            st.caption(f"This UNet checkpoint predicts {unet_n_landmarks} landmark(s) (from its train_config.json).")
+            n_landmarks = unet_n_landmarks
+        else:
+            n_landmarks = st.number_input(
+                "Number of landmarks", min_value=1, value=19, step=1, key="lf_n_landmarks",
+                help="No train_config.json n_landmarks found for this checkpoint -- set it manually "
+                     "(19 = Tancrede's full blueprint, 18 for an older/legacy UNet model).",
+            )
+
+        reference_choices = discover(f"{REFERENCE_SHAPES_DIR}/*.tps")
+        if reference_choices:
+            reference = st.selectbox(
+                "GPA reference shape", reference_choices, format_func=lambda p: Path(p).stem, key="lf_reference_choice",
+                help="A plain .tps, one specimen block -- see app/train_model.py's "
+                     "'Build a reference shape' to make a new one.",
+            )
+        else:
+            reference = path_picker("GPA reference shape path", mode="file", key="lf_reference_text")
+        if reference and Path(reference).exists():
+            with st.expander("Preview reference shape"):
+                try:
+                    zones = load_reference(Path(reference))
+                    st.caption(f"{len(zones)} landmark(s)")
+                    st.pyplot(plot_reference_shape(zones))
+                except SystemExit as exc:
+                    st.error(str(exc))
 
         col_a, col_b = st.columns(2)
         imgsz = col_a.number_input("Detection image size", min_value=64, value=1024, step=32, key="lf_imgsz")
@@ -453,17 +509,19 @@ def step_setup() -> None:
         if not unet_model:
             st.error("A UNet landmark weights path is required.")
             return
+        if not reference:
+            st.error("A GPA reference shape is required.")
+            return
         argv = [
             dataset_root, "--mode", mode, "--detector-model", detector_model,
             "--unet-model", unet_model, "--n-landmarks", str(int(n_landmarks)),
+            "--reference", reference,
             "--imgsz", str(int(imgsz)), "--conf", str(conf),
             "--padding", str(padding), "--out-width", str(int(out_width)), "--out-height", str(int(out_height)),
             "--device", device,
         ]
         if heavy_ref:
             argv += ["--heavy-ref", heavy_ref]
-        if reference:
-            argv += ["--reference", reference]
         if base_dir:
             argv += ["--base-dir", base_dir]
         if overwrite:
@@ -623,102 +681,30 @@ def step_landmark_review() -> None:
 
 
 # ---------------------------------------------------------------------------
-# Step 6 -- export
+# Step 6 -- export (terminal: no further step, dataset is ready)
 # ---------------------------------------------------------------------------
 
 def step_export() -> None:
-    step_run(STEPS[5], "export", run_export, next_step=7, skip_hint="If <dataset>/export/ was already written.")
-
-
-# ---------------------------------------------------------------------------
-# Step 7 -- build model (train) or classify (predict)
-# ---------------------------------------------------------------------------
-
-def step_train() -> None:
+    st.header(STEPS[5])
     args = st.session_state.args
-    with st.form("train_form", border=True):
-        model_name = st.text_input(
-            "Model name", placeholder="e.g. Red-rumped bumblebee identifier",
-            help="Purely descriptive -- shown by a model picker (this app or app/single_image.py) "
-                 "instead of the abstract run_id. Defaults to the run_id if left blank.",
-            key="tf_model_name",
+    st.caption(f"Dataset: {args.dataset}")
+
+    col_run, col_skip = st.columns(2)
+    if col_run.button("Run export", icon=":material/play_arrow:", type="primary", key="run_export"):
+        st.session_state.export_dir = run_with_log("Exporting landmarks package...", run_export, args)
+    if col_skip.button(
+        "Skip -- already done", icon=":material/skip_next:",
+        help="If <dataset>/export/ was already written.", key="skip_export",
+    ):
+        st.session_state.export_dir = resolve_export_dir(args)
+
+    if st.session_state.export_dir:
+        st.success(f"Dataset ready -> {args.dataset}")
+        st.caption(f"Landmarks package -> {st.session_state.export_dir}")
+        st.info(
+            "Next: `streamlit run app/train_model.py` to fit a model on this dataset, "
+            "or `streamlit run app/predict_dataset.py` to classify it with an existing model."
         )
-        level = st.segmented_control(
-            "Classify by", options=["species", "caste"], default="species", required=True, key="tf_level",
-        )
-        lda_components = st.number_input(
-            "LDA components kept in the saved model", min_value=1, value=2, step=1, key="tf_lda_components",
-        )
-        submitted = st.form_submit_button("Build reference model", icon=":material/model_training:", type="primary")
-
-    if submitted:
-        train_argv = [
-            str(args.dataset), "--level", level, "--lda-components", str(int(lda_components)),
-            *dataset_filter_argv(args),
-        ]
-        if model_name:
-            train_argv += ["--model-name", model_name]
-        run_with_log("Fitting GPA -> PCA -> LDA...", train_main, train_argv)
-
-        run_id = build_run_id(level, args.dataset.name, args.devices, args.landmarks_tps, args.run_label)
-        out_dir = result_path(FAMILY_LDA, run_id, "train")
-        metrics = read_metrics(out_dir)
-
-        st.success(f"Model built: {model_display_name(out_dir / 'model.joblib')}")
-        col_a, col_b, col_c = st.columns(3)
-        col_a.metric("Top-1 accuracy (LOOCV)", f"{metrics['accuracy_top1']:.1%}")
-        col_b.metric("Top-3 accuracy (LOOCV)", f"{metrics['accuracy_top3']:.1%}")
-        col_c.metric("Specimens", metrics["n_specimens"])
-        st.caption(f"model.joblib -> {out_dir / 'model.joblib'}")
-
-
-def step_predict() -> None:
-    args = st.session_state.args
-    model_choices = discover("data/models/lda/*/train/model.joblib")
-    with st.form("predict_form", border=True):
-        if model_choices:
-            model_path = st.selectbox(
-                "Classification model", model_choices, format_func=model_display_name, key="pf_model_choice",
-            )
-        else:
-            model_path = st.text_input("Classification model path", key="pf_model_text")
-        low_confidence_threshold = st.slider(
-            "Low-confidence review threshold", 0.0, 1.0, 0.6, 0.05, key="pf_low_confidence_threshold",
-        )
-        submitted = st.form_submit_button("Classify dataset", icon=":material/query_stats:", type="primary")
-
-    if submitted:
-        if not model_path:
-            st.error("A classification model is required.")
-            return
-        args.model_path = Path(model_path)
-        args.low_confidence_threshold = low_confidence_threshold
-        run_with_log("Classifying...", predict_run_batch, args)
-
-        family, run_id = run_id_from_model_path(args.model_path)
-        eval_tag = build_eval_tag(args.dataset.name, args.devices, args.landmarks_tps, args.run_label)
-        out_dir = result_path(family, run_id, "predict", eval_tag)
-        metrics = read_metrics(out_dir)
-        predictions = pd.read_csv(out_dir / "predictions.csv")
-
-        st.success(f"Classified with {model_display_name(args.model_path)}")
-        if "accuracy_top1" in metrics:
-            col_a, col_b, col_c = st.columns(3)
-            col_a.metric("Top-1 accuracy", f"{metrics['accuracy_top1']:.1%}")
-            col_b.metric("Top-3 accuracy", f"{metrics['accuracy_top3']:.1%}")
-            col_c.metric("Specimens", metrics["n"])
-        else:
-            st.caption(f"{len(predictions)} specimen(s) classified (no known truth to score against).")
-        st.dataframe(predictions, hide_index=True)
-        st.caption(f"predictions.csv -> {out_dir / 'predictions.csv'}")
-
-
-def step_build_or_predict() -> None:
-    st.header(STEPS[6])
-    if st.session_state.goal == "train":
-        step_train()
-    else:
-        step_predict()
 
 
 # ---------------------------------------------------------------------------
@@ -743,5 +729,3 @@ elif step == 5:
     step_landmark_review()
 elif step == 6:
     step_export()
-elif step == 7:
-    step_build_or_predict()

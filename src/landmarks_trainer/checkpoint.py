@@ -1,10 +1,10 @@
 """
-data/models/<family>/<run_id>/ artifact writer.
+models/<family>/<run_id>/ artifact writer.
 
 Shared by train.py (real fine-tuning runs) and migrate_legacy_weights.py
 (the one-off import of Gabriel's pickled baseline), so both produce runs
-that look identical to anything reading data/models/ later -- same layout
-as build_reference.py's data/references/ artifacts.
+that look identical to anything reading models/ later -- same layout
+as build_reference.py's references/ artifacts.
 
 Each run directory gets:
     weights.pth       -- model.state_dict(), NOT the full pickled object
@@ -12,7 +12,7 @@ Each run directory gets:
     metrics.csv       -- one row per epoch: epoch,train_loss,val_loss
                           (single row for a migrated legacy model, marked as such)
 
-A family-level runs.csv (data/models/<family>/runs.csv) gets one summary
+A family-level runs.csv (models/<family>/runs.csv) gets one summary
 row appended per run, so you can compare runs without opening every folder.
 """
 
@@ -51,7 +51,7 @@ def save_run(run_dir: Path, model, config: dict, metrics_rows: list):
 
 
 def append_runs_summary(output_root: str, family: str, summary_row: dict):
-    """Append one row to data/models/<family>/runs.csv, creating it (with
+    """Append one row to models/<family>/runs.csv, creating it (with
     header) on the first call. Column set is fixed by the first row written
     -- keep summary_row's keys consistent across callers."""
     runs_csv = Path(output_root) / family / "runs.csv"
