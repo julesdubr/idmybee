@@ -2,9 +2,7 @@
 
 Pipeline pour identifier des bourdons (genre *Bombus* — espèce et caste) à
 partir d'une simple photo d'aile antérieure, par morphométrie géométrique
-automatisée par deep learning. Le code est en anglais (convention du
-projet, voir `docs/CONVENTIONS.md`) ; ce README est en français pour
-rester lisible sans avoir à lire le code.
+automatisée par deep learning.
 
 Pour le détail technique exact de chaque étape (entrées/sorties/CLI), voir
 [`docs/PIPELINE.md`](docs/PIPELINE.md).
@@ -103,6 +101,5 @@ par rapport à des photos prises dans des conditions réelles.
 ## Pour aller plus loin
 
 - [`docs/PIPELINE.md`](docs/PIPELINE.md) — référence technique du pipeline (CSV, CLI, statuts)
-- [`docs/CONVENTIONS.md`](docs/CONVENTIONS.md) — conventions de code du projet
 - `docs/*.pdf` — rapports de stage sur les briques antérieures du projet
   (définition des 19 landmarks, premiers prototypes)
