@@ -1,5 +1,5 @@
 {
-  "dataset": "/var/folders/wp/phsg97rs6j31sswl5xpbmbs80000gn/T/idmybee_predict_upload_x_4gpva1/landmarks_18lm_original",
+  "dataset": "/var/folders/wp/phsg97rs6j31sswl5xpbmbs80000gn/T/idmybee_predict_upload_kbe3xmkn/Bombus_terrain",
   "model_path": "models/lda/Bourdon_cul-rouge_18LM_species/model.joblib",
   "devices": null,
   "species": null,
@@ -11,6 +11,6 @@
   "run_label": null,
   "low_confidence_threshold": 0.6,
   "run_id": "Bourdon_cul-rouge_18LM_species",
-  "eval_tag": "landmarks_18lm_original",
+  "eval_tag": "Bombus_terrain",
   "family": "lda"
 }

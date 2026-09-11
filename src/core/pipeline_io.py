@@ -26,12 +26,53 @@ PIPELINE_STATS_FIELDS = [
 # to a dataset root. Distinct from the root's own biological_data.csv
 # (specimen-level, from tools/ingestion/export_clean_dataset.py): the file of the
 # same name in this folder is photo-level, row-aligned to the exported TPS.
-DATASET_EXPORT_DIRNAME = "export"
+DATASET_EXPORT_DIRNAME = "exports"
+
+# The four files tools/pipeline/export_final_landmarks.py writes, minus their
+# shared "<name>-" prefix (see export_filename/parse_export_name below) --
+# `name` is normally the dataset's own resolve_dataset_name(), so the
+# package stays self-describing wherever it's copied or re-uploaded
+# (session du 11 sept. 2026: previously named landmarks_<n>lm_crop.tps etc,
+# identical across every dataset, which is why app/train_model.py/
+# app/predict_dataset.py had no way to recover a meaningful dataset/model
+# name from an ad hoc upload -- see PIPELINE.md "Nommage des modeles").
+EXPORT_CROP_SUFFIX = "landmarks_crop.tps"
+EXPORT_RAW_SUFFIX = "landmarks_raw.tps"
+EXPORT_BIO_SUFFIX = "biological_data.csv"
+EXPORT_FAILED_SUFFIX = "failed.csv"
+EXPORT_SUFFIXES = [EXPORT_BIO_SUFFIX, EXPORT_FAILED_SUFFIX, EXPORT_CROP_SUFFIX, EXPORT_RAW_SUFFIX]
 
 
 def dataset_export_dir(dataset: Path) -> Path:
-    """R-facing landmarks package for this dataset: <dataset>/export/."""
+    """R-facing landmarks package for this dataset: <dataset>/exports/."""
     return Path(dataset) / DATASET_EXPORT_DIRNAME
+
+
+def export_lm_dir(export_dir: Path, n_points: int) -> Path:
+    """<export_dir>/<n>lm/ -- keeps exports of different landmark schemes
+    (19lm, 18lm, ...) from a single dataset root sorted into their own
+    subfolder, since filenames no longer carry the point count themselves
+    (see EXPORT_SUFFIXES)."""
+    return export_dir / f"{n_points}lm"
+
+
+def export_filename(name: str, suffix: str) -> str:
+    """"<name>-<suffix>" for one of tools.pipeline.export_final_landmarks's
+    four output files (suffix is one of EXPORT_SUFFIXES)."""
+    return f"{name}-{suffix}"
+
+
+def parse_export_name(filename: str) -> str | None:
+    """Recovers the `name` export_filename() embedded in one of these four
+    files -- None if `filename` doesn't end in any known suffix (e.g. a
+    TPS/CSV that didn't come from tools.pipeline.export_final_landmarks,
+    still accepted by app/train_model.py/app/predict_dataset.py via their
+    own fallback -- see utils.uploaded_dataset.infer_dataset_label)."""
+    for suffix in EXPORT_SUFFIXES:
+        marker = f"-{suffix}"
+        if filename.endswith(marker) and len(filename) > len(marker):
+            return filename[:-len(marker)]
+    return None
 
 
 def read_csv_rows(path: Path) -> list[dict]:

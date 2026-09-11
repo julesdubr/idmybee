@@ -38,9 +38,37 @@ from pathlib import Path
 
 import pandas as pd
 
+from core.pipeline_io import parse_export_name
+from core.run_io import slugify
 from core.tps_io import ImageLandmarks, assign_sequential_ids, parse_tps, write_tps
 
 REQUIRED_BIO_COLUMNS = {"inv_id", "species", "caste"}
+
+
+def infer_dataset_label(tps_names: list[str], csv_names: list[str]) -> str:
+    """Dataset label for write_dataset_root()'s throwaway root -- also this
+    upload's default model/eval name, since classifiers.train/predict fall
+    back to `core.dataset_config.resolve_dataset_name(dataset_root)` (which
+    resolves to this exact label here, a throwaway root never getting its
+    own dataset_config.json) when --model-name/--run-label aren't given
+    (see core.run_io module docstring).
+
+    Recovered from the uploaded files' own names when they came straight
+    from tools.pipeline.export_final_landmarks: every one of that export's
+    four files is named "<name>-<suffix>" (see core.pipeline_io.
+    parse_export_name), so re-uploading an export here recovers the same
+    `name` automatically instead of falling back to the export's own TPS
+    filename -- previously always e.g. "landmarks_19lm_crop", identical
+    across every dataset, which is why this label used to carry no real
+    information (see PIPELINE.md "Nommage des modeles" and its step-6
+    changelog). Falls back to the first TPS file's own stem, slugified, for
+    a TPS/CSV pair not produced by that export (e.g. hand-digitized
+    landmarks)."""
+    for name in [*tps_names, *csv_names]:
+        parsed_name = parse_export_name(name)
+        if parsed_name:
+            return parsed_name
+    return slugify(Path(tps_names[0]).stem)
 
 
 class DatasetMergeError(ValueError):

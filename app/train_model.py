@@ -22,10 +22,10 @@ import streamlit as st
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _common import LOGO_PATH, run_with_log, save_uploaded_files  # noqa: E402
 from classifiers.train import main as train_main  # noqa: E402
-from core.run_io import model_display_name, read_metrics, slugify  # noqa: E402
+from core.run_io import build_run_id, model_display_name, read_metrics, slugify  # noqa: E402
 from utils.uploaded_dataset import (  # noqa: E402
-    DatasetMergeError, join_specimens_to_bio, parse_uploaded_bio_csv, parse_uploaded_tps_files,
-    write_dataset_root,
+    DatasetMergeError, infer_dataset_label, join_specimens_to_bio, parse_uploaded_bio_csv,
+    parse_uploaded_tps_files, write_dataset_root,
 )
 
 st.set_page_config(
@@ -77,10 +77,21 @@ with st.container(border=True):
              "app/predict_dataset.py) plutôt qu'un id abstrait, et nomme le dossier de sortie sous "
              "models/lda/ (slugifié). Un tag '_<n>LM_<level>' (nombre de landmarks du TPS + "
              "espèce/caste) est toujours ajouté, et un nom déjà pris reçoit un suffixe automatique "
-             "_v2/_v3/.... Par défaut, un nom dérivé du premier fichier TPS si laissé vide.",
+             "_v2/_v3/.... Par défaut, si laissé vide, un nom dérivé des fichiers déposés -- le nom "
+             "du jeu de données s'ils viennent d'un export de app/setup_dataset.py, sinon le nom du "
+             "premier fichier TPS.",
         key="tr_model_name",
     )
     submitted = st.button("Construire le modèle", icon=":material/model_training:", type="primary", key="tr_submit")
+
+if tps_uploads and csv_uploads:
+    preview_label = infer_dataset_label([f.name for f in tps_uploads], [f.name for f in csv_uploads])
+    preview_root = model_name or build_run_id(level, preview_label)
+    st.caption(
+        f"Sera enregistré sous `models/lda/{slugify(preview_root)}_<n>LM_{level}/` "
+        f"et `runs/lda/.../train/{slugify(preview_label)}/` "
+        "(`<n>` = nombre de landmarks trouvé dans le TPS déposé)."
+    )
 
 if submitted:
     if not tps_uploads or not csv_uploads:
@@ -100,7 +111,7 @@ if submitted:
             st.error(str(exc))
             st.stop()
 
-        dataset_label = slugify(Path(tps_uploads[0].name).stem)
+        dataset_label = infer_dataset_label([f.name for f in tps_uploads], [f.name for f in csv_uploads])
         dataset_root = write_dataset_root(specimens, bio_df, tmp_path / dataset_label)
 
         train_argv = [str(dataset_root), "--level", level, "--lda-components", str(int(lda_components))]

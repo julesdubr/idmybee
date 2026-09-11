@@ -885,7 +885,7 @@ def step_export() -> None:
         st.session_state.export_dir = run_with_log("Export du paquet de landmarks...", run_export, args)
     if col_skip.button(
         "Passer -- déjà fait", icon=":material/skip_next:",
-        help="Si <dataset>/export/ a déjà été écrit.", key="skip_export",
+        help="Si <dataset>/exports/ a déjà été écrit.", key="skip_export",
     ):
         st.session_state.export_dir = resolve_export_dir(args)
 

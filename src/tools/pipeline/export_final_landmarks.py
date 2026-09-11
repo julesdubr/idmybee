@@ -11,31 +11,42 @@ dataset root given -- one call per dataset root (e.g. once for
 data/Bombus/collection, once for data/Bombus/terrain), there is no
 train/test split within a single call anymore.
 
-Canonical output directory: `<dataset>/export/` (override with --output-dir).
+Canonical output directory: `<dataset>/exports/<n>lm/` (override the
+`<dataset>/exports/` part with --output-dir; the `<n>lm/` subfolder --
+n_points, the dataset's own landmark count -- is always appended on top of
+it, so two different landmark schemes exported from the same root, or the
+same --output-dir, never collide/overwrite each other, whether or not the
+caller bothered to pass a distinct --output-dir).
 This is the R-facing package for the dataset, kept separate from the
 working files (`extraction/`, `landmarks/`) and from the root
 `biological_data.csv` (specimen-level, from tools/ingestion/export_clean_dataset.py).
-The `landmarks_<n>lm_biological_data.csv` written HERE is photo-level,
-row-aligned to the TPS, and named after the same `<n>lm` scheme as its
-sibling TPS files -- deliberately not plain `biological_data.csv`, which
-would (a) collide in name (though not in path) with the root's own,
-differently-shaped file, and (b) get overwritten if a second landmark
-scheme (e.g. 18lm after 19lm) is later exported into the same directory.
 
-Output (in --output-dir, default `<dataset>/export/`), for the requested specimens:
-    landmarks_<n>lm_crop.tps               crop-space coordinates
-    landmarks_<n>lm_original.tps           raw-image-space coordinates
-                                            (omitted with --no-original-space)
-    landmarks_<n>lm_biological_data.csv    same row order/IDs as the TPS
-                                            (photo-level) -- "tps_id" is the
-                                            exact column utils.uploaded_dataset.
-                                            join_specimens_to_bio looks for
-                                            when this export is re-uploaded
-                                            into app/train_model.py /
-                                            app/predict_dataset.py; "photo_id"
-                                            follows it for a human-readable
-                                            join against manifest.csv
-    landmarks_<n>lm_failed.csv             excluded photos, by stage
+Every file here is named "<name>-<suffix>" (see core.pipeline_io.
+EXPORT_SUFFIXES/export_filename), `name` being this dataset's own
+core.dataset_config.resolve_dataset_name(), slugified -- deliberately not
+plain `biological_data.csv`/`failed.csv`/etc, which would (a) collide in
+name (though not in path) with the root's own, differently-shaped
+biological_data.csv, and (b) be indistinguishable across datasets once
+copied/re-uploaded elsewhere (session du 11 sept. 2026: this is exactly
+what app/train_model.py/app/predict_dataset.py need to recover a
+meaningful dataset/model name from an ad hoc drag-and-drop upload -- see
+utils.uploaded_dataset.infer_dataset_label and CONVENTIONS.md "Nommage des
+modeles" migration note).
+
+Output (in --output-dir/<n>lm/, default `<dataset>/exports/<n>lm/`), for the requested specimens:
+    <name>-landmarks_crop.tps      crop-space coordinates
+    <name>-landmarks_raw.tps       raw-image-space coordinates
+                                    (omitted with --no-original-space)
+    <name>-biological_data.csv     same row order/IDs as the TPS
+                                    (photo-level) -- "tps_id" is the
+                                    exact column utils.uploaded_dataset.
+                                    join_specimens_to_bio looks for
+                                    when this export is re-uploaded
+                                    into app/train_model.py /
+                                    app/predict_dataset.py; "photo_id"
+                                    follows it for a human-readable
+                                    join against manifest.csv
+    <name>-failed.csv              excluded photos, by stage
 
 In both TPS files: sequential integer IDs (ID=1, 2, ...), no COMMENT=,
 identical order to the biological data CSV's first column -- this is the
@@ -81,8 +92,12 @@ from utils.cli import (
     log_level_from_args,
 )
 from core.dataset import load_dataset
-from core.pipeline_io import dataset_export_dir, read_csv_rows, resolve_path
-from core.run_io import setup_console_logging
+from core.dataset_config import resolve_dataset_name
+from core.pipeline_io import (
+    EXPORT_BIO_SUFFIX, EXPORT_CROP_SUFFIX, EXPORT_FAILED_SUFFIX, EXPORT_RAW_SUFFIX,
+    dataset_export_dir, export_filename, export_lm_dir, read_csv_rows, resolve_path,
+)
+from core.run_io import setup_console_logging, slugify
 
 logger = logging.getLogger(__name__)
 
@@ -112,8 +127,9 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     add_dataset_args(parser)
     parser.add_argument(
         "--output-dir", type=Path, default=None,
-        help="Directory to write the exported files to "
-             "(default: <dataset>/export/ -- see core.pipeline_io.dataset_export_dir).",
+        help="Base directory to write the exported files to (default: <dataset>/exports/ -- see "
+             "core.pipeline_io.dataset_export_dir). Either way, the actual files land one level "
+             "deeper, under this run's own <n>lm/ subfolder (see core.pipeline_io.export_lm_dir).",
     )
     parser.add_argument(
         "--no-original-space", action="store_true",
@@ -254,14 +270,17 @@ def reproject_to_raw_space(
     return original_xy, "", str(image_path)
 
 
-def main(argv: list[str] | None = None) -> None:
+def main(argv: list[str] | None = None) -> Path:
+    """Returns the exact directory the package was written to (the `<n>lm/`
+    subfolder, not the --output-dir/<dataset>/exports/ base passed/defaulted
+    above it) -- lets a caller that already ran this in-process (e.g.
+    utils.landmarking_pipeline.run_export) report the real location without
+    re-deriving n_points itself."""
     args = parse_args(argv)
     setup_console_logging(log_level_from_args(args))
 
     dataset = args.dataset
-    if args.output_dir is None:
-        args.output_dir = dataset_export_dir(dataset)
-    args.output_dir.mkdir(parents=True, exist_ok=True)
+    export_base_dir = args.output_dir if args.output_dir is not None else dataset_export_dir(dataset)
 
     if args.landmarks_tps is not None and args.landmarks_status_csv is None:
         # load_dataset() only defaults the status CSV for the *default* TPS path -- with an
@@ -279,6 +298,9 @@ def main(argv: list[str] | None = None) -> None:
 
     specimens, meta_df = load_dataset(dataset, labeled_only=True, **dataset_kwargs(args))
     n_points = specimens[0].n_points
+    args.output_dir = export_lm_dir(export_base_dir, n_points)
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    name = slugify(resolve_dataset_name(dataset))
 
     extra_filters_active = bool(args.devices or args.species or args.castes)
     kept_tps_ids = {sp.tps_id for sp in specimens}
@@ -333,22 +355,21 @@ def main(argv: list[str] | None = None) -> None:
 
         new_id += 1
 
-    n_lm = f"{n_points}lm"
-    tps_crop_path = args.output_dir / f"landmarks_{n_lm}_crop.tps"
+    tps_crop_path = args.output_dir / export_filename(name, EXPORT_CROP_SUFFIX)
     write_tps(tps_crop_path, crop_out)
 
     tps_original_path = None
     if reproject:
-        tps_original_path = args.output_dir / f"landmarks_{n_lm}_original.tps"
+        tps_original_path = args.output_dir / export_filename(name, EXPORT_RAW_SUFFIX)
         write_tps(tps_original_path, original_out)
 
-    bio_path = args.output_dir / f"landmarks_{n_lm}_biological_data.csv"
+    bio_path = args.output_dir / export_filename(name, EXPORT_BIO_SUFFIX)
     with bio_path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=BASE_BIO_COLUMNS)
         writer.writeheader()
         writer.writerows(bio_rows)
 
-    failed_path = args.output_dir / f"landmarks_{n_lm}_failed.csv"
+    failed_path = args.output_dir / export_filename(name, EXPORT_FAILED_SUFFIX)
     with failed_path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=FAILED_FIELDS)
         writer.writeheader()
@@ -359,15 +380,18 @@ def main(argv: list[str] | None = None) -> None:
     print("Export complete")
     print("=" * 60)
     print(f"Dataset                  : {dataset}")
+    print(f"Name (-> filenames)      : {name}")
     print(f"Specimens exported       : {len(bio_rows)}")
     print(f"Failed/excluded (report) : {len(failed_rows)}")
     print()
     print(f"TPS (crop)     : {tps_crop_path}")
     if tps_original_path:
-        print(f"TPS (original) : {tps_original_path}")
+        print(f"TPS (raw)      : {tps_original_path}")
     print(f"Biological data : {bio_path}")
     print(f"Failed report   : {failed_path}")
     print("=" * 60)
+
+    return args.output_dir
 
 
 if __name__ == "__main__":

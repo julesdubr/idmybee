@@ -1,7 +1,7 @@
 {
   "run_id": "Bourdon_cul-rouge_18LM_species",
   "model_name": "Bourdon_cul-rouge_18LM_species",
-  "eval_tag": "landmarks_18lm_original",
+  "eval_tag": "Bombus_terrain",
   "model_path": "models/lda/Bourdon_cul-rouge_18LM_species/model.joblib",
   "level": "species",
   "landmarks_source": "landmarks_numbered.tps (default)",

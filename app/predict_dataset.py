@@ -26,11 +26,11 @@ from classifiers.predict import run_batch as predict_run_batch  # noqa: E402
 from core.dataset_config import resolve_dataset_name  # noqa: E402
 from core.model_io import load_model  # noqa: E402
 from core.run_io import (  # noqa: E402
-    RUNS_ROOT, build_eval_tag, model_display_name, read_metrics, result_path, run_id_from_model_path, slugify,
+    RUNS_ROOT, build_eval_tag, model_display_name, read_metrics, result_path, run_id_from_model_path,
 )
 from utils.uploaded_dataset import (  # noqa: E402
-    DatasetMergeError, join_specimens_to_bio, parse_uploaded_bio_csv, parse_uploaded_tps_files,
-    write_dataset_root,
+    DatasetMergeError, infer_dataset_label, join_specimens_to_bio, parse_uploaded_bio_csv,
+    parse_uploaded_tps_files, write_dataset_root,
 )
 
 st.set_page_config(
@@ -83,6 +83,14 @@ with st.container(border=True):
     )
     submitted = st.button("Classifier le jeu de données", icon=":material/query_stats:", type="primary", key="pr_submit")
 
+if tps_uploads and csv_uploads and model_path:
+    preview_label = infer_dataset_label([f.name for f in tps_uploads], [f.name for f in csv_uploads])
+    try:
+        family, run_id = run_id_from_model_path(Path(model_path))
+        st.caption(f"Sera enregistré sous `runs/{family}/{run_id}/predict/{build_eval_tag(preview_label)}/`.")
+    except ValueError:
+        pass
+
 if submitted:
     if not tps_uploads or not csv_uploads:
         st.error("Au moins un fichier TPS et un fichier CSV sont requis.")
@@ -119,7 +127,7 @@ if submitted:
                     f"différent du modèle ({model.n_points}, trouvé {other_counts}) et seront ignorés."
                 )
 
-            dataset_label = slugify(Path(tps_uploads[0].name).stem)
+            dataset_label = infer_dataset_label([f.name for f in tps_uploads], [f.name for f in csv_uploads])
             dataset_root = write_dataset_root(specimens, bio_df, tmp_path / dataset_label)
 
             args = argparse.Namespace(

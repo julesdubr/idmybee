@@ -8,7 +8,7 @@ File-based path -- runs, in order, each stage's own main(argv) in-process
     extraction.normalize_crop
     landmarks.predict
     landmarks.renumber
-    tools.pipeline.export_final_landmarks   -> <dataset>/export/
+    tools.pipeline.export_final_landmarks   -> <dataset>/exports/<n>lm/
 
 Dataset-agnostic: any clean dataset root (manifest.csv + biological_data.csv
 + images/) is a valid input. Source names like "collection"/"terrain" are
@@ -87,8 +87,9 @@ def add_landmarking_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--no-original-space", action="store_true",
                          help="Skip original-image-space reprojection in the export package.")
     parser.add_argument("--export-dir", type=Path, default=None,
-                         help="Where to write the R-facing landmarks package "
-                              "(default: <dataset>/export/ -- see core.pipeline_io.dataset_export_dir).")
+                         help="Base directory to write the R-facing landmarks package to (default: "
+                              "<dataset>/exports/ -- see core.pipeline_io.dataset_export_dir); the actual "
+                              "files land one level deeper, under this run's own <n>lm/ subfolder.")
 
 
 def resolve_gpa_reference(args: argparse.Namespace) -> Path:
@@ -107,19 +108,15 @@ def landmarks_dirname(args: argparse.Namespace) -> str:
 
 
 def resolve_export_dir(args: argparse.Namespace) -> Path:
-    """<dataset>/export/ by default, or <dataset>/export/<landmarks-tag>/
-    when --landmarks-tag was set (see landmarks_dirname) -- keeps exports
-    from different landmark schemes (19lm, 18lm, ...) sorted into their own
-    subfolder instead of mixed flat together in export/ (their files are
-    already named landmarks_<n>lm_*, including landmarks_<n>lm_failed.csv,
-    but that alone doesn't stop a second scheme's files from overwriting
-    the first's). --export-dir, when
-    given, is used exactly as passed -- no subfolder appended."""
-    if args.export_dir:
-        return args.export_dir
-    export_dir = dataset_export_dir(args.dataset)
-    tag = getattr(args, "landmarks_tag", None)
-    return export_dir / tag if tag else export_dir
+    """<dataset>/exports/ by default, or --export-dir when given -- either
+    way this is only the BASE directory handed to export_final_landmarks.py
+    as its own --output-dir: that script always nests the actual files one
+    level deeper, under its own <n>lm/ subfolder keyed by the dataset's
+    real landmark count (see tools.pipeline.export_final_landmarks.main /
+    core.pipeline_io.export_lm_dir), not by --landmarks-tag here -- so two
+    different landmark schemes exported from the same root never collide,
+    whether or not --landmarks-tag happens to be set to a matching value."""
+    return args.export_dir if args.export_dir else dataset_export_dir(args.dataset)
 
 
 def dataset_filter_argv(args: argparse.Namespace) -> list[str]:
@@ -251,13 +248,16 @@ def run_landmarking(args: argparse.Namespace) -> None:
 
 
 def run_export(args: argparse.Namespace) -> Path:
-    """Stage 5: R-facing package into <dataset>/export/ (or --export-dir).
+    """Stage 5: R-facing package into <dataset>/exports/<n>lm/ (base
+    overridable via --export-dir -- see resolve_export_dir; the <n>lm/
+    subfolder is always appended by export_final_landmarks.py itself).
 
-    Writes:
-        landmarks_<n>lm_crop.tps
-        landmarks_<n>lm_original.tps           (unless --no-original-space)
-        landmarks_<n>lm_biological_data.csv    (photo-level, row-aligned to the TPS)
-        landmarks_<n>lm_failed.csv
+    Writes, all named "<name>-<suffix>" (name = this dataset's own
+    resolve_dataset_name(), slugified -- see core.pipeline_io.EXPORT_SUFFIXES):
+        <name>-landmarks_crop.tps
+        <name>-landmarks_raw.tps       (unless --no-original-space)
+        <name>-biological_data.csv     (photo-level, row-aligned to the TPS)
+        <name>-failed.csv
 
     Forwards the same --devices/--species/--castes/--include-outliers/--tps/
     --landmarks-status-csv filters as classifiers.train (see
@@ -270,12 +270,17 @@ def run_export(args: argparse.Namespace) -> Path:
     hasn't already set args.landmarks_tps itself (e.g. via a review step) --
     otherwise the export would silently fall back to the untagged
     <dataset>/landmarks/ default.
+
+    Returns the exact <n>lm/ directory written to (export_final_landmarks.
+    main()'s own return value), not just the base resolve_export_dir(args)
+    -- the caller (app/setup_dataset.py) only learns the real n_points-based
+    subfolder once export_final_landmarks.py has loaded the dataset.
     """
-    output_dir = resolve_export_dir(args)
+    output_base_dir = resolve_export_dir(args)
     verbosity = verbosity_argv(args)
-    print(f"\n=== Export landmarks package -> {output_dir} ===")
+    print(f"\n=== Export landmarks package -> {output_base_dir} ===")
     export_argv = [
-        str(args.dataset), "--output-dir", str(output_dir), "--mode", args.mode,
+        str(args.dataset), "--output-dir", str(output_base_dir), "--mode", args.mode,
         "--padding", str(args.padding), "--out-width", str(args.out_width),
         "--out-height", str(args.out_height), *verbosity, *dataset_filter_argv(args),
     ]
@@ -286,8 +291,7 @@ def run_export(args: argparse.Namespace) -> Path:
         export_argv += ["--base-dir", str(args.base_dir)]
     if args.no_original_space:
         export_argv += ["--no-original-space"]
-    export_final_landmarks_main(export_argv)
-    return output_dir
+    return export_final_landmarks_main(export_argv)
 
 
 @dataclass
