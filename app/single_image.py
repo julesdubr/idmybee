@@ -4,9 +4,7 @@ written anywhere -- detection -> crop -> UNet landmark placement ->
 renumbering (utils.landmarking_pipeline.place_landmarks) -> LDA
 classification (classifiers.predict.predict_specimens), displayed as a
 ranked species/caste prediction with confidence and an annotated landmark
-overlay. See TODO.md Phase 2/3 "Mode terrain / single" and PIPELINE.md
-stage 8 ("single" -- "This is the function the future single-image UI tool
-will call directly.").
+overlay.
 
 Only the light (YOLO-OBB) detector backend is wired up here -- the heavy
 (YOLOE) backend additionally needs a --heavy-ref JSON of reference
@@ -28,7 +26,7 @@ import streamlit as st
 # app/ itself isn't an installed package -- see app/setup_dataset.py's
 # identical sys.path assist for why this is needed for a sibling import.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _common import plot_reference_shape  # noqa: E402
+from _common import plot_reference_shape, unet_crop_size, unet_landmark_count  # noqa: E402
 from classifiers.predict import predict_specimens
 from core.model_io import load_model as load_lda_model_impl
 from core.run_io import model_display_name
@@ -42,7 +40,7 @@ from utils.tps_overlay import draw_landmarks
 LOGO_PATH = Path("app/assets/idmb_logo.png")
 
 st.set_page_config(
-    page_title="idmybee -- identification bourdon",
+    page_title="idmybee - identification bourdon",
     page_icon=str(LOGO_PATH) if LOGO_PATH.exists() else None,
     layout="wide",
 )
@@ -94,31 +92,57 @@ def discover(pattern: str) -> list[str]:
 
 with st.sidebar:
     st.header("Modèles")
+    st.caption("Dans l'ordre du pipeline : détection -> landmarks -> classification.")
+
+    yolo_choices = discover("models/yolon_obb/*.pt")
+    if yolo_choices:
+        detector_model_path = st.selectbox(
+            "Détecteur d'aile (YOLO-OBB)", yolo_choices, format_func=lambda p: Path(p).stem,
+        )
+    else:
+        detector_model_path = st.text_input("Poids du détecteur d'aile (YOLO-OBB)", value=str(DEFAULT_DETECTOR_MODEL))
+
+    unet_choices = discover("models/unet_landmarks/*/weights.pt")
+    if unet_choices:
+        unet_model_path = st.selectbox(
+            "UNet (landmarks)", unet_choices, format_func=lambda p: Path(p).parent.name,
+        )
+    else:
+        unet_model_path = st.text_input("Chemin des poids UNet")
 
     lda_choices = discover("models/lda/*/model.joblib")
     if lda_choices:
         lda_model_path = st.selectbox(
-            "Modèle de classification", lda_choices, format_func=model_display_name,
+            "Classification (LDA)", lda_choices, format_func=model_display_name,
             help="Un model.joblib produit par classifiers/train.py ou tools/pipeline/train_dataset.py "
                  "-- affiché par son --model-name s'il en a un, sinon par son run_id.",
         )
     else:
         lda_model_path = st.text_input("Chemin du modèle de classification")
 
-    detector_model_path = st.text_input("Poids du détecteur d'aile (YOLO-OBB)", value=str(DEFAULT_DETECTOR_MODEL))
-
-    unet_choices = discover("models/unet_landmarks/*/weights.pt")
-    if unet_choices:
-        unet_model_path = st.selectbox(
-            "Poids UNet (landmarks)", unet_choices, format_func=lambda p: Path(p).parent.name,
-        )
-    else:
-        unet_model_path = st.text_input("Chemin des poids UNet")
-
     device = st.selectbox("Calcul (CPU/GPU)", ["cpu", "cuda"], index=0)
 
     st.header("Paramètres du pipeline")
-    n_landmarks = st.number_input("Nombre de landmarks", min_value=1, value=19, step=1)
+
+    # n_landmarks/crop_width/crop_height are properties of the selected UNet
+    # checkpoint (see its train_config.json), not free parameters -- no
+    # widget for them, unlike the detection/crop knobs below (see
+    # app/setup_dataset.py's identical derivation for the file-based path).
+    unet_n_landmarks = unet_landmark_count(unet_model_path) if unet_model_path else None
+    checkpoint_crop_size = unet_crop_size(unet_model_path) if unet_model_path else None
+    out_width, out_height = checkpoint_crop_size or (512, 256)
+    if unet_n_landmarks:
+        n_landmarks = unet_n_landmarks
+        st.caption(
+            f"Ce checkpoint UNet prédit {n_landmarks} landmark(s) à une résolution d'entrée de "
+            f"{out_width}x{out_height} (depuis son train_config.json)."
+        )
+    else:
+        n_landmarks = st.number_input(
+            "Nombre de landmarks", min_value=1, value=19, step=1,
+            help="Aucun n_landmarks trouvé dans le train_config.json de ce checkpoint -- à définir "
+                 "manuellement (19 = patron complet de Tancrède, 18 pour un ancien modèle UNet).",
+        )
 
     reference_choices = discover(f"{REFERENCE_SHAPES_DIR}/*.tps")
     if reference_choices:
@@ -128,18 +152,34 @@ with st.sidebar:
         )
     else:
         reference_path = st.text_input("Chemin de la forme de référence GPA")
+
+    landmark_mismatch = False
     if reference_path and Path(reference_path).exists():
+        zones = load_zones(reference_path)
         with st.expander("Aperçu de la forme de référence"):
-            zones = load_zones(reference_path)
             st.caption(f"{len(zones)} landmark(s)")
             st.pyplot(plot_reference_shape(zones))
+        if len(zones) != int(n_landmarks):
+            landmark_mismatch = True
+            st.error(
+                f"Nombre de landmarks incohérent : le modèle UNet prédit {int(n_landmarks)} landmark(s), "
+                f"mais la forme de référence ({Path(reference_path).name}) en a {len(zones)}."
+            )
+
+    if lda_model_path and Path(lda_model_path).exists():
+        lda_model_preview = load_lda_model(lda_model_path)
+        if lda_model_preview.n_points != int(n_landmarks):
+            landmark_mismatch = True
+            st.error(
+                f"Nombre de landmarks incohérent : le modèle UNet prédit {int(n_landmarks)} landmark(s), "
+                f"mais le modèle de classification ({model_display_name(lda_model_path)}) en attend "
+                f"{lda_model_preview.n_points}."
+            )
 
     imgsz = st.number_input("Taille d'image pour la détection", min_value=64, value=1024, step=32)
     conf = st.slider("Seuil de confiance de détection", 0.0, 1.0, 0.10, 0.01)
     max_det = st.number_input("Détections maximum", min_value=1, value=10, step=1)
     padding = st.slider("Marge du recadrage", 0.0, 0.5, 0.10, 0.01)
-    out_width = st.number_input("Largeur du recadrage", min_value=32, value=512, step=32)
-    out_height = st.number_input("Hauteur du recadrage", min_value=32, value=256, step=32)
 
 uploaded = st.file_uploader("Photo d'aile", type=["jpg", "jpeg", "png"])
 
@@ -159,6 +199,11 @@ if uploaded is not None:
         if st.button("Lancer le pipeline", type="primary"):
             if not (lda_model_path and detector_model_path and unet_model_path):
                 st.error("Un modèle de classification, un détecteur et un modèle UNet sont tous requis.")
+            elif landmark_mismatch:
+                st.error(
+                    "Nombre de landmarks incohérent entre le modèle UNet, la forme de référence et/ou le "
+                    "modèle de classification -- voir le détail dans la barre latérale."
+                )
             else:
                 detector_ctx = load_detector(detector_model_path)
                 unet_model = load_unet(unet_model_path, device)
@@ -179,9 +224,13 @@ if uploaded is not None:
                     )
 
                 if result.detection_box is not None:
+                    annotated_original = draw_obb(image_bgr, result.detection_box)
+                    caption = "Aile détectée (OBB)"
+                    if result.status == "OK" and result.original_landmarks is not None:
+                        annotated_original = draw_landmarks(annotated_original, result.original_landmarks)
+                        caption = "Aile détectée (OBB) + landmarks (image originale)"
                     original_slot.image(
-                        cv2.cvtColor(draw_obb(image_bgr, result.detection_box), cv2.COLOR_BGR2RGB),
-                        caption="Aile détectée (OBB)",
+                        cv2.cvtColor(annotated_original, cv2.COLOR_BGR2RGB), caption=caption,
                     )
 
                 if result.status != "OK":

@@ -29,14 +29,19 @@ from pathlib import Path
 import numpy as np
 
 from extraction.detect_wing import detect_one_image, main as detect_wing_main
-from extraction.normalize_crop import main as normalize_crop_main, normalize_one
+from extraction.normalize_crop import (
+    apply_wing_transform_to_points_inverse,
+    compute_wing_transform,
+    main as normalize_crop_main,
+    normalize_one,
+)
 from landmarks.predict import main as landmarks_predict_main, predict_landmarks
 from landmarks.renumber import main as renumber_main, numerate_one
 from tools.pipeline.export_final_landmarks import main as export_final_landmarks_main
 from utils.cli import verbosity_argv
 from core.pipeline_io import dataset_export_dir
 
-DEFAULT_DETECTOR_MODEL = Path("models/yolon_obb/best.pt")
+DEFAULT_DETECTOR_MODEL = Path("models/yolon_obb/Bombus_612.pt")
 REFERENCE_SHAPES_DIR = Path("references/shapes")
 
 
@@ -98,7 +103,7 @@ def landmarks_dirname(args: argparse.Namespace) -> str:
     --unet-model/--n-landmarks on an already-cropped dataset doesn't
     overwrite the previous run's files."""
     tag = getattr(args, "landmarks_tag", None)
-    return "landmarks" if not tag else f"landmarks_{tag}"
+    return "landmarks" if not tag else f"landmarks/{tag}"
 
 
 def resolve_export_dir(args: argparse.Namespace) -> Path:
@@ -286,6 +291,7 @@ class PlacementResult:
     error_reason: str
     crop_image: np.ndarray | None = None       # BGR, out_width x out_height -- set once a crop exists
     landmarks: np.ndarray | None = None        # (n_landmarks, 2), crop space, canonically numbered
+    original_landmarks: np.ndarray | None = None  # (n_landmarks, 2), reprojected into the ORIGINAL image
     detection_box: np.ndarray | None = None    # 4x2 pixel corners in the ORIGINAL image
     registration_score: float | None = None    # renumbering cost, see landmarks.methods.base.NumberingResult
 
@@ -362,8 +368,24 @@ def place_landmarks(
             crop_image=crop, detection_box=box_pixels,
         )
 
+    # Reprojects crop-space landmarks back into the original image, via the
+    # same WingTransform/apply_wing_transform_to_points_inverse machinery
+    # tools.pipeline.export_final_landmarks.reproject_to_raw_space uses for
+    # the file-based path -- degenerate OBB geometry (already ruled out by
+    # the successful normalize_one() call above) is the only way this
+    # returns None, so original_landmarks is left unset rather than failing
+    # a pipeline whose crop-space result is otherwise valid.
+    original_landmarks = None
+    transform = compute_wing_transform(
+        image_bgr.shape, box_pixels, pad=padding, target_ratio=out_width / out_height,
+    )
+    if transform is not None:
+        original_landmarks = apply_wing_transform_to_points_inverse(
+            numbering.numbered.astype(np.float32), transform, out_width, out_height,
+        )
+
     return PlacementResult(
         status="OK", stage=None, error_reason="",
-        crop_image=crop, landmarks=numbering.numbered, detection_box=box_pixels,
-        registration_score=numbering.score,
+        crop_image=crop, landmarks=numbering.numbered, original_landmarks=original_landmarks,
+        detection_box=box_pixels, registration_score=numbering.score,
     )

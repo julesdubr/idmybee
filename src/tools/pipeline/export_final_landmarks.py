@@ -27,16 +27,14 @@ Output (in --output-dir, default `<dataset>/export/`), for the requested specime
     landmarks_<n>lm_original.tps           raw-image-space coordinates
                                             (omitted with --no-original-space)
     landmarks_<n>lm_biological_data.csv    same row order/IDs as the TPS
-                                            (photo-level) -- carries both an
-                                            "id" and a "tps_id" column
-                                            (identical values): "id" for
-                                            external (R) consumers, "tps_id"
-                                            is the exact column
-                                            utils.uploaded_dataset.
+                                            (photo-level) -- "tps_id" is the
+                                            exact column utils.uploaded_dataset.
                                             join_specimens_to_bio looks for
                                             when this export is re-uploaded
                                             into app/train_model.py /
-                                            app/predict_dataset.py
+                                            app/predict_dataset.py; "photo_id"
+                                            follows it for a human-readable
+                                            join against manifest.csv
     failed.csv                             excluded photos, by stage
 
 In both TPS files: sequential integer IDs (ID=1, 2, ...), no COMMENT=,
@@ -89,12 +87,12 @@ from core.run_io import setup_console_logging
 logger = logging.getLogger(__name__)
 
 FAILED_FIELDS = ["photo_id", "inv_id", "stage", "reason"]
-# "id" is the R-facing row number (matches the TPS ID= field); "tps_id" duplicates
-# it under the exact column name utils.uploaded_dataset.join_specimens_to_bio looks
-# for -- so an export produced here can be re-uploaded into app/train_model.py /
-# app/predict_dataset.py and join positionally, without also renaming "id" and
-# risking breaking an external (R) consumer that already expects that name.
-BASE_BIO_COLUMNS = ["id", "tps_id", "inv_id", "species", "caste", "device", "device_tag"]
+# "tps_id" matches the TPS ID= field, under the exact column name
+# utils.uploaded_dataset.join_specimens_to_bio looks for -- so an export
+# produced here can be re-uploaded into app/train_model.py /
+# app/predict_dataset.py and join positionally. "photo_id" follows it for a
+# human-readable join against manifest.csv/crops.csv.
+BASE_BIO_COLUMNS = ["tps_id", "photo_id", "inv_id", "species", "caste", "device", "device_tag"]
 
 # Consecutive "image unreadable" failures before aborting reprojection
 # entirely -- a handful is a few corrupt/missing files (kept in
@@ -327,8 +325,9 @@ def main(argv: list[str] | None = None) -> None:
             original_out.append(ImageLandmarks(sp.n_points, original_xy, image_path, new_id))
 
         row = {
-            "id": new_id, "tps_id": new_id, "inv_id": _clean(meta.inv_id), "species": _clean(meta.species),
-            "caste": _clean(meta.caste), "device": _clean(meta.device), "device_tag": _clean(meta.device_tag),
+            "tps_id": new_id, "photo_id": _clean(sp.photo_id), "inv_id": _clean(meta.inv_id),
+            "species": _clean(meta.species), "caste": _clean(meta.caste), "device": _clean(meta.device),
+            "device_tag": _clean(meta.device_tag),
         }
         bio_rows.append(row)
 

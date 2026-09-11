@@ -1,0 +1,16 @@
+{
+  "dataset": "/var/folders/wp/phsg97rs6j31sswl5xpbmbs80000gn/T/idmybee_predict_upload_e27pa_43/landmarks_19lm_original",
+  "model_path": "models/lda/Bourdon_cul-rouge_19LM_species/model.joblib",
+  "devices": null,
+  "species": null,
+  "castes": null,
+  "exclude_outliers": true,
+  "non_strict": false,
+  "landmarks_tps": null,
+  "landmarks_status_csv": null,
+  "run_label": null,
+  "low_confidence_threshold": 0.6,
+  "run_id": "Bourdon_cul-rouge_19LM_species",
+  "eval_tag": "landmarks_19lm_original",
+  "family": "lda"
+}

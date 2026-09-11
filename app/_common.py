@@ -13,6 +13,7 @@ from __future__ import annotations
 import base64
 import contextlib
 import io
+import json
 import re
 import subprocess
 import sys
@@ -29,6 +30,42 @@ LOGO_PATH = Path("app/assets/idmb_logo.png")
 
 def discover(pattern: str) -> list[str]:
     return sorted(str(p) for p in Path(".").glob(pattern))
+
+
+# ---------------------------------------------------------------------------
+# UNet checkpoint metadata (train_config.json)
+# ---------------------------------------------------------------------------
+
+def unet_train_config(weights_path: str) -> dict:
+    """Sibling train_config.json for a UNet checkpoint (see
+    landmarks_trainer/train.py) -- {} if that file is missing or unreadable
+    (e.g. a migrated legacy checkpoint), letting callers fall back to
+    manual entry/defaults."""
+    config_path = Path(weights_path).parent / "train_config.json"
+    if not config_path.exists():
+        return {}
+    try:
+        return json.loads(config_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def unet_landmark_count(weights_path: str) -> int | None:
+    """n_landmarks this UNet checkpoint was trained for -- None if its
+    train_config.json doesn't record it, letting the caller fall back to
+    manual entry."""
+    return unet_train_config(weights_path).get("n_landmarks")
+
+
+def unet_crop_size(weights_path: str) -> tuple[int, int] | None:
+    """(crop_width, crop_height) this UNet checkpoint expects as input,
+    read from its train_config.json -- None if missing, letting the caller
+    fall back to the pipeline's own defaults. Never user-editable in the
+    apps that call this: a checkpoint predicts landmarks for the resolution
+    it was trained on, not an arbitrary one picked afterwards."""
+    config = unet_train_config(weights_path)
+    width, height = config.get("img_width"), config.get("img_height")
+    return (int(width), int(height)) if width and height else None
 
 
 def save_uploaded_files(uploaded_files, dest_dir: Path) -> list[Path]:

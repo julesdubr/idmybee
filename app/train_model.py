@@ -72,7 +72,7 @@ with st.container(border=True):
         "Composantes LDA conservées dans le modèle", min_value=1, value=2, step=1, key="tr_lda_components",
     )
     model_name = st.text_input(
-        "Nom du modèle", placeholder="ex. Identifiant bourdon terricole",
+        "Nom du modèle", placeholder="ex. Identifiant bourdon cul-rouge",
         help="Affiché par un sélecteur de modèle (cette appli ou app/single_image.py/"
              "app/predict_dataset.py) plutôt qu'un id abstrait, et nomme le dossier de sortie sous "
              "models/lda/ (slugifié). Un tag '_<n>LM_<level>' (nombre de landmarks du TPS + "

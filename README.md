@@ -96,7 +96,13 @@ Modèle entraîné sur `data/Bombus/collection` (13 espèces, ~2600 spécimens,
 
 L'écart entre les deux illustre pourquoi une évaluation sur un jeu terrain
 distinct compte : la précision en LOOCV sur la collection est optimiste
-par rapport à des photos prises dans des conditions réelles.
+par rapport à des photos prises dans des conditions réelles. Ce biais vient
+en partie du fait que le LOOCV retire une photo à la fois plutôt qu'un
+spécimen entier : quand plusieurs photos du même individu existent, les
+autres restent dans l'ensemble d'entraînement et facilitent artificiellement
+la prédiction de la photo retirée. Une piste pour corriger cela à l'avenir
+serait un LOOCV groupé par spécimen (`inv_id`, via `sklearn.model_selection.
+LeaveOneGroupOut`) plutôt que par photo.
 
 ## Pour aller plus loin
 

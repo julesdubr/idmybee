@@ -1,14 +1,14 @@
 {
-  "run_id": "species_collection",
-  "model_name": "Red-rumped_Bombus",
+  "run_id": "Bourdon_cul-rouge_19LM_species",
+  "model_name": "Bourdon_cul-rouge_19LM_species",
   "level": "species",
   "landmarks_source": "landmarks_numbered.tps (default)",
   "n_specimens": 2600,
   "n_points": 19,
   "n_pca_components": 34,
-  "pca_explained_variance_cum": 0.9996618217160623,
+  "pca_explained_variance_cum": 0.9996616877404393,
   "gpa_n_iterations": 4,
   "n": 2600,
-  "accuracy_top1": 0.9476923076923077,
+  "accuracy_top1": 0.9473076923076923,
   "accuracy_top3": 0.9873076923076923
 }

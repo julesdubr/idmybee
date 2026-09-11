@@ -1,0 +1,11 @@
+{
+  "run_id": "Bourdon_cul-rouge_19LM_species",
+  "model_name": "Bourdon_cul-rouge_19LM_species",
+  "eval_tag": "landmarks_19lm_original",
+  "model_path": "models/lda/Bourdon_cul-rouge_19LM_species/model.joblib",
+  "level": "species",
+  "landmarks_source": "landmarks_numbered.tps (default)",
+  "n": 265,
+  "accuracy_top1": 0.8188679245283019,
+  "accuracy_top3": 0.969811320754717
+}

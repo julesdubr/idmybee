@@ -33,7 +33,6 @@ identification/ folder anymore.
 from __future__ import annotations
 
 import argparse
-import json
 import sys
 from pathlib import Path
 
@@ -48,7 +47,7 @@ import streamlit as st
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _common import (  # noqa: E402
     LOGO_PATH, discover, file_picker, image_to_data_url, array_to_data_url, path_picker, plot_reference_shape,
-    run_with_log,
+    run_with_log, unet_crop_size, unet_landmark_count,
 )
 from tools.ingestion import prepare_dataset  # noqa: E402
 from manifest.origin_table import (  # noqa: E402
@@ -76,11 +75,11 @@ from core.pipeline_io import format_duration, resolve_path  # noqa: E402
 from landmarks.build_reference import load_reference  # noqa: E402
 
 STATUSES = ["OK", "SUSPECT", "FAILED"]
-STEPS = ["Configuration", "Détection & recadrage", "Validation du recadrage", "Placement des landmarks",
-         "Validation des landmarks", "Export"]
+STEPS = ["Jeu de données", "Paramètres du pipeline", "Détection & recadrage", "Validation du recadrage",
+         "Placement des landmarks", "Validation des landmarks", "Export"]
 
 st.set_page_config(
-    page_title="idmybee -- préparer un jeu de données",
+    page_title="IDMyBee - Préparer un jeu de données",
     page_icon=str(LOGO_PATH) if LOGO_PATH.exists() else None,
     layout="wide",
 )
@@ -401,39 +400,15 @@ def _prepare_dataset_wizard() -> None:
                     st.dataframe(pd.read_csv(inconsistencies), hide_index=True)
 
 
-def _unet_train_config(weights_path: str) -> dict:
-    """Sibling train_config.json for a UNet checkpoint (see
-    landmarks_trainer/train.py) -- {} if that file is missing or unreadable
-    (e.g. a migrated legacy checkpoint), letting callers fall back to
-    manual entry/defaults."""
-    config_path = Path(weights_path).parent / "train_config.json"
-    if not config_path.exists():
-        return {}
-    try:
-        return json.loads(config_path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
-        return {}
-
-
-def _unet_landmark_count(weights_path: str) -> int | None:
-    """n_landmarks this UNet checkpoint was trained for -- None if its
-    train_config.json doesn't record it, letting the caller fall back to
-    manual entry."""
-    return _unet_train_config(weights_path).get("n_landmarks")
-
-
-def _unet_crop_size(weights_path: str) -> tuple[int, int] | None:
-    """(crop_width, crop_height) this UNet checkpoint expects as input,
-    read from its train_config.json -- None if missing, letting the caller
-    fall back to the pipeline's own defaults. Never user-editable in this
-    UI: a checkpoint predicts landmarks for the resolution it was trained
-    on, not an arbitrary one picked afterwards."""
-    config = _unet_train_config(weights_path)
-    width, height = config.get("img_width"), config.get("img_height")
-    return (int(width), int(height)) if width and height else None
-
-
-def step_setup() -> None:
+def step_dataset() -> None:
+    """Step 1: pick an existing dataset root, or prepare a new one via
+    tools.ingestion.prepare_dataset -- deliberately its own step, separate
+    from step_pipeline_config()'s landmarking parameters: preparing a
+    dataset (raw images + identification CSV -> a clean manifest.csv/
+    biological_data.csv) is a distinct concern from configuring/running the
+    detection -> crop -> UNet landmarks -> renumbering pipeline on it, and
+    stopping here lets a user prepare a dataset now and only continue to
+    the pipeline later, without the two being forced into one screen."""
     st.header(STEPS[0])
 
     st.subheader("Jeu de données")
@@ -466,7 +441,23 @@ def step_setup() -> None:
         return
 
     st.divider()
-    st.subheader("Paramètres du pipeline")
+    if st.button(
+        "Continuer vers les paramètres du pipeline", icon=":material/arrow_forward:",
+        type="primary", key="dataset_continue",
+    ):
+        advance(2)
+
+
+def step_pipeline_config() -> None:
+    """Step 2: configure and launch detection -> crop -> UNet landmarks ->
+    renumbering on the dataset step_dataset() just prepared/selected -- see
+    step_dataset()'s docstring for why this is a separate step."""
+    st.header(STEPS[1])
+    dataset_root = st.session_state.dataset_root
+    st.caption(f"Jeu de données : `{dataset_root}`")
+    if st.button("Retour au choix du jeu de données", icon=":material/arrow_back:", key="pipeline_back"):
+        advance(1)
+
     unet_choices = discover("models/unet_landmarks/*/weights.pt")
     yolo_choices = discover("models/yolon_obb/*.pt")
     with st.container(border=True):
@@ -509,9 +500,9 @@ def step_setup() -> None:
         else:
             unet_model = file_picker("Poids UNet (landmarks)", key="lf_unet_upload", type=["pt"])
 
-        unet_n_landmarks = _unet_landmark_count(unet_model) if unet_model else None
-        unet_crop_size = _unet_crop_size(unet_model) if unet_model else None
-        out_width, out_height = unet_crop_size or (512, 256)
+        unet_n_landmarks = unet_landmark_count(unet_model) if unet_model else None
+        checkpoint_crop_size = unet_crop_size(unet_model) if unet_model else None
+        out_width, out_height = checkpoint_crop_size or (512, 256)
         if unet_n_landmarks:
             n_landmarks = unet_n_landmarks
         else:
@@ -520,7 +511,7 @@ def step_setup() -> None:
                 help="Aucun n_landmarks trouvé dans le train_config.json de ce checkpoint -- à définir "
                      "manuellement (19 = patron complet de Tancrède, 18 pour un ancien modèle UNet).",
             )
-        if unet_n_landmarks or unet_crop_size:
+        if unet_n_landmarks or checkpoint_crop_size:
             st.caption(
                 f"Ce checkpoint UNet prédit {n_landmarks} landmark(s) à une résolution d'entrée de "
                 f"{out_width}x{out_height} (depuis son train_config.json)."
@@ -618,17 +609,17 @@ def step_setup() -> None:
             argv += ["--retry-failed"]
 
         st.session_state.args = landmarking_only_parser().parse_args(argv)
-        advance(2)
+        advance(3)
 
 
 # ---------------------------------------------------------------------------
-# Step 2 / 4 -- run a pipeline stage, with a "skip, already done" escape hatch
+# Step 3 / 5 -- run a pipeline stage, with a "skip, already done" escape hatch
 # ---------------------------------------------------------------------------
 
 def step_run(title: str, run_label: str, fn, next_step: int, skip_hint: str) -> None:
     st.header(title)
     args = st.session_state.args
-    st.caption(f"Jeu de données : {args.dataset}")
+    st.caption(f"Jeu de données : `{args.dataset}`")
 
     slug = run_label.replace(" ", "_")
     col_run, col_skip = st.columns(2)
@@ -641,7 +632,7 @@ def step_run(title: str, run_label: str, fn, next_step: int, skip_hint: str) -> 
 
 
 # ---------------------------------------------------------------------------
-# Steps 3 / 5 -- validation review (shared rendering, different data source)
+# Steps 4 / 6 -- validation review (shared rendering, different data source)
 # ---------------------------------------------------------------------------
 
 def _filtered_view(df: pd.DataFrame, state_key: str) -> pd.DataFrame:
@@ -677,7 +668,7 @@ def _thumbnail_width() -> int:
 
 
 def step_crop_review() -> None:
-    st.header(STEPS[2])
+    st.header(STEPS[3])
     args = st.session_state.args
 
     if st.session_state.crop_review_df is None:
@@ -714,11 +705,11 @@ def step_crop_review() -> None:
         args.crops_csv = str(crops_reviewed_path)
         n_changed = int((full_df["auto_status"] != full_df["reviewed_status"]).sum())
         st.toast(f"{n_changed} correction(s) enregistrée(s) -> {crops_reviewed_path}", icon=":material/check:")
-        advance(4)
+        advance(5)
 
 
 def step_landmark_review() -> None:
-    st.header(STEPS[4])
+    st.header(STEPS[5])
     args = st.session_state.args
     landmarks_dir = landmarks_dirname(args)
 
@@ -770,11 +761,11 @@ def step_landmark_review() -> None:
         args.landmarks_status_csv = str(landmarks_reviewed_path)
         n_changed = int((full_df["auto_status"] != full_df["reviewed_status"]).sum())
         st.toast(f"{n_changed} correction(s) enregistrée(s) -> {landmarks_reviewed_path}", icon=":material/check:")
-        advance(6)
+        advance(7)
 
 
 # ---------------------------------------------------------------------------
-# Step 6 -- export (terminal: no further step, dataset is ready)
+# Step 7 -- export (terminal: no further step, dataset is ready)
 # ---------------------------------------------------------------------------
 
 def _render_pipeline_stats(dataset: str) -> None:
@@ -797,9 +788,9 @@ def _render_pipeline_stats(dataset: str) -> None:
 
 
 def step_export() -> None:
-    st.header(STEPS[5])
+    st.header(STEPS[6])
     args = st.session_state.args
-    st.caption(f"Jeu de données : {args.dataset}")
+    st.caption(f"Jeu de données : `{args.dataset}`")
 
     _render_pipeline_stats(args.dataset)
 
@@ -827,21 +818,23 @@ def step_export() -> None:
 # ---------------------------------------------------------------------------
 
 if st.session_state.args is not None:
-    st.sidebar.caption(f"Jeu de données : {st.session_state.args.dataset}")
+    st.sidebar.caption(f"Jeu de données : `{st.session_state.args.dataset}`")
 
 step = st.session_state.step
 if step == 1:
-    step_setup()
+    step_dataset()
 elif step == 2:
-    step_run(STEPS[1], "détection et recadrage", run_detection_and_crop, next_step=3,
-             skip_hint="Si extraction/<mode>/crops.csv a déjà été écrit pour ce jeu de données.")
+    step_pipeline_config()
 elif step == 3:
-    step_crop_review()
+    step_run(STEPS[2], "détection et recadrage", run_detection_and_crop, next_step=4,
+             skip_hint="Si extraction/<mode>/crops.csv a déjà été écrit pour ce jeu de données.")
 elif step == 4:
-    _landmarks_dir = landmarks_dirname(st.session_state.args)
-    step_run(STEPS[3], "placement des landmarks", run_landmark_placement, next_step=5,
-             skip_hint=f"Si {_landmarks_dir}/landmarks_numbered.csv a déjà été écrit pour ce jeu de données.")
+    step_crop_review()
 elif step == 5:
-    step_landmark_review()
+    _landmarks_dir = landmarks_dirname(st.session_state.args)
+    step_run(STEPS[4], "placement des landmarks", run_landmark_placement, next_step=6,
+             skip_hint=f"Si {_landmarks_dir}/landmarks_numbered.csv a déjà été écrit pour ce jeu de données.")
 elif step == 6:
+    step_landmark_review()
+elif step == 7:
     step_export()

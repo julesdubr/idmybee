@@ -1,19 +1,19 @@
 {
-  "dataset": "data/Bombus/collection",
+  "dataset": "/var/folders/wp/phsg97rs6j31sswl5xpbmbs80000gn/T/idmybee_train_upload_yqe2qgw2/landmarks_19lm_original",
   "devices": null,
   "species": null,
   "castes": null,
   "exclude_outliers": true,
   "non_strict": false,
   "landmarks_tps": null,
-  "landmarks_status_csv": "data/Bombus/collection/landmarks/landmarks_reviewed.csv",
+  "landmarks_status_csv": null,
   "run_label": null,
   "level": "species",
   "lda_components": 2,
-  "model_name": "Red-rumped_Bombus",
+  "model_name": "Bourdon_cul-rouge",
   "no_save_model": false,
   "verbose": false,
   "quiet": false,
-  "run_id": "species_collection",
+  "run_id": "Bourdon_cul-rouge_19LM_species",
   "family": "lda"
 }
