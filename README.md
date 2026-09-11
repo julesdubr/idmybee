@@ -86,23 +86,39 @@ des options CLI et des formats de fichiers.
 
 ## Premiers résultats
 
-Modèle entraîné sur `data/Bombus/collection` (13 espèces, ~2600 spécimens,
-19 landmarks), précision en validation croisée leave-one-out (LOOCV) :
+Modèle entraîné sur `data/Bombus/collection` (13 espèces, 526 spécimens,
+2600 photos, 19 landmarks), précision en validation croisée leave-one-out
+(LOOCV) :
 
-| Jeu de données | Spécimens | Top-1 | Top-3 |
+| Jeu de données | Photos | Top-1 | Top-3 |
 |---|---|---|---|
-| Collection (LOOCV) | 2600 | 94.8 % | 98.7 % |
-| Terrain (évaluation indépendante) | 265 | 82.3 % | 97.0 % |
+| Collection (LOOCV, groupée par spécimen) | 2600 | ~92.8 % | ~98.3 % |
+| Terrain (évaluation indépendante) | 265 | 81.9 % | 97.0 % |
 
 L'écart entre les deux illustre pourquoi une évaluation sur un jeu terrain
-distinct compte : la précision en LOOCV sur la collection est optimiste
-par rapport à des photos prises dans des conditions réelles. Ce biais vient
-en partie du fait que le LOOCV retire une photo à la fois plutôt qu'un
-spécimen entier : quand plusieurs photos du même individu existent, les
-autres restent dans l'ensemble d'entraînement et facilitent artificiellement
-la prédiction de la photo retirée. Une piste pour corriger cela à l'avenir
-serait un LOOCV groupé par spécimen (`inv_id`, via `sklearn.model_selection.
-LeaveOneGroupOut`) plutôt que par photo.
+distinct compte : la précision en LOOCV sur la collection reste optimiste
+par rapport à des photos prises dans des conditions réelles, même corrigée
+(voir ci-dessous).
+
+**Biais du LOOCV et correction.** Un individu a souvent plusieurs photos
+(en moyenne ~5 dans la collection). Un LOOCV naïf retire une photo à la
+fois : les autres photos du même individu restent dans l'ensemble
+d'entraînement et facilitent artificiellement la prédiction de la photo
+retirée, ce qui surestimait le top-1 collection (~94.8 % avant correction).
+`classifiers/train.py` fait maintenant un LOOCV **groupé par spécimen**
+(`inv_id`, via `sklearn.model_selection.LeaveOneGroupOut`) : chaque fold
+retire TOUTES les photos d'un même individu, ce qui fait redescendre le
+top-1 collection à ~92.8 % (chiffre plus honnête).
+
+Cette correction introduit son propre biais résiduel, dans l'autre sens :
+une espèce représentée par un seul spécimen (ex. *B. lucorum* dans la
+collection actuelle, avec un seul individu) est totalement absente de
+l'entraînement du fold qui évalue ses photos -- le classifieur n'a alors
+jamais vu cette espèce et la rate systématiquement (0 % pour cette espèce en
+LOOCV), ce qui sous-estime la précision réelle pour les espèces
+sous-représentées (le modèle final, lui, entraîné sur l'ensemble complet,
+a bien vu ces espèces). `classifiers/train.py` logue un avertissement
+listant les espèces concernées (voir `singleton_classes()`).
 
 ## Pour aller plus loin
 

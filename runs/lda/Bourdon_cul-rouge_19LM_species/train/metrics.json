@@ -9,6 +9,6 @@
   "pca_explained_variance_cum": 0.9996616877404393,
   "gpa_n_iterations": 4,
   "n": 2600,
-  "accuracy_top1": 0.9473076923076923,
-  "accuracy_top3": 0.9873076923076923
+  "accuracy_top1": 0.9284615384615384,
+  "accuracy_top3": 0.9826923076923076
 }

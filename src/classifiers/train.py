@@ -23,13 +23,13 @@ from __future__ import annotations
 import argparse
 import logging
 from pathlib import Path
-from typing import NamedTuple
+from typing import NamedTuple, Sequence
 
 import numpy as np
 import pandas as pd
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.decomposition import PCA
-from sklearn.model_selection import LeaveOneOut, cross_val_predict
+from sklearn.model_selection import LeaveOneGroupOut, cross_val_predict
 
 from utils.cli import add_dataset_args, add_dataset_positional, add_logging_args, dataset_kwargs, log_level_from_args
 from core.dataset import load_dataset, target_groupe
@@ -89,15 +89,42 @@ def fit_lda(scores: np.ndarray, groupe: pd.Series, n_components: int = 2):
     return lda
 
 
-def loocv_lda(scores: np.ndarray, groupe: pd.Series) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-    """Leave-one-out cross-validated LDA. Returns (proba, predicted, classes).
+def singleton_classes(groupe: pd.Series, groups: Sequence) -> list[str]:
+    """Classes (species, or species_caste at --level=caste) backed by only
+    ONE specimen (one unique `groups` value, e.g. one inv_id) -- every photo
+    of such a class is guaranteed a wrong LOOCV prediction under
+    loocv_lda()'s grouped CV: the fold that holds out its one-and-only
+    specimen removes the class from training entirely, so the classifier
+    has never seen it and cannot predict it. Used only to log a clear
+    warning identifying which classes' LOOCV accuracy is structurally 0%
+    for this reason (not a modeling flaw), rather than leaving a caller to
+    puzzle out a misleadingly low overall accuracy_top1 on its own."""
+    return list(pd.Series(list(groups)).groupby(list(groupe)).nunique()[lambda s: s == 1].index)
 
-    Note: LOOCV holds out one photo, not one specimen -- an individual with
-    several photos stays partly in the training set when one of its photos
-    is held out, which artificially inflates accuracy."""
+
+def loocv_lda(scores: np.ndarray, groupe: pd.Series, groups: Sequence) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Group leave-one-out cross-validated LDA. Returns (proba, predicted, classes).
+
+    Holds out one SPECIMEN per fold (`groups`, e.g. inv_id) -- ALL of its
+    photos together -- rather than one photo: a plain per-photo LeaveOneOut
+    leaves the other photos of the same individual in the training set when
+    one of its photos is held out, which artificially inflates accuracy
+    (see README.md "Premiers résultats"). A specimen with a single photo is
+    unaffected: its group has one member, so its fold is identical to what
+    plain LeaveOneOut would have done for that photo anyway.
+
+    This isn't bias-free either: a class (species, or species_caste) backed
+    by a single specimen is entirely absent from every fold that evaluates
+    it (see singleton_classes()) -- sklearn pads its predict_proba columns
+    with 0 for that fold rather than erroring, but the class is then never
+    predicted correctly even once, which *understates* accuracy for that
+    class specifically (the opposite direction from the per-photo bias this
+    replaces) -- a model actually trained on the full dataset (as the saved
+    model.joblib is) has seen that class, this LOOCV estimate for it just
+    hasn't seen it in isolation."""
     clf = LinearDiscriminantAnalysis()
-    loo = LeaveOneOut()
-    proba = cross_val_predict(clf, scores, groupe, cv=loo, method="predict_proba")
+    cv = LeaveOneGroupOut()
+    proba = cross_val_predict(clf, scores, groupe, groups=groups, cv=cv, method="predict_proba")
     classes = np.unique(groupe)
     predicted = classes[np.argmax(proba, axis=1)]
     return proba, predicted, classes
@@ -160,7 +187,16 @@ def main(argv: list[str] | None = None) -> TrainOutput:
 
     lda_final = fit_lda(scores, groupe, n_components=args.lda_components)
 
-    proba, predicted, classes = loocv_lda(scores, groupe)
+    groups = [sp.inv_id for sp in specimens]
+    singletons = singleton_classes(groupe, groups)
+    if singletons:
+        logger.warning(
+            "%d class(es) backed by a single specimen -- their LOOCV accuracy is structurally 0%% "
+            "(see loocv_lda docstring), not a sign the fitted model itself can't identify them: %s",
+            len(singletons), singletons,
+        )
+
+    proba, predicted, classes = loocv_lda(scores, groupe, groups)
     truth_by_tps_id = dict(zip((sp.tps_id for sp in specimens), groupe))
     df = build_predictions_df(specimens, args.level, predicted, proba, classes, truth_by_tps_id=truth_by_tps_id)
     acc = accuracy_summary(df, args.level)
