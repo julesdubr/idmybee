@@ -18,7 +18,7 @@ LM=19
 256.0000 96.0000
 291.0000 100.0000
 245.0000 80.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0001_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0001_S_1.jpg
 ID=1
 LM=19
 132.0000 93.0000
@@ -40,7 +40,7 @@ LM=19
 260.0000 95.0000
 293.0000 97.0000
 249.0000 80.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0001_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0001_S_2.jpg
 ID=2
 LM=19
 128.0000 91.0000
@@ -62,7 +62,7 @@ LM=19
 256.0000 97.0000
 290.0000 100.0000
 246.0000 82.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0001_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0001_S_3.jpg
 ID=3
 LM=19
 127.0000 89.0000
@@ -84,7 +84,7 @@ LM=19
 257.0000 91.0000
 291.0000 92.0000
 243.0000 72.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0002_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0002_S_1.jpg
 ID=4
 LM=19
 128.0000 87.0000
@@ -106,7 +106,7 @@ LM=19
 256.0000 90.0000
 290.0000 91.0000
 243.0000 71.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0002_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0002_S_2.jpg
 ID=5
 LM=19
 120.0000 82.0000
@@ -128,7 +128,7 @@ LM=19
 248.0000 86.0000
 282.0000 87.0000
 234.0000 65.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0002_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0002_S_3.jpg
 ID=6
 LM=19
 107.0000 72.0000
@@ -150,7 +150,7 @@ LM=19
 245.0000 86.0000
 285.0000 90.0000
 234.0000 64.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0004_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0004_S_1.jpg
 ID=7
 LM=19
 114.0000 83.0000
@@ -172,7 +172,7 @@ LM=19
 251.0000 92.0000
 290.0000 97.0000
 241.0000 72.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0004_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0004_S_2.jpg
 ID=8
 LM=19
 107.0000 85.0000
@@ -194,7 +194,7 @@ LM=19
 247.0000 89.0000
 288.0000 93.0000
 235.0000 70.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0004_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0004_S_3.jpg
 ID=9
 LM=19
 109.0000 75.0000
@@ -216,7 +216,7 @@ LM=19
 247.0000 88.0000
 289.0000 92.0000
 234.0000 67.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0005_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0005_S_2.jpg
 ID=10
 LM=19
 113.0000 80.0000
@@ -238,7 +238,7 @@ LM=19
 248.0000 87.0000
 288.0000 89.0000
 234.0000 65.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0005_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0005_S_3.jpg
 ID=11
 LM=19
 108.0000 83.0000
@@ -260,7 +260,7 @@ LM=19
 241.0000 88.0000
 274.0000 92.0000
 225.0000 69.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0006_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0006_S_1.jpg
 ID=12
 LM=19
 110.0000 81.0000
@@ -282,7 +282,7 @@ LM=19
 244.0000 87.0000
 276.0000 91.0000
 229.0000 66.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0006_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0006_S_2.jpg
 ID=13
 LM=19
 108.0000 83.0000
@@ -304,7 +304,7 @@ LM=19
 241.0000 89.0000
 274.0000 93.0000
 226.0000 71.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0006_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0006_S_3.jpg
 ID=14
 LM=19
 100.0000 87.0000
@@ -326,7 +326,7 @@ LM=19
 237.0000 92.0000
 275.0000 94.0000
 226.0000 74.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0007_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0007_S_2.jpg
 ID=15
 LM=19
 95.0000 81.0000
@@ -348,7 +348,7 @@ LM=19
 231.0000 88.0000
 269.0000 91.0000
 220.0000 67.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0007_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0007_S_3.jpg
 ID=16
 LM=19
 102.0000 87.0000
@@ -370,7 +370,7 @@ LM=19
 242.0000 94.0000
 279.0000 97.0000
 227.0000 75.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0008_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0008_S_1.jpg
 ID=17
 LM=19
 113.0000 91.0000
@@ -392,7 +392,7 @@ LM=19
 253.0000 92.0000
 290.0000 94.0000
 238.0000 72.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0008_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0008_S_2.jpg
 ID=18
 LM=19
 116.0000 91.0000
@@ -414,7 +414,7 @@ LM=19
 251.0000 90.0000
 292.0000 93.0000
 236.0000 72.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0008_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0008_S_3.jpg
 ID=19
 LM=19
 128.0000 103.0000
@@ -436,7 +436,7 @@ LM=19
 284.0000 93.0000
 289.0000 81.0000
 235.0000 78.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0009_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0009_S_1.jpg
 ID=20
 LM=19
 125.0000 96.0000
@@ -458,7 +458,7 @@ LM=19
 247.0000 90.0000
 284.0000 91.0000
 235.0000 74.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0009_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0009_S_2.jpg
 ID=21
 LM=19
 130.0000 102.0000
@@ -480,7 +480,7 @@ LM=19
 250.0000 90.0000
 286.0000 90.0000
 237.0000 75.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0009_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0009_S_3.jpg
 ID=22
 LM=19
 152.0000 91.0000
@@ -502,7 +502,7 @@ LM=19
 274.0000 95.0000
 306.0000 96.0000
 258.0000 76.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0010_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0010_S_3.jpg
 ID=23
 LM=19
 40.0000 141.0000
@@ -524,7 +524,7 @@ LM=19
 185.0000 108.0000
 230.0000 99.0000
 161.0000 91.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0016_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0016_S_2.jpg
 ID=24
 LM=19
 78.0000 155.0000
@@ -546,7 +546,7 @@ LM=19
 217.0000 117.0000
 250.0000 110.0000
 198.0000 100.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0017_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0017_S_2.jpg
 ID=25
 LM=19
 93.0000 119.0000
@@ -568,7 +568,7 @@ LM=19
 225.0000 99.0000
 262.0000 96.0000
 207.0000 81.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0018_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0018_S_1.jpg
 ID=26
 LM=19
 81.0000 95.0000
@@ -590,7 +590,7 @@ LM=19
 225.0000 91.0000
 259.0000 88.0000
 207.0000 70.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0019_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0019_S_1.jpg
 ID=27
 LM=19
 79.0000 90.0000
@@ -612,7 +612,7 @@ LM=19
 224.0000 90.0000
 259.0000 88.0000
 206.0000 69.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0019_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0019_S_2.jpg
 ID=28
 LM=19
 127.0000 126.0000
@@ -634,7 +634,7 @@ LM=19
 255.0000 105.0000
 289.0000 99.0000
 234.0000 88.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0020_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0020_S_1.jpg
 ID=29
 LM=19
 119.0000 116.0000
@@ -656,7 +656,7 @@ LM=19
 249.0000 100.0000
 287.0000 94.0000
 229.0000 81.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0020_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0020_S_2.jpg
 ID=30
 LM=19
 123.0000 127.0000
@@ -678,7 +678,7 @@ LM=19
 253.0000 105.0000
 290.0000 98.0000
 235.0000 88.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0020_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0020_S_3.jpg
 ID=31
 LM=19
 129.0000 143.0000
@@ -700,7 +700,7 @@ LM=19
 253.0000 115.0000
 291.0000 106.0000
 236.0000 100.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0021_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0021_S_1.jpg
 ID=32
 LM=19
 114.0000 140.0000
@@ -722,7 +722,7 @@ LM=19
 244.0000 115.0000
 283.0000 107.0000
 227.0000 98.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0021_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0021_S_2.jpg
 ID=33
 LM=19
 129.0000 128.0000
@@ -744,7 +744,7 @@ LM=19
 255.0000 108.0000
 293.0000 102.0000
 239.0000 92.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0021_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0021_S_3.jpg
 ID=34
 LM=19
 106.0000 109.0000
@@ -766,7 +766,7 @@ LM=19
 242.0000 98.0000
 278.0000 95.0000
 225.0000 81.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0022_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0022_S_1.jpg
 ID=35
 LM=19
 99.0000 104.0000
@@ -788,7 +788,7 @@ LM=19
 236.0000 97.0000
 275.0000 95.0000
 220.0000 79.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0022_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0022_S_2.jpg
 ID=36
 LM=19
 105.0000 114.0000
@@ -810,7 +810,7 @@ LM=19
 239.0000 100.0000
 277.0000 96.0000
 222.0000 83.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0022_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0022_S_3.jpg
 ID=37
 LM=19
 79.0000 118.0000
@@ -832,7 +832,7 @@ LM=19
 220.0000 97.0000
 262.0000 94.0000
 204.0000 82.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0023_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0023_S_1.jpg
 ID=38
 LM=19
 63.0000 135.0000
@@ -854,7 +854,7 @@ LM=19
 189.0000 103.0000
 226.0000 97.0000
 172.0000 91.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0023_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0023_S_2.jpg
 ID=39
 LM=19
 83.0000 127.0000
@@ -876,7 +876,7 @@ LM=19
 227.0000 99.0000
 269.0000 94.0000
 209.0000 84.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0023_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0023_S_3.jpg
 ID=40
 LM=19
 95.0000 99.0000
@@ -898,7 +898,7 @@ LM=19
 241.0000 95.0000
 277.0000 93.0000
 224.0000 77.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0024_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0024_S_1.jpg
 ID=41
 LM=19
 86.0000 100.0000
@@ -920,7 +920,7 @@ LM=19
 234.0000 96.0000
 274.0000 96.0000
 218.0000 78.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0024_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0024_S_2.jpg
 ID=42
 LM=19
 81.0000 97.0000
@@ -942,7 +942,7 @@ LM=19
 229.0000 93.0000
 269.0000 95.0000
 214.0000 76.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0024_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0024_S_3.jpg
 ID=43
 LM=19
 107.0000 112.0000
@@ -964,7 +964,7 @@ LM=19
 250.0000 100.0000
 283.0000 98.0000
 231.0000 83.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0025_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0025_S_1.jpg
 ID=44
 LM=19
 103.0000 124.0000
@@ -986,7 +986,7 @@ LM=19
 272.0000 100.0000
 313.0000 95.0000
 251.0000 81.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0025_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0025_S_2.jpg
 ID=45
 LM=19
 103.0000 115.0000
@@ -1008,7 +1008,7 @@ LM=19
 251.0000 98.0000
 284.0000 94.0000
 231.0000 80.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0025_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0025_S_3.jpg
 ID=46
 LM=19
 111.0000 95.0000
@@ -1030,7 +1030,7 @@ LM=19
 246.0000 92.0000
 281.0000 94.0000
 229.0000 75.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0026_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0026_S_1.jpg
 ID=47
 LM=19
 130.0000 92.0000
@@ -1052,7 +1052,7 @@ LM=19
 261.0000 90.0000
 297.0000 93.0000
 247.0000 73.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0026_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0026_S_2.jpg
 ID=48
 LM=19
 134.0000 98.0000
@@ -1074,7 +1074,7 @@ LM=19
 265.0000 92.0000
 296.0000 92.0000
 247.0000 76.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0026_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0026_S_3.jpg
 ID=49
 LM=19
 107.0000 117.0000
@@ -1096,7 +1096,7 @@ LM=19
 239.0000 98.0000
 277.0000 97.0000
 221.0000 85.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0031_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0031_S_1.jpg
 ID=50
 LM=19
 106.0000 112.0000
@@ -1118,7 +1118,7 @@ LM=19
 237.0000 97.0000
 274.0000 96.0000
 219.0000 83.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0031_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0031_S_2.jpg
 ID=51
 LM=19
 45.0000 99.0000
@@ -1140,7 +1140,7 @@ LM=19
 205.0000 90.0000
 248.0000 89.0000
 193.0000 73.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0031_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0031_S_3.jpg
 ID=52
 LM=19
 101.0000 104.0000
@@ -1162,7 +1162,7 @@ LM=19
 237.0000 95.0000
 277.0000 96.0000
 222.0000 80.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0032_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0032_S_1.jpg
 ID=53
 LM=19
 75.0000 88.0000
@@ -1184,7 +1184,7 @@ LM=19
 218.0000 88.0000
 260.0000 89.0000
 203.0000 70.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0032_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0032_S_2.jpg
 ID=54
 LM=19
 80.0000 99.0000
@@ -1206,7 +1206,7 @@ LM=19
 220.0000 92.0000
 262.0000 95.0000
 206.0000 74.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0032_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0032_S_3.jpg
 ID=55
 LM=19
 117.0000 90.0000
@@ -1228,7 +1228,7 @@ LM=19
 244.0000 92.0000
 275.0000 93.0000
 229.0000 74.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0033_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0033_S_1.jpg
 ID=56
 LM=19
 117.0000 81.0000
@@ -1250,7 +1250,7 @@ LM=19
 245.0000 86.0000
 276.0000 88.0000
 231.0000 68.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0033_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0033_S_2.jpg
 ID=57
 LM=19
 120.0000 92.0000
@@ -1272,7 +1272,7 @@ LM=19
 244.0000 94.0000
 274.0000 95.0000
 229.0000 76.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0033_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0033_S_3.jpg
 ID=58
 LM=19
 89.0000 111.0000
@@ -1294,7 +1294,7 @@ LM=19
 227.0000 97.0000
 268.0000 95.0000
 209.0000 78.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0035_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0035_S_1.jpg
 ID=59
 LM=19
 81.0000 123.0000
@@ -1316,7 +1316,7 @@ LM=19
 222.0000 104.0000
 264.0000 100.0000
 204.0000 86.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0035_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0035_S_2.jpg
 ID=60
 LM=19
 88.0000 96.0000
@@ -1338,7 +1338,7 @@ LM=19
 225.0000 92.0000
 265.0000 92.0000
 209.0000 72.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0035_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0035_S_3.jpg
 ID=61
 LM=19
 104.0000 125.0000
@@ -1360,7 +1360,7 @@ LM=19
 237.0000 106.0000
 271.0000 101.0000
 218.0000 89.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0036_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0036_S_1.jpg
 ID=62
 LM=19
 106.0000 140.0000
@@ -1382,7 +1382,7 @@ LM=19
 237.0000 112.0000
 272.0000 106.0000
 218.0000 96.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0036_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0036_S_2.jpg
 ID=63
 LM=19
 104.0000 137.0000
@@ -1404,7 +1404,7 @@ LM=19
 237.0000 111.0000
 272.0000 107.0000
 217.0000 95.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0036_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0036_S_3.jpg
 ID=64
 LM=19
 127.0000 92.0000
@@ -1426,7 +1426,7 @@ LM=19
 288.0000 87.0000
 296.0000 131.0000
 239.0000 72.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0037_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0037_S_1.jpg
 ID=65
 LM=19
 148.0000 102.0000
@@ -1448,7 +1448,7 @@ LM=19
 275.0000 82.0000
 300.0000 96.0000
 253.0000 79.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0037_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0037_S_2.jpg
 ID=66
 LM=19
 78.0000 103.0000
@@ -1470,7 +1470,7 @@ LM=19
 219.0000 92.0000
 254.0000 90.0000
 204.0000 77.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0038_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0038_S_1.jpg
 ID=67
 LM=19
 79.0000 97.0000
@@ -1492,7 +1492,7 @@ LM=19
 219.0000 94.0000
 253.0000 94.0000
 204.0000 78.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0038_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0038_S_2.jpg
 ID=68
 LM=19
 84.0000 93.0000
@@ -1514,7 +1514,7 @@ LM=19
 223.0000 90.0000
 258.0000 90.0000
 210.0000 75.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0038_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0038_S_3.jpg
 ID=69
 LM=19
 112.0000 102.0000
@@ -1536,7 +1536,7 @@ LM=19
 245.0000 97.0000
 283.0000 93.0000
 226.0000 75.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0039_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0039_S_1.jpg
 ID=70
 LM=19
 116.0000 114.0000
@@ -1558,7 +1558,7 @@ LM=19
 247.0000 101.0000
 285.0000 97.0000
 227.0000 81.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0039_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0039_S_2.jpg
 ID=71
 LM=19
 115.0000 105.0000
@@ -1580,7 +1580,7 @@ LM=19
 248.0000 98.0000
 285.0000 94.0000
 229.0000 77.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0039_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0039_S_3.jpg
 ID=72
 LM=19
 139.0000 127.0000
@@ -1602,7 +1602,7 @@ LM=19
 261.0000 112.0000
 296.0000 109.0000
 246.0000 98.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0040_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0040_S_1.jpg
 ID=73
 LM=19
 146.0000 116.0000
@@ -1624,7 +1624,7 @@ LM=19
 265.0000 104.0000
 300.0000 102.0000
 252.0000 90.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0040_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0040_S_2.jpg
 ID=74
 LM=19
 145.0000 115.0000
@@ -1646,7 +1646,7 @@ LM=19
 266.0000 104.0000
 301.0000 102.0000
 253.0000 90.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0040_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0040_S_3.jpg
 ID=75
 LM=19
 56.0000 94.0000
@@ -1668,7 +1668,7 @@ LM=19
 231.0000 93.0000
 274.0000 93.0000
 208.0000 67.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0062_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0062_S_1.jpg
 ID=76
 LM=19
 53.0000 88.0000
@@ -1690,7 +1690,7 @@ LM=19
 228.0000 90.0000
 272.0000 91.0000
 206.0000 64.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0062_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0062_S_2.jpg
 ID=77
 LM=19
 51.0000 85.0000
@@ -1712,7 +1712,7 @@ LM=19
 227.0000 89.0000
 271.0000 91.0000
 205.0000 63.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0062_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0062_S_3.jpg
 ID=78
 LM=19
 68.0000 75.0000
@@ -1734,7 +1734,7 @@ LM=19
 224.0000 92.0000
 262.0000 96.0000
 208.0000 69.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0063_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0063_S_1.jpg
 ID=79
 LM=19
 73.0000 79.0000
@@ -1756,7 +1756,7 @@ LM=19
 225.0000 94.0000
 263.0000 98.0000
 210.0000 71.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0063_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0063_S_2.jpg
 ID=80
 LM=19
 74.0000 80.0000
@@ -1778,7 +1778,7 @@ LM=19
 228.0000 93.0000
 265.0000 97.0000
 212.0000 71.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0063_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0063_S_3.jpg
 ID=81
 LM=19
 89.0000 75.0000
@@ -1800,7 +1800,7 @@ LM=19
 253.0000 98.0000
 299.0000 107.0000
 238.0000 72.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0064_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0064_S_1.jpg
 ID=82
 LM=19
 88.0000 72.0000
@@ -1822,7 +1822,7 @@ LM=19
 253.0000 96.0000
 298.0000 105.0000
 237.0000 68.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0064_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0064_S_2.jpg
 ID=83
 LM=19
 88.0000 70.0000
@@ -1844,7 +1844,7 @@ LM=19
 252.0000 97.0000
 297.0000 106.0000
 237.0000 70.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0064_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0064_S_3.jpg
 ID=84
 LM=19
 82.0000 104.0000
@@ -1866,7 +1866,7 @@ LM=19
 243.0000 93.0000
 281.0000 89.0000
 225.0000 70.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0065_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0065_S_1.jpg
 ID=85
 LM=19
 76.0000 111.0000
@@ -1888,7 +1888,7 @@ LM=19
 242.0000 95.0000
 281.0000 90.0000
 222.0000 72.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0065_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0065_S_2.jpg
 ID=86
 LM=19
 79.0000 111.0000
@@ -1910,7 +1910,7 @@ LM=19
 243.0000 96.0000
 281.0000 91.0000
 223.0000 73.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0065_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0065_S_3.jpg
 ID=87
 LM=19
 101.0000 101.0000
@@ -1932,7 +1932,7 @@ LM=19
 242.0000 103.0000
 278.0000 104.0000
 226.0000 83.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0066_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0066_S_1.jpg
 ID=88
 LM=19
 100.0000 99.0000
@@ -1954,7 +1954,7 @@ LM=19
 243.0000 101.0000
 280.0000 103.0000
 228.0000 82.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0066_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0066_S_2.jpg
 ID=89
 LM=19
 100.0000 101.0000
@@ -1976,7 +1976,7 @@ LM=19
 242.0000 101.0000
 279.0000 103.0000
 226.0000 83.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0066_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0066_S_3.jpg
 ID=90
 LM=19
 107.0000 100.0000
@@ -1998,7 +1998,7 @@ LM=19
 252.0000 95.0000
 287.0000 94.0000
 233.0000 74.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0067_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0067_S_1.jpg
 ID=91
 LM=19
 106.0000 100.0000
@@ -2020,7 +2020,7 @@ LM=19
 250.0000 94.0000
 286.0000 94.0000
 231.0000 74.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0067_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0067_S_2.jpg
 ID=92
 LM=19
 105.0000 102.0000
@@ -2042,7 +2042,7 @@ LM=19
 250.0000 94.0000
 285.0000 94.0000
 231.0000 73.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0067_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0067_S_3.jpg
 ID=93
 LM=19
 103.0000 85.0000
@@ -2064,7 +2064,7 @@ LM=19
 243.0000 94.0000
 279.0000 97.0000
 230.0000 75.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0068_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0068_S_1.jpg
 ID=94
 LM=19
 97.0000 85.0000
@@ -2086,7 +2086,7 @@ LM=19
 239.0000 94.0000
 276.0000 97.0000
 225.0000 75.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0068_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0068_S_2.jpg
 ID=95
 LM=19
 97.0000 86.0000
@@ -2108,7 +2108,7 @@ LM=19
 238.0000 94.0000
 275.0000 97.0000
 225.0000 75.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0068_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0068_S_3.jpg
 ID=96
 LM=19
 93.0000 105.0000
@@ -2130,7 +2130,7 @@ LM=19
 237.0000 99.0000
 280.0000 98.0000
 220.0000 80.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0069_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0069_S_1.jpg
 ID=97
 LM=19
 93.0000 107.0000
@@ -2152,7 +2152,7 @@ LM=19
 236.0000 99.0000
 280.0000 98.0000
 219.0000 81.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0069_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0069_S_2.jpg
 ID=98
 LM=19
 93.0000 106.0000
@@ -2174,7 +2174,7 @@ LM=19
 234.0000 99.0000
 278.0000 97.0000
 218.0000 80.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0069_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0069_S_3.jpg
 ID=99
 LM=19
 102.0000 109.0000
@@ -2196,7 +2196,7 @@ LM=19
 253.0000 101.0000
 296.0000 101.0000
 233.0000 82.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0070_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0070_S_1.jpg
 ID=100
 LM=19
 103.0000 111.0000
@@ -2218,7 +2218,7 @@ LM=19
 254.0000 101.0000
 297.0000 99.0000
 233.0000 81.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0070_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0070_S_2.jpg
 ID=101
 LM=19
 98.0000 110.0000
@@ -2240,7 +2240,7 @@ LM=19
 250.0000 102.0000
 293.0000 101.0000
 230.0000 81.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0070_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0070_S_3.jpg
 ID=102
 LM=19
 80.0000 102.0000
@@ -2262,7 +2262,7 @@ LM=19
 226.0000 91.0000
 263.0000 89.0000
 211.0000 71.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0076_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0076_S_1.jpg
 ID=103
 LM=19
 80.0000 104.0000
@@ -2284,7 +2284,7 @@ LM=19
 226.0000 93.0000
 263.0000 93.0000
 209.0000 74.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0076_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0076_S_2.jpg
 ID=104
 LM=19
 78.0000 101.0000
@@ -2306,7 +2306,7 @@ LM=19
 225.0000 92.0000
 263.0000 92.0000
 208.0000 72.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0076_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0076_S_3.jpg
 ID=105
 LM=19
 126.0000 135.0000
@@ -2328,7 +2328,7 @@ LM=19
 261.0000 112.0000
 295.0000 108.0000
 244.0000 95.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0077_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0077_S_1.jpg
 ID=106
 LM=19
 129.0000 133.0000
@@ -2350,7 +2350,7 @@ LM=19
 262.0000 112.0000
 296.0000 108.0000
 245.0000 95.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0077_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0077_S_2.jpg
 ID=107
 LM=19
 119.0000 128.0000
@@ -2372,7 +2372,7 @@ LM=19
 257.0000 110.0000
 292.0000 107.0000
 240.0000 92.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0077_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0077_S_3.jpg
 ID=108
 LM=19
 131.0000 128.0000
@@ -2394,7 +2394,7 @@ LM=19
 262.0000 107.0000
 292.0000 104.0000
 249.0000 92.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0078_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0078_S_1.jpg
 ID=109
 LM=19
 128.0000 124.0000
@@ -2416,7 +2416,7 @@ LM=19
 259.0000 106.0000
 290.0000 101.0000
 248.0000 90.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0078_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0078_S_2.jpg
 ID=110
 LM=19
 131.0000 127.0000
@@ -2438,7 +2438,7 @@ LM=19
 261.0000 105.0000
 291.0000 102.0000
 248.0000 91.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0078_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0078_S_3.jpg
 ID=111
 LM=19
 96.0000 127.0000
@@ -2460,7 +2460,7 @@ LM=19
 241.0000 105.0000
 272.0000 101.0000
 222.0000 88.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0079_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0079_S_1.jpg
 ID=112
 LM=19
 96.0000 125.0000
@@ -2482,7 +2482,7 @@ LM=19
 240.0000 104.0000
 272.0000 100.0000
 221.0000 87.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0079_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0079_S_2.jpg
 ID=113
 LM=19
 91.0000 133.0000
@@ -2504,7 +2504,7 @@ LM=19
 236.0000 107.0000
 267.0000 102.0000
 217.0000 91.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0079_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0079_S_3.jpg
 ID=114
 LM=19
 90.0000 118.0000
@@ -2526,7 +2526,7 @@ LM=19
 241.0000 99.0000
 277.0000 97.0000
 225.0000 83.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0080_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0080_S_1.jpg
 ID=115
 LM=19
 86.0000 123.0000
@@ -2548,7 +2548,7 @@ LM=19
 237.0000 101.0000
 273.0000 99.0000
 221.0000 85.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0080_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0080_S_2.jpg
 ID=116
 LM=19
 87.0000 122.0000
@@ -2570,7 +2570,7 @@ LM=19
 238.0000 101.0000
 273.0000 99.0000
 222.0000 84.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0080_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0080_S_3.jpg
 ID=117
 LM=19
 120.0000 116.0000
@@ -2592,7 +2592,7 @@ LM=19
 259.0000 107.0000
 292.0000 107.0000
 244.0000 91.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0081_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0081_S_1.jpg
 ID=118
 LM=19
 117.0000 115.0000
@@ -2614,7 +2614,7 @@ LM=19
 256.0000 105.0000
 290.0000 104.0000
 241.0000 89.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0081_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0081_S_2.jpg
 ID=119
 LM=19
 121.0000 120.0000
@@ -2636,7 +2636,7 @@ LM=19
 257.0000 108.0000
 290.0000 107.0000
 241.0000 93.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0081_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0081_S_3.jpg
 ID=120
 LM=19
 133.0000 144.0000
@@ -2658,7 +2658,7 @@ LM=19
 272.0000 114.0000
 298.0000 108.0000
 253.0000 99.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0082_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0082_S_1.jpg
 ID=121
 LM=19
 138.0000 142.0000
@@ -2680,7 +2680,7 @@ LM=19
 274.0000 112.0000
 300.0000 108.0000
 256.0000 98.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0082_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0082_S_2.jpg
 ID=122
 LM=19
 133.0000 146.0000
@@ -2702,7 +2702,7 @@ LM=19
 270.0000 114.0000
 296.0000 108.0000
 252.0000 100.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0082_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0082_S_3.jpg
 ID=123
 LM=19
 144.0000 147.0000
@@ -2724,7 +2724,7 @@ LM=19
 269.0000 118.0000
 297.0000 111.0000
 253.0000 104.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0083_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0083_S_1.jpg
 ID=124
 LM=19
 150.0000 144.0000
@@ -2746,7 +2746,7 @@ LM=19
 273.0000 118.0000
 300.0000 112.0000
 258.0000 104.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0083_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0083_S_2.jpg
 ID=125
 LM=19
 146.0000 145.0000
@@ -2768,7 +2768,7 @@ LM=19
 270.0000 117.0000
 297.0000 111.0000
 255.0000 104.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0083_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0083_S_3.jpg
 ID=126
 LM=19
 103.0000 116.0000
@@ -2790,7 +2790,7 @@ LM=19
 244.0000 101.0000
 279.0000 99.0000
 227.0000 84.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0084_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0084_S_1.jpg
 ID=127
 LM=19
 100.0000 114.0000
@@ -2812,7 +2812,7 @@ LM=19
 242.0000 100.0000
 277.0000 98.0000
 225.0000 83.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0084_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0084_S_2.jpg
 ID=128
 LM=19
 99.0000 119.0000
@@ -2834,7 +2834,7 @@ LM=19
 241.0000 102.0000
 276.0000 99.0000
 223.0000 84.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0084_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0084_S_3.jpg
 ID=129
 LM=19
 92.0000 142.0000
@@ -2856,7 +2856,7 @@ LM=19
 232.0000 113.0000
 268.0000 105.0000
 210.0000 94.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0085_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0085_S_1.jpg
 ID=130
 LM=19
 89.0000 147.0000
@@ -2878,7 +2878,7 @@ LM=19
 231.0000 116.0000
 268.0000 108.0000
 208.0000 98.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0085_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0085_S_2.jpg
 ID=131
 LM=19
 91.0000 142.0000
@@ -2900,7 +2900,7 @@ LM=19
 231.0000 113.0000
 268.0000 105.0000
 209.0000 94.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0085_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0085_S_3.jpg
 ID=132
 LM=19
 137.0000 151.0000
@@ -2922,7 +2922,7 @@ LM=19
 265.0000 120.0000
 300.0000 112.0000
 249.0000 106.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0086_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0086_S_1.jpg
 ID=133
 LM=19
 140.0000 149.0000
@@ -2944,7 +2944,7 @@ LM=19
 267.0000 118.0000
 303.0000 111.0000
 251.0000 104.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0086_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0086_S_2.jpg
 ID=134
 LM=19
 134.0000 150.0000
@@ -2966,7 +2966,7 @@ LM=19
 264.0000 119.0000
 300.0000 112.0000
 248.0000 105.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0086_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0086_S_3.jpg
 ID=135
 LM=19
 130.0000 149.0000
@@ -2988,7 +2988,7 @@ LM=19
 258.0000 117.0000
 295.0000 107.0000
 238.0000 103.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0087_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0087_S_1.jpg
 ID=136
 LM=19
 127.0000 150.0000
@@ -3010,7 +3010,7 @@ LM=19
 257.0000 117.0000
 294.0000 107.0000
 236.0000 103.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0087_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0087_S_2.jpg
 ID=137
 LM=19
 130.0000 155.0000
@@ -3032,7 +3032,7 @@ LM=19
 259.0000 121.0000
 296.0000 110.0000
 239.0000 107.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0087_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0087_S_3.jpg
 ID=138
 LM=19
 119.0000 124.0000
@@ -3054,7 +3054,7 @@ LM=19
 250.0000 104.0000
 291.0000 100.0000
 232.0000 90.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0091_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0091_S_1.jpg
 ID=139
 LM=19
 122.0000 127.0000
@@ -3076,7 +3076,7 @@ LM=19
 252.0000 107.0000
 291.0000 102.0000
 234.0000 93.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0091_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0091_S_2.jpg
 ID=140
 LM=19
 115.0000 127.0000
@@ -3098,7 +3098,7 @@ LM=19
 248.0000 104.0000
 287.0000 99.0000
 230.0000 90.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0091_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0091_S_3.jpg
 ID=141
 LM=19
 87.0000 115.0000
@@ -3120,7 +3120,7 @@ LM=19
 236.0000 98.0000
 269.0000 95.0000
 218.0000 78.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0092_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0092_S_1.jpg
 ID=142
 LM=19
 84.0000 111.0000
@@ -3142,7 +3142,7 @@ LM=19
 231.0000 97.0000
 264.0000 95.0000
 214.0000 77.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0092_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0092_S_3.jpg
 ID=143
 LM=19
 69.0000 153.0000
@@ -3164,7 +3164,7 @@ LM=19
 220.0000 111.0000
 256.0000 104.0000
 199.0000 96.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0093_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0093_S_1.jpg
 ID=144
 LM=19
 69.0000 145.0000
@@ -3186,7 +3186,7 @@ LM=19
 221.0000 107.0000
 257.0000 101.0000
 201.0000 92.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0093_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0093_S_2.jpg
 ID=145
 LM=19
 68.0000 148.0000
@@ -3208,7 +3208,7 @@ LM=19
 221.0000 110.0000
 258.0000 104.0000
 201.0000 94.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0093_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0093_S_3.jpg
 ID=146
 LM=19
 123.0000 126.0000
@@ -3230,7 +3230,7 @@ LM=19
 256.0000 104.0000
 289.0000 100.0000
 238.0000 87.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0094_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0094_S_1.jpg
 ID=147
 LM=19
 124.0000 122.0000
@@ -3252,7 +3252,7 @@ LM=19
 255.0000 105.0000
 286.0000 103.0000
 237.0000 89.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0094_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0094_S_2.jpg
 ID=148
 LM=19
 117.0000 120.0000
@@ -3274,7 +3274,7 @@ LM=19
 251.0000 103.0000
 283.0000 100.0000
 233.0000 86.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0094_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0094_S_3.jpg
 ID=149
 LM=19
 109.0000 118.0000
@@ -3296,7 +3296,7 @@ LM=19
 245.0000 102.0000
 278.0000 101.0000
 228.0000 85.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0095_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0095_S_1.jpg
 ID=150
 LM=19
 102.0000 118.0000
@@ -3318,7 +3318,7 @@ LM=19
 238.0000 102.0000
 272.0000 100.0000
 222.0000 85.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0095_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0095_S_2.jpg
 ID=151
 LM=19
 103.0000 121.0000
@@ -3340,7 +3340,7 @@ LM=19
 240.0000 103.0000
 273.0000 101.0000
 223.0000 86.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0095_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0095_S_3.jpg
 ID=152
 LM=19
 96.0000 103.0000
@@ -3362,7 +3362,7 @@ LM=19
 233.0000 97.0000
 269.0000 99.0000
 220.0000 79.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0096_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0096_S_1.jpg
 ID=153
 LM=19
 96.0000 104.0000
@@ -3384,7 +3384,7 @@ LM=19
 235.0000 98.0000
 270.0000 99.0000
 221.0000 79.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0096_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0096_S_2.jpg
 ID=154
 LM=19
 95.0000 103.0000
@@ -3406,7 +3406,7 @@ LM=19
 236.0000 97.0000
 271.0000 98.0000
 221.0000 77.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0096_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0096_S_3.jpg
 ID=155
 LM=19
 58.0000 98.0000
@@ -3428,7 +3428,7 @@ LM=19
 218.0000 99.0000
 254.0000 103.0000
 201.0000 77.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0097_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0097_S_1.jpg
 ID=156
 LM=19
 84.0000 98.0000
@@ -3450,7 +3450,7 @@ LM=19
 232.0000 94.0000
 264.0000 95.0000
 214.0000 75.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0097_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0097_S_2.jpg
 ID=157
 LM=19
 88.0000 97.0000
@@ -3472,7 +3472,7 @@ LM=19
 234.0000 93.0000
 266.0000 94.0000
 217.0000 74.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0097_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0097_S_3.jpg
 ID=158
 LM=19
 111.0000 108.0000
@@ -3494,7 +3494,7 @@ LM=19
 245.0000 100.0000
 284.0000 100.0000
 230.0000 82.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0098_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0098_S_1.jpg
 ID=159
 LM=19
 110.0000 113.0000
@@ -3516,7 +3516,7 @@ LM=19
 246.0000 101.0000
 286.0000 99.0000
 230.0000 83.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0098_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0098_S_2.jpg
 ID=160
 LM=19
 101.0000 121.0000
@@ -3538,7 +3538,7 @@ LM=19
 240.0000 104.0000
 280.0000 101.0000
 224.0000 87.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0098_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0098_S_3.jpg
 ID=161
 LM=19
 108.0000 107.0000
@@ -3560,7 +3560,7 @@ LM=19
 239.0000 100.0000
 271.0000 100.0000
 222.0000 81.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0099_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0099_S_1.jpg
 ID=162
 LM=19
 109.0000 107.0000
@@ -3582,7 +3582,7 @@ LM=19
 241.0000 101.0000
 273.0000 101.0000
 225.0000 81.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0099_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0099_S_2.jpg
 ID=163
 LM=19
 109.0000 109.0000
@@ -3604,7 +3604,7 @@ LM=19
 241.0000 102.0000
 273.0000 101.0000
 224.0000 82.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0099_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0099_S_3.jpg
 ID=164
 LM=19
 120.0000 129.0000
@@ -3626,7 +3626,7 @@ LM=19
 253.0000 111.0000
 285.0000 106.0000
 236.0000 92.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0106_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0106_S_3.jpg
 ID=165
 LM=19
 68.0000 115.0000
@@ -3648,7 +3648,7 @@ LM=19
 224.0000 97.0000
 263.0000 97.0000
 209.0000 81.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0107_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0107_S_1.jpg
 ID=166
 LM=19
 72.0000 113.0000
@@ -3670,7 +3670,7 @@ LM=19
 226.0000 96.0000
 264.0000 95.0000
 210.0000 79.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0107_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0107_S_2.jpg
 ID=167
 LM=19
 65.0000 117.0000
@@ -3692,7 +3692,7 @@ LM=19
 221.0000 96.0000
 261.0000 95.0000
 202.0000 79.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0107_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0107_S_3.jpg
 ID=168
 LM=19
 98.0000 124.0000
@@ -3714,7 +3714,7 @@ LM=19
 241.0000 101.0000
 274.0000 100.0000
 228.0000 86.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0108_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0108_S_1.jpg
 ID=169
 LM=19
 96.0000 119.0000
@@ -3736,7 +3736,7 @@ LM=19
 239.0000 99.0000
 272.0000 96.0000
 226.0000 83.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0108_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0108_S_2.jpg
 ID=170
 LM=19
 101.0000 116.0000
@@ -3758,7 +3758,7 @@ LM=19
 241.0000 99.0000
 274.0000 97.0000
 227.0000 83.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0108_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0108_S_3.jpg
 ID=171
 LM=19
 134.0000 117.0000
@@ -3780,7 +3780,7 @@ LM=19
 259.0000 106.0000
 287.0000 105.0000
 244.0000 90.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0109_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0109_S_1.jpg
 ID=172
 LM=19
 136.0000 113.0000
@@ -3802,7 +3802,7 @@ LM=19
 262.0000 104.0000
 291.0000 102.0000
 246.0000 87.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0109_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0109_S_2.jpg
 ID=173
 LM=19
 115.0000 140.0000
@@ -3824,7 +3824,7 @@ LM=19
 245.0000 112.0000
 284.0000 107.0000
 229.0000 97.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0110_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0110_S_1.jpg
 ID=174
 LM=19
 114.0000 142.0000
@@ -3846,7 +3846,7 @@ LM=19
 244.0000 113.0000
 282.0000 108.0000
 227.0000 98.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0110_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0110_S_2.jpg
 ID=175
 LM=19
 137.0000 115.0000
@@ -3868,7 +3868,7 @@ LM=19
 263.0000 101.0000
 293.0000 98.0000
 245.0000 83.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0111_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0111_S_1.jpg
 ID=176
 LM=19
 132.0000 119.0000
@@ -3890,7 +3890,7 @@ LM=19
 260.0000 105.0000
 289.0000 101.0000
 243.0000 86.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0111_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0111_S_2.jpg
 ID=177
 LM=19
 131.0000 114.0000
@@ -3912,7 +3912,7 @@ LM=19
 259.0000 101.0000
 289.0000 99.0000
 240.0000 84.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0111_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0111_S_3.jpg
 ID=178
 LM=19
 143.0000 95.0000
@@ -3934,7 +3934,7 @@ LM=19
 271.0000 97.0000
 300.0000 98.0000
 258.0000 78.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0112_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0112_S_1.jpg
 ID=179
 LM=19
 139.0000 100.0000
@@ -3956,7 +3956,7 @@ LM=19
 267.0000 99.0000
 298.0000 99.0000
 254.0000 79.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0112_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0112_S_2.jpg
 ID=180
 LM=19
 149.0000 128.0000
@@ -3978,7 +3978,7 @@ LM=19
 272.0000 111.0000
 301.0000 109.0000
 256.0000 93.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0113_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0113_S_1.jpg
 ID=181
 LM=19
 151.0000 129.0000
@@ -4000,7 +4000,7 @@ LM=19
 275.0000 112.0000
 304.0000 109.0000
 259.0000 94.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0113_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0113_S_2.jpg
 ID=182
 LM=19
 149.0000 127.0000
@@ -4022,7 +4022,7 @@ LM=19
 273.0000 111.0000
 303.0000 109.0000
 257.0000 93.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0113_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0113_S_3.jpg
 ID=183
 LM=19
 132.0000 112.0000
@@ -4044,7 +4044,7 @@ LM=19
 267.0000 101.0000
 296.0000 99.0000
 248.0000 82.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0114_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0114_S_1.jpg
 ID=184
 LM=19
 136.0000 111.0000
@@ -4066,7 +4066,7 @@ LM=19
 266.0000 103.0000
 295.0000 99.0000
 251.0000 83.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0114_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0114_S_2.jpg
 ID=185
 LM=19
 133.0000 113.0000
@@ -4088,7 +4088,7 @@ LM=19
 267.0000 101.0000
 296.0000 97.0000
 251.0000 81.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0114_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0114_S_3.jpg
 ID=186
 LM=19
 127.0000 112.0000
@@ -4110,7 +4110,7 @@ LM=19
 262.0000 101.0000
 290.0000 98.0000
 243.0000 82.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0114_S_4.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0114_S_4.jpg
 ID=187
 LM=19
 147.0000 135.0000
@@ -4132,7 +4132,7 @@ LM=19
 273.0000 111.0000
 301.0000 106.0000
 254.0000 96.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0115_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0115_S_1.jpg
 ID=188
 LM=19
 146.0000 135.0000
@@ -4154,7 +4154,7 @@ LM=19
 270.0000 112.0000
 300.0000 108.0000
 253.0000 96.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0115_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0115_S_2.jpg
 ID=189
 LM=19
 147.0000 139.0000
@@ -4176,7 +4176,7 @@ LM=19
 271.0000 115.0000
 302.0000 109.0000
 254.0000 99.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0115_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0115_S_3.jpg
 ID=190
 LM=19
 120.0000 101.0000
@@ -4198,7 +4198,7 @@ LM=19
 252.0000 95.0000
 286.0000 96.0000
 240.0000 79.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0116_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0116_S_2.jpg
 ID=191
 LM=19
 116.0000 100.0000
@@ -4220,7 +4220,7 @@ LM=19
 249.0000 95.0000
 284.0000 96.0000
 237.0000 79.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0116_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0116_S_3.jpg
 ID=192
 LM=19
 100.0000 95.0000
@@ -4242,7 +4242,7 @@ LM=19
 241.0000 93.0000
 284.0000 97.0000
 228.0000 76.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0117_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0117_S_1.jpg
 ID=193
 LM=19
 98.0000 96.0000
@@ -4264,7 +4264,7 @@ LM=19
 240.0000 93.0000
 284.0000 96.0000
 227.0000 76.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0117_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0117_S_2.jpg
 ID=194
 LM=19
 97.0000 101.0000
@@ -4286,7 +4286,7 @@ LM=19
 239.0000 95.0000
 282.0000 97.0000
 225.0000 78.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0117_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0117_S_3.jpg
 ID=195
 LM=19
 114.0000 94.0000
@@ -4308,7 +4308,7 @@ LM=19
 251.0000 97.0000
 283.0000 98.0000
 236.0000 76.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0118_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0118_S_1.jpg
 ID=196
 LM=19
 109.0000 95.0000
@@ -4330,7 +4330,7 @@ LM=19
 247.0000 99.0000
 280.0000 99.0000
 232.0000 77.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0118_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0118_S_2.jpg
 ID=197
 LM=19
 105.0000 95.0000
@@ -4352,7 +4352,7 @@ LM=19
 243.0000 97.0000
 276.0000 98.0000
 228.0000 76.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0118_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0118_S_3.jpg
 ID=198
 LM=19
 100.0000 89.0000
@@ -4374,7 +4374,7 @@ LM=19
 247.0000 91.0000
 287.0000 95.0000
 231.0000 69.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0119_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0119_S_1.jpg
 ID=199
 LM=19
 99.0000 90.0000
@@ -4396,7 +4396,7 @@ LM=19
 245.0000 91.0000
 286.0000 94.0000
 230.0000 69.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0119_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0119_S_2.jpg
 ID=200
 LM=19
 101.0000 90.0000
@@ -4418,7 +4418,7 @@ LM=19
 246.0000 91.0000
 287.0000 94.0000
 231.0000 69.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0119_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0119_S_3.jpg
 ID=201
 LM=19
 119.0000 81.0000
@@ -4440,7 +4440,7 @@ LM=19
 259.0000 80.0000
 292.0000 79.0000
 243.0000 59.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0120_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0120_S_1.jpg
 ID=202
 LM=19
 124.0000 77.0000
@@ -4462,7 +4462,7 @@ LM=19
 262.0000 78.0000
 294.0000 78.0000
 245.0000 58.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0120_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0120_S_2.jpg
 ID=203
 LM=19
 124.0000 107.0000
@@ -4484,7 +4484,7 @@ LM=19
 258.0000 99.0000
 298.0000 99.0000
 244.0000 83.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0121_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0121_S_2.jpg
 ID=204
 LM=19
 125.0000 110.0000
@@ -4506,7 +4506,7 @@ LM=19
 258.0000 98.0000
 299.0000 97.0000
 245.0000 83.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0121_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0121_S_3.jpg
 ID=205
 LM=19
 89.0000 98.0000
@@ -4528,7 +4528,7 @@ LM=19
 232.0000 93.0000
 275.0000 92.0000
 218.0000 71.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0122_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0122_S_1.jpg
 ID=206
 LM=19
 88.0000 101.0000
@@ -4550,7 +4550,7 @@ LM=19
 231.0000 95.0000
 273.0000 96.0000
 216.0000 74.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0122_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0122_S_2.jpg
 ID=207
 LM=19
 89.0000 100.0000
@@ -4572,7 +4572,7 @@ LM=19
 232.0000 95.0000
 273.0000 95.0000
 216.0000 74.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0122_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0122_S_3.jpg
 ID=208
 LM=19
 107.0000 102.0000
@@ -4594,7 +4594,7 @@ LM=19
 233.0000 90.0000
 271.0000 90.0000
 220.0000 72.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0123_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0123_S_1.jpg
 ID=209
 LM=19
 108.0000 108.0000
@@ -4616,7 +4616,7 @@ LM=19
 232.0000 93.0000
 269.0000 92.0000
 219.0000 76.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0123_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0123_S_2.jpg
 ID=210
 LM=19
 110.0000 107.0000
@@ -4638,7 +4638,7 @@ LM=19
 234.0000 92.0000
 271.0000 90.0000
 221.0000 74.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0123_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0123_S_3.jpg
 ID=211
 LM=19
 118.0000 119.0000
@@ -4660,7 +4660,7 @@ LM=19
 229.0000 92.0000
 262.0000 85.0000
 212.0000 79.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0124_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0124_S_2.jpg
 ID=212
 LM=19
 116.0000 116.0000
@@ -4682,7 +4682,7 @@ LM=19
 230.0000 93.0000
 263.0000 86.0000
 213.0000 79.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0124_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0124_S_3.jpg
 ID=213
 LM=19
 113.0000 103.0000
@@ -4704,7 +4704,7 @@ LM=19
 247.0000 90.0000
 283.0000 89.0000
 229.0000 73.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0125_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0125_S_1.jpg
 ID=214
 LM=19
 114.0000 105.0000
@@ -4726,7 +4726,7 @@ LM=19
 247.0000 92.0000
 284.0000 91.0000
 230.0000 75.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0125_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0125_S_2.jpg
 ID=215
 LM=19
 112.0000 105.0000
@@ -4748,7 +4748,7 @@ LM=19
 245.0000 91.0000
 282.0000 90.0000
 227.0000 74.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0125_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0125_S_3.jpg
 ID=216
 LM=19
 105.0000 113.0000
@@ -4770,7 +4770,7 @@ LM=19
 236.0000 98.0000
 275.0000 99.0000
 225.0000 84.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0126_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0126_S_1.jpg
 ID=217
 LM=19
 101.0000 115.0000
@@ -4792,7 +4792,7 @@ LM=19
 233.0000 98.0000
 271.0000 99.0000
 221.0000 85.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0126_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0126_S_2.jpg
 ID=218
 LM=19
 93.0000 113.0000
@@ -4814,7 +4814,7 @@ LM=19
 226.0000 96.0000
 265.0000 98.0000
 215.0000 83.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0126_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0126_S_3.jpg
 ID=219
 LM=19
 104.0000 77.0000
@@ -4836,7 +4836,7 @@ LM=19
 243.0000 90.0000
 279.0000 96.0000
 233.0000 70.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0127_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0127_S_1.jpg
 ID=220
 LM=19
 103.0000 76.0000
@@ -4858,7 +4858,7 @@ LM=19
 243.0000 90.0000
 279.0000 97.0000
 232.0000 70.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0127_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0127_S_2.jpg
 ID=221
 LM=19
 95.0000 71.0000
@@ -4880,7 +4880,7 @@ LM=19
 237.0000 87.0000
 273.0000 95.0000
 226.0000 66.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0127_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0127_S_3.jpg
 ID=222
 LM=19
 99.0000 83.0000
@@ -4902,7 +4902,7 @@ LM=19
 244.0000 85.0000
 277.0000 87.0000
 229.0000 65.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0128_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0128_S_1.jpg
 ID=223
 LM=19
 104.0000 77.0000
@@ -4924,7 +4924,7 @@ LM=19
 246.0000 83.0000
 280.0000 87.0000
 232.0000 63.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0128_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0128_S_2.jpg
 ID=224
 LM=19
 95.0000 82.0000
@@ -4946,7 +4946,7 @@ LM=19
 241.0000 85.0000
 275.0000 88.0000
 226.0000 64.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0128_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0128_S_3.jpg
 ID=225
 LM=19
 72.0000 84.0000
@@ -4968,7 +4968,7 @@ LM=19
 223.0000 88.0000
 263.0000 89.0000
 207.0000 66.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0129_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0129_S_1.jpg
 ID=226
 LM=19
 75.0000 81.0000
@@ -4990,7 +4990,7 @@ LM=19
 225.0000 88.0000
 265.0000 90.0000
 210.0000 65.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0129_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0129_S_2.jpg
 ID=227
 LM=19
 74.0000 81.0000
@@ -5012,7 +5012,7 @@ LM=19
 225.0000 88.0000
 266.0000 90.0000
 209.0000 66.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0129_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0129_S_3.jpg
 ID=228
 LM=19
 72.0000 86.0000
@@ -5034,7 +5034,7 @@ LM=19
 223.0000 89.0000
 264.0000 90.0000
 206.0000 67.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0129_S_4.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0129_S_4.jpg
 ID=229
 LM=19
 128.0000 82.0000
@@ -5056,7 +5056,7 @@ LM=19
 258.0000 92.0000
 295.0000 97.0000
 243.0000 74.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0130_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0130_S_1.jpg
 ID=230
 LM=19
 157.0000 87.0000
@@ -5078,7 +5078,7 @@ LM=19
 277.0000 97.0000
 312.0000 99.0000
 264.0000 78.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0130_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0130_S_2.jpg
 ID=231
 LM=19
 130.0000 79.0000
@@ -5100,7 +5100,7 @@ LM=19
 260.0000 92.0000
 296.0000 97.0000
 245.0000 73.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0130_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0130_S_3.jpg
 ID=232
 LM=19
 113.0000 86.0000
@@ -5122,7 +5122,7 @@ LM=19
 260.0000 96.0000
 299.0000 100.0000
 246.0000 77.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0131_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0131_S_1.jpg
 ID=233
 LM=19
 111.0000 90.0000
@@ -5144,7 +5144,7 @@ LM=19
 258.0000 97.0000
 298.0000 100.0000
 243.0000 77.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0131_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0131_S_2.jpg
 ID=234
 LM=19
 111.0000 86.0000
@@ -5166,7 +5166,7 @@ LM=19
 259.0000 96.0000
 298.0000 99.0000
 243.0000 75.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0131_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0131_S_3.jpg
 ID=235
 LM=19
 106.0000 90.0000
@@ -5188,7 +5188,7 @@ LM=19
 245.0000 92.0000
 279.0000 94.0000
 229.0000 72.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0132_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0132_S_1.jpg
 ID=236
 LM=19
 104.0000 87.0000
@@ -5210,7 +5210,7 @@ LM=19
 242.0000 91.0000
 277.0000 94.0000
 227.0000 70.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0132_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0132_S_2.jpg
 ID=237
 LM=19
 100.0000 89.0000
@@ -5232,7 +5232,7 @@ LM=19
 240.0000 91.0000
 274.0000 94.0000
 224.0000 71.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0132_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0132_S_3.jpg
 ID=238
 LM=19
 125.0000 132.0000
@@ -5254,7 +5254,7 @@ LM=19
 272.0000 105.0000
 315.0000 102.0000
 254.0000 88.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0133_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0133_S_1.jpg
 ID=239
 LM=19
 123.0000 135.0000
@@ -5276,7 +5276,7 @@ LM=19
 273.0000 106.0000
 314.0000 102.0000
 252.0000 88.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0133_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0133_S_2.jpg
 ID=240
 LM=19
 120.0000 131.0000
@@ -5298,7 +5298,7 @@ LM=19
 271.0000 106.0000
 313.0000 102.0000
 252.0000 87.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0133_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0133_S_3.jpg
 ID=241
 LM=19
 107.0000 93.0000
@@ -5320,7 +5320,7 @@ LM=19
 244.0000 94.0000
 272.0000 94.0000
 227.0000 72.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0134_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0134_S_1.jpg
 ID=242
 LM=19
 107.0000 87.0000
@@ -5342,7 +5342,7 @@ LM=19
 246.0000 92.0000
 274.0000 93.0000
 229.0000 70.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0134_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0134_S_2.jpg
 ID=243
 LM=19
 108.0000 88.0000
@@ -5364,7 +5364,7 @@ LM=19
 246.0000 93.0000
 275.0000 94.0000
 230.0000 71.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0134_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0134_S_3.jpg
 ID=244
 LM=19
 81.0000 93.0000
@@ -5386,7 +5386,7 @@ LM=19
 230.0000 93.0000
 266.0000 91.0000
 212.0000 70.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0135_S_2.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0135_S_2.jpg
 ID=245
 LM=19
 81.0000 93.0000
@@ -5408,7 +5408,7 @@ LM=19
 230.0000 93.0000
 266.0000 92.0000
 212.0000 70.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0135_S_3.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0135_S_3.jpg
 ID=246
 LM=19
 81.0000 94.0000
@@ -5430,7 +5430,7 @@ LM=19
 229.0000 93.0000
 265.0000 92.0000
 211.0000 70.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0135_S_4.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0135_S_4.jpg
 ID=247
 LM=19
 125.0000 102.0000
@@ -5452,7 +5452,7 @@ LM=19
 244.0000 94.0000
 277.0000 93.0000
 231.0000 79.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0137_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0137_S_1.jpg
 ID=248
 LM=19
 117.0000 138.0000
@@ -5474,7 +5474,7 @@ LM=19
 252.0000 115.0000
 288.0000 109.0000
 232.0000 98.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0138_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0138_S_1.jpg
 ID=249
 LM=19
 104.0000 77.0000
@@ -5496,7 +5496,7 @@ LM=19
 240.0000 79.0000
 279.0000 81.0000
 227.0000 59.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0139_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0139_S_1.jpg
 ID=250
 LM=19
 98.0000 78.0000
@@ -5518,7 +5518,7 @@ LM=19
 237.0000 82.0000
 278.0000 84.0000
 224.0000 61.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0140_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0140_S_1.jpg
 ID=251
 LM=19
 96.0000 112.0000
@@ -5540,7 +5540,7 @@ LM=19
 235.0000 100.0000
 273.0000 98.0000
 219.0000 81.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0141_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0141_S_1.jpg
 ID=252
 LM=19
 124.0000 122.0000
@@ -5562,7 +5562,7 @@ LM=19
 257.0000 102.0000
 294.0000 97.0000
 235.0000 84.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0142_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0142_S_1.jpg
 ID=253
 LM=19
 98.0000 91.0000
@@ -5584,7 +5584,7 @@ LM=19
 250.0000 93.0000
 292.0000 92.0000
 231.0000 69.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0143_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0143_S_1.jpg
 ID=254
 LM=19
 124.0000 77.0000
@@ -5606,7 +5606,7 @@ LM=19
 246.0000 75.0000
 281.0000 75.0000
 229.0000 56.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0144_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0144_S_1.jpg
 ID=255
 LM=19
 150.0000 110.0000
@@ -5628,7 +5628,7 @@ LM=19
 278.0000 97.0000
 308.0000 96.0000
 259.0000 80.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0145_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0145_S_1.jpg
 ID=256
 LM=19
 103.0000 155.0000
@@ -5650,7 +5650,7 @@ LM=19
 236.0000 118.0000
 271.0000 111.0000
 215.0000 105.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0146_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0146_S_1.jpg
 ID=257
 LM=19
 125.0000 91.0000
@@ -5672,7 +5672,7 @@ LM=19
 246.0000 77.0000
 281.0000 73.0000
 229.0000 60.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0147_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0147_S_1.jpg
 ID=258
 LM=19
 118.0000 112.0000
@@ -5694,7 +5694,7 @@ LM=19
 249.0000 97.0000
 282.0000 95.0000
 229.0000 80.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0148_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0148_S_1.jpg
 ID=259
 LM=19
 142.0000 136.0000
@@ -5716,7 +5716,7 @@ LM=19
 261.0000 107.0000
 293.0000 101.0000
 241.0000 94.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0149_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0149_S_1.jpg
 ID=260
 LM=19
 105.0000 125.0000
@@ -5738,7 +5738,7 @@ LM=19
 239.0000 104.0000
 277.0000 99.0000
 218.0000 86.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0150_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0150_S_1.jpg
 ID=261
 LM=19
 109.0000 132.0000
@@ -5760,7 +5760,7 @@ LM=19
 243.0000 111.0000
 284.0000 104.0000
 231.0000 98.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0151_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0151_S_1.jpg
 ID=262
 LM=19
 112.0000 134.0000
@@ -5782,7 +5782,7 @@ LM=19
 243.0000 106.0000
 276.0000 100.0000
 220.0000 90.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0152_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0152_S_1.jpg
 ID=263
 LM=19
 115.0000 111.0000
@@ -5804,7 +5804,7 @@ LM=19
 252.0000 100.0000
 290.0000 98.0000
 232.0000 82.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0153_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0153_S_1.jpg
 ID=264
 LM=19
 101.0000 105.0000
@@ -5826,5 +5826,5 @@ LM=19
 240.0000 93.0000
 276.0000 93.0000
 218.0000 75.0000
-IMAGE=/Users/superbg/Documents/IEES/idmybee/data/Bombus/terrain/extraction/light/images/WB1_23_0154_S_1.jpg
+IMAGE=data/Bombus/terrain/extraction/light/images/WB1_23_0154_S_1.jpg
 ID=265

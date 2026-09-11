@@ -358,7 +358,11 @@ def main(argv: list[str] | None = None) -> None:
     checkpoint(tps_path, working_tps, landmarks_path, landmarks_status)
 
     total_time_s = time.perf_counter() - pipeline_start
-    update_pipeline_stats(stats_path, "landmarks", model_name, counter.as_dict(), total_time_s)
+    # "approach" here must distinguish landmark schemes, not weight files --
+    # every UNet checkpoint is saved as weights.pt/weights.pth, so
+    # model_name (the file stem) is always the same literal string and
+    # can't tell two models apart in pipeline_stats.csv. n_landmarks does.
+    update_pipeline_stats(stats_path, "landmarks", f"unet_{args.n_landmarks}lm", counter.as_dict(), total_time_s)
 
     print()
     print("Done.")

@@ -4,9 +4,9 @@ by side, from their metrics.json (e.g. which landmark source classifies
 best, or how one model performs across several datasets).
 
 Each entry is a path relative to runs/<family>/ down to the folder
-containing metrics.json: "<run_id>/train" for a LOOCV run, or
-"<run_id>/predict/<eval_tag>" for an evaluation -- both can be mixed in the
-same comparison. Pass --all instead of listing entries by hand to build
+containing metrics.json: "<run_id>/train/<dataset_name>" for a LOOCV run,
+or "<run_id>/predict/<eval_tag>" for an evaluation -- both can be mixed in
+the same comparison. Pass --all instead of listing entries by hand to build
 the table from every run/eval recorded under runs/<family>/ (see
 discover_all_runs) -- the full model x dataset performance matrix.
 
@@ -17,8 +17,8 @@ Usage:
     python -m classifiers.train data/Bombus --level species --tps .../auto_18lm.tps --run-label auto18lm
 
     python -m analysis.compare_runs \\
-        species_all_tancrede19lm/train species_all_tancrede18lm/train \\
-        species_all_auto19lm/train species_all_auto18lm/train \\
+        species_all_tancrede19lm/train/Bombus species_all_tancrede18lm/train/Bombus \\
+        species_all_auto19lm/train/Bombus species_all_auto18lm/train/Bombus \\
         --label landmarks_source_comparison
 
     python -m analysis.compare_runs --all --label every_run
@@ -48,8 +48,11 @@ def discover_all_runs(family: str) -> list[str]:
         return []
     steps = []
     for run_dir in sorted(family_dir.iterdir()):
-        if (run_dir / "train" / "metrics.json").exists():
-            steps.append(f"{run_dir.name}/train")
+        train_dir = run_dir / "train"
+        if train_dir.exists():
+            for dataset_dir in sorted(train_dir.iterdir()):
+                if (dataset_dir / "metrics.json").exists():
+                    steps.append(f"{run_dir.name}/train/{dataset_dir.name}")
         predict_dir = run_dir / "predict"
         if predict_dir.exists():
             for eval_dir in sorted(predict_dir.iterdir()):
@@ -97,7 +100,7 @@ def plot_accuracy_comparison(df: pd.DataFrame, out_path: Path, title: str) -> No
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Compare the accuracy of several train.py/predict.py runs side by side")
     parser.add_argument("steps", type=str, nargs="*",
-                         help="Paths relative to runs/<family>/, e.g. species_train_P1-S1/train "
+                         help="Paths relative to runs/<family>/, e.g. species_train_P1-S1/train/Bombus "
                               "or species_train_P1-S1/predict/test. Omit with --all.")
     parser.add_argument("--all", action="store_true",
                          help="Compare every run/eval recorded under runs/<family>/ instead of a hand-picked list "

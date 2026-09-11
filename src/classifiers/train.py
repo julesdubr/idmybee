@@ -4,9 +4,9 @@ core.dataset.load_dataset) and evaluates its accuracy by LOOCV.
 
 Writes the model to models/lda/<run_id>/model.joblib and the LOOCV
 performance record (metrics.json/params.json/run.log/loocv_predictions.csv)
-to runs/lda/<run_id>/train/ -- see core.run_io module docstring for why
-these are two separate trees. Detailed figures and tables are produced
-separately by analysis/classification_report.py; shape variance
+to runs/lda/<run_id>/train/<dataset_name>/ -- see core.run_io module
+docstring for why these are two separate trees. Detailed figures and tables
+are produced separately by analysis/classification_report.py; shape variance
 (ANOVA/PERMANOVA) stays in analysis/variance_report.py.
 
 --level species : discriminates by species.
@@ -33,6 +33,7 @@ from sklearn.model_selection import LeaveOneGroupOut, cross_val_predict
 
 from utils.cli import add_dataset_args, add_dataset_positional, add_logging_args, dataset_kwargs, log_level_from_args
 from core.dataset import load_dataset, target_groupe
+from core.dataset_config import resolve_dataset_name
 from core.gpa import gpagen, two_d_array
 from core.model_io import TrainedModel, save_model
 from core.predictions import build_predictions_df, accuracy_summary
@@ -50,7 +51,7 @@ class TrainOutput(NamedTuple):
     record live in two separate trees (see core.run_io module docstring),
     so a caller (app/train_model.py, tools/pipeline/train_dataset.py) needs
     both paths rather than a single output folder."""
-    runs_dir: Path  # runs/lda/<run_id>/train/ -- metrics.json/params.json/run.log/loocv_predictions.csv
+    runs_dir: Path  # runs/lda/<run_id>/train/<dataset_name>/ -- metrics.json/params.json/run.log/loocv_predictions.csv
     model_path: Path  # models/lda/<run_id>/model.joblib
 
 
@@ -177,11 +178,11 @@ def main(argv: list[str] | None = None) -> TrainOutput:
     # schemes (e.g. 19LM vs. 18LM, see app/setup_dataset.py) or different
     # --level are never confusable in a model picker -- computed only now
     # since it needs specimens[0], guaranteed non-empty past run_gpa_pca().
-    dataset_label = args.dataset.name
+    dataset_label = resolve_dataset_name(args.dataset)
     name_root = args.model_name or build_run_id(args.level, dataset_label, args.devices, args.landmarks_tps, args.run_label)
     base_name = f"{name_root}_{specimens[0].n_points}LM_{args.level}"
     run_id = resolve_model_slug(FAMILY_LDA, base_name)
-    out_dir = run_path(FAMILY_LDA, run_id, "train", root=RUNS_ROOT)
+    out_dir = run_path(FAMILY_LDA, run_id, "train", dataset_label, root=RUNS_ROOT)
     model_dir = run_path(FAMILY_LDA, run_id, root=MODELS_ROOT)
     model_path = model_dir / "model.joblib"
 

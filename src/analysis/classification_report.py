@@ -185,8 +185,15 @@ def main(argv: list[str] | None = None) -> None:
         options = sorted(p.name for p in available.iterdir()) if available.exists() else []
         raise SystemExit(f"--eval-tag required with --step predict. Available for {args.run_id!r}: {options}")
 
-    step_path = result_path(args.family, args.run_id, "predict", args.eval_tag, root=RUNS_ROOT) if args.step == "predict" \
-        else result_path(args.family, args.run_id, "train", root=RUNS_ROOT)
+    model_path = result_path(args.family, args.run_id) / "model.joblib"
+    if not model_path.exists():
+        raise SystemExit(f"Model not found: {model_path} (was train.py run with --no-save-model?)")
+    model = load_model(model_path)
+
+    # model.dataset_label is the exact dataset_name train.py nested its
+    # performance record under (runs/<family>/<run_id>/train/<dataset_name>/).
+    dataset_tag = args.eval_tag if args.step == "predict" else model.dataset_label
+    step_path = result_path(args.family, args.run_id, args.step, dataset_tag, root=RUNS_ROOT)
     if not step_path.exists():
         raise SystemExit(
             f"{step_path} not found -- run classifiers.train or classifiers.predict batch first "
@@ -204,11 +211,6 @@ def main(argv: list[str] | None = None) -> None:
         )
     level = true_cols[0].removeprefix("true_")
 
-    model_path = result_path(args.family, args.run_id) / "model.joblib"
-    if not model_path.exists():
-        raise SystemExit(f"Model not found: {model_path} (was train.py run with --no-save-model?)")
-    model = load_model(model_path)
-
     dataset_root = Path(params["dataset"])
     specimens, meta_df = load_dataset(
         dataset_root,
@@ -224,11 +226,8 @@ def main(argv: list[str] | None = None) -> None:
     meta_df = meta_df.copy()
     meta_df["tps_id"] = [sp.tps_id for sp in specimens]
 
-    run_label = f"{args.run_id}/predict/{args.eval_tag}" if args.step == "predict" else f"{args.run_id}/train"
-    out_dir = run_path(
-        args.family, args.run_id, args.step, *([args.eval_tag] if args.step == "predict" else []), "report",
-        root=RUNS_ROOT,
-    )
+    run_label = f"{args.run_id}/{args.step}/{dataset_tag}"
+    out_dir = run_path(args.family, args.run_id, args.step, dataset_tag, "report", root=RUNS_ROOT)
 
     cm_df = confusion_matrix_df(df, level)
     cm_df.to_csv(out_dir / "confusion_matrix.csv")

@@ -7,6 +7,7 @@ from core.run_io import (
     build_eval_tag,
     build_run_id,
     build_variance_id,
+    model_display_name,
     resolve_model_slug,
     run_id_from_model_path,
     slugify,
@@ -85,3 +86,26 @@ def test_resolve_model_slug_ignores_unrelated_siblings(tmp_path):
     (tmp_path / "lda" / "my-model").mkdir(parents=True)
     (tmp_path / "lda" / "other-model_v2").mkdir(parents=True)
     assert resolve_model_slug("lda", "my-model", root=tmp_path) == "my-model_v2"
+
+
+def test_model_display_name_reads_nested_train_metrics(tmp_path, monkeypatch):
+    # train.py nests its performance record under train/<dataset_name>/ --
+    # model_display_name must find metrics.json there, not flat in train/.
+    monkeypatch.setattr("core.run_io.RUNS_ROOT", tmp_path / "runs")
+    model_path = tmp_path / "models" / "lda" / "my-run" / "model.joblib"
+    model_path.parent.mkdir(parents=True)
+    model_path.touch()
+    dataset_dir = tmp_path / "runs" / "lda" / "my-run" / "train" / "Bombus_collection"
+    dataset_dir.mkdir(parents=True)
+    (dataset_dir / "metrics.json").write_text('{"model_name": "Red-rumped identifier"}')
+
+    assert model_display_name(model_path) == "Red-rumped identifier"
+
+
+def test_model_display_name_falls_back_to_run_id_without_train_run(tmp_path, monkeypatch):
+    monkeypatch.setattr("core.run_io.RUNS_ROOT", tmp_path / "runs")
+    model_path = tmp_path / "models" / "lda" / "my-run" / "model.joblib"
+    model_path.parent.mkdir(parents=True)
+    model_path.touch()
+
+    assert model_display_name(model_path) == "my-run"

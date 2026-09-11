@@ -1,0 +1,14 @@
+{
+  "run_id": "Bourdon_cul-rouge_18LM_species",
+  "model_name": "Bourdon_cul-rouge_18LM_species",
+  "level": "species",
+  "landmarks_source": "landmarks_numbered.tps (default)",
+  "n_specimens": 2600,
+  "n_points": 18,
+  "n_pca_components": 32,
+  "pca_explained_variance_cum": 0.9997553522356055,
+  "gpa_n_iterations": 3,
+  "n": 2600,
+  "accuracy_top1": 0.9246153846153846,
+  "accuracy_top3": 0.9819230769230769
+}

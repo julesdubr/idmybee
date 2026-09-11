@@ -38,6 +38,13 @@ Config file (JSON):
                                           // only to share one mapping across several
                                           // separately-prepared dataset roots.
   "output_dir": "data/Bombus/collection",  // final combined manifest.csv/biological_data.csv
+  "dataset_name": "Bombus_collection",   // optional (default: Path(output_dir).name) -- human-facing
+                                          // name written to dataset_config.json alongside n_photos/
+                                          // n_specimens (see core.dataset_config.write_dataset_config).
+                                          // Sanitized (no "/", it becomes a folder name) -- read back by
+                                          // classifiers.train/predict to label runs/<family>/<run_id>/
+                                          // {train,predict}/<dataset_name>/ instead of the raw folder
+                                          // basename.
   "sources": [
     {
       "images_dir": "/Volumes/EXT DATA/IDMB/images/Bombus/collection",
@@ -84,6 +91,7 @@ from pathlib import Path
 
 from tools.ingestion import build_manifest, combine_manifests, export_clean_dataset, ingest_raw
 from utils.cli import add_logging_args, log_level_from_args, verbosity_argv
+from core.dataset_config import write_dataset_config
 from core.run_io import setup_console_logging
 
 logger = logging.getLogger(__name__)
@@ -155,7 +163,7 @@ def run(config: dict, verbosity: list[str] | None = None) -> dict:
     for a caller that already has the config in memory (e.g.
     app/setup_dataset.py's dataset-prep wizard), same pattern as every
     other stage here already offers both a CLI main(argv) and a direct
-    Python call. Returns {"output_dir", "manifest_dirs", "failed_sources"}.
+    Python call. Returns {"output_dir", "manifest_dirs", "failed_sources", "dataset_config"}.
     """
     verbosity = verbosity or []
     sources = config["sources"]
@@ -187,14 +195,21 @@ def run(config: dict, verbosity: list[str] | None = None) -> dict:
     print(f"\n=== Step 1d: combine {len(manifest_dirs)} source(s) -> {config['output_dir']} ===")
     combine_manifests.main([*(str(d) for d in manifest_dirs), "--output-dir", config["output_dir"], *verbosity])
 
+    dataset_name = config.get("dataset_name") or Path(config["output_dir"]).name
+    config_path = write_dataset_config(config["output_dir"], dataset_name)
+
     print(f"\nDone. Clean dataset -> {config['output_dir']}")
+    print(f"Dataset config -> {config_path} (dataset_name={dataset_name!r})")
     if failed_sources:
         print(f"Skipped ({len(failed_sources)}, see manifest_raw.csv above): {failed_sources}")
     print(
         f"Next: python -m tools.pipeline.train_dataset {config['output_dir']} "
         "--unet-model <weights.pt>   (see PIPELINE.md scenario 1)"
     )
-    return {"output_dir": config["output_dir"], "manifest_dirs": manifest_dirs, "failed_sources": failed_sources}
+    return {
+        "output_dir": config["output_dir"], "manifest_dirs": manifest_dirs,
+        "failed_sources": failed_sources, "dataset_config": str(config_path),
+    }
 
 
 def main(argv: list[str] | None = None) -> None:

@@ -1,5 +1,5 @@
 {
-  "dataset": "/var/folders/wp/phsg97rs6j31sswl5xpbmbs80000gn/T/idmybee_train_upload_ccd66s2y/landmarks_19lm_original",
+  "dataset": "/var/folders/wp/phsg97rs6j31sswl5xpbmbs80000gn/T/idmybee_train_upload_63wpf8l5/landmarks_18lm_original",
   "devices": null,
   "species": null,
   "castes": null,
@@ -14,6 +14,6 @@
   "no_save_model": false,
   "verbose": false,
   "quiet": false,
-  "run_id": "Bourdon_cul-rouge_19LM_species",
+  "run_id": "Bourdon_cul-rouge_18LM_species",
   "family": "lda"
 }

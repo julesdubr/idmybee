@@ -45,12 +45,13 @@ import pandas as pd
 
 from utils.cli import add_dataset_args, add_logging_args, dataset_kwargs, log_level_from_args
 from core.dataset import load_dataset, load_unlabeled_tps
+from core.dataset_config import resolve_dataset_name
 from core.gpa import align_to_reference, procrustes_distance, two_d_array
 from core.model_io import TrainedModel, load_model
 from core.predictions import accuracy_summary, build_predictions_df, print_predictions_report
 from core.run_io import (
-    RUNS_ROOT, build_eval_tag, read_params, result_path, run_id_from_model_path, run_path, setup_console_logging,
-    write_metrics, write_params, write_run_log,
+    RUNS_ROOT, build_eval_tag, read_params, result_path, run_id_from_model_path, run_path,
+    setup_console_logging, write_metrics, write_params, write_run_log,
 )
 from core.tps_io import ImageLandmarks
 
@@ -120,7 +121,10 @@ def run_batch(args: argparse.Namespace) -> None:
     _print_model_info(model)
 
     family, run_id = run_id_from_model_path(args.model_path)
-    train_params = read_params(result_path(family, run_id, "train", root=RUNS_ROOT))
+    # model.dataset_label is the exact dataset_name train.py nested its
+    # performance record under (runs/<family>/<run_id>/train/<dataset_name>/)
+    # -- read straight off the already-loaded model rather than searched for.
+    train_params = read_params(result_path(family, run_id, "train", model.dataset_label, root=RUNS_ROOT))
 
     tps_explicit = args.landmarks_tps is not None
     if not tps_explicit:
@@ -139,7 +143,7 @@ def run_batch(args: argparse.Namespace) -> None:
     acc = accuracy_summary(df, model.level)
     print(f"\nEvaluation on {acc['n']} specimen(s): top-1 = {acc['accuracy_top1']:.4f} | top-3 = {acc['accuracy_top3']:.4f}")
 
-    eval_tag = build_eval_tag(args.dataset.name, args.devices, args.landmarks_tps, args.run_label)
+    eval_tag = build_eval_tag(resolve_dataset_name(args.dataset), args.devices, args.landmarks_tps, args.run_label)
     out_dir = run_path(family, run_id, "predict", eval_tag, root=RUNS_ROOT)
 
     predictions_path = out_dir / "predictions.csv"

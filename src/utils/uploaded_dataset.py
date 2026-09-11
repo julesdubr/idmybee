@@ -156,8 +156,17 @@ def write_dataset_root(specimens: list[ImageLandmarks], bio_df: pd.DataFrame, de
     bio_out = bio_out.drop_duplicates(subset="inv_id", keep="first").reset_index(drop=True)
     bio_out.to_csv(dest / "biological_data.csv", index=False)
 
+    # A hand-landmarked TPS (no COMMENT=, joined positionally via tps_id --
+    # see join_specimens_to_bio) carries no photo_id at all: synthesize one
+    # here and assign it back onto the specimen itself (not just this
+    # manifest row) so it also lands in the TPS's own COMMENT= below --
+    # otherwise core.dataset.load_dataset re-parses the TPS with
+    # photo_id=None and every downstream predictions.csv/loocv_predictions
+    # .csv ends up with an empty photo_id column for these specimens.
+    specimens = [sp if sp.photo_id else replace(sp, photo_id=f"tps_{sp.tps_id}") for sp in specimens]
+
     manifest_df = pd.DataFrame({
-        "photo_id": [sp.photo_id or f"tps_{sp.tps_id}" for sp in specimens],
+        "photo_id": [sp.photo_id for sp in specimens],
         "device_type": None,
         "photo_index": None,
     })

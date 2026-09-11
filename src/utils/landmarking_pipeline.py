@@ -107,7 +107,19 @@ def landmarks_dirname(args: argparse.Namespace) -> str:
 
 
 def resolve_export_dir(args: argparse.Namespace) -> Path:
-    return args.export_dir or dataset_export_dir(args.dataset)
+    """<dataset>/export/ by default, or <dataset>/export/<landmarks-tag>/
+    when --landmarks-tag was set (see landmarks_dirname) -- keeps exports
+    from different landmark schemes (19lm, 18lm, ...) sorted into their own
+    subfolder instead of mixed flat together in export/ (their files are
+    already named landmarks_<n>lm_*, including landmarks_<n>lm_failed.csv,
+    but that alone doesn't stop a second scheme's files from overwriting
+    the first's). --export-dir, when
+    given, is used exactly as passed -- no subfolder appended."""
+    if args.export_dir:
+        return args.export_dir
+    export_dir = dataset_export_dir(args.dataset)
+    tag = getattr(args, "landmarks_tag", None)
+    return export_dir / tag if tag else export_dir
 
 
 def dataset_filter_argv(args: argparse.Namespace) -> list[str]:
@@ -245,7 +257,7 @@ def run_export(args: argparse.Namespace) -> Path:
         landmarks_<n>lm_crop.tps
         landmarks_<n>lm_original.tps           (unless --no-original-space)
         landmarks_<n>lm_biological_data.csv    (photo-level, row-aligned to the TPS)
-        failed.csv
+        landmarks_<n>lm_failed.csv
 
     Forwards the same --devices/--species/--castes/--include-outliers/--tps/
     --landmarks-status-csv filters as classifiers.train (see

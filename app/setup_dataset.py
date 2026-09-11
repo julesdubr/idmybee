@@ -50,6 +50,7 @@ from _common import (  # noqa: E402
     run_with_log, unet_crop_size, unet_landmark_count,
 )
 from tools.ingestion import prepare_dataset  # noqa: E402
+from core.dataset_config import resolve_dataset_name, write_dataset_config  # noqa: E402
 from manifest.origin_table import (  # noqa: E402
     assign_constant_origin, build_origin_table, write_origin_codes,
 )
@@ -66,6 +67,8 @@ from utils.landmarking_pipeline import (  # noqa: E402
 from utils.review import (  # noqa: E402
     build_crop_review_df,
     build_landmark_review_df,
+    landmarks_numbered_csv_path,
+    landmarks_reviewed_csv_path,
     load_numbered_landmarks_by_photo_id,
     write_crop_review,
     write_landmarks_review,
@@ -166,7 +169,7 @@ def _render_origin_codes(sid, source: dict) -> None:
         key=f"src_{sid}_origin_codes", type=["csv"],
     )
     source["origin_column"] = st.text_input(
-        "Colonne d'origine dans le CSV d'identification (optionnel, défaut : collection_origin)",
+        "Colonne d'origine dans le CSV d'identification (optionnel, défaut : `collection_origin`)",
         key=f"src_{sid}_origin_column",
     )
     if source["origin_codes"]:
@@ -244,10 +247,10 @@ def _render_source(index: int, source: dict, n_sources: int) -> None:
             col_a, col_b = st.columns(2)
             source["device_column"] = col_a.text_input("Colonne appareil photo (optionnel)", key=f"src_{sid}_device_column")
             source["device_name_column"] = col_b.text_input(
-                "Colonne nom de l'appareil photo (optionnel, défaut : device)", key=f"src_{sid}_device_name_column",
+                "Colonne nom de l'appareil photo (optionnel, défaut : `device`)", key=f"src_{sid}_device_name_column",
             )
             source["compare_columns"] = st.text_input(
-                "Colonnes à comparer (séparées par des virgules, optionnel, défaut : genus,species,caste,dd,mm,yyyy)",
+                "Colonnes à comparer (séparées par des virgules, optionnel, défaut : `genus,species,caste,dd,mm,yyyy`)",
                 key=f"src_{sid}_compare_columns",
             )
             source["image_group_by"] = st.text_input(
@@ -315,15 +318,24 @@ def _resolve_source_for_submit(source: dict) -> dict:
 def _prepare_dataset_wizard() -> None:
     with st.expander("Format attendu", icon=":material/info:"):
         st.markdown(
-            "Chaque source est un dossier de photos brutes (forme du nom de fichier auto-détectée, "
-            "aucune convention à choisir -- le même libellé brut peut être réutilisé entre spécimens) "
-            "plus un CSV d'identification avec les données biologiques (espèce, caste, ...) et une "
-            "colonne correspondant à l'id analysé de chaque photo. Les conflits d'identité sont "
-            "résolus automatiquement en un jeu de données propre et canonique -- aucun CSV par photo "
-            "à préparer à la main.\n"
+            "Chaque source est composée de deux éléments :\n"
+            "- Un dossier de photos brutes.\n"
+            "- Un CSV d'identification avec les données biologiques (espèce, caste, ...) et une "
+            "colonne correspondant à l'id analysé de chaque photo (voir « Colonne clé » ci-dessous).\n\n"
+            "**Format de nom de photo attendu.** Le nom de fichier n'est plus auto-détecté (plusieurs "
+            "conventions possibles) -- une seule convention est désormais attendue, en 3 parties "
+            "séparées par `_` :\n\n"
+            "&nbsp;&nbsp;&nbsp;&nbsp;`PHOTO_ID = INV_ID_D_i`\n\n"
+            "- `INV_ID` = `INV_NAME_XXXX` (nom d'inventaire + numéro du spécimen, ex. `MHNL_0001`).\n"
+            "- `D` = type d'appareil : `D` (appareil photo), `S` (smartphone), `U` (indéterminé).\n"
+            "- `i` = numéro de la prise pour cet appareil (1, 2, 3, ...).\n\n"
+            "Ex. `MHNL_0001_D_1.jpg` (spécimen `MHNL_0001`, appareil photo, 1ʳᵉ prise).\n\n"
+            "Les conflits d'identité (même `INV_ID` vu depuis plusieurs sources, ...) sont résolus "
+            "automatiquement en un jeu de données propre et canonique -- aucun CSV par photo à "
+            "préparer à la main.\n"
             "- Ajoutez plusieurs sources (ex. collection + terrain) pour les combiner en une seule "
             "racine de jeu de données.\n"
-            "- inv_id_mapping.csv est écrit dans le dossier de sortie ci-dessous (partagé entre "
+            "- `inv_id_mapping.csv` est écrit dans le dossier de sortie ci-dessous (partagé entre "
             "sources) -- aucun fichier de mapping séparé à indiquer, sauf pour en partager un "
             "délibérément entre plusieurs racines de jeux de données."
         )
@@ -338,8 +350,17 @@ def _prepare_dataset_wizard() -> None:
     with col_b:
         output_base_dir = path_picker("Dossier de sortie", mode="dir", value="data/", key="prep_output_base_dir")
     output_dir = str(Path(output_base_dir) / dataset_name) if output_base_dir and dataset_name else ""
+    if output_dir and Path(output_dir).exists():
+        existing = [f for f in ("manifest.csv", "biological_data.csv") if (Path(output_dir) / f).exists()]
+        if existing:
+            st.warning(
+                f"Le dossier `{output_dir}` existe déjà et contient {', '.join(existing)} -- le "
+                "préparer à nouveau écrasera ce jeu de données existant."
+            )
+        else:
+            st.info(f"Le dossier `{output_dir}` existe déjà (mais ne contient pas encore de jeu de données préparé).")
     mapping_file = file_picker(
-        "Fichier de mapping d'identité (optionnel -- défaut : <dossier de sortie>/inv_id_mapping.csv)",
+        "Fichier de mapping d'identité (optionnel -- défaut : `<dossier de sortie>/inv_id_mapping.csv`)",
         key="prep_mapping_file", type=["csv"],
     )
 
@@ -376,7 +397,11 @@ def _prepare_dataset_wizard() -> None:
             st.error(str(exc))
             return
 
-        config: dict = {"output_dir": output_dir, "sources": [_source_to_config(s) for s in resolved_sources]}
+        Path(output_dir).mkdir(parents=True, exist_ok=True)
+        config: dict = {
+            "output_dir": output_dir, "dataset_name": dataset_name,
+            "sources": [_source_to_config(s) for s in resolved_sources],
+        }
         if mapping_file:
             config["mapping_file"] = mapping_file
 
@@ -419,9 +444,21 @@ def step_dataset() -> None:
     )
 
     if source_mode == "existing":
+        with st.expander("Format attendu", icon=":material/info:"):
+            st.markdown(
+                "Le dossier doit déjà contenir :\n"
+                "- `manifest.csv` -- une ligne par photo : `photo_id, inv_id, device_type, device, "
+                "photo_index, path, status` (produit par la préparation du jeu de données, "
+                "voir `tools.ingestion.export_clean_dataset`).\n"
+                "- `biological_data.csv` -- une ligne par spécimen : `inv_id, species, caste, ...`.\n\n"
+                "Si le recadrage et/ou le placement des landmarks ont déjà été faits pour ce jeu de "
+                "données (`extraction/<mode>/crops.csv`, `landmarks[_<tag>]/landmarks_numbered.tps`), "
+                "les étapes suivantes proposent de les réutiliser plutôt que de les relancer (bouton "
+                "« Passer -- déjà fait »)."
+            )
         dataset_root = path_picker(
             "Racine du jeu de données", mode="dir", value=st.session_state.dataset_root, key="dataset_root",
-            help="Doit déjà contenir manifest.csv et biological_data.csv.",
+            help="Doit déjà contenir manifest.csv et biological_data.csv -- voir « Format attendu » ci-dessus.",
         )
         st.session_state.dataset_root = dataset_root
         if dataset_root:
@@ -430,6 +467,19 @@ def step_dataset() -> None:
                 n_photos = len(pd.read_csv(root / "manifest.csv"))
                 n_specimens = len(pd.read_csv(root / "biological_data.csv"))
                 st.success(f"{n_photos} photo(s), {n_specimens} spécimen(s) trouvé(s) à {dataset_root}.")
+
+                col_name, col_save = st.columns([4, 1])
+                new_dataset_name = col_name.text_input(
+                    "Nom du jeu de données", value=resolve_dataset_name(root), key=f"existing_ds_name_{dataset_root}",
+                    help="Écrit dans dataset_config.json -- utilisé ensuite pour organiser les runs LDA "
+                         "(runs/lda/<modèle>/train|predict/<nom du jeu de données>/) à la place du nom "
+                         "du dossier. Les caractères interdits dans un nom de dossier (ex. `/`) sont "
+                         "remplacés par `_`.",
+                )
+                col_save.markdown("<br>", unsafe_allow_html=True)
+                if col_save.button("Enregistrer", key=f"save_ds_name_{dataset_root}"):
+                    config_path = write_dataset_config(root, new_dataset_name)
+                    st.toast(f"Nom enregistré -> {config_path}", icon=":material/check:")
             else:
                 st.warning("manifest.csv/biological_data.csv introuvables à cet emplacement pour l'instant.")
     else:
@@ -787,12 +837,48 @@ def _render_pipeline_stats(dataset: str) -> None:
     st.divider()
 
 
+def _render_status_by_species(dataset: str, args: argparse.Namespace) -> None:
+    """OK/SUSPECT/FAILED counts by species, and by species x caste, from the
+    landmark-placement step's status (reviewed if step_landmark_review()
+    has run, its auto status otherwise) joined against biological_data.csv
+    -- lets a user spot which species/castes still have failures before
+    spending the export step on a run they may want to redo instead."""
+    landmarks_dir = landmarks_dirname(args)
+    status_path = landmarks_reviewed_csv_path(Path(dataset), landmarks_dir)
+    if not status_path.exists():
+        status_path = landmarks_numbered_csv_path(Path(dataset), landmarks_dir)
+    bio_path = Path(dataset) / "biological_data.csv"
+    if not status_path.exists() or not bio_path.exists():
+        return
+
+    status_df = pd.read_csv(status_path)[["inv_id", "status"]]
+    bio_df = pd.read_csv(bio_path)[["inv_id", "species", "caste"]]
+    merged = status_df.merge(bio_df, on="inv_id", how="left")
+    merged["species"] = merged["species"].fillna("?")
+    merged["caste"] = merged["caste"].fillna("?")
+
+    st.caption(f"Statuts des landmarks par espèce ({Path(status_path).name}) :")
+    by_species = pd.crosstab(merged["species"], merged["status"]).reindex(columns=STATUSES, fill_value=0)
+    by_species["Total"] = by_species.sum(axis=1)
+    st.dataframe(by_species)
+
+    st.caption("Statuts des landmarks par espèce / caste :")
+    castes = sorted(merged["caste"].unique())
+    columns = pd.MultiIndex.from_product([castes, STATUSES])
+    by_species_caste = pd.crosstab(
+        merged["species"], [merged["caste"], merged["status"]]
+    ).reindex(columns=columns, fill_value=0)
+    st.dataframe(by_species_caste)
+    st.divider()
+
+
 def step_export() -> None:
     st.header(STEPS[6])
     args = st.session_state.args
     st.caption(f"Jeu de données : `{args.dataset}`")
 
     _render_pipeline_stats(args.dataset)
+    _render_status_by_species(args.dataset, args)
 
     col_run, col_skip = st.columns(2)
     if col_run.button("Lancer l'export", icon=":material/play_arrow:", type="primary", key="run_export"):

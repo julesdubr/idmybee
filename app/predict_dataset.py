@@ -23,6 +23,7 @@ import streamlit as st
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _common import LOGO_PATH, discover, path_picker, run_with_log, save_uploaded_files  # noqa: E402
 from classifiers.predict import run_batch as predict_run_batch  # noqa: E402
+from core.dataset_config import resolve_dataset_name  # noqa: E402
 from core.model_io import load_model  # noqa: E402
 from core.run_io import (  # noqa: E402
     RUNS_ROOT, build_eval_tag, model_display_name, read_metrics, result_path, run_id_from_model_path, slugify,
@@ -130,7 +131,9 @@ if submitted:
             run_with_log("Classification en cours...", predict_run_batch, args)
 
             family, run_id = run_id_from_model_path(args.model_path)
-            eval_tag = build_eval_tag(dataset_label, args.devices, args.landmarks_tps, args.run_label)
+            eval_tag = build_eval_tag(
+                resolve_dataset_name(dataset_root), args.devices, args.landmarks_tps, args.run_label,
+            )
             out_dir = result_path(family, run_id, "predict", eval_tag, root=RUNS_ROOT)
             metrics = read_metrics(out_dir)
             predictions = pd.read_csv(out_dir / "predictions.csv")

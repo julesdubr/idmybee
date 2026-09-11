@@ -35,7 +35,7 @@ Output (in --output-dir, default `<dataset>/export/`), for the requested specime
                                             app/predict_dataset.py; "photo_id"
                                             follows it for a human-readable
                                             join against manifest.csv
-    failed.csv                             excluded photos, by stage
+    landmarks_<n>lm_failed.csv             excluded photos, by stage
 
 In both TPS files: sequential integer IDs (ID=1, 2, ...), no COMMENT=,
 identical order to the biological data CSV's first column -- this is the
@@ -49,7 +49,7 @@ detection.csv's OBB and the clean dataset's own image dimensions (the same
 separate "raw" file anymore, see tools/ingestion/export_clean_dataset.py). A photo
 that fails reprojection is excluded from ALL outputs (not just the
 original-space TPS), to keep the three files in lockstep; it's listed in
-failed.csv under stage "reprojection". --padding/--out-width/--out-height
+landmarks_<n>lm_failed.csv under stage "reprojection". --padding/--out-width/--out-height
 must match whatever normalize_crop.py actually used to produce the crops.
 
 Biological columns come straight from biological_data.csv (via
@@ -96,7 +96,7 @@ BASE_BIO_COLUMNS = ["tps_id", "photo_id", "inv_id", "species", "caste", "device"
 
 # Consecutive "image unreadable" failures before aborting reprojection
 # entirely -- a handful is a few corrupt/missing files (kept in
-# failed.csv, the run continues); this many in a row almost always
+# landmarks_<n>lm_failed.csv, the run continues); this many in a row almost always
 # means the clean dataset's image folder isn't where --base-dir expects it,
 # so fail fast with a clear message instead of grinding through the rest of
 # the dataset one slow failure at a time.
@@ -348,7 +348,7 @@ def main(argv: list[str] | None = None) -> None:
         writer.writeheader()
         writer.writerows(bio_rows)
 
-    failed_path = args.output_dir / "failed.csv"
+    failed_path = args.output_dir / f"landmarks_{n_lm}_failed.csv"
     with failed_path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=FAILED_FIELDS)
         writer.writeheader()

@@ -43,8 +43,7 @@ pytest   # vérifie que tout s'installe correctement
 Le clone git ne contient pas les photos (`data/*/collection`,
 `data/*/terrain`) ni les poids des modèles déjà entraînés
 (`models/unet_landmarks/*/weights.pt`, `models/yolon_obb/best.pt`) — à
-récupérer séparément (demandez-moi, ou depuis l'endroit où sont stockées
-les données du projet). Le modèle de classification déjà entraîné
+récupérer séparément. Le modèle de classification déjà entraîné
 (`models/lda/species_collection/model.joblib`) est en revanche versionné :
 une fois les poids UNet + YOLO-OBB récupérés, l'appli de prédiction peut
 tourner sans tout réentraîner.
@@ -119,6 +118,27 @@ LOOCV), ce qui sous-estime la précision réelle pour les espèces
 sous-représentées (le modèle final, lui, entraîné sur l'ensemble complet,
 a bien vu ces espèces). `classifiers/train.py` logue un avertissement
 listant les espèces concernées (voir `singleton_classes()`).
+
+### 18 vs 19 landmarks
+
+Deux schémas de landmarks coexistent : l'ancien patron à 18 points
+(`models/unet_landmarks/Bombus_512_18LM_legacy`, modèle
+`models/lda/Bourdon_cul-rouge_18LM_species`) et le patron actuel à 19
+points (`models/unet_landmarks/Bombus_512_19LM`, modèle
+`models/lda/Bourdon_cul-rouge_19LM_species`, celui du tableau ci-dessus).
+Mêmes 2600 photos de la collection, même LOOCV groupé par spécimen :
+
+| Schéma | Composantes PCA | Itérations GPA | Top-1 (LOOCV) | Top-3 (LOOCV) | Photos (terrain) | Top-1 (terrain) | Top-3 (terrain) |
+|---|---|---|---|---|---|---|---|
+| 18 landmarks | 32 | 3 | 92.5 % | 98.2 % | 260 | 77.7 % | 96.2 % |
+| 19 landmarks | 34 | 4 | 92.8 % | 98.3 % | 265 | 81.9 % | 97.0 % |
+
+Le point supplémentaire n'apporte qu'un gain marginal en LOOCV (+0.3 point
+de top-1, +0.1 point de top-3), mais l'écart se creuse nettement sur le jeu
+terrain (+4.2 points de top-1, +0.8 point de top-3) : le 19ᵉ landmark
+apporte peu sur des photos de collection bien standardisées, mais aide
+davantage à stabiliser la reconnaissance sur des photos de terrain plus
+variables (angle, éclairage, arrière-plan).
 
 ## Pour aller plus loin
 

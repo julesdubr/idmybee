@@ -1,0 +1,23 @@
+photo_id,inv_id,stage,reason
+WB1_23_0003_S_1,WB1_23_0003,landmark_placement,"16 landmarks, 18 expected"
+WB1_23_0003_S_2,WB1_23_0003,landmark_placement,"15 landmarks, 18 expected"
+WB1_23_0003_S_3,WB1_23_0003,landmark_placement,"16 landmarks, 18 expected"
+WB1_23_0008_S_3,WB1_23_0008,landmark_placement,"16 landmarks, 18 expected"
+WB1_23_0016_S_1,WB1_23_0016,outlier_registration,flagged by per-species MAD outlier detection
+WB1_23_0017_S_1,WB1_23_0017,landmark_placement,"17 landmarks, 18 expected"
+WB1_23_0017_S_2,WB1_23_0017,landmark_placement,"17 landmarks, 18 expected"
+WB1_23_0017_S_3,WB1_23_0017,landmark_placement,"15 landmarks, 18 expected"
+WB1_23_0018_S_1,WB1_23_0018,outlier_registration,flagged by per-species MAD outlier detection
+WB1_23_0018_S_2,WB1_23_0018,outlier_registration,flagged by per-species MAD outlier detection
+WB1_23_0018_S_3,WB1_23_0018,landmark_placement,"17 landmarks, 18 expected"
+WB1_23_0034_S_2,WB1_23_0034,outlier_registration,flagged by per-species MAD outlier detection
+WB1_23_0106_S_1,WB1_23_0106,landmark_placement,"8 landmarks, 18 expected"
+WB1_23_0106_S_2,WB1_23_0106,landmark_placement,"14 landmarks, 18 expected"
+WB1_23_0107_S_3,WB1_23_0107,landmark_placement,"17 landmarks, 18 expected"
+WB1_23_0108_S_3,WB1_23_0108,landmark_placement,"17 landmarks, 18 expected"
+WB1_23_0111_S_1,WB1_23_0111,landmark_placement,"15 landmarks, 18 expected"
+WB1_23_0115_S_1,WB1_23_0115,outlier_registration,flagged by per-species MAD outlier detection
+WB1_23_0115_S_3,WB1_23_0115,landmark_placement,"17 landmarks, 18 expected"
+WB1_23_0124_S_1,WB1_23_0124,landmark_placement,"17 landmarks, 18 expected"
+WB1_23_0135_S_1,WB1_23_0135,landmark_placement,"17 landmarks, 18 expected"
+WB1_23_0136_S_1,WB1_23_0136,landmark_placement,"15 landmarks, 18 expected"
